@@ -1,0 +1,1442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-11-12 ven. 00:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Programming Level-up</title>
+<meta name="author" content="Jay Morgan" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Programming Level-up
+<br />
+<span class="subtitle">Lecture 4 &#x2013; An Introduction to Numerical Computing in Python</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6f339a3">1. NumPy</a>
+<ul>
+<li><a href="#org4e96a20">1.1. What is NumPy</a>
+<ul>
+<li><a href="#org5b2b2af">1.1.1. What is NumPy?</a></li>
+<li><a href="#org788ec72">1.1.2. What is NumPy?</a></li>
+<li><a href="#orgde72460">1.1.3. Install NumPy</a></li>
+<li><a href="#org176bb5c">1.1.4. Creating a numpy array</a></li>
+</ul>
+</li>
+<li><a href="#org90591e7">1.2. Working with NumPy</a>
+<ul>
+<li><a href="#org8b94cab">1.2.1. Basic attributes</a></li>
+<li><a href="#org630d6a6">1.2.2. Different data types</a></li>
+<li><a href="#org33a221f">1.2.3. Creating arrays with different dtypes</a></li>
+<li><a href="#orgdb62050">1.2.4. Different ways of creating arrays</a></li>
+<li><a href="#orgc08eaab">1.2.5. Different ways of creating arrays</a></li>
+<li><a href="#org1ae9d06">1.2.6. Different ways of creating arrays</a></li>
+<li><a href="#org036117e">1.2.7. Different ways of creating arrays</a></li>
+</ul>
+</li>
+<li><a href="#org8ff0563">1.3. Indexing Arrays</a>
+<ul>
+<li><a href="#orgd40700c">1.3.1. Slicing NumPy arrays</a></li>
+<li><a href="#org2e085aa">1.3.2. Slicing NumPy Arrays</a></li>
+<li><a href="#orgda82d5c">1.3.3. Slicing NumPy Arrays</a></li>
+<li><a href="#orgedb7070">1.3.4. Slicing NumPy Arrays</a></li>
+<li><a href="#org21e131d">1.3.5. Boolean Indexing</a></li>
+<li><a href="#org496ab08">1.3.6. Boolean Indexing</a></li>
+</ul>
+</li>
+<li><a href="#org977bf78">1.4. Reshaping and Resizing</a>
+<ul>
+<li><a href="#orgfe5889b">1.4.1. Reshape</a></li>
+<li><a href="#org24cc624">1.4.2. Flatten</a></li>
+<li><a href="#orge97b1c1">1.4.3. Flatten</a></li>
+<li><a href="#org9727a81">1.4.4. Add a dimension</a></li>
+<li><a href="#org99aa2fc">1.4.5. Add a dimension</a></li>
+<li><a href="#org0db6de5">1.4.6. Remove a dimension</a></li>
+<li><a href="#orgefdd439">1.4.7. Matrix transpose</a></li>
+<li><a href="#org85fc386">1.4.8. Composing arrays</a></li>
+</ul>
+</li>
+<li><a href="#orge3b85c8">1.5. Arithmetic Operations</a>
+<ul>
+<li><a href="#orga87dd1a">1.5.1. Arithmetic Operations</a></li>
+<li><a href="#org2a5b64f">1.5.2. Arithmetic Operations</a></li>
+<li><a href="#org35435d7">1.5.3. Broadcasting</a></li>
+<li><a href="#org3251372">1.5.4. Comparison with Functions</a></li>
+<li><a href="#orge070726">1.5.5. More complex operations</a></li>
+<li><a href="#org279e84b">1.5.6. More complex operations</a></li>
+<li><a href="#org240e938">1.5.7. More complex operations</a></li>
+<li><a href="#org5a67885">1.5.8. Vectorizing a function</a></li>
+<li><a href="#org7686dcd">1.5.9. Vectorize a function</a></li>
+<li><a href="#orgd16c530">1.5.10. Vectorize a function</a></li>
+<li><a href="#org6d9c7a0">1.5.11. Reading more</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6f339a3" class="outline-2">
+<h2 id="org6f339a3"><span class="section-number-2">1.</span> NumPy</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org4e96a20" class="outline-3">
+<h3 id="org4e96a20"><span class="section-number-3">1.1.</span> What is NumPy</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org5b2b2af" class="outline-4">
+<h4 id="org5b2b2af"><span class="section-number-4">1.1.1.</span> What is NumPy?</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+NumPy (<a href="https://numpy.org/">https://numpy.org/</a>) is one of the fundamental Python libraries for scientific
+computing. In essence, its aim is to make vector and array processing in Python much
+more efficient. Therefore, it would be your go-to for (numerical) data
+processing.
+</p>
+
+<p>
+Numerical data processing with NumPy can, most often that not, be magnitudes faster
+than what you can write in Python, even if the operations are the same. This is
+because NumPy is partly written in C.
+</p>
+
+<p>
+For example, if we want to compute the matrix multiplication of two arrays:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = [[1, 4], [9, 5]]  <span style="color: #b22222;"># </span><span style="color: #b22222;">2 dimensional 'matrices' A and B</span>
+<span style="color: #a0522d;">B</span> = [[1, 2], [3, 4]]
+<span style="color: #a0522d;">C</span> = [[0, 0], [0, 0]]  <span style="color: #b22222;"># </span><span style="color: #b22222;">our result 'pre-allocated' with zeros</span>
+
+<span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(<span style="color: #483d8b;">len</span>(A)):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> j <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(<span style="color: #483d8b;">len</span>(B)):
+        <span style="color: #a020f0;">for</span> k <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(<span style="color: #483d8b;">len</span>(B)):
+            C[i][j] += A[i][k] * B[k][j]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org788ec72" class="outline-4">
+<h4 id="org788ec72"><span class="section-number-4">1.1.2.</span> What is NumPy?</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+The previous example is quite un-weidly. We have to manually loop through the
+matrices and apply the computation for each element. This can be <b>very</b> slow in
+Python. NumPy provides a much cleaner and quicker interface:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> numpy <span style="color: #a020f0;">as</span> np
+<span style="color: #a0522d;">A</span> = np.array([[1, 4], [9, 5]])
+<span style="color: #a0522d;">B</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #a0522d;">C</span> = A @ B  <span style="color: #b22222;"># </span><span style="color: #b22222;">or np.matmul(A, B)</span>
+<span style="color: #a020f0;">print</span>(C)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[13 18]
+# =&gt;  [24 38]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgde72460" class="outline-4">
+<h4 id="orgde72460"><span class="section-number-4">1.1.3.</span> Install NumPy</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+Before we can use NumPy, we must first install it if its not already. NumPy can
+easily be installed with one of your package managers of choice. For example, if you
+want to install via conda:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install numpy
+</pre>
+</div>
+
+<p>
+or with pip:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pip install numpy
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org176bb5c" class="outline-4">
+<h4 id="org176bb5c"><span class="section-number-4">1.1.4.</span> Creating a numpy array</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+As we've seen previously, we use <code>np.array</code> to create a numpy array from a Python data type
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+<span style="color: #a020f0;">print</span>(A)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[1 2 3]
+# =&gt;  [4 5 6]
+# =&gt;  [7 8 9]]
+</pre>
+
+
+<p>
+We've created a 3x3 matrix of integers. Note that, out-of-the-box, NumPy doesn't
+support <i>ragged arrays</i> (matrices that are not rectangular), so this will not work as
+you expect:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1], [1, 2]])
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org90591e7" class="outline-3">
+<h3 id="org90591e7"><span class="section-number-3">1.2.</span> Working with NumPy</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org8b94cab" class="outline-4">
+<h4 id="org8b94cab"><span class="section-number-4">1.2.1.</span> Basic attributes</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+A numpy array has various attributes that are useful for our numerical
+computing. Some of these include:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1, 4], [9, 5]])
+
+<span style="color: #a020f0;">print</span>(A.shape)  <span style="color: #b22222;"># </span><span style="color: #b22222;">the shape of the array</span>
+<span style="color: #a020f0;">print</span>(A.size)   <span style="color: #b22222;"># </span><span style="color: #b22222;">number of elements</span>
+<span style="color: #a020f0;">print</span>(A.ndim)   <span style="color: #b22222;"># </span><span style="color: #b22222;">number of dimensions</span>
+<span style="color: #a020f0;">print</span>(A.nbytes) <span style="color: #b22222;"># </span><span style="color: #b22222;">storage used</span>
+<span style="color: #a020f0;">print</span>(A.dtype)  <span style="color: #b22222;"># </span><span style="color: #b22222;">data type of elements</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; (2, 2)
+# =&gt; 4
+# =&gt; 2
+# =&gt; 32
+# =&gt; int64
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org630d6a6" class="outline-4">
+<h4 id="org630d6a6"><span class="section-number-4">1.2.2.</span> Different data types</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+In the previous example, the elements in the array we <code>int64</code>. But normally, we will
+see <code>float64</code>. However, there are many other available data types, where each of the
+different data types affects how much memory is used to represent the data.
+</p>
+
+<ul class="org-ul">
+<li>int (8, 16, 32, 64)</li>
+<li>uint (unsigned integers)</li>
+<li>bool</li>
+<li>float (8, 16, 32, 64)</li>
+<li>complex</li>
+</ul>
+
+<p>
+<a href="https://numpy.org/doc/stable/user/basics.types.html">https://numpy.org/doc/stable/user/basics.types.html</a>
+<a href="https://numpy.org/doc/stable/reference/arrays.dtypes.html">https://numpy.org/doc/stable/reference/arrays.dtypes.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org33a221f" class="outline-4">
+<h4 id="org33a221f"><span class="section-number-4">1.2.3.</span> Creating arrays with different dtypes</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+When creating a NumPy array, NumPy will select what it thinks to be the most
+appropriate data type. However, we can tell NumPy explicitly what the data type
+should be with the <code>dtype</code> argument.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1, 2], [9, 5]], dtype=np.int8)
+<span style="color: #a020f0;">print</span>(A)
+<span style="color: #a020f0;">print</span>(A.dtype)
+
+<span style="color: #a0522d;">A</span> = np.array([[1, 2], [9, 5]], dtype=np.<span style="color: #483d8b;">float</span>)
+<span style="color: #a020f0;">print</span>(A)
+<span style="color: #a020f0;">print</span>(A.dtype)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[1 2]
+# =&gt;  [9 5]]
+# =&gt; int8
+# =&gt; [[1. 2.]
+# =&gt;  [9. 5.]]
+# =&gt; float64
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdb62050" class="outline-4">
+<h4 id="orgdb62050"><span class="section-number-4">1.2.4.</span> Different ways of creating arrays</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+NumPy also provides us with a number of different functions to create arrays. Instead
+of doing this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[0, 0], [0, 0]])
+</pre>
+</div>
+
+<p>
+We could instead use the <code>np.zeros</code> function, passing a tuple where each element of
+the tuple describes how many elements should be made in each dimension:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.zeros((2,)) <span style="color: #b22222;"># </span><span style="color: #b22222;">1 dimensional</span>
+<span style="color: #a0522d;">A</span> = np.zeros((2, 2))  <span style="color: #b22222;"># </span><span style="color: #b22222;">2 dimensional</span>
+<span style="color: #a0522d;">A</span> = np.zeros((2, 5, 5))  <span style="color: #b22222;"># </span><span style="color: #b22222;">3 dimensional</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc08eaab" class="outline-4">
+<h4 id="orgc08eaab"><span class="section-number-4">1.2.5.</span> Different ways of creating arrays</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+Another commonly used array creation function is the <code>np.random.randn</code> function. This
+creates an array where elements are sampled from a normal distribution.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.random.randn(2, 2)
+<span style="color: #a020f0;">print</span>(A)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[-0.68213848 -0.44274759]
+# =&gt;  [ 0.6748596   0.64244208]]
+</pre>
+
+
+<p>
+<b>Note</b> the interface is a little different than <code>.zeros</code>, where instead of passing a
+tuple, we pass multiple arguments to the function.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1ae9d06" class="outline-4">
+<h4 id="org1ae9d06"><span class="section-number-4">1.2.6.</span> Different ways of creating arrays</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<p>
+It is also convenient to create arrays with ranges of elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.arange(5, 10) <span style="color: #b22222;"># </span><span style="color: #b22222;">optional step</span>
+<span style="color: #a020f0;">print</span>(A)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [5 6 7 8 9]
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.linspace(5, 10, 20)
+<span style="color: #a020f0;">print</span>(A)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [ 5.          5.26315789  5.52631579  5.78947368  6.05263158  6.31578947
+# =&gt;   6.57894737  6.84210526  7.10526316  7.36842105  7.63157895  7.89473684
+# =&gt;   8.15789474  8.42105263  8.68421053  8.94736842  9.21052632  9.47368421
+# =&gt;   9.73684211 10.        ]
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org036117e" class="outline-4">
+<h4 id="org036117e"><span class="section-number-4">1.2.7.</span> Different ways of creating arrays</h4>
+<div class="outline-text-4" id="text-1-2-7">
+<p>
+There are many more ways to create arrays. Some include:
+</p>
+
+<ul class="org-ul">
+<li><code>np.ones</code>  - a matrix of 1's</li>
+<li><code>np.eye</code> - an identity matrix</li>
+<li><code>np.diag</code> - create a matrix with supplied elements across the diagonal</li>
+<li><code>np.fromfunction</code> - load elements from the return of a function</li>
+<li><code>np.fromfile</code> - load elements from a data file</li>
+</ul>
+
+<p>
+Though, the best resource for understanding is NumPy's own documentation on the
+subject: <a href="https://numpy.org/doc/stable/user/basics.creation.html">https://numpy.org/doc/stable/user/basics.creation.html</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8ff0563" class="outline-3">
+<h3 id="org8ff0563"><span class="section-number-3">1.3.</span> Indexing Arrays</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgd40700c" class="outline-4">
+<h4 id="orgd40700c"><span class="section-number-4">1.3.1.</span> Slicing NumPy arrays</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+In native Python, when we have a 'matrix' like data structure (just a list of lists),
+and we want to access a particular element from this matrix, we have to do something
+like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = [[1, 2], [3, 4]]
+<span style="color: #a020f0;">print</span>(A[1][0])
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 3
+</pre>
+
+
+<p>
+However, in NumPy, we seperate the indexes by comma:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #a020f0;">print</span>(A[1, 0])
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 3
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2e085aa" class="outline-4">
+<h4 id="org2e085aa"><span class="section-number-4">1.3.2.</span> Slicing NumPy Arrays</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+If we wanted to get all elements from the 2nd column we would use the <code>:</code> notation. For
+example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #a020f0;">print</span>(A[:, 1])
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [2 4]
+</pre>
+
+
+<p>
+Likewise, all elements from the 2nd row:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(A[1, :])
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [3 4]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgda82d5c" class="outline-4">
+<h4 id="orgda82d5c"><span class="section-number-4">1.3.3.</span> Slicing NumPy Arrays</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+Note that when we slice an array, we are <b>not copying</b> the elements:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #a0522d;">b</span> = A[:, 1]
+
+<span style="color: #a0522d;">b</span>[0] = 10
+
+<span style="color: #a020f0;">print</span>(A)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[ 1 10]
+# =&gt;  [ 3  4]]
+</pre>
+
+
+<p>
+Any modification you make to the <code>b</code> variable will also affect <code>A</code>. For that we must use
+<code>.copy()</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #a0522d;">b</span> = A[:, 1].copy()
+...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgedb7070" class="outline-4">
+<h4 id="orgedb7070"><span class="section-number-4">1.3.4.</span> Slicing NumPy Arrays</h4>
+<div class="outline-text-4" id="text-1-3-4">
+
+<div id="org3c02ec6" class="figure">
+<p><img src="./images/indexing.png" alt="indexing.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Johansson, R., Johansson, R., &amp; John, S. (2019). Numerical Python (Vol. 1). Apress.P</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21e131d" class="outline-4">
+<h4 id="org21e131d"><span class="section-number-4">1.3.5.</span> Boolean Indexing</h4>
+<div class="outline-text-4" id="text-1-3-5">
+<p>
+NumPy arrays can also be composed of boolean elements
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([[1, -1], [0, 5]])
+<span style="color: #a020f0;">print</span>(A &gt; 0)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[ True False]
+# =&gt;  [False  True]]
+</pre>
+
+
+<p>
+And we can also use boolean elements to help with indexing:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">values_above_zero</span> = A[A &gt; 0]
+<span style="color: #a020f0;">print</span>(values_above_zero)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [1 5]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org496ab08" class="outline-4">
+<h4 id="org496ab08"><span class="section-number-4">1.3.6.</span> Boolean Indexing</h4>
+<div class="outline-text-4" id="text-1-3-6">
+<p>
+Therefore we can apply computations to only part of the array using this indexing
+feature:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">mask</span> = A &gt; 0
+<span style="color: #a0522d;">A</span>[mask] = A[mask] + 10
+<span style="color: #a020f0;">print</span>(A)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[11 -1]
+# =&gt;  [ 0 15]]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org977bf78" class="outline-3">
+<h3 id="org977bf78"><span class="section-number-3">1.4.</span> Reshaping and Resizing</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgfe5889b" class="outline-4">
+<h4 id="orgfe5889b"><span class="section-number-4">1.4.1.</span> Reshape</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+After an array has been created, we can modify its structure/shape using various
+functions. The first we shall look at is <code>.reshape</code>. For example, let us create a
+vector of 4 elements and then reshape it into an array of 2x2 elements. Of course,
+the new shape of the array must be proportional to the original number of elements:
+2x2 elements = 4 elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.arange(1, 5)
+
+<span style="color: #a0522d;">mat_A</span> = A.reshape(2, 2)
+<span style="color: #a020f0;">print</span>(mat_A)
+<span style="color: #a020f0;">print</span>(A)  <span style="color: #b22222;"># </span><span style="color: #b22222;">A is not changed! No need for copy</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[1 2]
+# =&gt;  [3 4]]
+# =&gt; [1 2 3 4]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org24cc624" class="outline-4">
+<h4 id="org24cc624"><span class="section-number-4">1.4.2.</span> Flatten</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+If we wanted to take a 2d array and reshape it into a vector, we could of course use
+the <code>.reshape</code> function again. But we could also use <code>.flatten</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">flat_A</span> = mat_A.flatten()
+<span style="color: #a020f0;">print</span>(flat_A)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [1 2 3 4]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge97b1c1" class="outline-4">
+<h4 id="orge97b1c1"><span class="section-number-4">1.4.3.</span> Flatten</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+When specifying the new dimensionality of the reshaped array, <code>-1</code> is a shortcut to
+specify the dimensionality to allow reshaping to occur correctly. For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.arange(1, 5)
+<span style="color: #a020f0;">print</span>(A)
+
+<span style="color: #a020f0;">print</span>(A.reshape(2, -1))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [1 2 3 4]
+# =&gt; [[1 2]
+# =&gt;  [3 4]]
+</pre>
+
+
+<p>
+We're telling NumPy to create an array with 2 elements on the 1st dimension, and then
+however many elements on the second dimension.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9727a81" class="outline-4">
+<h4 id="org9727a81"><span class="section-number-4">1.4.4.</span> Add a dimension</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+We can add and remove dimensions using <code>.expand_dims</code> and <code>.squeeze</code>, respectively.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(A)
+<span style="color: #a020f0;">print</span>(np.expand_dims(A, 1))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [1 2 3 4]
+# =&gt; [[1]
+# =&gt;  [2]
+# =&gt;  [3]
+# =&gt;  [4]]
+</pre>
+
+
+<p>
+We are taking a vector and adding a dimension. Note that we have to use
+<code>np.expand_dims</code> passing the object we want to expand and not <code>A.expand_dims</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org99aa2fc" class="outline-4">
+<h4 id="org99aa2fc"><span class="section-number-4">1.4.5.</span> Add a dimension</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+We can use an indexing trick with <code>None</code> to do the expansion in just the same way:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(A)
+<span style="color: #a020f0;">print</span>(A[:, <span style="color: #008b8b;">None</span>])
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [1 2 3 4]
+# =&gt; [[1]
+# =&gt;  [2]
+# =&gt;  [3]
+# =&gt;  [4]]
+</pre>
+
+
+<p>
+Where <code>None</code> indicates to NumPy where we want to add the new dimension.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0db6de5" class="outline-4">
+<h4 id="org0db6de5"><span class="section-number-4">1.4.6.</span> Remove a dimension</h4>
+<div class="outline-text-4" id="text-1-4-6">
+<p>
+If we want to instead remove a dimension, we can use <code>.squeeze()</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(A[:, <span style="color: #008b8b;">None</span>].squeeze(1))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [1 2 3 4]
+</pre>
+
+
+<p>
+We are removing the 2nd dimension, but <b>note</b> that the elements must be singletons. So
+you cannot squeeze a 2x2 array.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgefdd439" class="outline-4">
+<h4 id="orgefdd439"><span class="section-number-4">1.4.7.</span> Matrix transpose</h4>
+<div class="outline-text-4" id="text-1-4-7">
+<p>
+Another useful feature is the matrix transpose:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(mat_A)
+
+<span style="color: #a020f0;">print</span>(mat_A.transpose())
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[1 2]
+# =&gt;  [3 4]]
+# =&gt; [[1 3]
+# =&gt;  [2 4]]
+</pre>
+
+
+<p>
+or even:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(mat_A.T)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[1 3]
+# =&gt;  [2 4]]
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org85fc386" class="outline-4">
+<h4 id="org85fc386"><span class="section-number-4">1.4.8.</span> Composing arrays</h4>
+<div class="outline-text-4" id="text-1-4-8">
+<p>
+If we have multiple arrays we want to 'join' together, we can use <code>np.hstack</code> for
+horizontally joining, or <code>np.vstack</code> for vertically joining arrays. <b>Note</b> the dimensions
+must match in the direction your stacking.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([1, 2, 3])
+<span style="color: #a0522d;">B</span> = np.array([4, 5, 6])
+
+<span style="color: #a020f0;">print</span>(np.hstack([A, B]))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [1 2 3 4 5 6]
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(np.vstack([A, B]))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[1 2 3]
+# =&gt;  [4 5 6]]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge3b85c8" class="outline-3">
+<h3 id="orge3b85c8"><span class="section-number-3">1.5.</span> Arithmetic Operations</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orga87dd1a" class="outline-4">
+<h4 id="orga87dd1a"><span class="section-number-4">1.5.1.</span> Arithmetic Operations</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+We have already seen some basic examples of arithmetic operations in NumPy. But its
+worth looking at these in detail.
+</p>
+
+<p>
+One of the best reasons to use NumPy is that the computations are <b>vectorized</b> and can
+be <b>broadcast</b>. We'll see examples of what these mean.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([1, 2, 3])
+<span style="color: #a0522d;">B</span> = np.array([[1, 2, 3],
+              [4, 5, 6]])
+
+<span style="color: #a020f0;">print</span>(A * B)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[ 1  4  9]
+# =&gt;  [ 4 10 18]]
+</pre>
+
+
+<p>
+We can perform vector and matrix arithmetic using Python's infix operators like <code>+</code>, <code>*</code>,
+etc.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2a5b64f" class="outline-4">
+<h4 id="org2a5b64f"><span class="section-number-4">1.5.2.</span> Arithmetic Operations</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+When we perform arithmetic operations, NumPy will convert the data into arrays for
+us. While this can help, its not best practice for vectors and matrices, for scalars
+it will be fine.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = [1, 2, 3]
+
+<span style="color: #a020f0;">print</span>(A * B)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[ 1  4  9]
+# =&gt;  [ 4 10 18]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org35435d7" class="outline-4">
+<h4 id="org35435d7"><span class="section-number-4">1.5.3.</span> Broadcasting</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+When we are working with singletons or scalar values, NumPy will automatically
+perform the broadcasting for us. So for example, if we want to double each element of
+an array:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(B * 2)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [[ 2  4  6]
+# =&gt;  [ 8 10 12]]
+</pre>
+
+
+<p>
+NumPy will automatically broadcast the scalar <code>2</code> to every element of the shape and
+size of <code>B</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3251372" class="outline-4">
+<h4 id="org3251372"><span class="section-number-4">1.5.4.</span> Comparison with Functions</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+NumPy provides, in many cases, both infix and function operations.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operation</th>
+<th scope="col" class="org-left">Infix</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Addition</td>
+<td class="org-left">+</td>
+<td class="org-left">np.add</td>
+</tr>
+
+<tr>
+<td class="org-left">Subtraction</td>
+<td class="org-left">-</td>
+<td class="org-left">np.subtract</td>
+</tr>
+
+<tr>
+<td class="org-left">Multiplication</td>
+<td class="org-left">*</td>
+<td class="org-left">np.multiply</td>
+</tr>
+
+<tr>
+<td class="org-left">Division</td>
+<td class="org-left">/</td>
+<td class="org-left">np.divide</td>
+</tr>
+
+<tr>
+<td class="org-left">Matrix Multiplication</td>
+<td class="org-left">@</td>
+<td class="org-left">np.matmul</td>
+</tr>
+
+<tr>
+<td class="org-left">Power</td>
+<td class="org-left">**</td>
+<td class="org-left">np.power</td>
+</tr>
+
+<tr>
+<td class="org-left">Cos/Tan/Sin</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">np.cos, np.tan, np.sin</td>
+</tr>
+
+<tr>
+<td class="org-left">Square root</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">np.sqrt</td>
+</tr>
+
+<tr>
+<td class="org-left">Exponential, Logarithm</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">np.exp, np.log</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<a href="https://numpy.org/doc/stable/reference/routines.math.html">https://numpy.org/doc/stable/reference/routines.math.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge070726" class="outline-4">
+<h4 id="orge070726"><span class="section-number-4">1.5.5.</span> More complex operations</h4>
+<div class="outline-text-4" id="text-1-5-5">
+<p>
+There are a number of different operations one can perform on a matrix. Such as the
+dot product of two matrices:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.array([1, 2])
+<span style="color: #a0522d;">B</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #a020f0;">print</span>(np.dot(A, B))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [ 7 10]
+</pre>
+
+
+<p>
+The inner product:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(np.inner(A, B))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [ 5 11]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org279e84b" class="outline-4">
+<h4 id="org279e84b"><span class="section-number-4">1.5.6.</span> More complex operations</h4>
+<div class="outline-text-4" id="text-1-5-6">
+<p>
+One mystical function is the <code>einsum</code> function. This function can effectively replace
+other functions like <code>dot</code> and <code>inner</code> but it takes some understanding on how it
+works. <code>einsum</code> is the application of Einstein Summation, a succinct method of
+describing the multiplication between matrices. Lets first look at an example of the outer product:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(np.einsum(<span style="color: #8b2252;">'i,ij-&gt;j'</span>, A, B))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [ 7 10]
+</pre>
+
+
+<p>
+Or the inner product:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(np.einsum(<span style="color: #8b2252;">'j,ij-&gt;i'</span>, A, B))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [ 5 11]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org240e938" class="outline-4">
+<h4 id="org240e938"><span class="section-number-4">1.5.7.</span> More complex operations</h4>
+<div class="outline-text-4" id="text-1-5-7">
+<p>
+In <code>einsum</code> we are giving a letter for each dimension of each array we pass to the
+function.
+</p>
+
+<p>
+So with: <code>'i,ij-&gt;j'</code> for the inner product of matrices A and B, we are saying that the
+first dimension of A (its only dimension) is labelled i, while for B the dimensions
+are labelled as i and j respectively. The labels that exist in both sequences are
+summed over. 
+</p>
+
+<p>
+Einsum can take a little time to fully understand and appreciate, but it can be a
+very powerful function with a very succinct syntax.
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=CLrTj7D2fLM">https://www.youtube.com/watch?v=CLrTj7D2fLM</a> - Khan Academy - Einstein Summation Convention
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5a67885" class="outline-4">
+<h4 id="org5a67885"><span class="section-number-4">1.5.8.</span> Vectorizing a function</h4>
+<div class="outline-text-4" id="text-1-5-8">
+<p>
+Lets say you have some function that computes the square of a number:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">my_square</span>(x):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x**2
+
+<span style="color: #a020f0;">print</span>(my_square(4))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 16
+</pre>
+
+
+<p>
+As the function is simple, it takes one argument and returns one argument, we can
+pass a NumPy array and will get the correct result.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">A</span> = np.arange(1, 10)
+<span style="color: #a020f0;">print</span>(my_square(A))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [ 1  4  9 16 25 36 49 64 81]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org7686dcd" class="outline-4">
+<h4 id="org7686dcd"><span class="section-number-4">1.5.9.</span> Vectorize a function</h4>
+<div class="outline-text-4" id="text-1-5-9">
+<p>
+However, if the function is more complicated, it will not work.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">myfunc</span>(a, b):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #8b2252;">"Return a-b if a&gt;b, otherwise return a+b"</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> a &gt; b:
+        <span style="color: #a020f0;">return</span> a - b
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">else</span>:
+        <span style="color: #a020f0;">return</span> a + b
+
+<span style="color: #a020f0;">print</span>(myfunc(A, 2))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; Traceback (most recent call last):
+# =&gt;   File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+# =&gt;   File "/tmp/pyqVNaN0", line 3, in &lt;module&gt;
+# =&gt;   File "/tmp/babel-jHhWMz/python-nKlyRH", line 8, in &lt;module&gt;
+# =&gt;     print(myfunc(A, 2))
+# =&gt;   File "/tmp/babel-jHhWMz/python-nKlyRH", line 3, in myfunc
+# =&gt;     if a &gt; b:
+# =&gt; ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd16c530" class="outline-4">
+<h4 id="orgd16c530"><span class="section-number-4">1.5.10.</span> Vectorize a function</h4>
+<div class="outline-text-4" id="text-1-5-10">
+<p>
+To allow us to use this function over an array, we can use the <code>np.vectorize</code> function
+to create a new function, which applies <code>myfunc</code> over each element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">vfunc</span> = np.vectorize(myfunc)
+<span style="color: #a020f0;">print</span>(vfunc(A, 2))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [3 4 1 2 3 4 5 6 7]
+</pre>
+
+
+<p>
+Here we pass the function we want to vectorize <code>myfunc</code> to the <code>np.vectorize</code>
+function. The return of this function is another function!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6d9c7a0" class="outline-4">
+<h4 id="org6d9c7a0"><span class="section-number-4">1.5.11.</span> Reading more</h4>
+<div class="outline-text-4" id="text-1-5-11">
+<p>
+We've only scratched the surface of what NumPy can offer us! One of the best starting
+points for learning about NumPy is NumPy's own user guide on the web: <a href="https://numpy.org/doc/stable/user/index.html">https://numpy.org/doc/stable/user/index.html</a>
+</p>
+
+<ul class="org-ul">
+<li>Linear Algebra tutorial <a href="https://numpy.org/doc/stable/user/tutorial-svd.html">https://numpy.org/doc/stable/user/tutorial-svd.html</a></li>
+<li>Boolean expressions <a href="https://numpy.org/doc/stable/reference/routines.logic.html">https://numpy.org/doc/stable/reference/routines.logic.html</a></li>
+<li>Set operations <a href="https://numpy.org/doc/stable/reference/routines.set.html">https://numpy.org/doc/stable/reference/routines.set.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 11th October 2021</p>
+<p class="author">Author: Jay Morgan</p>
+<p class="date">Created: 2021-11-12 ven. 00:07</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

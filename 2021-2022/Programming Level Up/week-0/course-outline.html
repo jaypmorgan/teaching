@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-09-11 sam. 16:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Programming Level-up Course - Overview</title>
+<meta name="author" content="Jay Morgan" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Programming Level-up Course - Overview</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc867d4b">1. Welcome!</a></li>
+<li><a href="#orgc17d919">2. Contact information</a></li>
+<li><a href="#orgbfe8354">3. Delivery</a></li>
+<li><a href="#org83928e1">4. Resources</a>
+<ul>
+<li><a href="#org11574df">4.1. Books</a></li>
+<li><a href="#orgde487b3">4.2. Online resources</a></li>
+<li><a href="#orgc23bea1">4.3. Software used in this course</a></li>
+</ul>
+</li>
+<li><a href="#orga2a3bea">5. What will be taught</a>
+<ul>
+<li><a href="#org307d806">5.1. Python programming</a></li>
+<li><a href="#orgf8b634b">5.2. GNU/Linux</a></li>
+<li><a href="#orgaf1e72c">5.3. Using High Performance/Cloud Computing</a></li>
+<li><a href="#org0e746c1">5.4. Reporting Results</a></li>
+</ul>
+</li>
+<li><a href="#org74df2af">6. A rough timeline</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc867d4b" class="outline-2">
+<h2 id="orgc867d4b"><span class="section-number-2">1.</span> Welcome!</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Welcome to the <b>Programming Level-up Course</b>. In this series of lectures, we will cover
+everything we need to be able to program in a Linux-based environment, and use the
+high performance computers (also called cluster/supercomputers) to run experiments. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc17d919" class="outline-2">
+<h2 id="orgc17d919"><span class="section-number-2">2.</span> Contact information</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+You can find my personal page over at: <a href="https://pageperso.lis-lab.fr/jay.morgan/">https://pageperso.lis-lab.fr/jay.morgan/</a>
+</p>
+
+<p>
+As we progress through the lectures, I will also make the course publicly available. These lectures will be hosted at:
+<a href="https://pageperso.lis-lab.fr/jay.morgan/teaching.html">https://pageperso.lis-lab.fr/jay.morgan/teaching.html</a> in a variety of formats
+(i.e. PDF, HTML).
+</p>
+
+<p>
+If you have any questions please email me directly. My email address is
+<code>jay.morgan@lis-lab.fr</code>. Other modes of contact can be found on my personal website
+listed above.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbfe8354" class="outline-2">
+<h2 id="orgbfe8354"><span class="section-number-2">3.</span> Delivery</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>10 2-hour sessions</li>
+<li>Each session will be conducted in a computer lab and will be combination of a
+lecture and exercises</li>
+<li>The course is intended to get everyone up-to-speed with the various facets of
+programming you will need in other courses.</li>
+<li>If time allows, each lecture will have an exercise &#x2013; though this is not a strict
+requirement. These exercises are not marked but serve to get you thinking about
+what you've learnt in the lecture.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org83928e1" class="outline-2">
+<h2 id="org83928e1"><span class="section-number-2">4.</span> Resources</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+This course aims to deliver everything you need. If you attend each lecture, you will
+know what you need for the following lectures. Despite this design, however, I have
+included a list of additional resources below. These resources are optional, but they
+will take you beyond what you're taught in these sessions and enable you to become a
+Programming Master!
+</p>
+</div>
+
+<div id="outline-container-org11574df" class="outline-3">
+<h3 id="org11574df"><span class="section-number-3">4.1.</span> Books</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+There is nothing like a good book to learn from. They are usually rich in content,
+but also provide reasonable enough depth to the subject matter to not only learn how
+things work, but also why they work the way they do.
+</p>
+
+<ul class="org-ul">
+<li>Think Python: An Introduction to Software Design - Livre d'Allen B. Downey</li>
+<li>Numerical Python: Scientific Computing and Data Science Applications with Numpy,
+SciPy and Matplotlib - Livre de Robert Johansson.</li>
+<li>Classic Shell Scripting -  Livre de Arnold Robbins, Nelson H F Beebe</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgde487b3" class="outline-3">
+<h3 id="orgde487b3"><span class="section-number-3">4.2.</span> Online resources</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+For other, more niche, subject matters, online resources provide the most reasonable
+information to learn from.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://slurm.schedmd.com/tutorials.html">SLURM User Guide</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc23bea1" class="outline-3">
+<h3 id="orgc23bea1"><span class="section-number-3">4.3.</span> Software used in this course</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+After we're introduced to the Python programming language, and we're comfortable
+creating the most basic scripts, we'll be using a <i>programming environment</i> to make
+programming easier. When we're ready, we'll discuss both Jupyter notebooks and
+the PyCharm IDE.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://jupyter.org/">https://jupyter.org/</a></li>
+<li><a href="https://www.jetbrains.com/fr-fr/pycharm/">https://www.jetbrains.com/fr-fr/pycharm/</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga2a3bea" class="outline-2">
+<h2 id="orga2a3bea"><span class="section-number-2">5.</span> What will be taught</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The course will cover a broad spectrum of skills used when programming for scientific
+research. This includes the programming and scripting itself (in our case, Python
+programming), managing the environment in which we work (i.e. working in a
+Linux-based environment and managing our projects with version control), and
+interacting with the supercomputers to perform intensive computations.
+</p>
+</div>
+
+<div id="outline-container-org307d806" class="outline-3">
+<h3 id="org307d806"><span class="section-number-3">5.1.</span> Python programming</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Basic syntax</li>
+<li>Data structures</li>
+<li>Advanced syntax</li>
+<li>Modules</li>
+<li>Anaconda and Pip</li>
+<li>Different programming development environments
+<ul class="org-ul">
+<li>PyCharm</li>
+<li>Jupyter Notebooks</li>
+</ul></li>
+<li>Numerical computing in python
+<ul class="org-ul">
+<li>Introduction to numpy</li>
+<li>Pandas</li>
+<li>Scipy</li>
+<li>Visualisation using Matplotlib/seaborn/altair.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf8b634b" class="outline-3">
+<h3 id="orgf8b634b"><span class="section-number-3">5.2.</span> GNU/Linux</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Basics of GNU/Linux and terminal</li>
+<li>Creating bash scripts</li>
+<li>Using the university proxy</li>
+<li>Git version control</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaf1e72c" class="outline-3">
+<h3 id="orgaf1e72c"><span class="section-number-3">5.3.</span> Using High Performance/Cloud Computing</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>GPU management (CUDA, CuDNN, nvidia-smi)</li>
+<li>SLURM</li>
+<li>Google Cloud, AWS</li>
+<li>Singularity</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0e746c1" class="outline-3">
+<h3 id="org0e746c1"><span class="section-number-3">5.4.</span> Reporting Results</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>Markdown</li>
+<li>LaTeX</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org74df2af" class="outline-2">
+<h2 id="org74df2af"><span class="section-number-2">6.</span> A rough timeline</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+I have included below a rough indication of whats going to be taught and when. Of
+course, this is subject to change based upon scheduling constraints and rate of
+progression.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Week</th>
+<th scope="col" class="org-left">Topic</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">Introduction</td>
+<td class="org-left">- Course introduction</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Basic Python programming</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">Python classes</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">Project management</td>
+<td class="org-left">- Creating/importing modules</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Anaconda/pip</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">Programming environments</td>
+<td class="org-left">- PyCharm</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Jupyter notebooks</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">Numerical computing</td>
+<td class="org-left">- Numpy</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Scipy</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">Numerical computing</td>
+<td class="org-left">- Pandas</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Visualisations</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">Basics of GNU/Linux</td>
+<td class="org-left">- Using the terminal</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-left">Bash scripting</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-left">High performance computing</td>
+<td class="org-left">- SLURM</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Singularity</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-left">Reporting</td>
+<td class="org-left">- LaTeX</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Markdown</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: September 2021</p>
+<p class="author">Author: Jay Morgan</p>
+<p class="date">Created: 2021-09-11 sam. 16:11</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

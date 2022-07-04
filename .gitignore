@@ -1,0 +1,8 @@
+_minted-*/
+/_minted-*/
+*.pygtex
+.ipynb_checkpoints/
+__pycache__/
+*.pdf
+/MNIST/
+MNIST/

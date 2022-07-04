@@ -1,0 +1,1341 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t email:nil
+#+options: f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Programming Level-up
+#+SUBTITLE: An Introduction to using Linux
+#+date: 11th October 2021
+#+author: Jay Morgan
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.4.6)
+#+cite_export:
+
+#+startup: beamer
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [10pt]
+#+BEAMER_FRAME_LEVEL: 2
+#+BEAMER_THEME: Berkeley
+#+LATEX_HEADER: \setlength{\parskip}{5pt}
+#+LATEX_HEADER: \newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
+#+LaTeX_HEADER: \addtobeamertemplate{footnote}{}{\vspace{2ex}}
+#+LATEX_HEADER: \usepackage{tabularx}
+
+#+PROPERTY: header-args:python :results pp output :session :exports both :eval never-export :post commentify(*this*)
+
+#+name: commentify
+#+begin_src emacs-lisp :var result="" :exports none
+(with-output-to-string
+  (princ "Results: \n")
+  (dolist (result-item (split-string result "\n"))
+    (princ (concat "# => " (format "%s\n" result-item)))))
+#+end_src
+
+#+RESULTS: commentify
+: Results: 
+: # => 
+
+#+begin_src emacs-lisp :exports none
+(setq org-latex-minted-options
+      '(("frame" "lines")
+	("linenos=true")
+	("firstnumber=last")
+	("fontsize=\\footnotesize")
+	("xleftmargin=15pt")
+	("numbersep=8pt")))
+#+end_src
+
+#+RESULTS:
+| frame                  | lines |
+| linenos=true           |       |
+| firstnumber=last       |       |
+| fontsize=\footnotesize |       |
+| xleftmargin=15pt       |       |
+| numbersep=8pt          |       |
+
+
+* Linux
+
+** What is Linux
+
+*** What is Linux?
+
+- Linux is a popular operating system (OS) like Windows, or MacOS.
+- Unlike these other two OSs, Linux is open source, which means the source code
+  is freely available to look at and modify.
+- As its open source, its very possible for anyone to build their /own/ version of
+  Linux or build on top of Linux to create their own /Distribution/ of Linux.
+
+*** What's a Distribution?
+
+A distribution can be considered like a /flavour/ or version of Linux. There are
+many popular flavours that attempt to meet different needs from different
+users. For example:
+
+- Ubuntu -- typically the first Linux experience people will have. Attempts to be
+  very user friendly.
+- Fedora -- stable and secure distribution while also providing up-to-date packages.
+- Arch Linux -- strong focus on customisability rather than user friendliness
+  with bleeding edge packages.
+
+*** What's a Distribution?
+
+#+ATTR_LATEX: :width \textwidth
+[[file:images/family-tree.png]]
+
+*** Defining Traits of Linux
+
+While we have said that Linux is open source, there are many other traits that
+make it stand out from other operating systems:
+
+- Complete control of how the system operates.
+- The level of flexibility and automation that you can get from using the Linux
+  command line.
+
+While there are many other traits, these two are going to be what we're going to
+focus on.
+
+** The command line
+
+*** What's a command?
+
+While many recent versions of Linux makes things more accessible via GUIs, they
+will never be a substitute for using the command line. We're going to learn how
+to control the system via the command line, via a *shell*. A shell, like the
+Python REPL we've already seen, is waits for you to input commands, executes the
+command, and prints the output if there is output to print.
+
+A Linux command is a call to a program optionally followed by some
+arguments. For example, if we want list out the files and folders in the
+directory, we would use the =ls= (list) command:
+
+#+begin_src bash :results code bash
+ls
+#+end_src
+
+#+RESULTS:
+#+begin_src bash
+images
+lecture.org
+lecture.pdf
+lecture.tex
+_minted-lecture
+#+end_src
+
+*** What is a command?
+
+The =ls= command comes with a number of optional flags and arguments that we can
+add onto the call. When calling a command a flag is something that begins with a
+=-= , for example =-l= tells =ls= to list the directory in a list format.
+
+#+begin_src bash
+ls -l
+#+end_src
+
+*** What is a command?
+
+We have supplied the =-l= flag. There are many other flags for =ls=, like for
+example, the human readable file systems with =-h= or show hidden files (files
+that start with a period) with =-a=.
+
+When we're using multiple flags we could write
+
+#+begin_src bash
+ls -l -h -a
+#+end_src
+
+Or:
+
+#+begin_src bash
+ls -lha
+#+end_src
+
+*** What is a command?
+
+Sometimes commands take optional positional arguments. Going back to our list
+directory command, where, by default, it will list the current directory. But
+instead we can tell the command to list a particular directory by supplying the
+path as an argument
+
+#+begin_src bash
+ls images/ -lha
+# or ls -lha images/ works too
+#+end_src
+
+*** What is a command?
+
+How do I know how to use a command? Well that's where another command comes
+in. It's called =man= (short for manual). If you pass another command to the =man=
+command, the documentation will be shown in the terminal, e.g.:
+
+#+begin_src bash
+man ls  # display the documentation for ls
+#+end_src
+
+The documentation should list all the different flags and arguments, describe
+what they mean, and sometimes give example or most common usage of a command.
+
+When the 'man page' is display, you can scroll up and down the page using your
+arrow keys, and page-up and page-down. When you're done reading, just hit the
+'q' character
+
+*** Very useful commands
+
+I am going to go through some of the most common commands just to make sure that
+you're familiar with the typical usage.
+
+We've already seen =ls= to list a directory. The command to move to a directory is
+=cd= (change directory), that takes an argument of filepath to move to:
+
+#+begin_src bash
+cd ~ # tilde is short-hand for the 'home directory'
+cd ~/Documents/My\ Files  # go to Documents and then to "My Files"
+cd   # no argument, by default goes to the home directory
+#+end_src
+
+*** Very useful commands -- mkdir
+
+Sticking with the them of directories, to make a new directory we use =mkdir=,
+whose argument takes the name of the directory we want to create:
+
+#+begin_src bash
+mkdir my_new_directory
+#+end_src
+
+You can create a many level nested directory structure all at once using the =-p=
+(parents) flag, that tells =mkdir= if the parent directory of the target directory
+doesn't exist, create it.
+
+#+begin_src bash
+mkdir photos/2020/01/05  # won't work unless photos/2020/01 exist
+mkdir -p photos/2020/01/05  # this will work
+#+end_src
+
+*** Very useful commands -- cp
+
+To copy a file or directory, we can use the =cp= command. Here we are copying a
+file, where the first argument is the filepath of the file you want to copy and the second
+argument is the filepath where the copy should be placed.
+
+#+begin_src bash
+cp my_old_file my_new_file
+#+end_src
+
+By default (without a flag), =cp= will not work with directories, for that you
+have to use the =-r= (recursive) flag
+
+#+begin_src bash
+cp -r data/ data-backup
+#+end_src
+
+*** Very useful commands -- mv
+
+The syntax of moving a file is similar to that of =cp=:
+
+#+begin_src bash
+mv old_file new_file
+#+end_src
+
+Except that it works for both files and directories without any flags. =mv= can
+also be used to *rename* files, that's all renaming is: moving a file to the same
+directory under a different name.
+
+*** Very useful commands -- rm
+
+To remove a file us =rm=:
+
+#+begin_src bash
+rm file_to_delete
+#+end_src
+
+If you want to delete a directory, use the =-r= (recursive) flag:
+
+#+begin_src bash
+rm -r directory_to_delete/
+#+end_src
+
+*** Very useful commands -- cat
+
+=cat= stands for concatenate, i.e. concatenating the contents of two or more
+files:
+
+#+begin_src bash
+cat file1 file2
+#+end_src
+
+The result is that the concatenation of these two files will be printed to the
+screen. If you wanted to put the result into its own file you would redirect the
+output using =>=
+
+#+begin_src bash
+cat file1 file2 > newfile
+#+end_src
+
+Since cat reads the file and prints it to screen it is a very handy way to view
+the contents of a file, even if it was not intended for that.
+
+*** Very useful commands -- pwd
+
+Sometimes you may get lost when moving directories. =pwd= prints the current
+working directory from the root directory, i.e. the path that is printed is an
+absolute path.
+
+#+begin_src bash
+pwd
+#+end_src
+
+*** Very useful commands -- find
+
+If we want to list all files of a certain type, we can use the wildcard =*= that
+we've seen before:
+
+#+begin_src bash
+ls *.jpg # list all files that end with .jpg
+#+end_src
+
+However, this will only list for the current directory. Perhaps the better way
+to find files will be using the =find= command:
+
+#+begin_src bash
+find . -type f -name *.jpg
+#+end_src
+
+The first argument is the directory to start the search, then we define the type
+=f= being files, and then specify the name. Find will recursively search through
+directories and sub-directories to find all files that match that name.
+
+*** Very useful commands -- grep
+
+How about if we want to find files that have a certain contents? For that we can
+use =grep=. Grep will read a file and print (by default) the lines that contains
+your pattern. i.e.:
+
+#+begin_src bash
+grep 'Linux' lecture.org
+#+end_src
+
+This will print the lines that contain the word Linux in lecture.org. If we just
+want the matched value, we use the =-o= flag.
+
+#+begin_src bash
+grep -o '[0-9]' lecture.org
+#+end_src
+
+This prints all occurrences of numbers in lecture.org
+
+*** Very useful commands -- less/head/tail
+
+If a file is very long, we may not want to read the file using cat, as it will
+have to print the entire file. Instead we could use =less=, which will allow us to
+navigate through the file, using arrow keys to move and =q= to quit.
+
+#+begin_src bash
+less filename
+#+end_src
+
+If we just want to view the first few lines, or the last few lines of a file we
+can use head/tail, respectively:
+
+#+begin_src bash
+head filename
+tail -n 20 filename  # last 20 lines
+tail -F filename # constantly read the file
+#+end_src
+
+*** Very useful commands -- wc
+
+Often times we just want to count the number of something. For example, if we
+want to count the number of files/folders in the directory we can do:
+
+#+begin_src bash
+ls -l | wc -l
+#+end_src
+
+We're first printing all files and folders in a list format (one per line), then
+passing (_piping_) the result to =wc=, which with the =-l= line flag, is counting the
+number of lines. Therefore we get a count of the number of files and
+folders. Here is another example where we're counting how many times the word
+bash appears in these lecture notes:
+
+#+begin_src bash
+grep -o 'bash' lecture.org | wc -l
+#+end_src
+
+*** Very useful commands -- piping
+
+The purpose of piping is to pass data around between commands. We have just seen
+how we can pass the output of, say, the =ls= command to  the input of =wc=. This
+allows use to construct very sophisticated pipelines to do some quite complex
+things from the combination of very simple commands.
+
+#+begin_src bash
+find . -name '*.txt' -type f -print0 | xargs -0 grep "something"
+#+end_src
+
+*** Very useful basic commands
+
+In summary we have seen the following commands:
+
+- =ls= - List a directory 
+- =cd= - Change/move to a directory
+- =mkdir= - Make a new directory
+- =cat= - Concatenate files
+- =cp= - Copy a file/directory
+- =mv= - Move files/folders
+- =rm= - Remove files and folders
+- =pwd= - Display the current absolute path
+- =find= - Find files
+- =grep= - Find occurrences of a pattern in a file
+- =less/head/tail= - Read a file
+- =wc= - Count
+
+* Shell Scripting
+
+** Writing bash scripts
+
+*** Very first bash script
+
+Let's start with the classic 'Hello, World' example. We'll create a new file
+called 'hello.sh' and enter the following:
+
+#+begin_src bash
+#!/bin/bash
+
+echo "Hello, World!"
+#+end_src
+
+First thing to notice is that the first line contains what we call a 'shebang'
+or 'hashbang'. It tells Linux which shell interpreter will be used to run the
+script, in this case: /bin/bash
+
+The next (non-empty) line in the file is =echo 'Hello, World'=. This is exactly
+the same as the other commands we've just seen.
+
+*** Very first bash script
+
+Now that we've created and saved our bash script, we will want to run it. We
+have two alternative methods to run this script:
+
+#+begin_src bash
+bash hello.sh  # run the script via bash
+#+end_src
+
+The second, requires that we have executable privileges for the script:
+
+#+begin_src bash
+chmod +x hello.sh  # add executable 'x' privileges
+./hello.sh  # execute it
+#+end_src
+
+*** Variables
+
+The variables we create in our bash scripts are very much the same as the
+environment variables we've seen before. Take for example:
+
+#+begin_src bash
+#!/bin/bash
+AGE="35"
+PERSON_NAME="Jane"
+echo "$PERSON_NAME is $AGE years old"
+#+end_src
+
+#+RESULTS:
+: Jane is 35 years old
+
+We create a variable =AGE= with the === assignment operator. *Note* we don't put
+spaces either side of the equals sign in bash. To refer to the variable, we use
+=$AGE=, using the =$= dollar sign.
+
+*** Interpolation in bash strings
+
+You would have noticed in the previous example that we included the variable
+directly into the string we're echoing out. This is something similar to what
+we've seen with f-strings in Python.
+
+When we use double quotes: ="..."=  in bash, the variable will be integrated into
+the resulting string. We can even call bash functions from directly inside the
+string:
+
+#+begin_src bash
+echo "I am logging in as: $(who)"
+#+end_src
+
+#+RESULTS:
+: I am logging in as: jaymorgan tty7         2021-11-22 00:02 (:0)
+
+*** Bash strings -- the sharp edges
+
+You might be tempted to use a variable when generating a path:
+
+#+begin_src bash
+TRAIN_PROCESS="training"
+TEST_PROCESS="testing"
+
+touch "./data/$TRAIN_PROCESS_error.txt"
+touch "./data/$TEST_PROCESS_error.txt
+#+end_src
+
+But this will create an error as underscores can be part of the variable name,
+so bash will be looking for a variable named: =$TRAIN_PROCESS_error= which has
+never been created. To get around this, we can wrap our variable in curly
+braces:
+
+#+begin_src bash
+touch "./data/${TRAIN_PROCESS}_error.txt"
+#+end_src
+
+*** Stopping interpolation in bash strings
+
+We can also use single quotes for strings in bash. When we use these strings,
+the string itself is _not_ interpreted, and thus it will ignore any variables or
+bash commands:
+
+#+begin_src bash
+echo 'I am logging in as: $(who)'
+#+end_src
+
+#+RESULTS:
+: I am logging in as: $(who)
+
+*** Input/Output
+
+If we want to read the input from keyboard into a variable, we use the read
+command:
+
+#+begin_src bash
+#!/bin/bash
+
+echo "Enter your name:"
+read NAME
+
+echo "Hello, $NAME"
+#+end_src
+
+=read= in this context will read in the input and create the variable with that
+value. As we've already seen, we can then output this value to the console using
+the echo command.
+
+*** Booleans
+
+Technically, bash does not have built in data types for true and false, but
+Linux has the commands true and false which we could use in place. The
+implementation of how these commands work is not important.
+
+#+begin_src bash
+FILE_EXISTS=true
+
+if [ "$FILE_EXISTS" = true ]; then
+    echo "The file exists!"
+fi
+#+end_src
+
+
+*** Conditionals
+
+When we're creating =if= expressions, we use the following syntax:
+
+#+begin_src bash
+if <<conditional>>; then
+   # do something
+else
+   # do something else
+fi
+#+end_src
+
+We can also use =elif=
+
+#+begin_src bash
+if <<conditional>>; then
+   # do something
+elif <<conditional>>; then
+   # do something else
+else
+   # something else entirely
+fi
+#+end_src
+
+*** Conditionals
+
+Writing condition expressions can be a little more cumbersome than in
+Python. These can be many pain points for new bash programmers, take for
+example:
+
+#+begin_src bash
+FILE_EXISTS=false
+
+if [ $FILE_EXISTS ]; then
+    echo "The file exists!"
+fi
+#+end_src
+
+#+RESULTS:
+: The file exists!
+
+This is because we have used the =[...]= single bracket syntax for the test. But
+there are others:
+
+- No brackets: we could omit the brackets in which case it would run the false
+  command not print the statement.
+- Single paranthesis =(...)= creates a sub-shell.
+- Double paranthesis =((...))= for arithmetic operation
+- Single square bracket =[...]= calls =test=
+- Double square bracket =[[...]]=
+
+*** Conditionals
+
+What if we write:
+
+#+begin_src bash
+VAR_1="Mr Foo Bar"
+VAR_2="Mr Foo Bar"
+if [ $VAR_1 = $VAR_2 ]; then
+    echo "They are the same"
+fi
+#+end_src
+
+We would get an error because =test= expands the arguments into:
+
+#+begin_src
+Mr Foo Bar = Mr Foo Bar
+#+end_src
+
+With the spaces included. To prevent this from happening, we have to wrap the
+variables in quotation marks.
+
+#+begin_src bash
+VAR_1="Mr Foo Bar"
+VAR_2="Mr Foo Bar"
+if [ "$VAR_1" = "$VAR_2" ]; then
+    echo "They are the same"
+fi
+#+end_src
+
+*** Conditionals
+
+If we use =[[= in if statement, then we can do more sophisticated things like
+pattern matching:
+
+#+begin_src bash
+FILENAME="testing.png"
+if [[ "$FILENAME" = *.png ]]; then
+    echo "Its a png file"
+fi
+#+end_src
+
+#+RESULTS:
+: Its a png file
+
+*** Loops
+
+Like in Python, we can iterate in bash
+
+#+begin_src bash
+for i in {1..10}; do
+    echo $i
+done
+#+end_src
+
+This iterates with i starting at 1 upto 10 (inclusive). Or we could do:
+
+#+begin_src bash
+for (( i=1; i <= 10; i++ )); do
+    echo $i
+done
+#+end_src
+
+*** Loops
+
+We can also iterate over a list of files/folders in a directory:
+
+#+begin_src bash
+for FILE in ./images/*; do
+    echo $FILE
+done
+#+end_src
+
+*** Loops
+
+Using the =while= form, we can continue looping until our conditional is
+false. For example, we could loop testing our internet connection, until its
+been established:
+
+#+begin_src bash
+while ! ping -c 1 google.com; do
+    echo "No internet yet"
+    sleep 1
+done
+
+echo "Internet is available!"
+#+end_src
+  
+*** Functions
+
+To create a function, we use the following syntax:
+
+#+begin_src bash
+function_name() {
+    # do something
+}
+#+end_src
+
+And to call the function, you just need to use the function name:
+
+#+begin_src bash
+function_name # this called function name
+#+end_src
+
+*** Functions
+
+Here is another example:
+
+#+begin_src bash
+say_hello() {
+    echo "Hello, $1"
+}
+
+say_hello "Jane"
+#+end_src
+
+Notice that we didn't need to include any argument list. We just used =$1= for the
+first argument passed to the function.
+
+#+begin_src bash
+say_hello() {
+    echo "$1, $2"
+}
+
+say_hello "Hi" "Jane"
+#+end_src
+
+*** Functions
+
+Returning values is 'interesting' as, coming from other languages, you think
+could do something like this:
+
+#+begin_src bash
+say_hello() {
+    return "hello"
+}
+RESULT="$(say_hello)"
+echo $RESULT
+#+end_src
+
+This didn't work like we expected, the value wasn't returned and assigned to
+=RESULT=. So how do we return a value?
+
+#+begin_src bash
+say_hello() {
+    echo "Hello"
+}
+RESULT="$(say_hello)"
+echo "This is before the printing of result"
+echo $RESULT
+#+end_src
+
+* High Performance Cluster
+
+** Getting started
+
+*** What is the Cluster?
+
+*** How to login
+
+#+begin_src bash
+ssh <<username>>@saphir2.lis-lab.fr
+#+end_src
+
+Then:
+
+#+begin_src bash
+ssh <<username>>@sms-ext.lis-lab.fr
+#+end_src
+
+*** How to login
+
+Typing both these commands can become tiresome very quickly. But we can make it
+a lot easier by updating our =~/.ssh/config= file to include something like:
+
+#+begin_example
+Host saphir2
+     HostName saphir2.lis-lab.fr
+     User <<username>>
+
+Host cluster
+     HostName sms-ext.lis-lab.fr
+     User <<username>>
+     ProxyCommand ssh saphir2 -W %h:%p
+#+end_example
+
+Then to login to the cluster, we just need to type:
+
+#+begin_src bash
+ssh cluster
+#+end_src
+
+And we should be prompted for our password.
+
+*** How to login
+
+If you trust the machine your on, you can remove password authentication and
+move to key-based authentication:
+
+#+begin_src bash
+ssh-copy-id saphir2
+ssh-copy-id cluster
+#+end_src
+
+When we next login to the server, we shouldn't be prompted for a password.
+
+*** How to copy files to and from the cluster
+
+We have a number of options for transferring files to and from the
+cluster. Firstly, let's look at the command =scp=. It takes two arguments, the
+first argument is the file you want to send, the second argument is the
+destination of the sent file.
+
+#+begin_src bash
+scp <<origin>> <<destination>>
+#+end_src
+
+Similar to commands like =cp=, scp by default only works for files, not
+folders. To send folders/directories, we use the =-r= flag just like =cp=.
+
+#+begin_src bash
+scp -r <<origin_folder>> <<destination_folder>>
+#+end_src
+
+*** Copying files -- rsync
+
+One of the downsides about =scp= is that it will copy every file you give
+it. Even if the file at the destination is exactly the same. What if we only
+want to copy files that need to be copied, i.e. that are outdated, thus saving
+time? For that, we can use =rsync=. Rsync will copy files from one source to a
+destination only if the destination needs to be updated. This can save a lot of
+time by skipping files that already exist at the destination:
+
+#+begin_src bash
+rsync <<source>> <<destination>>
+#+end_src
+
+** Submitting jobs
+  
+*** The Login- and Compute Nodes
+
+When you login to the cluster, you are logging into the /login/ node. *Note* that no
+computation should be run on this node. If you want to run scripts, you will
+have to submit a job to the compute nodes.
+
+On the login node there is a system installed called 'SLURM'. SLURM is a job
+scheduler program that receives your requests for executing scripts, it will
+queue them and assign them to available compute nodes.
+
+We will take a look at how to request and manage jobs using the various commands
+that SLURM provides.
+
+*** How to launch a job -- srun
+
+The first command we will look at it is =srun=. This command will run request a
+job for execution in 'real-time'. By real-time, we mean that the shell will wait
+until the job has been submitted.
+
+#+begin_src bash
+srun <<compute node options>> <<command to run>>
+#+end_src
+
+Let's take a look at an example where we want to run an interactive bash shell
+on the compute shell (similar to ssh'ing into the compute node).
+
+#+begin_src bash
+srun --time=00:10:00 --pty bash -l
+#+end_src
+
+This will request a job on any available compute node for 10 minutes. When a
+node becomes available, =bash= will execute, dropping you into the shell. You will
+notice that the shell prompt has changed from =sms= to the name of the node.
+
+*** How to launch a job -- options
+
+In the previous command, we used the =--time= option to specify how long the job
+will run for. But there are other options we can use to be more specific about
+the jobs we want to run.
+
+=--cpus-per-task= can be used to request more than one CPU to be
+allocated. This is especially helpful when we have a multithreaded process we
+want to run.
+
+=--mem= specifies how much memory should be allocated to the job. For example:
+=--mem=16G= tells SLURM to allocate 16 GB of memory.
+
+*** How to launch a job -- GPU allocation
+
+If we need to use a GPU, we need to use a few options. Firstly, we can specify
+that our job is on a compute node with GPU. There will usually be a group of
+nodes in a 'GPU' group or partition, and thus we can specify to use one of these
+partitions:
+
+#+begin_src bash
+srun --time=00:10:00 --partiton=gpu --pty bash -l
+#+end_src
+
+But you will notice that you still do not have access to a GPU. You're running
+on the GPU node, but you haven't actually requested a GPU be allocated to your
+job. For that you will use =--gres=:
+
+#+begin_src bash
+srun --time=00:10:00 --partition=gpu --gres=gpu:1 --pty bash -l
+#+end_src
+
+Here we are requesting one GPU, but if we use =--gres:gpu:2= we are requesting 2
+GPUs etc.
+
+*** How to launch a job -- GPU allocation
+
+There are many different types of GPUs available, some older than others. If you
+wanted to allocate a job with a specific type of GPU you can use the
+=--constraint= flag:
+
+#+begin_src bash
+srun --time=00:10:00 \
+     --partition=gpu \
+     --gres=gpu:1 \
+     --constraint='cuda61' \
+     --pty bash -l
+#+end_src
+
+This command requests that our job run on the GPU partition, with 1 GPU
+allocated that has the capability of running CUDA compute 61.
+
+Or we can specify the type of GPU in the gres option:
+
+#+begin_src bash
+srun --time=00:10:00 \
+     --partition=gpu \
+     --gres=gpu:2080:1 \
+     --pty bash -l
+#+end_src
+
+*** Learning more about nodes
+
+To understand what each compute node has we can use the =scontrol= command.
+
+#+begin_src bash
+scontrol show nodes
+#+end_src
+
+Will list out all nodes and all capabilities of each node. Or just one node:
+
+#+begin_src bash
+scontrol show node lisnode2
+#+end_src
+
+*** How to launch a job -- sbatch
+
+It can be quite inconvenient to launch an interactive job to run some compute,
+and wait for the job to be allocated. If, instead, you have a long running
+experiment that you want to run without any intervention from you, you can use
+=sbatch=.
+
+Sbatch will require us to write a small bash script that specifies how to run a
+job and what to do once its allocated.
+
+#+begin_src bash
+#!/bin/bash
+
+#SBATCH --time=00:01:00
+#SBATCH --job-name=my_new_job
+#SBATCH --output=my_new_job.out
+#SBATCH --error=my_new_job.err
+
+echo $HOSTNAME
+#+end_src
+
+And run it:
+
+#+begin_src bash
+sbatch my_job.sh
+#+end_src
+
+*** How to launch a job -- sbatch
+
+Notice that instead of supplying options to sbatch, we can instead record them
+directly into the script using the =#SBATCH=. SLURM will examine this file,
+looking for lines starting with this comment, and infer that the rest of the
+line contains the options.
+
+There are a few other options we've included that are very useful when running
+non-interactive jobs. Firstly, we've given the job a name (=my_new_job=). This is
+so we can different between many jobs that we might run at the same time. To
+list out the jobs we currently have running we use =squeue=.
+
+#+begin_src bash
+squeue
+#+end_src
+
+By default, squeue will list all of the active jobs, even other peoples. To
+specify only your jobs user the =--user= option:
+
+#+begin_src bash
+squeue --user=jay.morgan
+#+end_src
+
+*** How to launch a job -- sbatch
+
+The other two options, =--output= and =--error= specify where the printed output and
+printed errors will be stored. Since the job is being run on a different node,
+by a non-interactive process, if you didn't include these lines, you wouldn't be
+able to see what was being printed by =echo= or by any other process such as =print=
+in Python.
+
+*** Job Management -- squeue
+
+When we list the jobs using =squeue= it will give us multiple columns of
+information, such as:
+
+- JOBID -- the referable id of the job.
+- PARTITION -- the partition on which the job has been requested for.
+- NAME -- the name of the job.
+- USER -- the user who submitted the job.
+- ST -- the status, is the job currently running, waiting, or exiting?
+- TIME -- how long the job has been running for.
+- NODES -- how many nodes have been allocated to the job.
+
+*** Job Management -- scancel
+
+Let's say that we've submitted a job, but we've noticed that there was an error
+in the code, and want to stop the job. For that, we use =scancel= and specify the
+id of the job we wish to cancel:
+
+#+begin_src bash
+scancel 158590
+#+end_src
+
+After running this command, we should see, using =squeue=, that either the job is
+finishing, or that its disappeared from our list (meaning that its completely
+stopped).
+
+*** Job Management -- sacct
+
+If our job has finished, or exited and is no longer in =squeue=, we can use =sacct=
+to get a history of the jobs.
+
+=sacct= will list all of your jobs within some default window of time. If we want
+to change this window we can use the =--starttime= and =--endtime= options.
+
+Valid time formats are:
+- HH:MM[:SS][AM|PM]
+- MMDD[YY][-HH:MM[:SS]]
+- MM.DD[.YY][-HH:MM[:SS]]
+- MM/DD[/YY][-HH:MM[:SS]]
+- YYYY-MM-DD[THH:MM[:SS]]
+- today, midnight, noon, fika (3 PM), teatime (4 PM)
+- now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
+
+*** Job Task Arrays -- motivation
+
+Task arrays allow you to submit many jobs of the same type. Why might this be
+useful? Suppose you have a list of files that take a long time to process:
+
+- =file_0.txt=
+- =file_1.txt=
+- =file_2.txt=
+
+Or you have some computation script, such as deep learning training script, that
+takes uses a hyperparameter which can be tuned to achieve different performance
+results:
+
+#+begin_src bash
+python train.py --learning-rate 0.001
+#+end_src
+
+Instead of a creating a sbatch script for each value of hyperparameter, or
+sequentially enumerating the values, you can use a job task array to spawn
+multiple jobs with slightly different values.
+
+*** Job Task Arrays -- how to
+
+First, we will look at how to actually submit an array of tasks. To create an
+task array, you will need to add the =--array= options to your sbatch script:
+
+#+begin_src bash
+#!/bin/bash
+
+#SBATCH --job-name=my_task_array
+#SBATCH --array=1-5
+
+...
+#+end_src
+
+Here we are creating an array of tasks numbered from 1-5. When you submit this
+script, you will see five tasks submitted to the queue.
+
+*** Job Task Arrays -- how to
+
+Now that we know how to create an array of tasks, we will want to do something
+useful with it. When you create an array, each individual task will have a
+unique variable called =SLURM_ARRAY_TASK_ID=. So for example, if we launch an
+array of 5 tasks, the first task will have the value =1=. Why is this useful?
+Well, we can use this variable to alter the program slightly. Take for example
+our list of files we need to process:
+
+#+begin_src bash
+#!/bin/bash
+#SBATCH --job-name=my_task_array
+#SBATCH --array=0-4
+#SBATCH --time=00:10:00
+
+FILENAME="file_${SLURM_ARRAY_TASK_ID}.txt"
+python process.py $FILENAME
+#+end_src
+
+This will create a new bash variable called =FILENAME= by concatenating =file_= the
+current task's (i.e. 0, for the first task, 1 for the second task, etc) and
+=.txt=.
+
+*** Job Task Arrays -- how to
+
+If we run the previous example, we will see that we have five jobs named exactly
+the same thing =my_task_array=. This is okay, but we can be a little bit more
+clear as to which task is running, i.e. which task is processing which file?
+
+We can use some special variables in our bash script to make this more
+clear. These are =%A= that is the main job id, and =%a= that is the task array id.
+
+#+begin_src bash
+#!/bin/bash
+
+#SBATCH --job-name=my_task_array.%A_%a
+#SBATCH --output=my_task_array.%A_%a.out
+...
+#+end_src
+
+Now, every task in our array will have a slightly different name because of the
+=%a= and therefore we will be able to determine which job is processing which
+file.
+
+*** Job Task Arrays -- how to
+
+Let's move on to the second example, where we have a Deep Learning training
+program and we want to try different parameters. In this case, we can again use
+a task array.
+
+#+begin_src bash
+#!/bin/bash
+
+#SBATCH --array=1-10
+#+end_src
+
+We could either pass the =SLURM_ARRAY_TASK_ID= as a command line argument to the
+script:
+
+#+begin_src bash
+python training.py --learning-rate $SLURM_ARRAY_TASK_ID
+#+end_src
+
+But in this case, we could have to properly calculate the correct learning rate
+from the =SLURM_ARRAY_TASK_ID= value (remember that in my sbatch script I set
+=--array=1-5=). But bash only performs integer arithmetic, therefore we will need
+to calculate the correct learning rate in something else.
+
+*** Job Task Arrays -- how to
+
+Instead of passing the learning rate via a command line argument. We can get the
+value directly from our python script and calculate the value.
+
+#+begin_src python
+import os
+
+task_id = int(os.environ["SLURM_ARRAY_TASK_ID"])
+learning_rate = task_id / 100
+#+end_src
+
+Here we are using the builtin =os= module in Python, getting the environment
+variable from the dictionary =environ= and parsing the value as an integer. Then
+we can calculate the appropriate learning rate using this value. So for example,
+if =SLURM_ARRAY_TASK_ID= is set to 1. Our learning rate would be 0.01 for this
+task.
+
+*** Job Task Arrays -- how to
+
+If you're creating a job task array, you may want to create hundreds of
+jobs. And of course, you don't want to use up the entire cluster leaving no
+resources for anybody else! Therefore, you will only want a maximum number of
+tasks to run at any one time.
+
+#+begin_src bash
+#!/bin/bash
+
+#SBATCH --array=1-100%5
+#+end_src
+
+This will create a job task array of 100 jobs numbered from 1 to 100. But we
+have added an additional argument =%5= which means that only 5 jobs can run at any
+one time for this task array. If you have five tasks running, the other 95 tasks
+will wait.
+
+If, at any point, you want to change how many jobs can run simultaineously, you
+can update this 'throttle' value using =scontrol=:
+
+#+begin_src bash
+scontrol update ArrayTaskThrottle=<count> JobId=<jobID>
+#+end_src
+
+*** Job Task Arrays -- how to
+
+So if we've already launched a job task array with the job id of =50602= that has
+a throttle value of 5 (only 5 tasks will run at once), we can change it to 10
+using:
+
+#+begin_src bash
+scontrol update ArrayTaskThrottle=10 JobId=50602
+#+end_src
+
+** A guided walk through
+
+*** A guided walk through -- environment
+
+In this section we're going to give an example walk through of working with the
+HPC cluster. In this example, we're going to write our scripts locally,
+including the slurm submission script, and when they're ready, we'll send them
+to the cluster to perform the actual computation.
+
+Let's imagine we're starting a new project, and are programming our scripts in
+Python. Now is a good time to create a new conda environment to install our
+packages we're going to use for our research. We'll create this environment with
+(replacing =<env-name>= with whatever we want to call this environment):
+
+#+begin_src bash
+conda create --name <env-name>
+#+end_src
+
+and then activate it:
+
+#+begin_src bash
+conda activate <env-name>
+conda install python=3.9
+#+end_src
+
+*** Writing our scripts
+
+Let us also image we've just wrote the following script to create a lorenz
+attractor: [[https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/lorenz.py][lorenz.py]]
+
+The specific implementation of this script is not particularly important for
+this walk through. Just know that we're importing a few packages such as numpy
+and matplotlib. Then, we're performing some computation, and saving the results
+to analyse later. As this script uses external libraries, we need to install
+them:
+
+#+begin_src bash
+conda install numpy matplotlib
+#+end_src
+
+*** Writing our job submission script
+
+Since we want our calculations to be performed on the cluster, we will need to
+also write a job submission script (let's call this =submit-job.sh=) in bash to
+pass to SLURM.
+
+#+begin_src bash
+#!/bin/bash
+
+#SBATCH --job-name=lorenz_attractor
+#SBATCH --output=lorenz_attractor.log
+#SBATCH --error=lorenz_attractor.log
+#SBATCH --time=00:10:00
+
+python lorenz.py
+#+end_src
+
+*** Replicating our environment on the cluster
+
+As we've installed external packages in our local development environment, we
+will want to ensure that when we run the calculations on the cluster, it will be
+using the same versions of packages. Conda makes this a lot easier. First, we
+export our environment to a recipe file:
+
+#+begin_src bash
+conda env export --no-builds > environment.yml
+#+end_src
+
+*** Sending our scripts to the cluster
+
+All of our scripts are ready! We can now transfer them from our personal
+computer, to the cluster. The files we need to transfer are:
+
+- =lorenz.py=
+- =environment.yml=
+- =submit-job.sh=
+
+While we can send a folder (and the containing files), let's send them one at a time:
+  
+#+begin_src bash
+scp lorenz.py <hostname>:<destination-path>
+scp environment.yml <hostname>:<destination-path>
+scp submit-job.sh <hostname>:<destination-path>
+#+end_src
+
+where =<hostname>= is the hostname/IP address that you've used to connect to the
+login node on the cluster before. =<destination-path>= is the path to where you
+want to save the files.
+
+*** Logging into the cluster
+
+Now that our files are on the cluster, we can login:
+
+#+begin_src bash
+ssh <username>@<hostname>
+#+end_src
+
+At which point, we've logged into the login node, and then we need to change
+directory to where we saved the files:
+
+#+begin_src bash
+cd <destination-path>
+#+end_src
+
+*** Re-creating our development environment
+
+Now that we're in the same folder as our scripts, we're almost ready to submit
+our job. First, we need to recreate our development environment from our
+=environment.yml= file.
+
+#+begin_src bash
+conda env create -f environment.yml
+#+end_src
+
+And activate our newly created environment:
+
+#+begin_src bash
+conda activate <env-name>
+#+end_src
+
+*** Submitting our job
+
+Now we can submit our job:
+
+#+begin_src bash
+sbatch submit-job.sh
+#+end_src
+
+We can check the progress of our job with =squeue=, or its already completed, look
+at the job history with =sacct=.
+
+*** Downloading the results
+
+If our job runs successfully, a =data.pkl= file will be created. Back on our local
+computers, we will need to run the following to download it:
+
+#+begin_src bash
+scp <hostname>:<destination-path>/data.pkl ./
+#+end_src
+
+This will download the file into the current directory.
+
+*** Analysing the results
+
+With the =data.pkl= file downloaded, we can visualise the results using
+=plot_lorenz.py=:
+https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/plot-lorenz.py
+
+If everything has been run correctly, you should see a plot of the lorenz attractor.

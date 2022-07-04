@@ -1,0 +1,2608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-10-16 sam. 10:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Programming Level-up</title>
+<meta name="author" content="Jay Morgan" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Programming Level-up
+<br />
+<span class="subtitle">Lecture 1 - Introduction and Basic Python Programming</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5588f6e">1. Introduction</a>
+<ul>
+<li><a href="#org1eaaae5">1.1. Course introduction</a>
+<ul>
+<li><a href="#orgb684cc9">1.1.1. What&#x2026;? Why&#x2026;?</a></li>
+<li><a href="#orgae3f056">1.1.2. What is this course going to teach me?</a></li>
+<li><a href="#org7bd6df7">1.1.3. How the course will be delivered</a></li>
+<li><a href="#orgc7a2af8">1.1.4. Rough timeline</a></li>
+<li><a href="#org54d3314">1.1.5. Rough timeline</a></li>
+</ul>
+</li>
+<li><a href="#org70c688a">1.2. Contact information</a>
+<ul>
+<li><a href="#org3649d1c">1.2.1. Where to find me</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb11afa9">2. Python</a>
+<ul>
+<li><a href="#org159072a">2.1. Introducing Python</a>
+<ul>
+<li><a href="#org4814a6e">2.1.1. Python</a></li>
+<li><a href="#orgde0b743">2.1.2. Python</a></li>
+<li><a href="#org7244a0c">2.1.3. A first program</a></li>
+<li><a href="#orga2acdf5">2.1.4. Running this program</a></li>
+<li><a href="#orgf221d1c">2.1.5. An alternative method of running python</a></li>
+<li><a href="#org9efbc69">2.1.6. Variables</a></li>
+</ul>
+</li>
+<li><a href="#org61193ad">2.2. Types of data</a>
+<ul>
+<li><a href="#org6ea602b">2.2.1. Primitive data types</a></li>
+<li><a href="#org423a6eb">2.2.2. Primitive data type</a></li>
+<li><a href="#orgf7a56a6">2.2.3. Basic Math with primitives</a></li>
+<li><a href="#orgd2a8dbc">2.2.4. Basic Math</a></li>
+<li><a href="#orga8e1453">2.2.5. BODMAS in Python</a></li>
+<li><a href="#org3ef45b4">2.2.6. Basic Math &#x2013; Quick exercise</a></li>
+<li><a href="#org48bd1f9">2.2.7. Container data types/Data structures</a></li>
+<li><a href="#org6daae00">2.2.8. An aside on Terminology</a></li>
+<li><a href="#org4e92923">2.2.9. Lists</a></li>
+<li><a href="#org098bf63">2.2.10. Lists &#x2013; adding data</a></li>
+<li><a href="#org82a5b9c">2.2.11. Lists &#x2013; Quick Exercise</a></li>
+<li><a href="#orgb1f3cad">2.2.12. Dictionaries</a></li>
+<li><a href="#org09bdadf">2.2.13. Dictionaries</a></li>
+<li><a href="#org85388eb">2.2.14. Dictionaries &#x2013; adding data</a></li>
+<li><a href="#org588bcf2">2.2.15. Dictionaries &#x2013; Quick Exercise</a></li>
+<li><a href="#orge4e3424">2.2.16. Tuples</a></li>
+<li><a href="#org0dba472">2.2.17. Tuples</a></li>
+<li><a href="#org020d038">2.2.18. Sets</a></li>
+<li><a href="#orgd08a9ca">2.2.19. Sets &#x2013; adding data</a></li>
+</ul>
+</li>
+<li><a href="#org27ffbb2">2.3. Conditional expressions</a>
+<ul>
+<li><a href="#org08fd721">2.3.1. If statement</a></li>
+<li><a href="#orgdfdcb5e">2.3.2. If statement</a></li>
+<li><a href="#orgd8ed466">2.3.3. If statement &#x2013; Quick Exercise 1</a></li>
+<li><a href="#orga5f7afc">2.3.4. If statement</a></li>
+<li><a href="#org9901328">2.3.5. If statement</a></li>
+<li><a href="#org1d8b162">2.3.6. Boolean Logic</a></li>
+<li><a href="#org62a8e91">2.3.7. Boolean Logic</a></li>
+<li><a href="#org3bb6196">2.3.8. Boolean Logic</a></li>
+<li><a href="#org464e771">2.3.9. Boolean Logic</a></li>
+<li><a href="#org2cd45ef">2.3.10. Boolean Logic</a></li>
+<li><a href="#org76cd01a">2.3.11. Boolean Logic</a></li>
+</ul>
+</li>
+<li><a href="#org337c2ea">2.4. Iteration</a>
+<ul>
+<li><a href="#org9a0492a">2.4.1. For loop</a></li>
+<li><a href="#org0402e5f">2.4.2. For loop &#x2013; break</a></li>
+<li><a href="#orgf3f0d65">2.4.3. For loop &#x2013; continue</a></li>
+<li><a href="#orga4aebe2">2.4.4. For loop &#x2013; ranges</a></li>
+<li><a href="#orgd0a8cb0">2.4.5. For loop &#x2013; loop over collections</a></li>
+<li><a href="#org5cd6a2e">2.4.6. For loop &#x2013; loop over collections</a></li>
+<li><a href="#orgcd99df5">2.4.7. For loop &#x2013; loop over collections</a></li>
+<li><a href="#orgacd0d53">2.4.8. For loop &#x2013; loop over collections</a></li>
+<li><a href="#org1b020a2">2.4.9. For loop &#x2013; Quick Exercise</a></li>
+<li><a href="#orgb423188">2.4.10. While loop</a></li>
+</ul>
+</li>
+<li><a href="#org9d0dfc5">2.5. Functions</a>
+<ul>
+<li><a href="#orgc139746">2.5.1. Functions</a></li>
+<li><a href="#orge39e454">2.5.2. Functions</a></li>
+<li><a href="#org98abee6">2.5.3. Example usage of a function</a></li>
+<li><a href="#org6dd2dbe">2.5.4. Functions &#x2013; Quick Exercise</a></li>
+<li><a href="#orgd84a86b">2.5.5. Re-usability with Functions</a></li>
+<li><a href="#org4159757">2.5.6. Re-usability with Functions</a></li>
+<li><a href="#orgf3fe1a0">2.5.7. Named parameters</a></li>
+<li><a href="#org516a781">2.5.8. Named parameters</a></li>
+<li><a href="#orga47c1d4">2.5.9. Optional/Default/Positional arguments</a></li>
+<li><a href="#org503ad68">2.5.10. Optional/Default/Positional arguments</a></li>
+<li><a href="#org2931304">2.5.11. Optional/Default/Positional arguments</a></li>
+<li><a href="#org4f9c374">2.5.12. Recap on arguments</a></li>
+<li><a href="#org407807a">2.5.13. Function doc-strings</a></li>
+<li><a href="#orgeace848">2.5.14. Multi-line docstrings</a></li>
+<li><a href="#orge9e146b">2.5.15. Understanding scope</a></li>
+<li><a href="#org13fcdcd">2.5.16. Understanding scope</a></li>
+<li><a href="#orgc578ab6">2.5.17. Understanding scope</a></li>
+<li><a href="#org3967cc6">2.5.18. Understanding scope</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org7ee382b">3. Exercise</a>
+<ul>
+<li><a href="#orgf67009d">3.1. Library system</a>
+<ul>
+<li><a href="#orgf878f4d">3.1.1. Use what you've learnt!</a></li>
+<li><a href="#org2f81d4d">3.1.2. Locating Books</a></li>
+<li><a href="#orge256b2a">3.1.3. Selecting a subset</a></li>
+<li><a href="#org3bc3ffc">3.1.4. Updating our database</a></li>
+<li><a href="#orge84c098">3.1.5. Extended exercise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org72309ac">4. What lies ahead</a>
+<ul>
+<li><a href="#org3debc97">4.1. What lies ahead</a>
+<ul>
+<li><a href="#org978a6c2">4.1.1. What lies ahead</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5588f6e" class="outline-2">
+<h2 id="org5588f6e"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org1eaaae5" class="outline-3">
+<h3 id="org1eaaae5"><span class="section-number-3">1.1.</span> Course introduction</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-orgb684cc9" class="outline-4">
+<h4 id="orgb684cc9"><span class="section-number-4">1.1.1.</span> What&#x2026;? Why&#x2026;?</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>Programming is much more than the act of programming a small script. Even if you've
+programmed before, doing so for a research project requires a lot of rigour to
+ensure the results you're reporting are correct, and reproducible.</li>
+<li>There is so much surrounding the act of programming that it can get a little
+overwhelming. Things from setting up a programming environment to managing multiple
+experiments on the supercomputers can involve many languages and understanding of
+technologies.</li>
+<li>This course is designed to take you from not being able to program at all to being
+able to do it comfortably for your research and work.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgae3f056" class="outline-4">
+<h4 id="orgae3f056"><span class="section-number-4">1.1.2.</span> What is this course going to teach me?</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ol class="org-ol">
+<li>Programming with the Python Programming Language.
+<ul class="org-ul">
+<li>Basic syntax.</li>
+<li>Introduction to the basics of object oriented programming (OOP).</li>
+<li>Numerical computing with numpy/pandas/scipy.</li>
+</ul></li>
+<li>Doing your programming in a Linux-based Environment (GNU/Linux) and being
+comfortable with the organisation of this Linux environment.
+<ul class="org-ul">
+<li>Setting up a research (reproducible) environment.</li>
+<li>Executing experiments.</li>
+</ul></li>
+<li>Interacting with the Super-computers/clusters.
+<ul class="org-ul">
+<li>Interaction with SLURM (management of jobs).</li>
+</ul></li>
+<li>Taking the results from a program you've created, be able to visualise them and
+include them in reports/papers.
+<ul class="org-ul">
+<li>LaTeX/Markdown.</li>
+<li>Plotting.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org7bd6df7" class="outline-4">
+<h4 id="org7bd6df7"><span class="section-number-4">1.1.3.</span> How the course will be delivered</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<ul class="org-ul">
+<li>2/3 hour sessions over the next 2 months.</li>
+<li>Throughout the lecture, there will be small exercises to try out what we've
+learnt. We will go through the answers to these exercises.</li>
+<li>At the end of the lecture we will have a larger exercise that will become more
+challenging. These exercises are not marked, but again, just an opportunity to try
+out what you've learnt. The best way to learn how to program is to program.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc7a2af8" class="outline-4">
+<h4 id="orgc7a2af8"><span class="section-number-4">1.1.4.</span> Rough timeline</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<ul class="org-ul">
+<li>2h on October 11th, 2021 from 10:30 a.m. to 12:30 a.m.</li>
+<li>3h on October 15th, 2021 from 8:30 a.m. to 11:45 a.m.</li>
+<li>2h on October 15th, 2021 from 1:30 p.m. to 3:30 p.m.</li>
+<li>2h on October 22th, 2021 from 3:45 p.m. to 5:45 p.m.</li>
+<li>3h on October 26th, 2021 from 8:30 a.m. to 11:45 a.m.</li>
+<li>2h on November 12th, 2021 from 8:00 a.m. to 10 a.m.</li>
+<li>3h on November 16th, 2021 from 1:00 p.m. to 4:15 p.m.</li>
+<li>3h on November 24th, 2021 from 8:30 a.m. to 11:45 a.m.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org54d3314" class="outline-4">
+<h4 id="org54d3314"><span class="section-number-4">1.1.5.</span> Rough timeline</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Lecture</th>
+<th scope="col" class="org-left">Topic</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">Introduction</td>
+<td class="org-left">- Course introduction</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Basic Python programming</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">Python classes</td>
+<td class="org-left">- Introduction to OOP</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">Project management</td>
+<td class="org-left">- Creating/importing modules</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Anaconda/pip</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">Programming environments</td>
+<td class="org-left">- PyCharm</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Jupyter notebooks</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">Numerical computing</td>
+<td class="org-left">- Numpy</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Scipy</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">Numerical computing</td>
+<td class="org-left">- Pandas</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Visualisations</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">Basics of GNU/Linux</td>
+<td class="org-left">- Using the terminal</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-left">Bash scripting</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-left">High performance computing</td>
+<td class="org-left">- SLURM</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Singularity</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-left">Reporting</td>
+<td class="org-left">- LaTeX</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Markdown</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org70c688a" class="outline-3">
+<h3 id="org70c688a"><span class="section-number-3">1.2.</span> Contact information</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org3649d1c" class="outline-4">
+<h4 id="org3649d1c"><span class="section-number-4">1.2.1.</span> Where to find me</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+My name is Jay Morgan. I am a researcher work on Deep Learning in Astrophysics.
+</p>
+
+<ul class="org-ul">
+<li>Email: <code>jay.morgan@univ-tln.fr</code></li>
+<li>Lecture slides and other contact on my website: <a href="https://pageperso.lis-lab.fr/jay.morgan/">https://pageperso.lis-lab.fr/jay.morgan/</a></li>
+</ul>
+
+
+<div id="orgd887ab4" class="figure">
+<p><img src="./images/website.png" alt="website.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb11afa9" class="outline-2">
+<h2 id="orgb11afa9"><span class="section-number-2">2.</span> Python</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org159072a" class="outline-3">
+<h3 id="org159072a"><span class="section-number-3">2.1.</span> Introducing Python</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-org4814a6e" class="outline-4">
+<h4 id="org4814a6e"><span class="section-number-4">2.1.1.</span> Python</h4>
+<div class="outline-text-4" id="text-2-1-1">
+
+<div id="orgaf02a05" class="figure">
+<p><img src="./images/python-objects.png" alt="python-objects.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgde0b743" class="outline-4">
+<h4 id="orgde0b743"><span class="section-number-4">2.1.2.</span> Python</h4>
+<div class="outline-text-4" id="text-2-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgf1d69a0"></a>Python&#xa0;&#xa0;&#xa0;<span class="tag"><span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-2-1-2-1">
+<ul class="org-ul">
+<li>Python is a <i>high-level</i>\footnoteframe{As we go through our lectures we'll understand what it means for the language to be /high-level/ and /interpreted/ and why that is helpful for us.} programming language created in 1991.</li>
+<li>While it is an old language, its become vastly popular thanks to its use in data
+science and other mathematics-based disciplines. While also being able to perform
+tasks such as GUI, web-development and much more.</li>
+<li>Because the language is high-level and <i>interpreted</i>, programmers can often find
+themselves more productive in Python than in other languages such as say C++.</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org9a20e27"></a>Python logo&#xa0;&#xa0;&#xa0;<span class="tag"><span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-2-1-2-2">
+
+<div id="org1e8e72a" class="figure">
+<p><img src="./images/python.png" alt="python.png" width="500px" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+
+<div id="outline-container-org7244a0c" class="outline-4">
+<h4 id="org7244a0c"><span class="section-number-4">2.1.3.</span> A first program</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+We're going to start with the 'Hello, World' program that prints <code>Hello, World!</code> to the
+screen. In python this is as simple as writing:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Hello, World!"</span>)   <span style="color: #b22222;"># </span><span style="color: #b22222;">this prints: Hello, World!</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; Hello, World!
+</pre>
+
+
+<p>
+<b>NOTE</b> anything following a <code>#</code> is a comment and is completely ignored by the
+computer. It is there for you to document your code for others, and most
+importantly, for yourself.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga2acdf5" class="outline-4">
+<h4 id="orga2acdf5"><span class="section-number-4">2.1.4.</span> Running this program</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<p>
+Before we can run this program, we need to save it somewhere. For this, will
+create a new file, insert this text, and save it as <code>&lt;filename&gt;.py</code>, where
+<code>&lt;filename&gt;</code> is what we want to call the script. This name doesn't matter for its
+execution.
+</p>
+
+<p>
+Once we have created the <i>script</i>, we can run it from the <i>command line</i>. We will
+get into the command line in a later lecture, but right now all you need to know
+is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">python3 &lt;filename&gt;.py
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf221d1c" class="outline-4">
+<h4 id="orgf221d1c"><span class="section-number-4">2.1.5.</span> An alternative method of running python</h4>
+<div class="outline-text-4" id="text-2-1-5">
+<p>
+You may notice that if you don't give <code>python</code> a filename to run, you will enter
+something called the <code>REPL</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">Python 3.9.5 (default, Jun  4 2021, 12:28:51) 
+[GCC 7.5.0] :: Anaconda, Inc. on linux
+Type <span style="color: #8b2252;">"help"</span>, <span style="color: #8b2252;">"copyright"</span>, <span style="color: #8b2252;">"credits"</span> or <span style="color: #8b2252;">"license"</span> for more information.
+&gt;&gt;&gt; 
+</pre>
+</div>
+
+<p>
+<code>REPL</code> stands for <code>READ</code>, <code>EXECUTE</code>, <code>PRINT</code>, <code>LOOP</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9efbc69" class="outline-4">
+<h4 id="org9efbc69"><span class="section-number-4">2.1.6.</span> Variables</h4>
+<div class="outline-text-4" id="text-2-1-6">
+<p>
+A <i>variable</i> is a <i>symbol</i> associated with a <i>value</i>. This value can differ widely, and we
+will take a look at different types of values/data later.
+</p>
+
+<p>
+Neverthless, variables are useful for <i>referring</i> to values and <i>storing</i> to the results
+of a computation.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 1
+<span style="color: #a0522d;">y</span> = 2
+<span style="color: #a0522d;">z</span> = x + y
+<span style="color: #a020f0;">print</span>(z)   <span style="color: #b22222;"># </span><span style="color: #b22222;">prints: 3</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">variables can be /overwritten/</span>
+<span style="color: #a0522d;">z</span> = <span style="color: #8b2252;">"hello, world"</span>
+<span style="color: #a020f0;">print</span>(z)   <span style="color: #b22222;"># </span><span style="color: #b22222;">prints: hello, world</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 3
+# =&gt; hello, world
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org61193ad" class="outline-3">
+<h3 id="org61193ad"><span class="section-number-3">2.2.</span> Types of data</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-org6ea602b" class="outline-4">
+<h4 id="org6ea602b"><span class="section-number-4">2.2.1.</span> Primitive data types</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+Primitive data types are the most fundamental parts of programming, they cannot
+be <i>broken</i> down.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8b2252;">"Hello"</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">string</span>
+1       <span style="color: #b22222;"># </span><span style="color: #b22222;">integer</span>
+1.0     <span style="color: #b22222;"># </span><span style="color: #b22222;">float</span>
+<span style="color: #008b8b;">True</span>    <span style="color: #b22222;"># </span><span style="color: #b22222;">Boolean (or bool for short)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org423a6eb" class="outline-4">
+<h4 id="org423a6eb"><span class="section-number-4">2.2.2.</span> Primitive data type</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+We can get the type of some data by using the <code>type(...)</code> function. For example,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(<span style="color: #483d8b;">type</span>(5))
+<span style="color: #a020f0;">print</span>(<span style="color: #483d8b;">type</span>(5.0))
+
+<span style="color: #a0522d;">x</span> = <span style="color: #8b2252;">"all cats meow"</span>
+
+<span style="color: #a020f0;">print</span>(<span style="color: #483d8b;">type</span>(x))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; &lt;class 'int'&gt;
+# =&gt; &lt;class 'float'&gt;
+# =&gt; &lt;class 'str'&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf7a56a6" class="outline-4">
+<h4 id="orgf7a56a6"><span class="section-number-4">2.2.3.</span> Basic Math with primitives</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+Using these primitive data types, we can do some basic math operations!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(1 + 2)    <span style="color: #b22222;"># </span><span style="color: #b22222;">Addtion</span>
+<span style="color: #a020f0;">print</span>(1 - 2)    <span style="color: #b22222;"># </span><span style="color: #b22222;">Subtraction</span>
+<span style="color: #a020f0;">print</span>(1 * 2)    <span style="color: #b22222;"># </span><span style="color: #b22222;">Multiplication</span>
+<span style="color: #a020f0;">print</span>(1 / 2)    <span style="color: #b22222;"># </span><span style="color: #b22222;">Division</span>
+<span style="color: #a020f0;">print</span>(2 ** 2)   <span style="color: #b22222;"># </span><span style="color: #b22222;">Exponent</span>
+<span style="color: #a020f0;">print</span>(3 % 2)    <span style="color: #b22222;"># </span><span style="color: #b22222;">Modulo operator</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 3
+# =&gt; -1
+# =&gt; 2
+# =&gt; 0.5
+# =&gt; 4
+# =&gt; 1
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd2a8dbc" class="outline-4">
+<h4 id="orgd2a8dbc"><span class="section-number-4">2.2.4.</span> Basic Math</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+Sometimes types get converted to the same type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(1.0 + 2)  <span style="color: #b22222;"># </span><span style="color: #b22222;">float + integer = float</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 3.0
+</pre>
+
+
+<p>
+Even more interesting is with Booleans!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #008b8b;">True</span> + <span style="color: #008b8b;">True</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 2
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga8e1453" class="outline-4">
+<h4 id="orga8e1453"><span class="section-number-4">2.2.5.</span> BODMAS in Python</h4>
+<div class="outline-text-4" id="text-2-2-5">
+<p>
+Like in mathematics, certain math operator take precedence over others.
+</p>
+
+<ul class="org-ul">
+<li>B - Brackets</li>
+<li>O - Orders (roots, exponents)</li>
+<li>D - division</li>
+<li>M - multiplication</li>
+<li>A - addition</li>
+<li>S - subtraction.</li>
+</ul>
+
+<p>
+To make the context clear as to what operations to perform first, use brackets.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">(5 / 5) + 1
+5 / (5 + 1)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 2.0
+# =&gt; 0.8333333333333334
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3ef45b4" class="outline-4">
+<h4 id="org3ef45b4"><span class="section-number-4">2.2.6.</span> Basic Math &#x2013; Quick exercise</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<p>
+Write the following equation in python:
+</p>
+
+<p>
+\((5 + 2) \times (\frac{10}{2} + 10)^2\)
+</p>
+
+<p>
+<b>Remember</b> to use parentheses <code>( )</code> to ensure that operations take precedence over
+others.
+</p>
+
+<p>
+Your answer should come out as: <code>1575.0</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org48bd1f9" class="outline-4">
+<h4 id="org48bd1f9"><span class="section-number-4">2.2.7.</span> Container data types/Data structures</h4>
+<div class="outline-text-4" id="text-2-2-7">
+<p>
+Container data types or data structures, as the name suggests, are used to contain
+other things. Types of containers are:
+</p>
+
+<ul class="org-ul">
+<li>Lists</li>
+<li>Dictionaries</li>
+<li>Tuples</li>
+<li>Sets</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python">[1, <span style="color: #8b2252;">"hello"</span>, 2]                 <span style="color: #b22222;"># </span><span style="color: #b22222;">list</span>
+{<span style="color: #8b2252;">"my-key"</span>: 2, <span style="color: #8b2252;">"your-key"</span>: 1}    <span style="color: #b22222;"># </span><span style="color: #b22222;">dictionary (or dict)</span>
+(1, 2)                          <span style="color: #b22222;"># </span><span style="color: #b22222;">tuple</span>
+<span style="color: #483d8b;">set</span>(1, 2)                       <span style="color: #b22222;"># </span><span style="color: #b22222;">set</span>
+</pre>
+</div>
+
+<p>
+We'll take a look at each of these different container types and explore why we
+might want to use each of them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6daae00" class="outline-4">
+<h4 id="org6daae00"><span class="section-number-4">2.2.8.</span> An aside on Terminology</h4>
+<div class="outline-text-4" id="text-2-2-8">
+<p>
+To make our explanations clearer and reduce confusion, each of the different symbols
+have unique names.
+</p>
+
+<p>
+I will use this terminology consistently throughout the course, and it is common to
+see the same use outside the course.
+</p>
+
+<ul class="org-ul">
+<li><code>[ ]</code> brackets (square brackets).</li>
+<li><code>{ }</code> braces (curly braces).</li>
+<li><code>( )</code> parentheses.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4e92923" class="outline-4">
+<h4 id="org4e92923"><span class="section-number-4">2.2.9.</span> Lists</h4>
+<div class="outline-text-4" id="text-2-2-9">
+<p>
+A hetreogenious container. This means that it can store any type of data.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = [1, <span style="color: #8b2252;">"hello"</span>, 2]
+</pre>
+</div>
+
+<p>
+Elements can be accessed using indexing <code>[ ]</code> notation. For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(x[0])    <span style="color: #b22222;"># </span><span style="color: #b22222;">this will get the first element (i.e. 1)</span>
+<span style="color: #a020f0;">print</span>(x[1])    <span style="color: #b22222;"># </span><span style="color: #b22222;">the second element (i.e. "hello")</span>
+<span style="color: #a020f0;">print</span>(x[2])    <span style="color: #b22222;"># </span><span style="color: #b22222;">the third element (i.e. 2)</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 1
+# =&gt; hello
+# =&gt; 2
+</pre>
+
+
+<p>
+<b>notice how the first element is the 0-th item in the list/</b> we say that python is
+0-indexed.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org098bf63" class="outline-4">
+<h4 id="org098bf63"><span class="section-number-4">2.2.10.</span> Lists &#x2013; adding data</h4>
+<div class="outline-text-4" id="text-2-2-10">
+<p>
+If we want to add items to the end of the list, we use the <code>append</code> function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_list</span> = []
+
+my_list.append(<span style="color: #8b2252;">"all"</span>)
+my_list.append(<span style="color: #8b2252;">"dogs"</span>)
+my_list.append(<span style="color: #8b2252;">"bark"</span>)
+
+<span style="color: #a020f0;">print</span>(my_list)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; ['all', 'dogs', 'bark']
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org82a5b9c" class="outline-4">
+<h4 id="org82a5b9c"><span class="section-number-4">2.2.11.</span> Lists &#x2013; Quick Exercise</h4>
+<div class="outline-text-4" id="text-2-2-11">
+<ul class="org-ul">
+<li>Create a list with 3 elements:</li>
+
+<li>"bark"</li>
+<li>"all"</li>
+<li>"dogs"</li>
+
+<li>Assign this to a variable with the name of your choice.</li>
+<li>Using the <code>print</code> function, print out the 3rd, 1st and 2nd elements in that order.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb1f3cad" class="outline-4">
+<h4 id="orgb1f3cad"><span class="section-number-4">2.2.12.</span> Dictionaries</h4>
+<div class="outline-text-4" id="text-2-2-12">
+<p>
+Dictionaries are a little different from lists as each 'element' consists of a
+key-pair value. Let's have a look at some examples where the dictionaries contains
+<b>one</b> element:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_dictionary</span> = {<span style="color: #8b2252;">"key"</span>: <span style="color: #8b2252;">"value"</span>}
+<span style="color: #a0522d;">my_other_dict</span> = {<span style="color: #8b2252;">"age"</span>: 25}
+</pre>
+</div>
+
+<p>
+To access the <i>value</i>, we get it using <code>[key]</code> notation:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">my_other_dict[<span style="color: #8b2252;">"age"</span>]
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 25
+</pre>
+
+
+<p>
+<b>NOTE</b> keys are unique, i.e:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_dictionary</span> = {<span style="color: #8b2252;">"age"</span>: 25, <span style="color: #8b2252;">"age"</span>: 15}
+my_dictionary[<span style="color: #8b2252;">"age"</span>]
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 15
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org09bdadf" class="outline-4">
+<h4 id="org09bdadf"><span class="section-number-4">2.2.13.</span> Dictionaries</h4>
+<div class="outline-text-4" id="text-2-2-13">
+<p>
+The key in the dictionary doesn't necessarily need to be a string. For example, in
+this case, we have created two key-pair elements, where the keys to both are tuples
+of numbers.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_dictionary</span> = {(1, 2): <span style="color: #8b2252;">"square"</span>, (3, 4): <span style="color: #8b2252;">"circle"</span>}
+
+<span style="color: #a020f0;">print</span>(my_dictionary[(1, 2)])
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; square
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org85388eb" class="outline-4">
+<h4 id="org85388eb"><span class="section-number-4">2.2.14.</span> Dictionaries &#x2013; adding data</h4>
+<div class="outline-text-4" id="text-2-2-14">
+<p>
+If we want to add data to a dictionary, we simply perform the accessor method with a
+key that is not in the dictionary:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_dict</span> = {}
+
+<span style="color: #a0522d;">my_dict</span>[<span style="color: #8b2252;">"name"</span>] = <span style="color: #8b2252;">"James"</span>
+<span style="color: #a0522d;">my_dict</span>[<span style="color: #8b2252;">"age"</span>] = 35
+
+<span style="color: #a020f0;">print</span>(my_dict)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; {'name': 'James', 'age': 35}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org588bcf2" class="outline-4">
+<h4 id="org588bcf2"><span class="section-number-4">2.2.15.</span> Dictionaries &#x2013; Quick Exercise</h4>
+<div class="outline-text-4" id="text-2-2-15">
+<ul class="org-ul">
+<li>Create a dictionary for the following address, and assign it a variable name
+called <code>address</code>:</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key</th>
+<th scope="col" class="org-left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">number</td>
+<td class="org-left">22</td>
+</tr>
+
+<tr>
+<td class="org-left">street</td>
+<td class="org-left">Bakers Street</td>
+</tr>
+
+<tr>
+<td class="org-left">city</td>
+<td class="org-left">London</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Print out the address's street name using the <code>[ ]</code> accessor with the correct key.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge4e3424" class="outline-4">
+<h4 id="orge4e3424"><span class="section-number-4">2.2.16.</span> Tuples</h4>
+<div class="outline-text-4" id="text-2-2-16">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_tuple</span> = (1, 56, -2)
+</pre>
+</div>
+
+<p>
+Like lists, elements of the tuple can be accessed by their position in the list,
+starting with the 0-th element:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(my_tuple[0])  <span style="color: #b22222;"># </span><span style="color: #b22222;">=&gt; 1</span>
+<span style="color: #a020f0;">print</span>(my_tuple[1])  <span style="color: #b22222;"># </span><span style="color: #b22222;">=&gt; 56</span>
+<span style="color: #a020f0;">print</span>(my_tuple[2])  <span style="color: #b22222;"># </span><span style="color: #b22222;">=&gt; -2</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 1
+# =&gt; 56
+# =&gt; -2
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0dba472" class="outline-4">
+<h4 id="org0dba472"><span class="section-number-4">2.2.17.</span> Tuples</h4>
+<div class="outline-text-4" id="text-2-2-17">
+<p>
+Unlike lists, tuples cannot be changed after they've been created. We say they are
+<b>immutable</b>. So this will <b>not</b> work:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_tuple</span>[2] = <span style="color: #8b2252;">"dogs"</span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">creates an Error</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/tmp/pyKdIIcx", line 18, in &lt;module&gt;
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+TypeError: 'tuple' object does not support item assignment
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org020d038" class="outline-4">
+<h4 id="org020d038"><span class="section-number-4">2.2.18.</span> Sets</h4>
+<div class="outline-text-4" id="text-2-2-18">
+<p>
+Sets in Python are like tuples, but contain only unique elements.
+</p>
+
+<p>
+You can use the <code>set( )</code> function (<b>more on functions later!</b>), supplying a list, to create a set:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_set</span> = <span style="color: #483d8b;">set</span>([1, 2, 2, 2, 3, 4])
+my_set
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; {1, 2, 3, 4}
+</pre>
+
+
+<p>
+Notice how there is only one '2' in the resulting set, duplicate elements are removed.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd08a9ca" class="outline-4">
+<h4 id="orgd08a9ca"><span class="section-number-4">2.2.19.</span> Sets &#x2013; adding data</h4>
+<div class="outline-text-4" id="text-2-2-19">
+<p>
+If we want to add data to a set, we use the <code>.add()</code> method. The element used as an
+argument to this function will only be added to the set if it is not already in the
+set.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_set</span> = <span style="color: #483d8b;">set</span>([])
+
+my_set.add(1)
+my_set.add(2)
+my_set.add(1)
+
+<span style="color: #a020f0;">print</span>(my_set)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; {1, 2}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27ffbb2" class="outline-3">
+<h3 id="org27ffbb2"><span class="section-number-3">2.3.</span> Conditional expressions</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org08fd721" class="outline-4">
+<h4 id="org08fd721"><span class="section-number-4">2.3.1.</span> If statement</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+If statements allow for branching paths of execution. In other words, we can execute
+some statements if some conditions holds (or does not hold).
+</p>
+
+<p>
+The structure of a simple if statement is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">if</span> &lt;condition&gt;:
+<span style="background-color: #f2f2f2;"> </span>   &lt;body&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 2
+<span style="color: #a0522d;">y</span> = <span style="color: #8b2252;">"stop"</span>
+
+<span style="color: #a020f0;">if</span> x &lt; 5:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is less than five"</span>)
+<span style="color: #a020f0;">if</span> y == <span style="color: #8b2252;">"go"</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"All systems go!!"</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; X is less than five
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdfdcb5e" class="outline-4">
+<h4 id="orgdfdcb5e"><span class="section-number-4">2.3.2.</span> If statement</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+In the previous example, the first <code>print</code> statement was only executed if the <code>x &lt; 5</code>
+evaluates to <code>True</code>, but in python, we can add another <i>branch</i> if the condition
+evaluates to <code>False</code>. This branch is denoted by the <code>else</code> keyword.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+
+<span style="color: #a020f0;">if</span> x &lt; 5:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is less than five"</span>)
+<span style="color: #a020f0;">else</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is greater than or equal to five"</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; X is greater than or equal to five
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd8ed466" class="outline-4">
+<h4 id="orgd8ed466"><span class="section-number-4">2.3.3.</span> If statement &#x2013; Quick Exercise 1</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<ul class="org-ul">
+<li>Create a variable called <code>age</code> and assign the value of this variable <code>35</code>.</li>
+<li>Create and <code>if</code> statement that prints the square of <code>age</code> if the value of <code>age</code> is more
+than 24.</li>
+<li>This if statement should have an else condition, that prints <code>age</code> divided by 2.</li>
+<li>What is the printed value?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga5f7afc" class="outline-4">
+<h4 id="orga5f7afc"><span class="section-number-4">2.3.4.</span> If statement</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<p>
+If we wanted to add multiple potential paths, we can add more using the <code>elif
+&lt;condition&gt;</code> keywords.
+</p>
+
+<p>
+Note: The conditions are checked from top to bottom, only executing the else if none
+evaluate to <code>True</code>. The first condition that evaluates to <code>True</code> is executed, the rest
+are skipped.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 15
+
+<span style="color: #a020f0;">if</span> x &lt; 5:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is less than five"</span>)
+<span style="color: #a020f0;">elif</span> x &gt; 10:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is greater than ten"</span>)
+<span style="color: #a020f0;">else</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is between five and ten"</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; X is greater than ten
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org9901328" class="outline-4">
+<h4 id="org9901328"><span class="section-number-4">2.3.5.</span> If statement</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<p>
+Sometimes, we might want to conditionally set a variable a value. For this, we can
+use an <i>inline</i> if statement. The form of an inline if statement is:
+</p>
+
+<p>
+<code>&lt;value-if-true&gt; if &lt;condition&gt; else &lt;value-if-false&gt;</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+
+<span style="color: #a0522d;">y</span> = 5 <span style="color: #a020f0;">if</span> x &gt; 5 <span style="color: #a020f0;">else</span> 2
+
+<span style="color: #a020f0;">print</span>(x + y)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 15
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1d8b162" class="outline-4">
+<h4 id="org1d8b162"><span class="section-number-4">2.3.6.</span> Boolean Logic</h4>
+<div class="outline-text-4" id="text-2-3-6">
+<p>
+As we've seen, <code>if</code> statements are checking for conditions to evaluate to <code>True</code> or
+<code>False</code>. In python we use various comparison operators to check for conditions that
+evaluate to <code>Booleans</code>.
+</p>
+
+<p>
+Comparison operators
+</p>
+
+<ul class="org-ul">
+<li><code>&lt;</code> less than</li>
+<li><code>&lt;=</code> less than or equal to</li>
+<li><code>&gt;</code> greater than</li>
+<li><code>&gt;=</code> greater than or equal to</li>
+<li><code>==</code> is equal to</li>
+<li><code>not</code> negation</li>
+</ul>
+
+<p>
+If we want to check for multiple conditions, we can use conjunctives or disjunctive
+operators to combine the Boolean formulas.
+</p>
+
+<p>
+Conjunctives/Disjunctives
+</p>
+
+<ul class="org-ul">
+<li><code>and</code> all boolean expressions must evaluate to true</li>
+<li><code>or</code> only one expression needs to be true</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org62a8e91" class="outline-4">
+<h4 id="org62a8e91"><span class="section-number-4">2.3.7.</span> Boolean Logic</h4>
+<div class="outline-text-4" id="text-2-3-7">
+<p>
+Using <code>not</code> you can invert the Boolean result of the expression.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(<span style="color: #a020f0;">not</span> <span style="color: #008b8b;">True</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; False
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+
+<span style="color: #a020f0;">if</span> <span style="color: #a020f0;">not</span> x == 11:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is not 11"</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; X is not 11
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3bb6196" class="outline-4">
+<h4 id="org3bb6196"><span class="section-number-4">2.3.8.</span> Boolean Logic</h4>
+<div class="outline-text-4" id="text-2-3-8">
+<p>
+Let's take an example using the <code>and</code> keyword. <code>and</code> here is checking that <code>x</code> is above or
+equal to 10 <b>and</b> <code>y</code> is exactly 5. If either of the conditions is <code>False</code>, python will
+execute the <code>else</code> path (if there is one, of course!).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+<span style="color: #a0522d;">y</span> = 5
+
+<span style="color: #a020f0;">if</span> x &gt;= 10 <span style="color: #a020f0;">and</span> y == 5:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">z</span> = x + y
+<span style="color: #a020f0;">else</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">z</span> = x * y
+
+<span style="color: #a020f0;">print</span>(z)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 15
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org464e771" class="outline-4">
+<h4 id="org464e771"><span class="section-number-4">2.3.9.</span> Boolean Logic</h4>
+<div class="outline-text-4" id="text-2-3-9">
+<p>
+Here we see the use of the <code>or</code> keyword. If any of the conditions evaluates to <code>True</code>
+then the whole condition evaluates to <code>True</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+<span style="color: #a0522d;">y</span> = 5
+
+<span style="color: #a020f0;">if</span> x &lt; 5 <span style="color: #a020f0;">or</span> y == 5:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"We got here!"</span>)
+<span style="color: #a020f0;">else</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"We got here instead..."</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; We got here!
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2cd45ef" class="outline-4">
+<h4 id="org2cd45ef"><span class="section-number-4">2.3.10.</span> Boolean Logic</h4>
+<div class="outline-text-4" id="text-2-3-10">
+<p>
+Note: <code>or</code> is short-circuiting. This means that if tests the conditions left-to-right,
+and when it finds something that is <code>True</code> it stops evaluating the rest of the
+conditions.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+
+<span style="color: #a020f0;">if</span> x &lt; 20 <span style="color: #a020f0;">or</span> <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"We got to this condition"</span>):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"The value of x is"</span>, x) 
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; The value of x is 10
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org76cd01a" class="outline-4">
+<h4 id="org76cd01a"><span class="section-number-4">2.3.11.</span> Boolean Logic</h4>
+<div class="outline-text-4" id="text-2-3-11">
+<p>
+If your Boolean logic refers to a single variable, you can combine the logic without
+the <code>and</code> and <code>or</code>. But its not always common.
+</p>
+
+<p>
+For example,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 7
+
+<span style="color: #a020f0;">if</span> x &lt; 10 <span style="color: #a020f0;">and</span> x &gt; 4:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is between 5 and 10"</span>)
+</pre>
+</div>
+
+<p>
+Can be the same as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 7
+
+<span style="color: #a020f0;">if</span> 5 &lt; x &lt; 10:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"X is between 5 and 10"</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; X is between 5 and 10
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org337c2ea" class="outline-3">
+<h3 id="org337c2ea"><span class="section-number-3">2.4.</span> Iteration</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-org9a0492a" class="outline-4">
+<h4 id="org9a0492a"><span class="section-number-4">2.4.1.</span> For loop</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+Looping or iteration allows us to perform a series of actions multiple times. We are
+going to start with the more useful <code>for</code> loop in python. The syntax of a <code>for</code> loop is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">for</span> &lt;variable_name&gt; <span style="color: #a020f0;">in</span> &lt;iterable&gt;:
+<span style="background-color: #f2f2f2;"> </span>   &lt;body&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(3):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(i)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 0
+# =&gt; 1
+# =&gt; 2
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0402e5f" class="outline-4">
+<h4 id="org0402e5f"><span class="section-number-4">2.4.2.</span> For loop &#x2013; break</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+The previous example loops over the body a fix number of times. But what if we wanted
+to stop looping early? Well, we can use the <code>break</code> keyword. This keyword will exit the
+body of the loop.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(10):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> i &gt; 5:
+        <span style="color: #a020f0;">break</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(i)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 0
+# =&gt; 1
+# =&gt; 2
+# =&gt; 3
+# =&gt; 4
+# =&gt; 5
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf3f0d65" class="outline-4">
+<h4 id="orgf3f0d65"><span class="section-number-4">2.4.3.</span> For loop &#x2013; continue</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<p>
+A different keyword you might want to use is <code>continue</code>. Continue allows you to move/skip
+onto the next iteration without executing the entire body of the <code>for</code> loop.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(10):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">if</span> i % 2 == 0:
+        <span style="color: #a020f0;">continue</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(i)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 1
+# =&gt; 3
+# =&gt; 5
+# =&gt; 7
+# =&gt; 9
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga4aebe2" class="outline-4">
+<h4 id="orga4aebe2"><span class="section-number-4">2.4.4.</span> For loop &#x2013; ranges</h4>
+<div class="outline-text-4" id="text-2-4-4">
+<p>
+Instead of using <code>continue</code> like in the previous slide, the <code>range</code> function provides us
+with some options:
+</p>
+
+<p>
+<code>range(start, stop, step)</code>
+</p>
+
+<p>
+In this example, we are starting our iteration at 10, ending at 15, but stepping the
+counter 2 steps.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(10, 15, 2):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(i)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 10
+# =&gt; 12
+# =&gt; 14
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd0a8cb0" class="outline-4">
+<h4 id="orgd0a8cb0"><span class="section-number-4">2.4.5.</span> For loop &#x2013; loop over collections</h4>
+<div class="outline-text-4" id="text-2-4-5">
+<p>
+For loops allow us to iterate over a collection, taking one element at a time. Take
+for example, a list, and for every item in the list we print its square.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_list</span> = [1, 5, 2, 3, 5.5]
+
+<span style="color: #a020f0;">for</span> el <span style="color: #a020f0;">in</span> my_list:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(el**2)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 1
+# =&gt; 25
+# =&gt; 4
+# =&gt; 9
+# =&gt; 30.25
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5cd6a2e" class="outline-4">
+<h4 id="org5cd6a2e"><span class="section-number-4">2.4.6.</span> For loop &#x2013; loop over collections</h4>
+<div class="outline-text-4" id="text-2-4-6">
+<p>
+This kind of looping can work for tuples and sets, but as we have seen, dictionaries
+are a little different. Every 'element' in a dictionary consists of a key and a
+value. Therefore when we iterate over items in a dictionary, we can assign the key
+and value to different variables in the loop.
+</p>
+
+<p>
+<b>Note</b> the use of the <code>.items()</code> after the dictionary. We will explore this later.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_dict</span> = {<span style="color: #8b2252;">"name"</span>: <span style="color: #8b2252;">"jane"</span>, <span style="color: #8b2252;">"age"</span>: 35, <span style="color: #8b2252;">"loc"</span>: <span style="color: #8b2252;">"France"</span>}
+
+<span style="color: #a020f0;">for</span> el_key, el_val <span style="color: #a020f0;">in</span> my_dict.items():
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Key is:"</span>, el_key, <span style="color: #8b2252;">" value is: "</span>, el_val)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; Key is: name  and the value is:  jane
+# =&gt; Key is: age  and the value is:  35
+# =&gt; Key is: location  and the value is:  France
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgcd99df5" class="outline-4">
+<h4 id="orgcd99df5"><span class="section-number-4">2.4.7.</span> For loop &#x2013; loop over collections</h4>
+<div class="outline-text-4" id="text-2-4-7">
+<p>
+We could also loop over the keys in the dictionary using the <code>.keys()</code> method instead
+of <code>.items()</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_dict</span> = {<span style="color: #8b2252;">"name"</span>: <span style="color: #8b2252;">"jane"</span>, <span style="color: #8b2252;">"age"</span>: 35, <span style="color: #8b2252;">"loc"</span>: <span style="color: #8b2252;">"France"</span>}
+
+<span style="color: #a020f0;">for</span> the_key <span style="color: #a020f0;">in</span> my_dict.keys():
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(the_key)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; name
+# =&gt; age
+# =&gt; loc
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgacd0d53" class="outline-4">
+<h4 id="orgacd0d53"><span class="section-number-4">2.4.8.</span> For loop &#x2013; loop over collections</h4>
+<div class="outline-text-4" id="text-2-4-8">
+<p>
+Or, the values using <code>.values()</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">my_dict</span> = {<span style="color: #8b2252;">"name"</span>: <span style="color: #8b2252;">"jane"</span>, <span style="color: #8b2252;">"age"</span>: 35, <span style="color: #8b2252;">"loc"</span>: <span style="color: #8b2252;">"France"</span>}
+
+<span style="color: #a020f0;">for</span> the_value <span style="color: #a020f0;">in</span> my_dict.values():
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(the_value)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; jane
+# =&gt; 35
+# =&gt; France
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1b020a2" class="outline-4">
+<h4 id="org1b020a2"><span class="section-number-4">2.4.9.</span> For loop &#x2013; Quick Exercise</h4>
+<div class="outline-text-4" id="text-2-4-9">
+<ul class="org-ul">
+<li>Create a list of elements:
+
+<ul class="org-ul">
+<li>2</li>
+<li>"NA"</li>
+<li>24</li>
+<li>5</li>
+</ul></li>
+
+<li>Use a <code>for</code> loop to iterate over this list.</li>
+<li>In the body of the <code>for</code> loop, compute \(2x + 1\), where \(x\) is the current element of
+the list.</li>
+<li>Store the result of this computation in a new variable \(y\), and then print y.</li>
+</ul>
+
+<p>
+<b>Note</b> You cannot compute \(2x + 1\) of "NA", therefore you will to use an <code>if</code> statement
+to skip onto the next iteration if it encounters this. <b>Hint</b> try: <code>type(...) =!=</code> <code>str</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb423188" class="outline-4">
+<h4 id="orgb423188"><span class="section-number-4">2.4.10.</span> While loop</h4>
+<div class="outline-text-4" id="text-2-4-10">
+<p>
+A <code>while</code> loop is another looping concept like <code>for</code> but it can loop for an arbitrary
+amount of times. A <code>while</code> loop looks to see if the condition is <code>True</code>, and if it is, it
+will execute the body.
+</p>
+
+<p>
+The syntax of the while loop is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">while</span> &lt;condition&gt;:
+<span style="background-color: #f2f2f2;"> </span>   &lt;body&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">i</span> = 0
+
+<span style="color: #a020f0;">while</span> i &lt; 3:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(i)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">i</span> = i + 1
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 0
+# =&gt; 1
+# =&gt; 2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9d0dfc5" class="outline-3">
+<h3 id="org9d0dfc5"><span class="section-number-3">2.5.</span> Functions</h3>
+<div class="outline-text-3" id="text-2-5">
+</div>
+<div id="outline-container-orgc139746" class="outline-4">
+<h4 id="orgc139746"><span class="section-number-4">2.5.1.</span> Functions</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<p>
+Functions are a re-usable set of instructions that can take some arguments and
+possible return something.
+</p>
+
+<p>
+The basic structure of a function is as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> &lt;function_name&gt;(args*):
+<span style="background-color: #f2f2f2;"> </span>   &lt;body&gt;
+<span style="background-color: #f2f2f2;"> </span>   (optional) <span style="color: #a020f0;">return</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>args*</code> are 0 to many comma separated symbols.</li>
+<li><code>body</code> is to be indented by 4 spaces.</li>
+</ul>
+
+<p>
+This is only the function <i>definition</i> however. To make it do something, we must <i>'call'</i>
+the function, and supply the arguments as specified in the definition.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_hello</span>():   <span style="color: #b22222;"># </span><span style="color: #b22222;">function definition</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Hello, World!"</span>)
+
+say_hello()  <span style="color: #b22222;"># </span><span style="color: #b22222;">calling the function</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge39e454" class="outline-4">
+<h4 id="orge39e454"><span class="section-number-4">2.5.2.</span> Functions</h4>
+<div class="outline-text-4" id="text-2-5-2">
+<p>
+We've already seen some functions provided by Python.
+</p>
+
+<p>
+<code>print</code> itself is a function with a single argument: what we want to print.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Hello, World!"</span>)
+<span style="color: #b22222;"># </span><span style="color: #b22222;">^         ^</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">|         |</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">| user supplied argument</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">|</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">function name </span>
+</pre>
+</div>
+
+<p>
+<code>set</code> is another function that takes a single argument: a collection of data with which
+to make a set:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #483d8b;">set</span>([1, 2, 2, 3, 4])
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98abee6" class="outline-4">
+<h4 id="org98abee6"><span class="section-number-4">2.5.3.</span> Example usage of a function</h4>
+<div class="outline-text-4" id="text-2-5-3">
+<p>
+Let's make a function that takes two numbers and adds them together:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">my_addition</span>(a, b):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">result</span> = a + b
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> result
+
+<span style="color: #a0522d;">x</span> = 2
+<span style="color: #a0522d;">y</span> = 3
+<span style="color: #a0522d;">z</span> = my_addition(2, 3)  <span style="color: #b22222;"># </span><span style="color: #b22222;">return 5 and stores in z</span>
+<span style="color: #a020f0;">print</span>(z)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 5
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6dd2dbe" class="outline-4">
+<h4 id="org6dd2dbe"><span class="section-number-4">2.5.4.</span> Functions &#x2013; Quick Exercise</h4>
+<div class="outline-text-4" id="text-2-5-4">
+<ul class="org-ul">
+<li>Create a function called <code>my_square</code>. This function should take one argument (you can
+call this argument what you like).</li>
+<li>The body of the function should compute and return the square of the argument.</li>
+<li>Call this function with <code>5.556</code>.</li>
+<li>Store the result of calling this function, and print it.</li>
+<li>What is the result?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd84a86b" class="outline-4">
+<h4 id="orgd84a86b"><span class="section-number-4">2.5.5.</span> Re-usability with Functions</h4>
+<div class="outline-text-4" id="text-2-5-5">
+<p>
+Functions are better illustrated through some examples, so let's see some!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">name_1</span> = <span style="color: #8b2252;">"john"</span>
+<span style="color: #a0522d;">name_2</span> = <span style="color: #8b2252;">"mary"</span>
+<span style="color: #a0522d;">name_3</span> = <span style="color: #8b2252;">"michael"</span>
+
+<span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Hello "</span> + name_1 + <span style="color: #8b2252;">", how are you?"</span>)
+<span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Hello "</span> + name_2 + <span style="color: #8b2252;">", how are you?"</span>)
+<span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Hello "</span> + name_3 + <span style="color: #8b2252;">", how are you?"</span>)
+</pre>
+</div>
+
+<p>
+The above is pretty wasteful. Why? Because we are performing the exact same
+operation multiple times, with only the variable changed.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4159757" class="outline-4">
+<h4 id="org4159757"><span class="section-number-4">2.5.6.</span> Re-usability with Functions</h4>
+<div class="outline-text-4" id="text-2-5-6">
+<p>
+By abstracting the actions we want to perform into a function, we can ultimately
+reduce the amount of code we write. <i>Be a lazy programmer!</i>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">name_1</span> = <span style="color: #8b2252;">"john"</span>
+<span style="color: #a0522d;">name_2</span> = <span style="color: #8b2252;">"mary"</span>
+<span style="color: #a0522d;">name_3</span> = <span style="color: #8b2252;">"michael"</span>
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_hello</span>(name):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Hello "</span> + name + <span style="color: #8b2252;">", how are you?"</span>)
+
+say_hello(name_1)
+say_hello(name_2)
+say_hello(name_3)
+</pre>
+</div>
+
+<p>
+In this example, we've used the function as defined with the <code>def</code> pattern to write
+the <code>print</code> statement once. Then, we've called the function with each variable as its
+argument.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf3fe1a0" class="outline-4">
+<h4 id="orgf3fe1a0"><span class="section-number-4">2.5.7.</span> Named parameters</h4>
+<div class="outline-text-4" id="text-2-5-7">
+<p>
+We've seen in previous examples that, when we create a function, we give each of the
+arguments (if there are any) a name.
+</p>
+
+<p>
+When calling this function, we can specify these same names such as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_hello</span>(name):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Hello,"</span>, name)
+
+say_hello(<span style="color: #8b2252;">"Micheal"</span>)
+say_hello(name=<span style="color: #8b2252;">"Micheal"</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; Hello, Micheal
+# =&gt; Hello, Micheal
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org516a781" class="outline-4">
+<h4 id="org516a781"><span class="section-number-4">2.5.8.</span> Named parameters</h4>
+<div class="outline-text-4" id="text-2-5-8">
+<p>
+By specifying the name of the parameter we're using with the called function, we can
+change the order
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_greeting</span>(greeting, name):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(greeting, name, <span style="color: #8b2252;">"I hope you're having a good day"</span>)
+
+say_greeting(name=<span style="color: #8b2252;">"John"</span>, greeting=<span style="color: #8b2252;">"Hi"</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; Hi John I hope you're having a good day
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga47c1d4" class="outline-4">
+<h4 id="orga47c1d4"><span class="section-number-4">2.5.9.</span> Optional/Default/Positional arguments</h4>
+<div class="outline-text-4" id="text-2-5-9">
+<p>
+When we call a function with arguments without naming them, we are supplying them by
+<i>position</i>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_greeting</span>(greeting, name):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(greeting, name, <span style="color: #8b2252;">"I hope you're having a good day"</span>)
+
+say_greeting(<span style="color: #b22222;">#</span><span style="color: #b22222;">first position, #section position)</span>
+</pre>
+</div>
+
+<p>
+The first position gets mapped to variable name of <code>greeting</code> inside the body of the
+<code>say_greeting</code> function, while the second position gets mapped to <code>name</code>. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org503ad68" class="outline-4">
+<h4 id="org503ad68"><span class="section-number-4">2.5.10.</span> Optional/Default/Positional arguments</h4>
+<div class="outline-text-4" id="text-2-5-10">
+<p>
+Sometimes when creating a function we may want to use default arguments, these are
+arguments that are used if the call to the function does not specify what their value
+should be. For example.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_greeting</span>(name, greeting=<span style="color: #8b2252;">"Hello"</span>):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(greeting, name, <span style="color: #8b2252;">"I hope you're having a good day"</span>)
+
+say_greeting(<span style="color: #8b2252;">"John"</span>)
+say_greeting(<span style="color: #8b2252;">"John"</span>, <span style="color: #8b2252;">"Hi"</span>)  <span style="color: #b22222;"># </span><span style="color: #b22222;">supply greeting as positional argument</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; Hello John I hope you're having a good day
+# =&gt; Hi John I hope you're having a good day
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2931304" class="outline-4">
+<h4 id="org2931304"><span class="section-number-4">2.5.11.</span> Optional/Default/Positional arguments</h4>
+<div class="outline-text-4" id="text-2-5-11">
+<p>
+<b>Note</b> if you supply a default argument in the function definition, all arguments after
+this default argument must also supply a default argument.
+</p>
+
+<p>
+So, this <b>won't</b> work:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_greeting</span>(name=<span style="color: #8b2252;">"Jane"</span>, greeting):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(greeting, name, <span style="color: #8b2252;">"I hope you're having a good day"</span>)
+
+say_greeting(<span style="color: #8b2252;">"John"</span>, <span style="color: #8b2252;">"Hi"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4f9c374" class="outline-4">
+<h4 id="org4f9c374"><span class="section-number-4">2.5.12.</span> Recap on arguments</h4>
+<div class="outline-text-4" id="text-2-5-12">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #b22222;"># </span><span style="color: #b22222;">defining the function</span>
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_greeting</span>(name, greeting)  <span style="color: #b22222;"># </span><span style="color: #b22222;">no default arguments</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_greeting</span>(name, greeting=<span style="color: #8b2252;">"Hello"</span>)  <span style="color: #b22222;"># </span><span style="color: #b22222;">greeting is a default argument</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">say_greeting</span>(name=<span style="color: #8b2252;">"Jane"</span>, greeting=<span style="color: #8b2252;">"Hello"</span>)  <span style="color: #b22222;"># </span><span style="color: #b22222;">both arguments have a default</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">calling the functions</span>
+
+say_greeting(<span style="color: #8b2252;">"John"</span>, <span style="color: #8b2252;">"Hi"</span>)  <span style="color: #b22222;"># </span><span style="color: #b22222;">both arguments are provided by position</span>
+say_greeting(name=<span style="color: #8b2252;">"John"</span>, greeting=<span style="color: #8b2252;">"Hi"</span>)  <span style="color: #b22222;"># </span><span style="color: #b22222;">arguments are supplied by name</span>
+say_greeting(greeting=<span style="color: #8b2252;">"Hi"</span>, name=<span style="color: #8b2252;">"John"</span>)  <span style="color: #b22222;"># </span><span style="color: #b22222;">the position of named arguments do not matter</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org407807a" class="outline-4">
+<h4 id="org407807a"><span class="section-number-4">2.5.13.</span> Function doc-strings</h4>
+<div class="outline-text-4" id="text-2-5-13">
+<p>
+To make it clear for a human to quickly understand what a function is doing, you can
+add an optional doc-string. This is a string that is added directly after the initial
+definition of the function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">my_function</span>(x, y):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #8b2252;">"""I am a docstring!!!"""</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x + y
+</pre>
+</div>
+
+<p>
+Some common use cases for docstrings are explaining what the parameters are that it
+expects, and what it returns.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeace848" class="outline-4">
+<h4 id="orgeace848"><span class="section-number-4">2.5.14.</span> Multi-line docstrings</h4>
+<div class="outline-text-4" id="text-2-5-14">
+<p>
+If your explanation is a little longer than a line, a multiline docstring can be
+created as long as you're using <code>"""</code> three quotation marks either side of the string
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">my_function</span>(x, y):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #8b2252;">"""</span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   This is my realllly long docstring</span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   that explains how the function works. But sometimes</span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   its best not to explain the obvious</span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   """</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x + y
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge9e146b" class="outline-4">
+<h4 id="orge9e146b"><span class="section-number-4">2.5.15.</span> Understanding scope</h4>
+<div class="outline-text-4" id="text-2-5-15">
+<p>
+In this example we have two scopes which can be easily seen by the indentation. The
+first is the <i>global</i> scope. The second scope is the scope of the function. The scope
+of the function can reference variables in the larger scope. But once the function
+scope exits, we can no longer reference the variables from the function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_addition</span>(y):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x + y
+
+<span style="color: #a020f0;">print</span>(compute_addition(10))
+<span style="color: #a020f0;">print</span>(x)
+<span style="color: #a020f0;">print</span>(y)  <span style="color: #b22222;"># </span><span style="color: #b22222;">does not work</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 20
+# =&gt; 10
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org13fcdcd" class="outline-4">
+<h4 id="org13fcdcd"><span class="section-number-4">2.5.16.</span> Understanding scope</h4>
+<div class="outline-text-4" id="text-2-5-16">
+<p>
+Even though we can reference the global scope variable from the scope of the
+function, we can't modify it like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_addition_2</span>(y):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">x</span> = x + 5  <span style="color: #b22222;"># </span><span style="color: #b22222;">error local variable referenced before assignment</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x + y
+
+<span style="color: #a020f0;">print</span>(compute_addition_2(10))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc578ab6" class="outline-4">
+<h4 id="orgc578ab6"><span class="section-number-4">2.5.17.</span> Understanding scope</h4>
+<div class="outline-text-4" id="text-2-5-17">
+<p>
+If we really wanted to reference a variable in a global scope and modify its value,
+we could use the <code>global</code> keyword. Doing this makes the
+function output something different every time it is called. This can make it
+difficult to debug incorrect programs.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_addition_2</span>(y):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">global</span> x
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">x</span> = x + 5
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x + y
+
+<span style="color: #a020f0;">print</span>(compute_addition_2(10))
+<span style="color: #a020f0;">print</span>(x)
+<span style="color: #a020f0;">print</span>(compute_addition_2(10))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 25
+# =&gt; 15
+# =&gt; 30
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3967cc6" class="outline-4">
+<h4 id="org3967cc6"><span class="section-number-4">2.5.18.</span> Understanding scope</h4>
+<div class="outline-text-4" id="text-2-5-18">
+<p>
+In almost all cases, avoid using global variables. Instead pass the variables as
+parameters. This can reduce a source of potential errors and ensure that if a
+function is called multiple times, the output can be more consistent and expected.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 10
+
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_addition_3</span>(x, y):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">x</span> = x + 5
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x + y
+
+<span style="color: #a020f0;">print</span>(compute_addition_3(x, 10))
+<span style="color: #a020f0;">print</span>(x)
+<span style="color: #a020f0;">print</span>(compute_addition_3(x, 10))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 25
+# =&gt; 10
+# =&gt; 25
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ee382b" class="outline-2">
+<h2 id="org7ee382b"><span class="section-number-2">3.</span> Exercise</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgf67009d" class="outline-3">
+<h3 id="orgf67009d"><span class="section-number-3">3.1.</span> Library system</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-orgf878f4d" class="outline-4">
+<h4 id="orgf878f4d"><span class="section-number-4">3.1.1.</span> Use what you've learnt!</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+We're going to create a library system to help locate and lookup information about
+books. For example, we want to know the author of book called 'Moby Dick'.
+</p>
+
+<p>
+To create this system, we are going to do it in stages. First, we will want to create
+our database of books:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Title</th>
+<th scope="col" class="org-left">Author</th>
+<th scope="col" class="org-right">Release Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Moby Dick</td>
+<td class="org-left">Herman Melville</td>
+<td class="org-right">1851</td>
+</tr>
+
+<tr>
+<td class="org-left">A Study in Scarlet</td>
+<td class="org-left">Sir Arthur Conan Doyle</td>
+<td class="org-right">1887</td>
+</tr>
+
+<tr>
+<td class="org-left">Frankenstein</td>
+<td class="org-left">Mary Shelley</td>
+<td class="org-right">1818</td>
+</tr>
+
+<tr>
+<td class="org-left">Hitchhikers Guide to the Galaxy</td>
+<td class="org-left">Douglas Adams</td>
+<td class="org-right">1879</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Our database is going to be a list of dictionaries. Where each dictionary is a row
+from this table. For example, one of the dictionaries will have the key "title" and a
+value "Moby Dick".
+</p>
+
+<p>
+Create this database and call it <code>db</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2f81d4d" class="outline-4">
+<h4 id="org2f81d4d"><span class="section-number-4">3.1.2.</span> Locating Books</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<ul class="org-ul">
+<li>Create a function called <code>locate_by_title</code> that takes the database to look through,
+and the title to look up as arguments.</li>
+<li>This function should check each dictionary, and if the title is the same as what
+was searched for, it should return the whole dictionary.</li>
+<li>Test this function by calling the <code>locate_by_title</code> function with <code>db</code> and
+<code>"Frankenstein"</code>. You should get <code>{"title": "Frankenstein", "author": ...}</code>.</li>
+</ul>
+
+<p>
+<b>Note</b> you should include docstrings to describe the arguments to the function, and
+what it will return.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge256b2a" class="outline-4">
+<h4 id="orge256b2a"><span class="section-number-4">3.1.3.</span> Selecting a subset</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+Now that we can find books by the title name, we also want to find all books that
+were released after a certain data.
+</p>
+
+<ul class="org-ul">
+<li>Create a function called <code>books_released_after</code> that takes two arguments: the
+database to look through, and the year.</li>
+<li>This function should look through the database, if it finds a book that was
+released after the year, it should add it to a list of books that is returned from
+this function.</li>
+<li>Test this function by calling <code>books_released_after</code> with <code>db</code> and <code>1850</code>. This function
+call should return a list containing three dictionaries. The first entry should be
+'Moby Dick' and the section should be 'A Study in Scarlet', etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3bc3ffc" class="outline-4">
+<h4 id="org3bc3ffc"><span class="section-number-4">3.1.4.</span> Updating our database</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<p>
+Oh no! 'Hitchhikers Guide to the Galaxy' was released in 1979 not 1879, there must
+have been a typo. Let's create a function to update this.
+</p>
+
+<ul class="org-ul">
+<li><p>
+Create a function called <code>update</code>, that takes 5 arguments: 1) the database to
+update, 2) the key of the value we want to update 3) the value we want to update it
+to 4) the key we want to check to find out if we have the correct book and 5) the
+value of the key to check if we have the correct book.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">update(db,
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>  key=<span style="color: #8b2252;">"release year"</span>,
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>  value=1979,
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>  where_key=<span style="color: #8b2252;">"title"</span>,
+<span style="background-color: #f2f2f2;"> </span>   <span style="background-color: #f2f2f2;"> </span>  where_value=<span style="color: #8b2252;">"Hitchhikers Guide to the Galaxy"</span>)
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge84c098" class="outline-4">
+<h4 id="orge84c098"><span class="section-number-4">3.1.5.</span> Extended exercise</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<ul class="org-ul">
+<li>In the previous steps we created functions <code>locate_by_title</code> and
+<code>books_released_after</code>. These two functions are similar in a way that they are
+selecting a subset of our database (just by different criteria).</li>
+<li>For this harder exercise, can we create a single function called <code>query</code> that allows
+us to do both <code>locate_by_title</code> and <code>books_released_after</code>.</li>
+<li><p>
+An example call to this <code>query</code> function may look like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">results</span> = query(db,
+                where_key=<span style="color: #8b2252;">"title"</span>,
+                where_value=<span style="color: #8b2252;">"Moby Dick"</span>,
+                where_qualifier=<span style="color: #8b2252;">"exactly"</span>)
+</pre>
+</div></li>
+
+<li><code>where_qualifier</code> should accept strings like <code>"exactly"</code>, <code>"greater than"</code>, and <code>"less
+  than"</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org72309ac" class="outline-2">
+<h2 id="org72309ac"><span class="section-number-2">4.</span> What lies ahead</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org3debc97" class="outline-3">
+<h3 id="org3debc97"><span class="section-number-3">4.1.</span> What lies ahead</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-org978a6c2" class="outline-4">
+<h4 id="org978a6c2"><span class="section-number-4">4.1.1.</span> What lies ahead</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<ul class="org-ul">
+<li>Now that we've seen <i>some</i> of the basic syntax, we will continue on and learn how to
+work more with data. This means we're going to revisit lists/sets/dictionaries, and
+look at methods like <code>.items()</code>, <code>.values()</code>, etc, and find out why they look slightly
+different to the functions we've created in this lecture!</li>
+<li>We're going to look at object-oriented programming (OOP) in python and learn how to
+use the style of programming to best effect.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 11th October 2021</p>
+<p class="author">Author: Jay Morgan</p>
+<p class="date">Created: 2021-10-16 sam. 10:30</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
