@@ -1,0 +1,2189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-10-26 mar. 15:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Programming Level-up</title>
+<meta name="author" content="Jay Morgan" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Programming Level-up
+<br />
+<span class="subtitle">Lecture 3 &#x2013; Modules &amp; Development Environments</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org56a1475">1. Modules</a>
+<ul>
+<li><a href="#org97b7343">1.1. Python Modules</a>
+<ul>
+<li><a href="#org16e3b3a">1.1.1. Importing in python</a></li>
+<li><a href="#org6899cea">1.1.2. The basic structure of importing</a></li>
+<li><a href="#orgf2bc20c">1.1.3. The basic structure of importing</a></li>
+<li><a href="#org5efddcf">1.1.4. Importing specific items</a></li>
+<li><a href="#orgadbac4d">1.1.5. Don't do this!</a></li>
+<li><a href="#org6a8c2f2">1.1.6. Don't do this!</a></li>
+<li><a href="#org9ac5161">1.1.7. Alias</a></li>
+<li><a href="#org5e9e498">1.1.8. Importing local libraries</a></li>
+<li><a href="#org7f49bf6">1.1.9. Importing local libraries</a></li>
+<li><a href="#orgd1aa952">1.1.10. Quick exercise &#x2013; imports</a></li>
+<li><a href="#orgcdfb188">1.1.11. Shortcuts with <code>__init__.py</code></a></li>
+<li><a href="#orgb846e60">1.1.12. What is <code>__main__</code>?</a></li>
+<li><a href="#org0091ce5">1.1.13. What is <code>__main__</code>?</a></li>
+<li><a href="#org6c5b26f">1.1.14. What is <code>__main__</code>?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge3c09b7">2. Working with Files and Directories</a>
+<ul>
+<li><a href="#orgd8cafa3">2.1. Paths</a>
+<ul>
+<li><a href="#orgd810376">2.1.1. Current working directory</a></li>
+<li><a href="#org3fe7cc8">2.1.2. Listing directories</a></li>
+<li><a href="#org1fbfd39">2.1.3. Testing for files or directories</a></li>
+<li><a href="#org1b9a8f2">2.1.4. Using wildcards</a></li>
+<li><a href="#orgc3db825">2.1.5. Pathlib &#x2013; a newer way</a></li>
+<li><a href="#org2ce578d">2.1.6. Pathlib &#x2013; convenient functions</a></li>
+<li><a href="#orge7678d6">2.1.7. Converting Path into a string</a></li>
+<li><a href="#org64d20a7">2.1.8. Quick exercise &#x2013; locating files</a></li>
+</ul>
+</li>
+<li><a href="#org4b8e427">2.2. Files</a>
+<ul>
+<li><a href="#orga5212c4">2.2.1. Reading files</a></li>
+<li><a href="#orgc369f21">2.2.2. Reading files &#x2013; lines or entire file?</a></li>
+<li><a href="#orgfbe93a9">2.2.3. Reading files</a></li>
+<li><a href="#org8224e26">2.2.4. Writing files</a></li>
+<li><a href="#org5ae14f0">2.2.5. Appending to files</a></li>
+<li><a href="#org358724d">2.2.6. Quick exercise &#x2013; reading/writing files</a></li>
+<li><a href="#org4fdb7ae">2.2.7. Reading CSV files &#x2013; builtin</a></li>
+<li><a href="#org31848ba">2.2.8. Writing a CSV file &#x2013; builtin</a></li>
+<li><a href="#org6d68b2a">2.2.9. Quick exercise &#x2013; reading/writing CSV files</a></li>
+<li><a href="#orgc50e5d7">2.2.10. Read JSON files &#x2013; builtin</a></li>
+<li><a href="#org5699f5e">2.2.11. Write JSON files &#x2013; builtin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org73cd119">3. Package Management</a>
+<ul>
+<li><a href="#org93ba27b">3.1. Package Management</a>
+<ul>
+<li><a href="#org3079704">3.1.1. Introduction</a></li>
+<li><a href="#org4950e31">3.1.2. Virtual Environments</a></li>
+</ul>
+</li>
+<li><a href="#org1446bcd">3.2. Anaconda</a>
+<ul>
+<li><a href="#org6ec33ac">3.2.1. What is Anaconda?</a></li>
+<li><a href="#orgfade135">3.2.2. Installing Anaconda</a></li>
+<li><a href="#orga9fbc8c">3.2.3. Working with Anaconda &#x2013; creating an environment</a></li>
+<li><a href="#orge91cdd5">3.2.4. Working with Anaconda &#x2013; activating an environment</a></li>
+<li><a href="#orgfad6eb7">3.2.5. Working with Anaconda &#x2013; de-activating an environment</a></li>
+<li><a href="#org3b281ec">3.2.6. Working with Anaconda &#x2013; installing using conda</a></li>
+<li><a href="#orgace7ced">3.2.7. Working with Anaconda &#x2013; package versions</a></li>
+<li><a href="#org039b741">3.2.8. Installing a specific version of Python</a></li>
+<li><a href="#orgfa6e74b">3.2.9. Working with Anaconda &#x2013; conda-forge and other repositories</a></li>
+<li><a href="#org23102e5">3.2.10. Working with Anaconda &#x2013; exporting an environment</a></li>
+<li><a href="#org80e51d2">3.2.11. Working with Anaconda &#x2013; creating environment from existing</a></li>
+</ul>
+</li>
+<li><a href="#org919c7e1">3.3. Pip</a>
+<ul>
+<li><a href="#orgdd656e2">3.3.1. What is Pip?</a></li>
+<li><a href="#orgcf16e2c">3.3.2. Installing packages with pip</a></li>
+<li><a href="#orge0c1036">3.3.3. Installing specific versions</a></li>
+<li><a href="#org6c9791b">3.3.4. Upgrade packages with pip</a></li>
+<li><a href="#org8c2d8b3">3.3.5. Export requirements file</a></li>
+<li><a href="#org2defb03">3.3.6. Installing multiple packages from a requirements file</a></li>
+<li><a href="#org2bcd143">3.3.7. Anaconda handles both conda and pip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org3f84f38">4. Better development environments</a>
+<ul>
+<li><a href="#orga3dfc50">4.1. PyCharm</a>
+<ul>
+<li><a href="#orgfba5535">4.1.1. PyCharm</a></li>
+<li><a href="#orge474fe3">4.1.2. PyCharm &#x2013; installing</a></li>
+<li><a href="#org5c28d6b">4.1.3. PyCharm &#x2013; using PyCharm</a></li>
+</ul>
+</li>
+<li><a href="#orge98fa1b">4.2. Jupyter</a>
+<ul>
+<li><a href="#orgf0d89d1">4.2.1. What is a Jupyter notebook?</a></li>
+<li><a href="#orgb067649">4.2.2. Installing Jupyter</a></li>
+<li><a href="#org2dbd37f">4.2.3. Starting the server</a></li>
+<li><a href="#orgcdd9be1">4.2.4. Using the interface</a></li>
+<li><a href="#orga5e473b">4.2.5. Markdown 101</a></li>
+<li><a href="#org80701c3">4.2.6. A slightly better environment &#x2013; jupyterlab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org88b19d1">5. Style guide-line</a>
+<ul>
+<li><a href="#orga1752b3">5.1. Styles</a>
+<ul>
+<li><a href="#org238319b">5.1.1. A sense of style</a></li>
+<li><a href="#orgb4fc2fb">5.1.2. Meaningful names</a></li>
+<li><a href="#org21cd9bf">5.1.3. Meaningful names</a></li>
+<li><a href="#org6252956">5.1.4. Use builtins where possible</a></li>
+<li><a href="#org47989d2">5.1.5. Use docstrings and comments</a></li>
+<li><a href="#orgac8a43a">5.1.6. Using agreed upon casing</a></li>
+<li><a href="#org2ade0c8">5.1.7. Use type-annotations if possible</a></li>
+<li><a href="#org0339303">5.1.8. Organise your imports</a></li>
+<li><a href="#org430efd0">5.1.9. Functions should do one thing only</a></li>
+<li><a href="#orgbce2355">5.1.10. Functions as re-usability</a></li>
+<li><a href="#org6681496">5.1.11. Be wary of God classes</a></li>
+<li><a href="#orgf7d3259">5.1.12. Documentation</a></li>
+<li><a href="#org4b278a7">5.1.13. Perform testing!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org56a1475" class="outline-2">
+<h2 id="org56a1475"><span class="section-number-2">1.</span> Modules</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org97b7343" class="outline-3">
+<h3 id="org97b7343"><span class="section-number-3">1.1.</span> Python Modules</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org16e3b3a" class="outline-4">
+<h4 id="org16e3b3a"><span class="section-number-4">1.1.1.</span> Importing in python</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+<img src="images/python.png" alt="python.png" />
+<a href="https://xkcd.com/353/">https://xkcd.com/353/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6899cea" class="outline-4">
+<h4 id="org6899cea"><span class="section-number-4">1.1.2.</span> The basic structure of importing</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+Modules or packages are other <i>scripts or programs</i> that can be imported into other
+scripts. This definition is very general, but we shall see how flexible importing in
+Python can be.
+</p>
+
+<p>
+The basic syntax of importing is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> &lt;package_name&gt;
+
+&lt;package_name&gt;.&lt;function/<span style="color: #a020f0;">class</span>/variable/etc&gt;
+</pre>
+</div>
+
+<p>
+If we import <code>&lt;package_name&gt;</code> using this syntax, we always have to use the dot <code>.</code> syntax
+to refer to something within this package.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf2bc20c" class="outline-4">
+<h4 id="orgf2bc20c"><span class="section-number-4">1.1.3.</span> The basic structure of importing</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+Let's take a look at a very basic example.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> math
+
+<span style="color: #a0522d;">radius</span> = 6.4  <span style="color: #b22222;"># </span><span style="color: #b22222;">cm</span>
+<span style="color: #a0522d;">circum</span> = 2 * math.pi * radius
+</pre>
+</div>
+
+<p>
+In this example, we are importing the built-in <code>math</code> package. This package contains a
+bunch of useful functions and variables. We're not going to take a look at them
+here, as we're focusing on importing, but you can see we're referring to a variable
+called <code>pi</code> to calculate the circumference of a circle.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5efddcf" class="outline-4">
+<h4 id="org5efddcf"><span class="section-number-4">1.1.4.</span> Importing specific items</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+If we didn't always want to specify the package name when we only want to use
+something specific from a package, we can directly import that something.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> &lt;package_name&gt; <span style="color: #a020f0;">import</span> &lt;function/<span style="color: #a020f0;">class</span>/variable/etc&gt;
+
+&lt;function/<span style="color: #a020f0;">class</span>/variable/etc&gt;
+</pre>
+</div>
+
+<p>
+As you can see, we're using the <code>from ... import ...</code> syntax.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> math <span style="color: #a020f0;">import</span> pi
+
+<span style="color: #a0522d;">circumference</span> = 2 * pi * radius
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgadbac4d" class="outline-4">
+<h4 id="orgadbac4d"><span class="section-number-4">1.1.5.</span> Don't do this!</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<p>
+When using <code>from ... import ...</code>, there is a wildcard <code>*</code> that we <b>could</b> use. You may
+sometimes see this style of importing when looking at documentation online:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> &lt;package_name&gt; <span style="color: #a020f0;">import</span> *
+
+&lt;function/<span style="color: #a020f0;">class</span>/variable/etc&gt;
+</pre>
+</div>
+
+<p>
+However, this can create many problems with reading your program code
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6a8c2f2" class="outline-4">
+<h4 id="org6a8c2f2"><span class="section-number-4">1.1.6.</span> Don't do this!</h4>
+<div class="outline-text-4" id="text-1-1-6">
+<p>
+Which module does <code>my_function()</code> originate? Are there are common names between the
+two? Which would be used?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> my_module <span style="color: #a020f0;">import</span> *
+<span style="color: #a020f0;">from</span> my_second_module <span style="color: #a020f0;">import</span> *
+
+my_function()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9ac5161" class="outline-4">
+<h4 id="org9ac5161"><span class="section-number-4">1.1.7.</span> Alias</h4>
+<div class="outline-text-4" id="text-1-1-7">
+<p>
+When importing, we can optionally create an alias to a symbol. Here we're creating an
+alias to the existing <code>pi</code> in <code>math</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> math <span style="color: #a020f0;">import</span> pi <span style="color: #a020f0;">as</span> decilious_pi
+
+<span style="color: #a0522d;">circumference</span> = 2 * delicious_pi * radius
+</pre>
+</div>
+
+<p>
+There are some very common conventions of aliasing very highly used packages that we
+will definitely revisit in another lecture!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> numpy <span style="color: #a020f0;">as</span> np
+<span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
+<span style="color: #a020f0;">import</span> matplotlib.pyplot <span style="color: #a020f0;">as</span> plt
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e9e498" class="outline-4">
+<h4 id="org5e9e498"><span class="section-number-4">1.1.8.</span> Importing local libraries</h4>
+<div class="outline-text-4" id="text-1-1-8">
+<p>
+let's consider a hypothetical local directory:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">main.py
+src/
+ |-- my_module.py
+ |-- module_1/
+        |-- cats.py
+        |-- dogs.py
+</pre>
+</div>
+
+<p>
+If we wanted to import something from <code>my_module.py</code> we would do:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> src.my_module <span style="color: #a020f0;">import</span> MyAwesomeClass
+
+<span style="color: #a0522d;">my_class</span> = MyAwesomeclass()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7f49bf6" class="outline-4">
+<h4 id="org7f49bf6"><span class="section-number-4">1.1.9.</span> Importing local libraries</h4>
+<div class="outline-text-4" id="text-1-1-9">
+<div class="org-src-container">
+<pre class="src src-bash">main.py
+src/
+ |-- my_module.py
+ |-- module_1/
+        |-- cats.py
+        |-- dogs.py
+</pre>
+</div>
+
+<p>
+Here is another example for increased nesting of directories:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> src.module_1 <span style="color: #a020f0;">import</span> cats
+<span style="color: #a020f0;">from</span> src.module_1.dogs <span style="color: #a020f0;">import</span> Dog
+
+<span style="color: #a0522d;">cat</span> = cats.Cat()
+<span style="color: #a0522d;">dog</span> = Dog()
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd1aa952" class="outline-4">
+<h4 id="orgd1aa952"><span class="section-number-4">1.1.10.</span> Quick exercise &#x2013; imports</h4>
+<div class="outline-text-4" id="text-1-1-10">
+<ul class="org-ul">
+<li>Create a directory to store your scripts</li>
+<li>In this directory, create a file called <code>main.py</code>.</li>
+<li>Create a sub-directory called <code>src</code>. In <code>src</code> create another file called <code>library.py</code>.</li>
+<li>In <code>library.py</code> create a class (that doesn't do anything right now) called <code>Database</code>.</li>
+<li>In <code>main.py</code>, create an instance of <code>Database</code>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcdfb188" class="outline-4">
+<h4 id="orgcdfb188"><span class="section-number-4">1.1.11.</span> Shortcuts with <code>__init__.py</code></h4>
+<div class="outline-text-4" id="text-1-1-11">
+<p>
+Let's say you often import <code>Cat</code> and <code>Dog</code>. We can use a file called <code>__init__.py</code> to help
+us and make the imports shorter. This fill gets executed when its module is imported.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">main.py
+src/
+ |-- my_module.py
+ |-- module_1/
+        |-- __init__.py
+        |-- cats.py
+        |-- dogs.py
+</pre>
+</div>
+
+<p>
+In <code>__init__.py</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> cats <span style="color: #a020f0;">import</span> Cat
+<span style="color: #a020f0;">from</span> dogs <span style="color: #a020f0;">import</span> Dog
+</pre>
+</div>
+
+<p>
+In <code>main.py</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> src.module_1 <span style="color: #a020f0;">import</span> Cat, Dog
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb846e60" class="outline-4">
+<h4 id="orgb846e60"><span class="section-number-4">1.1.12.</span> What is <code>__main__</code>?</h4>
+<div class="outline-text-4" id="text-1-1-12">
+<p>
+Consider a file with the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = 2
+<span style="color: #a0522d;">y</span> = 1
+<span style="color: #a0522d;">z</span> = x + y
+
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyAwesomeClass</span>:
+<span style="background-color: #f2f2f2;"> </span>   ...
+</pre>
+</div>
+
+<p>
+If we import this file in another script, <code>x, y,</code> and <code>z</code> will be computed. In this very
+simple case this will have very little impact. But what if the computation of these
+takes a very long time?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0091ce5" class="outline-4">
+<h4 id="org0091ce5"><span class="section-number-4">1.1.13.</span> What is <code>__main__</code>?</h4>
+<div class="outline-text-4" id="text-1-1-13">
+<p>
+Here we are wrapping any global computations into a appropriate functions. This
+prevents the global variables being computed as soon as the script is imported.
+</p>
+
+<p>
+Now, if we wanted to compute x, y, and z if this script is run, we could use:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">if</span> <span style="color: #483d8b;">__name__</span> == <span style="color: #8b2252;">"__main__"</span>:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #b22222;"># </span><span style="color: #b22222;">do something</span>
+</pre>
+</div>
+
+<p>
+Anything within the scope of the <code>if</code> function will only be run if the current file is
+the script that is being run directly (i.e. <code>python &lt;the-file&gt;.py</code>). If the script is
+being imported, the statements within this if scope will not be run.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c5b26f" class="outline-4">
+<h4 id="org6c5b26f"><span class="section-number-4">1.1.14.</span> What is <code>__main__</code>?</h4>
+<div class="outline-text-4" id="text-1-1-14">
+<p>
+So if we wanted to run <code>compute()</code> if this file is being run directly, we would write:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute</span>():
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">x</span> = 2
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">y</span> = 1
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">z</span> = x + y
+
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyAwesomeClass</span>:
+<span style="background-color: #f2f2f2;"> </span>   ...
+
+<span style="color: #a020f0;">if</span> <span style="color: #483d8b;">__name__</span> == <span style="color: #8b2252;">"__main__"</span>:
+<span style="background-color: #f2f2f2;"> </span>   compute()
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #b22222;"># </span><span style="color: #b22222;">we can of course use MyAwesomeClass as well</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">my_class</span> = MyAwesomeClass()
+<span style="background-color: #f2f2f2;"> </span>   my_class.do_something()
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge3c09b7" class="outline-2">
+<h2 id="orge3c09b7"><span class="section-number-2">2.</span> Working with Files and Directories</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgd8cafa3" class="outline-3">
+<h3 id="orgd8cafa3"><span class="section-number-3">2.1.</span> Paths</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgd810376" class="outline-4">
+<h4 id="orgd810376"><span class="section-number-4">2.1.1.</span> Current working directory</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+The folder in which you run Python will be the <i>current working directory (CWD)</i>. We can
+print this value with the <code>os.getcwd()</code> function, or change the directory with
+<code>os.chdir(...)</code>. Its important to know what your CWD is as all relative paths (paths
+that do not start with a '/') will be relative to your CWD.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> os
+
+<span style="color: #a020f0;">print</span>(os.getcwd())
+os.chdir(<span style="color: #8b2252;">"../"</span>)
+<span style="color: #a020f0;">print</span>(os.getcwd())
+os.chdir(<span style="color: #8b2252;">"week-3"</span>)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; [...]/Programming Level-up/week-3
+# =&gt; [...]/Programming Level-up
+</pre>
+
+
+<p>
+I've replaced the full path printed by Python with <code>[...]</code> so you can see the
+differences in the paths!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3fe7cc8" class="outline-4">
+<h4 id="org3fe7cc8"><span class="section-number-4">2.1.2.</span> Listing directories</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+Continuing with our usage of the <code>os</code> package, we can use the <code>listdir</code> function to list
+all files within a directory.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">print</span>(os.listdir())
+<span style="color: #a020f0;">print</span>(os.listdir(<span style="color: #8b2252;">"images/"</span>))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; ['images', '__pycache__', 'lecture.pdf', 'lecture.tex', 'data', 'test_file_1.py', 'lecture.org', '_minted-lecture', 'test_file_2.py']
+# =&gt; ['legend-2.png', 'fig-size.png', 'basic.png', 'subplots.png', 'python.png', 'pycharm01.png', 'installing-scikit-learn.png', 'pycharm02.png', 'PyCharm_Icon.png', 'axis.png', 'legend.png', 'complex-pycharm.jpg']
+</pre>
+
+
+<p>
+This returns a list of files and directory relative to your current working
+directory. Notice how from this list you cannot tell if something is a file or
+directory (though the filename does provide some hint).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1fbfd39" class="outline-4">
+<h4 id="org1fbfd39"><span class="section-number-4">2.1.3.</span> Testing for files or directories</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+In the previous example we saw that the items returned by <code>listdir</code> does not specify if
+the item is a file or directory. However, <code>os</code> provides an <code>isfile</code> function in the <code>path</code>
+submodule to test if the argument is a file, else it will be a directory.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">for</span> path <span style="color: #a020f0;">in</span> os.listdir():
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(f<span style="color: #8b2252;">"{path} =&gt; is file: {os.path.isfile(path)}"</span>)
+</pre>
+</div>
+
+<pre class="example" id="org7a819fa">
+Results: 
+# =&gt; images =&gt; is file: False
+# =&gt; __pycache__ =&gt; is file: False
+# =&gt; lecture.pdf =&gt; is file: True
+# =&gt; lecture.tex =&gt; is file: True
+# =&gt; data =&gt; is file: False
+# =&gt; test_file_1.py =&gt; is file: True
+# =&gt; lecture.org =&gt; is file: True
+# =&gt; _minted-lecture =&gt; is file: False
+# =&gt; test_file_2.py =&gt; is file: True
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1b9a8f2" class="outline-4">
+<h4 id="org1b9a8f2"><span class="section-number-4">2.1.4.</span> Using wildcards</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<p>
+If we wanted to get all files within a directory, we could use the <code>glob</code> function from
+the <code>glob</code> package. <code>glob</code> allows us to use the <code>*</code> wildcard. E.g. <code>*.png</code> will list all
+files that end with <code>.png</code>. <code>test-*</code> will list all files that start with <code>test-*</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> glob <span style="color: #a020f0;">import</span> glob
+
+<span style="color: #a020f0;">for</span> fn <span style="color: #a020f0;">in</span> glob(<span style="color: #8b2252;">"images/*"</span>):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(fn)
+</pre>
+</div>
+
+<pre class="example" id="orgb8eb379">
+Results: 
+# =&gt; images/legend-2.png
+# =&gt; images/fig-size.png
+# =&gt; images/basic.png
+# =&gt; images/subplots.png
+# =&gt; images/python.png
+# =&gt; images/pycharm01.png
+# =&gt; images/installing-scikit-learn.png
+# =&gt; images/pycharm02.png
+# =&gt; images/PyCharm_Icon.png
+# =&gt; images/axis.png
+# =&gt; images/legend.png
+# =&gt; images/complex-pycharm.jpg
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc3db825" class="outline-4">
+<h4 id="orgc3db825"><span class="section-number-4">2.1.5.</span> Pathlib &#x2013; a newer way</h4>
+<div class="outline-text-4" id="text-2-1-5">
+<p>
+<code>pathlib</code> is a somewhat recent addition to the Python standard library which makes
+working with files a little easier. Firstly, we can create a <code>Path</code> object, allowing us
+to concatenate paths with the <code>/</code>. Instead of using the <code>glob</code> module, a <code>Path</code> object has
+a <code>glob</code> class method.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> pathlib <span style="color: #a020f0;">import</span> Path
+
+<span style="color: #a0522d;">data_dir</span> = Path(<span style="color: #8b2252;">"data"</span>)
+<span style="color: #a0522d;">processed_data</span> = data_dir / <span style="color: #8b2252;">"processed"</span>
+
+<span style="color: #a0522d;">data_files</span> = processed_data.glob(<span style="color: #8b2252;">"*.txt"</span>)
+
+<span style="color: #a020f0;">for</span> data_file <span style="color: #a020f0;">in</span> data_files:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(data_file)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; data/processed/data-2.txt
+# =&gt; data/processed/data.txt
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2ce578d" class="outline-4">
+<h4 id="org2ce578d"><span class="section-number-4">2.1.6.</span> Pathlib &#x2013; convenient functions</h4>
+<div class="outline-text-4" id="text-2-1-6">
+<p>
+<code>pathlib</code> allows us to easily decompose a path into different components. Take for
+example getting the filename of a path with <code>.name</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">from</span> pathlib <span style="color: #a020f0;">import</span> Path
+
+<span style="color: #a0522d;">some_file</span> = Path(<span style="color: #8b2252;">"data/processed/data.txt"</span>)
+
+<span style="color: #a020f0;">print</span>(some_file.parts)  <span style="color: #b22222;"># </span><span style="color: #b22222;">get component parts</span>
+<span style="color: #a020f0;">print</span>(some_file.parents[0])  <span style="color: #b22222;"># </span><span style="color: #b22222;">list of parent dirs</span>
+<span style="color: #a020f0;">print</span>(some_file.name)   <span style="color: #b22222;"># </span><span style="color: #b22222;">only filename</span>
+<span style="color: #a020f0;">print</span>(some_file.suffix) <span style="color: #b22222;"># </span><span style="color: #b22222;">extension</span>
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; ('data', 'processed', 'data.txt')
+# =&gt; data/processed
+# =&gt; data.txt
+# =&gt; .txt
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge7678d6" class="outline-4">
+<h4 id="orge7678d6"><span class="section-number-4">2.1.7.</span> Converting Path into a string</h4>
+<div class="outline-text-4" id="text-2-1-7">
+<p>
+As <code>pathlib</code> is a recent addition to Python, some functions/classes are expecting a <code>str</code>
+representation of the path, not a <code>Path</code> object. Therefore, you may want to use the <code>str</code>
+function to convert a <code>Path</code> object to a string.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #483d8b;">str</span>(Path(<span style="color: #8b2252;">"data/"</span>))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; 'data'
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org64d20a7" class="outline-4">
+<h4 id="org64d20a7"><span class="section-number-4">2.1.8.</span> Quick exercise &#x2013; locating files</h4>
+<div class="outline-text-4" id="text-2-1-8">
+<ul class="org-ul">
+<li>In the same directory of scripts you created in the last exercise, create another
+directory called <code>data</code>.</li>
+<li>In data, create 3 text files, calling them <code>&lt;book_name&gt;.txt</code>.</li>
+<li>These each text file should contain the information from table below in the format:</li>
+</ul>
+
+<pre class="example">
+Name: &lt;book_name&gt;
+Author: &lt;author&gt;
+Release Year: &lt;release_year&gt;
+</pre>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Title</th>
+<th scope="col" class="org-left">Author</th>
+<th scope="col" class="org-right">Release Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Moby Dick</td>
+<td class="org-left">Herman Melville</td>
+<td class="org-right">1851</td>
+</tr>
+
+<tr>
+<td class="org-left">A Study in Scarlet</td>
+<td class="org-left">Sir Arthur Conan Doyle</td>
+<td class="org-right">1887</td>
+</tr>
+
+<tr>
+<td class="org-left">Frankenstein</td>
+<td class="org-left">Mary Shelley</td>
+<td class="org-right">1818</td>
+</tr>
+
+<tr>
+<td class="org-left">Hitchhikers Guide to the Galaxy</td>
+<td class="org-left">Douglas Adams</td>
+<td class="org-right">1979</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>From <code>main.py</code>, print out all of the text files in the directory.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b8e427" class="outline-3">
+<h3 id="org4b8e427"><span class="section-number-3">2.2.</span> Files</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-orga5212c4" class="outline-4">
+<h4 id="orga5212c4"><span class="section-number-4">2.2.1.</span> Reading files</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+To read a file, we must first open it with the <code>open</code> function. This returns a file
+stream to which we can call the <code>read()</code> class method.
+</p>
+
+<p>
+You should always make sure to call the <code>close()</code> class method on this stream to close
+the file.
+</p>
+
+<p>
+<code>read()</code> reads the entire contents of the file and places it into a string.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">open_file</span> = <span style="color: #483d8b;">open</span>(<span style="color: #483d8b;">str</span>(Path(<span style="color: #8b2252;">"data"</span>) / <span style="color: #8b2252;">"processed"</span> / <span style="color: #8b2252;">"data.txt"</span>))
+<span style="color: #a0522d;">contents_of_file</span> = open_file.read()
+open_file.close()  <span style="color: #b22222;"># </span><span style="color: #b22222;">should always happen!</span>
+<span style="color: #a020f0;">print</span>(contents_of_file)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; this is some data
+# =&gt; on another line
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc369f21" class="outline-4">
+<h4 id="orgc369f21"><span class="section-number-4">2.2.2.</span> Reading files &#x2013; lines or entire file?</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+While <code>read</code> works for the last example, you may want to read files in different
+ways. Luckily there are a number of methods you could use.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">open_file.read()       <span style="color: #b22222;"># </span><span style="color: #b22222;">read entire file</span>
+open_file.readline()   <span style="color: #b22222;"># </span><span style="color: #b22222;">read a single line</span>
+open_file.readline(5)  <span style="color: #b22222;"># </span><span style="color: #b22222;">read 5 lines</span>
+open_file.readlines()  <span style="color: #b22222;"># </span><span style="color: #b22222;">returns all lines as a list</span>
+
+<span style="color: #a020f0;">for</span> line <span style="color: #a020f0;">in</span> open_file:  <span style="color: #b22222;"># </span><span style="color: #b22222;">read one line at a time</span>
+<span style="background-color: #f2f2f2;"> </span>   do_something(line)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfbe93a9" class="outline-4">
+<h4 id="orgfbe93a9"><span class="section-number-4">2.2.3.</span> Reading files</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+It can be a pain to remember to use the <code>.close()</code> every time you open a file. In
+Python, we can use <code>open()</code> as a context with the <code>with</code> keyword. This context will
+handle the closing of the file as soon as the scope is exited.
+</p>
+
+<p>
+The syntax for opening a file is as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"data/processed/data.txt"</span>, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> open_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">contents</span> = open_file.read()
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">the file is automatically closed at this point</span>
+
+<span style="color: #a020f0;">print</span>(contents)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; this is some data
+# =&gt; on another line
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8224e26" class="outline-4">
+<h4 id="org8224e26"><span class="section-number-4">2.2.4.</span> Writing files</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+The syntax for writing a file is similar to reading a file. The main difference is
+the use <code>"w"</code> instead of <code>"r"</code> in the second argument of <code>open</code>. Also, instead of <code>read()</code>,
+we use <code>write()</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">data</span> = [<span style="color: #8b2252;">"this is some data"</span>, <span style="color: #8b2252;">"on another line"</span>, <span style="color: #8b2252;">"with another line"</span>]
+<span style="color: #a0522d;">new_filename</span> = <span style="color: #8b2252;">"data/processed/new-data.txt"</span>
+
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_filename, <span style="color: #8b2252;">"w"</span>) <span style="color: #a020f0;">as</span> open_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> line <span style="color: #a020f0;">in</span> data:
+        open_file.write(line + <span style="color: #8b2252;">"\n"</span>)
+
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_filename, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> open_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">new_contents</span> = open_file.read()
+
+<span style="color: #a020f0;">print</span>(new_contents)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; this is some data
+# =&gt; on another line
+# =&gt; with another line
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5ae14f0" class="outline-4">
+<h4 id="org5ae14f0"><span class="section-number-4">2.2.5.</span> Appending to files</h4>
+<div class="outline-text-4" id="text-2-2-5">
+<p>
+Every time we write to a file, the entire contents is deleted and replaced. If we
+want to just append to the file instead, we use <code>"a"</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">data</span> = [<span style="color: #8b2252;">"this is some appended data"</span>]
+<span style="color: #a0522d;">new_filename</span> = <span style="color: #8b2252;">"data/processed/new-data.txt"</span>
+
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_filename, <span style="color: #8b2252;">"a"</span>) <span style="color: #a020f0;">as</span> open_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> line <span style="color: #a020f0;">in</span> data:
+        open_file.write(line + <span style="color: #8b2252;">"\n"</span>)
+
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_filename, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> open_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">new_contents</span> = open_file.read()
+
+<span style="color: #a020f0;">print</span>(new_contents)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; this is some data
+# =&gt; on another line
+# =&gt; with another line
+# =&gt; this is some appended data
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org358724d" class="outline-4">
+<h4 id="org358724d"><span class="section-number-4">2.2.6.</span> Quick exercise &#x2013; reading/writing files</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<ul class="org-ul">
+<li>Using the same text files from the previous exercise, we will want to be able to
+read each text file, and parse the information contained in the file.</li>
+<li>The output of reading each of the text files should be a list of dictionaries, like
+we have seen in previous lectures.</li>
+<li>We will go through a sample solution together once you've had the chance to try it
+for yourself.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4fdb7ae" class="outline-4">
+<h4 id="org4fdb7ae"><span class="section-number-4">2.2.7.</span> Reading CSV files &#x2013; builtin</h4>
+<div class="outline-text-4" id="text-2-2-7">
+<p>
+When working with common file types, Python has built-in modules to make the process
+a little easier. Take, for example, reading and writing a CSV file. Here we are
+importing the <code>csv</code> module and in the context of reading the file, we are creating a
+CSV reader object. When reading, every line of the CSV file is returned as a list,
+thus an entire CSV file is a list of lists.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> csv  <span style="color: #b22222;"># </span><span style="color: #b22222;">built-in library</span>
+
+<span style="color: #a0522d;">data_path</span> = <span style="color: #8b2252;">"data/processed/data.csv"</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">read a csv</span>
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(data_path, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> csv_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">csv_reader</span> = csv.reader(csv_file, delimiter=<span style="color: #8b2252;">","</span>)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> line <span style="color: #a020f0;">in</span> csv_reader:
+        <span style="color: #a020f0;">print</span>(line)
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; ['name', 'id', 'age']
+# =&gt; ['jane', '01', '35']
+# =&gt; ['james', '02', '50']
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org31848ba" class="outline-4">
+<h4 id="org31848ba"><span class="section-number-4">2.2.8.</span> Writing a CSV file &#x2013; builtin</h4>
+<div class="outline-text-4" id="text-2-2-8">
+<p>
+Writing a CSV file is similar except we are creating a CSV writer object, and are
+using <code>writerow</code> instead.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #b22222;"># </span><span style="color: #b22222;">write a csv file</span>
+<span style="color: #a0522d;">new_data_file</span> = <span style="color: #8b2252;">"data/processed/new-data.csv"</span>
+<span style="color: #a0522d;">new_data</span> = [[<span style="color: #8b2252;">"name"</span>, <span style="color: #8b2252;">"age"</span>, <span style="color: #8b2252;">"height"</span>], [<span style="color: #8b2252;">"jane"</span>, <span style="color: #8b2252;">"35"</span>, <span style="color: #8b2252;">"6"</span>]]
+
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_data_file, <span style="color: #8b2252;">"w"</span>) <span style="color: #a020f0;">as</span> csv_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">csv_writer</span> = csv.writer(csv_file, delimiter=<span style="color: #8b2252;">","</span>)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> row <span style="color: #a020f0;">in</span> new_data:
+        csv_writer.writerow(row)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d68b2a" class="outline-4">
+<h4 id="org6d68b2a"><span class="section-number-4">2.2.9.</span> Quick exercise &#x2013; reading/writing CSV files</h4>
+<div class="outline-text-4" id="text-2-2-9">
+<ul class="org-ul">
+<li>Given the parsed data from the previous exercise, write a new CSV file in the <code>data</code> directory.</li>
+<li>This CSV file should contain the headings: name, author, release<sub>data</sub>.</li>
+<li>The data in the CSV file should be the 3 books with data in the correct columns.</li>
+<li>Test that you can read this same CSV file in python.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc50e5d7" class="outline-4">
+<h4 id="orgc50e5d7"><span class="section-number-4">2.2.10.</span> Read JSON files &#x2013; builtin</h4>
+<div class="outline-text-4" id="text-2-2-10">
+<p>
+Like CSV, json is a common format for storing data. Python includes a package called
+<code>json</code> that enables us to read/write to json files with ease.
+</p>
+
+<p>
+Let's first tackle the process of reading:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> json
+
+<span style="color: #a0522d;">json_file_path</span> = <span style="color: #8b2252;">"data/processed/data.json"</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">read a json file</span>
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(json_file_path, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> json_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">data</span> = json.load(json_file)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(data)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(data.keys())
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(data[<span style="color: #8b2252;">"names"</span>])
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; {'names': ['jane', 'james'], 'ages': [35, 50]}
+# =&gt; dict_keys(['names', 'ages'])
+# =&gt; ['jane', 'james']
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5699f5e" class="outline-4">
+<h4 id="org5699f5e"><span class="section-number-4">2.2.11.</span> Write JSON files &#x2013; builtin</h4>
+<div class="outline-text-4" id="text-2-2-11">
+<p>
+While we used <code>json.load</code> to read the file, we use <code>json.dump</code> to write the data to a
+json file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">new_data</span> = {<span style="color: #8b2252;">"names"</span>: [<span style="color: #8b2252;">"someone-new"</span>], <span style="color: #8b2252;">"ages"</span>: [<span style="color: #8b2252;">"NA"</span>]}
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">write a json file</span>
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"data/processed/new-data.json"</span>, <span style="color: #8b2252;">"w"</span>) <span style="color: #a020f0;">as</span> json_file:
+<span style="background-color: #f2f2f2;"> </span>   json.dump(new_data, json_file)
+
+<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"data/processed/new-data.json"</span>, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> json_file:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(json.load(json_file))
+</pre>
+</div>
+
+<pre class="example">
+Results: 
+# =&gt; {'names': ['someone-new'], 'ages': ['NA']}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org73cd119" class="outline-2">
+<h2 id="org73cd119"><span class="section-number-2">3.</span> Package Management</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org93ba27b" class="outline-3">
+<h3 id="org93ba27b"><span class="section-number-3">3.1.</span> Package Management</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org3079704" class="outline-4">
+<h4 id="org3079704"><span class="section-number-4">3.1.1.</span> Introduction</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+When working on projects, we may want to use external packages that other people have
+written. There are tools in Python to install these packages. However, we may want to
+use specific versions, again these tools help us to manage these dependencies between
+different packages and these versions of packages.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4950e31" class="outline-4">
+<h4 id="org4950e31"><span class="section-number-4">3.1.2.</span> Virtual Environments</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+When installing packages, by default, the packages are going to be installed into the
+system-level Python. This can be a problem, for example, if you're working on
+multiple projects that require different versions of packages.
+</p>
+
+<p>
+Virtual environments are 'containerised' versions of Python that can be created for
+each different project you're working on.
+</p>
+
+<p>
+We will take a look at package management and virtual environments in Python.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1446bcd" class="outline-3">
+<h3 id="org1446bcd"><span class="section-number-3">3.2.</span> Anaconda</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-org6ec33ac" class="outline-4">
+<h4 id="org6ec33ac"><span class="section-number-4">3.2.1.</span> What is Anaconda?</h4>
+<div class="outline-text-4" id="text-3-2-1">
+
+<div id="orga37d4aa" class="figure">
+<p><img src="images/Anaconda_Logo.png" alt="Anaconda_Logo.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>Distribution of Python and R designed for scientific computing.</li>
+<li>We're going to focus on <code>Conda</code>, a package manager in the Anaconda ecosystem.</li>
+<li>Helps with package management and deployment.</li>
+<li>Create virtual environments to install packages to avoid conflicts with other projects</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfade135" class="outline-4">
+<h4 id="orgfade135"><span class="section-number-4">3.2.2.</span> Installing Anaconda</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+We're going to install miniconda (a minimal installation of
+anaconda). <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>
+</p>
+
+<p>
+The steps to install Miniconda are roughly:
+</p>
+
+<ul class="org-ul">
+<li>Download Miniconda3 Linux 64-bit</li>
+<li>Save the file to the disk</li>
+<li>Open up a terminal and run the following commands:</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-bash">chmod +x &lt;miniconda-file&gt;.sh
+./&lt;miniconda-file&gt;.sh
+</pre>
+</div>
+
+<p>
+Follow the installation instructions (most of the time the defaults are sensible).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga9fbc8c" class="outline-4">
+<h4 id="orga9fbc8c"><span class="section-number-4">3.2.3.</span> Working with Anaconda &#x2013; creating an environment</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+Conda is a command line tool to manage environments. We're going to highlight some of
+the most used commands. But for the full list of management, you can use the
+instructions at:
+<a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html</a>
+</p>
+
+<p>
+If you're creating a <b>brand new</b> environment, use:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda create --name &lt;name-of-env&gt;
+</pre>
+</div>
+
+<p>
+This will prompt you to confirm you want to create a new environment, whereupon you
+enter either a <code>y</code> or <code>n</code>. If <code>y</code> your new environment will be created, but start using the
+environment, you will first have to activate it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge91cdd5" class="outline-4">
+<h4 id="orge91cdd5"><span class="section-number-4">3.2.4.</span> Working with Anaconda &#x2013; activating an environment</h4>
+<div class="outline-text-4" id="text-3-2-4">
+<p>
+Once you've created a new environment, you can activate it. This is as simple as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda activate &lt;name-of-env&gt;
+</pre>
+</div>
+
+<p>
+You will notice that your command line prompt has changed from <code>(base)</code> to
+<code>(&lt;name-of-env&gt;</code>). And whenever you start a new terminal it will always be <code>(base)</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfad6eb7" class="outline-4">
+<h4 id="orgfad6eb7"><span class="section-number-4">3.2.5.</span> Working with Anaconda &#x2013; de-activating an environment</h4>
+<div class="outline-text-4" id="text-3-2-5">
+<p>
+To deactivate an environment, just use:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda deactivate
+</pre>
+</div>
+
+<p>
+or:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda activate base
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org3b281ec" class="outline-4">
+<h4 id="org3b281ec"><span class="section-number-4">3.2.6.</span> Working with Anaconda &#x2013; installing using conda</h4>
+<div class="outline-text-4" id="text-3-2-6">
+<p>
+Let's say we want to install a package, say <code>scikit-learn</code> (if we're doing some data
+processing or machine learning). To install this package in conda, use:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install scikit-learn
+</pre>
+</div>
+
+<p>
+Conda will then check what packages are needed for <code>scikit-learn</code> to work, and figure
+out if anything needs to be upgraded/downgraded to match the required dependencies of
+other packages.
+</p>
+
+<p>
+When Conda has finalised what packages need to change, it will tell you these changes
+and ask to confirm. If everything seems okay type <code>y</code>, and enter.
+</p>
+
+<p>
+<code>scikit-learn</code> is a package in the anaconda repository. For a list of packages, you can
+use: <a href="https://anaconda.org/anaconda/repo">https://anaconda.org/anaconda/repo</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgace7ced" class="outline-4">
+<h4 id="orgace7ced"><span class="section-number-4">3.2.7.</span> Working with Anaconda &#x2013; package versions</h4>
+<div class="outline-text-4" id="text-3-2-7">
+<div class="org-src-container">
+<pre class="src src-bash">conda install &lt;package-name&gt;=&lt;version-number&gt;
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org039b741" class="outline-4">
+<h4 id="org039b741"><span class="section-number-4">3.2.8.</span> Installing a specific version of Python</h4>
+<div class="outline-text-4" id="text-3-2-8">
+<p>
+If we wanted to, we could also change the python version being used in the virtual
+environment.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install <span style="color: #a0522d;">python</span>=3.9
+</pre>
+</div>
+
+<p>
+This will try to install Python version 3.9 providing that the packages you already
+have installed support it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfa6e74b" class="outline-4">
+<h4 id="orgfa6e74b"><span class="section-number-4">3.2.9.</span> Working with Anaconda &#x2013; conda-forge and other repositories</h4>
+<div class="outline-text-4" id="text-3-2-9">
+<p>
+Let's say that the package is not within the basic anaconda repository. You can
+specify another repository or channel using the <code>-c</code> flag.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install -c &lt;channel&gt; &lt;package&gt;
+</pre>
+</div>
+
+<p>
+For example, PyTorch (<a href="https://pytorch.org/">https://pytorch.org/</a>) uses their own channel:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install -c pytorch pytorch 
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org23102e5" class="outline-4">
+<h4 id="org23102e5"><span class="section-number-4">3.2.10.</span> Working with Anaconda &#x2013; exporting an environment</h4>
+<div class="outline-text-4" id="text-3-2-10">
+<p>
+We will want to share our research and work with others. To allow others to use the
+exact same packages and especially the <b>versions</b> of packages we're using, we want to
+export a snapshot of our environment. Conda includes an export command to do just
+this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda env export --no-builds &gt; environment.yml
+</pre>
+</div>
+
+<p>
+Here we exporting our currently activated environment to a file called
+<code>environment.yml</code> (common convention) file. I am using the <code>--no-builds</code> flag to improve
+compatibility with other operating systems such as Mac OS.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org80e51d2" class="outline-4">
+<h4 id="org80e51d2"><span class="section-number-4">3.2.11.</span> Working with Anaconda &#x2013; creating environment from existing</h4>
+<div class="outline-text-4" id="text-3-2-11">
+<p>
+To create an environment from an existing environment.yml file, you can use the
+following command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda env create -f environment.yml
+</pre>
+</div>
+
+<p>
+This will create an environment with the same name and install the same versions of
+the packages.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org919c7e1" class="outline-3">
+<h3 id="org919c7e1"><span class="section-number-3">3.3.</span> Pip</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+<div id="outline-container-orgdd656e2" class="outline-4">
+<h4 id="orgdd656e2"><span class="section-number-4">3.3.1.</span> What is Pip?</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+Pip is another package installer for python. If you're reading documentation online
+about how to install a certain Python package, the documentation will normally refer
+to pip.
+</p>
+
+<p>
+Pip, like conda, uses a package repository to locate packages. For pip it is called
+Pypi (<a href="https://pypi.org">https://pypi.org</a>)
+</p>
+
+<p>
+We're going to take a look at the most commonly used commands with pip.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcf16e2c" class="outline-4">
+<h4 id="orgcf16e2c"><span class="section-number-4">3.3.2.</span> Installing packages with pip</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<p>
+If you want to install a package, its as simple as <code>pip install</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pip install &lt;package-name&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge0c1036" class="outline-4">
+<h4 id="orge0c1036"><span class="section-number-4">3.3.3.</span> Installing specific versions</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<p>
+Sometimes, though, you will want to install a specific package version. For this use
+'==&lt;version-number&gt;' after the name of the package.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pip install &lt;package-name&gt;==&lt;version-number&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6c9791b" class="outline-4">
+<h4 id="org6c9791b"><span class="section-number-4">3.3.4.</span> Upgrade packages with pip</h4>
+<div class="outline-text-4" id="text-3-3-4">
+<p>
+If you want upgrade/install the package to the latest version, use the <code>--upgrade</code> flag.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pip install &lt;package-name&gt; --upgrade
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c2d8b3" class="outline-4">
+<h4 id="org8c2d8b3"><span class="section-number-4">3.3.5.</span> Export requirements file</h4>
+<div class="outline-text-4" id="text-3-3-5">
+<p>
+Like exporting with conda, pip also includes a method to capture the currently
+installed environment. In pip, this is called <code>freeze</code>.
+</p>
+
+<p>
+The common convention is to call the file <code>requirements.txt</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pip freeze &gt; requirements.txt
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2defb03" class="outline-4">
+<h4 id="org2defb03"><span class="section-number-4">3.3.6.</span> Installing multiple packages from a requirements file</h4>
+<div class="outline-text-4" id="text-3-3-6">
+<p>
+If we want to recreate the environment, we can install multiple packages with
+specific versions from a requirements file with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pip install -f requirements.txt
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2bcd143" class="outline-4">
+<h4 id="org2bcd143"><span class="section-number-4">3.3.7.</span> Anaconda handles both conda and pip</h4>
+<div class="outline-text-4" id="text-3-3-7">
+<p>
+Conda encompasses pip, which means that when you create a virtual environment with
+conda, it can also include pip. So I would recommend using conda to create the
+virtual environment and to install packages when you can. But if the package is only
+available via pip, then it will be okay to install it using pip as well. When you
+export the environment with conda, it will specify what is installed with pip and
+what is installed via conda.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda env create -f environment.yml
+</pre>
+</div>
+
+<p>
+When the environment is re-created with conda, it will install the packages from the
+correct places, whether that is conda or pip.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3f84f38" class="outline-2">
+<h2 id="org3f84f38"><span class="section-number-2">4.</span> Better development environments</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orga3dfc50" class="outline-3">
+<h3 id="orga3dfc50"><span class="section-number-3">4.1.</span> PyCharm</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-orgfba5535" class="outline-4">
+<h4 id="orgfba5535"><span class="section-number-4">4.1.1.</span> PyCharm</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+So far we have been using a very basic <b>text editor</b>. This editor is only providing us
+with <i>syntax highlighting</i> (the colouring of keywords, etc) and helping with
+indentation.
+</p>
+
+<p>
+PyCharm is not a text editor. PyCharm is an Integrated Development Environment
+(<b>IDE</b>). An IDE is a fully fledged environment for programming in a specific
+programming language and offers a suite of features that makes programming in a
+particular language (Python in this case), a lot easier.
+</p>
+
+<p>
+Some of the features of an IDE are typically:
+</p>
+<ul class="org-ul">
+<li>Debugging support with breakpoints and variable inspection.</li>
+<li>Prompts and auto-completion with documentation support.</li>
+<li>Build tools to run and test programs in various configurations.</li>
+</ul>
+
+<p>
+We will use PyCharm for the rest of this course.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge474fe3" class="outline-4">
+<h4 id="orge474fe3"><span class="section-number-4">4.1.2.</span> PyCharm &#x2013; installing</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<p>
+Using Ubuntu snaps:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">snap install pycharm-community --classic
+</pre>
+</div>
+
+<p>
+Or we can download an archive with the executable. The steps to run goes something
+like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">tar xvf pycharm-community-&lt;version&gt;.tar.gz
+bash pycharm-community-&lt;version&gt;/bin/pycharm.sh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5c28d6b" class="outline-4">
+<h4 id="org5c28d6b"><span class="section-number-4">4.1.3.</span> PyCharm &#x2013; using PyCharm</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<p>
+We shall take a look at the following:
+</p>
+
+<ul class="org-ul">
+<li>Creating a new project.</li>
+<li>Specifying the conda environment.</li>
+<li>Creating build/run instructions.</li>
+<li>Adding new files/folders.</li>
+<li>Debugging with breakpoints.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge98fa1b" class="outline-3">
+<h3 id="orge98fa1b"><span class="section-number-3">4.2.</span> Jupyter</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-orgf0d89d1" class="outline-4">
+<h4 id="orgf0d89d1"><span class="section-number-4">4.2.1.</span> What is a Jupyter notebook?</h4>
+<div class="outline-text-4" id="text-4-2-1">
+
+<div id="org7a5998b" class="figure">
+<p><img src="images/langfr-1024px-Jupyter_logo.png" alt="langfr-1024px-Jupyter_logo.png" width="200px" />
+</p>
+</div>
+
+<p>
+Jupyter notebooks are environments where code is split into cells, where each cell
+can be executed independently and immediate results can be inspected.
+</p>
+
+<p>
+Notebooks can be very useful for data science projects and exploratory work where the
+process cannot be clearly defined (and therefore cannot be immediately programmed).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb067649" class="outline-4">
+<h4 id="orgb067649"><span class="section-number-4">4.2.2.</span> Installing Jupyter</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<p>
+We first need to install Jupyter. In you conda environment type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install jupyter
+<span style="color: #b22222;"># </span><span style="color: #b22222;">or pip install jupyter</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2dbd37f" class="outline-4">
+<h4 id="org2dbd37f"><span class="section-number-4">4.2.3.</span> Starting the server</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<p>
+With Jupyter installed, we can now start the notebook server using:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">jupyter notebook
+</pre>
+</div>
+
+<p>
+A new browser window will appear. This is the Jupyter interface.
+</p>
+
+<p>
+If you want to stop the server, press Ctrl+c in the terminal window.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcdd9be1" class="outline-4">
+<h4 id="orgcdd9be1"><span class="section-number-4">4.2.4.</span> Using the interface</h4>
+<div class="outline-text-4" id="text-4-2-4">
+<p>
+We shall take a look at the following:
+</p>
+
+<ul class="org-ul">
+<li>Creating a new notebook</li>
+<li>Different cell types</li>
+<li>Executing code cells</li>
+<li>Markdown cells</li>
+<li>Exporting to a different format</li>
+<li>How the notebook gets stored</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga5e473b" class="outline-4">
+<h4 id="orga5e473b"><span class="section-number-4">4.2.5.</span> Markdown 101</h4>
+<div class="outline-text-4" id="text-4-2-5">
+<p>
+We will revisit markdown in a later lecture, but since we're using notebooks, some of
+the cells can be of a type markdown. In these cells, we can style the text using
+markdown syntax.
+</p>
+
+<p>
+<a href="https://www.markdownguide.org/basic-syntax/">https://www.markdownguide.org/basic-syntax/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org80701c3" class="outline-4">
+<h4 id="org80701c3"><span class="section-number-4">4.2.6.</span> A slightly better environment &#x2013; jupyterlab</h4>
+<div class="outline-text-4" id="text-4-2-6">
+<p>
+The notebook environment is fine, but there exists another package called jupyter-lab
+that enhances the environment to include a separate file browser, etc.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install jupyterlab -c conda-forge
+
+jupyter-lab
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org88b19d1" class="outline-2">
+<h2 id="org88b19d1"><span class="section-number-2">5.</span> Style guide-line</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orga1752b3" class="outline-3">
+<h3 id="orga1752b3"><span class="section-number-3">5.1.</span> Styles</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-org238319b" class="outline-4">
+<h4 id="org238319b"><span class="section-number-4">5.1.1.</span> A sense of style</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+Now that we have looked at syntax you will need to create Python projects, I want to
+take a minute to talk about the style of writing Python code.
+</p>
+
+<p>
+This style can help you create projects that can be maintained and understood by
+others but also yourself.
+</p>
+
+<p>
+Python itself also advocates for an adherence to a particular style of writing Python
+code with the PEP8 style guide: <a href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a>. Though, I
+will talk through some of the most important ones, in my opinion.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb4fc2fb" class="outline-4">
+<h4 id="orgb4fc2fb"><span class="section-number-4">5.1.2.</span> Meaningful names</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+What does this code do?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">f</span>(l):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">x</span> = 0
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">y</span> = 0
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> l:
+        <span style="color: #a0522d;">x</span> += i
+        <span style="color: #a0522d;">y</span> += 1
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x / y
+
+<span style="color: #a0522d;">a</span> = <span style="color: #483d8b;">range</span>(100)
+<span style="color: #a0522d;">r</span> = f(a)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21cd9bf" class="outline-4">
+<h4 id="org21cd9bf"><span class="section-number-4">5.1.3.</span> Meaningful names</h4>
+<div class="outline-text-4" id="text-5-1-3">
+<p>
+What about this one?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_average</span>(list_of_data):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">sum</span> = 0
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">num_elements</span> = 0
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> element <span style="color: #a020f0;">in</span> list_of_data:
+        <span style="color: #483d8b;">sum</span> += element
+        <span style="color: #a0522d;">num_elements</span> += 1
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span> / num_elements
+
+<span style="color: #a0522d;">dataset</span> = <span style="color: #483d8b;">range</span>(100)
+<span style="color: #a0522d;">average_value</span> = compute_average(dataset)
+</pre>
+</div>
+
+<p>
+They are both the same code, but the second version is a lot more readable and
+understandable because we have used meaningful names for things!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6252956" class="outline-4">
+<h4 id="org6252956"><span class="section-number-4">5.1.4.</span> Use builtins where possible</h4>
+<div class="outline-text-4" id="text-5-1-4">
+<p>
+Don't re-invent the wheel. Try to use Python's built-in functions/classes if they
+exist, they will normally be quicker and more accurate than what you could make in
+Python itself. For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">dataset</span> = <span style="color: #483d8b;">range</span>(100)
+<span style="color: #a0522d;">average_value</span> = <span style="color: #483d8b;">sum</span>(dataset) / <span style="color: #483d8b;">len</span>(dataset)
+</pre>
+</div>
+
+<p>
+or maybe even:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">import</span> numpy <span style="color: #a020f0;">as</span> np
+<span style="color: #a0522d;">dataset</span> = <span style="color: #483d8b;">range</span>(100)
+<span style="color: #a0522d;">average_value</span> = np.mean(dataset)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org47989d2" class="outline-4">
+<h4 id="org47989d2"><span class="section-number-4">5.1.5.</span> Use docstrings and comments</h4>
+<div class="outline-text-4" id="text-5-1-5">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_average</span>(list_of_data, exclude=<span style="color: #008b8b;">None</span>):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #8b2252;">"""</span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   Compute and return the average value of an iterable list. </span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   This average excludes any value if specified by exclude</span>
+
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   params: </span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   - list_of_data: data for which the average is computed </span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   - exclude: numeric value of values that should not be taken </span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   </span><span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;"> into account</span>
+
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   returns: </span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   The computed average, possibly excluding a value.</span>
+<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   """</span>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">sum</span> = 0
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">num_elements</span> = 0
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> element <span style="color: #a020f0;">in</span> list_of_data:
+        <span style="color: #a020f0;">if</span> exclude <span style="color: #a020f0;">is</span> <span style="color: #a020f0;">not</span> <span style="color: #008b8b;">None</span> <span style="color: #a020f0;">and</span> element == exclude:
+            <span style="color: #a020f0;">continue</span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">skip this element</span>
+        <span style="color: #483d8b;">sum</span> += element
+        <span style="color: #a0522d;">num_elements</span> += 1
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span> / num_elements
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac8a43a" class="outline-4">
+<h4 id="orgac8a43a"><span class="section-number-4">5.1.6.</span> Using agreed upon casing</h4>
+<div class="outline-text-4" id="text-5-1-6">
+<ul class="org-ul">
+<li><code>snake_casing</code> for functions and variables</li>
+<li>Classes should use <code>CamelCasing</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">this_if_a_function</span>(data_x, data_y):
+
+
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">BookEntry</span>:
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2ade0c8" class="outline-4">
+<h4 id="org2ade0c8"><span class="section-number-4">5.1.7.</span> Use type-annotations if possible</h4>
+<div class="outline-text-4" id="text-5-1-7">
+<p>
+Type annotations can helper your editor (such as PyCharm) find potential issues in
+your code. If you use type annotations, the editor can spot types that are not
+compatible. For example, a string being used with a division.
+</p>
+
+<p>
+<a href="https://docs.python.org/3/library/typing.html">https://docs.python.org/3/library/typing.html</a>
+<a href="https://realpython.com/python-type-checking/">https://realpython.com/python-type-checking/</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_average</span>(list_of_data: <span style="color: #483d8b;">list</span>[<span style="color: #483d8b;">int</span>],
+                    exclude: Optional[<span style="color: #483d8b;">int</span>] = <span style="color: #008b8b;">None</span>) -&gt; <span style="color: #483d8b;">float</span>:
+<span style="background-color: #f2f2f2;"> </span>   ...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0339303" class="outline-4">
+<h4 id="org0339303"><span class="section-number-4">5.1.8.</span> Organise your imports</h4>
+<div class="outline-text-4" id="text-5-1-8">
+<p>
+Make the distinction between standard library imports, externally installed imports,
+and your own custom imports.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #b22222;"># </span><span style="color: #b22222;">internal imports</span>
+<span style="color: #a020f0;">import</span> os
+<span style="color: #a020f0;">from</span> math <span style="color: #a020f0;">import</span> pi
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">external imports</span>
+<span style="color: #a020f0;">import</span> numpy <span style="color: #a020f0;">as</span> np
+<span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
+<span style="color: #a020f0;">import</span> matplotlib.pyplot <span style="color: #a020f0;">as</span> plt
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">custom imports</span>
+<span style="color: #a020f0;">from</span> src.my_module <span style="color: #a020f0;">import</span> DAGs
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org430efd0" class="outline-4">
+<h4 id="org430efd0"><span class="section-number-4">5.1.9.</span> Functions should do one thing only</h4>
+<div class="outline-text-4" id="text-5-1-9">
+<p>
+Do one thing and do it well. Docstrings can help you understand what your function is
+doing, especially if you use the word 'and' in the docstring, you might want to think
+about breaking your single function into many parts.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbce2355" class="outline-4">
+<h4 id="orgbce2355"><span class="section-number-4">5.1.10.</span> Functions as re-usability</h4>
+<div class="outline-text-4" id="text-5-1-10">
+<p>
+If you find yourself doing something over and over, a function call help consolidate
+duplication and potentially reduce the chance of getting things wrong.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6681496" class="outline-4">
+<h4 id="org6681496"><span class="section-number-4">5.1.11.</span> Be wary of God classes</h4>
+<div class="outline-text-4" id="text-5-1-11">
+<p>
+God classes/God object is a class that is doing too many things or 'knows' about too
+much. When designing a class, remember that like a function, in general, it should
+manage one thing or concept.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf7d3259" class="outline-4">
+<h4 id="orgf7d3259"><span class="section-number-4">5.1.12.</span> Documentation</h4>
+<div class="outline-text-4" id="text-5-1-12">
+<blockquote>
+<p>
+Comments that contradict the code are worse than no comments. Always make a priority
+of keeping the comments up-to-date when the code changes! &#x2013; PEP 8 Style Guide
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>Ensure that comments are correct.</li>
+<li>Don't over document (i.e. if something is self explanatory, then comments will
+distract rather than inform). An example from PEP 8:</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = x + 1                 <span style="color: #b22222;"># </span><span style="color: #b22222;">Increment x</span>
+<span style="color: #a0522d;">x</span> = x + 1                 <span style="color: #b22222;"># </span><span style="color: #b22222;">Compensate for border</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Document what you think will be difficult to understand without some prior knowledge,
+such as why a particular decision was made to do something a certain way. Don't
+explain, educate the reader.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4b278a7" class="outline-4">
+<h4 id="org4b278a7"><span class="section-number-4">5.1.13.</span> Perform testing!</h4>
+<div class="outline-text-4" id="text-5-1-13">
+<p>
+Make sure to write tests, for example, using <code>unittest</code>
+(<a href="https://docs.python.org/3/library/unittest.html">https://docs.python.org/3/library/unittest.html</a>). Writing tests can help find source
+of bugs/mistakes in your code, and if you change something in the future, you want to
+make sure that it still works. Writing tests can automate the process of testing your
+code.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 11th October 2021</p>
+<p class="author">Author: Jay Morgan</p>
+<p class="date">Created: 2021-10-26 mar. 15:12</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+% Created 2021-09-11 sam. 16:10
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\author{Jay Morgan}
+\date{September 2021}
+\title{Programming Level-up Course - Overview}
+\hypersetup{
+ pdfauthor={Jay Morgan},
+ pdftitle={Programming Level-up Course - Overview},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.4.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Welcome!}
+\label{sec:org0c189a5}
+
+Welcome to the \textbf{Programming Level-up Course}. In this series of lectures, we will cover
+everything we need to be able to program in a Linux-based environment, and use the
+high performance computers (also called cluster/supercomputers) to run experiments. 
+
+\section{Contact information}
+\label{sec:orgfe93384}
+
+You can find my personal page over at: \url{https://pageperso.lis-lab.fr/jay.morgan/}
+
+As we progress through the lectures, I will also make the course publicly available. These lectures will be hosted at:
+\url{https://pageperso.lis-lab.fr/jay.morgan/teaching.html} in a variety of formats
+(i.e. PDF, HTML).
+
+If you have any questions please email me directly. My email address is
+\texttt{jay.morgan@lis-lab.fr}. Other modes of contact can be found on my personal website
+listed above.
+
+\section{Delivery}
+\label{sec:orgf05bca2}
+\begin{itemize}
+\item 10 2-hour sessions
+\item Each session will be conducted in a computer lab and will be combination of a
+lecture and exercises
+\item The course is intended to get everyone up-to-speed with the various facets of
+programming you will need in other courses.
+\item If time allows, each lecture will have an exercise -- though this is not a strict
+requirement. These exercises are not marked but serve to get you thinking about
+what you've learnt in the lecture.
+\end{itemize}
+
+\section{Resources}
+\label{sec:org70f37a3}
+
+This course aims to deliver everything you need. If you attend each lecture, you will
+know what you need for the following lectures. Despite this design, however, I have
+included a list of additional resources below. These resources are optional, but they
+will take you beyond what you're taught in these sessions and enable you to become a
+Programming Master!
+
+\subsection{Books}
+\label{sec:org5735e00}
+
+There is nothing like a good book to learn from. They are usually rich in content,
+but also provide reasonable enough depth to the subject matter to not only learn how
+things work, but also why they work the way they do.
+
+\begin{itemize}
+\item Think Python: An Introduction to Software Design - Livre d'Allen B. Downey
+\item Numerical Python: Scientific Computing and Data Science Applications with Numpy,
+SciPy and Matplotlib - Livre de Robert Johansson.
+\item Classic Shell Scripting -  Livre de Arnold Robbins, Nelson H F Beebe
+\end{itemize}
+
+\subsection{Online resources}
+\label{sec:org13eaaf4}
+
+For other, more niche, subject matters, online resources provide the most reasonable
+information to learn from.
+
+\begin{itemize}
+\item \href{https://slurm.schedmd.com/tutorials.html}{SLURM User Guide}
+\end{itemize}
+
+\subsection{Software used in this course}
+\label{sec:org1a7cf01}
+
+After we're introduced to the Python programming language, and we're comfortable
+creating the most basic scripts, we'll be using a \emph{programming environment} to make
+programming easier. When we're ready, we'll discuss both Jupyter notebooks and
+the PyCharm IDE.
+
+\begin{itemize}
+\item \url{https://jupyter.org/}
+\item \url{https://www.jetbrains.com/fr-fr/pycharm/}
+\end{itemize}
+
+\section{What will be taught}
+\label{sec:org59c8981}
+
+The course will cover a broad spectrum of skills used when programming for scientific
+research. This includes the programming and scripting itself (in our case, Python
+programming), managing the environment in which we work (i.e. working in a
+linux-based environment and managing our projects with version control), and
+interacting with the supercomputers to perform intensive computations.
+
+\subsection{Python programming}
+\label{sec:orgc6d83a9}
+\begin{itemize}
+\item Basic syntax
+\item Data structures
+\item Advanced syntax
+\item Modules
+\item Anaconda and Pip
+\item Different programming development environments
+\begin{itemize}
+\item PyCharm
+\item Jupyter Notebooks
+\end{itemize}
+\item Numerical computing in python
+\begin{itemize}
+\item Introduction to numpy
+\item Pandas
+\item Scipy
+\item Visualisation using Matplotlib/seaborn/altair.
+\end{itemize}
+\end{itemize}
+\subsection{GNU/Linux}
+\label{sec:org69b314b}
+\begin{itemize}
+\item Basics of GNU/Linux and terminal
+\item Creating bash scripts
+\item Using the university proxy
+\item Git version control
+\end{itemize}
+\subsection{Using High Performance/Cloud Computing}
+\label{sec:org9da0355}
+\begin{itemize}
+\item GPU management (CUDA, CuDNN, nvidia-smi)
+\item SLURM
+\item Google Cloud, AWS
+\item Singularity
+\end{itemize}
+\subsection{Reporting Results}
+\label{sec:orga63b3de}
+\begin{itemize}
+\item Markdown
+\item \LaTeX{}
+\end{itemize}
+
+\section{A rough timeline}
+\label{sec:orgdbab9eb}
+
+I have included below a rough indication of whats going to be taught and when. Of
+course, this is subject to change based upon scheduling constraints and rate of
+progression.
+
+\begin{center}
+\begin{tabular}{rll}
+\hline
+Week & Topic & Description\\
+\hline
+1 & Introduction & - Course introduction\\
+ &  & - Basic Python programming\\
+2 & Python classes & \\
+3 & Project management & - Creating/importing modules\\
+ &  & - Anaconda/pip\\
+4 & Programming environments & - PyCharm\\
+ &  & - Jupyter notebooks\\
+5 & Numerical computing & - Numpy\\
+ &  & - Scipy\\
+6 & Numerical computing & - Pandas\\
+ &  & - Visualisations\\
+7 & Basics of GNU/Linux & - Using the terminal\\
+8 & Bash scripting & \\
+9 & High performance computing & - SLURM\\
+ &  & - Singularity\\
+10 & Reporting & - \LaTeX{}\\
+ &  & - Markdown\\
+\hline
+\end{tabular}
+\end{center}
+\end{document}

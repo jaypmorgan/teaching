@@ -1,0 +1,53 @@
+#+title: Machine Learning -- Lecture 1 -- Introduction
+#+author: Jay Morgan
+#+date: <TODO>
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger]
+#+LATEX_HEADER: \usetheme{Berkeley}
+#+LATEX_HEADER: \definecolor{UBCblue}{rgb}{0.54706, 0.13725, 0.26667} % UBC Blue (primary)
+#+LATEX_HEADER: \usecolortheme[named=UBCblue]{structure}
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
+
+* Introductions
+
+Welcome to all the new students! Here I am going to be talking about Machine Learning
+and all of the great things that this "technology" has to offer. To begin our course,
+I shall start with a bit of house keeping -- more specifically, I will be talking
+about what exactly we'll be learning about in the course (Machine Learning is a broad
+subject after-all). In addition, I will tell you where you can find the resources
+related to the course and how you can contact me, should you have any questions.
+
+** What this course is about?
+
+This is some text. I am writing my text directly into the slide.
+
+Here is some =src_code=, where I am writing the code with the *Julia* /programming language/
+
+#+begin_src julia :results output replace :session :eval never-export
+using Plots
+x = randn(10);
+y = randn(10) .+ 5;
+
+function plot_it(x, y)
+    scatter(x, y)
+end
+#+end_src
+
+** About Me
+
+** Where you can find the resources
+
+* What is learning, anyway?
+** A simple slide
+This slide consists of some text with a number of bullet points:
+
+- the first, very @important@, point!
+- the previous point shows the use of the special markup which
+  translates to the Beamer specific /alert/ command for highlighting
+  text.
+
+
+The above list could be numbered or any other type of list and may
+include sub-lists.

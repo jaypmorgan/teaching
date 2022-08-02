@@ -1,0 +1,446 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t email:nil
+#+options: f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Programming Level-up
+#+SUBTITLE: An Introduction to Pandas
+#+date:
+#+author: Jay Morgan
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.4.6)
+#+cite_export:
+
+#+startup: beamer
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [10pt]
+#+BEAMER_FRAME_LEVEL: 2
+#+BEAMER_THEME: Berkeley
+#+LATEX_HEADER: \setlength{\parskip}{5pt}
+#+LATEX_HEADER: \newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
+#+LaTeX_HEADER: \addtobeamertemplate{footnote}{}{\vspace{2ex}}
+#+LATEX_HEADER: \usepackage{tabularx}
+
+#+PROPERTY: header-args:python :eval never-export
+
+#+name: commentify
+#+begin_src emacs-lisp :var result="" :exports none
+(with-output-to-string
+  (princ "Results: \n")
+  (dolist (result-item (split-string result "\n"))
+    (princ (concat "# => " (format "%s\n" result-item)))))
+#+end_src
+
+#+RESULTS: commentify
+: Results: 
+: # => 
+
+#+begin_src emacs-lisp :exports none
+(setq org-latex-minted-options
+      '(("frame" "lines")
+	("linenos=true")
+	("firstnumber=last")
+	("fontsize=\\footnotesize")
+	("xleftmargin=15pt")
+	("numbersep=8pt")))
+#+end_src
+
+#+RESULTS:
+| frame                  | lines |
+| linenos=true           |       |
+| firstnumber=last       |       |
+| fontsize=\footnotesize |       |
+| xleftmargin=15pt       |       |
+| numbersep=8pt          |       |
+
+* Pandas
+
+** Introduction
+
+*** What is Pandas?
+
+#+ATTR_LATEX: :width 0.5\textwidth
+[[./images/pandas.jpg]]
+
+- Pandas a library to make the representation and manipulation of tabular data
+  easier in Python.
+- A table of data is called a 'Dataframe' that consists of named columns and
+  (optionally) named rows.
+- https://pandas.pydata.org/
+
+*** Installing and importing pandas
+
+To install pandas, we can either use conda:
+
+#+begin_src bash
+conda install pandas
+#+end_src
+
+or with pip:
+
+#+begin_src bash
+pip install pandas
+#+end_src
+
+After pandas has been installed. We shall import it into our scripts (using the
+common convention of aliasing the library as pd):
+
+#+begin_src python
+import pandas as pd
+#+end_src
+
+*** Creating a dataframe
+
+Now that pandas has been successfully imported, we're ready to create and
+manipulate our own dataframes. To create a dataframe, we first need to organise
+our data in appropriate format. Perhaps one of the most simple formats for this
+data is a dictionary, where each value is a list:
+
+#+begin_src python
+data = {"col1": [1, 2], "col2": [3, 4]}
+#+end_src
+
+We see that each 'key' is the representation of a column of data, and the value
+of this key is a list of data for this column. To convert this data to a
+dataframe, we need only to call the DataFrame class:
+
+#+begin_src python
+df = pd.DataFrame(data)
+#+end_src
+
+*** Creating a dataframe
+
+=df= (dataframe for short) is now our representation of the dataframe:
+
+#+ATTR_LATEX: :width 0.2\textwidth
+[[file:images/simple_dataframe.png]]
+
+We see that each column is named using the keys in our =data= dictionary, and the
+values of the column correspond to the elements in the list. To the left of the
+dataframe we have a numerical index starting at 0.
+
+*** Access elements in our dataframe
+
+Extracting particular values from this dataframe can be accomplished using the
+=loc= and =iloc= class methods. First let's look at using =loc=, and later on we'll
+investigate the differences between these two methods.
+
+Let's say we want to get all the data for the first row of our dataframe:
+
+#+begin_src python
+df.loc[0]
+#+end_src
+
+#+ATTR_LATEX: :scale 0.5
+[[file:images/series.png]]
+
+This returns a 'Series', which is just a representation of a vector of data.
+
+*** Access elements in our dataframe
+
+To access a single value from this series, we can specify the column name:
+
+#+begin_src python
+df.loc[0]["col1"]  # returns one
+#+end_src
+
+Or, we can more simply add the column name into the =loc=:
+
+#+begin_src python
+df.loc[0, "col1"]
+#+end_src
+
+If we wanted to retrieve a subset of columns, we supply a list of column names:
+
+#+begin_src python
+df.loc[0, ["col1", "col2"]]
+#+end_src
+
+*** Access elements in our dataframe
+
+We can also use the slice notation to access multiple rows:
+
+#+begin_src python
+df.loc[0:2, "col1"]
+#+end_src
+
+This retrieves the values in =col1=.
+
+Or if we just wanted to get the entire column of data, we could instead do:
+
+#+begin_src python
+df["col1"]
+#+end_src
+
+** Manipulating data
+
+*** Reading a CSV file
+
+Instead of manually constructing our data and then passing it to a DataFrame, we
+can use pandas to read directly from a CSV file and return a DataFrame:
+
+Let's say we have a CSV file of measurements of Iris flowers called =iris.csv=. We
+can read this CSV file using the =pd.read_csv= method.
+
+#+begin_src python
+df = pd.read_csv("iris.csv")
+#+end_src
+
+#+ATTR_LATEX: :width 0.5\textwidth
+[[file:images/pandas.jpg]]
+
+*** Selecting a subset of data
+
+With this more complex dataset, we can use more fancy methods of indexing. For
+example, let's select all the rows where the sepal length is less than 5 cm.
+
+#+begin_src python
+df[df["sepal length (cm)"] < 5]
+#+end_src
+
+#+ATTR_LATEX: :width 0.4\textwidth
+[[file:images/subset.png]]
+
+Instead of the 150 rows we had before, this returns just 22. We can also specify
+only the columns we want with this conditional expression:
+
+#+begin_src python
+df[df["sepal length (cm)"] < 5]["sepal width (cm)"]
+#+end_src
+
+*** Creating new columns
+
+We can add new columns to this dataset by using the assignment operator. In this
+example, we're creating a new column called 'sepal sum' to be the sum of both
+the 'sepal width' and 'sepal length':
+
+#+begin_src python
+df["sepal sum"] = df["sepal width (cm)"] + df["sepal length (cm)"]
+#+end_src
+
+#+ATTR_LATEX: :width 0.5\textwidth
+[[file:images/new-column.png]]
+
+** Inspecting our data
+
+*** Shape of the data
+
+We can also further see that our new column has been added by inspecting the
+=shape= of the data.
+
+#+begin_src python
+df.shape
+#+end_src
+
+#+begin_example
+(150, 5)
+#+end_example
+
+This returns a tuple corresponding to the number of rows (150) and the number of
+columns (5).
+
+*** Getting the names of columns
+
+To find out what the names of the columns are we can use the =columns= attribute:
+
+#+begin_src python
+df.columns
+#+end_src
+
+#+begin_example
+Index(['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)',
+       'petal width (cm)', 'sepal sum'],
+      dtype='object')
+#+end_example
+
+This returns an Index that can itself be indexed in the usual way:
+
+#+begin_src python
+df.columns[0]
+#+end_src
+
+#+begin_example
+'sepal length (cm)'
+#+end_example
+
+*** Head/tail
+
+We can get the first/last few rows of the data using the =.head()= or =.tail()=
+methods. These take an optional argument specifying the number of rows to
+view. By default, it will show 10 rows.
+
+#+begin_src python
+df.head()  # shows the first 10 rows
+df.head(5) # shows the first 5 rows
+
+df.tail()  # shows the last 10 rows
+df.tail(5) # shows the last 5 rows
+#+end_src
+
+
+** Operations
+
+*** Operations on data
+
+Pandas comes with a few standard methods to perform some basic operations. For
+example, you can calculate the mean of a column:
+
+#+begin_src python
+df["sepal length (cm)"].mean()
+#+end_src
+
+And you can use the =apply()= method to apply a function to every element
+(i.e. map a function to every element):
+
+#+begin_src python
+df["sepal length (cm)"].apply(lambda x: x * 2)
+#+end_src
+
+Apply takes a function as an argument, and here we're using an anonymous
+(unnamed function) using a lambda expression
+https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions
+
+This lambda expression will double its input, and therefore applying this
+function to every element will double all values in 'sepal length (cm)'.
+
+*** Merge
+
+Many pandas dataframes can be combined together using the =concat= method that
+requires a list of dataframes as input.
+
+#+begin_src python
+data1 = pd.DataFrame({"col1": [0, 1], "col2": [0, 1]})
+data2 = pd.DataFrame({"col1": [2, 3], "col2": [2, 3]})
+
+combined = pd.concat([data1, data2])
+#+end_src
+
+#+ATTR_LATEX: :width 0.2\textwidth
+[[file:images/combined.png]]
+
+*** More on indexing
+
+#+ATTR_LATEX: :width 0.2\textwidth
+[[file:images/combined.png]]
+
+Notice how the indexes are repeated. We can also verify this using the =.index=
+attribute:
+
+#+begin_src python
+combined.index
+#+end_src
+
+#+begin_example
+Int64Index([0, 1, 0, 1], dtype='int64')
+#+end_example
+
+We can see two '0's and two '1's. Normally, this is not a problem, but it does
+have an effect on when we index our data with =loc=.
+
+*** More on indexing
+
+#+begin_src python
+combined.loc[1]
+#+end_src
+
+#+ATTR_LATEX: :width 0.2\textwidth
+[[file:images/indexing.png]]
+
+Notice how =loc= has returned two rows because it sees two rows with the index
+label of 1. If instead we simply meant: give me the second row we should use
+=iloc=:
+
+#+begin_src python
+combined.iloc[1]
+#+end_src
+
+Which will give us the desired outcome.
+
+*** Resetting indexes
+
+Alternatively we can reset the index labels:
+
+#+begin_src python
+combined.reset_index()
+#+end_src
+
+#+ATTR_LATEX: :width 0.2\textwidth
+[[file:images/reset-index.png]]
+
+This will compute a new series of indexes for our data, and then using =loc= again
+will only return the one row.
+
+*** Resetting indexes
+
+To save the result of =reset_index()= we need to overwrite our original data:
+
+#+begin_src python
+combined = combined.reset_index()
+#+end_src
+
+Or specify =inplace=:
+
+#+begin_src python
+combined.reset_index(inplace=True)
+#+end_src
+
+** Different types of data
+
+*** Categorical data
+
+So far, we've only seen numerical data. One of the advantages of using pandas
+for tabular data is that we can represent various other types of data that makes
+our manipulation and operations on different data types simpler. For example, we
+can represent 'categorical data' where there is a finite set of values or
+categories.
+
+#+begin_src python
+df = pd.DataFrame({"col1": ["a", "b", "c", "a"],
+                   "col2": [1, 2, 5, 4]})
+#+end_src
+
+Right now, =df= is simply representing 'col1' as strings, but we can change the
+representation to categorical elements with:
+
+#+begin_src python
+df["col1"] = df["col1"].astype("category")
+#+end_src
+
+
+*** Categorical data
+
+With categorical data, we can perform operations on these groups a lot quicker
+than if we were just to represent them on strings. For instance, lets compute
+the sum of 'col2' for each group.
+
+#+begin_src python
+df.groupby("col1").sum()
+#+end_src
+
+#+ATTR_LATEX: :width 0.1\textwidth
+[[file:images/categorical.png]]
+
+If we have lots of data, having 'col1' =astype('category')= will be a lot more
+computationally efficient than leaving them as strings.
+
+*** Dates and times
+
+If you have a column that represents a date or time, you can convert that column
+to a true datetime representation with =pd.to_datetime=
+
+#+begin_src python
+df = pd.DataFrame({"col1": ["2002/01/30", "2010/05/16"]})
+df["col1"] = pd.to_datetime(df["col1"])
+#+end_src
+
+In addition to make indexing by dates a lot faster, it also provides us with
+some convienant methods to extract particular components from the data. Such as
+the year:
+
+#+begin_src python
+df["col1"].dt.year # or df["col1"].dt.month etc
+#+end_src
+
+#+ATTR_LATEX: :width 0.3\textwidth
+[[file:images/year.png]]
