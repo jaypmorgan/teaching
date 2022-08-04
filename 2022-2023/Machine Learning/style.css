@@ -1,6 +1,10 @@
-body {margin-left: 100px; max-width: 80ch; font-family: 'Arial', Sans-serif; line-height: 1.7em; font-size: 1.1em;}
+html {border-left: 20px solid #8B2244; background: #fdfcf8;}
+body {margin-left: 100px; max-width: 80ch; font-family: 'Times New Roman'; line-height: 1.9em; font-size: 1.2em;}
 h1,h2,h3,h4 {margin-top: 50px;}
 h2 {padding-bottom: 15px; margin-left: -50px; font-size: 1.7em;}
 p {-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased !important; -moz-font-smoothing: antialiased !important; text-rendering: optimizelegibility !important; letter-spacing: .03em;}
 .org-src-container {line-height: initial;}
 div#postamble {margin-left:-80px;margin-top:100px;}
+pre {border: 1px solid #b1b1b1;}
+a {color: #8B2244;}
+a:visted {color: #8B3555;}

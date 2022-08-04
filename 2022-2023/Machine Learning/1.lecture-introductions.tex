@@ -1,6 +1,6 @@
-% Created 2022-08-01 lun. 18:51
+% Created 2022-08-04 jeu. 14:38
 % Intended LaTeX compiler: pdflatex
-\documentclass[bigger]{beamer}
+\documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -16,16 +16,22 @@
 \usetheme{Berkeley}
 \definecolor{UBCblue}{rgb}{0.54706, 0.13725, 0.26667} % UBC Blue (primary)
 \usecolortheme[named=UBCblue]{structure}
+\setlength{\parskip}{5pt}
+\newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
+\addtobeamertemplate{footnote}{}{\vspace{2ex}}
+\usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.95}
 \usetheme{default}
 \author{Jay Morgan}
 \date{<TODO>}
 \title{Machine Learning}
+\subtitle{Lecture 1 - Introductions}
 \hypersetup{
  pdfauthor={Jay Morgan},
  pdftitle={Machine Learning},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 28.1 (Org mode 9.5.3)}, 
+ pdfcreator={Emacs 28.1 (Org mode 9.5.4)}, 
  pdflang={English}}
 \begin{document}
 
@@ -34,32 +40,117 @@
 \tableofcontents
 \end{frame}
 
-\section{Introductions}
-\label{sec:org2519ced}
 
-\begin{frame}[label={sec:orgc7d1904}]{What this course is about?}
+\section*{Introductions}
+\label{sec:org025e022}
+
+Welcome to all the new students! Here I am going to be talking about Machine Learning
+and all of the great things that this "technology" has to offer. To begin our course,
+I shall start with a bit of house keeping -- more specifically, I will be talking
+about what exactly we'll be learning about in the course (Machine Learning is a broad
+subject after-all). In addition, I will tell you where you can find the resources
+related to the course and how you can contact me, should you have any questions.
+
+\begin{frame}[label={sec:org5b47f76}]{What this course is about?}
+In this course, we will be learning about Machine Learning: firstly, what Machine
+Learning actually is; secondly, we'll take a look at some of the algorithms within
+the scope of Machine Learning, and develop an intuition about how these algorithms
+work and when they would be useful; and finally, how we can compare and evaluate the
+algorithms we've learnt about.
 \end{frame}
 
-\begin{frame}[label={sec:org487c203}]{About Me}
+\begin{frame}[label={sec:org74e7c3d},fragile]{How this course will be taught}
+ I intended to deliver this course via a series of lectures. These lectures will be
+accompanied by the PDF lecture slides, in which I will provide the definitions and
+provide reference links should you wish to do some extra reading.
+
+In some situations, I would also like to supplement my algorithmic definitions with
+some programming code -- for this I will use the \href{https://julialang.org/}{Julia} programming language. The code
+snippets would look something like:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{julia}
+x = Float32.([1, 2, 3, 4]);
+y = x .+ randn(length(x))
+\end{minted}
+
+\begin{verbatim}
+4-element Vector{Float64}:
+ 1.8817576050704024
+ 2.051062476034138
+ 4.340649570113399
+ 3.1284623590241476
+\end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org44e9bd0}]{Where you can find the resources}
+\begin{frame}[label={sec:org6e38224}]{Outline of the course}
+\begin{center}
+\begin{tabular}{rlll}
+Lecture & Expected date & Length & Topic\\
+\hline
+1 & NOW & 2 hours & Introduction\\
+ &  &  & \\
+\end{tabular}
+\end{center}
 \end{frame}
 
-\section{What is learning, anyway?}
-\label{sec:org34978bc}
-\begin{frame}[label={sec:org83f60ea}]{A simple slide}
-This slide consists of some text with a number of bullet points:
+\begin{frame}[label={sec:org02cc03a}]{About Me}
+My name is Dr Jay Morgan. I am a researcher at the Université de Toulon, where I am
+developing Deep Learning models (a sub-field of Machine Learning research) for the
+study of astrophysical phenomenon.
 
+You can find more information and links on my personal (LIS-Lab) website:
+\url{https://pageperso.lis-lab.fr/jay.morgan/}
+
+I also publish libraries and source code online:
 \begin{itemize}
-\item the first, very @important@, point!
-\item the previous point shows the use of the special markup which
-translates to the Beamer specific \emph{alert} command for highlighting
-text.
+\item Github: \url{https://github.com/jaypmorgan}
+\item Gitlab: \url{https://gitlab.com/jaymorgan}
+\item Source Hut: \url{https://sr.ht/\~jaymorgan/}
 \end{itemize}
 
-
-The above list could be numbered or any other type of list and may
-include sub-lists.
+If you have any questions, you can email me at jay.morgan@univ-tln.fr
 \end{frame}
+
+\begin{frame}[label={sec:orgbdeaf2f}]{Where you can find the resources}
+I try to make this course as accessible as possible, which means that I host these
+slides in a variety of ways to suit you.
+
+Firstly, you can find the links to all my courses on my personal website at:
+\url{https://pageperso.lis-lab.fr/jay.morgan/teaching.html}
+
+Here you can find the links to each lecture in a PDF or HTML format. Additionally,
+you can view the source code used to make these lectures on source hut:
+\url{https://git.sr.ht/\~jaymorgan/teaching}. On this git repository you can find all my
+lectures from all years.
+\end{frame}
+
+\section*{What is learning, anyway?}
+\label{sec:org71ca252}
+
+We'll begin our journey into the world of Machine Learning by tackling the question
+of what it means to 'learn' -- how may a machine actually \emph{learn} anything?
+
+\begin{frame}[label={sec:orga6b898e}]{Study of Mice}
+To begin to answer the question of learning, we may turn to nature for
+advice. Principally, if we look at the studies conducted with Mice we find some idea
+to notion of learning.
+\end{frame}
+
+\begin{frame}[label={sec:org3386874}]{Computer Programs}
+For a more formal definition of how computer programs could be said to learn, we have:
+
+\begin{quote}
+A computer program is said to learn from experience \(E\) with respect
+to some class of tasks \(T\) and performance measure \(P\), if its performance
+a tasks in \(T\), as measured by \(P\), improves with experience \(E\).
+\end{quote}
+
+(Mitchell, Tom M, 1997)
+\end{frame}
+
+\section*{Bibliography}
+\label{sec:orga166c57}
+
+\noindent
+Mitchell, Tom M (1997). \emph{Machine learning}, McGraw-hill New York.
 \end{document}
