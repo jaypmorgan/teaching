@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-04 jeu. 14:38 -->
+<!-- 2022-08-06 sam. 15:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -222,33 +222,18 @@
 <br />
 <span class="subtitle">Lecture 1 - Introductions</span>
 </h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgf8a9ae5">Introductions</a>
-<ul>
-<li><a href="#org5f96252">What this course is about?</a></li>
-<li><a href="#org1ea02a8">How this course will be taught</a></li>
-<li><a href="#org7cb34d7">Outline of the course</a></li>
-<li><a href="#orgb5ccf85">About Me</a></li>
-<li><a href="#org674f528">Where you can find the resources</a></li>
-</ul>
-</li>
-<li><a href="#org71b160e">What is learning, anyway?</a>
-<ul>
-<li><a href="#orgeb4084e">Study of Mice</a></li>
-<li><a href="#org0f4e680">Computer Programs</a></li>
-</ul>
-</li>
-<li><a href="#orgd8002a0">Bibliography</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgf8a9ae5" class="outline-2">
-<h2 id="orgf8a9ae5">Introductions</h2>
-<div class="outline-text-2" id="text-orgf8a9ae5">
+<div id="outline-container-org68aca53" class="outline-2">
+<h2 id="org68aca53">Introduction</h2>
+<div class="outline-text-2" id="text-org68aca53">
+</div>
+<div id="outline-container-org84a0ef9" class="outline-3">
+<h3 id="org84a0ef9">Course Organisation</h3>
+<div class="outline-text-3" id="text-org84a0ef9">
+</div>
+<div id="outline-container-org510dadd" class="outline-4">
+<h4 id="org510dadd">Welcome!</h4>
+<div class="outline-text-4" id="text-org510dadd">
 <p>
 Welcome to all the new students! Here I am going to be talking about Machine Learning
 and all of the great things that this "technology" has to offer. To begin our course,
@@ -258,10 +243,11 @@ subject after-all). In addition, I will tell you where you can find the resource
 related to the course and how you can contact me, should you have any questions.
 </p>
 </div>
+</div>
 
-<div id="outline-container-org5f96252" class="outline-3">
-<h3 id="org5f96252">What this course is about?</h3>
-<div class="outline-text-3" id="text-org5f96252">
+<div id="outline-container-orgce2df64" class="outline-4">
+<h4 id="orgce2df64">What this course is about?</h4>
+<div class="outline-text-4" id="text-orgce2df64">
 <p>
 In this course, we will be learning about Machine Learning: firstly, what Machine
 Learning actually is; secondly, we'll take a look at some of the algorithms within
@@ -272,40 +258,20 @@ algorithms we've learnt about.
 </div>
 </div>
 
-<div id="outline-container-org1ea02a8" class="outline-3">
-<h3 id="org1ea02a8">How this course will be taught</h3>
-<div class="outline-text-3" id="text-org1ea02a8">
+<div id="outline-container-orged214be" class="outline-4">
+<h4 id="orged214be">How this course will be taught</h4>
+<div class="outline-text-4" id="text-orged214be">
 <p>
 I intended to deliver this course via a series of lectures. These lectures will be
 accompanied by the PDF lecture slides, in which I will provide the definitions and
 provide reference links should you wish to do some extra reading.
 </p>
-
-<p>
-In some situations, I would also like to supplement my algorithmic definitions with
-some programming code &#x2013; for this I will use the <a href="https://julialang.org/">Julia</a> programming language. The code
-snippets would look something like:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-julia">x = Float32.([1, 2, 3, 4]);
-y = x .+ randn(length(x))
-</pre>
-</div>
-
-<pre class="example">
-4-element Vector{Float64}:
- 1.8817576050704024
- 2.051062476034138
- 4.340649570113399
- 3.1284623590241476
-</pre>
 </div>
 </div>
 
-<div id="outline-container-org7cb34d7" class="outline-3">
-<h3 id="org7cb34d7">Outline of the course</h3>
-<div class="outline-text-3" id="text-org7cb34d7">
+<div id="outline-container-org556a279" class="outline-4">
+<h4 id="org556a279">Outline of the course</h4>
+<div class="outline-text-4" id="text-org556a279">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -344,10 +310,66 @@ y = x .+ randn(length(x))
 </table>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgb5ccf85" class="outline-3">
-<h3 id="orgb5ccf85">About Me</h3>
-<div class="outline-text-3" id="text-orgb5ccf85">
+<div id="outline-container-org31f2423" class="outline-3">
+<h3 id="org31f2423">Reading the lectures</h3>
+<div class="outline-text-3" id="text-org31f2423">
+</div>
+<div id="outline-container-org577dfb3" class="outline-4">
+<h4 id="org577dfb3">Source code</h4>
+<div class="outline-text-4" id="text-org577dfb3">
+<p>
+In some situations, I would also like to supplement my algorithmic definitions with
+some programming code &#x2013; for this I will use the <a href="https://julialang.org/">Julia</a> programming language. The code
+snippets would look something like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">x = Float32.([1, 2, 3, 4]);
+y = x .+ randn(length(x))
+</pre>
+</div>
+
+<pre class="example">
+4-element Vector{Float64}:
+ 1.8817576050704024
+ 2.051062476034138
+ 4.340649570113399
+ 3.1284623590241476
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org75949ea" class="outline-4">
+<h4 id="org75949ea">References</h4>
+<div class="outline-text-4" id="text-org75949ea">
+<p>
+In some cases, and is the norm with academic traditions, we'll want to include a
+reference, a link to previous written works.
+</p>
+
+<p>
+Here is an example of a sentence that includes a reference:
+</p>
+
+<p>
+"This is a very important sentence which I assert to be true, to convince you of this
+fact I shall appeal to authority and include a reference:
+(Shalev-Shwartz, Shai and Ben-David, Shai, 2014)"
+</p>
+
+<p>
+More information on the referenced material (such as title, publishing date) will be
+found in the bibliography slide (or bottom of the webpage if you're viewing the HTML
+version of the lectures).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orged9d6ee" class="outline-4">
+<h4 id="orged9d6ee">About Me</h4>
+<div class="outline-text-4" id="text-orged9d6ee">
 <p>
 My name is Dr Jay Morgan. I am a researcher at the Université de Toulon, where I am
 developing Deep Learning models (a sub-field of Machine Learning research) for the
@@ -374,9 +396,9 @@ If you have any questions, you can email me at jay.morgan@univ-tln.fr
 </div>
 </div>
 
-<div id="outline-container-org674f528" class="outline-3">
-<h3 id="org674f528">Where you can find the resources</h3>
-<div class="outline-text-3" id="text-org674f528">
+<div id="outline-container-org9959e63" class="outline-4">
+<h4 id="org9959e63">Where you can find the resources</h4>
+<div class="outline-text-4" id="text-org9959e63">
 <p>
 I try to make this course as accessible as possible, which means that I host these
 slides in a variety of ways to suit you.
@@ -396,30 +418,48 @@ lectures from all years.
 </div>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org71b160e" class="outline-2">
-<h2 id="org71b160e">What is learning, anyway?</h2>
-<div class="outline-text-2" id="text-org71b160e">
+<div id="outline-container-orgabf2080" class="outline-2">
+<h2 id="orgabf2080">What is learning, anyway?</h2>
+<div class="outline-text-2" id="text-orgabf2080">
+</div>
+<div id="outline-container-orgdf5fc61" class="outline-3">
+<h3 id="orgdf5fc61">Learning about Learning</h3>
+<div class="outline-text-3" id="text-orgdf5fc61">
+</div>
+<div id="outline-container-org6a7c091" class="outline-4">
+<h4 id="org6a7c091">Let's answer the question of learning</h4>
+<div class="outline-text-4" id="text-org6a7c091">
 <p>
 We'll begin our journey into the world of Machine Learning by tackling the question
 of what it means to 'learn' &#x2013; how may a machine actually <i>learn</i> anything?
 </p>
 </div>
+</div>
 
-<div id="outline-container-orgeb4084e" class="outline-3">
-<h3 id="orgeb4084e">Study of Mice</h3>
-<div class="outline-text-3" id="text-orgeb4084e">
+<div id="outline-container-org8066d7a" class="outline-4">
+<h4 id="org8066d7a">Study of Mice</h4>
+<div class="outline-text-4" id="text-org8066d7a">
 <p>
 To begin to answer the question of learning, we may turn to nature for
 advice. Principally, if we look at the studies conducted with Mice we find some idea
-to notion of learning.
+to notion of learning (Shalev-Shwartz, Shai and Ben-David, Shai, 2014).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0f4e680" class="outline-3">
-<h3 id="org0f4e680">Computer Programs</h3>
-<div class="outline-text-3" id="text-org0f4e680">
+<div id="outline-container-org304ea1d" class="outline-4">
+<h4 id="org304ea1d">Bait-shyness</h4>
+</div>
+
+<div id="outline-container-org322489c" class="outline-4">
+<h4 id="org322489c">Pigeon superstition</h4>
+</div>
+
+<div id="outline-container-org9313427" class="outline-4">
+<h4 id="org9313427">Computer Programs</h4>
+<div class="outline-text-4" id="text-org9313427">
 <p>
 For a more formal definition of how computer programs could be said to learn, we have:
 </p>
@@ -437,20 +477,338 @@ a tasks in \(T\), as measured by \(P\), improves with experience \(E\).
 </p>
 </div>
 </div>
+
+<div id="outline-container-org4634d89" class="outline-4">
+<h4 id="org4634d89">When might we need Machine Learning</h4>
+<div class="outline-text-4" id="text-org4634d89">
+<ul class="org-ul">
+<li>When problems are difficult to describe.</li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-orgd8002a0" class="outline-2">
-<h2 id="orgd8002a0">Bibliography</h2>
-<div class="outline-text-2" id="text-orgd8002a0">
+<div id="outline-container-org005f881" class="outline-4">
+<h4 id="org005f881">Different types of Learning</h4>
+<div class="outline-text-4" id="text-org005f881">
+<ul class="org-ul">
+<li>Supervised Learning</li>
+<li>Unsupervised / self-supervised Learning</li>
+<li>Reinforcement Learning</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4de4c7a" class="outline-4">
+<h4 id="org4de4c7a">Supervised Learning</h4>
+<div class="outline-text-4" id="text-org4de4c7a">
+<ul class="org-ul">
+<li>Input and outputs are provided to the algorithm.</li>
+<li>Tuple</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org08f7e82" class="outline-4">
+<h4 id="org08f7e82">Unsupervised Learning</h4>
+<div class="outline-text-4" id="text-org08f7e82">
+<ul class="org-ul">
+<li>Output is not provided to the model.</li>
+<li>Also called self-supervised &#x2013; why, text modelling.</li>
+<li>Clustering</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga311e15" class="outline-4">
+<h4 id="orga311e15">Reinforcement Learning</h4>
+<div class="outline-text-4" id="text-orga311e15">
+<ul class="org-ul">
+<li>Agent interacts with an environment.</li>
+<li>Gains a reward based on interactions.</li>
+<li>Over many 'games', the interactions will become better.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdc77a52" class="outline-3">
+<h3 id="orgdc77a52">Terminology</h3>
+<div class="outline-text-3" id="text-orgdc77a52">
+</div>
+<div id="outline-container-orgf76241d" class="outline-4">
+<h4 id="orgf76241d">What will our data look like?</h4>
+<div class="outline-text-4" id="text-orgf76241d">
+<p>
+Data in Machine Learning applications can come in a variety of different formats. The
+most typical data formats we might see are:
+</p>
+
+<ul class="org-ul">
+<li>Tables</li>
+<li>Images/Videos</li>
+<li>Text</li>
+<li>Sound</li>
+</ul>
+
+<p>
+These are the initial formats, though, before actually doing any learning, we will
+want to transform them into a different representation that we can use.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org34b3243" class="outline-4">
+<h4 id="org34b3243">Tables</h4>
+<div class="outline-text-4" id="text-org34b3243">
+<p>
+A table, or tabular, format is a \(n \times m\) set of data with \(n\) samples or
+examples, and \(m\) features for each sample. For example:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-left">&#x2026;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org8878f9c" class="outline-4">
+<h4 id="org8878f9c">Images/Videos</h4>
+<div class="outline-text-4" id="text-org8878f9c">
+<ul class="org-ul">
+<li>Matrix (2D/3D)</li>
+<li>Video composition of Images in a sequence</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9211aaf" class="outline-4">
+<h4 id="org9211aaf">Text</h4>
+<div class="outline-text-4" id="text-org9211aaf">
+<ul class="org-ul">
+<li>Composition of words</li>
+<li>Can be in order, but doesn't have to be!</li>
+<li>What is considered a word?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org95810fe" class="outline-4">
+<h4 id="org95810fe">Time-series</h4>
+<div class="outline-text-4" id="text-org95810fe">
+<ul class="org-ul">
+<li>Sequence of values (vector with a time component)</li>
+<li>Example is a sound wave.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1da7e2d" class="outline-4">
+<h4 id="org1da7e2d">Inputs/Outputs</h4>
+<div class="outline-text-4" id="text-org1da7e2d">
+<p>
+Within our data, each value will take on a certain type.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Discrete</td>
+<td class="org-left">Total number of students</td>
+</tr>
+
+<tr>
+<td class="org-left">Continuious</td>
+<td class="org-left">Height of a student</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Ordinal</td>
+<td class="org-left">element of {Low, Med, High}</td>
+</tr>
+
+<tr>
+<td class="org-left">Nominal</td>
+<td class="org-left">element of {'dog', 'cat'}</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Discrete:</li>
+<li>Continuious:</li>
+<li>Ordinal:</li>
+<li>Nominal:</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org362f624" class="outline-4">
+<h4 id="org362f624">Types of Outputs &#x2013; Regression &amp; Classification</h4>
+<div class="outline-text-4" id="text-org362f624">
+<ul class="org-ul">
+<li>Regression - to continuious</li>
+<li>Classification to discrete</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org071fd31" class="outline-3">
+<h3 id="org071fd31">Example Problems</h3>
+<div class="outline-text-3" id="text-org071fd31">
+</div>
+<div id="outline-container-orga794f27" class="outline-4">
+<h4 id="orga794f27">Boston House Prices Dataset &#x2013; Tabular Regression</h4>
+<div class="outline-text-4" id="text-orga794f27">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #C678DD;">using</span> DataFrames
+<span style="color: #C678DD;">using</span> MLDatasets: BostonHousing
+dataset = BostonHousing();
+dataset[1:5]
+</pre>
+</div>
+
+<pre class="example" id="org3d84cd0">
+(features = 5×13 DataFrame
+ Row │ CRIM     ZN       INDUS    CHAS   NOX      RM       AGE      DIS      RAD    TAX    PTRATIO  B        LSTAT   ⋯
+     │ Float64  Float64  Float64  Int64  Float64  Float64  Float64  Float64  Int64  Int64  Float64  Float64  Float64 ⋯
+─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ 0.00632     18.0     2.31      0    0.538    6.575     65.2   4.09        1    296     15.3   396.9      4.98 ⋯
+   2 │ 0.02731      0.0     7.07      0    0.469    6.421     78.9   4.9671      2    242     17.8   396.9      9.14
+   3 │ 0.02729      0.0     7.07      0    0.469    7.185     61.1   4.9671      2    242     17.8   392.83     4.03
+   4 │ 0.03237      0.0     2.18      0    0.458    6.998     45.8   6.0622      3    222     18.7   394.63     2.94
+   5 │ 0.06905      0.0     2.18      0    0.458    7.147     54.2   6.0622      3    222     18.7   396.9      5.33 ⋯, targets = 5×1 DataFrame
+ Row │ MEDV
+     │ Float64
+─────┼─────────
+   1 │    24.0
+   2 │    21.6
+   3 │    34.7
+   4 │    33.4
+   5 │    36.2)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfd4f63e" class="outline-4">
+<h4 id="orgfd4f63e">Iris Dataset &#x2013; Tabular Classification</h4>
+</div>
+
+<div id="outline-container-org66b4687" class="outline-4">
+<h4 id="org66b4687">MNIST Dataset &#x2013; Image Classification</h4>
+</div>
+
+<div id="outline-container-org968e0a7" class="outline-4">
+<h4 id="org968e0a7">IMDB Reviews &#x2013; Text Classification/Regression</h4>
+</div>
+
+<div id="outline-container-org314dee5" class="outline-4">
+<h4 id="org314dee5">Ham or Spam &#x2013; Text Classification</h4>
+</div>
+</div>
+
+<div id="outline-container-org481c4d1" class="outline-3">
+<h3 id="org481c4d1">Concerns &amp; Considerations</h3>
+<div class="outline-text-3" id="text-org481c4d1">
+</div>
+<div id="outline-container-org2321d6e" class="outline-4">
+<h4 id="org2321d6e">Compute resources &#x2013; environmental concerns</h4>
+</div>
+
+<div id="outline-container-org0178642" class="outline-4">
+<h4 id="org0178642">Bias</h4>
+</div>
+
+<div id="outline-container-org5bc8126" class="outline-4">
+<h4 id="org5bc8126">Personal information</h4>
+<div class="outline-text-4" id="text-org5bc8126">
+<ul class="org-ul">
+<li>i.e. GANs reproducing exactly.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org51e0400" class="outline-4">
+<h4 id="org51e0400">Mental health of optimisation algorithms</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org88f0e8c" class="outline-2">
+<h2 id="org88f0e8c">Summary</h2>
+<div class="outline-text-2" id="text-org88f0e8c">
+</div>
+<div id="outline-container-org0973fd5" class="outline-3">
+<h3 id="org0973fd5">What is Machine Learning</h3>
+<div class="outline-text-3" id="text-org0973fd5">
+</div>
+<div id="outline-container-org36a2766" class="outline-4">
+<h4 id="org36a2766">Problem statement</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb8355ec" class="outline-2">
+<h2 id="orgb8355ec">Bibliography</h2>
+<div class="outline-text-2" id="text-orgb8355ec">
+</div>
+<div id="outline-container-orgb5bc166" class="outline-4">
+<h4 id="orgb5bc166">Bibliography</h4>
+<div class="outline-text-4" id="text-orgb5bc166">
 <p>
 Mitchell, Tom M (1997). <i>Machine learning</i>, McGraw-hill New York.</p>
+
+<p>
+Shalev-Shwartz, Shai and Ben-David, Shai (2014). <i>Understanding machine learning: From theory to algorithms</i>, Cambridge university press.</p>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: &lt;TODO&gt;</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-08-04 jeu. 14:38</p>
+<p class="date">Created: 2022-08-06 sam. 15:55</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

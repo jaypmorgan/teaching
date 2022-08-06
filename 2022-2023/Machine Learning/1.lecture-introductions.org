@@ -5,21 +5,26 @@
 #+startup: beamer
 #+BIBLIOGRAPHY: references.bib
 #+LaTeX_CLASS: beamer
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage{pmboxdraw}
 #+LATEX_HEADER: \usetheme{Berkeley}
 #+LATEX_HEADER: \definecolor{UBCblue}{rgb}{0.54706, 0.13725, 0.26667} % UBC Blue (primary)
 #+LATEX_HEADER: \usecolortheme[named=UBCblue]{structure}
 #+LATEX_HEADER: \setlength{\parskip}{5pt}
 #+LATEX_CLASS_OPTIONS: [10pt]
-#+BEAMER_FRAME_LEVEL: 2
 #+LATEX_HEADER: \newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
 #+LaTeX_HEADER: \addtobeamertemplate{footnote}{}{\vspace{2ex}}
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \definecolor{LightGray}{gray}{0.95}
-#+OPTIONS:   H:2 num:nil toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
-#+PROPERTY: header-args:julia :exports both :results output :eval never-export :session :dir ./
+#+PROPERTY: header-args:julia :exports both :results output :eval never-export :session
 
-* Introductions
+* Introduction
+
+** Course Organisation
+
+*** Welcome!
 
 Welcome to all the new students! Here I am going to be talking about Machine Learning
 and all of the great things that this "technology" has to offer. To begin our course,
@@ -28,7 +33,7 @@ about what exactly we'll be learning about in the course (Machine Learning is a 
 subject after-all). In addition, I will tell you where you can find the resources
 related to the course and how you can contact me, should you have any questions.
 
-** What this course is about?
+*** What this course is about?
 
 In this course, we will be learning about Machine Learning: firstly, what Machine
 Learning actually is; secondly, we'll take a look at some of the algorithms within
@@ -36,11 +41,22 @@ the scope of Machine Learning, and develop an intuition about how these algorith
 work and when they would be useful; and finally, how we can compare and evaluate the
 algorithms we've learnt about.
 
-** How this course will be taught
+*** How this course will be taught
 
 I intended to deliver this course via a series of lectures. These lectures will be
 accompanied by the PDF lecture slides, in which I will provide the definitions and
 provide reference links should you wish to do some extra reading.
+
+*** Outline of the course
+
+| Lecture | Expected date | Length  | Topic        |
+|---------+---------------+---------+--------------|
+|       1 | NOW           | 2 hours | Introduction |
+|         |               |         |              |
+
+** Reading the lectures
+
+*** Source code
 
 In some situations, I would also like to supplement my algorithmic definitions with
 some programming code -- for this I will use the [[https://julialang.org/][Julia]] programming language. The code
@@ -58,14 +74,22 @@ y = x .+ randn(length(x))
 :  4.340649570113399
 :  3.1284623590241476
 
-** Outline of the course
+*** References
 
-| Lecture | Expected date | Length  | Topic        |
-|---------+---------------+---------+--------------|
-|       1 | NOW           | 2 hours | Introduction |
-|         |               |         |              |
+In some cases, and is the norm with academic traditions, we'll want to include a
+reference, a link to previous written works.
 
-** About Me
+Here is an example of a sentence that includes a reference:
+
+"This is a very important sentence which I assert to be true, to convince you of this
+fact I shall appeal to authority and include a reference:
+[cite:@shalev2014understanding]"
+
+More information on the referenced material (such as title, publishing date) will be
+found in the bibliography slide (or bottom of the webpage if you're viewing the HTML
+version of the lectures).
+
+*** About Me
 
 My name is Dr Jay Morgan. I am a researcher at the Université de Toulon, where I am
 developing Deep Learning models (a sub-field of Machine Learning research) for the
@@ -81,7 +105,7 @@ I also publish libraries and source code online:
 
 If you have any questions, you can email me at jay.morgan@univ-tln.fr
 
-** Where you can find the resources
+*** Where you can find the resources
 
 I try to make this course as accessible as possible, which means that I host these
 slides in a variety of ways to suit you.
@@ -96,16 +120,24 @@ lectures from all years.
 
 * What is learning, anyway?
 
+** Learning about Learning
+
+*** Let's answer the question of learning
+
 We'll begin our journey into the world of Machine Learning by tackling the question
 of what it means to 'learn' -- how may a machine actually /learn/ anything?
 
-** Study of Mice
+*** Study of Mice
 
 To begin to answer the question of learning, we may turn to nature for
 advice. Principally, if we look at the studies conducted with Mice we find some idea
-to notion of learning.
+to notion of learning [cite:@shalev2014understanding].
 
-** Computer Programs
+*** Bait-shyness
+
+*** Pigeon superstition
+
+*** Computer Programs
 
 For a more formal definition of how computer programs could be said to learn, we have:
 
@@ -117,7 +149,236 @@ a tasks in $T$, as measured by $P$, improves with experience $E$.
 
 [cite:@mitchell1997machine]
 
+*** When might we need Machine Learning
+
+- When problems are difficult to describe.
+
+*** Different types of Learning
+
+- Supervised Learning
+- Unsupervised / self-supervised Learning
+- Reinforcement Learning
+
+*** Supervised Learning
+
+- Input and outputs are provided to the algorithm.
+- Tuple
+
+*** Unsupervised Learning
+
+- Output is not provided to the model.
+- Also called self-supervised -- why, text modelling.
+- Clustering
+
+*** Reinforcement Learning
+
+- Agent interacts with an environment.
+- Gains a reward based on interactions.
+- Over many 'games', the interactions will become better.
+
+** Terminology
+
+*** What will our data look like?
+
+Data in Machine Learning applications can come in a variety of different formats. The
+most typical data formats we might see are:
+
+- Tables
+- Images/Videos
+- Text
+- Sound
+
+These are the initial formats, though, before actually doing any learning, we will
+want to transform them into a different representation that we can use.
+
+*** Tables
+
+A table, or tabular, format is a $n \times m$ set of data with $n$ samples or
+examples, and $m$ features for each sample. For example:
+| ID | ... |   |
+|----+-----+---|
+|  1 |     |   |
+|  2 |     |   |
+
+*** Images/Videos
+
+- Matrix (2D/3D)
+- Video composition of Images in a sequence
+
+*** Text
+
+- Composition of words
+- Can be in order, but doesn't have to be!
+- What is considered a word?
+
+*** Time-series
+
+- Sequence of values (vector with a time component)
+- Example is a sound wave.
+
+*** Inputs/Outputs
+
+Within our data, each value will take on a certain type.
+
+| Name        | Example                     |
+|-------------+-----------------------------|
+| Discrete    | Total number of students    |
+| Continuious | Height of a student         |
+|-------------+-----------------------------|
+| Ordinal     | element of {Low, Med, High} |
+| Nominal     | element of {'dog', 'cat'}   |
+
+- Discrete:
+- Continuious:
+- Ordinal: 
+- Nominal:
+
+*** Types of Outputs -- Regression & Classification
+
+- Regression - to continuious
+- Classification to discrete
+
+** Example Problems
+
+*** Boston House Prices Dataset -- Tabular Regression
+
+#+begin_src julia  :results output :session :exports both
+using DataFrames
+using MLDatasets: BostonHousing
+dataset = BostonHousing();
+dataset[1:5]
+#+end_src
+
+#+RESULTS:
+#+begin_example
+(features = 5×13 DataFrame
+ Row │ CRIM     ZN       INDUS    CHAS   NOX      RM       AGE      DIS      RAD    TAX    PTRATIO  B        LSTAT   
+     │ Float64  Float64  Float64  Int64  Float64  Float64  Float64  Float64  Int64  Int64  Float64  Float64  Float64 
+─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ 0.00632     18.0     2.31      0    0.538    6.575     65.2   4.09        1    296     15.3   396.9      4.98 
+   2 │ 0.02731      0.0     7.07      0    0.469    6.421     78.9   4.9671      2    242     17.8   396.9      9.14
+   3 │ 0.02729      0.0     7.07      0    0.469    7.185     61.1   4.9671      2    242     17.8   392.83     4.03
+   4 │ 0.03237      0.0     2.18      0    0.458    6.998     45.8   6.0622      3    222     18.7   394.63     2.94
+   5 │ 0.06905      0.0     2.18      0    0.458    7.147     54.2   6.0622      3    222     18.7   396.9      5.33 , targets = 5×1 DataFrame
+ Row │ MEDV
+     │ Float64
+─────┼─────────
+   1 │    24.0
+   2 │    21.6
+   3 │    34.7
+   4 │    33.4
+   5 │    36.2)
+#+end_example
+
+*** Iris Dataset -- Tabular Classification
+
+#+begin_src julia
+using MLDatasets: Iris
+dataset = Iris();
+dataset[1:5]
+#+end_src
+
+#+RESULTS:
+#+begin_example
+(features = 5×4 DataFrame
+ Row │ sepallength  sepalwidth  petallength  petalwidth
+     │ Float64      Float64     Float64      Float64
+─────┼──────────────────────────────────────────────────
+   1 │         5.1         3.5          1.4         0.2
+   2 │         4.9         3.0          1.4         0.2
+   3 │         4.7         3.2          1.3         0.2
+   4 │         4.6         3.1          1.5         0.2
+   5 │         5.0         3.6          1.4         0.2, targets = 5×1 DataFrame
+ Row │ class
+     │ String15
+─────┼─────────────
+   1 │ Iris-setosa
+   2 │ Iris-setosa
+   3 │ Iris-setosa
+   4 │ Iris-setosa
+   5 │ Iris-setosa)
+#+end_example
+
+*** MNIST Dataset -- Image Classification
+
+#+begin_src julia
+using MLDatasets: MNIST
+dataset = MNIST();
+dataset[1:5]
+#+end_src
+
+#+RESULTS:
+: (features = [0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0], targets = [5, 0, 4, 1, 9])
+
+*** MNIST Dataset -- Image Classification
+
+#+begin_src julia
+using Plots
+p = heatmap(dataset[1].features', yflip=true, colorbar=false)
+p = title!("Label/Target: $(dataset[1].targets)")
+savefig(p, "images/mnist-example.png")
+#+end_src
+
+#+RESULTS:
+#+begin_example
+
+
+
+ERROR: SystemError: opening file "/home/jaymorgan/Nextcloud/Teaching/images/mnist-example.png": Aucun fichier ou dossier de ce type
+Stacktrace:
+  [1] systemerror(p::String, errno::Int32; extrainfo::Nothing)
+    @ Base ./error.jl:174
+  [2] #systemerror#68
+    @ ./error.jl:173 [inlined]
+  [3] systemerror
+    @ ./error.jl:173 [inlined]
+  [4] open(fname::String; lock::Bool, read::Nothing, write::Nothing, create::Nothing, truncate::Bool, append::Nothing)
+    @ Base ./iostream.jl:293
+  [5] open(fname::String, mode::String; lock::Bool)
+    @ Base ./iostream.jl:355
+  [6] open(fname::String, mode::String)
+    @ Base ./iostream.jl:355
+  [7] open(::Plots.var"#277#278"{Plots.Plot{Plots.GRBackend}}, ::String, ::Vararg{String}; kwargs::Base.Pairs{Symbol, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Base ./io.jl:328
+  [8] open
+    @ ./io.jl:328 [inlined]
+  [9] png(plt::Plots.Plot{Plots.GRBackend}, fn::String)
+    @ Plots ~/.julia/packages/Plots/SkUg1/src/output.jl:4
+ [10] savefig(plt::Plots.Plot{Plots.GRBackend}, fn::String)
+    @ Plots ~/.julia/packages/Plots/SkUg1/src/output.jl:115
+ [11] top-level scope
+    @ none:1
+#+end_example
+
+*** IMDB Reviews -- Text Classification/Regression
+
+*** Ham or Spam -- Text Classification
+
+** Concerns & Considerations
+
+*** Compute resources -- environmental concerns
+
+*** Bias
+
+*** Personal information
+
+- i.e. GANs reproducing exactly.
+
+*** Mental health of optimisation algorithms
+
+*** Copyright Concerns
+
+Potential code laundering with github's copilot
+
+* Summary
+
+** What is Machine Learning
+
+*** Problem statement
+
 * Bibliography
+
+*** Bibliography
 
 #+PRINT_BIBLIOGRAPHY:
 
