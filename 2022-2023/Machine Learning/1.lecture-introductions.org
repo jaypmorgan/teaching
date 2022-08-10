@@ -8,6 +8,7 @@
 #+LATEX_HEADER: \usepackage[T1]{fontenc}
 #+LATEX_HEADER: \usepackage{pmboxdraw}
 #+LATEX_HEADER: \usetheme{Berkeley}
+#+LATEX_HEADER: \usepackage{booktabs}
 #+LATEX_HEADER: \definecolor{UBCblue}{rgb}{0.54706, 0.13725, 0.26667} % UBC Blue (primary)
 #+LATEX_HEADER: \usecolortheme[named=UBCblue]{structure}
 #+LATEX_HEADER: \setlength{\parskip}{5pt}
@@ -49,18 +50,21 @@ provide reference links should you wish to do some extra reading.
 
 *** Outline of the course
 
+#+ATTR_LATEX: :booktabs t
+|---------+---------------+---------+--------------|
 | Lecture | Expected date | Length  | Topic        |
 |---------+---------------+---------+--------------|
 |       1 | NOW           | 2 hours | Introduction |
 |         |               |         |              |
+|---------+---------------+---------+--------------|
 
 ** Reading the lectures
 
 *** Source code
 
-In some situations, I would also like to supplement my algorithmic definitions with
-some programming code -- for this I will use the [[https://julialang.org/][Julia]] programming language. The code
-snippets would look something like:
+During the course, I would also like to supplement my algorithmic definitions and
+explanations with some programming code -- for this I will use the [[https://julialang.org/][Julia]] programming
+language. The code snippets would look something like:
 
 #+begin_src julia :results output :session :exports both
 x = Float32.([1, 2, 3, 4]);
@@ -135,11 +139,39 @@ to notion of learning [cite:@shalev2014understanding].
 
 *** Bait-shyness
 
-*** Pigeon superstition
+When a rat encounters a novel source of food, it will first eat a little bit of
+it. If the food is edible for the rat, it will continue to eat the food, even in
+future encounters. If, however, on the initial contact with the food, the rat deems
+the food poisonous, it will ignore and not eat the food in future encounters. This
+process we call 'bait-shyness'.
+
+Here then we see the rat, on finding something new, learn from its experience, and
+use that knowledge of the experience for future encounters.
+
+*** Bait-shyness
+
+Our initial understanding of rat's bait-shyness was limited, but we've come to
+understand more about it. For instance, we learn that their learning process is more
+complex than originally thought. In a later experiment, where the 'poison' in the
+food is replaced by a different unpleasant stimulus such as a electric shock --
+i.e. when a rat eats a food, it is then shocked. It was found that this did not
+deter the rat from eating the food in future encounters, unlike the poison.
+
+It is presumed that the rat's have some 'prior knowledge' about the world and do not
+infer a temporal relationship between the food and being shocked, while they can
+infer the same relationship with food and illness.
 
 *** Computer Programs
 
-For a more formal definition of how computer programs could be said to learn, we have:
+From these two examples of how rats may learn we see: the rat will make a guess about
+something now (i.e. that the food is not poisonous), it will find out how good this
+guess is (i.e. it either gets ill or it does not), and learn from how well its guess
+was for the future. We also see that its learning can be impacted by the rat's prior
+knowledge about how the world may work.
+
+But how does this /framework/ for the process of learning translate to computers? For a
+more formal definition of how computer programs could be said to learn, we have a
+similar idea:
 
 #+begin_quote
 A computer program is said to learn from experience $E$ with respect
@@ -151,30 +183,84 @@ a tasks in $T$, as measured by $P$, improves with experience $E$.
 
 *** When might we need Machine Learning
 
-- When problems are difficult to describe.
+Why do we need computer programs that 'learn' anyway? We already have programming
+languages, why can't we just use them?
+
+Let's suppose we're creating a very simple Optical Character Recognition (OCR)
+program. This program looks at a PDF document and converts the text into something we
+can copy and paste. Part of this program's task is to take an individual character,
+say the number '8', and recognise that it's an 8 and add that to the already scanned
+text.
+
+How would we go about creating a program where we can define how to identify '8' or
+'1' or 'l' -- with all the varieties of lighting conditions, handwriting, fonts,
+sizes. We could find the process of encompassing all different variations tiresome --
+if not impossible, and that's only for a single character!
+
+*** When might we need Machine Learning
+
+With Machine Learning, instead of enumerating all possible solutions within a
+programming language, we collect a bunch of examples of '8's and give them to the
+algorithm to learn from.
+
+Through looking at these many different examples, the algorithm will/should be able
+to recognise what an 8 generally looks like.
 
 *** Different types of Learning
 
+What we have just demonstrated by way of the OCR example, is the type of learning we
+call 'Supervised Learning'. We have many examples of input (lots of different kinds
+of handwritten 8's), and we tell the learning algorithm, that they are indeed the
+number 8.
+
+But there are other kind of different learning frameworks. Specifically we have the
+following:
+
 - Supervised Learning
-- Unsupervised / self-supervised Learning
+- Unsupervised, or sometimes called self-supervised Learning
 - Reinforcement Learning
 
 *** Supervised Learning
 
-- Input and outputs are provided to the algorithm.
-- Tuple
+To better formalise Supervised Learning from our previous OCR example, Supervised
+Learning is when the learning algorithm "see's" or has access to both the input and
+output.
+
+Let's have a dataset $X$, which is a set consisting of tuple pairs $x_i, y_i$. $x_i£$
+is an input, i.e. a single image with an '8', and $y_i$ is a label which tells the
+learning algorithm if the input is indeed an '8' or something else. Mathematically we have:
+
+$X = \{(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\}$
 
 *** Unsupervised Learning
 
-- Output is not provided to the model.
-- Also called self-supervised -- why, text modelling.
-- Clustering
+In Unsupervised learning, we have again have a dataset $X$, who's elements are only
+inputs. In other words, there are no corresponding labels for each input. Instead,
+the learning algorithm must learn inherent patterns in the data and create labels
+itself. Throughout the course, we'll see examples of Unsupervised Learning in action.
+
+One thing to note: Recent methodologies have started to call Unsupervised Learning,
+self-supervised. As we have just discussed, the labels are inherent to the data from
+the discovered patterns, it's just we are not explicitly giving them to the learning
+algorithm ourselves. So it's sort of like a supervised learning setup, except the
+learning algorithm is providing the labels itself -- hence the self-supervised.
 
 *** Reinforcement Learning
 
-- Agent interacts with an environment.
-- Gains a reward based on interactions.
-- Over many 'games', the interactions will become better.
+Reinforcement Learning is very different to both Supervised and Unsupervised
+Learning. Here is the type of learning you might be familiar with if you've seen 'AI'
+that learns to play video games. In this type of learning, we have the following
+elements:
+
+- An agent
+- An environment
+- A set of allowed actions the agent can make within its environment.
+
+In this situation, an agent will interact with it's environment, and when it does
+something it can receive a reward (a reward can be positive or negative). The agent
+will remember what it has done to receive the reward. The objective for the agent is
+to maximise the reward score, and learns to do this through many iterations or
+play-through.
 
 ** Terminology
 
@@ -194,16 +280,34 @@ want to transform them into a different representation that we can use.
 *** Tables
 
 A table, or tabular, format is a $n \times m$ set of data with $n$ samples or
-examples, and $m$ features for each sample. For example:
-| ID | ... |   |
-|----+-----+---|
-|  1 |     |   |
-|  2 |     |   |
+examples, and $m$ features for each sample. For example, suppose we have a table
+consisting the price of 100 different houses:
+
+#+ATTR_LATEX: :booktabs t
+|--------------------+------------------+-----+------------|
+| Number of bedrooms | Garden size (ft) | ... | Price ($)  |
+|--------------------+------------------+-----+------------|
+|                  3 |                0 | ... | 150,000    |
+|                  5 |               10 | ... | 200,000    |
+|                ... |              ... | ... |            |
+|                 10 |             1000 | ... | 2,000,000  |
+|--------------------+------------------+-----+------------|
+
+In a supervised learning setting, where we want to predict the price of a house we may then have the following dataset:
+
+$X = \{([3, 0, ...], 150,000), ([5, 10, ...], 200,000), \\..., ([10, 1000, ...], 2,000,000)\}$
 
 *** Images/Videos
 
-- Matrix (2D/3D)
-- Video composition of Images in a sequence
+Images are composed of 2D or 3D arrays of numeric values. For example, in a RGB
+image that is 1024x500 pixels, we would have the array of size 1024x500x3 -- where 3
+is the red, green, and blue channel, respectively. If we have just a grayscale image,
+we could represent it as either 1024x500x1 or 1024x500 as the channel 'dimension' of
+the array is singular.
+
+We may already know that videos are simply a sequence of images that are iterated
+through 24+ times a second. For a 24 frames per second video, we would have an array
+size of 1024x500x3x24 -- a 4-dimensional array.
 
 *** Text
 
