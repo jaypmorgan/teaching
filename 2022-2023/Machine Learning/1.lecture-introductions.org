@@ -5,18 +5,22 @@
 #+startup: beamer
 #+BIBLIOGRAPHY: references.bib
 #+LaTeX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [10pt]
 #+LATEX_HEADER: \usepackage[T1]{fontenc}
 #+LATEX_HEADER: \usepackage{pmboxdraw}
 #+LATEX_HEADER: \usetheme{Berkeley}
+#+LATEX_HEADER: \usefonttheme{professionalfonts} 
 #+LATEX_HEADER: \usepackage{booktabs}
-#+LATEX_HEADER: \definecolor{UBCblue}{rgb}{0.54706, 0.13725, 0.26667} % UBC Blue (primary)
-#+LATEX_HEADER: \usecolortheme[named=UBCblue]{structure}
+#+LATEX_HEADER: \definecolor{mycolor}{rgb}{0.54706, 0.13725, 0.26667}
+#+LATEX_HEADER: \usecolortheme[named=mycolor]{structure}
 #+LATEX_HEADER: \setlength{\parskip}{5pt}
-#+LATEX_CLASS_OPTIONS: [10pt]
 #+LATEX_HEADER: \newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
 #+LaTeX_HEADER: \addtobeamertemplate{footnote}{}{\vspace{2ex}}
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \definecolor{LightGray}{gray}{0.95}
+#+LATEX_HEADER: \usepackage{fancyvrb}
+#+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+#+EXCLUDE_TAGS: noexport
 #+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 #+PROPERTY: header-args:julia :exports both :results output :eval never-export :session
@@ -226,7 +230,7 @@ To better formalise Supervised Learning from our previous OCR example, Supervise
 Learning is when the learning algorithm "see's" or has access to both the input and
 output.
 
-Let's have a dataset $X$, which is a set consisting of tuple pairs $x_i, y_i$. $x_i£$
+Let's have a dataset $X$, which is a set consisting of tuple pairs $x_i, y_i$. $x_i$
 is an input, i.e. a single image with an '8', and $y_i$ is a label which tells the
 learning algorithm if the input is indeed an '8' or something else. Mathematically we have:
 
@@ -263,6 +267,9 @@ to maximise the reward score, and learns to do this through many iterations or
 play-through.
 
 ** Terminology
+
+In this section we shall take a look at the different types of data we might expect
+and the different terminology used to name them.
 
 *** What will our data look like?
 
@@ -311,40 +318,73 @@ size of 1024x500x3x24 -- a 4-dimensional array.
 
 *** Text
 
-- Composition of words
-- Can be in order, but doesn't have to be!
-- What is considered a word?
+Text and language data is perhaps one of the most flexible formats of data, in terms
+of the person implementing the Machine Learning algorithm is somewhat free in
+determining how to represent the language to the algorithm.
+
+With text data, we have a series of 'tokens' -- these tokens could be words, groups
+of words, parts of words, and even just characters. For example, consider:
+
+"this is a sentence, that shouldn't be misunderstood."
+
+*** Tokenisation of text
+
+"this is a sentence, that shouldn't be misunderstood."
+
+We could 'tokenise' (the process of converting a string into a series of tokens that
+represent the original string) this sentence by splitting at white-space:
+
+$\{"this", "is", "a", "sentence,", "that" "shouldn't", "be", "misunderstood."\}$
+
+Notice how with the words "sentence" and "misunderstood", the punctuation is
+considered part of the word and so "misunderstood." != "misunderstood".
+
+These kinds of questions of how to best represent text and language we will talk more
+about in later lectures!
 
 *** Time-series
 
-- Sequence of values (vector with a time component)
-- Example is a sound wave.
+I named this section time-series to be as general as possible. Within the type
+'time-series', we could have the following types of information:
 
-*** Inputs/Outputs
+- Sound waves
+- Stock prices
+- Network messaging
 
-Within our data, each value will take on a certain type.
-
-| Name        | Example                     |
-|-------------+-----------------------------|
-| Discrete    | Total number of students    |
-| Continuious | Height of a student         |
-|-------------+-----------------------------|
-| Ordinal     | element of {Low, Med, High} |
-| Nominal     | element of {'dog', 'cat'}   |
-
-- Discrete:
-- Continuious:
-- Ordinal: 
-- Nominal:
-
-*** Types of Outputs -- Regression & Classification
-
-- Regression - to continuious
-- Classification to discrete
+These types of data all share a property in that the 'time' component is important in
+their meaning.  
 
 ** Example Problems
 
+*** Example Problems
+
+Throughout this course, we'll be using /toy/ datasets for the explanation of Machine
+Learning and its algorithms. In this section, we'll take a broad look over all the
+datasets that we'll come to be very familiar with.
+
+*** Types of Outputs -- Regression & Classification
+
+First, however, I wish to explain the difference between the terms /Regression/ and
+/Classification/.
+
+- Regression: the prediction of a continuous quantity, i.e. how much does this house cost?
+- Classification: the prediction of a discrete value or class label, i.e. dog or cat?
+
+In the following toy datasets, we'll see different types of predictions that fall
+under the regression/classification output type.
+
 *** Boston House Prices Dataset -- Tabular Regression
+
+A dataset of 506 houses in Boston, USA, collected during US Census.
+
+- 13 features/properties about each house
+- 1 target property: the price of the house
+
+More information about each of the features can be found at: https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html
+
+[cite:@harrison1978hedonic]
+
+*** Boston House Prices -- example rows
 
 #+begin_src julia  :results output :session :exports both
 using DataFrames
@@ -374,36 +414,107 @@ dataset[1:5]
    5 │    36.2)
 #+end_example
 
+*** Boston House Prices -- concerns
+
+The Boston dataset is an excellent dataset in the fact that it contains some ethical
+issues when it comes to Machine Learning. More specifically, some of the features in
+the data are 'dummy' variables for racial attributes [cite:@carlisleRacistDataDestruction2020]. Moreover, these features show a
+racial segregation has a positive impact on house prices.
+
+Scikit-Learn [cite:@SklearnDatasetsLoad], one of the most prolific Machine Learning framework in the Python
+ecosystem, has decided to depreciate and remove the Boston dataset from their
+repository following these concerns.
+
+We will continue to use the dataset here as it is an easy to understand regression
+problem, and to demonstrate how easy it is to be accidentally unethical if you're not
+thinking about the data carefully enough. 
+
 *** Iris Dataset -- Tabular Classification
+
+#+ATTR_LATEX: :width 0.4\textwidth
+#+ATTR_HTML: :width 300px
+#+CAPTION: Iris Flower [cite:@iris_pict]
+[[file:images/iris.jpg]]
+
+*** Iris Dataset -- features
+**** Iris Dataset -- features                      :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: 0.5
+:END:
+
+- 150 examples
+- 4 features: Petal length/width, sepal length/width
+- 1 classification: type of flower: {viriginica, setosa, veriscolor}
+
+  https://archive.ics.uci.edu/ml/datasets/iris
+  [cite:@fisher1936use]
+
+**** Iris Dataset -- features                                :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:BEAMER_env: column
+:END:
+  
+  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_HTML: :width 300px
+  #+CAPTION: Different parts of a flower. [cite:@flower_pict]
+  [[file:images/Petal-sepal.jpg]]
+
+*** Iris Dataset -- example rows
 
 #+begin_src julia
 using MLDatasets: Iris
 dataset = Iris();
-dataset[1:5]
+dataset[1:2]
 #+end_src
 
 #+RESULTS:
 #+begin_example
-(features = 5×4 DataFrame
+(features = 2×4 DataFrame
  Row │ sepallength  sepalwidth  petallength  petalwidth
      │ Float64      Float64     Float64      Float64
 ─────┼──────────────────────────────────────────────────
    1 │         5.1         3.5          1.4         0.2
-   2 │         4.9         3.0          1.4         0.2
-   3 │         4.7         3.2          1.3         0.2
-   4 │         4.6         3.1          1.5         0.2
-   5 │         5.0         3.6          1.4         0.2, targets = 5×1 DataFrame
+   2 │         4.9         3.0          1.4         0.2,
+ targets = 2×1 DataFrame
  Row │ class
      │ String15
 ─────┼─────────────
    1 │ Iris-setosa
-   2 │ Iris-setosa
-   3 │ Iris-setosa
-   4 │ Iris-setosa
-   5 │ Iris-setosa)
+   2 │ Iris-setosa)
 #+end_example
 
 *** MNIST Dataset -- Image Classification
+
+#+begin_src julia :exports none
+using MLDatasets: MNIST
+using Plots
+dataset = MNIST();
+l = @layout [ a b c d ; e f g h ]
+p = [heatmap(dataset.features[:, :, i]', colorbar = false, ticks = false, yflip=true, height = 500) for i in 1:8]
+p = plot(p..., layout = l)
+savefig(p, "images/mnist.png")
+#+end_src
+
+#+ATTR_LATEX: :width 0.5\textwidth
+#+ATTR_HTML: :width 600px
+#+CAPTION: 8 examples of handwritten digits in the MNIST dataset.
+[[file:images/mnist.png]]
+
+A dataset of images (of size 28x28) containing handwritten digits from 0 - 9.
+
+http://yann.lecun.com/exdb/mnist/
+
+[cite:@lecun1998gradient]
+
+*** MNIST Dataset -- Features
+
+- 60,000 images in the training dataset
+- 10,000 images in the test dataset
+- 28x28 pixels (grayscale)
+
+*** MNIST Dataset -- Example Rows
 
 #+begin_src julia
 using MLDatasets: MNIST
@@ -414,49 +525,83 @@ dataset[1:5]
 #+RESULTS:
 : (features = [0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0], targets = [5, 0, 4, 1, 9])
 
-*** MNIST Dataset -- Image Classification
+*** Large Movie Review Dataset -- Text Classification/Regression
 
-#+begin_src julia
-using Plots
-p = heatmap(dataset[1].features', yflip=true, colorbar=false)
-p = title!("Label/Target: $(dataset[1].targets)")
-savefig(p, "images/mnist-example.png")
+#+begin_src julia :results none :exports none
+using LargeMovieReviewDataset
+trainfiles()[1]
 #+end_src
 
-#+RESULTS:
 #+begin_example
-
-
-
-ERROR: SystemError: opening file "/home/jaymorgan/Nextcloud/Teaching/images/mnist-example.png": Aucun fichier ou dossier de ce type
-Stacktrace:
-  [1] systemerror(p::String, errno::Int32; extrainfo::Nothing)
-    @ Base ./error.jl:174
-  [2] #systemerror#68
-    @ ./error.jl:173 [inlined]
-  [3] systemerror
-    @ ./error.jl:173 [inlined]
-  [4] open(fname::String; lock::Bool, read::Nothing, write::Nothing, create::Nothing, truncate::Bool, append::Nothing)
-    @ Base ./iostream.jl:293
-  [5] open(fname::String, mode::String; lock::Bool)
-    @ Base ./iostream.jl:355
-  [6] open(fname::String, mode::String)
-    @ Base ./iostream.jl:355
-  [7] open(::Plots.var"#277#278"{Plots.Plot{Plots.GRBackend}}, ::String, ::Vararg{String}; kwargs::Base.Pairs{Symbol, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-    @ Base ./io.jl:328
-  [8] open
-    @ ./io.jl:328 [inlined]
-  [9] png(plt::Plots.Plot{Plots.GRBackend}, fn::String)
-    @ Plots ~/.julia/packages/Plots/SkUg1/src/output.jl:4
- [10] savefig(plt::Plots.Plot{Plots.GRBackend}, fn::String)
-    @ Plots ~/.julia/packages/Plots/SkUg1/src/output.jl:115
- [11] top-level scope
-    @ none:1
+Story of a man who has unnatural feelings for a pig. Starts out with a
+opening scene that is a terrific example of absurd comedy. A formal
+orchestra audience is turned into an insane, violent mob by the crazy
+chantings of it's singers. Unfortunately it stays absurd the WHOLE
+time with no general narrative eventually making it just too off
+putting. Even those from the era should be turned off. The cryptic
+dialogue would make Shakespeare seem easy to a third grader. On a
+technical level it's better than you might think with some good
+cinematography by future great Vilmos Zsigmond. Future stars Sally
+Kirkland and Frederic Forrest can be seen briefly.
 #+end_example
 
-*** IMDB Reviews -- Text Classification/Regression
+Review from: =train/neg/0_3.txt=
+
+- 50,000 movie reviews (25,000 for training and testing).
+- Each review is labelled with a binary label of sentiment -- a positive or negative
+  review was towards the movie in question.
+
+https://ai.stanford.edu/~amaas/data/sentiment/
+
+[cite:@maas-EtAl:2011:ACL-HLT2011]
 
 *** Ham or Spam -- Text Classification
+  :PROPERTIES:
+  :BEAMER_OPT: fragile,allowframebreaks,label=
+  :END: 
+
+#+begin_example
+Message-ID: <8701134.1075856113926.JavaMail.evans@thyme>
+Date: Mon, 30 Oct 2000 02:06:00 -0800 (PST)
+From: shona.wilson@enron.com
+To: eugenio.perez@enron.com
+Subject: meeting deadlines
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-From: Shona Wilson
+X-To: Eugenio Perez
+X-cc: 
+X-bcc: 
+X-Origin: Beck-S
+X-FileName: sbeck.nsf
+
+Dear Eugenio,
+
+I did not want to say this when everyone else was around, but I am concerned 
+that no attempt was made to meet the deadline of this morning that we 
+discussed last Friday. (to decide on a name for the database).  Only Maria 
+Teresa had her information to me this am as requested. The deadline could 
+have been easily met by working diligently this morning, but Jennifer did not 
+come in until 8:30 and MT until 8:15.
+
+I thought we had discussed the urgency of this - to have something to present 
+at the 10am meeting.  We need to discuss this to ensure it does not happen 
+again.
+
+Best regards
+
+Shona
+#+end_example
+
+- Enron Spam classification of email messages.
+- Is the email Spam -- each email is labelled with a binary label, spam or not spam
+  (ham).
+- The dataset contains 17,171 spam and 16,545 ham email messages.
+
+https://www2.aueb.gr/users/ion/data/enron-spam/
+
+[cite:@metsis2006spam]
 
 ** Concerns & Considerations
 
@@ -483,6 +628,9 @@ Potential code laundering with github's copilot
 * Bibliography
 
 *** Bibliography
+  :PROPERTIES:
+  :BEAMER_OPT: fragile,allowframebreaks,label=
+  :END: 
 
 #+PRINT_BIBLIOGRAPHY:
 
