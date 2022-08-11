@@ -70,7 +70,7 @@ During the course, I would also like to supplement my algorithmic definitions an
 explanations with some programming code -- for this I will use the [[https://julialang.org/][Julia]] programming
 language. The code snippets would look something like:
 
-#+begin_src julia :results output :session :exports both
+#+begin_src julia :results output :session :exports both :eval never-export
 x = Float32.([1, 2, 3, 4]);
 y = x .+ randn(length(x))
 #+end_src
@@ -463,7 +463,7 @@ thinking about the data carefully enough.
 
 *** Iris Dataset -- example rows
 
-#+begin_src julia
+#+begin_src julia :eval never-export
 using MLDatasets: Iris
 dataset = Iris();
 dataset[1:2]
@@ -487,7 +487,7 @@ dataset[1:2]
 
 *** MNIST Dataset -- Image Classification
 
-#+begin_src julia :exports none
+#+begin_src julia :exports none :eval never-export
 using MLDatasets: MNIST
 using Plots
 dataset = MNIST();
@@ -527,7 +527,7 @@ dataset[1:5]
 
 *** Large Movie Review Dataset -- Text Classification/Regression
 
-#+begin_src julia :results none :exports none
+#+begin_src julia :results none :exports none :eval never-export
 using LargeMovieReviewDataset
 trainfiles()[1]
 #+end_src
@@ -605,25 +605,106 @@ https://www2.aueb.gr/users/ion/data/enron-spam/
 
 ** Concerns & Considerations
 
+*** Concerns & Considerations
+
+As we saw with the Boston house prices dataset, ethical concerns can easily arise
+when we use statistical analysis & Machine Learning. But our use of Machine Learning
+carries many more concerns other than just racial biases. In this section, we'll
+highlight some ethical considerations to be made when designing and building Machine
+Learning models.
+
+https://uksa.statisticsauthority.gov.uk/publication/ethical-considerations-in-the-use-of-machine-learning-for-research-and-statistics/
+
 *** Compute resources -- environmental concerns
 
-*** Bias
+#+begin_quote
+Large-scale deployment of AI could also have both positive and negative impacts on
+the environment. Negative impacts include increased use of natural resources, such as
+rare earth metals, pollution and waste, as well as energy consumption. However, AI
+could help with waste management and conservation offering environmental benefits.
+#+end_quote
+
+#+begin_quote
+[...] In the United States, data centres already account for about 2 percent of all
+electricity used. In one estimation, DeepMind's AlphaGo – which beat Go Champion Lee
+Sedol in 2016 – took 50,000 times as much power as the human brain to do so.
+#+end_quote
+
+[cite:@europeanparliament.directorategeneralforparliamentaryresearchservices.EthicsArtificialIntelligence2020]
+
+*** Bias in language models
+
+#+ATTR_LATEX: :width 1.0\textwidth
+#+ATTR_HTML: :width 700px
+#+CAPTION: [cite:@gonenLipstickPigDebiasing2019]
+[[file:images/debias.png]]
+
+Biases exist in language models trained on news articles [cite:@bolukbasi2016man].
 
 *** Personal information
 
-- i.e. GANs reproducing exactly.
+In Machine Learning applications where data is generated (such as generating faces
+that don't exist), there is a possibility to expose personal information. For
+example, in a situation where these generative Machine Learning models create
+synthetic patient data, the model may be trained on real medical data. The output of
+the Machine Learning model could possibly leak personal information.
+
+[cite:@aroraGenerativeAdversarialNetworks2022]
 
 *** Mental health of optimisation algorithms
 
-*** Copyright Concerns
+This example is more specific to how algorithms are used as opposed to their specific
+design. Yet, this should still be highlighted. We have seen increasing discussion
+surrounding the use of optimisation algorithms that try to increase the amount of
+'screen time' or engagement from users of social media, and it's no secret that
+spending lots of time of social media has a measurable effect on one's mental health.
 
-Potential code laundering with github's copilot
+*** Copyright Concerns
+  :PROPERTIES:
+  :BEAMER_OPT: fragile,allowframebreaks,label=
+  :END: 
+
+A more recent addition to the concerns is that of Github's co-pilot application that
+helps users write programming code. This application has been developed on
+open-source software -- some of which includes licensing that specifies how this
+open-source code may be used (for example, with attribution or copy-left). Yet,
+Github's co-pilot may insert code that its been trained on verbatim (though recent
+additions have been addressing these concerns), resulting in a situation of 'code
+laundering'. https://twitter.com/mitsuhiko/status/1410886329924194309
+
+#+begin_src c
+float Q_rsqrt( float number )
+{
+	long i;
+	float x2, y;
+	const float threehalfs = 1.5F;
+
+	x2 = number * 0.5F;
+	y  = number;
+	i  = * ( long * ) &y;                       // evil floating point bit level hacking
+	i  = 0x5f3759df - ( i >> 1 );               // what the fuck? 
+	y  = * ( float * ) &i;
+	y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+//	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+	return y;
+}
+
+// Implementation from Quake III Arena under the GPL license.
+#+end_src
 
 * Summary
 
-** What is Machine Learning
+*** What is Machine Learning
 
-*** Problem statement
+- We've taken a look at the different kinds of frameworks for learning -- animal
+  behaviour with bait-shyness, and how that translates in computer programs.
+- We've identified the different types of learning: supervised, unsupervised, and
+  reinforcement learning.
+- We've looked at the different types of data we may encounter, from tabular to text
+  data, and have also seen examples of some toy datasets we will be using in the course.
+- Finally, we've highlighted some of the ethical concerns that can arise in Machine
+  Learning.
 
 * Bibliography
 
