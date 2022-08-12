@@ -1,0 +1,13 @@
+#+title: Machine Learning
+#+subtitle: Lecture 2 - Linear Models
+#+author: Jay Morgan
+#+date: <TODO>
+#+include: ./header.org
+
+* Welcome!
+
+** This is lecture
+
+*** This is a page
+
+Welcome to the first page

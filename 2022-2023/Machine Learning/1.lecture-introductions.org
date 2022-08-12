@@ -2,28 +2,7 @@
 #+SUBTITLE: Lecture 1 - Introductions
 #+author: Jay Morgan
 #+date: <TODO>
-#+startup: beamer
-#+BIBLIOGRAPHY: references.bib
-#+LaTeX_CLASS: beamer
-#+LATEX_CLASS_OPTIONS: [10pt]
-#+LATEX_HEADER: \usepackage[T1]{fontenc}
-#+LATEX_HEADER: \usepackage{pmboxdraw}
-#+LATEX_HEADER: \usetheme{Berkeley}
-#+LATEX_HEADER: \usefonttheme{professionalfonts} 
-#+LATEX_HEADER: \usepackage{booktabs}
-#+LATEX_HEADER: \definecolor{mycolor}{rgb}{0.54706, 0.13725, 0.26667}
-#+LATEX_HEADER: \usecolortheme[named=mycolor]{structure}
-#+LATEX_HEADER: \setlength{\parskip}{5pt}
-#+LATEX_HEADER: \newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
-#+LaTeX_HEADER: \addtobeamertemplate{footnote}{}{\vspace{2ex}}
-#+LATEX_HEADER: \usepackage{xcolor}
-#+LATEX_HEADER: \definecolor{LightGray}{gray}{0.95}
-#+LATEX_HEADER: \usepackage{fancyvrb}
-#+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
-#+EXCLUDE_TAGS: noexport
-#+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
-#+PROPERTY: header-args:julia :exports both :results output :eval never-export :session
+#+include: ./header.org
 
 * Introduction
 
@@ -55,12 +34,13 @@ provide reference links should you wish to do some extra reading.
 *** Outline of the course
 
 #+ATTR_LATEX: :booktabs t
-|---------+---------------+---------+--------------|
-| Lecture | Expected date | Length  | Topic        |
-|---------+---------------+---------+--------------|
-|       1 | NOW           | 2 hours | Introduction |
-|         |               |         |              |
-|---------+---------------+---------+--------------|
+|---------+---------------+---------+---------------|
+| Lecture | Expected date | Length  | Topic         |
+|---------+---------------+---------+---------------|
+|       1 | NOW           | 2 hours | Introduction  |
+|       2 | LATER         | 2 hours | Linear models |
+|         |               |         |               |
+|---------+---------------+---------+---------------|
 
 ** Reading the lectures
 
