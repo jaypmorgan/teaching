@@ -1,4 +1,4 @@
-html {border-left: 20px solid #6088FF; background: #fdfcf8;}
+html {border-left: 20px solid #2d55cb; background: #fdfcf8;}
 body {margin-left: 100px; max-width: 80ch; font-family: 'Times New Roman'; line-height: 1.9em; font-size: 1.2em;}
 h1,h2,h3,h4 {margin-top: 50px;}
 h2 {padding-bottom: 15px; margin-left: -50px; font-size: 1.7em;}
@@ -6,5 +6,5 @@ p {-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased !impo
 .org-src-container {line-height: initial;}
 div#postamble {margin-left:-80px;margin-top:100px;}
 pre {border: 1px solid #b1b1b1;}
-a {color: #6088FF;}
-a:visted {color: #6088FF;}
+a {color: #2d55cb;}
+a:visted {color: #2d55cb;}

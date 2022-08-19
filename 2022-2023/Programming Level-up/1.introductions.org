@@ -1,29 +1,8 @@
-#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
-#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t email:nil
-#+options: f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+options: timestamp:t title:t toc:t todo:t |:t
 #+title: Programming Level-up
 #+SUBTITLE: Lecture 1 - Introduction and Basic Python Programming
 #+date: 11th October 2021
 #+author: Jay Morgan
-#+language: en
-#+select_tags: export
-#+exclude_tags: noexport
-#+creator: Emacs 27.1 (Org mode 9.4.6)
-#+cite_export:
-#+LATEX_HEADER: \usepackage{xcolor}
-#+LATEX_HEADER: \definecolor{LightGray}{gray}{0.95}
-#+startup: beamer
-#+LATEX_CLASS: beamer
-#+LATEX_CLASS_OPTIONS: [10pt]
-#+BEAMER_FRAME_LEVEL: 2
-#+BEAMER_THEME: Berkeley
-#+LATEX_HEADER: \setlength{\parskip}{5pt}
-#+LATEX_HEADER: \newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
-#+LaTeX_HEADER: \addtobeamertemplate{footnote}{}{\vspace{2ex}}
-#+LATEX_HEADER: \usepackage{tabularx}
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
-#+PROPERTY: header-args:python :results pp output :session :exports both :eval never-export
+#+include: ./header.org
 
 #+name: commentify
 #+begin_src emacs-lisp :var result="" :exports none
@@ -32,24 +11,6 @@
   (dolist (result-item (split-string result "\n"))
     (princ (concat "# => " (format "%s\n" result-item)))))
 #+end_src
-
-#+begin_src emacs-lisp :exports none
-(setq org-latex-minted-options
-      '(("frame" "lines")
-	("linenos=true")
-	("firstnumber=last")
-	("fontsize=\\footnotesize")
-	("xleftmargin=15pt")
-	("numbersep=8pt")))
-#+end_src
-
-#+RESULTS:
-| frame                  | lines |
-| linenos=true           |       |
-| firstnumber=last       |       |
-| fontsize=\footnotesize |       |
-| xleftmargin=15pt       |       |
-| numbersep=8pt          |       |
 
 * Introduction
 
@@ -95,18 +56,7 @@
 
 *** Rough timeline
 
-- 2h on October 11th, 2021 from 10:30 a.m. to 12:30 a.m.
-- 3h on October 15th, 2021 from 8:30 a.m. to 11:45 a.m.
-- 2h on October 15th, 2021 from 1:30 p.m. to 3:30 p.m.
-- 2h on October 22th, 2021 from 3:45 p.m. to 5:45 p.m.
-- 3h on October 26th, 2021 from 8:30 a.m. to 11:45 a.m.
-- 2h on November 12th, 2021 from 8:00 a.m. to 10 a.m.
-- 3h on November 16th, 2021 from 1:00 p.m. to 4:15 p.m.
-- 3h on November 24th, 2021 from 8:30 a.m. to 11:45 a.m.
-
-*** Rough timeline
-
-#+ATTR_LATEX: :font \scriptsize
+#+ATTR_LATEX: :font \scriptsize :booktabs t
 |---------+----------------------------+------------------------------|
 | Lecture | Topic                      | Description                  |
 |---------+----------------------------+------------------------------|
@@ -122,7 +72,7 @@
 |       6 | Numerical computing        | - Pandas                     |
 |         |                            | - Visualisations             |
 |       7 | Basics of GNU/Linux        | - Using the terminal         |
-|       8 | Bash scripting             |                              |
+|       8 | Bash scripting             | - Bash scripting             |
 |       9 | High performance computing | - SLURM                      |
 |         |                            | - Singularity                |
 |      10 | Reporting                  | - LaTeX                      |
@@ -133,7 +83,7 @@
 
 *** Where to find me                                                        
 
-My name is Jay Morgan. I am a researcher work on Deep Learning in Astrophysics.
+My name is Dr Jay Morgan. I am a researcher work on Deep Learning in Astrophysics.
 
 - Email: =jay.morgan@univ-tln.fr=
 - Lecture slides and other contact on my website: [[https://pageperso.lis-lab.fr/jay.morgan/]]
@@ -363,6 +313,286 @@ others.
 
 Your answer should come out as: =1575.0=
 
+** Working with strings
+
+*** Formatting strings
+
+In many previous examples when we've printed strings, we've done something like:
+
+#+begin_src python
+age = 35
+
+print("The value of age is", age)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => The value of age is 35
+
+While this works in this small context, it can get pretty cumbersome if we have many
+variables we want to print, and we also want to change how they are displayed when
+they are printed.
+
+We're going to take a look now at much better ways of printing.
+
+*** Better ways of printing strings - %
+
+The first method is using =%=. When we print, we first construct a string with special
+delimiters, such as =%s= that denotes a string, and =%d= that denotes a number. This is
+telling Python where we want the values to be placed in the string.
+
+Once we've created the string, we need to specify the data, which we do with =%
+(...)=. Like, for example:
+
+#+begin_src python
+age = 35
+name = "John"
+
+print("%d years old" % age)  # no tuple for one variable
+print("%s is %d years old" % (name, age)) 
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 35 years old
+: # => John is 35 years old
+
+Here we are specifying the a string =%s= and number =%d=, and then giving the variables
+that correspond with that data type.
+
+*** Better ways of printing strings -- data specifiers
+
+The special delimiters correspond with a data type. Here are some of the most common:
+
+- =%s= -- For strings
+- =%d= -- For numbers
+- =%f= -- For floating point numbers.
+
+There are others such as =%x= that prints the hexadecimal representation, but these are
+less common. You can find the full list at: https://docs.python.org/3/library/stdtypes.html#old-string-formatting
+
+*** Better ways of printing strings -- floating points
+
+When using these delimiters, we can add modifiers to how they format and display the
+value. Take a very common example, where we have a floating point value, and, when
+printing it, we only want to print to 3 decimal places. To accomplish this, we again
+use =%f= but add a =.3= to between the =%= and =f=. In this example, we are printing \pi to 3
+decimal places.
+
+#+begin_src python
+print("Pi to 3 digits is: %.3f" % 3.1415926535)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Pi to 3 digits is: 3.142
+
+*** Better ways of printing strings -- floating points
+
+In the previous example, we used =.3= to specify 3 decimal places. If we put a number
+before the decimal, like =10.3= we are telling Python /make this float occupy 10 spaces
+and this float should have 3 decimal places printed/.  When it gets printed, you will
+notice that it shifts to the right, it gets padded by space. If we use a negative
+number in front of the decimal place, we are telling python to shift it to the left.
+
+#+begin_src python
+print("Pi to 3 digits is: %10.3f" % 3.1415926535)
+print("Pi to 3 digits is: %-10.3f" % 3.1415926535)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Pi to 3 digits is:      3.142
+: # => Pi to 3 digits is: 3.142
+
+*** Quick Exercise -- printing with =%=
+
+- Creating a dictionary containing the following information:
+
+#+ATTR_LATEX: :booktabs t
+|------+----------|
+| Key  |    Value |
+|------+----------|
+| name |     Jane |
+| age  |       35 |
+| lon  | -3.52352 |
+| lat  |  2.25222 |
+|------+----------|
+
+- Print (using the =%= operator) the values of this dictionary so that the result looks
+  like: "Jane (located at -3.5, 2.2) is 35 years old"
+
+*** Better ways of printing strings -- =f-strings=
+
+The final method of formatting strings is a newcomer within the language, it is the
+so-called =f-string=. Where a =f= character is prefixed to the beginning of the string
+you're creating. =f-string='s allow you to use Python syntax within the string (again
+delimited by ={}=.
+
+Take this for example where we are referencing the variables =name= and =age= directly.
+
+#+begin_src python
+name = "Jane"
+age = 35
+
+print(f"{name} is {age} years old")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Jane is 35 years old
+
+*** Better ways of printing strings -- =f-strings=
+
+=f-string='s allow you to execute Python code within the string. Here we are accessing
+the value from the dictionary by specifying the key within the string itself! It
+certainly makes it a lot easier, especially if we only need to access the values for
+the string itself.
+
+#+begin_src python
+contact_info = {"name": "Jane", "age": 35}
+
+print(f"{contact_info['name']} is {contact_info['age']} years old")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Jane is 35 years old
+
+https://pyformat.info/
+
+*** Better ways of printing strings -- =f-string=
+
+We can still format the values when using =f-string=. The method is similar to those
+using the =%f= specifiers.
+
+#+begin_src python
+pi = 3.1415926535
+print(f"Pi is {pi:.3f} to 3 decimal places")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Pi is 3.142 to 3 decimal places
+
+Many more examples can be found at: https://zetcode.com/python/fstring/
+
+*** Quick Exercise -- printing with =f-string=
+
+- Creating a dictionary containing the following information:
+
+| Key  |    Value |
+|------+----------|
+| name |     Jane |
+| age  |       35 |
+| lon  | -3.52352 |
+| lat  |  2.25222 |
+
+- Print (using an =f-string=) the values of this dictionary so that the result looks
+  like: "Jane (located at -3.5, 2.2) is 35 years old"
+
+*** Operations on strings -- splitting
+
+Apart from formatting, there are plenty more operations we can perform on strings. We
+are going to highlight some of the most common here.
+
+The first we're going to look at is splitting a string by a delimiter character using
+the =.split()= method. If we don't pass any argument to the =.split()= method, then by
+default, it will split by spaces. However, we can change this by specifying the
+delimiter.
+
+#+begin_src python
+my_string = "This is a sentence, where each word is separated by a space"
+
+print(my_string.split())
+print(my_string.split(","))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => ['This', 'is', 'a', 'sentence,', 'where', 'each', 'word', 'is', 'separated', 'by', 'a', 'space']
+: # => ['This is a sentence', ' where each word is separated by a space']
+
+*** Operations on strings -- joining
+
+As =.split()= splits a single string into a list, =.join()= joins a list of strings into
+a single string. To use =.join()=, we first create a string of the delimiter we want to
+use to join the list of strings by. In this example we're going to use ="-"=. Then we
+call the =.join()= method, passing the list as an argument.
+
+The result is a single string using the delimiter to separate the items of the list.
+
+#+begin_src python
+x = ['This', 'is', 'a', 'sentence,', 'where', 'each', 'word', 'is', 'separated', 'by', 'a', 'space']
+
+print("-".join(x))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => This-is-a-sentence,-where-each-word-is-separated-by-a-space
+
+*** Operations on strings -- changing case
+
+Other common operations on strings involve change the case. For example:
+
+- Make the entire string uppercase or lowercase
+- Making the string title case (every where starts with a capital letter).
+- Stripping the string by removing any empty spaces either side of the string.
+
+*Note* we can chain many methods together by doing =.method_1().method_2()=, but only if they
+return string. If they return =None=, then chaining will not work.
+
+#+begin_src python
+x = "    this String Can change case"
+
+print(x.upper())
+print(x.lower())
+print(x.title())
+print(x.strip())
+print(x.strip().title())
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # =>     THIS STRING CAN CHANGE CASE
+: # =>     this string can change case
+: # =>     This String Can Change Case
+: # => this String Can change case
+: # => This String Can Change Case
+
+*** Operations on strings -- replacing strings
+
+To replace a substring, we use the =.replace()= method. The first argument is the old
+string you want to replace. The second argument is what you want to replace it with.
+
+#+begin_src python
+x = "This is a string that contains some text"
+
+print(x.replace("contains some", "definitely contains some"))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => This is a string that definitely contains some text
+
+*** Operations on strings -- does it contain a substring?
+
+We can check if a string exists within another string using the =in= keyword. This
+returns a Boolean value, so we can use it as a condition to an =if= statement.
+
+#+begin_src python
+x = "This is a string that contains some text"
+
+if "text" in x:
+    print("It exists")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => It exists
+
+** Compound data structures
 *** Container data types/Data structures
 
 Container data types or data structures, as the name suggests, are used to contain
@@ -420,6 +650,119 @@ print(x[2])    # the third element (i.e. 2)
 *notice how the first element is the 0-th item in the list/* we say that python is
 0-indexed.
 
+*** Better indexing -- slices
+
+If we wanted to access an element from a data structure, such as a list, we would use
+the =[ ]= accessor, specifying the index of the element we wish to retrieve (remember
+that indexes start at zero!). But what if we ranted to access many elements at once?
+Well to accomplish that, we have a slice or a range of indexes (not to be confused
+with the =range= function). A slice is defined as:
+
+#+begin_src
+start_index:end_index
+#+end_src
+
+where the =end_index= is non inclusive -- it doesn't get included in the result. Here
+is an example where we have a list of 6 numbers from 0 to 5, and we slice the list from index
+0 to 3. Notice how the 3rd index is not included.
+
+#+begin_src python
+x = [0, 1, 2, 3, 4, 5]
+print(x[0:3])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2]
+
+*** Better indexing -- range
+
+When we use =start_index:end_index=, the slice increments by 1 from =start_index= to
+=end_index=. If we wanted to increment by a different amount we can use the slicing
+form:
+
+#+begin_src
+start_index:end_index:step
+#+end_src
+
+Here is an example where we step the indexes by 2:
+
+#+begin_src python :results output pp
+x = list(range(100))
+print(x[10:15:2])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [10, 12, 14]
+
+*** Better indexing -- reverse
+
+One strange fact about the step is that if we specify a negative number for the step,
+Python will work backwards, and effectively reverse the list.
+
+#+begin_src python
+x = list(range(5))
+
+print(x[::-1])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [4, 3, 2, 1, 0]
+
+*** Better indexing -- range
+
+In a previous example, I created a slice like =0:3=. This was a little wasteful as we
+can write slightly less code. If we write =:end_index=, Python assumes and creates a
+slice from the first index (0) to the =end_index=. If we write =start_index:=, Python
+assumes and creates a slice from =start_index= to the end of the list.
+
+#+begin_src python
+x = list(range(100))
+
+print(x[:10])
+print(x[90:])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+: # => [90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+
+*** Better indexing -- backwards
+
+Finally, we also work backwards from the end of list. If we use a negative number,
+such as -1, we are telling Python, take the elements from the end of the list. -1 is
+the final index, and numbers lower than -1 work further backwards through the list.
+
+#+begin_src python :results output pp
+x = list(range(100))
+
+print(x[-1])
+print(x[-2])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 99
+: # => 98
+
+*** Better indexing --backwards
+
+Slicing with negative indexes, also works. Here we are creating a slice from the end
+of the list - 10, to the last (but not including) index.
+
+#+begin_src python
+x = list(range(100))
+
+print(x[-10:-1])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [90, 91, 92, 93, 94, 95, 96, 97, 98]
+
 *** Lists -- adding data
 
 If we want to add items to the end of the list, we use the =append= function:
@@ -438,16 +781,95 @@ print(my_list)
 : Results: 
 : # => ['all', 'dogs', 'bark']
 
-*** Lists -- Quick Exercise
+*** List comprehensions
 
-- Create a list with 3 elements:
+We have seen previously how =for= loops work. Knowing the syntax of a =for= loop and
+wanting to populate a list with some data, we might be tempted to write:
 
-- "bark"
-- "all"
-- "dogs"
+#+begin_src python
+x = []
+for i in range(3):
+    x.append(i)
 
-- Assign this to a variable with the name of your choice.
-- Using the =print= function, print out the 3rd, 1st and 2nd elements in that order.
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2]
+
+While this is perfectly valid Python code, Python itself provides 'List
+comprehensions' to make this process easier.
+
+#+begin_src python
+x = [i for i in range(3)]
+#+end_src
+
+*** List comprehensions -- syntax
+
+The syntax of a list comprehensions is:
+
+#+begin_src python
+[ <variable> for <variable> in <iterable> ]
+#+end_src
+
+We can also perform similar actions with a dictionary
+
+#+begin_src python
+[ <key>, <value> for <key>, <value> in <dictionary.items()> ]
+#+end_src
+
+*** List comprehensions -- using =if='s
+
+Perhaps we only want to optionally perform an action within the list comprehension?
+Python allows us to do this with the inline =if= statement we've seen in the previous lecture.
+
+#+begin_src python
+x = [i if i < 5 else -1 for i in range(7)]
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2, 3, 4, -1, -1]
+
+We add the inline =<var> if <condition> else <other-var>= before the =for= loop part of
+the comprehension.
+
+*** List comprehension -- using =if='s
+
+There is another type of =if= statement in a list comprehension, this occurs when we
+don't have an =else=.
+
+#+begin_src python
+x = [i for i in range(7) if i < 3]
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2]
+
+In this example, we're only 'adding' to the list if the condition ($i < 3$) is true,
+else the element is not included in the resulting list.
+
+*** List comprehensions -- multiple =for='s
+
+If we like, we can also use nested for loops by simply adding another for loop into
+the comprehension.
+
+#+begin_src python
+x = [(i, j) for i in range(2) for j in range(2)]
+
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [(0, 0), (0, 1), (1, 0), (1, 1)]
+
+In this example, we're creating a tuple for each element, effectively each
+combination of 1 and 0.
 
 *** Dictionaries
 
@@ -515,16 +937,37 @@ print(my_dict)
 : Results: 
 : # => {'name': 'James', 'age': 35}
 
+*** List comprehensions -- dictionary
+
+Python doesn't restrict us to list comprehensions, but we can do a similar
+operation to create a dictionary.
+
+#+begin_src python
+x = [2, 5, 6]
+y = {idx: val for idx, val in enumerate(x)}
+print(y)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => {0: 2, 1: 5, 2: 6}
+
+Here, every item in =x= has been associated with its numerical index as a key thanks to
+the =enumerate= function that returns both the index and value at iteration in the for loop.
+
 *** Dictionaries -- Quick Exercise
 
 - Create a dictionary for the following address, and assign it a variable name
   called =address=:
 
+#+ATTR_LATEX: :booktabs t
+|--------+---------------|
 | Key    | Value         |
 |--------+---------------|
 | number | 22            |
 | street | Bakers Street |
 | city   | London        |
+|--------+---------------|
 
 - Print out the address's street name using the =[ ]= accessor with the correct key.
 
@@ -604,7 +1047,6 @@ print(my_set)
 : # => {1, 2}
 
 ** Conditional expressions
-
 *** If statement
 
 If statements allow for branching paths of execution. In other words, we can execute
@@ -833,7 +1275,6 @@ if 5 < x < 10:
 : # => X is between 5 and 10
 
 ** Iteration
-
 *** For loop
 
 Looping or iteration allows us to perform a series of actions multiple times. We are
@@ -960,7 +1401,6 @@ for el_key, el_val in my_dict.items():
 : # => Key is: age  and the value is:  35
 : # => Key is: location  and the value is:  France
 
-
 *** For loop -- loop over collections
 
 We could also loop over the keys in the dictionary using the =.keys()= method instead
@@ -1040,7 +1480,7 @@ while i < 3:
 : # => 1
 : # => 2
 
-*** COMMENT While loop
+*** While loop
 
 #+begin_src python :results pp output :session :exports both :post commentify(*this*)
 x = 0
@@ -1261,7 +1701,6 @@ def say_greeting(name="Jane", greeting):
 say_greeting("John", "Hi")
 #+end_src
 
-
 *** Recap on arguments
 
 #+begin_src python
@@ -1277,7 +1716,6 @@ say_greeting("John", "Hi")  # both arguments are provided by position
 say_greeting(name="John", greeting="Hi")  # arguments are supplied by name
 say_greeting(greeting="Hi", name="John")  # the position of named arguments do not matter
 #+end_src
-
 
 *** Function doc-strings
 
@@ -1409,13 +1847,15 @@ books. For example, we want to know the author of book called 'Moby Dick'.
 To create this system, we are going to do it in stages. First, we will want to create
 our database of books:
 
-#+ATTR_LATEX: :environment tabularx :width \textwidth :align XXX
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align XXX :booktabs t
+|---------------------------------+------------------------+--------------|
 | Title                           | Author                 | Release Date |
 |---------------------------------+------------------------+--------------|
 | Moby Dick                       | Herman Melville        |         1851 |
 | A Study in Scarlet              | Sir Arthur Conan Doyle |         1887 |
 | Frankenstein                    | Mary Shelley           |         1818 |
 | Hitchhikers Guide to the Galaxy | Douglas Adams          |         1879 |
+|---------------------------------+------------------------+--------------|
 
 Our database is going to be a list of dictionaries. Where each dictionary is a row
 from this table. For example, one of the dictionaries will have the key "title" and a
@@ -1485,16 +1925,7 @@ have been a typo. Let's create a function to update this.
 
 - =where_qualifier= should accept strings like ="exactly"=, ="greater than"=, and ="less
   than"=.
-
-* What lies ahead
-
-** What lies ahead
-
-*** What lies ahead
-
-- Now that we've seen /some/ of the basic syntax, we will continue on and learn how to
-  work more with data. This means we're going to revisit lists/sets/dictionaries, and
-  look at methods like =.items()=, =.values()=, etc, and find out why they look slightly
-  different to the functions we've created in this lecture!
-- We're going to look at object-oriented programming (OOP) in python and learn how to
-  use the style of programming to best effect.
+  
+# Local Variables:
+# org-latex-minted-options: (("frame" "lines") ("linenos=true") ("firstnumber=last") ("fontsize=\\footnotesize") ("bgcolor=LightGray") ("xleftmargin=5pt") ("tabsize=2") ("breaklines=true") ("numbersep=10pt"))
+# End:

@@ -1,0 +1,694 @@
+% Created 2022-08-19 ven. 10:45
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.95}
+\usefonttheme{professionalfonts}
+\setlength{\parskip}{5pt}
+\newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
+\addtobeamertemplate{footnote}{}{\vspace{2ex}}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+\usetheme{Berkeley}
+\author{Jay Morgan}
+\date{2021-10-01}
+\title{Programming Level-up}
+\subtitle{Lecture 2 - More advanced Python \& Classes}
+\hypersetup{
+ pdfauthor={Jay Morgan},
+ pdftitle={Programming Level-up},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.4.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+
+\section{Proxy}
+\label{sec:orgbe8cf79}
+
+\subsection{Univ-tln proxy}
+\label{sec:orgd1f7480}
+
+\begin{frame}[label={sec:org2001cc4},fragile]{Setting up a proxy in Linux -- environment variables}
+ Environment variables are variables that are set in the Linux environment and are
+used to configure some high-level details in Linux.
+
+The command to create/set an environment is:
+
+\begin{verbatim}
+export VARIABLE_NAME=''
+\end{verbatim}
+
+Exporting a variable in this way will mean \texttt{VARIABLE\_NAME} will be accessible while
+you're logged in. Every time you log in you will have to set this variable again.
+\end{frame}
+
+\begin{frame}[label={sec:org21eb05a},fragile]{Setting up a proxy in Linux -- univ-tln specific}
+ In the université de Toulon, you're required to use the university's proxy server to
+access the internet. Therefore, in Linux at least, you will have to tell the system
+where the proxy server is with an environment variable.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+export HTTP_PROXY='<username>:<password>@proxy.univ-tln.fr:3128'
+export HTTPS_PROXY='<username>:<password>@proxy.univ-tln.fr:3128'
+export FTP_PROXY='<username>:<password>@proxy.univ-tln.fr:3128'
+\end{minted}
+
+\alert{NOTE}: Watch out for special characters in your password! They will have to be URL encoded.
+\end{frame}
+
+\begin{frame}[label={sec:orge0b1395},fragile]{Setting up a proxy in the .bashrc}
+ If you don't wish to set the variable every time log in, you should enter the same
+commands into a \texttt{.bashrc} in your home directory.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+export HTTP_PROXY='...'
+export HTTPS_PROXY='...'
+export FTP_PROXY='...'
+\end{minted}
+
+When you log in, the \texttt{.bashrc} file will be run and these variables will be set for you.
+\end{frame}
+
+\section{Dealing with Errors}
+\label{sec:org2ef4256}
+
+\subsection{Exceptions}
+\label{sec:org1aa8008}
+
+\begin{frame}[label={sec:org7902498},fragile]{Dealing with Errors}
+ When programming, its good to be defensive and handle errors gracefully. For example,
+if you're creating a program, that as part of its process, reads from a file, its
+possible that this file may not exist at the point the program tries to read it. If
+it doesn't exist, the program will crash giving an error such as: \texttt{FileNotfoundError}.
+
+Perhaps this file is non-essential to the operation of the program, and we can
+continue without the file. In these cases, we will want to appropriately catch the
+error to prevent it from stopping Python.
+\end{frame}
+
+\begin{frame}[label={sec:org40413a4},fragile]{Try-catch}
+ Try-catches are keywords that introduce a scope where the statements are executed,
+and if an error (of a certain type IndexError in this example) occurs, different
+statements could be executed.
+
+In this example, we are trying to access an element in a list using an index larger
+than the length of the list. This will produce an \texttt{IndexError}. Instead of exiting
+Python with an error, however, we can catch the error, and print a string.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = [1, 2, 3]
+
+try:
+    print(x[3])
+except IndexError:
+    print("Couldn't access element")
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => Couldn't access element
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:orgbc5b2b4},fragile]{Try-catch -- capturing messages}
+ If we wanted to include the original error message in the print statement, we can use
+the form:
+
+\begin{verbatim}
+except <error> as <variable>
+\end{verbatim}
+
+This provides us with an variable containing the original error that we can use later
+on in the try-catch form.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = [1, 2, 3]
+
+try:
+    print(x[3])
+except IndexError as e:
+    print(f"Couldn't access elements at index beacuse: {e}")
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => Couldn't access elements at index beacuse: list index out of range
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:org45aa20b}]{Types of exceptions}
+There are numerous types of errors that could occur in a Python. Here are just some
+of the most common.
+
+\begin{itemize}
+\item IndexError -- Raised when a sequence subscript is out of range.
+\item ValueError -- Raised when an operation or function receives an argument that has the right type but an inappropriate value
+\item AssertionError -- Raised when an assert statement fails.
+\item FileNotFoundError -- Raised when a file or directory is requested but doesn’t exist.
+\end{itemize}
+
+The full list of exceptions in Python 3 can be found at: \url{https://docs.python.org/3/library/exceptions.html}
+\end{frame}
+
+\begin{frame}[label={sec:org0152903},fragile]{Assertions}
+ One of the previous errors (\texttt{AssertionError}) occurs when an assert statement
+fails. Assert is a keyword provided to test some condition and raise an error if the
+condition is false. It typically requires less code than an \texttt{if}-statement that raises
+an error, so they might be useful for checking the inputs to functions, for example:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+def my_divide(a, b):
+    assert b != 0
+    return a / b
+
+my_divide(1, 2)
+my_divide(1, 0)
+\end{minted}
+
+Here we are checking that the divisor is not a 0, in which case division is not defined.
+\end{frame}
+
+\section{OOP}
+\label{sec:org6204ecc}
+\subsection{Classes}
+\label{sec:org4a7ad4d}
+
+\begin{frame}[label={sec:orgc949d8d}]{Introduction to classes}
+A class is some representation (can be abstract) of an object. Classes can be used to
+create some kind of structure that can be manipulated and changed, just like the ways
+you've seen with lists, dictionaries, etc.
+
+Classes allow us to perform Object-oriented Programming (OOP), where we represent
+concepts by classes.
+
+But to properly understand how classes work, and why we would want to use them, we
+should take a look at some examples.
+\end{frame}
+
+\begin{frame}[label={sec:orgfb12de4},fragile]{Basic syntax}
+ We're going to start off with the very basic syntax, and build up some more complex
+classes.
+
+To create a class, we use the \texttt{class} keyword, and give our new class a name. This
+introduces a new scope in Python, the scope of the class.
+
+Typically, the first thing we shall see in the class is the \texttt{\_\_init\_\_} function.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class <name_of_class>:
+    def __init__(self, args*):
+        <body>
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:orgc661b94},fragile]{Init method}
+ The \texttt{\_\_init\_\_} function is a function that gets called automatically as soon as a class
+is made. This init function can take many arguments, but must always start with a
+\texttt{self}.
+
+In this example, we are creating a class that represents an x, y coordinate. We've
+called this class \texttt{Coordinate}, and we've defined our init function to take an x and y
+values when the class is being created.
+
+\alert{Note} its more typical to use titlecase when specifying the class name. So when
+reading code its easy to see when you're creating a class versus calling a
+function. You should use this style.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Coordinate:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:orgd59f369},fragile]{Instantiating}
+ To create an \emph{instance} of this class, call the name of the class as you would a
+function, and pass any parameters you've defined in the init function.
+
+In this example, we are creating a new vector using \texttt{Vector(...)} and we're passing the
+x and y coordinate.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+point_1 = Vector(5, 2)
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:orgb3ce4cd},fragile]{Class variables}
+ In the previous example, we've been creating a class variables by using
+\texttt{self.<variable\_name>}. This is telling Python \emph{this class should have a variable of
+this name}.
+
+It allows then to reference the variable when working with the class.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.length = self.x + self.y
+
+point_1 = Vector(5, 2)
+print(point_1.x)
+print(point_1.y)
+print(point_1.length)
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => 5
+# => 2
+# => 7
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:org06a0395},fragile]{Class Methods}
+ A class can have many methods associated with it. To create a new method, we create a
+function within the scope of the class, remember that the first parameter of the
+function should be \texttt{self}.
+
+Even in these functions, we can refer to our \texttt{self.x} and \texttt{self.y} within this new
+function.
+
+You'll notice that to call this function, we using the \texttt{.length()} method similar to
+how we've worked with strings/lists/etc. This is because in Python, everything is an
+object!
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def length(self):
+        return self.x + self.y
+
+
+my_point = Vector(2, 5)
+print(my_point.length())
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => 7
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:org9b73e65},fragile]{dunder-methods}
+ While we could, for example, create a function called \texttt{.print()}, sometimes we would
+like to use the in built functions like \texttt{print()}. When creating a class, there is a
+set of \emph{dunder-methods} (double-under to reference the two '\texttt{\_\_}' characters either side
+of the function name).
+
+One of these dunder-methods is \texttt{\_\_repr\_\_}, which allows us to specify how the object
+looks when its printed.
+\end{frame}
+
+\begin{frame}[label={sec:org1a75e57},fragile]{dunder-methods}
+ \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class OldVector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+print(OldVector(2, 5))
+
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+
+print(Vector(2, 5))
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => <__main__.OldVector object at 0x7f658721e250>
+# => Vector(2, 5)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:org8ad744a},fragile]{dunder-methods}
+ There are many more dunder-methods you should know when creating classes. We shall go through:
+
+\begin{itemize}
+\item \texttt{\_\_len\_\_} -- specify how the length of the class should be computed.
+\item \texttt{\_\_getitem\_\_} -- how to index over the class
+\item \texttt{\_\_call\_\_} -- how to use the class like a function
+\item \texttt{\_\_iter\_\_} -- what to do when iteration starts
+\item \texttt{\_\_next\_\_} -- what to do at the next step of the iteration
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org4717e23},fragile]{\texttt{\_\_len\_\_}}
+ The \texttt{\_\_len\_\_} function allows us to specify how the \texttt{len()} function acts on the
+class. Take this hypothetical dataset. We create a \texttt{\_\_len\_\_} function that returns the
+length of the unique elements in the dataset.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Dataset:
+    def __init__(self, data):
+        self.data = data
+
+    def __len__(self):
+        """Return the length of unique elements"""
+        return len(set(self.data))
+
+data = Dataset([1, 2, 3, 3, 3, 5, 1])
+print(len(data))
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => 4
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:orgaaf0fee},fragile]{\texttt{\_\_getitem\_\_}}
+ Next \texttt{\_\_getitem\_\_} allows us to index over a class. This new function must include \texttt{self}
+and a variable to pass the index. Here I've used \texttt{idx}. In this function I am simply
+indexing on the on the classes \texttt{self.data}.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Dataset:
+    def __init__(self, data):
+        self.data = data
+
+    def __getitem__(self, idx):
+        return self.data[idx]
+
+data = Dataset([1, 2, 3, 3, 3, 5, 1])
+print(data[2])
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => 3
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:org8952eda},fragile]{\texttt{\_\_call\_\_}}
+ In a small number of cases, it is nice to use the class just like a function. This is
+what \texttt{\_\_call\_\_} allows us to do. In this function we specify what should happen when
+class is 'called' like a function. In this simple example, we are creating a function
+that prints the type of food being used as a parameter to the function.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Jaguar:
+    def __call__(self, food):
+        print(f"The jaguar eats the {food}.")
+
+food = "apple"
+animal = Jaguar()
+
+animal(food)
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => The jaguar eats the apple.
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:orgfb0bbd5},fragile]{\texttt{\_\_iter\_\_} and \texttt{\_\_next\_\_}}
+ \texttt{\_\_iter\_\_} and \texttt{\_\_next\_\_} allow us to make our class iterable, i.e. we can use it in a
+\texttt{for} loop for example.
+
+The \texttt{\_\_iter\_\_} function should define what happens when we start the iteration, and
+\texttt{\_\_next\_\_} defines what happens at every step of the iteration.
+
+Let's take a look at an example where we have an iterable set of prime numbers.
+\end{frame}
+
+\begin{frame}[label={sec:orgd3229f8},fragile]{\texttt{\_\_iter\_\_} and \texttt{\_\_next\_\_}}
+ \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Primes:
+    def __init__(self):
+        self.primes = [2, 3, 5, 7, 11]
+
+    def __iter__(self):
+        self.idx = 0
+        return self
+
+    def __len__(self):
+        return len(self.primes)
+
+    def __next__(self):
+        if self.idx < len(self):
+            item = self.primes[self.idx]
+            self.idx += 1
+            return item
+        else:
+            raise StopIteration
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:org027467f},fragile]{\texttt{\_\_iter\_\_} and \texttt{\_\_next\_\_}}
+ And now we can iterate over this class
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+prime_numbers = Primes()
+
+for prime_number in prime_numbers:
+    print(prime_number)
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => 2
+# => 3
+# => 5
+# => 7
+# => 11
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:orgcfec86b},fragile]{Inheritance}
+ One special thing about OOP is that its normally designed to provide inheritance --
+this is true in Python. Inheritance is where you have a base class, and other classes
+inherit from this base class. This means that the class that inherits from the base
+class has access to the same methods and class variables. In some cases, it can
+override some of these features.
+
+Let's take a look an example.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Animal:
+    def growl(self):
+        print("The animal growls")
+
+    def walk(self):
+        raise NotImplementError
+\end{minted}
+
+Here we have created a simple class called Animal, that has two functions, one of
+which will raise an error if its called.
+\end{frame}
+
+\begin{frame}[label={sec:org5b365ec},fragile]{Inheritance}
+ We can inherit from this Animal class by placing our base class in \texttt{()} after the new
+class name.
+
+Here we are creating two classes, Tiger and Duck. Both of these new classes inherit
+from Animal. Also, both of these classes are overriding the walk functions. But they
+are not creating a growl method themselves.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+class Tiger(Animal):
+    def walk(self):
+        print("The Tiger walks through the jungle")
+
+class Duck(Animal):
+    def walk(self):
+        print("The Duck walks through the jungle")
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:orgc2a9be8},fragile]{Inheritance}
+ Look at what happens when we create instances of these classes, and call the
+functions. First we see that the correct method has been called. I.e. for the duck
+class, the correct \texttt{walk} method was called.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+first_animal = Tiger()
+second_animal = Duck()
+
+first_animal.walk()
+second_animal.walk()
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => The Tiger walks through the jungle
+# => The Duck walks through the jungle
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:orgf21c525},fragile]{Inheritance}
+ But what happens if we call the \texttt{.growl()} method?
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+first_animal.growl()
+second_animal.growl()
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => The animal growls
+# => The animal growls
+\end{verbatim}
+
+
+We see that it still works. Even though both Duck and Tiger didn't create a \texttt{.growl()}
+method, it inherited it from the base class Animal. This works for class methods and
+class variables.
+\end{frame}
+
+\section{Exercise}
+\label{sec:org7322f9b}
+
+\subsection{Exercise}
+\label{sec:org58c114d}
+
+\begin{frame}[label={sec:org522b7cb},fragile]{An object based library system}
+ We're going to improve on our library system from last lecture. Instead of a
+\texttt{functional} style of code, we're going to use a OOP paradigm to create our solution.
+
+Like last time, we're going to create our solution one step at a time.
+
+First, we need to create our class called \texttt{Database}. This database is going to take an
+optional parameter in its init function -- the data. If the user specifies data
+(represented as a list of dictionaries like last time), then the class will populate
+a class variable called data, else this class variable will be set to an empty list.
+
+Summary:
+\begin{itemize}
+\item Create a class called \texttt{Database}.
+\item When creating an instance of \texttt{Database}, the user can optionally specify a list of
+dictionaries to initialise the class variable \texttt{data} with. If no data is provided,
+this class variable will be initialised to an empty list.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org885e330},fragile]{Adding data}
+ We will want to include a function to add data to our database.
+
+Create a class method called \texttt{add}, that takes three arguments (in addition to \texttt{self} of
+course), the title, the author, and the release date.
+
+This add function adds the new book entry to the end of \texttt{data}. Populate this database
+with the following information.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{XXX}
+\toprule
+Title & Author & Release Date\\
+\midrule
+Moby Dick & Herman Melville & 1851\\
+A Study in Scarlet & Sir Arthur Conan Doyle & 1887\\
+Frankenstein & Mary Shelley & 1818\\
+Hitchhikers Guide to the Galaxy & Douglas Adams & 1879\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:org77fb967},fragile]{Locating a book}
+ Create a class method called locate by tile that takes the title of the book to look
+up, and returns the dictionary of all books that have this title. Unlike last time,
+we don't need to pass the \texttt{data} as an argument, as its contained within the class.
+\end{frame}
+
+\begin{frame}[label={sec:org181149b},fragile]{Updating our database}
+ Create a class method called \texttt{update} that takes 4 arguments:, 1) the key of the value
+we want to update 2) the value we want to update it to 3) the key we want to check
+to find out if we have the correct book and 4) the value of the key to check if we
+have the correct book.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+db.update(key="release year", value=1979, where_key="title",
+          where_value="Hitchhikers Guide to the Galaxy")
+\end{minted}
+
+Use this to fix the release data of the Hitchhiker's book.
+\end{frame}
+
+\begin{frame}[label={sec:org741e82a},fragile]{Printed representation}
+ Using the \texttt{\_\_str\_\_} dunder-method (this is similar to \texttt{\_\_repr\_\_} as we saw before),
+create a function that prints out a formatted representation of the entire database
+as a string. Some of the output should look like:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+Library System
+--------------
+
+Entry 1:
+- Name: Moby Dick
+- Author: Herman Melville
+- Release Date: 1851
+...
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:org721f50d},fragile]{Extending our OOP usage}
+ So far we've used a list of dictionaries. One issue with this is that there is no
+constraints on the keys we can use. This will certainly create problems if certain
+keys are missing.
+
+Instead of using dictionaries. We can create another class called \texttt{Book} that will take
+three arguments when it is initialised: \texttt{name}, \texttt{author}, and \texttt{release\_date}. The init
+function should initialise three class variables to save this information.
+
+Modify the database to, instead of working with a list of dictionaries, work with a
+list of Book objects.
+\end{frame}
+
+\begin{frame}[label={sec:org3fc7ef3},fragile]{Printed representation -- challenge.}
+ Improve upon the printed representation of the last exercise but instead of bulleted
+lists, use formatted tables using \texttt{f-string} formatting
+(\url{https://zetcode.com/python/fstring/}).
+
+The output should look like this:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+Library System
+--------------
+
+| Name           | Author           | Release Data |
+|----------------|------------------|--------------|
+| Moby Dick      | Herman Melville  |         1851 |
+...
+\end{minted}
+
+Notice how Release date is right justified, while Name and Author are left justified.
+\end{frame}
+\end{document}
