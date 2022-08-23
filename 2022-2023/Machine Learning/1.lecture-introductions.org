@@ -2,6 +2,7 @@
 #+SUBTITLE: Lecture 1 - Introductions
 #+author: Jay Morgan
 #+date: <TODO>
+#+startup: beamer
 #+include: ./header.org
 
 * Introduction
@@ -34,13 +35,13 @@ provide reference links should you wish to do some extra reading.
 *** Outline of the course
 
 #+ATTR_LATEX: :booktabs t
-|---------+---------------+---------+---------------|
-| Lecture | Expected date | Length  | Topic         |
-|---------+---------------+---------+---------------|
-|       1 | NOW           | 2 hours | Introduction  |
-|       2 | LATER         | 2 hours | Linear models |
-|         |               |         |               |
-|---------+---------------+---------+---------------|
+|---------+---------------+---------+----------------------|
+| Lecture | Expected date | Length  | Topic                |
+|---------+---------------+---------+----------------------|
+|       1 | NOW           | 2 hours | Introduction         |
+|       2 | LATER         | 2 hours | Linear models        |
+|       3 | Even later... | 2 hours | Evaluation of models |
+|---------+---------------+---------+----------------------|
 
 ** Reading the lectures
 
@@ -164,6 +165,27 @@ a tasks in $T$, as measured by $P$, improves with experience $E$.
 #+end_quote
 
 [cite:@mitchell1997machine]
+
+*** Quiz!
+
+What /function/ is being used here?
+
+#+begin_example
+8 ? 5   =   13
+9 ? 1   =   10
+1 ? 2   =    3
+#+end_example
+
+*** Something more difficult...
+
+What /values/ are being used here?
+
+#+begin_example
+x * 1 + y   =   4
+x * 3 + y   =   8
+x * 5 + y   =  12
+#+end_example
+
 
 *** When might we need Machine Learning
 

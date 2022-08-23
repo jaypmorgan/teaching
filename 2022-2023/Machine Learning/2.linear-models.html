@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-12 ven. 10:14 -->
+<!-- 2022-08-23 mar. 13:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -194,6 +194,27 @@
   .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
@@ -202,19 +223,144 @@
 <span class="subtitle">Lecture 2 - Linear Models</span>
 </h1>
 
-<div id="outline-container-org833370c" class="outline-2">
-<h2 id="org833370c">Welcome!</h2>
-<div class="outline-text-2" id="text-org833370c">
+<div id="outline-container-orgcbcca8f" class="outline-2">
+<h2 id="orgcbcca8f">Linear Regression</h2>
+<div class="outline-text-2" id="text-orgcbcca8f">
 </div>
-<div id="outline-container-orgfbead2d" class="outline-3">
-<h3 id="orgfbead2d">This is lecture</h3>
-<div class="outline-text-3" id="text-orgfbead2d">
+<div id="outline-container-org9e4a488" class="outline-3">
+<h3 id="org9e4a488">Introduction to linear models</h3>
+<div class="outline-text-3" id="text-org9e4a488">
 </div>
-<div id="outline-container-orgb4d8e7b" class="outline-4">
-<h4 id="orgb4d8e7b">This is a page</h4>
-<div class="outline-text-4" id="text-orgb4d8e7b">
+<div id="outline-container-org3da5bbd" class="outline-4">
+<h4 id="org3da5bbd">Linear models</h4>
+<div class="outline-text-4" id="text-org3da5bbd">
 <p>
-Welcome to the first page
+Having learnt a little about what it means to learn, we're going to look at our first
+<i>Machine Learning</i> algorithm, the staple for much of statistics, the numeric prediction
+using a linear model.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org03a1ae2" class="outline-4">
+<h4 id="org03a1ae2">Supporting example</h4>
+<div class="outline-text-4" id="text-org03a1ae2">
+<p>
+To support our understanding of this algorithm &#x2013; linear regression &#x2013; we're going to
+use one of the toy datasets we learnt about previously: the Boston house prices.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf98f95a" class="outline-3">
+<h3 id="orgf98f95a">Linear Regression</h3>
+<div class="outline-text-3" id="text-orgf98f95a">
+</div>
+<div id="outline-container-org6a9f714" class="outline-4">
+<h4 id="org6a9f714">What do we mean by 'linear'?</h4>
+<div class="outline-text-4" id="text-org6a9f714">
+<p>
+This model is linear simply because we have the <i>linear</i> combination (their addition)
+of different features, modulated by a parameterised weight.
+</p>
+
+<p>
+\[ \hat{y} = w_0 + w_1 x_1 + w_2 x_2 + ... + w_m x_m \]
+</p>
+
+<p>
+where \(\hat{y}\) is the values predicted by the linear model, \(w_i\) are the weight
+parameters and \(x_i\) are the features of the input data.
+</p>
+
+<p>
+We can otherwise reformat this equation into:
+</p>
+
+<p>
+\[ \sum_{i = 0}^{m} w_i x_i \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org46a6c7c" class="outline-4">
+<h4 id="org46a6c7c">What are the weights of the model?</h4>
+<div class="outline-text-4" id="text-org46a6c7c">
+<p>
+The weights of the linear model defines how the position of the prediction 'line'. If
+we modify the weights, this line will appear different in our visualisations, and so
+will the predictions.
+</p>
+
+<img src="images/linear_weights.gif">
+</div>
+</div>
+
+<div id="outline-container-org4aae0e7" class="outline-4">
+<h4 id="org4aae0e7">What are the 'best' weights?</h4>
+<div class="outline-text-4" id="text-org4aae0e7">
+<ul class="org-ul">
+<li>Loss function &#x2013; sum of squared errors or the mean of the sums</li>
+</ul>
+
+<p>
+\[  \frac{1}{N} \sum_i^N | \hat{y} - y | \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org88f8815" class="outline-4">
+<h4 id="org88f8815">Visualising the loss</h4>
+<div class="outline-text-4" id="text-org88f8815">
+<p>
+<b>draw lines from each dot to the prediction line</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6171644" class="outline-4">
+<h4 id="org6171644">Loss curve</h4>
+<div class="outline-text-4" id="text-org6171644">
+<ul class="org-ul">
+<li>If we move the weight value, then we get a different point on the curve.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org31a258b" class="outline-4">
+<h4 id="org31a258b">How to select the best weights</h4>
+<div class="outline-text-4" id="text-org31a258b">
+<ul class="org-ul">
+<li>Lowest point on the curve.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7686b93" class="outline-4">
+<h4 id="org7686b93">Automatically computing the best weights</h4>
+<div class="outline-text-4" id="text-org7686b93">
+<ul class="org-ul">
+<li>Gradient descent</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org06dbbcb" class="outline-2">
+<h2 id="org06dbbcb">Logistic Regression</h2>
+<div class="outline-text-2" id="text-org06dbbcb">
+</div>
+<div id="outline-container-org33444b8" class="outline-3">
+<h3 id="org33444b8">Classification</h3>
+<div class="outline-text-3" id="text-org33444b8">
+</div>
+<div id="outline-container-org4e3b787" class="outline-4">
+<h4 id="org4e3b787">Moving from regression to classification</h4>
+<div class="outline-text-4" id="text-org4e3b787">
+<p>
+We now turn to classification
 </p>
 </div>
 </div>
@@ -224,7 +370,7 @@ Welcome to the first page
 <div id="postamble" class="status">
 <p class="date">Date: &lt;TODO&gt;</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-08-12 ven. 10:14</p>
+<p class="date">Created: 2022-08-23 mar. 13:34</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

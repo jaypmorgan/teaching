@@ -2,12 +2,97 @@
 #+subtitle: Lecture 2 - Linear Models
 #+author: Jay Morgan
 #+date: <TODO>
+#+startup: beamer
 #+include: ./header.org
+#+property: header-args:julia :session :eval never-export :results none :exports none
 
-* Welcome!
+* Linear Regression
 
-** This is lecture
+** Introduction to linear models
 
-*** This is a page
+*** Linear models
 
-Welcome to the first page
+Having learnt a little about what it means to learn, we're going to look at our first
+/Machine Learning/ algorithm, the staple for much of statistics, the numeric prediction
+using a linear model.
+
+*** Supporting example
+
+To support our understanding of this algorithm -- linear regression -- we're going to
+use one of the toy datasets we learnt about previously: the Boston house prices.
+
+** Linear Regression
+
+*** What do we mean by 'linear'?
+
+This model is linear simply because we have the /linear/ combination (their addition)
+of different features, modulated by a parameterised weight.
+
+\[ \hat{y} = w_0 + w_1 x_1 + w_2 x_2 + ... + w_m x_m \]
+
+where $\hat{y}$ is the values predicted by the linear model, $w_i$ are the weight
+parameters and $x_i$ are the features of the input data.
+
+We can otherwise reformat this equation into:
+
+\[ \sum_{i = 0}^{m} w_i x_i \]
+
+*** What are the weights of the model?
+
+The weights of the linear model defines how the position of the prediction 'line'. If
+we modify the weights, this line will appear different in our visualisations, and so
+will the predictions.
+
+#+begin_src julia
+using Plots
+using LaTeXStrings
+x = 1:10
+y = x .* (5 .+ randn(10)) .+ 2
+anim = @animate for i in 1:0.2:10
+    plot(i .* x .+ 2, label = "regression line (w = $i)", ylim=(5, 50),
+         legend = :topleft, xlab=L"x", ylab=L"\hat{y}")
+    scatter!(x, y, label = "data points")
+end
+gif(anim, "images/linear_weights.gif", fps = 2)
+#+end_src
+
+#+begin_export html
+<img src="images/linear_weights.gif">
+#+end_export
+#+begin_export latex
+\animategraphics[loop,autoplay,width=0.7\textwidth]{0.8}{images/linear_weights-gif-converted-to-}{0}{45}
+#+end_export
+
+*** What are the 'best' weights?
+
+- Loss function -- sum of squared errors or the mean of the sums
+
+\[  \frac{1}{N} \sum_i^N | \hat{y} - y | \]
+
+*** Visualising the loss
+
+*draw lines from each dot to the prediction line*
+
+#+begin_src julia
+
+#+end_src
+
+*** Loss curve
+
+- If we move the weight value, then we get a different point on the curve.
+
+*** How to select the best weights
+
+- Lowest point on the curve.
+
+*** Automatically computing the best weights
+
+- Gradient descent
+
+* Logistic Regression
+
+** Classification
+
+*** Moving from regression to classification
+
+We now turn to classification

@@ -20,3 +20,6 @@
 #+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 #+PROPERTY: header-args:julia :exports both :results output :eval never-export :session
+#+LATEX_HEADER: \DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
+#+LATEX_HEADER: \DeclareGraphicsExtensions{.gif}
+#+LATEX_HEADER: \usepackage{animate}

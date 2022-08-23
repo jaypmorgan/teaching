@@ -1,4 +1,4 @@
-% Created 2022-08-12 ven. 10:13
+% Created 2022-08-23 mar. 13:34
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -27,6 +27,9 @@
 \definecolor{LightGray}{gray}{0.95}
 \usepackage{fancyvrb}
 \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+\DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
+\DeclareGraphicsExtensions{.gif}
+\usepackage{animate}
 \usetheme{default}
 \author{Jay Morgan}
 \date{<TODO>}
@@ -43,13 +46,85 @@
 
 \maketitle
 
-\section*{Welcome!}
-\label{sec:org4161a6d}
+\section*{Linear Regression}
+\label{sec:org262e8e8}
 
-\subsection*{This is lecture}
-\label{sec:orga2ba503}
+\subsection*{Introduction to linear models}
+\label{sec:orgf0c7a57}
 
-\begin{frame}[label={sec:org3177534}]{This is a page}
-Welcome to the first page
+\begin{frame}[label={sec:org90d2409}]{Linear models}
+Having learnt a little about what it means to learn, we're going to look at our first
+\emph{Machine Learning} algorithm, the staple for much of statistics, the numeric prediction
+using a linear model.
+\end{frame}
+
+\begin{frame}[label={sec:org702e797}]{Supporting example}
+To support our understanding of this algorithm -- linear regression -- we're going to
+use one of the toy datasets we learnt about previously: the Boston house prices.
+\end{frame}
+
+\subsection*{Linear Regression}
+\label{sec:org83b91e5}
+
+\begin{frame}[label={sec:org6e8dbd8}]{What do we mean by 'linear'?}
+This model is linear simply because we have the \emph{linear} combination (their addition)
+of different features, modulated by a parameterised weight.
+
+\[ \hat{y} = w_0 + w_1 x_1 + w_2 x_2 + ... + w_m x_m \]
+
+where \(\hat{y}\) is the values predicted by the linear model, \(w_i\) are the weight
+parameters and \(x_i\) are the features of the input data.
+
+We can otherwise reformat this equation into:
+
+\[ \sum_{i = 0}^{m} w_i x_i \]
+\end{frame}
+
+\begin{frame}[label={sec:orgb3f63ab}]{What are the weights of the model?}
+The weights of the linear model defines how the position of the prediction 'line'. If
+we modify the weights, this line will appear different in our visualisations, and so
+will the predictions.
+
+\animategraphics[loop,autoplay,width=0.7\textwidth]{0.8}{images/linear_weights-gif-converted-to-}{0}{45}
+\end{frame}
+
+\begin{frame}[label={sec:org307f260}]{What are the 'best' weights?}
+\begin{itemize}
+\item Loss function -- sum of squared errors or the mean of the sums
+\end{itemize}
+
+\[  \frac{1}{N} \sum_i^N | \hat{y} - y | \]
+\end{frame}
+
+\begin{frame}[label={sec:org769e485}]{Visualising the loss}
+\alert{draw lines from each dot to the prediction line}
+\end{frame}
+
+\begin{frame}[label={sec:org553525e}]{Loss curve}
+\begin{itemize}
+\item If we move the weight value, then we get a different point on the curve.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org85d3a4f}]{How to select the best weights}
+\begin{itemize}
+\item Lowest point on the curve.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgbbb5508}]{Automatically computing the best weights}
+\begin{itemize}
+\item Gradient descent
+\end{itemize}
+\end{frame}
+
+\section*{Logistic Regression}
+\label{sec:orge7991d1}
+
+\subsection*{Classification}
+\label{sec:org368d2c7}
+
+\begin{frame}[label={sec:orgb479203}]{Moving from regression to classification}
+We now turn to classification
 \end{frame}
 \end{document}
