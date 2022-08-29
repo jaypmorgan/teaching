@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-25 jeu. 09:52 -->
+<!-- 2022-08-29 lun. 14:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -194,183 +194,210 @@
   .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css" href="style.css" />
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
 <h1 class="title">Machine Learning
 <br />
-<span class="subtitle">Lecture 2 - Linear Models</span>
+<span class="subtitle">Lab 1 - Linear Models</span>
 </h1>
 
-<div id="outline-container-org18e8b90" class="outline-2">
-<h2 id="org18e8b90">Linear Regression</h2>
-<div class="outline-text-2" id="text-org18e8b90">
+<div id="outline-container-orgf2c1abd" class="outline-2">
+<h2 id="orgf2c1abd">Introduction</h2>
+<div class="outline-text-2" id="text-orgf2c1abd">
 </div>
-<div id="outline-container-orgfbb49fd" class="outline-3">
-<h3 id="orgfbb49fd">Introduction to linear models</h3>
-<div class="outline-text-3" id="text-orgfbb49fd">
+<div id="outline-container-org11df260" class="outline-3">
+<h3 id="org11df260">Plan for this lab</h3>
+<div class="outline-text-3" id="text-org11df260">
 </div>
-<div id="outline-container-org6c4fb72" class="outline-4">
-<h4 id="org6c4fb72">Linear models</h4>
-<div class="outline-text-4" id="text-org6c4fb72">
+<div id="outline-container-org601d519" class="outline-4">
+<h4 id="org601d519">Welcome</h4>
+<div class="outline-text-4" id="text-org601d519">
 <p>
-Having learnt a little about what it means to learn, we're going to look at our first
-<i>Machine Learning</i> algorithm, the staple for much of statistics, the numeric prediction
-using a linear model.
+Welcome to the first lab. In these lab tutorials we are going to be experimenting
+with what we've learnt in the lectures. This means that we're going to implement the
+algorithms and doing some Machine Learning ourselves!
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9c9a5a6" class="outline-4">
-<h4 id="org9c9a5a6">Supporting example</h4>
-<div class="outline-text-4" id="text-org9c9a5a6">
+<div id="outline-container-org99ccb5b" class="outline-4">
+<h4 id="org99ccb5b">Plan for the first lab</h4>
+<div class="outline-text-4" id="text-org99ccb5b">
 <p>
-To support our understanding of this algorithm &#x2013; linear regression &#x2013; we're going to
-use one of the toy datasets we learnt about previously: the Boston house prices.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org663dece" class="outline-3">
-<h3 id="org663dece">Linear Regression</h3>
-<div class="outline-text-3" id="text-org663dece">
-</div>
-<div id="outline-container-orgeff7885" class="outline-4">
-<h4 id="orgeff7885">What do we mean by 'linear'?</h4>
-<div class="outline-text-4" id="text-orgeff7885">
-<p>
-This model is linear simply because we have the <i>linear</i> combination (their addition)
-of different features, modulated by a parameterised weight.
+For this first lab session, we're going to need to do just a little 'admin' work
+before we start implementing these algorithms.
 </p>
 
 <p>
-\[ \hat{y} = w_0 + w_1 x_1 + w_2 x_2 + ... + w_m x_m \]
+We will need to do the following:
 </p>
-
-<p>
-where \(\hat{y}\) is the values predicted by the linear model, \(w_i\) are the weight
-parameters and \(x_i\) are the features of the input data.
-</p>
-
-<p>
-We can otherwise reformat this equation into:
-</p>
-
-<p>
-\[ \sum_{i = 0}^{m} w_i x_i \]
-</p>
-</div>
-</div>
-
-<div id="outline-container-org3b1be9d" class="outline-4">
-<h4 id="org3b1be9d">What are the weights of the model?</h4>
-<div class="outline-text-4" id="text-org3b1be9d">
-<p>
-The weights of the linear model defines how the position of the prediction 'line'. If
-we modify the weights, this line will appear different in our visualisations, and so
-will the predictions.
-</p>
-
-<img src="images/linear_weights.gif">
-</div>
-</div>
-
-<div id="outline-container-org7bb15f4" class="outline-4">
-<h4 id="org7bb15f4">What are the 'best' weights?</h4>
-<div class="outline-text-4" id="text-org7bb15f4">
 <ul class="org-ul">
-<li>Loss function &#x2013; sum of squared errors or the mean of the sums</li>
-</ul>
-
-<p>
-\[  \frac{1}{N} \sum_i^N | \hat{y} - y | \]
-</p>
-</div>
-</div>
-
-<div id="outline-container-org4dd3bed" class="outline-4">
-<h4 id="org4dd3bed">Visualising the loss</h4>
-<div class="outline-text-4" id="text-org4dd3bed">
-<p>
-<b>draw lines from each dot to the prediction line</b>
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgbe5d61d" class="outline-4">
-<h4 id="orgbe5d61d">Loss curve</h4>
-<div class="outline-text-4" id="text-orgbe5d61d">
-<ul class="org-ul">
-<li>If we move the weight value, then we get a different point on the curve.</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orge81745d" class="outline-4">
-<h4 id="orge81745d">How to select the best weights</h4>
-<div class="outline-text-4" id="text-orge81745d">
-<ul class="org-ul">
-<li>Lowest point on the curve.</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org49d6886" class="outline-4">
-<h4 id="org49d6886">Automatically computing the best weights</h4>
-<div class="outline-text-4" id="text-org49d6886">
-<ul class="org-ul">
-<li>Gradient descent</li>
+<li>Create an project directory.</li>
+<li>Create a conda environment and install the latest version of Python.</li>
+<li>Setup our IDE (integrated development environment of choice).</li>
 </ul>
 </div>
 </div>
 </div>
-</div>
 
-<div id="outline-container-orgca39bf0" class="outline-2">
-<h2 id="orgca39bf0">Logistic Regression</h2>
-<div class="outline-text-2" id="text-orgca39bf0">
+<div id="outline-container-org26e38f0" class="outline-3">
+<h3 id="org26e38f0">Lab setup</h3>
+<div class="outline-text-3" id="text-org26e38f0">
 </div>
-<div id="outline-container-orgb714df1" class="outline-3">
-<h3 id="orgb714df1">Classification</h3>
-<div class="outline-text-3" id="text-orgb714df1">
-</div>
-<div id="outline-container-org3045fca" class="outline-4">
-<h4 id="org3045fca">Moving from regression to classification</h4>
-<div class="outline-text-4" id="text-org3045fca">
+<div id="outline-container-org9cf1a43" class="outline-4">
+<h4 id="org9cf1a43">Creating a project directory</h4>
+<div class="outline-text-4" id="text-org9cf1a43">
 <p>
-We now turn to classification
+Exactly how you want to organise your work is up to you. However, with that being
+said, I would recommend the following example structure:
+</p>
+
+<pre class="example" id="org2cff3ac">
+~/workspace/&lt;project-name&gt;/&lt;files-&amp;-directories&gt;
+</pre>
+
+<p>
+So, for example, in this course, we would have the following directory:
+<code>~/workspace/machine-learning</code>
 </p>
 </div>
 </div>
+
+<div id="outline-container-orga04e04f" class="outline-4">
+<h4 id="orga04e04f">Using the datascience repository</h4>
+<div class="outline-text-4" id="text-orga04e04f">
+
+<div id="orgab65e22" class="figure">
+<p><img src="images/datascience-repo.png" alt="datascience-repo.png" width="200%" /> 
+</p>
+<p><span class="figure-number">Figure 1: </span>The datascience repository templated hosted on github (github.com/jaypmorgan/datascience)</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">git clone git@github.com:jaypmorgan/datascience.git
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org450d143" class="outline-4">
+<h4 id="org450d143">Layout &amp; intentionality behind the datascience repository</h4>
+<div class="outline-text-4" id="text-org450d143">
+<ul class="org-ul">
+<li><code>data</code> &#x2013; location of all data files (preferably in their own directory such as
+data/raw/&lt;files&gt;, data/processed/&lt;files&gt;, data/results/&lt;files&gt;). These files will
+not be committed to git as they much be too large.</li>
+<li><code>experiments</code> &#x2013; location of one off files that are used for running single
+experiments and scripts.</li>
+<li><code>notes</code> &#x2013; storage of notes and reports created during the lifetime of the project.</li>
+<li><code>src</code> &#x2013; here we store the library of functions/classes that are useful for the
+entire project.</li>
+<li><code>.config</code> &#x2013; a configuration file</li>
+<li><code>Makefile</code> &#x2013; make routines for building the project (if we have any, we'll cover
+this at a later point, alternatively you can read:
+<a href="https://blog.morganwastaken.com/2020-03-05/makefile">https://blog.morganwastaken.com/2020-03-05/makefile</a>).</li>
+<li><code>environment.yml</code> &#x2013; the configuration script for conda (we'll cover this just in a
+moment!).</li>
+<li><code>README.md</code> &#x2013; Markdown readme file that explains introduces the project, and perhaps
+some installation and running instructions for others.</li>
+</ul>
+
+<p>
+I will using this folder structure for our labs, so we'll see (by the way of example)
+how we use this structure.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3fcc4ad" class="outline-4">
+<h4 id="org3fcc4ad">Creating a conda environment</h4>
+<div class="outline-text-4" id="text-org3fcc4ad">
+<p>
+Conda is a command line tool to manage environments. We're going to highlight some of the most used commands. But for the full list of management, you can use the instructions at: <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html</a>
+</p>
+
+<p>
+If you're creating a brand new environment, use:
+</p>
+
+<pre class="example">
+conda create --name &lt;name-of-env&gt;
+</pre>
+
+<p>
+This will prompt you to confirm you want to create a new environment, whereupon you
+enter either a y or n. If y your new environment will be created, but start using the
+environment, you will first have to activate it.
+</p>
+
+<p>
+For more information, visit:
+<a href="https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-3/lecture.html#orga9fbc8c">https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-3/lecture.html#orga9fbc8c</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org51ea6f3" class="outline-4">
+<h4 id="org51ea6f3">Installing jupyter notebook &amp; jupyter lab</h4>
+<div class="outline-text-4" id="text-org51ea6f3">
+<p>
+As we're going to do lots of visualisations, we're going to want some environment
+where we can rapidly evolve and interrogate our data. For this, we're going to use
+jupyter notebooks. However, there are many other alternatives if you're so
+inclined. There is google colab (a jupyter-like environment on the cloud), org-mode
+with org-babel if you like emacs, the Spyder IDE with code cells.
+</p>
+
+<p>
+To install jupyter notebook use (assuming you have activated the correct environment):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install -c conda-forge jupyterlab
+</pre>
+</div>
+
+<p>
+<a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html">https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5adf51c" class="outline-4">
+<h4 id="org5adf51c">Setting up our IDE</h4>
+<div class="outline-text-4" id="text-org5adf51c">
+<p>
+While most of our exploration is going to take place inside a jupyter notebook,
+we're going to use a fully fledged IDE for the heavy lifting of our Python
+programming. The IDE we're going to use in these lab sessions is PyCharm.
+</p>
+
+
+<div id="org35394d3" class="figure">
+<p><img src="images/pycharm.png" alt="pycharm.png" width="200%" />
+</p>
+<p><span class="figure-number">Figure 2: </span>PyCharm IDE</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcb4f827" class="outline-2">
+<h2 id="orgcb4f827">Creating a linear model</h2>
+<div class="outline-text-2" id="text-orgcb4f827">
+</div>
+<div id="outline-container-orgbc68800" class="outline-3">
+<h3 id="orgbc68800"></h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: &lt;TODO&gt;</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-08-25 jeu. 09:52</p>
+<p class="date">Created: 2022-08-29 lun. 14:32</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
