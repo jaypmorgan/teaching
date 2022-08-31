@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-25 jeu. 09:52 -->
+<!-- 2022-08-31 Wed 15:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -223,123 +223,204 @@
 <span class="subtitle">Lecture 2 - Linear Models</span>
 </h1>
 
-<div id="outline-container-org18e8b90" class="outline-2">
-<h2 id="org18e8b90">Linear Regression</h2>
-<div class="outline-text-2" id="text-org18e8b90">
+<div id="outline-container-org88710bf" class="outline-2">
+<h2 id="org88710bf">Linear Regression</h2>
+<div class="outline-text-2" id="text-org88710bf">
 </div>
-<div id="outline-container-orgfbb49fd" class="outline-3">
-<h3 id="orgfbb49fd">Introduction to linear models</h3>
-<div class="outline-text-3" id="text-orgfbb49fd">
+<div id="outline-container-org61d6a22" class="outline-3">
+<h3 id="org61d6a22">Introduction to linear models</h3>
+<div class="outline-text-3" id="text-org61d6a22">
 </div>
-<div id="outline-container-org6c4fb72" class="outline-4">
-<h4 id="org6c4fb72">Linear models</h4>
-<div class="outline-text-4" id="text-org6c4fb72">
+<div id="outline-container-org06c0ec0" class="outline-4">
+<h4 id="org06c0ec0">Linear models</h4>
+<div class="outline-text-4" id="text-org06c0ec0">
 <p>
 Having learnt a little about what it means to learn, we're going to look at our first
-<i>Machine Learning</i> algorithm, the staple for much of statistics, the numeric prediction
+<i>Machine Learning</i> algorithm, the staple for much of statistics, numeric prediction
 using a linear model.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9c9a5a6" class="outline-4">
-<h4 id="org9c9a5a6">Supporting example</h4>
-<div class="outline-text-4" id="text-org9c9a5a6">
+<div id="outline-container-org7e9ecb2" class="outline-4">
+<h4 id="org7e9ecb2">What is a linear model?</h4>
+<div class="outline-text-4" id="text-org7e9ecb2">
 <p>
-To support our understanding of this algorithm &#x2013; linear regression &#x2013; we're going to
-use one of the toy datasets we learnt about previously: the Boston house prices.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org663dece" class="outline-3">
-<h3 id="org663dece">Linear Regression</h3>
-<div class="outline-text-3" id="text-org663dece">
-</div>
-<div id="outline-container-orgeff7885" class="outline-4">
-<h4 id="orgeff7885">What do we mean by 'linear'?</h4>
-<div class="outline-text-4" id="text-orgeff7885">
-<p>
-This model is linear simply because we have the <i>linear</i> combination (their addition)
-of different features, modulated by a parameterised weight.
+A linear model is a prediction (a response) to an input variable. We have the
+following terms:
 </p>
 
-<p>
-\[ \hat{y} = w_0 + w_1 x_1 + w_2 x_2 + ... + w_m x_m \]
-</p>
-
-<p>
-where \(\hat{y}\) is the values predicted by the linear model, \(w_i\) are the weight
-parameters and \(x_i\) are the features of the input data.
-</p>
-
-<p>
-We can otherwise reformat this equation into:
-</p>
-
-<p>
-\[ \sum_{i = 0}^{m} w_i x_i \]
-</p>
-</div>
-</div>
-
-<div id="outline-container-org3b1be9d" class="outline-4">
-<h4 id="org3b1be9d">What are the weights of the model?</h4>
-<div class="outline-text-4" id="text-org3b1be9d">
-<p>
-The weights of the linear model defines how the position of the prediction 'line'. If
-we modify the weights, this line will appear different in our visualisations, and so
-will the predictions.
-</p>
-
-<img src="images/linear_weights.gif">
-</div>
-</div>
-
-<div id="outline-container-org7bb15f4" class="outline-4">
-<h4 id="org7bb15f4">What are the 'best' weights?</h4>
-<div class="outline-text-4" id="text-org7bb15f4">
 <ul class="org-ul">
-<li>Loss function &#x2013; sum of squared errors or the mean of the sums</li>
+<li>Response/prediction &#x2013; the output of the model.</li>
+<li>Dependant variable &#x2013; the variable upon which the prediction is being made.</li>
 </ul>
 
 <p>
-\[  \frac{1}{N} \sum_i^N | \hat{y} - y | \]
+For a linear model based on one dependant we have the following:
 </p>
-</div>
-</div>
 
-<div id="outline-container-org4dd3bed" class="outline-4">
-<h4 id="org4dd3bed">Visualising the loss</h4>
-<div class="outline-text-4" id="text-org4dd3bed">
 <p>
-<b>draw lines from each dot to the prediction line</b>
+\[
+y = w x + b
+\]
+</p>
+
+<p>
+where \(y\) is the response/output/prediction of the model, \(x\) is the dependant
+variable, and \(w, b\) are the model parameters.
+</p>
+
+<p>
+If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
+</p>
+
+
+<div id="orgb617ccd" class="figure">
+<p><img src="images/linear_model.png" alt="linear_model.png" width="700px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org16b68ae" class="outline-4">
+<h4 id="org16b68ae">Supporting example</h4>
+<div class="outline-text-4" id="text-org16b68ae">
+<p>
+Let's have a look at how we would use this linear model with one of the datasets: The
+Boston housing prices.
+</p>
+
+
+<div id="orgfd57bf3" class="figure">
+<p><img src="images/boston_rooms_prices.png" alt="boston_rooms_prices.png" width="700px" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org696a75b" class="outline-4">
+<h4 id="org696a75b">Let's fit a linear model</h4>
+<div class="outline-text-4" id="text-org696a75b">
+<p>
+We have seen that there seems to be some correlation between the number of rooms and
+the house price. I.e. we can use the number of rooms of the house to get the
+estimated price. To get an estimated price we'll use our linear model:
+</p>
+
+<p>
+\[
+y = w x + b
+\]
+</p>
+
+<p>
+In this case, \(x\) will be the number of rooms. But what values should we set for \(w\)
+and \(b\)? Or put another way, what is <i>optimal</i> value for our model parameters.
+</p>
+
+<p>
+We'll return to the question of optimal later, but for now, let's just select some
+random values!
+</p>
+
+<p>
+\[
+w = 1
+\]
+\[
+b = 1
+\]
+</p>
+
+
+<div id="org94104b8" class="figure">
+<p><img src="images/boston_rm_first_pred.png" alt="boston_rm_first_pred.png" width="700px" />
+</p>
+<p><span class="figure-number">Figure 2: </span>A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.</p>
+</div>
+
+<p>
+Well that doesn't look very good, it could be 'fit' better to what we're seeing in
+the scatter plot! I wonder how wrong the linear model is &#x2013; how incorrect our
+predicted house prices are?
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbe5d61d" class="outline-4">
-<h4 id="orgbe5d61d">Loss curve</h4>
-<div class="outline-text-4" id="text-orgbe5d61d">
+<div id="outline-container-org1854e9f" class="outline-4">
+<h4 id="org1854e9f">Evaluating our initial linear model</h4>
+<div class="outline-text-4" id="text-org1854e9f">
+<p>
+To evaluate how well, or in this case, how badly our linear model is doing, let's
+compare the predicted value from the model against the actual house price. For
+example, we'll take a single sample from our dataset.
+</p>
+
+<p>
+If we have 4 rooms, our model estimates the house price to be \(2(4) + 5 = 13\),
+$13,000, but the actual cost was $24,000. This means we have underestimated the cost
+by $11,000.
+</p>
+
+<p>
+What we've done there is the following:
+</p>
+
+<p>
+\[
+\delta = | y - \hat{y} |
+\]
+</p>
+
+<p>
+where \(\hat{y}\) is \(w x + b\)
+</p>
+
+<p>
+We've calculated the difference or delta between the real house price \(y\) and the
+predicted house price.
+</p>
+
+<p>
+That gives us the error for one sample though, what about for the whole dataset? Well
+we could take the mean over all samples:
+</p>
+
+<p>
+\[
+\Delta = \sum_{i=0}^n | y - \hat{y} |
+\]
+</p>
+
+<p>
+If we calculate that our linear model we see that the average difference between our
+estimated value and real value is $15,000!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc8b7c86" class="outline-4">
+<h4 id="orgc8b7c86">Loss curve</h4>
+<div class="outline-text-4" id="text-orgc8b7c86">
 <ul class="org-ul">
 <li>If we move the weight value, then we get a different point on the curve.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge81745d" class="outline-4">
-<h4 id="orge81745d">How to select the best weights</h4>
-<div class="outline-text-4" id="text-orge81745d">
+<div id="outline-container-org4474a42" class="outline-4">
+<h4 id="org4474a42">How to select the best weights</h4>
+<div class="outline-text-4" id="text-org4474a42">
 <ul class="org-ul">
 <li>Lowest point on the curve.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org49d6886" class="outline-4">
-<h4 id="org49d6886">Automatically computing the best weights</h4>
-<div class="outline-text-4" id="text-org49d6886">
+<div id="outline-container-org80ca93a" class="outline-4">
+<h4 id="org80ca93a">Automatically computing the best weights</h4>
+<div class="outline-text-4" id="text-org80ca93a">
 <ul class="org-ul">
 <li>Gradient descent</li>
 </ul>
@@ -348,17 +429,17 @@ will the predictions.
 </div>
 </div>
 
-<div id="outline-container-orgca39bf0" class="outline-2">
-<h2 id="orgca39bf0">Logistic Regression</h2>
-<div class="outline-text-2" id="text-orgca39bf0">
+<div id="outline-container-orgb8e5bd2" class="outline-2">
+<h2 id="orgb8e5bd2">Logistic Regression</h2>
+<div class="outline-text-2" id="text-orgb8e5bd2">
 </div>
-<div id="outline-container-orgb714df1" class="outline-3">
-<h3 id="orgb714df1">Classification</h3>
-<div class="outline-text-3" id="text-orgb714df1">
+<div id="outline-container-org9183428" class="outline-3">
+<h3 id="org9183428">Classification</h3>
+<div class="outline-text-3" id="text-org9183428">
 </div>
-<div id="outline-container-org3045fca" class="outline-4">
-<h4 id="org3045fca">Moving from regression to classification</h4>
-<div class="outline-text-4" id="text-org3045fca">
+<div id="outline-container-org54a35b2" class="outline-4">
+<h4 id="org54a35b2">Moving from regression to classification</h4>
+<div class="outline-text-4" id="text-org54a35b2">
 <p>
 We now turn to classification
 </p>
@@ -370,7 +451,7 @@ We now turn to classification
 <div id="postamble" class="status">
 <p class="date">Date: &lt;TODO&gt;</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-08-25 jeu. 09:52</p>
+<p class="date">Created: 2022-08-31 Wed 15:32</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

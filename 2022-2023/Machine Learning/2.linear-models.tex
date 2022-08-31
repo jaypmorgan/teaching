@@ -1,4 +1,4 @@
-% Created 2022-08-23 mar. 13:34
+% Created 2022-08-31 Wed 15:32
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -47,84 +47,142 @@
 \maketitle
 
 \section*{Linear Regression}
-\label{sec:org262e8e8}
+\label{sec:orged16787}
 
 \subsection*{Introduction to linear models}
-\label{sec:orgf0c7a57}
+\label{sec:org4a5a1b9}
 
-\begin{frame}[label={sec:org90d2409}]{Linear models}
+\begin{frame}[label={sec:org58e4148}]{Linear models}
 Having learnt a little about what it means to learn, we're going to look at our first
-\emph{Machine Learning} algorithm, the staple for much of statistics, the numeric prediction
+\emph{Machine Learning} algorithm, the staple for much of statistics, numeric prediction
 using a linear model.
 \end{frame}
 
-\begin{frame}[label={sec:org702e797}]{Supporting example}
-To support our understanding of this algorithm -- linear regression -- we're going to
-use one of the toy datasets we learnt about previously: the Boston house prices.
-\end{frame}
+\begin{frame}[fragile,allowframebreaks,label=]{What is a linear model?}
+A linear model is a prediction (a response) to an input variable. We have the
+following terms:
 
-\subsection*{Linear Regression}
-\label{sec:org83b91e5}
-
-\begin{frame}[label={sec:org6e8dbd8}]{What do we mean by 'linear'?}
-This model is linear simply because we have the \emph{linear} combination (their addition)
-of different features, modulated by a parameterised weight.
-
-\[ \hat{y} = w_0 + w_1 x_1 + w_2 x_2 + ... + w_m x_m \]
-
-where \(\hat{y}\) is the values predicted by the linear model, \(w_i\) are the weight
-parameters and \(x_i\) are the features of the input data.
-
-We can otherwise reformat this equation into:
-
-\[ \sum_{i = 0}^{m} w_i x_i \]
-\end{frame}
-
-\begin{frame}[label={sec:orgb3f63ab}]{What are the weights of the model?}
-The weights of the linear model defines how the position of the prediction 'line'. If
-we modify the weights, this line will appear different in our visualisations, and so
-will the predictions.
-
-\animategraphics[loop,autoplay,width=0.7\textwidth]{0.8}{images/linear_weights-gif-converted-to-}{0}{45}
-\end{frame}
-
-\begin{frame}[label={sec:org307f260}]{What are the 'best' weights?}
 \begin{itemize}
-\item Loss function -- sum of squared errors or the mean of the sums
+\item Response/prediction -- the output of the model.
+\item Dependant variable -- the variable upon which the prediction is being made.
 \end{itemize}
 
-\[  \frac{1}{N} \sum_i^N | \hat{y} - y | \]
+For a linear model based on one dependant we have the following:
+
+\[
+y = w x + b
+\]
+
+where \(y\) is the response/output/prediction of the model, \(x\) is the dependant
+variable, and \(w, b\) are the model parameters.
+
+If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/linear_model.png}
+\end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org769e485}]{Visualising the loss}
-\alert{draw lines from each dot to the prediction line}
+\begin{frame}[label={sec:orgd367f10}]{Supporting example}
+Let's have a look at how we would use this linear model with one of the datasets: The
+Boston housing prices.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{images/boston_rooms_prices.png}
+\caption{Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.}
+\end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org553525e}]{Loss curve}
+\begin{frame}[fragile,allowframebreaks,label=]{Let's fit a linear model}
+We have seen that there seems to be some correlation between the number of rooms and
+the house price. I.e. we can use the number of rooms of the house to get the
+estimated price. To get an estimated price we'll use our linear model:
+
+\[
+y = w x + b
+\]
+
+In this case, \(x\) will be the number of rooms. But what values should we set for \(w\)
+and \(b\)? Or put another way, what is \emph{optimal} value for our model parameters.
+
+We'll return to the question of optimal later, but for now, let's just select some
+random values!
+
+\[
+w = 1
+\]
+\[
+b = 1
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{images/boston_rm_first_pred.png}
+\caption{A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.}
+\end{figure}
+
+Well that doesn't look very good, it could be 'fit' better to what we're seeing in
+the scatter plot! I wonder how wrong the linear model is -- how incorrect our
+predicted house prices are?
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks,label=]{Evaluating our initial linear model}
+To evaluate how well, or in this case, how badly our linear model is doing, let's
+compare the predicted value from the model against the actual house price. For
+example, we'll take a single sample from our dataset.
+
+If we have 4 rooms, our model estimates the house price to be \(2(4) + 5 = 13\),
+\$13,000, but the actual cost was \$24,000. This means we have underestimated the cost
+by \$11,000.
+
+What we've done there is the following:
+
+\[
+\delta = | y - \hat{y} |
+\]
+
+where \(\hat{y}\) is \(w x + b\)
+
+We've calculated the difference or delta between the real house price \(y\) and the
+predicted house price.
+
+That gives us the error for one sample though, what about for the whole dataset? Well
+we could take the mean over all samples:
+
+\[
+\Delta = \sum_{i=0}^n | y - \hat{y} |
+\]
+
+If we calculate that our linear model we see that the average difference between our
+estimated value and real value is \$15,000!
+\end{frame}
+
+\begin{frame}[label={sec:orgfb90a7b}]{Loss curve}
 \begin{itemize}
 \item If we move the weight value, then we get a different point on the curve.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org85d3a4f}]{How to select the best weights}
+\begin{frame}[label={sec:org6e55ae5}]{How to select the best weights}
 \begin{itemize}
 \item Lowest point on the curve.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgbbb5508}]{Automatically computing the best weights}
+\begin{frame}[label={sec:org1985c21}]{Automatically computing the best weights}
 \begin{itemize}
 \item Gradient descent
 \end{itemize}
 \end{frame}
 
 \section*{Logistic Regression}
-\label{sec:orge7991d1}
+\label{sec:org2c6d337}
 
 \subsection*{Classification}
-\label{sec:org368d2c7}
+\label{sec:org0fa8076}
 
-\begin{frame}[label={sec:orgb479203}]{Moving from regression to classification}
+\begin{frame}[label={sec:org9676b11}]{Moving from regression to classification}
 We now turn to classification
 \end{frame}
 \end{document}
