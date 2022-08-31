@@ -1,4 +1,4 @@
-% Created 2022-08-31 Wed 11:54
+% Created 2022-08-31 Wed 12:29
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -30,10 +30,11 @@
 \DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
 \DeclareGraphicsExtensions{.gif}
 \usepackage{animate}
+\usetheme{default}
 \author{Jay Morgan}
 \date{<TODO>}
-\title{Machine Learning\\\medskip
-\large Lecture 1 - Introductions}
+\title{Machine Learning}
+\subtitle{Lecture 1 - Introductions}
 \hypersetup{
  pdfauthor={Jay Morgan},
  pdftitle={Machine Learning},
@@ -46,40 +47,35 @@
 \maketitle
 
 \section*{Introduction}
-\label{sec:org20d0ed4}
+\label{sec:org9a86c78}
 
 \subsection*{Course Organisation}
-\label{sec:org48b71e9}
+\label{sec:org5a55afb}
 
-\subsubsection*{Welcome!}
-\label{sec:org660b64e}
-
+\begin{frame}[label={sec:orgbbd286c}]{Welcome!}
 Welcome to all the new students! Here I am going to be talking about Machine Learning
 and all of the great things that this "technology" has to offer. To begin our course,
 I shall start with a bit of house keeping -- more specifically, I will be talking
 about what exactly we'll be learning about in the course (Machine Learning is a broad
 subject after-all). In addition, I will tell you where you can find the resources
 related to the course and how you can contact me, should you have any questions.
+\end{frame}
 
-\subsubsection*{What this course is about?}
-\label{sec:orgb6f4b28}
-
+\begin{frame}[label={sec:orgbe61ba5}]{What this course is about?}
 In this course, we will be learning about Machine Learning: firstly, what Machine
 Learning actually is; secondly, we'll take a look at some of the algorithms within
 the scope of Machine Learning, and develop an intuition about how these algorithms
 work and when they would be useful; and finally, how we can compare and evaluate the
 algorithms we've learnt about.
+\end{frame}
 
-\subsubsection*{How this course will be taught}
-\label{sec:orgb964df9}
-
+\begin{frame}[label={sec:orgcc7293e}]{How this course will be taught}
 I intended to deliver this course via a series of lectures. These lectures will be
 accompanied by the PDF lecture slides, in which I will provide the definitions and
 provide reference links should you wish to do some extra reading.
+\end{frame}
 
-\subsubsection*{Outline of the course}
-\label{sec:org57d40ed}
-
+\begin{frame}[label={sec:org2257a41}]{Outline of the course}
 \begin{center}
 \begin{tabular}{rlll}
 \toprule
@@ -91,14 +87,13 @@ Lecture & Expected date & Length & Topic\\
 \bottomrule
 \end{tabular}
 \end{center}
+\end{frame}
 
 \subsection*{Reading the lectures}
-\label{sec:org989be17}
+\label{sec:org0322a80}
 
-\subsubsection*{Source code}
-\label{sec:orgdf0ed7e}
-
-During the course, I would also like to supplement my algorithmic definitions and
+\begin{frame}[label={sec:org609a317},fragile]{Source code}
+ During the course, I would also like to supplement my algorithmic definitions and
 explanations with some programming code -- for this I will use the \href{https://www.python.org/}{Python} programming
 language. The code snippets would look something like:
 
@@ -112,24 +107,24 @@ print(y)
 \begin{verbatim}
 [1.4898241502582414, 2.4805286156642175, 3.065379052563245, 4.05328483072365]
 \end{verbatim}
+\end{frame}
 
-\subsubsection*{Running the source code yourself}
-\label{sec:org56e7055}
-
-All of the source can be run by yourselves if you use the same python environment
+\begin{frame}[label={sec:org7907292},fragile]{Running the source code yourself}
+ All of the source can be run by yourselves if you use the same python environment
 (i.e. that you have installed all the appropriate libraries). On the git repository,
-I've included the \texttt{environment.yml} file used in the production of these lectures.
+I've included the \href{https://git.sr.ht/\~jaymorgan/teaching/tree/master/item/2022-2023/Machine\%20Learning/environment.yml}{\texttt{environment.yml}} file used in the production of these lectures.
 
 To run the code:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
-wget https://git.sr.ht/~jaymorgan/teaching/tree/master/item/2022-2023/Machine%20Learning/environment.yml
+wget https://git.sr.ht/~jaymorgan/teaching/blob/master/2022-2023/Machine%20Learning/environment.yml
+conda env create -f environment.yml  # recreate the conda env
+conda activate ml-lectures           # activate the new env
+python <scripts>
 \end{minted}
->>>>>>> 019eec7 (Add files)
+\end{frame}
 
-\subsubsection*{References}
-\label{sec:org4fcc357}
-
+\begin{frame}[label={sec:org7f8819c}]{References}
 In some cases, and is the norm with academic traditions, we'll want to include a
 reference, a link to previous written works.
 
@@ -142,10 +137,9 @@ fact I shall appeal to authority and include a reference:
 More information on the referenced material (such as title, publishing date) will be
 found in the bibliography slide (or bottom of the webpage if you're viewing the HTML
 version of the lectures).
+\end{frame}
 
-\subsubsection*{About Me}
-\label{sec:org6b0d98d}
-
+\begin{frame}[label={sec:org3554ed8}]{About Me}
 My name is Dr Jay Morgan. I am a researcher at the Université de Toulon, where I am
 developing Deep Learning models (a sub-field of Machine Learning research) for the
 study of astrophysical phenomenon.
@@ -161,10 +155,9 @@ I also publish libraries and source code online:
 \end{itemize}
 
 If you have any questions, you can email me at jay.morgan@univ-tln.fr
+\end{frame}
 
-\subsubsection*{Where you can find the resources}
-\label{sec:org4ba8f87}
-
+\begin{frame}[label={sec:orgb0572f7}]{Where you can find the resources}
 I try to make this course as accessible as possible, which means that I host these
 slides in a variety of ways to suit you.
 
@@ -175,29 +168,26 @@ Here you can find the links to each lecture in a PDF or HTML format. Additionall
 you can view the source code used to make these lectures on source hut:
 \url{https://git.sr.ht/\~jaymorgan/teaching}. On this git repository you can find all my
 lectures from all years.
+\end{frame}
 
 \section*{What is learning, anyway?}
-\label{sec:orge164d80}
+\label{sec:org5b2904a}
 
 \subsection*{Learning about Learning}
-\label{sec:org913c2e9}
+\label{sec:orgc1af7a3}
 
-\subsubsection*{Let's answer the question of learning}
-\label{sec:org8bbb170}
-
+\begin{frame}[label={sec:orged7df74}]{Let's answer the question of learning}
 We'll begin our journey into the world of Machine Learning by tackling the question
 of what it means to 'learn' -- how may a machine actually \emph{learn} anything?
+\end{frame}
 
-\subsubsection*{Study of Mice}
-\label{sec:org128b4e7}
-
+\begin{frame}[label={sec:org0749b53}]{Study of Mice}
 To begin to answer the question of learning, we may turn to nature for
 advice. Principally, if we look at the studies conducted with Mice we find some idea
 to notion of learning (Shalev-Shwartz, Shai and Ben-David, Shai, 2014).
+\end{frame}
 
-\subsubsection*{Bait-shyness}
-\label{sec:org32def20}
-
+\begin{frame}[label={sec:orga45af28}]{Bait-shyness}
 When a rat encounters a novel source of food, it will first eat a little bit of
 it. If the food is edible for the rat, it will continue to eat the food, even in
 future encounters. If, however, on the initial contact with the food, the rat deems
@@ -206,10 +196,9 @@ process we call 'bait-shyness'.
 
 Here then we see the rat, on finding something new, learn from its experience, and
 use that knowledge of the experience for future encounters.
+\end{frame}
 
-\subsubsection*{Bait-shyness}
-\label{sec:orgfe51f90}
-
+\begin{frame}[label={sec:org3960f47}]{Bait-shyness}
 Our initial understanding of rat's bait-shyness was limited, but we've come to
 understand more about it. For instance, we learn that their learning process is more
 complex than originally thought. In a later experiment, where the 'poison' in the
@@ -220,10 +209,9 @@ deter the rat from eating the food in future encounters, unlike the poison.
 It is presumed that the rat's have some 'prior knowledge' about the world and do not
 infer a temporal relationship between the food and being shocked, while they can
 infer the same relationship with food and illness.
+\end{frame}
 
-\subsubsection*{Computer Programs}
-\label{sec:orgbc05435}
-
+\begin{frame}[label={sec:org4a0045e}]{Computer Programs}
 From these two examples of how rats may learn we see: the rat will make a guess about
 something now (i.e. that the food is not poisonous), it will find out how good this
 guess is (i.e. it either gets ill or it does not), and learn from how well its guess
@@ -241,33 +229,30 @@ a tasks in \(T\), as measured by \(P\), improves with experience \(E\).
 \end{quote}
 
 (Mitchell, Tom M, 1997)
+\end{frame}
 
-\subsubsection*{Quiz!}
-\label{sec:org360c08b}
-
-What \emph{function} is being used here?
+\begin{frame}[label={sec:org9b6937b},fragile]{Quiz!}
+ What \emph{function} is being used here?
 
 \begin{verbatim}
 8 ? 5   =   13
 9 ? 1   =   10
 1 ? 2   =    3
 \end{verbatim}
+\end{frame}
 
-\subsubsection*{Something more difficult\ldots{}}
-\label{sec:org389a644}
-
-What \emph{values} are being used here?
+\begin{frame}[label={sec:orgcddaa9c},fragile]{Something more difficult\ldots{}}
+ What \emph{values} are being used here?
 
 \begin{verbatim}
 x * 1 + y   =   4
 x * 3 + y   =   8
 x * 5 + y   =  12
 \end{verbatim}
+\end{frame}
 
 
-\subsubsection*{When might we need Machine Learning}
-\label{sec:org9ba4404}
-
+\begin{frame}[label={sec:org96e0f33}]{When might we need Machine Learning}
 Why do we need computer programs that 'learn' anyway? We already have programming
 languages, why can't we just use them?
 
@@ -281,20 +266,18 @@ How would we go about creating a program where we can define how to identify '8'
 '1' or 'l' -- with all the varieties of lighting conditions, handwriting, fonts,
 sizes. We could find the process of encompassing all different variations tiresome --
 if not impossible, and that's only for a single character!
+\end{frame}
 
-\subsubsection*{When might we need Machine Learning}
-\label{sec:org5765846}
-
+\begin{frame}[label={sec:org153a90f}]{When might we need Machine Learning}
 With Machine Learning, instead of enumerating all possible solutions within a
 programming language, we collect a bunch of examples of '8's and give them to the
 algorithm to learn from.
 
 Through looking at these many different examples, the algorithm will/should be able
 to recognise what an 8 generally looks like.
+\end{frame}
 
-\subsubsection*{Different types of Learning}
-\label{sec:org6f7988e}
-
+\begin{frame}[label={sec:org58d14cd}]{Different types of Learning}
 What we have just demonstrated by way of the OCR example, is the type of learning we
 call 'Supervised Learning'. We have many examples of input (lots of different kinds
 of handwritten 8's), and we tell the learning algorithm, that they are indeed the
@@ -308,10 +291,9 @@ following:
 \item Unsupervised, or sometimes called self-supervised Learning
 \item Reinforcement Learning
 \end{itemize}
+\end{frame}
 
-\subsubsection*{Supervised Learning}
-\label{sec:org519e0d1}
-
+\begin{frame}[label={sec:org2e52c8c}]{Supervised Learning}
 To better formalise Supervised Learning from our previous OCR example, Supervised
 Learning is when the learning algorithm "see's" or has access to both the input and
 output.
@@ -321,10 +303,9 @@ is an input, i.e. a single image with an '8', and \(y_i\) is a label which tells
 learning algorithm if the input is indeed an '8' or something else. Mathematically we have:
 
 \(X = \{(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\}\)
+\end{frame}
 
-\subsubsection*{Unsupervised Learning}
-\label{sec:org11a010f}
-
+\begin{frame}[label={sec:orgf9287a9}]{Unsupervised Learning}
 In Unsupervised learning, we have again have a dataset \(X\), who's elements are only
 inputs. In other words, there are no corresponding labels for each input. Instead,
 the learning algorithm must learn inherent patterns in the data and create labels
@@ -335,10 +316,9 @@ self-supervised. As we have just discussed, the labels are inherent to the data 
 the discovered patterns, it's just we are not explicitly giving them to the learning
 algorithm ourselves. So it's sort of like a supervised learning setup, except the
 learning algorithm is providing the labels itself -- hence the self-supervised.
+\end{frame}
 
-\subsubsection*{Reinforcement Learning}
-\label{sec:org90c6b82}
-
+\begin{frame}[label={sec:org0e17c3f}]{Reinforcement Learning}
 Reinforcement Learning is very different to both Supervised and Unsupervised
 Learning. Here is the type of learning you might be familiar with if you've seen 'AI'
 that learns to play video games. In this type of learning, we have the following
@@ -355,16 +335,15 @@ something it can receive a reward (a reward can be positive or negative). The ag
 will remember what it has done to receive the reward. The objective for the agent is
 to maximise the reward score, and learns to do this through many iterations or
 play-through.
+\end{frame}
 
 \subsection*{Terminology}
-\label{sec:orgfeb0600}
+\label{sec:orgc794af1}
 
 In this section we shall take a look at the different types of data we might expect
 and the different terminology used to name them.
 
-\subsubsection*{What will our data look like?}
-\label{sec:org9f5c6a9}
-
+\begin{frame}[label={sec:org8b6c3c2}]{What will our data look like?}
 Data in Machine Learning applications can come in a variety of different formats. The
 most typical data formats we might see are:
 
@@ -377,10 +356,9 @@ most typical data formats we might see are:
 
 These are the initial formats, though, before actually doing any learning, we will
 want to transform them into a different representation that we can use.
+\end{frame}
 
-\subsubsection*{Tables}
-\label{sec:org8563f14}
-
+\begin{frame}[label={sec:orgc002034}]{Tables}
 A table, or tabular, format is a \(n \times m\) set of data with \(n\) samples or
 examples, and \(m\) features for each sample. For example, suppose we have a table
 consisting the price of 100 different houses:
@@ -401,10 +379,9 @@ Number of bedrooms & Garden size (ft) & \ldots{} & Price (\$)\\
 In a supervised learning setting, where we want to predict the price of a house we may then have the following dataset:
 
 \(X = \{([3, 0, ...], 150,000), ([5, 10, ...], 200,000), \\..., ([10, 1000, ...], 2,000,000)\}\)
+\end{frame}
 
-\subsubsection*{Images/Videos}
-\label{sec:orgf4fe593}
-
+\begin{frame}[label={sec:orga0f6e36}]{Images/Videos}
 Images are composed of 2D or 3D arrays of numeric values. For example, in a RGB
 image that is 1024x500 pixels, we would have the array of size 1024x500x3 -- where 3
 is the red, green, and blue channel, respectively. If we have just a grayscale image,
@@ -414,10 +391,9 @@ the array is singular.
 We may already know that videos are simply a sequence of images that are iterated
 through 24+ times a second. For a 24 frames per second video, we would have an array
 size of 1024x500x3x24 -- a 4-dimensional array.
+\end{frame}
 
-\subsubsection*{Text}
-\label{sec:orgb61727e}
-
+\begin{frame}[label={sec:orga13dbbc}]{Text}
 Text and language data is perhaps one of the most flexible formats of data, in terms
 of the person implementing the Machine Learning algorithm is somewhat free in
 determining how to represent the language to the algorithm.
@@ -426,10 +402,9 @@ With text data, we have a series of 'tokens' -- these tokens could be words, gro
 of words, parts of words, and even just characters. For example, consider:
 
 "this is a sentence, that shouldn't be misunderstood."
+\end{frame}
 
-\subsubsection*{Tokenisation of text}
-\label{sec:org6384e48}
-
+\begin{frame}[label={sec:orgdea1eaa}]{Tokenisation of text}
 "this is a sentence, that shouldn't be misunderstood."
 
 We could 'tokenise' (the process of converting a string into a series of tokens that
@@ -442,10 +417,9 @@ considered part of the word and so "misunderstood." != "misunderstood".
 
 These kinds of questions of how to best represent text and language we will talk more
 about in later lectures!
+\end{frame}
 
-\subsubsection*{Time-series}
-\label{sec:org50cd778}
-
+\begin{frame}[label={sec:org970533c}]{Time-series}
 I named this section time-series to be as general as possible. Within the type
 'time-series', we could have the following types of information:
 
@@ -457,20 +431,18 @@ I named this section time-series to be as general as possible. Within the type
 
 These types of data all share a property in that the 'time' component is important in
 their meaning.  
+\end{frame}
 
 \subsection*{Example Problems}
-\label{sec:orgb839ebc}
+\label{sec:org474699e}
 
-\subsubsection*{Example Problems}
-\label{sec:orgb19abbb}
-
+\begin{frame}[label={sec:org0016b29}]{Example Problems}
 Throughout this course, we'll be using \emph{toy} datasets for the explanation of Machine
 Learning and its algorithms. In this section, we'll take a broad look over all the
 datasets that we'll come to be very familiar with.
+\end{frame}
 
-\subsubsection*{Types of Outputs -- Regression \& Classification}
-\label{sec:orgf435fc7}
-
+\begin{frame}[label={sec:orgecafba1}]{Types of Outputs -- Regression \& Classification}
 First, however, I wish to explain the difference between the terms \emph{Regression} and
 \emph{Classification}.
 
@@ -481,10 +453,9 @@ First, however, I wish to explain the difference between the terms \emph{Regress
 
 In the following toy datasets, we'll see different types of predictions that fall
 under the regression/classification output type.
+\end{frame}
 
-\subsubsection*{Boston House Prices Dataset -- Tabular Regression}
-\label{sec:orge482d0f}
-
+\begin{frame}[label={sec:org8175397}]{Boston House Prices Dataset -- Tabular Regression}
 A dataset of 506 houses in Boston, USA, collected during US Census.
 
 \begin{itemize}
@@ -495,40 +466,31 @@ A dataset of 506 houses in Boston, USA, collected during US Census.
 More information about each of the features can be found at: \url{https://www.cs.toronto.edu/\~delve/data/boston/bostonDetail.html}
 
 (Harrison Jr, David and Rubinfeld, Daniel L, 1978)
+\end{frame}
 
-\subsubsection*{Boston House Prices -- example rows}
-\label{sec:org1c7d1a7}
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{julia}
-using DataFrames
-using MLDatasets: BostonHousing
-dataset = BostonHousing();
-dataset[1:5]
+\begin{frame}[label={sec:orgefb60e1},fragile]{Boston House Prices -- example rows}
+ \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+import warnings
+from sklearn.datasets import load_boston
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore")
+    boston = load_boston()
+boston = pd.DataFrame(
+    data=np.c_[boston['data'], boston['target']],
+    columns=boston['feature_names'].tolist() + ['target'])
+print(boston[:2])
 \end{minted}
 
 \begin{verbatim}
-(features = 5×13 DataFrame
- Row │ CRIM     ZN       INDUS    CHAS   NOX      RM       AGE      DIS      RAD    TAX    PTRATIO  B        LSTAT   
-     │ Float64  Float64  Float64  Int64  Float64  Float64  Float64  Float64  Int64  Int64  Float64  Float64  Float64 
-─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ 0.00632     18.0     2.31      0    0.538    6.575     65.2   4.09        1    296     15.3   396.9      4.98 
-   2 │ 0.02731      0.0     7.07      0    0.469    6.421     78.9   4.9671      2    242     17.8   396.9      9.14
-   3 │ 0.02729      0.0     7.07      0    0.469    7.185     61.1   4.9671      2    242     17.8   392.83     4.03
-   4 │ 0.03237      0.0     2.18      0    0.458    6.998     45.8   6.0622      3    222     18.7   394.63     2.94
-   5 │ 0.06905      0.0     2.18      0    0.458    7.147     54.2   6.0622      3    222     18.7   396.9      5.33 , targets = 5×1 DataFrame
- Row │ MEDV
-     │ Float64
-─────┼─────────
-   1 │    24.0
-   2 │    21.6
-   3 │    34.7
-   4 │    33.4
-   5 │    36.2)
+      CRIM    ZN  INDUS  CHAS    NOX     RM  ...  RAD    TAX  PTRATIO      B  LSTAT  target
+0  0.00632  18.0   2.31   0.0  0.538  6.575  ...  1.0  296.0     15.3  396.9   4.98    24.0
+1  0.02731   0.0   7.07   0.0  0.469  6.421  ...  2.0  242.0     17.8  396.9   9.14    21.6
+
+[2 rows x 14 columns]
 \end{verbatim}
+\end{frame}
 
-\subsubsection*{Boston House Prices -- concerns}
-\label{sec:org5ca6798}
-
+\begin{frame}[label={sec:org6d62e8b}]{Boston House Prices -- concerns}
 The Boston dataset is an excellent dataset in the fact that it contains some ethical
 issues when it comes to Machine Learning. More specifically, some of the features in
 the data are 'dummy' variables for racial attributes (Carlisle, M., 2020). Moreover, these features show a
@@ -541,21 +503,19 @@ repository following these concerns.
 We will continue to use the dataset here as it is an easy to understand regression
 problem, and to demonstrate how easy it is to be accidentally unethical if you're not
 thinking about the data carefully enough. 
+\end{frame}
 
-\subsubsection*{Iris Dataset -- Tabular Classification}
-\label{sec:orgfa87ef1}
-
+\begin{frame}[label={sec:org60ccf51}]{Iris Dataset -- Tabular Classification}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.4\textwidth]{images/iris.jpg}
 \caption{Iris Flower (Diliff, 2014)}
 \end{figure}
+\end{frame}
 
-\subsubsection*{Iris Dataset -- features}
-\label{sec:orgcb9ba85}
-\begin{itemize}
-\item Iris Dataset -- features\hfill{}\textsc{B\_column:BMCOL}
-\label{sec:org032bbf4}
+\begin{frame}[label={sec:org88c8732}]{Iris Dataset -- features}
+\begin{columns}
+\begin{column}{0.5\columnwidth}
 \begin{itemize}
 \item 150 examples
 \item 4 features: Petal length/width, sepal length/width
@@ -564,43 +524,36 @@ thinking about the data carefully enough.
 \url{https://archive.ics.uci.edu/ml/datasets/iris}
 (Fisher, Ronald A, 1936)
 \end{itemize}
+\end{column}
 
-\item Iris Dataset -- features\hfill{}\textsc{B\_column:BMCOL}
-\label{sec:org92714f3}
+\begin{column}{0.4\columnwidth}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{images/Petal-sepal.jpg}
 \caption{Different parts of a flower. (Eric Guinther, 2005)}
 \end{figure}
-\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
 
-\subsubsection*{Iris Dataset -- example rows}
-\label{sec:org0fa17f9}
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{julia}
-using MLDatasets: Iris
-dataset = Iris();
-dataset[1:2]
+\begin{frame}[label={sec:orgecdd829},fragile]{Iris Dataset -- example rows}
+ \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+from sklearn.datasets import load_iris
+iris = load_iris()
+iris = pd.DataFrame(
+    data = np.c_[iris['data'], iris['target']],
+    columns = iris['feature_names'] + ['target'])
+print(iris.head(2))
 \end{minted}
 
 \begin{verbatim}
-(features = 2×4 DataFrame
- Row │ sepallength  sepalwidth  petallength  petalwidth
-     │ Float64      Float64     Float64      Float64
-─────┼──────────────────────────────────────────────────
-   1 │         5.1         3.5          1.4         0.2
-   2 │         4.9         3.0          1.4         0.2,
- targets = 2×1 DataFrame
- Row │ class
-     │ String15
-─────┼─────────────
-   1 │ Iris-setosa
-   2 │ Iris-setosa)
+   sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)  target
+0                5.1               3.5                1.4               0.2     0.0
+1                4.9               3.0                1.4               0.2     0.0
 \end{verbatim}
+\end{frame}
 
-\subsubsection*{MNIST Dataset -- Image Classification}
-\label{sec:org436e7ca}
-
+\begin{frame}[label={sec:org98a2ebc}]{MNIST Dataset -- Image Classification}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{images/mnist.png}
@@ -612,33 +565,25 @@ A dataset of images (of size 28x28) containing handwritten digits from 0 - 9.
 \url{http://yann.lecun.com/exdb/mnist/}
 
 (LeCun, Yann and Bottou, L{\'e}on and Bengio, Yoshua and Haffner, Patrick, 1998)
+\end{frame}
 
-\subsubsection*{MNIST Dataset -- Features}
-\label{sec:org6233bae}
-
+\begin{frame}[label={sec:orgc57d7ae}]{MNIST Dataset -- Features}
 \begin{itemize}
 \item 60,000 images in the training dataset
 \item 10,000 images in the test dataset
 \item 28x28 pixels (grayscale)
 \end{itemize}
+\end{frame}
 
-\subsubsection*{MNIST Dataset -- Example Rows}
-\label{sec:org6dfb264}
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{julia}
-using MLDatasets: MNIST
-dataset = MNIST();
-dataset[1:5]
+\begin{frame}[label={sec:org425e1de},fragile]{MNIST Dataset -- Example Rows}
+ \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+from sklearn.datasets import fetch_openml
+mnist = fetch_openml("mnist_784").data[:2]
 \end{minted}
+\end{frame}
 
-\begin{verbatim}
-(features = [0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0;;; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0], targets = [5, 0, 4, 1, 9])
-\end{verbatim}
-
-\subsubsection*{Large Movie Review Dataset -- Text Classification/Regression}
-\label{sec:orge40d6f6}
-
-\begin{verbatim}
+\begin{frame}[label={sec:org1e9f8ab},fragile]{Large Movie Review Dataset -- Text Classification/Regression}
+ \begin{verbatim}
 Story of a man who has unnatural feelings for a pig. Starts out with a
 opening scene that is a terrific example of absurd comedy. A formal
 orchestra audience is turned into an insane, violent mob by the crazy
@@ -662,10 +607,10 @@ review was towards the movie in question.
 \url{https://ai.stanford.edu/\~amaas/data/sentiment/}
 
 (Maas, Andrew L. and Daly, Raymond E. and Pham, Peter T. and Huang, Dan and Ng, Andrew Y. and Potts, Christopher, 2011)
+\end{frame}
 
-\subsubsection*{Ham or Spam -- Text Classification}
-\label{sec:orgabab5e0}
-\begin{verbatim}
+\begin{frame}[fragile,allowframebreaks,label=]{Ham or Spam -- Text Classification}
+ \begin{verbatim}
 Message-ID: <8701134.1075856113926.JavaMail.evans@thyme>
 Date: Mon, 30 Oct 2000 02:06:00 -0800 (PST)
 From: shona.wilson@enron.com
@@ -709,13 +654,12 @@ Shona
 \url{https://www2.aueb.gr/users/ion/data/enron-spam/}
 
 (Metsis, Vangelis and Androutsopoulos, Ion and Paliouras, Georgios, 2006)
+\end{frame}
 
 \subsection*{Concerns \& Considerations}
-\label{sec:orgd6f8a5c}
+\label{sec:orga46306b}
 
-\subsubsection*{Concerns \& Considerations}
-\label{sec:org5cfd4b2}
-
+\begin{frame}[label={sec:org58f20f6}]{Concerns \& Considerations}
 As we saw with the Boston house prices dataset, ethical concerns can easily arise
 when we use statistical analysis \& Machine Learning. But our use of Machine Learning
 carries many more concerns other than just racial biases. In this section, we'll
@@ -723,10 +667,9 @@ highlight some ethical considerations to be made when designing and building Mac
 Learning models.
 
 \url{https://uksa.statisticsauthority.gov.uk/publication/ethical-considerations-in-the-use-of-machine-learning-for-research-and-statistics/}
+\end{frame}
 
-\subsubsection*{Compute resources -- environmental concerns}
-\label{sec:org5097e2d}
-
+\begin{frame}[label={sec:orgdc5ec09}]{Compute resources -- environmental concerns}
 \begin{quote}
 Large-scale deployment of AI could also have both positive and negative impacts on
 the environment. Negative impacts include increased use of natural resources, such as
@@ -741,10 +684,9 @@ Sedol in 2016 – took 50,000 times as much power as the human brain to do so.
 \end{quote}
 
 ({European Parliament. Directorate General for Parliamentary Research Services.}, 2020)
+\end{frame}
 
-\subsubsection*{Bias in language models}
-\label{sec:orgb90afdf}
-
+\begin{frame}[label={sec:org3a5efe4}]{Bias in language models}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{images/debias.png}
@@ -752,10 +694,9 @@ Sedol in 2016 – took 50,000 times as much power as the human brain to do so.
 \end{figure}
 
 Biases exist in language models trained on news articles (Bolukbasi, Tolga and Chang, Kai-Wei and Zou, James Y and Saligrama, Venkatesh and Kalai, Adam T, 2016).
+\end{frame}
 
-\subsubsection*{Personal information}
-\label{sec:orgf3cf28a}
-
+\begin{frame}[label={sec:org8eb402f}]{Personal information}
 In Machine Learning applications where data is generated (such as generating faces
 that don't exist), there is a possibility to expose personal information. For
 example, in a situation where these generative Machine Learning models create
@@ -763,19 +704,18 @@ synthetic patient data, the model may be trained on real medical data. The outpu
 the Machine Learning model could possibly leak personal information.
 
 (Arora, Anmol and Arora, Ananya, 2022)
+\end{frame}
 
-\subsubsection*{Mental health of optimisation algorithms}
-\label{sec:orgecceb38}
-
+\begin{frame}[label={sec:org3b1ed34}]{Mental health of optimisation algorithms}
 This example is more specific to how algorithms are used as opposed to their specific
 design. Yet, this should still be highlighted. We have seen increasing discussion
 surrounding the use of optimisation algorithms that try to increase the amount of
 'screen time' or engagement from users of social media, and it's no secret that
 spending lots of time of social media has a measurable effect on one's mental health.
+\end{frame}
 
-\subsubsection*{Copyright Concerns}
-\label{sec:org61bb3de}
-A more recent addition to the concerns is that of Github's co-pilot application that
+\begin{frame}[fragile,allowframebreaks,label=]{Copyright Concerns}
+ A more recent addition to the concerns is that of Github's co-pilot application that
 helps users write programming code. This application has been developed on
 open-source software -- some of which includes licensing that specifies how this
 open-source code may be used (for example, with attribution or copy-left). Yet,
@@ -803,13 +743,12 @@ float Q_rsqrt( float number )
 
 // Implementation from Quake III Arena under the GPL license.
 \end{minted}
+\end{frame}
 
 \section*{Summary}
-\label{sec:orgdf23a7a}
+\label{sec:org5d67861}
 
-\subsubsection*{What is Machine Learning}
-\label{sec:org1243075}
-
+\begin{frame}[label={sec:orgafff6b2}]{What is Machine Learning}
 \begin{itemize}
 \item We've taken a look at the different kinds of frameworks for learning -- animal
 behaviour with bait-shyness, and how that translates in computer programs.
@@ -820,12 +759,12 @@ data, and have also seen examples of some toy datasets we will be using in the c
 \item Finally, we've highlighted some of the ethical concerns that can arise in Machine
 Learning.
 \end{itemize}
+\end{frame}
 
 \section*{Bibliography}
-\label{sec:org7fa864a}
+\label{sec:org1296ddc}
 
-\subsubsection*{Bibliography}
-\label{sec:org3f4684e}
+\begin{frame}[fragile,allowframebreaks,label=]{Bibliography}
 \noindent
 Arora, Anmol and Arora, Ananya (2022). \emph{Generative Adversarial Networks and Synthetic Patient Data: Current Challenges and Future Perspectives}, {Royal College of Physicians}.
 
@@ -870,4 +809,5 @@ scikit-learn (2022). \emph{Sklearn.Datasets.Load\_boston}, scikit-learn.
 
 \noindent
 Shalev-Shwartz, Shai and Ben-David, Shai (2014). \emph{Understanding machine learning: From theory to algorithms}, Cambridge university press.
+\end{frame}
 \end{document}
