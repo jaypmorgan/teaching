@@ -4,6 +4,7 @@
 #+date: <TODO>
 #+startup: beamer
 #+include: ./header.org
+#+property: header-args:python :eval never-export :results none :exports none
 
 * Introduction
 
@@ -48,20 +49,31 @@ provide reference links should you wish to do some extra reading.
 *** Source code
 
 During the course, I would also like to supplement my algorithmic definitions and
-explanations with some programming code -- for this I will use the [[https://julialang.org/][Julia]] programming
+explanations with some programming code -- for this I will use the [[https://www.python.org/][Python]] programming
 language. The code snippets would look something like:
 
-#+begin_src julia :results output :session :exports both :eval never-export
-x = Float32.([1, 2, 3, 4]);
-y = x .+ randn(length(x))
+#+begin_src python :results output replace :exports both
+import random
+x = [1, 2, 3, 4]
+y = [random.random() + xi for xi in x]
+print(y)
 #+end_src
 
 #+RESULTS:
-: 4-element Vector{Float64}:
-:  1.8817576050704024
-:  2.051062476034138
-:  4.340649570113399
-:  3.1284623590241476
+: [1.4898241502582414, 2.4805286156642175, 3.065379052563245, 4.05328483072365]
+
+*** Running the source code yourself
+
+All of the source can be run by yourselves if you use the same python environment
+(i.e. that you have installed all the appropriate libraries). On the git repository,
+I've included the =environment.yml= file used in the production of these lectures.
+
+To run the code:
+
+#+begin_src bash
+wget https://git.sr.ht/~jaymorgan/teaching/tree/master/item/2022-2023/Machine%20Learning/environment.yml
+#+end_src
+>>>>>>> 019eec7 (Add files)
 
 *** References
 

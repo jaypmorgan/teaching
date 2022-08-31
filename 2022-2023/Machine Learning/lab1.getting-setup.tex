@@ -1,4 +1,4 @@
-% Created 2022-08-29 lun. 14:31
+% Created 2022-08-31 Wed 11:55
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -30,11 +30,10 @@
 \DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
 \DeclareGraphicsExtensions{.gif}
 \usepackage{animate}
-\usetheme{default}
 \author{Jay Morgan}
 \date{<TODO>}
-\title{Machine Learning}
-\subtitle{Lab 1 - Linear Models}
+\title{Machine Learning\\\medskip
+\large Lab 1 - Linear Models}
 \hypersetup{
  pdfauthor={Jay Morgan},
  pdftitle={Machine Learning},
@@ -47,18 +46,21 @@
 \maketitle
 
 \section*{Introduction}
-\label{sec:org4096cea}
+\label{sec:org62f0ee8}
 
 \subsection*{Plan for this lab}
-\label{sec:orge2c6e2e}
+\label{sec:org210c2db}
 
-\begin{frame}[label={sec:org1837398}]{Welcome}
+\subsubsection*{Welcome}
+\label{sec:org7ddf871}
+
 Welcome to the first lab. In these lab tutorials we are going to be experimenting
 with what we've learnt in the lectures. This means that we're going to implement the
 algorithms and doing some Machine Learning ourselves!
-\end{frame}
 
-\begin{frame}[label={sec:org6418bc1}]{Plan for the first lab}
+\subsubsection*{Plan for the first lab}
+\label{sec:orgb545ac0}
+
 For this first lab session, we're going to need to do just a little 'admin' work
 before we start implementing these algorithms.
 
@@ -68,13 +70,14 @@ We will need to do the following:
 \item Create a conda environment and install the latest version of Python.
 \item Setup our IDE (integrated development environment of choice).
 \end{itemize}
-\end{frame}
 
 \subsection*{Lab setup}
-\label{sec:org745fb5c}
+\label{sec:org46b5c9b}
 
-\begin{frame}[label={sec:org79d83f0},fragile]{Creating a project directory}
- Exactly how you want to organise your work is up to you. However, with that being
+\subsubsection*{Creating a project directory}
+\label{sec:org4eca51e}
+
+Exactly how you want to organise your work is up to you. However, with that being
 said, I would recommend the following example structure:
 
 \begin{verbatim}
@@ -83,10 +86,11 @@ said, I would recommend the following example structure:
 
 So, for example, in this course, we would have the following directory:
 \texttt{\textasciitilde{}/workspace/machine-learning}
-\end{frame}
 
-\begin{frame}[label={sec:orgec4827e},fragile]{Using the datascience repository}
- \begin{figure}[htbp]
+\subsubsection*{Using the datascience repository}
+\label{sec:orgaf46b82}
+
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{images/datascience-repo.png}
 \caption{The datascience repository templated hosted on github (github.com/jaypmorgan/datascience)}
@@ -95,10 +99,10 @@ So, for example, in this course, we would have the following directory:
 \begin{minted}[]{bash}
 git clone git@github.com:jaypmorgan/datascience.git
 \end{minted}
-\end{frame}
 
-\begin{frame}[fragile,allowframebreaks,label=]{Layout \& intentionality behind the datascience repository}
- \begin{itemize}
+\subsubsection*{Layout \& intentionality behind the datascience repository}
+\label{sec:org176639f}
+\begin{itemize}
 \item \texttt{data} -- location of all data files (preferably in their own directory such as
 data/raw/<files>, data/processed/<files>, data/results/<files>). These files will
 not be committed to git as they much be too large.
@@ -119,10 +123,11 @@ some installation and running instructions for others.
 
 I will using this folder structure for our labs, so we'll see (by the way of example)
 how we use this structure.
-\end{frame}
 
-\begin{frame}[label={sec:orgcbefc53},fragile]{Creating a conda environment}
- Conda is a command line tool to manage environments. We're going to highlight some of the most used commands. But for the full list of management, you can use the instructions at: \url{https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html}
+\subsubsection*{Creating a conda environment}
+\label{sec:org91b9e38}
+
+Conda is a command line tool to manage environments. We're going to highlight some of the most used commands. But for the full list of management, you can use the instructions at: \url{https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html}
 
 If you're creating a brand new environment, use:
 
@@ -136,11 +141,12 @@ environment, you will first have to activate it.
 
 For more information, visit:
 \url{https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-3/lecture.html\#orga9fbc8c}
-\end{frame}
 
 
-\begin{frame}[label={sec:org51358a0},fragile]{Installing jupyter notebook \& jupyter lab}
- As we're going to do lots of visualisations, we're going to want some environment
+\subsubsection*{Installing jupyter notebook \& jupyter lab}
+\label{sec:org6aa2fc5}
+
+As we're going to do lots of visualisations, we're going to want some environment
 where we can rapidly evolve and interrogate our data. For this, we're going to use
 jupyter notebooks. However, there are many other alternatives if you're so
 inclined. There is google colab (a jupyter-like environment on the cloud), org-mode
@@ -153,9 +159,10 @@ conda install -c conda-forge jupyterlab
 \end{minted}
 
 \url{https://jupyterlab.readthedocs.io/en/stable/getting\_started/installation.html}
-\end{frame}
 
-\begin{frame}[label={sec:org38b7342}]{Setting up our IDE}
+\subsubsection*{Setting up our IDE}
+\label{sec:orgf2c8222}
+
 While most of our exploration is going to take place inside a jupyter notebook,
 we're going to use a fully fledged IDE for the heavy lifting of our Python
 programming. The IDE we're going to use in these lab sessions is PyCharm.
@@ -165,11 +172,13 @@ programming. The IDE we're going to use in these lab sessions is PyCharm.
 \includegraphics[width=.9\linewidth]{images/pycharm.png}
 \caption{PyCharm IDE}
 \end{figure}
-\end{frame}
 
 \section*{Creating a linear model}
-\label{sec:org919fea7}
+\label{sec:orgcc624c0}
 
-\subsection*{}
-\label{sec:orgbb8e1c9}
+\subsection*{Data}
+\label{sec:org0b3b10e}
+
+\subsubsection*{Getting the data}
+\label{sec:org6f5d1e1}
 \end{document}
