@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-31 Wed 15:32 -->
+<!-- 2022-09-01 Thu 11:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -223,17 +223,17 @@
 <span class="subtitle">Lecture 2 - Linear Models</span>
 </h1>
 
-<div id="outline-container-org88710bf" class="outline-2">
-<h2 id="org88710bf">Linear Regression</h2>
-<div class="outline-text-2" id="text-org88710bf">
+<div id="outline-container-org3ffe97c" class="outline-2">
+<h2 id="org3ffe97c">Linear Regression</h2>
+<div class="outline-text-2" id="text-org3ffe97c">
 </div>
-<div id="outline-container-org61d6a22" class="outline-3">
-<h3 id="org61d6a22">Introduction to linear models</h3>
-<div class="outline-text-3" id="text-org61d6a22">
+<div id="outline-container-org69007b3" class="outline-3">
+<h3 id="org69007b3">Introduction to linear models</h3>
+<div class="outline-text-3" id="text-org69007b3">
 </div>
-<div id="outline-container-org06c0ec0" class="outline-4">
-<h4 id="org06c0ec0">Linear models</h4>
-<div class="outline-text-4" id="text-org06c0ec0">
+<div id="outline-container-orgfa25e5e" class="outline-4">
+<h4 id="orgfa25e5e">Linear models</h4>
+<div class="outline-text-4" id="text-orgfa25e5e">
 <p>
 Having learnt a little about what it means to learn, we're going to look at our first
 <i>Machine Learning</i> algorithm, the staple for much of statistics, numeric prediction
@@ -242,9 +242,9 @@ using a linear model.
 </div>
 </div>
 
-<div id="outline-container-org7e9ecb2" class="outline-4">
-<h4 id="org7e9ecb2">What is a linear model?</h4>
-<div class="outline-text-4" id="text-org7e9ecb2">
+<div id="outline-container-orgc88d3c9" class="outline-4">
+<h4 id="orgc88d3c9">What is a linear model?</h4>
+<div class="outline-text-4" id="text-orgc88d3c9">
 <p>
 A linear model is a prediction (a response) to an input variable. We have the
 following terms:
@@ -275,33 +275,33 @@ If we look at our linear model equation, we'll notice that it's the same equatio
 </p>
 
 
-<div id="orgb617ccd" class="figure">
-<p><img src="images/linear_model.png" alt="linear_model.png" width="700px" />
+<div id="orgc8507a6" class="figure">
+<p><img src="images/linear_model.png" alt="linear_model.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org16b68ae" class="outline-4">
-<h4 id="org16b68ae">Supporting example</h4>
-<div class="outline-text-4" id="text-org16b68ae">
+<div id="outline-container-orge6cbc0e" class="outline-4">
+<h4 id="orge6cbc0e">Supporting example</h4>
+<div class="outline-text-4" id="text-orge6cbc0e">
 <p>
 Let's have a look at how we would use this linear model with one of the datasets: The
 Boston housing prices.
 </p>
 
 
-<div id="orgfd57bf3" class="figure">
-<p><img src="images/boston_rooms_prices.png" alt="boston_rooms_prices.png" width="700px" />
+<div id="org2cb5ea7" class="figure">
+<p><img src="images/boston_rooms_prices.png" alt="boston_rooms_prices.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org696a75b" class="outline-4">
-<h4 id="org696a75b">Let's fit a linear model</h4>
-<div class="outline-text-4" id="text-org696a75b">
+<div id="outline-container-orgf7c11c1" class="outline-4">
+<h4 id="orgf7c11c1">Let's fit a linear model</h4>
+<div class="outline-text-4" id="text-orgf7c11c1">
 <p>
 We have seen that there seems to be some correlation between the number of rooms and
 the house price. I.e. we can use the number of rooms of the house to get the
@@ -334,8 +334,8 @@ b = 1
 </p>
 
 
-<div id="org94104b8" class="figure">
-<p><img src="images/boston_rm_first_pred.png" alt="boston_rm_first_pred.png" width="700px" />
+<div id="org55cd583" class="figure">
+<p><img src="images/boston_rm_first_pred.png" alt="boston_rm_first_pred.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.</p>
 </div>
@@ -348,9 +348,9 @@ predicted house prices are?
 </div>
 </div>
 
-<div id="outline-container-org1854e9f" class="outline-4">
-<h4 id="org1854e9f">Evaluating our initial linear model</h4>
-<div class="outline-text-4" id="text-org1854e9f">
+<div id="outline-container-org6e8bc1d" class="outline-4">
+<h4 id="org6e8bc1d">Evaluating our initial linear model</h4>
+<div class="outline-text-4" id="text-org6e8bc1d">
 <p>
 To evaluate how well, or in this case, how badly our linear model is doing, let's
 compare the predicted value from the model against the actual house price. For
@@ -400,27 +400,143 @@ estimated value and real value is $15,000!
 </div>
 </div>
 
-<div id="outline-container-orgc8b7c86" class="outline-4">
-<h4 id="orgc8b7c86">Loss curve</h4>
-<div class="outline-text-4" id="text-orgc8b7c86">
-<ul class="org-ul">
-<li>If we move the weight value, then we get a different point on the curve.</li>
-</ul>
+<div id="outline-container-org1be38e9" class="outline-4">
+<h4 id="org1be38e9">Getting better model parameters</h4>
+<div class="outline-text-4" id="text-org1be38e9">
+<p>
+Okay, so we made our initial guess at the model parameters (random values for \(w,
+b\)), and these weren't very good. We were incorrectly guessing the house value by
+$15,000. So how do we get better values?
+</p>
+
+<p>
+Well if we visualise how badly we do vs the value for \(w\) we get the following:
+</p>
+
+
+<div id="org921bb20" class="figure">
+<p><img src="images/plot_linear_model_loss_w.png" alt="plot_linear_model_loss_w.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Mean absolute error (MAE) between the true and predicted house values when varying the value for \(w\) parameter in the linear model.</p>
+</div>
+
+<p>
+In figure <a href="#org921bb20">3</a>, we see that as we change the \(w\) parameter, the mean absolute
+error (MAE), i.e. the average difference between the predicted house prices and the
+true house prices, changes. Ideally, we would like the error or <b>loss</b> to be as low as
+possible. In this case, when \(b = 1\) the lowest possible loss we can hope to achieve
+with the linear model is ~ $5,500.
+</p>
+
+<p>
+But what value for \(w\) gets us this lowest value for the loss? Looking at the graph,
+we see that the lowest point on the loss curve is somewhere between 0 and 5. Maybe
+even 4? While we could look at the curve and pick these parameter values, we're going
+to use a better method &#x2013; one that give us an optimal value for this loss curve
+automatically.
+</p>
+
+<p>
+We're going to look at the method called <b>Gradient Descent</b>.
+</p>
+
+<p>
+If we visualise our loss curve again, and visualise where \(w = 1\) is on this curve,
+we will see:
+</p>
+
+
+<div id="orgcaaff75" class="figure">
+<p><img src="images/loss_curve_w_1.png" alt="loss_curve_w_1.png" />
+</p>
+</div>
+
+<p>
+So we want this rot dot to move down the loss curve and reach the bottom of the
+curve. Using the <b>Gradient Descent</b> algorithm, we're going to take <b>very small steps</b>
+down the loss curve.
+</p>
+
+
+<div id="org9a19065" class="figure">
+<p><img src="images/loss_curve_w_1_with_path.png" alt="loss_curve_w_1_with_path.png" />
+</p>
+</div>
+
+<p>
+To determine which way is up, and which way is down the curve, we use the <b>Gradient</b> of
+the curve (hence Gradient Descent). We compute the gradient using:
+</p>
+
+<p>
+\[
+\Delta = \frac{f(x) - f(x+h)}{x - (x+h)}
+\]
+</p>
+
+<p>
+where \(f(x)\) is the loss when \(w\) takes on the value of \(x\). \(h\) is a very small
+value.
+</p>
+
+
+<div id="orgdc3c3c5" class="figure">
+<p><img src="images/small_step.png" alt="small_step.png" />
+</p>
+</div>
+
+<p>
+If we select \(h = 0.5\) then we will have the formula:
+</p>
+
+<p>
+\[
+\Delta_w = \frac{\mathcal{L}(w) - \mathcal{L}(w + 0.5)}{w - (w + 0.5)}
+\]
+</p>
+
+<p>
+where \(\mathcal{L}\) represents our loss function, MAE. If we calculate this we have:
+</p>
+\begin{aligned}
+\Delta_w &= \frac{\mathcal{L}(w) - \mathcal{L}(w + 0.5)}{w - (w + h)} \\
+&= \frac{\mathcal{L}(1) - \mathcal{L}(1.5)}{1  - (1 + 0.5)} \\
+&= \frac{15 - 12}{-0.5} \\
+&= -6.0
+\end{aligned}
+
+<p>
+Given that the gradient is a negative number, we know that the curve is going
+down/decreasing. So we will want to move \(w\) in this direction &#x2013; we want to move
+\(w\) so that the loss decreases.
+</p>
+
+<p>
+\[
+\overline{w} = w - \eta \Delta_w
+\]
+</p>
+
+<p>
+Our new value for the \(w\) parameter (\(\overline{w}\)) is computed by taking its
+original value and subtracting the gradient modulated/multiplied by \(\eta\). \(\eta\) in
+this case is what will allow us to take our <b>small steps</b>.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org4474a42" class="outline-4">
-<h4 id="org4474a42">How to select the best weights</h4>
-<div class="outline-text-4" id="text-org4474a42">
+<div id="outline-container-org7181e54" class="outline-4">
+<h4 id="org7181e54">How to select the best weights</h4>
+<div class="outline-text-4" id="text-org7181e54">
 <ul class="org-ul">
 <li>Lowest point on the curve.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org80ca93a" class="outline-4">
-<h4 id="org80ca93a">Automatically computing the best weights</h4>
-<div class="outline-text-4" id="text-org80ca93a">
+<div id="outline-container-org9ab4913" class="outline-4">
+<h4 id="org9ab4913">Automatically computing the best weights</h4>
+<div class="outline-text-4" id="text-org9ab4913">
 <ul class="org-ul">
 <li>Gradient descent</li>
 </ul>
@@ -429,17 +545,17 @@ estimated value and real value is $15,000!
 </div>
 </div>
 
-<div id="outline-container-orgb8e5bd2" class="outline-2">
-<h2 id="orgb8e5bd2">Logistic Regression</h2>
-<div class="outline-text-2" id="text-orgb8e5bd2">
+<div id="outline-container-orge0bb91d" class="outline-2">
+<h2 id="orge0bb91d">Logistic Regression</h2>
+<div class="outline-text-2" id="text-orge0bb91d">
 </div>
-<div id="outline-container-org9183428" class="outline-3">
-<h3 id="org9183428">Classification</h3>
-<div class="outline-text-3" id="text-org9183428">
+<div id="outline-container-orgde72ff1" class="outline-3">
+<h3 id="orgde72ff1">Classification</h3>
+<div class="outline-text-3" id="text-orgde72ff1">
 </div>
-<div id="outline-container-org54a35b2" class="outline-4">
-<h4 id="org54a35b2">Moving from regression to classification</h4>
-<div class="outline-text-4" id="text-org54a35b2">
+<div id="outline-container-org3746f91" class="outline-4">
+<h4 id="org3746f91">Moving from regression to classification</h4>
+<div class="outline-text-4" id="text-org3746f91">
 <p>
 We now turn to classification
 </p>
@@ -451,7 +567,7 @@ We now turn to classification
 <div id="postamble" class="status">
 <p class="date">Date: &lt;TODO&gt;</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-08-31 Wed 15:32</p>
+<p class="date">Created: 2022-09-01 Thu 11:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

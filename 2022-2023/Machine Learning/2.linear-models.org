@@ -9,8 +9,7 @@
 #+name: savefig
 #+begin_src python :results value replace :exports none :var name="/tmp/plot.png"
 f"""import matplotlib.pyplot as plt
-plt.savefig('{name}')
-plt.tight_layout()
+plt.savefig('{name}', bbox_inches='tight')
 plt.close()
 '{name}'
 """
@@ -73,7 +72,7 @@ plt.legend()
 <<savefig(name="images/linear_model.png")>>
 #+end_src
 
-#+ATTR_HTML: :width 700px
+#+ATTR_ORG: :width 500px
 #+RESULTS:
 [[file:images/linear_model.png]]
 
@@ -100,9 +99,9 @@ plt.ylabel("House Value in $1000")
 <<savefig(name="images/boston_rooms_prices.png")>>
 #+end_src
 
-#+ATTR_HTML: :width 700px
 #+ATTR_LATEX: :width 0.6\textwidth
 #+CAPTION: Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.
+#+ATTR_ORG: :width 500px
 #+RESULTS:
 [[file:images/boston_rooms_prices.png]]
 
@@ -143,7 +142,7 @@ plt.ylabel("House Value in $1000")
 #+end_src
 
 #+CAPTION: A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.
-#+ATTR_HTML: :width 700px
+#+ATTR_ORG: :width 500px
 #+RESULTS:
 [[file:images/boston_rm_first_pred.png]]
 
@@ -190,17 +189,149 @@ loss  = np.mean(np.abs(boston.target - y_hat))
 If we calculate that our linear model we see that the average difference between our
 estimated value and real value is $15,000!
 
-*** Loss curve
+*** Getting better model parameters
+  :PROPERTIES:
+  :BEAMER_OPT: fragile,allowframebreaks,label=
+  :END: 
 
-- If we move the weight value, then we get a different point on the curve.
 
-*** How to select the best weights
+Okay, so we made our initial guess at the model parameters (random values for $w,
+b$), and these weren't very good. We were incorrectly guessing the house value by
+$15,000. So how do we get better values?
 
-- Lowest point on the curve.
+Well if we visualise how badly we do vs the value for $w$ we get the following:
 
-*** Automatically computing the best weights
+#+begin_src python
+def lm(x, w=1, b=1):
+    return w * x + b
 
-- Gradient descent
+def loss(x, y, w=1, b=1):
+    return np.mean(np.abs(y - lm(x, w, b)))
+
+ws = np.arange(-10, 15, 0.1)
+ls = np.vectorize(lambda w: loss(boston.RM, boston.target, w, 1))(ws)
+#+end_src
+
+#+begin_src python :results value file replace :exports results :noweb strip-export
+plt.plot(ws, ls)
+plt.xlabel("Value for $w$ in linear model")
+plt.ylabel("MAE")
+<<savefig(name="images/plot_linear_model_loss_w.png")>>
+#+end_src
+
+#+name: fig:mae_lm
+#+ATTR_LATEX: :width 0.6\textwidth
+#+CAPTION: Mean absolute error (MAE) between the true and predicted house values when varying the value for $w$ parameter in the linear model.
+#+ATTR_ORG: :width 500px
+#+RESULTS:
+[[file:images/plot_linear_model_loss_w.png]]
+
+In figure [[fig:mae_lm]], we see that as we change the $w$ parameter, the mean absolute
+error (MAE), i.e. the average difference between the predicted house prices and the
+true house prices, changes. Ideally, we would like the error or *loss* to be as low as
+possible. In this case, when $b = 1$ the lowest possible loss we can hope to achieve
+with the linear model is ~ $5,500.
+
+But what value for $w$ gets us this lowest value for the loss? Looking at the graph,
+we see that the lowest point on the loss curve is somewhere between 0 and 5. Maybe
+even 4? While we could look at the curve and pick these parameter values, we're going
+to use a better method -- one that give us an optimal value for this loss curve
+automatically.
+
+We're going to look at the method called *Gradient Descent*.
+
+If we visualise our loss curve again, and visualise where $w = 1$ is on this curve,
+we will see:
+
+#+begin_src python :results value file replace :exports results :noweb strip-export
+plt.plot(ws, ls, label="loss over $w$")
+plt.xlabel("$w$")
+plt.ylabel("$MAE$")
+plt.scatter([1], [loss(boston.RM, boston.target, 1, 1)], color="red", label="when $w = 1$")
+plt.legend()
+<<savefig(name="images/loss_curve_w_1.png")>>
+#+end_src
+
+#+ATTR_ORG: :width 500px
+#+RESULTS:
+[[file:images/loss_curve_w_1.png]]
+
+So we want this rot dot to move down the loss curve and reach the bottom of the
+curve. Using the *Gradient Descent* algorithm, we're going to take *very small steps*
+down the loss curve.
+
+#+ATTR_ORG: :width 500px
+[[file:images/loss_curve_w_1_with_path.png]]
+
+To determine which way is up, and which way is down the curve, we use the *Gradient* of
+the curve (hence Gradient Descent). We compute the gradient using:
+
+\[
+\Delta = \frac{f(x) - f(x+h)}{x - (x+h)}
+\]
+
+where $f(x)$ is the loss when $w$ takes on the value of $x$. $h$ is a very small
+value.
+
+#+begin_src python :results value file replace :exports results :noweb strip-export
+from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
+fig, ax = plt.subplots()
+ax.plot(ws, ls)
+ax.scatter([1], [loss(boston.RM, boston.target, 1, 1)], color='red')
+
+# zoomed axes
+axins = zoomed_inset_axes(ax, 8, loc=1)
+axins.plot(ws, ls)
+axins.scatter([1], [loss(boston.RM, boston.target, 1, 1)], color='red')
+axins.set_ylim(11, 17)
+axins.set_xlim(0, 2)
+
+# measuring gradient
+axins.plot([1, 1.5], [loss(boston.RM, boston.target, 1.5, 1), loss(boston.RM, boston.target, 1.5, 1)], color='black')
+axins.plot([1, 1], [loss(boston.RM, boston.target, 1, 1), loss(boston.RM, boston.target, 1.5, 1)], color='black')
+axins.text(1.15, loss(boston.RM, boston.target, 1.58, 1), "$w + h$")
+axins.text(0.6, loss(boston.RM, boston.target, 1.30, 1), "$f(x+h)$")
+
+
+plt.xticks(visible=False)
+plt.yticks(visible=False)
+mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
+<<savefig(name="images/small_step.png")>>
+#+end_src
+
+#+ATTR_ORG: :width 500px
+#+RESULTS:
+[[file:images/small_step.png]]
+
+If we select $h = 0.5$ then we will have the formula:
+
+\[
+\Delta_w = \frac{\mathcal{L}(w) - \mathcal{L}(w + 0.5)}{w - (w + 0.5)}
+\]
+
+where $\mathcal{L}$ represents our loss function, MAE. If we calculate this we have:
+#+LaTeX_header: \usepackage{amsmath}
+
+
+\begin{aligned}
+\Delta_w &= \frac{\mathcal{L}(w) - \mathcal{L}(w + 0.5)}{w - (w + h)} \\
+&= \frac{\mathcal{L}(1) - \mathcal{L}(1.5)}{1  - (1 + 0.5)} \\
+&= \frac{15 - 12}{-0.5} \\
+&= -6.0
+\end{aligned}
+
+Given that the gradient is a negative number, we know that the curve is going
+down/decreasing. So we will want to move $w$ in this direction -- we want to move
+$w$ so that the loss decreases.
+
+\[
+\overline{w} = w - \eta \Delta_w
+\]
+
+Our new value for the $w$ parameter ($\overline{w}$) is computed by taking its
+original value and subtracting the gradient modulated/multiplied by $\eta$. $\eta$ in
+this case is what will allow us to take our *small steps*.
+
 
 * Logistic Regression
 

@@ -14,6 +14,8 @@
 #+LaTeX_HEADER: \addtobeamertemplate{footnote}{}{\vspace{2ex}}
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \definecolor{LightGray}{gray}{0.95}
+#+LATEX_HEADER: \setbeamertemplate{caption}[numbered]
+#+LATEX_HEADER: \usepackage{amsmath}
 #+LATEX_HEADER: \usepackage{fancyvrb}
 #+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 #+EXCLUDE_TAGS: noexport

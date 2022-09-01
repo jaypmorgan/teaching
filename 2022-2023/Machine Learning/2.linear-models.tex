@@ -1,4 +1,4 @@
-% Created 2022-08-31 Wed 15:32
+% Created 2022-09-01 Thu 10:48
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -25,6 +25,7 @@
 \addtobeamertemplate{footnote}{}{\vspace{2ex}}
 \usepackage{xcolor}
 \definecolor{LightGray}{gray}{0.95}
+\setbeamertemplate{caption}[numbered]
 \usepackage{fancyvrb}
 \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 \DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
@@ -47,12 +48,12 @@
 \maketitle
 
 \section*{Linear Regression}
-\label{sec:orged16787}
+\label{sec:org4469d39}
 
 \subsection*{Introduction to linear models}
-\label{sec:org4a5a1b9}
+\label{sec:orgec15021}
 
-\begin{frame}[label={sec:org58e4148}]{Linear models}
+\begin{frame}[label={sec:org36e9e7f}]{Linear models}
 Having learnt a little about what it means to learn, we're going to look at our first
 \emph{Machine Learning} algorithm, the staple for much of statistics, numeric prediction
 using a linear model.
@@ -83,7 +84,7 @@ If we look at our linear model equation, we'll notice that it's the same equatio
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgd367f10}]{Supporting example}
+\begin{frame}[label={sec:org0c30073}]{Supporting example}
 Let's have a look at how we would use this linear model with one of the datasets: The
 Boston housing prices.
 
@@ -158,31 +159,62 @@ If we calculate that our linear model we see that the average difference between
 estimated value and real value is \$15,000!
 \end{frame}
 
-\begin{frame}[label={sec:orgfb90a7b}]{Loss curve}
-\begin{itemize}
-\item If we move the weight value, then we get a different point on the curve.
-\end{itemize}
+\begin{frame}[fragile,allowframebreaks,label=]{Getting better model parameters}
+Okay, so we made our initial guess at the model parameters (random values for \(w,
+b\)), and these weren't very good. We were incorrectly guessing the house value by
+\$15,000. So how do we get better values?
+
+Well if we visualise how badly we do vs the value for \(w\) we get the following:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{images/plot_linear_model_loss_w.png}
+\caption{\label{fig:mae_lm}Mean absolute error (MAE) between the true and predicted house values when varying the value for \(w\) parameter in the linear model.}
+\end{figure}
+
+In figure \ref{fig:mae_lm}, we see that as we change the \(w\) parameter, the mean absolute
+error (MAE), i.e. the average difference between the predicted house prices and the
+true house prices, changes. Ideally, we would like the error or \alert{loss} to be as low as
+possible. In this case, when \(b = 1\) the lowest possible loss we can hope to achieve
+with the linear model is \textasciitilde{} \$5,500.
+
+But what value for \(w\) gets us this lowest value for the loss? Looking at the graph,
+we see that the lowest point on the loss curve is somewhere between 0 and 5. Maybe
+even 4? While we could look at the curve and pick these parameter values, we're going
+to use a better method -- one that give us an optimal value for this loss curve
+automatically.
+
+We're going to look at the method called \alert{Gradient Descent}.
+
+If we visualise our loss curve again, and visualise where \(w = 1\) is on this curve,
+we will see:
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/loss_curve_w_1.png}
+\end{center}
+
+So we want this rot dot to move down the loss curve and reach the bottom of the curve.
 \end{frame}
 
-\begin{frame}[label={sec:org6e55ae5}]{How to select the best weights}
+\begin{frame}[label={sec:org552dc85}]{How to select the best weights}
 \begin{itemize}
 \item Lowest point on the curve.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1985c21}]{Automatically computing the best weights}
+\begin{frame}[label={sec:org5af8d90}]{Automatically computing the best weights}
 \begin{itemize}
 \item Gradient descent
 \end{itemize}
 \end{frame}
 
 \section*{Logistic Regression}
-\label{sec:org2c6d337}
+\label{sec:org9bca7ba}
 
 \subsection*{Classification}
-\label{sec:org0fa8076}
+\label{sec:orga17b7d0}
 
-\begin{frame}[label={sec:org9676b11}]{Moving from regression to classification}
+\begin{frame}[label={sec:orgd5e46f3}]{Moving from regression to classification}
 We now turn to classification
 \end{frame}
 \end{document}
