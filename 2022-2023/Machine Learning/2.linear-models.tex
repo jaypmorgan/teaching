@@ -1,4 +1,4 @@
-% Created 2022-09-01 Thu 10:48
+% Created 2022-09-01 Thu 16:09
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -26,11 +26,13 @@
 \usepackage{xcolor}
 \definecolor{LightGray}{gray}{0.95}
 \setbeamertemplate{caption}[numbered]
+\usepackage{amsmath}
 \usepackage{fancyvrb}
 \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 \DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
 \DeclareGraphicsExtensions{.gif}
 \usepackage{animate}
+\usepackage{amsmath}
 \usetheme{default}
 \author{Jay Morgan}
 \date{<TODO>}
@@ -48,12 +50,12 @@
 \maketitle
 
 \section*{Linear Regression}
-\label{sec:org4469d39}
+\label{sec:org3c1558c}
 
 \subsection*{Introduction to linear models}
-\label{sec:orgec15021}
+\label{sec:org19094bb}
 
-\begin{frame}[label={sec:org36e9e7f}]{Linear models}
+\begin{frame}[label={sec:org3d6e2d8}]{Linear models}
 Having learnt a little about what it means to learn, we're going to look at our first
 \emph{Machine Learning} algorithm, the staple for much of statistics, numeric prediction
 using a linear model.
@@ -82,9 +84,11 @@ If we look at our linear model equation, we'll notice that it's the same equatio
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/linear_model.png}
 \end{center}
+
+\alert{TODO} What is the slope and intercept?
 \end{frame}
 
-\begin{frame}[label={sec:org0c30073}]{Supporting example}
+\begin{frame}[label={sec:org2fba08d}]{Supporting example}
 Let's have a look at how we would use this linear model with one of the datasets: The
 Boston housing prices.
 
@@ -193,28 +197,94 @@ we will see:
 \includegraphics[width=.9\linewidth]{images/loss_curve_w_1.png}
 \end{center}
 
-So we want this rot dot to move down the loss curve and reach the bottom of the curve.
-\end{frame}
+So we want this rot dot to move down the loss curve and reach the bottom of the
+curve. Using the \alert{Gradient Descent} algorithm, we're going to take \alert{very small steps}
+down the loss curve.
 
-\begin{frame}[label={sec:org552dc85}]{How to select the best weights}
-\begin{itemize}
-\item Lowest point on the curve.
-\end{itemize}
-\end{frame}
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/loss_curve_w_1_with_path.png}
+\end{center}
 
-\begin{frame}[label={sec:org5af8d90}]{Automatically computing the best weights}
-\begin{itemize}
-\item Gradient descent
-\end{itemize}
+To determine which way is up, and which way is down the curve, we use the \alert{Gradient} of
+the curve (hence Gradient Descent). We compute the gradient using finite differences method:
+
+\[
+\Delta = \frac{f(x+h) - f(x)}{h}
+\]
+
+where \(f(x)\) is the loss when \(w\) takes on the value of \(x\). \(h\) is a very small
+value.
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/small_step.png}
+\end{center}
+
+If we select \(h = 0.5\) then we will have the formula:
+
+\[
+\Delta_w = \frac{\mathcal{L}(w + 0.5) - \mathcal{L}(w)}{w}
+\]
+
+where \(\mathcal{L}\) represents our loss function, MAE. If we calculate this we have:
+\[\begin{aligned}
+\Delta_w &= \frac{\mathcal{L}(w + 0.5) - \mathcal{L}(w)}{h} \\
+&= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{1  - (0.5)} \\
+&= \frac{12 - 15}{0.5} \\
+&= -6.0
+\end{aligned}\]
+
+Given that the gradient is a negative number, we know that the curve is going
+down/decreasing. So we will want to move \(w\) in this direction -- we want to move
+\(w\) so that the loss decreases.
+
+\[
+\overline{w} = w - \eta \Delta_w
+\]
+
+If we plug in the numbers we've calculated for when \(w = 1\) we get and \(eta = 0.5\):
+
+\[\begin{aligned}
+\overline{w} &= w - \eta \Delta_w \\
+&= 1.0 - (0.5 * -6.0) \\
+&= 1.0 - (-3.0) \\
+&= 4.0
+\end{aligned}\]
+
+Our new value for the \(w\) parameter (\(\overline{w}\)) is computed by taking its
+original value and subtracting the gradient modulated/multiplied by \(\eta\). \(\eta\) in
+this case is what will allow us to take our \alert{small steps}. It is important to set
+\(\eta\) to a suitably small value, as high values for \(\eta\) will cause the Gradient
+Descent to behave erratically, and even, make our loss worse!
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{images/small_step_eta.png}
+\caption{\label{fig:eta}Plotting the effect of \(\eta\) on the step change of \(w\).}
+\end{figure}
+
+In figure \ref{fig:eta}, we've varied the value of \(\eta\) and computed 10 steps of updating
+the \(w\) parameter in our linear model. When \(\eta=0.05\), we see that \(w\) is slowly
+being updated in a way that is causing our loss to decrease, but it is more so slowly
+that we don't reach the optimal value for \(w\). When \(\eta=3\), each change in \(w\) is
+too large, so we over-shoot the optimal value, and end up bouncing back and forth
+without ever improving. Finally, when we set \(\eta=0.3\), the changes in \(w\) are
+sufficiently large enough such that we reach the \alert{global minima} in time, but they are
+also small enough so that we don't over-shoot this same minimum.
+
+If we then apply the Gradient Descent algorithm to both parameters of the linear
+model \(w, b\), then we can find the optimal trend line for this data. Furthermore,
+visualising this will look something like figure \ref{fig:lm_learn}.
+
+\url{images/lm\_learn.gif}
 \end{frame}
 
 \section*{Logistic Regression}
-\label{sec:org9bca7ba}
+\label{sec:org3719b3c}
 
 \subsection*{Classification}
-\label{sec:orga17b7d0}
+\label{sec:org1c4aabc}
 
-\begin{frame}[label={sec:orgd5e46f3}]{Moving from regression to classification}
+\begin{frame}[label={sec:orge0fd7f1}]{Moving from regression to classification}
 We now turn to classification
 \end{frame}
 \end{document}
