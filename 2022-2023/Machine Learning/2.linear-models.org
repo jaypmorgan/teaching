@@ -58,6 +58,9 @@ where $y$ is the response/output/prediction of the model, $x$ is the dependant
 variable, and $w, b$ are the model parameters.
 
 *** Slope & intercept
+  :PROPERTIES:
+  :BEAMER_OPT: fragile,allowframebreaks,label=
+  :END: 
 
 If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
 
@@ -73,6 +76,7 @@ plt.legend()
 #+end_src
 
 #+ATTR_ORG: :width 300px
+#+ATTR_LATEX: :width 0.5\textwidth
 #+RESULTS:
 [[file:images/linear_model.png]]
 
@@ -168,12 +172,11 @@ and $b$? Or put another way, what is /optimal/ value for our model parameters.
 We'll return to the question of optimal later, but for now, let's just select some
 random values!
 
-\[
-w = 1
-\]
-\[
+\[\begin{aligned}
+w = 1 \\
 b = 1
-\]
+\end{aligned}\]
+
 
 #+begin_src python :exports results :results value file replace :noweb strip-export
 plt.figure()
@@ -188,6 +191,7 @@ plt.ylabel(r"House Value in $1000")
 
 #+CAPTION: A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.
 #+ATTR_ORG: :width 300px
+#+ATTR_LATEX: :width 0.6\textwidth
 #+RESULTS:
 [[file:images/boston_rm_first_pred.png]]
 
@@ -308,6 +312,7 @@ curve. Using the *Gradient Descent* algorithm, we're going to take *very small s
 down the loss curve.
 
 #+ATTR_ORG: :width 300px
+#+ATTR_LATEX: :width 0.6\textwidth
 [[file:images/loss_curve_w_1_with_path.png]]
 
 To determine which way is up, and which way is down the curve, we use the *Gradient* of
@@ -525,9 +530,14 @@ If we then apply the Gradient Descent algorithm to both parameters of the linear
 model $w, b$, then we can find the optimal trend line for this data. Furthermore,
 visualising this will look something like figure [[fig:lm_learn]].
 
+#+ATTR_ORG: :width 300px
+#+ATTR_LATEX: :width 0.5\textwidth
 #+name: fig:lm_learn
-#+CAPTION: Visualising the linear model as its parameters improve.
+#+CAPTION: Visualising (GIF) the linear model as its parameters improve.
 [[file:images/lm_learn.gif]]
+
+
+*** Multiple variables
 
 * Logistic Regression
 

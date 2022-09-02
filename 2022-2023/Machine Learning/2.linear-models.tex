@@ -1,4 +1,4 @@
-% Created 2022-09-01 Thu 16:09
+% Created 2022-09-02 Fri 13:30
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -32,12 +32,13 @@
 \DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
 \DeclareGraphicsExtensions{.gif}
 \usepackage{animate}
+\DeclareGraphicsRule{.gif}{png}{-0.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
+\DeclareGraphicsExtensions{.gif}
 \usepackage{amsmath}
-\usetheme{default}
 \author{Jay Morgan}
 \date{<TODO>}
-\title{Machine Learning}
-\subtitle{Lecture 2 - Linear Models}
+\title{Machine Learning\\\medskip
+\large Lecture 2 - Linear Models}
 \hypersetup{
  pdfauthor={Jay Morgan},
  pdftitle={Machine Learning},
@@ -50,18 +51,20 @@
 \maketitle
 
 \section*{Linear Regression}
-\label{sec:org3c1558c}
+\label{sec:org1aed3a6}
 
 \subsection*{Introduction to linear models}
-\label{sec:org19094bb}
+\label{sec:orgc4a2c3c}
 
-\begin{frame}[label={sec:org3d6e2d8}]{Linear models}
+\subsubsection*{Linear models}
+\label{sec:orgf1c3017}
+
 Having learnt a little about what it means to learn, we're going to look at our first
 \emph{Machine Learning} algorithm, the staple for much of statistics, numeric prediction
 using a linear model.
-\end{frame}
 
-\begin{frame}[fragile,allowframebreaks,label=]{What is a linear model?}
+\subsubsection*{What is a linear model?}
+\label{sec:org787f595}
 A linear model is a prediction (a response) to an input variable. We have the
 following terms:
 
@@ -79,16 +82,39 @@ y = w x + b
 where \(y\) is the response/output/prediction of the model, \(x\) is the dependant
 variable, and \(w, b\) are the model parameters.
 
+\subsubsection*{Slope \& intercept}
+\label{sec:org0768375}
 If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
 
 \begin{center}
-\includegraphics[width=.9\linewidth]{images/linear_model.png}
+\includegraphics[width=0.5\textwidth]{images/linear_model.png}
 \end{center}
 
-\alert{TODO} What is the slope and intercept?
-\end{frame}
+As we've seen, the linear model, or linear regression, has two parameters: \(w,
+b\). What do these parameters represent?
 
-\begin{frame}[label={sec:org2fba08d}]{Supporting example}
+\begin{itemize}
+\item The \(w\) parameter is the \textbf{slope} or strength of relationship between the dependant
+variable and the response.
+\item Meanwhile, the \(b\) parameter is called the \textbf{intercept}, as it's the value of the
+response when the dependant variable is zero.
+\end{itemize}
+
+Let's look at these two parameters.
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/slope_1.png}
+\end{center}
+
+Here we see that when \(w\) is 0 (left figure), any change in \(x\) results in 0 change
+in \(y\). While, with \(w = 2\), \(y\) increases two-fold by every change in \(x\). Finally,
+when the slope is negative, we see that \(y\) decreases.
+
+Notice how the line is at 5 when \(x\) is zero, this is because \(b = 5\).
+
+\subsubsection*{Supporting example}
+\label{sec:orgf27f81d}
+
 Let's have a look at how we would use this linear model with one of the datasets: The
 Boston housing prices.
 
@@ -97,9 +123,9 @@ Boston housing prices.
 \includegraphics[width=0.6\textwidth]{images/boston_rooms_prices.png}
 \caption{Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.}
 \end{figure}
-\end{frame}
 
-\begin{frame}[fragile,allowframebreaks,label=]{Let's fit a linear model}
+\subsubsection*{Let's fit a linear model}
+\label{sec:org03224b2}
 We have seen that there seems to be some correlation between the number of rooms and
 the house price. I.e. we can use the number of rooms of the house to get the
 estimated price. To get an estimated price we'll use our linear model:
@@ -114,25 +140,24 @@ and \(b\)? Or put another way, what is \emph{optimal} value for our model parame
 We'll return to the question of optimal later, but for now, let's just select some
 random values!
 
-\[
-w = 1
-\]
-\[
+\[\begin{aligned}
+w = 1 \\
 b = 1
-\]
+\end{aligned}\]
+
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{images/boston_rm_first_pred.png}
+\includegraphics[width=0.6\textwidth]{images/boston_rm_first_pred.png}
 \caption{A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.}
 \end{figure}
 
 Well that doesn't look very good, it could be 'fit' better to what we're seeing in
 the scatter plot! I wonder how wrong the linear model is -- how incorrect our
 predicted house prices are?
-\end{frame}
 
-\begin{frame}[fragile,allowframebreaks,label=]{Evaluating our initial linear model}
+\subsubsection*{Evaluating our initial linear model}
+\label{sec:org8d7e59c}
 To evaluate how well, or in this case, how badly our linear model is doing, let's
 compare the predicted value from the model against the actual house price. For
 example, we'll take a single sample from our dataset.
@@ -161,9 +186,9 @@ we could take the mean over all samples:
 
 If we calculate that our linear model we see that the average difference between our
 estimated value and real value is \$15,000!
-\end{frame}
 
-\begin{frame}[fragile,allowframebreaks,label=]{Getting better model parameters}
+\subsubsection*{Getting better model parameters}
+\label{sec:orgc134c1d}
 Okay, so we made our initial guess at the model parameters (random values for \(w,
 b\)), and these weren't very good. We were incorrectly guessing the house value by
 \$15,000. So how do we get better values?
@@ -178,7 +203,7 @@ Well if we visualise how badly we do vs the value for \(w\) we get the following
 
 In figure \ref{fig:mae_lm}, we see that as we change the \(w\) parameter, the mean absolute
 error (MAE), i.e. the average difference between the predicted house prices and the
-true house prices, changes. Ideally, we would like the error or \alert{loss} to be as low as
+true house prices, changes. Ideally, we would like the error or \textbf{loss} to be as low as
 possible. In this case, when \(b = 1\) the lowest possible loss we can hope to achieve
 with the linear model is \textasciitilde{} \$5,500.
 
@@ -188,7 +213,7 @@ even 4? While we could look at the curve and pick these parameter values, we're 
 to use a better method -- one that give us an optimal value for this loss curve
 automatically.
 
-We're going to look at the method called \alert{Gradient Descent}.
+We're going to look at the method called \textbf{Gradient Descent}.
 
 If we visualise our loss curve again, and visualise where \(w = 1\) is on this curve,
 we will see:
@@ -198,14 +223,14 @@ we will see:
 \end{center}
 
 So we want this rot dot to move down the loss curve and reach the bottom of the
-curve. Using the \alert{Gradient Descent} algorithm, we're going to take \alert{very small steps}
+curve. Using the \textbf{Gradient Descent} algorithm, we're going to take \textbf{very small steps}
 down the loss curve.
 
 \begin{center}
-\includegraphics[width=.9\linewidth]{images/loss_curve_w_1_with_path.png}
+\includegraphics[width=0.6\textwidth]{images/loss_curve_w_1_with_path.png}
 \end{center}
 
-To determine which way is up, and which way is down the curve, we use the \alert{Gradient} of
+To determine which way is up, and which way is down the curve, we use the \textbf{Gradient} of
 the curve (hence Gradient Descent). We compute the gradient using finite differences method:
 
 \[
@@ -252,7 +277,7 @@ If we plug in the numbers we've calculated for when \(w = 1\) we get and \(eta =
 
 Our new value for the \(w\) parameter (\(\overline{w}\)) is computed by taking its
 original value and subtracting the gradient modulated/multiplied by \(\eta\). \(\eta\) in
-this case is what will allow us to take our \alert{small steps}. It is important to set
+this case is what will allow us to take our \textbf{small steps}. It is important to set
 \(\eta\) to a suitably small value, as high values for \(\eta\) will cause the Gradient
 Descent to behave erratically, and even, make our loss worse!
 
@@ -268,23 +293,31 @@ being updated in a way that is causing our loss to decrease, but it is more so s
 that we don't reach the optimal value for \(w\). When \(\eta=3\), each change in \(w\) is
 too large, so we over-shoot the optimal value, and end up bouncing back and forth
 without ever improving. Finally, when we set \(\eta=0.3\), the changes in \(w\) are
-sufficiently large enough such that we reach the \alert{global minima} in time, but they are
+sufficiently large enough such that we reach the \textbf{global minima} in time, but they are
 also small enough so that we don't over-shoot this same minimum.
 
 If we then apply the Gradient Descent algorithm to both parameters of the linear
 model \(w, b\), then we can find the optimal trend line for this data. Furthermore,
 visualising this will look something like figure \ref{fig:lm_learn}.
 
-\url{images/lm\_learn.gif}
-\end{frame}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{images/lm_learn.gif}
+\caption{\label{fig:lm_learn}Visualising (GIF) the linear model as its parameters improve.}
+\end{figure}
+
+
+\subsubsection*{Multiple variables}
+\label{sec:orgf24f01d}
 
 \section*{Logistic Regression}
-\label{sec:org3719b3c}
+\label{sec:orgcc4ced2}
 
 \subsection*{Classification}
-\label{sec:org1c4aabc}
+\label{sec:org584b67d}
 
-\begin{frame}[label={sec:orge0fd7f1}]{Moving from regression to classification}
+\subsubsection*{Moving from regression to classification}
+\label{sec:org8f320bd}
+
 We now turn to classification
-\end{frame}
 \end{document}
