@@ -17,8 +17,7 @@ plt.close()
 
 #+RESULTS: savefig
 : import matplotlib.pyplot as plt
-: plt.savefig('/tmp/plot.png')
-: plt.tight_layout()
+: plt.savefig('/tmp/plot.png', bbox_inches='tight')
 : plt.close()
 : '/tmp/plot.png'
 
@@ -58,11 +57,12 @@ y = w x + b
 where $y$ is the response/output/prediction of the model, $x$ is the dependant
 variable, and $w, b$ are the model parameters.
 
+*** Slope & intercept
+
 If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
 
 #+begin_src python :results value file replace :exports results :noweb strip-export
-import matplotlib.pyplot as plt
-import numpy as np
+plt.figure()
 x = np.arange(10)
 y = 2 * x + 3
 plt.plot(x, y, 'o-', label="$2x + 3$")
@@ -72,11 +72,52 @@ plt.legend()
 <<savefig(name="images/linear_model.png")>>
 #+end_src
 
-#+ATTR_ORG: :width 500px
+#+ATTR_ORG: :width 300px
 #+RESULTS:
 [[file:images/linear_model.png]]
 
-*TODO* What is the slope and intercept?
+As we've seen, the linear model, or linear regression, has two parameters: $w,
+b$. What do these parameters represent?
+
+- The $w$ parameter is the *slope* or strength of relationship between the dependant
+  variable and the response.
+- Meanwhile, the $b$ parameter is called the *intercept*, as it's the value of the
+  response when the dependant variable is zero.
+
+Let's look at these two parameters.
+
+#+begin_src python :results value file replace :exports results :noweb strip-export
+fig, ax = plt.subplots(1, 3, figsize=(8, 3))
+
+x = np.arange(10)
+
+slope = 0
+ax[0].plot(x, slope * x + 5, 'o-')
+ax[0].set_title(f"${slope}x + 5$")
+ax[0].set_ylim(0, 10)
+
+slope = 2
+ax[1].plot(x, slope * x + 5, 'o-')
+ax[1].set_title(f"${slope}x + 5$")
+ax[1].set_ylim(0, 10)
+
+slope = -1
+ax[2].plot(x, slope * x + 5, 'o-')
+ax[2].set_title(f"${slope}x + 5$")
+ax[2].set_ylim(0, 10)
+
+<<savefig(name="images/slope_1.png")>>
+#+end_src
+
+#+ATTR_ORG: :width 300px
+#+RESULTS:
+[[file:images/slope_1.png]]
+
+Here we see that when $w$ is 0 (left figure), any change in $x$ results in 0 change
+in $y$. While, with $w = 2$, $y$ increases two-fold by every change in $x$. Finally,
+when the slope is negative, we see that $y$ decreases.
+
+Notice how the line is at 5 when $x$ is zero, this is because $b = 5$.
 
 *** Supporting example
 
@@ -95,15 +136,16 @@ boston = pd.DataFrame(
 #+end_src
 
 #+begin_src python :results value file replace :exports results :noweb strip-export
+plt.figure()
 plt.scatter(boston.RM, boston.target)
 plt.xlabel("Number of Rooms")
-plt.ylabel("House Value in $1000")
+plt.ylabel(r"House Value in $1000")
 <<savefig(name="images/boston_rooms_prices.png")>>
 #+end_src
 
 #+ATTR_LATEX: :width 0.6\textwidth
 #+CAPTION: Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.
-#+ATTR_ORG: :width 500px
+#+ATTR_ORG: :width 300px
 #+RESULTS:
 [[file:images/boston_rooms_prices.png]]
 
@@ -134,17 +176,18 @@ b = 1
 \]
 
 #+begin_src python :exports results :results value file replace :noweb strip-export
+plt.figure()
 plt.scatter(boston.RM, boston.target)
 x = np.arange(np.min(boston.RM), np.max(boston.RM))
 y = 1 * x + 1
 plt.plot(x, y, 'r', label="$3 x + 5$")
 plt.xlabel("Number of rooms")
-plt.ylabel("House Value in $1000")
+plt.ylabel(r"House Value in $1000")
 <<savefig(name="images/boston_rm_first_pred.png")>>
 #+end_src
 
 #+CAPTION: A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.
-#+ATTR_ORG: :width 500px
+#+ATTR_ORG: :width 300px
 #+RESULTS:
 [[file:images/boston_rm_first_pred.png]]
 
@@ -215,6 +258,7 @@ ls = np.vectorize(lambda w: loss(boston.RM, boston.target, w, 1))(ws)
 #+end_src
 
 #+begin_src python :results value file replace :exports results :noweb strip-export
+plt.figure()
 plt.plot(ws, ls)
 plt.xlabel("Value for $w$ in linear model")
 plt.ylabel("MAE")
@@ -224,7 +268,7 @@ plt.ylabel("MAE")
 #+name: fig:mae_lm
 #+ATTR_LATEX: :width 0.6\textwidth
 #+CAPTION: Mean absolute error (MAE) between the true and predicted house values when varying the value for $w$ parameter in the linear model.
-#+ATTR_ORG: :width 500px
+#+ATTR_ORG: :width 300px
 #+RESULTS:
 [[file:images/plot_linear_model_loss_w.png]]
 
@@ -246,6 +290,7 @@ If we visualise our loss curve again, and visualise where $w = 1$ is on this cur
 we will see:
 
 #+begin_src python :results value file replace :exports results :noweb strip-export
+plt.figure()
 plt.plot(ws, ls, label="loss over $w$")
 plt.xlabel("$w$")
 plt.ylabel("$MAE$")
@@ -254,7 +299,7 @@ plt.legend()
 <<savefig(name="images/loss_curve_w_1.png")>>
 #+end_src
 
-#+ATTR_ORG: :width 500px
+#+ATTR_ORG: :width 300px
 #+RESULTS:
 [[file:images/loss_curve_w_1.png]]
 
@@ -262,7 +307,7 @@ So we want this rot dot to move down the loss curve and reach the bottom of the
 curve. Using the *Gradient Descent* algorithm, we're going to take *very small steps*
 down the loss curve.
 
-#+ATTR_ORG: :width 500px
+#+ATTR_ORG: :width 300px
 [[file:images/loss_curve_w_1_with_path.png]]
 
 To determine which way is up, and which way is down the curve, we use the *Gradient* of
@@ -301,7 +346,7 @@ mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
 <<savefig(name="images/small_step.png")>>
 #+end_src
 
-#+ATTR_ORG: :width 500px
+#+ATTR_ORG: :width 300px
 #+RESULTS:
 [[file:images/small_step.png]]
 
@@ -397,7 +442,7 @@ ax[2].set_title(f"$\eta = {eta}$")
 
 #+caption: Plotting the effect of $\eta$ on the step change of $w$.
 #+name: fig:eta
-#+ATTR_ORG: :width 500px
+#+ATTR_ORG: :width 300px
 #+RESULTS:
 [[file:images/small_step_eta.png]]
 
@@ -464,7 +509,7 @@ from matplotlib.animation import FuncAnimation
 fig, ax = plt.subplots()
 ax.scatter(boston.RM, boston.target)
 ax.set_xlabel("Number of rooms")
-ax.set_ylabel("House valuation in $1000")
+ax.set_ylabel(r"House valuation in $1000")
 lines = ax.plot([], 'r--')
 line = lines[0]
 title = ax.text(7.5, 5, "")
@@ -472,7 +517,7 @@ def anim(frame):
     w, b = lm.w_states[frame], lm.b_states[frame]
     line.set_data(boston.RM, lm(boston.RM, w, b))
     title.set_text(f"$w={w:.2f}, b={b:.2f}$")
-anim_created = FuncAnimation(fig, anim, frames=len(lm.w_states), interval=1
+anim_created = FuncAnimation(fig, anim, frames=len(lm.w_states), interval=1)
 #anim_created.save("./images/lm_learn.gif", writer="imagemagick", fps=10)
 #+end_src
 
