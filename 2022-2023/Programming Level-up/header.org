@@ -23,3 +23,11 @@
 #+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 #+PROPERTY: header-args:python :results pp output :session :exports both :eval never-export
+
+#+name: commentify
+#+begin_src emacs-lisp :var result="" :exports none
+(with-output-to-string
+  (princ "Results: \n")
+  (dolist (result-item (split-string result "\n"))
+    (princ (concat "# => " (format "%s\n" result-item)))))
+#+end_src

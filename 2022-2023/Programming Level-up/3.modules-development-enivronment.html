@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-10-26 mar. 15:12 -->
+<!-- 2022-09-11 Sun 08:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Programming Level-up</title>
@@ -191,146 +191,147 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
+<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
 <div id="content" class="content">
 <h1 class="title">Programming Level-up
 <br />
-<span class="subtitle">Lecture 3 &#x2013; Modules &amp; Development Environments</span>
+<span class="subtitle">Lecture 3 - Modules &amp; Development Environments</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org56a1475">1. Modules</a>
+<li><a href="#org85f99fa">1. Modules</a>
 <ul>
-<li><a href="#org97b7343">1.1. Python Modules</a>
+<li><a href="#org56a896f">1.1. Python Modules</a>
 <ul>
-<li><a href="#org16e3b3a">1.1.1. Importing in python</a></li>
-<li><a href="#org6899cea">1.1.2. The basic structure of importing</a></li>
-<li><a href="#orgf2bc20c">1.1.3. The basic structure of importing</a></li>
-<li><a href="#org5efddcf">1.1.4. Importing specific items</a></li>
-<li><a href="#orgadbac4d">1.1.5. Don't do this!</a></li>
-<li><a href="#org6a8c2f2">1.1.6. Don't do this!</a></li>
-<li><a href="#org9ac5161">1.1.7. Alias</a></li>
-<li><a href="#org5e9e498">1.1.8. Importing local libraries</a></li>
-<li><a href="#org7f49bf6">1.1.9. Importing local libraries</a></li>
-<li><a href="#orgd1aa952">1.1.10. Quick exercise &#x2013; imports</a></li>
-<li><a href="#orgcdfb188">1.1.11. Shortcuts with <code>__init__.py</code></a></li>
-<li><a href="#orgb846e60">1.1.12. What is <code>__main__</code>?</a></li>
-<li><a href="#org0091ce5">1.1.13. What is <code>__main__</code>?</a></li>
-<li><a href="#org6c5b26f">1.1.14. What is <code>__main__</code>?</a></li>
+<li><a href="#org14ed87d">1.1.1. Importing in python</a></li>
+<li><a href="#org9c77bba">1.1.2. The basic structure of importing</a></li>
+<li><a href="#orgf892d91">1.1.3. The basic structure of importing</a></li>
+<li><a href="#orgbffbac5">1.1.4. Importing specific items</a></li>
+<li><a href="#orga825066">1.1.5. Don't do this!</a></li>
+<li><a href="#orgb12713f">1.1.6. Don't do this!</a></li>
+<li><a href="#org13362a0">1.1.7. Alias</a></li>
+<li><a href="#org352dcfd">1.1.8. Importing local libraries</a></li>
+<li><a href="#org31dd5c2">1.1.9. Importing local libraries</a></li>
+<li><a href="#org166b69e">1.1.10. Quick exercise &#x2013; imports</a></li>
+<li><a href="#org6f7d3b0">1.1.11. Shortcuts with <code>__init__.py</code></a></li>
+<li><a href="#orgde8c7e2">1.1.12. What is <code>__main__</code>?</a></li>
+<li><a href="#org0554bca">1.1.13. What is <code>__main__</code>?</a></li>
+<li><a href="#orgfa72306">1.1.14. What is <code>__main__</code>?</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge3c09b7">2. Working with Files and Directories</a>
+<li><a href="#org5c29d4e">2. Working with Files and Directories</a>
 <ul>
-<li><a href="#orgd8cafa3">2.1. Paths</a>
+<li><a href="#orgf00ce80">2.1. Paths</a>
 <ul>
-<li><a href="#orgd810376">2.1.1. Current working directory</a></li>
-<li><a href="#org3fe7cc8">2.1.2. Listing directories</a></li>
-<li><a href="#org1fbfd39">2.1.3. Testing for files or directories</a></li>
-<li><a href="#org1b9a8f2">2.1.4. Using wildcards</a></li>
-<li><a href="#orgc3db825">2.1.5. Pathlib &#x2013; a newer way</a></li>
-<li><a href="#org2ce578d">2.1.6. Pathlib &#x2013; convenient functions</a></li>
-<li><a href="#orge7678d6">2.1.7. Converting Path into a string</a></li>
-<li><a href="#org64d20a7">2.1.8. Quick exercise &#x2013; locating files</a></li>
+<li><a href="#org6b7f095">2.1.1. Current working directory</a></li>
+<li><a href="#org89f1a89">2.1.2. Listing directories</a></li>
+<li><a href="#org743ed8c">2.1.3. Testing for files or directories</a></li>
+<li><a href="#org6901ce1">2.1.4. Using wildcards</a></li>
+<li><a href="#org2485c97">2.1.5. Pathlib &#x2013; a newer way</a></li>
+<li><a href="#org11627c6">2.1.6. Pathlib &#x2013; convenient functions</a></li>
+<li><a href="#orgc6682cf">2.1.7. Converting Path into a string</a></li>
+<li><a href="#orgdabf971">2.1.8. Quick exercise &#x2013; locating files</a></li>
 </ul>
 </li>
-<li><a href="#org4b8e427">2.2. Files</a>
+<li><a href="#orgb6020fb">2.2. Files</a>
 <ul>
-<li><a href="#orga5212c4">2.2.1. Reading files</a></li>
-<li><a href="#orgc369f21">2.2.2. Reading files &#x2013; lines or entire file?</a></li>
-<li><a href="#orgfbe93a9">2.2.3. Reading files</a></li>
-<li><a href="#org8224e26">2.2.4. Writing files</a></li>
-<li><a href="#org5ae14f0">2.2.5. Appending to files</a></li>
-<li><a href="#org358724d">2.2.6. Quick exercise &#x2013; reading/writing files</a></li>
-<li><a href="#org4fdb7ae">2.2.7. Reading CSV files &#x2013; builtin</a></li>
-<li><a href="#org31848ba">2.2.8. Writing a CSV file &#x2013; builtin</a></li>
-<li><a href="#org6d68b2a">2.2.9. Quick exercise &#x2013; reading/writing CSV files</a></li>
-<li><a href="#orgc50e5d7">2.2.10. Read JSON files &#x2013; builtin</a></li>
-<li><a href="#org5699f5e">2.2.11. Write JSON files &#x2013; builtin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org73cd119">3. Package Management</a>
-<ul>
-<li><a href="#org93ba27b">3.1. Package Management</a>
-<ul>
-<li><a href="#org3079704">3.1.1. Introduction</a></li>
-<li><a href="#org4950e31">3.1.2. Virtual Environments</a></li>
-</ul>
-</li>
-<li><a href="#org1446bcd">3.2. Anaconda</a>
-<ul>
-<li><a href="#org6ec33ac">3.2.1. What is Anaconda?</a></li>
-<li><a href="#orgfade135">3.2.2. Installing Anaconda</a></li>
-<li><a href="#orga9fbc8c">3.2.3. Working with Anaconda &#x2013; creating an environment</a></li>
-<li><a href="#orge91cdd5">3.2.4. Working with Anaconda &#x2013; activating an environment</a></li>
-<li><a href="#orgfad6eb7">3.2.5. Working with Anaconda &#x2013; de-activating an environment</a></li>
-<li><a href="#org3b281ec">3.2.6. Working with Anaconda &#x2013; installing using conda</a></li>
-<li><a href="#orgace7ced">3.2.7. Working with Anaconda &#x2013; package versions</a></li>
-<li><a href="#org039b741">3.2.8. Installing a specific version of Python</a></li>
-<li><a href="#orgfa6e74b">3.2.9. Working with Anaconda &#x2013; conda-forge and other repositories</a></li>
-<li><a href="#org23102e5">3.2.10. Working with Anaconda &#x2013; exporting an environment</a></li>
-<li><a href="#org80e51d2">3.2.11. Working with Anaconda &#x2013; creating environment from existing</a></li>
-</ul>
-</li>
-<li><a href="#org919c7e1">3.3. Pip</a>
-<ul>
-<li><a href="#orgdd656e2">3.3.1. What is Pip?</a></li>
-<li><a href="#orgcf16e2c">3.3.2. Installing packages with pip</a></li>
-<li><a href="#orge0c1036">3.3.3. Installing specific versions</a></li>
-<li><a href="#org6c9791b">3.3.4. Upgrade packages with pip</a></li>
-<li><a href="#org8c2d8b3">3.3.5. Export requirements file</a></li>
-<li><a href="#org2defb03">3.3.6. Installing multiple packages from a requirements file</a></li>
-<li><a href="#org2bcd143">3.3.7. Anaconda handles both conda and pip</a></li>
+<li><a href="#org834f538">2.2.1. Reading files</a></li>
+<li><a href="#org2a14f1a">2.2.2. Reading files &#x2013; lines or entire file?</a></li>
+<li><a href="#org6f77dfd">2.2.3. Reading files</a></li>
+<li><a href="#org0511f9d">2.2.4. Writing files</a></li>
+<li><a href="#orgae87aa3">2.2.5. Appending to files</a></li>
+<li><a href="#org5734177">2.2.6. Quick exercise &#x2013; reading/writing files</a></li>
+<li><a href="#org6ec876b">2.2.7. Reading CSV files &#x2013; builtin</a></li>
+<li><a href="#orgc9b37cc">2.2.8. Writing a CSV file &#x2013; builtin</a></li>
+<li><a href="#org82cdf85">2.2.9. Quick exercise &#x2013; reading/writing CSV files</a></li>
+<li><a href="#org78e749f">2.2.10. Read JSON files &#x2013; builtin</a></li>
+<li><a href="#org7233c9f">2.2.11. Write JSON files &#x2013; builtin</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3f84f38">4. Better development environments</a>
+<li><a href="#org6a7c037">3. Package Management</a>
 <ul>
-<li><a href="#orga3dfc50">4.1. PyCharm</a>
+<li><a href="#org06a0865">3.1. Package Management</a>
 <ul>
-<li><a href="#orgfba5535">4.1.1. PyCharm</a></li>
-<li><a href="#orge474fe3">4.1.2. PyCharm &#x2013; installing</a></li>
-<li><a href="#org5c28d6b">4.1.3. PyCharm &#x2013; using PyCharm</a></li>
+<li><a href="#org83983cb">3.1.1. Introduction</a></li>
+<li><a href="#orgb620619">3.1.2. Virtual Environments</a></li>
 </ul>
 </li>
-<li><a href="#orge98fa1b">4.2. Jupyter</a>
+<li><a href="#org37b6c4a">3.2. Anaconda</a>
 <ul>
-<li><a href="#orgf0d89d1">4.2.1. What is a Jupyter notebook?</a></li>
-<li><a href="#orgb067649">4.2.2. Installing Jupyter</a></li>
-<li><a href="#org2dbd37f">4.2.3. Starting the server</a></li>
-<li><a href="#orgcdd9be1">4.2.4. Using the interface</a></li>
-<li><a href="#orga5e473b">4.2.5. Markdown 101</a></li>
-<li><a href="#org80701c3">4.2.6. A slightly better environment &#x2013; jupyterlab</a></li>
+<li><a href="#org969d019">3.2.1. What is Anaconda?</a></li>
+<li><a href="#org9acc329">3.2.2. Installing Anaconda</a></li>
+<li><a href="#orga66d961">3.2.3. Working with Anaconda &#x2013; creating an environment</a></li>
+<li><a href="#orgc32bca0">3.2.4. Working with Anaconda &#x2013; activating an environment</a></li>
+<li><a href="#orgbce77f4">3.2.5. Working with Anaconda &#x2013; de-activating an environment</a></li>
+<li><a href="#orgf34c9af">3.2.6. Working with Anaconda &#x2013; installing using conda</a></li>
+<li><a href="#orgbb08bd4">3.2.7. Working with Anaconda &#x2013; package versions</a></li>
+<li><a href="#org60c79ef">3.2.8. Installing a specific version of Python</a></li>
+<li><a href="#org522cc26">3.2.9. Working with Anaconda &#x2013; conda-forge and other repositories</a></li>
+<li><a href="#org6559c7d">3.2.10. Working with Anaconda &#x2013; exporting an environment</a></li>
+<li><a href="#org46b0de7">3.2.11. Working with Anaconda &#x2013; creating environment from existing</a></li>
+</ul>
+</li>
+<li><a href="#orgfe2afe9">3.3. Pip</a>
+<ul>
+<li><a href="#orge86ed93">3.3.1. What is Pip?</a></li>
+<li><a href="#org97fb133">3.3.2. Installing packages with pip</a></li>
+<li><a href="#org1d4715f">3.3.3. Installing specific versions</a></li>
+<li><a href="#org60a3fe7">3.3.4. Upgrade packages with pip</a></li>
+<li><a href="#orgfafee96">3.3.5. Export requirements file</a></li>
+<li><a href="#org18b2853">3.3.6. Installing multiple packages from a requirements file</a></li>
+<li><a href="#org3e2ebaa">3.3.7. Anaconda handles both conda and pip</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org88b19d1">5. Style guide-line</a>
+<li><a href="#org0de834f">4. Better development environments</a>
 <ul>
-<li><a href="#orga1752b3">5.1. Styles</a>
+<li><a href="#org171b3b0">4.1. PyCharm</a>
 <ul>
-<li><a href="#org238319b">5.1.1. A sense of style</a></li>
-<li><a href="#orgb4fc2fb">5.1.2. Meaningful names</a></li>
-<li><a href="#org21cd9bf">5.1.3. Meaningful names</a></li>
-<li><a href="#org6252956">5.1.4. Use builtins where possible</a></li>
-<li><a href="#org47989d2">5.1.5. Use docstrings and comments</a></li>
-<li><a href="#orgac8a43a">5.1.6. Using agreed upon casing</a></li>
-<li><a href="#org2ade0c8">5.1.7. Use type-annotations if possible</a></li>
-<li><a href="#org0339303">5.1.8. Organise your imports</a></li>
-<li><a href="#org430efd0">5.1.9. Functions should do one thing only</a></li>
-<li><a href="#orgbce2355">5.1.10. Functions as re-usability</a></li>
-<li><a href="#org6681496">5.1.11. Be wary of God classes</a></li>
-<li><a href="#orgf7d3259">5.1.12. Documentation</a></li>
-<li><a href="#org4b278a7">5.1.13. Perform testing!</a></li>
+<li><a href="#org5fd5fb6">4.1.1. PyCharm</a></li>
+<li><a href="#orge840d55">4.1.2. PyCharm &#x2013; installing</a></li>
+<li><a href="#org6a05f95">4.1.3. PyCharm &#x2013; using PyCharm</a></li>
+</ul>
+</li>
+<li><a href="#org3d53d28">4.2. Jupyter</a>
+<ul>
+<li><a href="#org8dee67c">4.2.1. What is a Jupyter notebook?</a></li>
+<li><a href="#org1a0d3f4">4.2.2. Installing Jupyter</a></li>
+<li><a href="#org5c87501">4.2.3. Starting the server</a></li>
+<li><a href="#org0ff25e0">4.2.4. Using the interface</a></li>
+<li><a href="#org8bb6f16">4.2.5. Markdown 101</a></li>
+<li><a href="#orgb857ad8">4.2.6. A slightly better environment &#x2013; jupyterlab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4061f17">5. Style guide-line</a>
+<ul>
+<li><a href="#org3f77874">5.1. Styles</a>
+<ul>
+<li><a href="#orgaed2d5c">5.1.1. A sense of style</a></li>
+<li><a href="#orgd00b456">5.1.2. Meaningful names</a></li>
+<li><a href="#orge771c41">5.1.3. Meaningful names</a></li>
+<li><a href="#orgc87e955">5.1.4. Use builtins where possible</a></li>
+<li><a href="#org55bc564">5.1.5. Use docstrings and comments</a></li>
+<li><a href="#orga984a6a">5.1.6. Using agreed upon casing</a></li>
+<li><a href="#orga894bed">5.1.7. Use type-annotations if possible</a></li>
+<li><a href="#org8d143bf">5.1.8. Organise your imports</a></li>
+<li><a href="#org82009e1">5.1.9. Functions should do one thing only</a></li>
+<li><a href="#org7c4b37f">5.1.10. Functions as re-usability</a></li>
+<li><a href="#org4a037f6">5.1.11. Be wary of God classes</a></li>
+<li><a href="#org85837da">5.1.12. Documentation</a></li>
+<li><a href="#org343695c">5.1.13. Perform testing!</a></li>
 </ul>
 </li>
 </ul>
@@ -339,16 +340,16 @@
 </div>
 </div>
 
-<div id="outline-container-org56a1475" class="outline-2">
-<h2 id="org56a1475"><span class="section-number-2">1.</span> Modules</h2>
+<div id="outline-container-org85f99fa" class="outline-2">
+<h2 id="org85f99fa"><span class="section-number-2">1.</span> Modules</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org97b7343" class="outline-3">
-<h3 id="org97b7343"><span class="section-number-3">1.1.</span> Python Modules</h3>
+<div id="outline-container-org56a896f" class="outline-3">
+<h3 id="org56a896f"><span class="section-number-3">1.1.</span> Python Modules</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org16e3b3a" class="outline-4">
-<h4 id="org16e3b3a"><span class="section-number-4">1.1.1.</span> Importing in python</h4>
+<div id="outline-container-org14ed87d" class="outline-4">
+<h4 id="org14ed87d"><span class="section-number-4">1.1.1.</span> Importing in python</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <img src="images/python.png" alt="python.png" />
@@ -357,8 +358,8 @@
 </div>
 </div>
 
-<div id="outline-container-org6899cea" class="outline-4">
-<h4 id="org6899cea"><span class="section-number-4">1.1.2.</span> The basic structure of importing</h4>
+<div id="outline-container-org9c77bba" class="outline-4">
+<h4 id="org9c77bba"><span class="section-number-4">1.1.2.</span> The basic structure of importing</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Modules or packages are other <i>scripts or programs</i> that can be imported into other
@@ -371,9 +372,9 @@ The basic syntax of importing is:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> &lt;package_name&gt;
+<pre class="src src-python"><span style="color: #C678DD;">import</span> &lt;package_name&gt;
 
-&lt;package_name&gt;.&lt;function/<span style="color: #a020f0;">class</span>/variable/etc&gt;
+&lt;package_name&gt;.&lt;function/<span style="color: #C678DD;">class</span>/variable/etc&gt;
 </pre>
 </div>
 
@@ -384,18 +385,18 @@ to refer to something within this package.
 </div>
 </div>
 
-<div id="outline-container-orgf2bc20c" class="outline-4">
-<h4 id="orgf2bc20c"><span class="section-number-4">1.1.3.</span> The basic structure of importing</h4>
+<div id="outline-container-orgf892d91" class="outline-4">
+<h4 id="orgf892d91"><span class="section-number-4">1.1.3.</span> The basic structure of importing</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 Let's take a look at a very basic example.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> math
+<pre class="src src-python"><span style="color: #C678DD;">import</span> math
 
-<span style="color: #a0522d;">radius</span> = 6.4  <span style="color: #b22222;"># </span><span style="color: #b22222;">cm</span>
-<span style="color: #a0522d;">circum</span> = 2 * math.pi * radius
+<span style="color: #E06C75;">radius</span> = 6.4  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">cm</span>
+<span style="color: #E06C75;">circum</span> = 2 * math.pi * radius
 </pre>
 </div>
 
@@ -408,8 +409,8 @@ called <code>pi</code> to calculate the circumference of a circle.
 </div>
 </div>
 
-<div id="outline-container-org5efddcf" class="outline-4">
-<h4 id="org5efddcf"><span class="section-number-4">1.1.4.</span> Importing specific items</h4>
+<div id="outline-container-orgbffbac5" class="outline-4">
+<h4 id="orgbffbac5"><span class="section-number-4">1.1.4.</span> Importing specific items</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <p>
 If we didn't always want to specify the package name when we only want to use
@@ -417,9 +418,9 @@ something specific from a package, we can directly import that something.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> &lt;package_name&gt; <span style="color: #a020f0;">import</span> &lt;function/<span style="color: #a020f0;">class</span>/variable/etc&gt;
+<pre class="src src-python"><span style="color: #C678DD;">from</span> &lt;package_name&gt; <span style="color: #C678DD;">import</span> &lt;function/<span style="color: #C678DD;">class</span>/variable/etc&gt;
 
-&lt;function/<span style="color: #a020f0;">class</span>/variable/etc&gt;
+&lt;function/<span style="color: #C678DD;">class</span>/variable/etc&gt;
 </pre>
 </div>
 
@@ -428,16 +429,16 @@ As you can see, we're using the <code>from ... import ...</code> syntax.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> math <span style="color: #a020f0;">import</span> pi
+<pre class="src src-python"><span style="color: #C678DD;">from</span> math <span style="color: #C678DD;">import</span> pi
 
-<span style="color: #a0522d;">circumference</span> = 2 * pi * radius
+<span style="color: #E06C75;">circumference</span> = 2 * pi * radius
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgadbac4d" class="outline-4">
-<h4 id="orgadbac4d"><span class="section-number-4">1.1.5.</span> Don't do this!</h4>
+<div id="outline-container-orga825066" class="outline-4">
+<h4 id="orga825066"><span class="section-number-4">1.1.5.</span> Don't do this!</h4>
 <div class="outline-text-4" id="text-1-1-5">
 <p>
 When using <code>from ... import ...</code>, there is a wildcard <code>*</code> that we <b>could</b> use. You may
@@ -445,9 +446,9 @@ sometimes see this style of importing when looking at documentation online:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> &lt;package_name&gt; <span style="color: #a020f0;">import</span> *
+<pre class="src src-python"><span style="color: #C678DD;">from</span> &lt;package_name&gt; <span style="color: #C678DD;">import</span> *
 
-&lt;function/<span style="color: #a020f0;">class</span>/variable/etc&gt;
+&lt;function/<span style="color: #C678DD;">class</span>/variable/etc&gt;
 </pre>
 </div>
 
@@ -457,8 +458,8 @@ However, this can create many problems with reading your program code
 </div>
 </div>
 
-<div id="outline-container-org6a8c2f2" class="outline-4">
-<h4 id="org6a8c2f2"><span class="section-number-4">1.1.6.</span> Don't do this!</h4>
+<div id="outline-container-orgb12713f" class="outline-4">
+<h4 id="orgb12713f"><span class="section-number-4">1.1.6.</span> Don't do this!</h4>
 <div class="outline-text-4" id="text-1-1-6">
 <p>
 Which module does <code>my_function()</code> originate? Are there are common names between the
@@ -466,8 +467,8 @@ two? Which would be used?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> my_module <span style="color: #a020f0;">import</span> *
-<span style="color: #a020f0;">from</span> my_second_module <span style="color: #a020f0;">import</span> *
+<pre class="src src-python"><span style="color: #C678DD;">from</span> my_module <span style="color: #C678DD;">import</span> *
+<span style="color: #C678DD;">from</span> my_second_module <span style="color: #C678DD;">import</span> *
 
 my_function()
 </pre>
@@ -475,8 +476,8 @@ my_function()
 </div>
 </div>
 
-<div id="outline-container-org9ac5161" class="outline-4">
-<h4 id="org9ac5161"><span class="section-number-4">1.1.7.</span> Alias</h4>
+<div id="outline-container-org13362a0" class="outline-4">
+<h4 id="org13362a0"><span class="section-number-4">1.1.7.</span> Alias</h4>
 <div class="outline-text-4" id="text-1-1-7">
 <p>
 When importing, we can optionally create an alias to a symbol. Here we're creating an
@@ -484,9 +485,9 @@ alias to the existing <code>pi</code> in <code>math</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> math <span style="color: #a020f0;">import</span> pi <span style="color: #a020f0;">as</span> decilious_pi
+<pre class="src src-python"><span style="color: #C678DD;">from</span> math <span style="color: #C678DD;">import</span> pi <span style="color: #C678DD;">as</span> decilious_pi
 
-<span style="color: #a0522d;">circumference</span> = 2 * delicious_pi * radius
+<span style="color: #E06C75;">circumference</span> = 2 * delicious_pi * radius
 </pre>
 </div>
 
@@ -496,16 +497,16 @@ will definitely revisit in another lecture!
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> numpy <span style="color: #a020f0;">as</span> np
-<span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
-<span style="color: #a020f0;">import</span> matplotlib.pyplot <span style="color: #a020f0;">as</span> plt
+<pre class="src src-python"><span style="color: #C678DD;">import</span> numpy <span style="color: #C678DD;">as</span> np
+<span style="color: #C678DD;">import</span> pandas <span style="color: #C678DD;">as</span> pd
+<span style="color: #C678DD;">import</span> matplotlib.pyplot <span style="color: #C678DD;">as</span> plt
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5e9e498" class="outline-4">
-<h4 id="org5e9e498"><span class="section-number-4">1.1.8.</span> Importing local libraries</h4>
+<div id="outline-container-org352dcfd" class="outline-4">
+<h4 id="org352dcfd"><span class="section-number-4">1.1.8.</span> Importing local libraries</h4>
 <div class="outline-text-4" id="text-1-1-8">
 <p>
 let's consider a hypothetical local directory:
@@ -526,16 +527,16 @@ If we wanted to import something from <code>my_module.py</code> we would do:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> src.my_module <span style="color: #a020f0;">import</span> MyAwesomeClass
+<pre class="src src-python"><span style="color: #C678DD;">from</span> src.my_module <span style="color: #C678DD;">import</span> MyAwesomeClass
 
-<span style="color: #a0522d;">my_class</span> = MyAwesomeclass()
+<span style="color: #E06C75;">my_class</span> = MyAwesomeclass()
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7f49bf6" class="outline-4">
-<h4 id="org7f49bf6"><span class="section-number-4">1.1.9.</span> Importing local libraries</h4>
+<div id="outline-container-org31dd5c2" class="outline-4">
+<h4 id="org31dd5c2"><span class="section-number-4">1.1.9.</span> Importing local libraries</h4>
 <div class="outline-text-4" id="text-1-1-9">
 <div class="org-src-container">
 <pre class="src src-bash">main.py
@@ -552,19 +553,19 @@ Here is another example for increased nesting of directories:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> src.module_1 <span style="color: #a020f0;">import</span> cats
-<span style="color: #a020f0;">from</span> src.module_1.dogs <span style="color: #a020f0;">import</span> Dog
+<pre class="src src-python"><span style="color: #C678DD;">from</span> src.module_1 <span style="color: #C678DD;">import</span> cats
+<span style="color: #C678DD;">from</span> src.module_1.dogs <span style="color: #C678DD;">import</span> Dog
 
-<span style="color: #a0522d;">cat</span> = cats.Cat()
-<span style="color: #a0522d;">dog</span> = Dog()
+<span style="color: #E06C75;">cat</span> = cats.Cat()
+<span style="color: #E06C75;">dog</span> = Dog()
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgd1aa952" class="outline-4">
-<h4 id="orgd1aa952"><span class="section-number-4">1.1.10.</span> Quick exercise &#x2013; imports</h4>
+<div id="outline-container-org166b69e" class="outline-4">
+<h4 id="org166b69e"><span class="section-number-4">1.1.10.</span> Quick exercise &#x2013; imports</h4>
 <div class="outline-text-4" id="text-1-1-10">
 <ul class="org-ul">
 <li>Create a directory to store your scripts</li>
@@ -576,8 +577,8 @@ Here is another example for increased nesting of directories:
 </div>
 </div>
 
-<div id="outline-container-orgcdfb188" class="outline-4">
-<h4 id="orgcdfb188"><span class="section-number-4">1.1.11.</span> Shortcuts with <code>__init__.py</code></h4>
+<div id="outline-container-org6f7d3b0" class="outline-4">
+<h4 id="org6f7d3b0"><span class="section-number-4">1.1.11.</span> Shortcuts with <code>__init__.py</code></h4>
 <div class="outline-text-4" id="text-1-1-11">
 <p>
 Let's say you often import <code>Cat</code> and <code>Dog</code>. We can use a file called <code>__init__.py</code> to help
@@ -600,8 +601,8 @@ In <code>__init__.py</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> cats <span style="color: #a020f0;">import</span> Cat
-<span style="color: #a020f0;">from</span> dogs <span style="color: #a020f0;">import</span> Dog
+<pre class="src src-python"><span style="color: #C678DD;">from</span> cats <span style="color: #C678DD;">import</span> Cat
+<span style="color: #C678DD;">from</span> dogs <span style="color: #C678DD;">import</span> Dog
 </pre>
 </div>
 
@@ -610,26 +611,26 @@ In <code>main.py</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> src.module_1 <span style="color: #a020f0;">import</span> Cat, Dog
+<pre class="src src-python"><span style="color: #C678DD;">from</span> src.module_1 <span style="color: #C678DD;">import</span> Cat, Dog
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb846e60" class="outline-4">
-<h4 id="orgb846e60"><span class="section-number-4">1.1.12.</span> What is <code>__main__</code>?</h4>
+<div id="outline-container-orgde8c7e2" class="outline-4">
+<h4 id="orgde8c7e2"><span class="section-number-4">1.1.12.</span> What is <code>__main__</code>?</h4>
 <div class="outline-text-4" id="text-1-1-12">
 <p>
 Consider a file with the following:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">x</span> = 2
-<span style="color: #a0522d;">y</span> = 1
-<span style="color: #a0522d;">z</span> = x + y
+<pre class="src src-python"><span style="color: #E06C75;">x</span> = 2
+<span style="color: #E06C75;">y</span> = 1
+<span style="color: #E06C75;">z</span> = x + y
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyAwesomeClass</span>:
-<span style="background-color: #f2f2f2;"> </span>   ...
+<span style="color: #C678DD;">class</span> <span style="color: #E5C07B;">MyAwesomeClass</span>:
+    ...
 </pre>
 </div>
 
@@ -641,8 +642,8 @@ takes a very long time?
 </div>
 </div>
 
-<div id="outline-container-org0091ce5" class="outline-4">
-<h4 id="org0091ce5"><span class="section-number-4">1.1.13.</span> What is <code>__main__</code>?</h4>
+<div id="outline-container-org0554bca" class="outline-4">
+<h4 id="org0554bca"><span class="section-number-4">1.1.13.</span> What is <code>__main__</code>?</h4>
 <div class="outline-text-4" id="text-1-1-13">
 <p>
 Here we are wrapping any global computations into a appropriate functions. This
@@ -654,8 +655,8 @@ Now, if we wanted to compute x, y, and z if this script is run, we could use:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">if</span> <span style="color: #483d8b;">__name__</span> == <span style="color: #8b2252;">"__main__"</span>:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #b22222;"># </span><span style="color: #b22222;">do something</span>
+<pre class="src src-python"><span style="color: #C678DD;">if</span> <span style="color: #56B6C2;">__name__</span> == <span style="color: #98C379;">"__main__"</span>:
+    <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">do something</span>
 </pre>
 </div>
 
@@ -667,27 +668,27 @@ being imported, the statements within this if scope will not be run.
 </div>
 </div>
 
-<div id="outline-container-org6c5b26f" class="outline-4">
-<h4 id="org6c5b26f"><span class="section-number-4">1.1.14.</span> What is <code>__main__</code>?</h4>
+<div id="outline-container-orgfa72306" class="outline-4">
+<h4 id="orgfa72306"><span class="section-number-4">1.1.14.</span> What is <code>__main__</code>?</h4>
 <div class="outline-text-4" id="text-1-1-14">
 <p>
 So if we wanted to run <code>compute()</code> if this file is being run directly, we would write:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute</span>():
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">x</span> = 2
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">y</span> = 1
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">z</span> = x + y
+<pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">compute</span>():
+    <span style="color: #E06C75;">x</span> = 2
+    <span style="color: #E06C75;">y</span> = 1
+    <span style="color: #E06C75;">z</span> = x + y
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyAwesomeClass</span>:
-<span style="background-color: #f2f2f2;"> </span>   ...
+<span style="color: #C678DD;">class</span> <span style="color: #E5C07B;">MyAwesomeClass</span>:
+    ...
 
-<span style="color: #a020f0;">if</span> <span style="color: #483d8b;">__name__</span> == <span style="color: #8b2252;">"__main__"</span>:
-<span style="background-color: #f2f2f2;"> </span>   compute()
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #b22222;"># </span><span style="color: #b22222;">we can of course use MyAwesomeClass as well</span>
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">my_class</span> = MyAwesomeClass()
-<span style="background-color: #f2f2f2;"> </span>   my_class.do_something()
+<span style="color: #C678DD;">if</span> <span style="color: #56B6C2;">__name__</span> == <span style="color: #98C379;">"__main__"</span>:
+    compute()
+    <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">we can of course use MyAwesomeClass as well</span>
+    my_class = MyAwesomeClass()
+    my_class.do_something()
 </pre>
 </div>
 </div>
@@ -695,16 +696,16 @@ So if we wanted to run <code>compute()</code> if this file is being run directly
 </div>
 </div>
 
-<div id="outline-container-orge3c09b7" class="outline-2">
-<h2 id="orge3c09b7"><span class="section-number-2">2.</span> Working with Files and Directories</h2>
+<div id="outline-container-org5c29d4e" class="outline-2">
+<h2 id="org5c29d4e"><span class="section-number-2">2.</span> Working with Files and Directories</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgd8cafa3" class="outline-3">
-<h3 id="orgd8cafa3"><span class="section-number-3">2.1.</span> Paths</h3>
+<div id="outline-container-orgf00ce80" class="outline-3">
+<h3 id="orgf00ce80"><span class="section-number-3">2.1.</span> Paths</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-orgd810376" class="outline-4">
-<h4 id="orgd810376"><span class="section-number-4">2.1.1.</span> Current working directory</h4>
+<div id="outline-container-org6b7f095" class="outline-4">
+<h4 id="org6b7f095"><span class="section-number-4">2.1.1.</span> Current working directory</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 The folder in which you run Python will be the <i>current working directory (CWD)</i>. We can
@@ -714,12 +715,12 @@ that do not start with a '/') will be relative to your CWD.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> os
+<pre class="src src-python"><span style="color: #C678DD;">import</span> os
 
-<span style="color: #a020f0;">print</span>(os.getcwd())
-os.chdir(<span style="color: #8b2252;">"../"</span>)
-<span style="color: #a020f0;">print</span>(os.getcwd())
-os.chdir(<span style="color: #8b2252;">"week-3"</span>)
+<span style="color: #56B6C2;">print</span>(os.getcwd())
+os.chdir(<span style="color: #98C379;">"../"</span>)
+<span style="color: #56B6C2;">print</span>(os.getcwd())
+os.chdir(<span style="color: #98C379;">"week-3"</span>)
 </pre>
 </div>
 
@@ -737,8 +738,8 @@ differences in the paths!
 </div>
 </div>
 
-<div id="outline-container-org3fe7cc8" class="outline-4">
-<h4 id="org3fe7cc8"><span class="section-number-4">2.1.2.</span> Listing directories</h4>
+<div id="outline-container-org89f1a89" class="outline-4">
+<h4 id="org89f1a89"><span class="section-number-4">2.1.2.</span> Listing directories</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Continuing with our usage of the <code>os</code> package, we can use the <code>listdir</code> function to list
@@ -746,8 +747,8 @@ all files within a directory.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">print</span>(os.listdir())
-<span style="color: #a020f0;">print</span>(os.listdir(<span style="color: #8b2252;">"images/"</span>))
+<pre class="src src-python"><span style="color: #56B6C2;">print</span>(os.listdir())
+<span style="color: #56B6C2;">print</span>(os.listdir(<span style="color: #98C379;">"images/"</span>))
 </pre>
 </div>
 
@@ -766,8 +767,8 @@ directory (though the filename does provide some hint).
 </div>
 </div>
 
-<div id="outline-container-org1fbfd39" class="outline-4">
-<h4 id="org1fbfd39"><span class="section-number-4">2.1.3.</span> Testing for files or directories</h4>
+<div id="outline-container-org743ed8c" class="outline-4">
+<h4 id="org743ed8c"><span class="section-number-4">2.1.3.</span> Testing for files or directories</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <p>
 In the previous example we saw that the items returned by <code>listdir</code> does not specify if
@@ -776,12 +777,12 @@ submodule to test if the argument is a file, else it will be a directory.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">for</span> path <span style="color: #a020f0;">in</span> os.listdir():
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(f<span style="color: #8b2252;">"{path} =&gt; is file: {os.path.isfile(path)}"</span>)
+<pre class="src src-python"><span style="color: #C678DD;">for</span> path <span style="color: #C678DD;">in</span> os.listdir():
+    <span style="color: #56B6C2;">print</span>(f<span style="color: #98C379;">"</span>{path}<span style="color: #98C379;"> =&gt; is file: </span>{os.path.isfile(path)}<span style="color: #98C379;">"</span>)
 </pre>
 </div>
 
-<pre class="example" id="org7a819fa">
+<pre class="example" id="org5d554df">
 Results: 
 # =&gt; images =&gt; is file: False
 # =&gt; __pycache__ =&gt; is file: False
@@ -796,8 +797,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org1b9a8f2" class="outline-4">
-<h4 id="org1b9a8f2"><span class="section-number-4">2.1.4.</span> Using wildcards</h4>
+<div id="outline-container-org6901ce1" class="outline-4">
+<h4 id="org6901ce1"><span class="section-number-4">2.1.4.</span> Using wildcards</h4>
 <div class="outline-text-4" id="text-2-1-4">
 <p>
 If we wanted to get all files within a directory, we could use the <code>glob</code> function from
@@ -806,14 +807,14 @@ files that end with <code>.png</code>. <code>test-*</code> will list all files t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> glob <span style="color: #a020f0;">import</span> glob
+<pre class="src src-python"><span style="color: #C678DD;">from</span> glob <span style="color: #C678DD;">import</span> glob
 
-<span style="color: #a020f0;">for</span> fn <span style="color: #a020f0;">in</span> glob(<span style="color: #8b2252;">"images/*"</span>):
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(fn)
+<span style="color: #C678DD;">for</span> fn <span style="color: #C678DD;">in</span> glob(<span style="color: #98C379;">"images/*"</span>):
+    <span style="color: #56B6C2;">print</span>(fn)
 </pre>
 </div>
 
-<pre class="example" id="orgb8eb379">
+<pre class="example" id="org1a84c48">
 Results: 
 # =&gt; images/legend-2.png
 # =&gt; images/fig-size.png
@@ -831,8 +832,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgc3db825" class="outline-4">
-<h4 id="orgc3db825"><span class="section-number-4">2.1.5.</span> Pathlib &#x2013; a newer way</h4>
+<div id="outline-container-org2485c97" class="outline-4">
+<h4 id="org2485c97"><span class="section-number-4">2.1.5.</span> Pathlib &#x2013; a newer way</h4>
 <div class="outline-text-4" id="text-2-1-5">
 <p>
 <code>pathlib</code> is a somewhat recent addition to the Python standard library which makes
@@ -842,15 +843,15 @@ a <code>glob</code> class method.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> pathlib <span style="color: #a020f0;">import</span> Path
+<pre class="src src-python"><span style="color: #C678DD;">from</span> pathlib <span style="color: #C678DD;">import</span> Path
 
-<span style="color: #a0522d;">data_dir</span> = Path(<span style="color: #8b2252;">"data"</span>)
-<span style="color: #a0522d;">processed_data</span> = data_dir / <span style="color: #8b2252;">"processed"</span>
+<span style="color: #E06C75;">data_dir</span> = Path(<span style="color: #98C379;">"data"</span>)
+<span style="color: #E06C75;">processed_data</span> = data_dir / <span style="color: #98C379;">"processed"</span>
 
-<span style="color: #a0522d;">data_files</span> = processed_data.glob(<span style="color: #8b2252;">"*.txt"</span>)
+<span style="color: #E06C75;">data_files</span> = processed_data.glob(<span style="color: #98C379;">"*.txt"</span>)
 
-<span style="color: #a020f0;">for</span> data_file <span style="color: #a020f0;">in</span> data_files:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(data_file)
+<span style="color: #C678DD;">for</span> data_file <span style="color: #C678DD;">in</span> data_files:
+    <span style="color: #56B6C2;">print</span>(data_file)
 </pre>
 </div>
 
@@ -862,8 +863,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org2ce578d" class="outline-4">
-<h4 id="org2ce578d"><span class="section-number-4">2.1.6.</span> Pathlib &#x2013; convenient functions</h4>
+<div id="outline-container-org11627c6" class="outline-4">
+<h4 id="org11627c6"><span class="section-number-4">2.1.6.</span> Pathlib &#x2013; convenient functions</h4>
 <div class="outline-text-4" id="text-2-1-6">
 <p>
 <code>pathlib</code> allows us to easily decompose a path into different components. Take for
@@ -871,14 +872,14 @@ example getting the filename of a path with <code>.name</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> pathlib <span style="color: #a020f0;">import</span> Path
+<pre class="src src-python"><span style="color: #C678DD;">from</span> pathlib <span style="color: #C678DD;">import</span> Path
 
-<span style="color: #a0522d;">some_file</span> = Path(<span style="color: #8b2252;">"data/processed/data.txt"</span>)
+<span style="color: #E06C75;">some_file</span> = Path(<span style="color: #98C379;">"data/processed/data.txt"</span>)
 
-<span style="color: #a020f0;">print</span>(some_file.parts)  <span style="color: #b22222;"># </span><span style="color: #b22222;">get component parts</span>
-<span style="color: #a020f0;">print</span>(some_file.parents[0])  <span style="color: #b22222;"># </span><span style="color: #b22222;">list of parent dirs</span>
-<span style="color: #a020f0;">print</span>(some_file.name)   <span style="color: #b22222;"># </span><span style="color: #b22222;">only filename</span>
-<span style="color: #a020f0;">print</span>(some_file.suffix) <span style="color: #b22222;"># </span><span style="color: #b22222;">extension</span>
+<span style="color: #56B6C2;">print</span>(some_file.parts)  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">get component parts</span>
+<span style="color: #56B6C2;">print</span>(some_file.parents[0])  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">list of parent dirs</span>
+<span style="color: #56B6C2;">print</span>(some_file.name)   <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">only filename</span>
+<span style="color: #56B6C2;">print</span>(some_file.suffix) <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">extension</span>
 </pre>
 </div>
 
@@ -892,8 +893,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orge7678d6" class="outline-4">
-<h4 id="orge7678d6"><span class="section-number-4">2.1.7.</span> Converting Path into a string</h4>
+<div id="outline-container-orgc6682cf" class="outline-4">
+<h4 id="orgc6682cf"><span class="section-number-4">2.1.7.</span> Converting Path into a string</h4>
 <div class="outline-text-4" id="text-2-1-7">
 <p>
 As <code>pathlib</code> is a recent addition to Python, some functions/classes are expecting a <code>str</code>
@@ -902,7 +903,7 @@ function to convert a <code>Path</code> object to a string.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #483d8b;">str</span>(Path(<span style="color: #8b2252;">"data/"</span>))
+<pre class="src src-python"><span style="color: #56B6C2;">str</span>(Path(<span style="color: #98C379;">"data/"</span>))
 </pre>
 </div>
 
@@ -914,8 +915,8 @@ Results:
 </div>
 
 
-<div id="outline-container-org64d20a7" class="outline-4">
-<h4 id="org64d20a7"><span class="section-number-4">2.1.8.</span> Quick exercise &#x2013; locating files</h4>
+<div id="outline-container-orgdabf971" class="outline-4">
+<h4 id="orgdabf971"><span class="section-number-4">2.1.8.</span> Quick exercise &#x2013; locating files</h4>
 <div class="outline-text-4" id="text-2-1-8">
 <ul class="org-ul">
 <li>In the same directory of scripts you created in the last exercise, create another
@@ -981,12 +982,12 @@ Release Year: &lt;release_year&gt;
 </div>
 </div>
 
-<div id="outline-container-org4b8e427" class="outline-3">
-<h3 id="org4b8e427"><span class="section-number-3">2.2.</span> Files</h3>
+<div id="outline-container-orgb6020fb" class="outline-3">
+<h3 id="orgb6020fb"><span class="section-number-3">2.2.</span> Files</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orga5212c4" class="outline-4">
-<h4 id="orga5212c4"><span class="section-number-4">2.2.1.</span> Reading files</h4>
+<div id="outline-container-org834f538" class="outline-4">
+<h4 id="org834f538"><span class="section-number-4">2.2.1.</span> Reading files</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 To read a file, we must first open it with the <code>open</code> function. This returns a file
@@ -1003,10 +1004,10 @@ the file.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">open_file</span> = <span style="color: #483d8b;">open</span>(<span style="color: #483d8b;">str</span>(Path(<span style="color: #8b2252;">"data"</span>) / <span style="color: #8b2252;">"processed"</span> / <span style="color: #8b2252;">"data.txt"</span>))
-<span style="color: #a0522d;">contents_of_file</span> = open_file.read()
-open_file.close()  <span style="color: #b22222;"># </span><span style="color: #b22222;">should always happen!</span>
-<span style="color: #a020f0;">print</span>(contents_of_file)
+<pre class="src src-python"><span style="color: #E06C75;">open_file</span> = <span style="color: #56B6C2;">open</span>(<span style="color: #56B6C2;">str</span>(Path(<span style="color: #98C379;">"data"</span>) / <span style="color: #98C379;">"processed"</span> / <span style="color: #98C379;">"data.txt"</span>))
+<span style="color: #E06C75;">contents_of_file</span> = open_file.read()
+open_file.close()  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">should always happen!</span>
+<span style="color: #56B6C2;">print</span>(contents_of_file)
 </pre>
 </div>
 
@@ -1018,8 +1019,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgc369f21" class="outline-4">
-<h4 id="orgc369f21"><span class="section-number-4">2.2.2.</span> Reading files &#x2013; lines or entire file?</h4>
+<div id="outline-container-org2a14f1a" class="outline-4">
+<h4 id="org2a14f1a"><span class="section-number-4">2.2.2.</span> Reading files &#x2013; lines or entire file?</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 While <code>read</code> works for the last example, you may want to read files in different
@@ -1027,20 +1028,20 @@ ways. Luckily there are a number of methods you could use.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">open_file.read()       <span style="color: #b22222;"># </span><span style="color: #b22222;">read entire file</span>
-open_file.readline()   <span style="color: #b22222;"># </span><span style="color: #b22222;">read a single line</span>
-open_file.readline(5)  <span style="color: #b22222;"># </span><span style="color: #b22222;">read 5 lines</span>
-open_file.readlines()  <span style="color: #b22222;"># </span><span style="color: #b22222;">returns all lines as a list</span>
+<pre class="src src-python">open_file.read()       <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">read entire file</span>
+open_file.readline()   <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">read a single line</span>
+open_file.readline(5)  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">read 5 lines</span>
+open_file.readlines()  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">returns all lines as a list</span>
 
-<span style="color: #a020f0;">for</span> line <span style="color: #a020f0;">in</span> open_file:  <span style="color: #b22222;"># </span><span style="color: #b22222;">read one line at a time</span>
-<span style="background-color: #f2f2f2;"> </span>   do_something(line)
+<span style="color: #C678DD;">for</span> line <span style="color: #C678DD;">in</span> open_file:  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">read one line at a time</span>
+    do_something(line)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgfbe93a9" class="outline-4">
-<h4 id="orgfbe93a9"><span class="section-number-4">2.2.3.</span> Reading files</h4>
+<div id="outline-container-org6f77dfd" class="outline-4">
+<h4 id="org6f77dfd"><span class="section-number-4">2.2.3.</span> Reading files</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <p>
 It can be a pain to remember to use the <code>.close()</code> every time you open a file. In
@@ -1053,12 +1054,12 @@ The syntax for opening a file is as follows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"data/processed/data.txt"</span>, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> open_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">contents</span> = open_file.read()
+<pre class="src src-python"><span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(<span style="color: #98C379;">"data/processed/data.txt"</span>, <span style="color: #98C379;">"r"</span>) <span style="color: #C678DD;">as</span> <span style="color: #E06C75;">open_file</span>:
+    contents = open_file.read()
 
-<span style="color: #b22222;"># </span><span style="color: #b22222;">the file is automatically closed at this point</span>
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">the file is automatically closed at this point</span>
 
-<span style="color: #a020f0;">print</span>(contents)
+<span style="color: #56B6C2;">print</span>(contents)
 </pre>
 </div>
 
@@ -1070,8 +1071,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org8224e26" class="outline-4">
-<h4 id="org8224e26"><span class="section-number-4">2.2.4.</span> Writing files</h4>
+<div id="outline-container-org0511f9d" class="outline-4">
+<h4 id="org0511f9d"><span class="section-number-4">2.2.4.</span> Writing files</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <p>
 The syntax for writing a file is similar to reading a file. The main difference is
@@ -1080,17 +1081,17 @@ we use <code>write()</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">data</span> = [<span style="color: #8b2252;">"this is some data"</span>, <span style="color: #8b2252;">"on another line"</span>, <span style="color: #8b2252;">"with another line"</span>]
-<span style="color: #a0522d;">new_filename</span> = <span style="color: #8b2252;">"data/processed/new-data.txt"</span>
+<pre class="src src-python"><span style="color: #E06C75;">data</span> = [<span style="color: #98C379;">"this is some data"</span>, <span style="color: #98C379;">"on another line"</span>, <span style="color: #98C379;">"with another line"</span>]
+<span style="color: #E06C75;">new_filename</span> = <span style="color: #98C379;">"data/processed/new-data.txt"</span>
 
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_filename, <span style="color: #8b2252;">"w"</span>) <span style="color: #a020f0;">as</span> open_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> line <span style="color: #a020f0;">in</span> data:
-        open_file.write(line + <span style="color: #8b2252;">"\n"</span>)
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(new_filename, <span style="color: #98C379;">"w"</span>) <span style="color: #C678DD;">as</span> open_file:
+    <span style="color: #C678DD;">for</span> line <span style="color: #C678DD;">in</span> data:
+        open_file.write(line + <span style="color: #98C379;">"\n"</span>)
 
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_filename, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> open_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">new_contents</span> = open_file.read()
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(new_filename, <span style="color: #98C379;">"r"</span>) <span style="color: #C678DD;">as</span> <span style="color: #E06C75;">open_file</span>:
+    new_contents = open_file.read()
 
-<span style="color: #a020f0;">print</span>(new_contents)
+<span style="color: #56B6C2;">print</span>(new_contents)
 </pre>
 </div>
 
@@ -1103,8 +1104,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org5ae14f0" class="outline-4">
-<h4 id="org5ae14f0"><span class="section-number-4">2.2.5.</span> Appending to files</h4>
+<div id="outline-container-orgae87aa3" class="outline-4">
+<h4 id="orgae87aa3"><span class="section-number-4">2.2.5.</span> Appending to files</h4>
 <div class="outline-text-4" id="text-2-2-5">
 <p>
 Every time we write to a file, the entire contents is deleted and replaced. If we
@@ -1112,17 +1113,17 @@ want to just append to the file instead, we use <code>"a"</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">data</span> = [<span style="color: #8b2252;">"this is some appended data"</span>]
-<span style="color: #a0522d;">new_filename</span> = <span style="color: #8b2252;">"data/processed/new-data.txt"</span>
+<pre class="src src-python"><span style="color: #E06C75;">data</span> = [<span style="color: #98C379;">"this is some appended data"</span>]
+<span style="color: #E06C75;">new_filename</span> = <span style="color: #98C379;">"data/processed/new-data.txt"</span>
 
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_filename, <span style="color: #8b2252;">"a"</span>) <span style="color: #a020f0;">as</span> open_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> line <span style="color: #a020f0;">in</span> data:
-        open_file.write(line + <span style="color: #8b2252;">"\n"</span>)
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(new_filename, <span style="color: #98C379;">"a"</span>) <span style="color: #C678DD;">as</span> open_file:
+    <span style="color: #C678DD;">for</span> line <span style="color: #C678DD;">in</span> data:
+        open_file.write(line + <span style="color: #98C379;">"\n"</span>)
 
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_filename, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> open_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">new_contents</span> = open_file.read()
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(new_filename, <span style="color: #98C379;">"r"</span>) <span style="color: #C678DD;">as</span> <span style="color: #E06C75;">open_file</span>:
+    new_contents = open_file.read()
 
-<span style="color: #a020f0;">print</span>(new_contents)
+<span style="color: #56B6C2;">print</span>(new_contents)
 </pre>
 </div>
 
@@ -1136,8 +1137,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org358724d" class="outline-4">
-<h4 id="org358724d"><span class="section-number-4">2.2.6.</span> Quick exercise &#x2013; reading/writing files</h4>
+<div id="outline-container-org5734177" class="outline-4">
+<h4 id="org5734177"><span class="section-number-4">2.2.6.</span> Quick exercise &#x2013; reading/writing files</h4>
 <div class="outline-text-4" id="text-2-2-6">
 <ul class="org-ul">
 <li>Using the same text files from the previous exercise, we will want to be able to
@@ -1150,8 +1151,8 @@ for yourself.</li>
 </div>
 </div>
 
-<div id="outline-container-org4fdb7ae" class="outline-4">
-<h4 id="org4fdb7ae"><span class="section-number-4">2.2.7.</span> Reading CSV files &#x2013; builtin</h4>
+<div id="outline-container-org6ec876b" class="outline-4">
+<h4 id="org6ec876b"><span class="section-number-4">2.2.7.</span> Reading CSV files &#x2013; builtin</h4>
 <div class="outline-text-4" id="text-2-2-7">
 <p>
 When working with common file types, Python has built-in modules to make the process
@@ -1162,15 +1163,15 @@ thus an entire CSV file is a list of lists.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> csv  <span style="color: #b22222;"># </span><span style="color: #b22222;">built-in library</span>
+<pre class="src src-python"><span style="color: #C678DD;">import</span> csv  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">built-in library</span>
 
-<span style="color: #a0522d;">data_path</span> = <span style="color: #8b2252;">"data/processed/data.csv"</span>
+<span style="color: #E06C75;">data_path</span> = <span style="color: #98C379;">"data/processed/data.csv"</span>
 
-<span style="color: #b22222;"># </span><span style="color: #b22222;">read a csv</span>
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(data_path, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> csv_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">csv_reader</span> = csv.reader(csv_file, delimiter=<span style="color: #8b2252;">","</span>)
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> line <span style="color: #a020f0;">in</span> csv_reader:
-        <span style="color: #a020f0;">print</span>(line)
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">read a csv</span>
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(data_path, <span style="color: #98C379;">"r"</span>) <span style="color: #C678DD;">as</span> <span style="color: #E06C75;">csv_file</span>:
+    csv_reader = csv.reader(csv_file, delimiter=<span style="color: #98C379;">","</span>)
+    <span style="color: #C678DD;">for</span> line <span style="color: #C678DD;">in</span> csv_reader:
+        <span style="color: #56B6C2;">print</span>(line)
 </pre>
 </div>
 
@@ -1183,8 +1184,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org31848ba" class="outline-4">
-<h4 id="org31848ba"><span class="section-number-4">2.2.8.</span> Writing a CSV file &#x2013; builtin</h4>
+<div id="outline-container-orgc9b37cc" class="outline-4">
+<h4 id="orgc9b37cc"><span class="section-number-4">2.2.8.</span> Writing a CSV file &#x2013; builtin</h4>
 <div class="outline-text-4" id="text-2-2-8">
 <p>
 Writing a CSV file is similar except we are creating a CSV writer object, and are
@@ -1193,21 +1194,21 @@ using <code>writerow</code> instead.
 
 <div class="org-src-container">
 <pre class="src src-python">
-<span style="color: #b22222;"># </span><span style="color: #b22222;">write a csv file</span>
-<span style="color: #a0522d;">new_data_file</span> = <span style="color: #8b2252;">"data/processed/new-data.csv"</span>
-<span style="color: #a0522d;">new_data</span> = [[<span style="color: #8b2252;">"name"</span>, <span style="color: #8b2252;">"age"</span>, <span style="color: #8b2252;">"height"</span>], [<span style="color: #8b2252;">"jane"</span>, <span style="color: #8b2252;">"35"</span>, <span style="color: #8b2252;">"6"</span>]]
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">write a csv file</span>
+<span style="color: #E06C75;">new_data_file</span> = <span style="color: #98C379;">"data/processed/new-data.csv"</span>
+<span style="color: #E06C75;">new_data</span> = [[<span style="color: #98C379;">"name"</span>, <span style="color: #98C379;">"age"</span>, <span style="color: #98C379;">"height"</span>], [<span style="color: #98C379;">"jane"</span>, <span style="color: #98C379;">"35"</span>, <span style="color: #98C379;">"6"</span>]]
 
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(new_data_file, <span style="color: #8b2252;">"w"</span>) <span style="color: #a020f0;">as</span> csv_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">csv_writer</span> = csv.writer(csv_file, delimiter=<span style="color: #8b2252;">","</span>)
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> row <span style="color: #a020f0;">in</span> new_data:
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(new_data_file, <span style="color: #98C379;">"w"</span>) <span style="color: #C678DD;">as</span> <span style="color: #E06C75;">csv_file</span>:
+    csv_writer = csv.writer(csv_file, delimiter=<span style="color: #98C379;">","</span>)
+    <span style="color: #C678DD;">for</span> row <span style="color: #C678DD;">in</span> new_data:
         csv_writer.writerow(row)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6d68b2a" class="outline-4">
-<h4 id="org6d68b2a"><span class="section-number-4">2.2.9.</span> Quick exercise &#x2013; reading/writing CSV files</h4>
+<div id="outline-container-org82cdf85" class="outline-4">
+<h4 id="org82cdf85"><span class="section-number-4">2.2.9.</span> Quick exercise &#x2013; reading/writing CSV files</h4>
 <div class="outline-text-4" id="text-2-2-9">
 <ul class="org-ul">
 <li>Given the parsed data from the previous exercise, write a new CSV file in the <code>data</code> directory.</li>
@@ -1218,8 +1219,8 @@ using <code>writerow</code> instead.
 </div>
 </div>
 
-<div id="outline-container-orgc50e5d7" class="outline-4">
-<h4 id="orgc50e5d7"><span class="section-number-4">2.2.10.</span> Read JSON files &#x2013; builtin</h4>
+<div id="outline-container-org78e749f" class="outline-4">
+<h4 id="org78e749f"><span class="section-number-4">2.2.10.</span> Read JSON files &#x2013; builtin</h4>
 <div class="outline-text-4" id="text-2-2-10">
 <p>
 Like CSV, json is a common format for storing data. Python includes a package called
@@ -1231,16 +1232,16 @@ Let's first tackle the process of reading:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> json
+<pre class="src src-python"><span style="color: #C678DD;">import</span> json
 
-<span style="color: #a0522d;">json_file_path</span> = <span style="color: #8b2252;">"data/processed/data.json"</span>
+<span style="color: #E06C75;">json_file_path</span> = <span style="color: #98C379;">"data/processed/data.json"</span>
 
-<span style="color: #b22222;"># </span><span style="color: #b22222;">read a json file</span>
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(json_file_path, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> json_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">data</span> = json.load(json_file)
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(data)
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(data.keys())
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(data[<span style="color: #8b2252;">"names"</span>])
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">read a json file</span>
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(json_file_path, <span style="color: #98C379;">"r"</span>) <span style="color: #C678DD;">as</span> <span style="color: #E06C75;">json_file</span>:
+    data = json.load(json_file)
+    <span style="color: #56B6C2;">print</span>(data)
+    <span style="color: #56B6C2;">print</span>(data.keys())
+    <span style="color: #56B6C2;">print</span>(data[<span style="color: #98C379;">"names"</span>])
 </pre>
 </div>
 
@@ -1253,8 +1254,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org5699f5e" class="outline-4">
-<h4 id="org5699f5e"><span class="section-number-4">2.2.11.</span> Write JSON files &#x2013; builtin</h4>
+<div id="outline-container-org7233c9f" class="outline-4">
+<h4 id="org7233c9f"><span class="section-number-4">2.2.11.</span> Write JSON files &#x2013; builtin</h4>
 <div class="outline-text-4" id="text-2-2-11">
 <p>
 While we used <code>json.load</code> to read the file, we use <code>json.dump</code> to write the data to a
@@ -1262,14 +1263,14 @@ json file.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">new_data</span> = {<span style="color: #8b2252;">"names"</span>: [<span style="color: #8b2252;">"someone-new"</span>], <span style="color: #8b2252;">"ages"</span>: [<span style="color: #8b2252;">"NA"</span>]}
+<pre class="src src-python"><span style="color: #E06C75;">new_data</span> = {<span style="color: #98C379;">"names"</span>: [<span style="color: #98C379;">"someone-new"</span>], <span style="color: #98C379;">"ages"</span>: [<span style="color: #98C379;">"NA"</span>]}
 
-<span style="color: #b22222;"># </span><span style="color: #b22222;">write a json file</span>
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"data/processed/new-data.json"</span>, <span style="color: #8b2252;">"w"</span>) <span style="color: #a020f0;">as</span> json_file:
-<span style="background-color: #f2f2f2;"> </span>   json.dump(new_data, json_file)
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">write a json file</span>
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(<span style="color: #98C379;">"data/processed/new-data.json"</span>, <span style="color: #98C379;">"w"</span>) <span style="color: #C678DD;">as</span> json_file:
+    json.dump(new_data, json_file)
 
-<span style="color: #a020f0;">with</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"data/processed/new-data.json"</span>, <span style="color: #8b2252;">"r"</span>) <span style="color: #a020f0;">as</span> json_file:
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(json.load(json_file))
+<span style="color: #C678DD;">with</span> <span style="color: #56B6C2;">open</span>(<span style="color: #98C379;">"data/processed/new-data.json"</span>, <span style="color: #98C379;">"r"</span>) <span style="color: #C678DD;">as</span> json_file:
+    <span style="color: #56B6C2;">print</span>(json.load(json_file))
 </pre>
 </div>
 
@@ -1282,16 +1283,16 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org73cd119" class="outline-2">
-<h2 id="org73cd119"><span class="section-number-2">3.</span> Package Management</h2>
+<div id="outline-container-org6a7c037" class="outline-2">
+<h2 id="org6a7c037"><span class="section-number-2">3.</span> Package Management</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org93ba27b" class="outline-3">
-<h3 id="org93ba27b"><span class="section-number-3">3.1.</span> Package Management</h3>
+<div id="outline-container-org06a0865" class="outline-3">
+<h3 id="org06a0865"><span class="section-number-3">3.1.</span> Package Management</h3>
 <div class="outline-text-3" id="text-3-1">
 </div>
-<div id="outline-container-org3079704" class="outline-4">
-<h4 id="org3079704"><span class="section-number-4">3.1.1.</span> Introduction</h4>
+<div id="outline-container-org83983cb" class="outline-4">
+<h4 id="org83983cb"><span class="section-number-4">3.1.1.</span> Introduction</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 When working on projects, we may want to use external packages that other people have
@@ -1302,8 +1303,8 @@ different packages and these versions of packages.
 </div>
 </div>
 
-<div id="outline-container-org4950e31" class="outline-4">
-<h4 id="org4950e31"><span class="section-number-4">3.1.2.</span> Virtual Environments</h4>
+<div id="outline-container-orgb620619" class="outline-4">
+<h4 id="orgb620619"><span class="section-number-4">3.1.2.</span> Virtual Environments</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 When installing packages, by default, the packages are going to be installed into the
@@ -1323,15 +1324,15 @@ We will take a look at package management and virtual environments in Python.
 </div>
 </div>
 
-<div id="outline-container-org1446bcd" class="outline-3">
-<h3 id="org1446bcd"><span class="section-number-3">3.2.</span> Anaconda</h3>
+<div id="outline-container-org37b6c4a" class="outline-3">
+<h3 id="org37b6c4a"><span class="section-number-3">3.2.</span> Anaconda</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
-<div id="outline-container-org6ec33ac" class="outline-4">
-<h4 id="org6ec33ac"><span class="section-number-4">3.2.1.</span> What is Anaconda?</h4>
+<div id="outline-container-org969d019" class="outline-4">
+<h4 id="org969d019"><span class="section-number-4">3.2.1.</span> What is Anaconda?</h4>
 <div class="outline-text-4" id="text-3-2-1">
 
-<div id="orga37d4aa" class="figure">
+<div id="org32bb2d4" class="figure">
 <p><img src="images/Anaconda_Logo.png" alt="Anaconda_Logo.png" />
 </p>
 </div>
@@ -1345,8 +1346,8 @@ We will take a look at package management and virtual environments in Python.
 </div>
 </div>
 
-<div id="outline-container-orgfade135" class="outline-4">
-<h4 id="orgfade135"><span class="section-number-4">3.2.2.</span> Installing Anaconda</h4>
+<div id="outline-container-org9acc329" class="outline-4">
+<h4 id="org9acc329"><span class="section-number-4">3.2.2.</span> Installing Anaconda</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 We're going to install miniconda (a minimal installation of
@@ -1375,8 +1376,8 @@ Follow the installation instructions (most of the time the defaults are sensible
 </div>
 </div>
 
-<div id="outline-container-orga9fbc8c" class="outline-4">
-<h4 id="orga9fbc8c"><span class="section-number-4">3.2.3.</span> Working with Anaconda &#x2013; creating an environment</h4>
+<div id="outline-container-orga66d961" class="outline-4">
+<h4 id="orga66d961"><span class="section-number-4">3.2.3.</span> Working with Anaconda &#x2013; creating an environment</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 Conda is a command line tool to manage environments. We're going to highlight some of
@@ -1402,8 +1403,8 @@ environment, you will first have to activate it.
 </div>
 </div>
 
-<div id="outline-container-orge91cdd5" class="outline-4">
-<h4 id="orge91cdd5"><span class="section-number-4">3.2.4.</span> Working with Anaconda &#x2013; activating an environment</h4>
+<div id="outline-container-orgc32bca0" class="outline-4">
+<h4 id="orgc32bca0"><span class="section-number-4">3.2.4.</span> Working with Anaconda &#x2013; activating an environment</h4>
 <div class="outline-text-4" id="text-3-2-4">
 <p>
 Once you've created a new environment, you can activate it. This is as simple as:
@@ -1421,8 +1422,8 @@ You will notice that your command line prompt has changed from <code>(base)</cod
 </div>
 </div>
 
-<div id="outline-container-orgfad6eb7" class="outline-4">
-<h4 id="orgfad6eb7"><span class="section-number-4">3.2.5.</span> Working with Anaconda &#x2013; de-activating an environment</h4>
+<div id="outline-container-orgbce77f4" class="outline-4">
+<h4 id="orgbce77f4"><span class="section-number-4">3.2.5.</span> Working with Anaconda &#x2013; de-activating an environment</h4>
 <div class="outline-text-4" id="text-3-2-5">
 <p>
 To deactivate an environment, just use:
@@ -1445,8 +1446,8 @@ or:
 </div>
 
 
-<div id="outline-container-org3b281ec" class="outline-4">
-<h4 id="org3b281ec"><span class="section-number-4">3.2.6.</span> Working with Anaconda &#x2013; installing using conda</h4>
+<div id="outline-container-orgf34c9af" class="outline-4">
+<h4 id="orgf34c9af"><span class="section-number-4">3.2.6.</span> Working with Anaconda &#x2013; installing using conda</h4>
 <div class="outline-text-4" id="text-3-2-6">
 <p>
 Let's say we want to install a package, say <code>scikit-learn</code> (if we're doing some data
@@ -1476,8 +1477,8 @@ use: <a href="https://anaconda.org/anaconda/repo">https://anaconda.org/anaconda/
 </div>
 </div>
 
-<div id="outline-container-orgace7ced" class="outline-4">
-<h4 id="orgace7ced"><span class="section-number-4">3.2.7.</span> Working with Anaconda &#x2013; package versions</h4>
+<div id="outline-container-orgbb08bd4" class="outline-4">
+<h4 id="orgbb08bd4"><span class="section-number-4">3.2.7.</span> Working with Anaconda &#x2013; package versions</h4>
 <div class="outline-text-4" id="text-3-2-7">
 <div class="org-src-container">
 <pre class="src src-bash">conda install &lt;package-name&gt;=&lt;version-number&gt;
@@ -1487,8 +1488,8 @@ use: <a href="https://anaconda.org/anaconda/repo">https://anaconda.org/anaconda/
 </div>
 
 
-<div id="outline-container-org039b741" class="outline-4">
-<h4 id="org039b741"><span class="section-number-4">3.2.8.</span> Installing a specific version of Python</h4>
+<div id="outline-container-org60c79ef" class="outline-4">
+<h4 id="org60c79ef"><span class="section-number-4">3.2.8.</span> Installing a specific version of Python</h4>
 <div class="outline-text-4" id="text-3-2-8">
 <p>
 If we wanted to, we could also change the python version being used in the virtual
@@ -1496,7 +1497,7 @@ environment.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">conda install <span style="color: #a0522d;">python</span>=3.9
+<pre class="src src-bash">conda install <span style="color: #E06C75;">python</span>=3.9
 </pre>
 </div>
 
@@ -1507,8 +1508,8 @@ have installed support it.
 </div>
 </div>
 
-<div id="outline-container-orgfa6e74b" class="outline-4">
-<h4 id="orgfa6e74b"><span class="section-number-4">3.2.9.</span> Working with Anaconda &#x2013; conda-forge and other repositories</h4>
+<div id="outline-container-org522cc26" class="outline-4">
+<h4 id="org522cc26"><span class="section-number-4">3.2.9.</span> Working with Anaconda &#x2013; conda-forge and other repositories</h4>
 <div class="outline-text-4" id="text-3-2-9">
 <p>
 Let's say that the package is not within the basic anaconda repository. You can
@@ -1531,8 +1532,8 @@ For example, PyTorch (<a href="https://pytorch.org/">https://pytorch.org/</a>) u
 </div>
 </div>
 
-<div id="outline-container-org23102e5" class="outline-4">
-<h4 id="org23102e5"><span class="section-number-4">3.2.10.</span> Working with Anaconda &#x2013; exporting an environment</h4>
+<div id="outline-container-org6559c7d" class="outline-4">
+<h4 id="org6559c7d"><span class="section-number-4">3.2.10.</span> Working with Anaconda &#x2013; exporting an environment</h4>
 <div class="outline-text-4" id="text-3-2-10">
 <p>
 We will want to share our research and work with others. To allow others to use the
@@ -1554,8 +1555,8 @@ compatibility with other operating systems such as Mac OS.
 </div>
 </div>
 
-<div id="outline-container-org80e51d2" class="outline-4">
-<h4 id="org80e51d2"><span class="section-number-4">3.2.11.</span> Working with Anaconda &#x2013; creating environment from existing</h4>
+<div id="outline-container-org46b0de7" class="outline-4">
+<h4 id="org46b0de7"><span class="section-number-4">3.2.11.</span> Working with Anaconda &#x2013; creating environment from existing</h4>
 <div class="outline-text-4" id="text-3-2-11">
 <p>
 To create an environment from an existing environment.yml file, you can use the
@@ -1575,12 +1576,12 @@ the packages.
 </div>
 </div>
 
-<div id="outline-container-org919c7e1" class="outline-3">
-<h3 id="org919c7e1"><span class="section-number-3">3.3.</span> Pip</h3>
+<div id="outline-container-orgfe2afe9" class="outline-3">
+<h3 id="orgfe2afe9"><span class="section-number-3">3.3.</span> Pip</h3>
 <div class="outline-text-3" id="text-3-3">
 </div>
-<div id="outline-container-orgdd656e2" class="outline-4">
-<h4 id="orgdd656e2"><span class="section-number-4">3.3.1.</span> What is Pip?</h4>
+<div id="outline-container-orge86ed93" class="outline-4">
+<h4 id="orge86ed93"><span class="section-number-4">3.3.1.</span> What is Pip?</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 Pip is another package installer for python. If you're reading documentation online
@@ -1599,8 +1600,8 @@ We're going to take a look at the most commonly used commands with pip.
 </div>
 </div>
 
-<div id="outline-container-orgcf16e2c" class="outline-4">
-<h4 id="orgcf16e2c"><span class="section-number-4">3.3.2.</span> Installing packages with pip</h4>
+<div id="outline-container-org97fb133" class="outline-4">
+<h4 id="org97fb133"><span class="section-number-4">3.3.2.</span> Installing packages with pip</h4>
 <div class="outline-text-4" id="text-3-3-2">
 <p>
 If you want to install a package, its as simple as <code>pip install</code>.
@@ -1613,8 +1614,8 @@ If you want to install a package, its as simple as <code>pip install</code>.
 </div>
 </div>
 
-<div id="outline-container-orge0c1036" class="outline-4">
-<h4 id="orge0c1036"><span class="section-number-4">3.3.3.</span> Installing specific versions</h4>
+<div id="outline-container-org1d4715f" class="outline-4">
+<h4 id="org1d4715f"><span class="section-number-4">3.3.3.</span> Installing specific versions</h4>
 <div class="outline-text-4" id="text-3-3-3">
 <p>
 Sometimes, though, you will want to install a specific package version. For this use
@@ -1628,8 +1629,8 @@ Sometimes, though, you will want to install a specific package version. For this
 </div>
 </div>
 
-<div id="outline-container-org6c9791b" class="outline-4">
-<h4 id="org6c9791b"><span class="section-number-4">3.3.4.</span> Upgrade packages with pip</h4>
+<div id="outline-container-org60a3fe7" class="outline-4">
+<h4 id="org60a3fe7"><span class="section-number-4">3.3.4.</span> Upgrade packages with pip</h4>
 <div class="outline-text-4" id="text-3-3-4">
 <p>
 If you want upgrade/install the package to the latest version, use the <code>--upgrade</code> flag.
@@ -1642,8 +1643,8 @@ If you want upgrade/install the package to the latest version, use the <code>--u
 </div>
 </div>
 
-<div id="outline-container-org8c2d8b3" class="outline-4">
-<h4 id="org8c2d8b3"><span class="section-number-4">3.3.5.</span> Export requirements file</h4>
+<div id="outline-container-orgfafee96" class="outline-4">
+<h4 id="orgfafee96"><span class="section-number-4">3.3.5.</span> Export requirements file</h4>
 <div class="outline-text-4" id="text-3-3-5">
 <p>
 Like exporting with conda, pip also includes a method to capture the currently
@@ -1661,8 +1662,8 @@ The common convention is to call the file <code>requirements.txt</code>.
 </div>
 </div>
 
-<div id="outline-container-org2defb03" class="outline-4">
-<h4 id="org2defb03"><span class="section-number-4">3.3.6.</span> Installing multiple packages from a requirements file</h4>
+<div id="outline-container-org18b2853" class="outline-4">
+<h4 id="org18b2853"><span class="section-number-4">3.3.6.</span> Installing multiple packages from a requirements file</h4>
 <div class="outline-text-4" id="text-3-3-6">
 <p>
 If we want to recreate the environment, we can install multiple packages with
@@ -1676,8 +1677,8 @@ specific versions from a requirements file with:
 </div>
 </div>
 
-<div id="outline-container-org2bcd143" class="outline-4">
-<h4 id="org2bcd143"><span class="section-number-4">3.3.7.</span> Anaconda handles both conda and pip</h4>
+<div id="outline-container-org3e2ebaa" class="outline-4">
+<h4 id="org3e2ebaa"><span class="section-number-4">3.3.7.</span> Anaconda handles both conda and pip</h4>
 <div class="outline-text-4" id="text-3-3-7">
 <p>
 Conda encompasses pip, which means that when you create a virtual environment with
@@ -1702,16 +1703,16 @@ correct places, whether that is conda or pip.
 </div>
 </div>
 
-<div id="outline-container-org3f84f38" class="outline-2">
-<h2 id="org3f84f38"><span class="section-number-2">4.</span> Better development environments</h2>
+<div id="outline-container-org0de834f" class="outline-2">
+<h2 id="org0de834f"><span class="section-number-2">4.</span> Better development environments</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orga3dfc50" class="outline-3">
-<h3 id="orga3dfc50"><span class="section-number-3">4.1.</span> PyCharm</h3>
+<div id="outline-container-org171b3b0" class="outline-3">
+<h3 id="org171b3b0"><span class="section-number-3">4.1.</span> PyCharm</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-orgfba5535" class="outline-4">
-<h4 id="orgfba5535"><span class="section-number-4">4.1.1.</span> PyCharm</h4>
+<div id="outline-container-org5fd5fb6" class="outline-4">
+<h4 id="org5fd5fb6"><span class="section-number-4">4.1.1.</span> PyCharm</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 So far we have been using a very basic <b>text editor</b>. This editor is only providing us
@@ -1741,8 +1742,8 @@ We will use PyCharm for the rest of this course.
 </div>
 </div>
 
-<div id="outline-container-orge474fe3" class="outline-4">
-<h4 id="orge474fe3"><span class="section-number-4">4.1.2.</span> PyCharm &#x2013; installing</h4>
+<div id="outline-container-orge840d55" class="outline-4">
+<h4 id="orge840d55"><span class="section-number-4">4.1.2.</span> PyCharm &#x2013; installing</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 Using Ubuntu snaps:
@@ -1766,8 +1767,8 @@ bash pycharm-community-&lt;version&gt;/bin/pycharm.sh
 </div>
 </div>
 
-<div id="outline-container-org5c28d6b" class="outline-4">
-<h4 id="org5c28d6b"><span class="section-number-4">4.1.3.</span> PyCharm &#x2013; using PyCharm</h4>
+<div id="outline-container-org6a05f95" class="outline-4">
+<h4 id="org6a05f95"><span class="section-number-4">4.1.3.</span> PyCharm &#x2013; using PyCharm</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <p>
 We shall take a look at the following:
@@ -1784,15 +1785,15 @@ We shall take a look at the following:
 </div>
 </div>
 
-<div id="outline-container-orge98fa1b" class="outline-3">
-<h3 id="orge98fa1b"><span class="section-number-3">4.2.</span> Jupyter</h3>
+<div id="outline-container-org3d53d28" class="outline-3">
+<h3 id="org3d53d28"><span class="section-number-3">4.2.</span> Jupyter</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-orgf0d89d1" class="outline-4">
-<h4 id="orgf0d89d1"><span class="section-number-4">4.2.1.</span> What is a Jupyter notebook?</h4>
+<div id="outline-container-org8dee67c" class="outline-4">
+<h4 id="org8dee67c"><span class="section-number-4">4.2.1.</span> What is a Jupyter notebook?</h4>
 <div class="outline-text-4" id="text-4-2-1">
 
-<div id="org7a5998b" class="figure">
+<div id="org61b09d1" class="figure">
 <p><img src="images/langfr-1024px-Jupyter_logo.png" alt="langfr-1024px-Jupyter_logo.png" width="200px" />
 </p>
 </div>
@@ -1809,8 +1810,8 @@ process cannot be clearly defined (and therefore cannot be immediately programme
 </div>
 </div>
 
-<div id="outline-container-orgb067649" class="outline-4">
-<h4 id="orgb067649"><span class="section-number-4">4.2.2.</span> Installing Jupyter</h4>
+<div id="outline-container-org1a0d3f4" class="outline-4">
+<h4 id="org1a0d3f4"><span class="section-number-4">4.2.2.</span> Installing Jupyter</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 We first need to install Jupyter. In you conda environment type:
@@ -1818,14 +1819,14 @@ We first need to install Jupyter. In you conda environment type:
 
 <div class="org-src-container">
 <pre class="src src-bash">conda install jupyter
-<span style="color: #b22222;"># </span><span style="color: #b22222;">or pip install jupyter</span>
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">or pip install jupyter</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2dbd37f" class="outline-4">
-<h4 id="org2dbd37f"><span class="section-number-4">4.2.3.</span> Starting the server</h4>
+<div id="outline-container-org5c87501" class="outline-4">
+<h4 id="org5c87501"><span class="section-number-4">4.2.3.</span> Starting the server</h4>
 <div class="outline-text-4" id="text-4-2-3">
 <p>
 With Jupyter installed, we can now start the notebook server using:
@@ -1846,8 +1847,8 @@ If you want to stop the server, press Ctrl+c in the terminal window.
 </div>
 </div>
 
-<div id="outline-container-orgcdd9be1" class="outline-4">
-<h4 id="orgcdd9be1"><span class="section-number-4">4.2.4.</span> Using the interface</h4>
+<div id="outline-container-org0ff25e0" class="outline-4">
+<h4 id="org0ff25e0"><span class="section-number-4">4.2.4.</span> Using the interface</h4>
 <div class="outline-text-4" id="text-4-2-4">
 <p>
 We shall take a look at the following:
@@ -1864,8 +1865,8 @@ We shall take a look at the following:
 </div>
 </div>
 
-<div id="outline-container-orga5e473b" class="outline-4">
-<h4 id="orga5e473b"><span class="section-number-4">4.2.5.</span> Markdown 101</h4>
+<div id="outline-container-org8bb6f16" class="outline-4">
+<h4 id="org8bb6f16"><span class="section-number-4">4.2.5.</span> Markdown 101</h4>
 <div class="outline-text-4" id="text-4-2-5">
 <p>
 We will revisit markdown in a later lecture, but since we're using notebooks, some of
@@ -1879,8 +1880,8 @@ markdown syntax.
 </div>
 </div>
 
-<div id="outline-container-org80701c3" class="outline-4">
-<h4 id="org80701c3"><span class="section-number-4">4.2.6.</span> A slightly better environment &#x2013; jupyterlab</h4>
+<div id="outline-container-orgb857ad8" class="outline-4">
+<h4 id="orgb857ad8"><span class="section-number-4">4.2.6.</span> A slightly better environment &#x2013; jupyterlab</h4>
 <div class="outline-text-4" id="text-4-2-6">
 <p>
 The notebook environment is fine, but there exists another package called jupyter-lab
@@ -1898,16 +1899,16 @@ jupyter-lab
 </div>
 </div>
 
-<div id="outline-container-org88b19d1" class="outline-2">
-<h2 id="org88b19d1"><span class="section-number-2">5.</span> Style guide-line</h2>
+<div id="outline-container-org4061f17" class="outline-2">
+<h2 id="org4061f17"><span class="section-number-2">5.</span> Style guide-line</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orga1752b3" class="outline-3">
-<h3 id="orga1752b3"><span class="section-number-3">5.1.</span> Styles</h3>
+<div id="outline-container-org3f77874" class="outline-3">
+<h3 id="org3f77874"><span class="section-number-3">5.1.</span> Styles</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-org238319b" class="outline-4">
-<h4 id="org238319b"><span class="section-number-4">5.1.1.</span> A sense of style</h4>
+<div id="outline-container-orgaed2d5c" class="outline-4">
+<h4 id="orgaed2d5c"><span class="section-number-4">5.1.1.</span> A sense of style</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 Now that we have looked at syntax you will need to create Python projects, I want to
@@ -1927,47 +1928,47 @@ will talk through some of the most important ones, in my opinion.
 </div>
 </div>
 
-<div id="outline-container-orgb4fc2fb" class="outline-4">
-<h4 id="orgb4fc2fb"><span class="section-number-4">5.1.2.</span> Meaningful names</h4>
+<div id="outline-container-orgd00b456" class="outline-4">
+<h4 id="orgd00b456"><span class="section-number-4">5.1.2.</span> Meaningful names</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 What does this code do?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">f</span>(l):
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">x</span> = 0
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">y</span> = 0
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> l:
-        <span style="color: #a0522d;">x</span> += i
-        <span style="color: #a0522d;">y</span> += 1
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> x / y
+<pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">f</span>(l):
+    <span style="color: #E06C75;">x</span> = 0
+    <span style="color: #E06C75;">y</span> = 0
+    <span style="color: #C678DD;">for</span> i <span style="color: #C678DD;">in</span> <span style="color: #E06C75;">l</span>:
+        x += i
+        <span style="color: #E06C75;">y</span> += 1
+    <span style="color: #C678DD;">return</span> x / y
 
-<span style="color: #a0522d;">a</span> = <span style="color: #483d8b;">range</span>(100)
-<span style="color: #a0522d;">r</span> = f(a)
+<span style="color: #E06C75;">a</span> = <span style="color: #56B6C2;">range</span>(100)
+<span style="color: #E06C75;">r</span> = f(a)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org21cd9bf" class="outline-4">
-<h4 id="org21cd9bf"><span class="section-number-4">5.1.3.</span> Meaningful names</h4>
+<div id="outline-container-orge771c41" class="outline-4">
+<h4 id="orge771c41"><span class="section-number-4">5.1.3.</span> Meaningful names</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 What about this one?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_average</span>(list_of_data):
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">sum</span> = 0
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">num_elements</span> = 0
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> element <span style="color: #a020f0;">in</span> list_of_data:
-        <span style="color: #483d8b;">sum</span> += element
-        <span style="color: #a0522d;">num_elements</span> += 1
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span> / num_elements
+<pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">compute_average</span>(list_of_data):
+    <span style="color: #56B6C2;">sum</span> = 0
+    <span style="color: #E06C75;">num_elements</span> = 0
+    <span style="color: #C678DD;">for</span> element <span style="color: #C678DD;">in</span> <span style="color: #E06C75;">list_of_data</span>:
+        <span style="color: #56B6C2;">sum</span> += element
+        <span style="color: #E06C75;">num_elements</span> += 1
+    <span style="color: #C678DD;">return</span> <span style="color: #56B6C2;">sum</span> / num_elements
 
-<span style="color: #a0522d;">dataset</span> = <span style="color: #483d8b;">range</span>(100)
-<span style="color: #a0522d;">average_value</span> = compute_average(dataset)
+<span style="color: #E06C75;">dataset</span> = <span style="color: #56B6C2;">range</span>(100)
+<span style="color: #E06C75;">average_value</span> = compute_average(dataset)
 </pre>
 </div>
 
@@ -1978,8 +1979,8 @@ understandable because we have used meaningful names for things!
 </div>
 </div>
 
-<div id="outline-container-org6252956" class="outline-4">
-<h4 id="org6252956"><span class="section-number-4">5.1.4.</span> Use builtins where possible</h4>
+<div id="outline-container-orgc87e955" class="outline-4">
+<h4 id="orgc87e955"><span class="section-number-4">5.1.4.</span> Use builtins where possible</h4>
 <div class="outline-text-4" id="text-5-1-4">
 <p>
 Don't re-invent the wheel. Try to use Python's built-in functions/classes if they
@@ -1988,8 +1989,8 @@ Python itself. For example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">dataset</span> = <span style="color: #483d8b;">range</span>(100)
-<span style="color: #a0522d;">average_value</span> = <span style="color: #483d8b;">sum</span>(dataset) / <span style="color: #483d8b;">len</span>(dataset)
+<pre class="src src-python"><span style="color: #E06C75;">dataset</span> = <span style="color: #56B6C2;">range</span>(100)
+<span style="color: #E06C75;">average_value</span> = <span style="color: #56B6C2;">sum</span>(dataset) / <span style="color: #56B6C2;">len</span>(dataset)
 </pre>
 </div>
 
@@ -1998,46 +1999,46 @@ or maybe even:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> numpy <span style="color: #a020f0;">as</span> np
-<span style="color: #a0522d;">dataset</span> = <span style="color: #483d8b;">range</span>(100)
-<span style="color: #a0522d;">average_value</span> = np.mean(dataset)
+<pre class="src src-python"><span style="color: #C678DD;">import</span> numpy <span style="color: #C678DD;">as</span> np
+<span style="color: #E06C75;">dataset</span> = <span style="color: #56B6C2;">range</span>(100)
+<span style="color: #E06C75;">average_value</span> = np.mean(dataset)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org47989d2" class="outline-4">
-<h4 id="org47989d2"><span class="section-number-4">5.1.5.</span> Use docstrings and comments</h4>
+<div id="outline-container-org55bc564" class="outline-4">
+<h4 id="org55bc564"><span class="section-number-4">5.1.5.</span> Use docstrings and comments</h4>
 <div class="outline-text-4" id="text-5-1-5">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_average</span>(list_of_data, exclude=<span style="color: #008b8b;">None</span>):
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #8b2252;">"""</span>
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   Compute and return the average value of an iterable list. </span>
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   This average excludes any value if specified by exclude</span>
+<pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">compute_average</span>(list_of_data, exclude=<span style="color: #56B6C2;">None</span>):
+    <span style="color: #98C379;">"""</span>
+<span style="color: #98C379;">    Compute and return the average value of an iterable list. </span>
+<span style="color: #98C379;">    This average excludes any value if specified by exclude</span>
 
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   params: </span>
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   - list_of_data: data for which the average is computed </span>
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   - exclude: numeric value of values that should not be taken </span>
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   </span><span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;"> into account</span>
+<span style="color: #98C379;">    params: </span>
+<span style="color: #98C379;">    - list_of_data: data for which the average is computed </span>
+<span style="color: #98C379;">    - exclude: numeric value of values that should not be taken </span>
+<span style="color: #98C379;">      into account</span>
 
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   returns: </span>
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   The computed average, possibly excluding a value.</span>
-<span style="color: #8b2252; background-color: #f2f2f2;"> </span><span style="color: #8b2252;">   """</span>
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #483d8b;">sum</span> = 0
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">num_elements</span> = 0
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">for</span> element <span style="color: #a020f0;">in</span> list_of_data:
-        <span style="color: #a020f0;">if</span> exclude <span style="color: #a020f0;">is</span> <span style="color: #a020f0;">not</span> <span style="color: #008b8b;">None</span> <span style="color: #a020f0;">and</span> element == exclude:
-            <span style="color: #a020f0;">continue</span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">skip this element</span>
-        <span style="color: #483d8b;">sum</span> += element
-        <span style="color: #a0522d;">num_elements</span> += 1
-<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span> / num_elements
+<span style="color: #98C379;">    returns: </span>
+<span style="color: #98C379;">    The computed average, possibly excluding a value.</span>
+<span style="color: #98C379;">    """</span>
+    <span style="color: #56B6C2;">sum</span> = 0
+    num_elements = 0
+    <span style="color: #C678DD;">for</span> element <span style="color: #C678DD;">in</span> list_of_data:
+        <span style="color: #C678DD;">if</span> exclude <span style="color: #C678DD;">is</span> <span style="color: #C678DD;">not</span> <span style="color: #56B6C2;">None</span> <span style="color: #C678DD;">and</span> element == exclude:
+            <span style="color: #C678DD;">continue</span>  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">skip this element</span>
+        <span style="color: #56B6C2;">sum</span> += element
+        num_elements += 1
+    <span style="color: #C678DD;">return</span> <span style="color: #56B6C2;">sum</span> / num_elements
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgac8a43a" class="outline-4">
-<h4 id="orgac8a43a"><span class="section-number-4">5.1.6.</span> Using agreed upon casing</h4>
+<div id="outline-container-orga984a6a" class="outline-4">
+<h4 id="orga984a6a"><span class="section-number-4">5.1.6.</span> Using agreed upon casing</h4>
 <div class="outline-text-4" id="text-5-1-6">
 <ul class="org-ul">
 <li><code>snake_casing</code> for functions and variables</li>
@@ -2045,17 +2046,17 @@ or maybe even:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">this_if_a_function</span>(data_x, data_y):
+<pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">this_if_a_function</span>(data_x, data_y):
 
 
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">BookEntry</span>:
+<span style="color: #C678DD;">class</span> <span style="color: #E5C07B;">BookEntry</span>:
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2ade0c8" class="outline-4">
-<h4 id="org2ade0c8"><span class="section-number-4">5.1.7.</span> Use type-annotations if possible</h4>
+<div id="outline-container-orga894bed" class="outline-4">
+<h4 id="orga894bed"><span class="section-number-4">5.1.7.</span> Use type-annotations if possible</h4>
 <div class="outline-text-4" id="text-5-1-7">
 <p>
 Type annotations can helper your editor (such as PyCharm) find potential issues in
@@ -2069,16 +2070,16 @@ compatible. For example, a string being used with a division.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">compute_average</span>(list_of_data: <span style="color: #483d8b;">list</span>[<span style="color: #483d8b;">int</span>],
-                    exclude: Optional[<span style="color: #483d8b;">int</span>] = <span style="color: #008b8b;">None</span>) -&gt; <span style="color: #483d8b;">float</span>:
-<span style="background-color: #f2f2f2;"> </span>   ...
+<pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">compute_average</span>(list_of_data: <span style="color: #56B6C2;">list</span>[<span style="color: #56B6C2;">int</span>],
+                    exclude: Optional[<span style="color: #56B6C2;">int</span>] = <span style="color: #56B6C2;">None</span>) -&gt; <span style="color: #56B6C2;">float</span>:
+    ...
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0339303" class="outline-4">
-<h4 id="org0339303"><span class="section-number-4">5.1.8.</span> Organise your imports</h4>
+<div id="outline-container-org8d143bf" class="outline-4">
+<h4 id="org8d143bf"><span class="section-number-4">5.1.8.</span> Organise your imports</h4>
 <div class="outline-text-4" id="text-5-1-8">
 <p>
 Make the distinction between standard library imports, externally installed imports,
@@ -2086,24 +2087,24 @@ and your own custom imports.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #b22222;"># </span><span style="color: #b22222;">internal imports</span>
-<span style="color: #a020f0;">import</span> os
-<span style="color: #a020f0;">from</span> math <span style="color: #a020f0;">import</span> pi
+<pre class="src src-python"><span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">internal imports</span>
+<span style="color: #C678DD;">import</span> os
+<span style="color: #C678DD;">from</span> math <span style="color: #C678DD;">import</span> pi
 
-<span style="color: #b22222;"># </span><span style="color: #b22222;">external imports</span>
-<span style="color: #a020f0;">import</span> numpy <span style="color: #a020f0;">as</span> np
-<span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
-<span style="color: #a020f0;">import</span> matplotlib.pyplot <span style="color: #a020f0;">as</span> plt
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">external imports</span>
+<span style="color: #C678DD;">import</span> numpy <span style="color: #C678DD;">as</span> np
+<span style="color: #C678DD;">import</span> pandas <span style="color: #C678DD;">as</span> pd
+<span style="color: #C678DD;">import</span> matplotlib.pyplot <span style="color: #C678DD;">as</span> plt
 
-<span style="color: #b22222;"># </span><span style="color: #b22222;">custom imports</span>
-<span style="color: #a020f0;">from</span> src.my_module <span style="color: #a020f0;">import</span> DAGs
+<span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">custom imports</span>
+<span style="color: #C678DD;">from</span> src.my_module <span style="color: #C678DD;">import</span> DAGs
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org430efd0" class="outline-4">
-<h4 id="org430efd0"><span class="section-number-4">5.1.9.</span> Functions should do one thing only</h4>
+<div id="outline-container-org82009e1" class="outline-4">
+<h4 id="org82009e1"><span class="section-number-4">5.1.9.</span> Functions should do one thing only</h4>
 <div class="outline-text-4" id="text-5-1-9">
 <p>
 Do one thing and do it well. Docstrings can help you understand what your function is
@@ -2113,8 +2114,8 @@ about breaking your single function into many parts.
 </div>
 </div>
 
-<div id="outline-container-orgbce2355" class="outline-4">
-<h4 id="orgbce2355"><span class="section-number-4">5.1.10.</span> Functions as re-usability</h4>
+<div id="outline-container-org7c4b37f" class="outline-4">
+<h4 id="org7c4b37f"><span class="section-number-4">5.1.10.</span> Functions as re-usability</h4>
 <div class="outline-text-4" id="text-5-1-10">
 <p>
 If you find yourself doing something over and over, a function call help consolidate
@@ -2123,8 +2124,8 @@ duplication and potentially reduce the chance of getting things wrong.
 </div>
 </div>
 
-<div id="outline-container-org6681496" class="outline-4">
-<h4 id="org6681496"><span class="section-number-4">5.1.11.</span> Be wary of God classes</h4>
+<div id="outline-container-org4a037f6" class="outline-4">
+<h4 id="org4a037f6"><span class="section-number-4">5.1.11.</span> Be wary of God classes</h4>
 <div class="outline-text-4" id="text-5-1-11">
 <p>
 God classes/God object is a class that is doing too many things or 'knows' about too
@@ -2134,8 +2135,8 @@ manage one thing or concept.
 </div>
 </div>
 
-<div id="outline-container-orgf7d3259" class="outline-4">
-<h4 id="orgf7d3259"><span class="section-number-4">5.1.12.</span> Documentation</h4>
+<div id="outline-container-org85837da" class="outline-4">
+<h4 id="org85837da"><span class="section-number-4">5.1.12.</span> Documentation</h4>
 <div class="outline-text-4" id="text-5-1-12">
 <blockquote>
 <p>
@@ -2151,8 +2152,8 @@ distract rather than inform). An example from PEP 8:</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">x</span> = x + 1                 <span style="color: #b22222;"># </span><span style="color: #b22222;">Increment x</span>
-<span style="color: #a0522d;">x</span> = x + 1                 <span style="color: #b22222;"># </span><span style="color: #b22222;">Compensate for border</span>
+<pre class="src src-python"><span style="color: #E06C75;">x</span> = x + 1                 <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">Increment x</span>
+<span style="color: #E06C75;">x</span> = x + 1                 <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">Compensate for border</span>
 </pre>
 </div>
 
@@ -2164,8 +2165,8 @@ explain, educate the reader.</li>
 </div>
 </div>
 
-<div id="outline-container-org4b278a7" class="outline-4">
-<h4 id="org4b278a7"><span class="section-number-4">5.1.13.</span> Perform testing!</h4>
+<div id="outline-container-org343695c" class="outline-4">
+<h4 id="org343695c"><span class="section-number-4">5.1.13.</span> Perform testing!</h4>
 <div class="outline-text-4" id="text-5-1-13">
 <p>
 Make sure to write tests, for example, using <code>unittest</code>
@@ -2180,9 +2181,9 @@ code.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 11th October 2021</p>
+<p class="date">Date: &lt;TODO&gt;</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2021-10-26 mar. 15:12</p>
+<p class="date">Created: 2022-09-11 Sun 08:37</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

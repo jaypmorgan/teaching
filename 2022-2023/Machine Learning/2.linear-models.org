@@ -539,6 +539,8 @@ visualising this will look something like figure [[fig:lm_learn]].
 
 *** Multiple variables
 
+*** Solving the linear model using Least Squares
+
 * Logistic Regression
 
 ** Classification

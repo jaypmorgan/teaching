@@ -1,59 +1,8 @@
-#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
-#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t email:nil
-#+options: f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+options: timestamp:t title:t toc:t todo:t |:t
 #+title: Programming Level-up
-#+SUBTITLE: Lecture 4 -- An Introduction to Numerical Computing in Python
+#+subtitle: Lecture 4 -- An Introduction to Numerical Computing in Python
 #+date: 11th October 2021
 #+author: Jay Morgan
-#+language: en
-#+select_tags: export
-#+exclude_tags: noexport
-#+creator: Emacs 27.1 (Org mode 9.4.6)
-#+cite_export:
-
-#+startup: beamer
-#+LATEX_CLASS: beamer
-#+LATEX_CLASS_OPTIONS: [10pt]
-#+BEAMER_FRAME_LEVEL: 2
-#+BEAMER_THEME: Berkeley
-#+LATEX_HEADER: \setlength{\parskip}{5pt}
-#+LATEX_HEADER: \newcommand{\footnoteframe}[1]{\footnote[frame]{#1}}
-#+LaTeX_HEADER: \addtobeamertemplate{footnote}{}{\vspace{2ex}}
-#+LATEX_HEADER: \usepackage{tabularx}
-
-#+PROPERTY: header-args:python :results pp output :session :exports both :eval never-export :post commentify(*this*)
-
-#+name: commentify
-#+begin_src emacs-lisp :var result="" :exports none
-(with-output-to-string
-  (princ "Results: \n")
-  (dolist (result-item (split-string result "\n"))
-    (princ (concat "# => " (format "%s\n" result-item)))))
-#+end_src
-
-#+RESULTS: commentify
-: Results: 
-: # => 
-
-#+begin_src emacs-lisp :exports none
-(setq org-latex-minted-options
-      '(("frame" "lines")
-	("linenos=true")
-	("firstnumber=last")
-	("fontsize=\\footnotesize")
-	("xleftmargin=15pt")
-	("numbersep=8pt")))
-#+end_src
-
-#+RESULTS:
-| frame                  | lines |
-| linenos=true           |       |
-| firstnumber=last       |       |
-| fontsize=\footnotesize |       |
-| xleftmargin=15pt       |       |
-| numbersep=8pt          |       |
-
+#+include: ./header.org
 
 * NumPy
 
@@ -817,3 +766,6 @@ points for learning about NumPy is NumPy's own user guide on the web: https://nu
 *** optimize
 
 
+# Local Variables:
+# org-latex-minted-options: (("frame" "lines") ("linenos=true") ("firstnumber=last") ("fontsize=\\footnotesize") ("bgcolor=LightGray") ("xleftmargin=5pt") ("tabsize=2") ("breaklines=true") ("numbersep=10pt"))
+# End:
