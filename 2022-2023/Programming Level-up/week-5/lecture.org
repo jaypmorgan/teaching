@@ -929,6 +929,17 @@ Will list out all nodes and all capabilities of each node. Or just one node:
 scontrol show node lisnode2
 #+end_src
 
+*** TODO
+
+#+begin_src bash
+salloc --time=10:00:00 &
+ssh <name>
+#+end_src
+
+#+begin_src bash
+ssh -X for x11 forwarding
+#+end_src
+
 *** How to launch a job -- sbatch
 
 It can be quite inconvenient to launch an interactive job to run some compute,
