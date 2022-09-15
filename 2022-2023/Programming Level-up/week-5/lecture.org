@@ -940,6 +940,9 @@ ssh <name>
 ssh -X for x11 forwarding
 #+end_src
 
+- using ipython with autoreload extension
+- reverse proxy with a jupyter notebook
+  
 *** How to launch a job -- sbatch
 
 It can be quite inconvenient to launch an interactive job to run some compute,

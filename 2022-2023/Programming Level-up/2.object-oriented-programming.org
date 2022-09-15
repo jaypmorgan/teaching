@@ -1,6 +1,6 @@
 #+title: Programming Level-up
 #+SUBTITLE: Lecture 2 - More advanced Python & Classes
-#+date: 2021-10-01
+#+date: 20th September 2022
 #+author: Jay Morgan
 #+include: ./header.org
 

@@ -1,7 +1,8 @@
 #+title: Programming Level-up
 #+SUBTITLE: Lecture 1 - Introduction and Basic Python Programming
-#+date: 11th October 2021
+#+date: 16th September 2022
 #+author: Jay Morgan
+#+startup: beamer
 #+include: ./header.org
 
 #+name: commentify
@@ -405,23 +406,6 @@ print("Pi to 3 digits is: %-10.3f" % 3.1415926535)
 : # => Pi to 3 digits is:      3.142
 : # => Pi to 3 digits is: 3.142
 
-*** Quick Exercise -- printing with =%=
-
-- Creating a dictionary containing the following information:
-
-#+ATTR_LATEX: :booktabs t
-|------+----------|
-| Key  |    Value |
-|------+----------|
-| name |     Jane |
-| age  |       35 |
-| lon  | -3.52352 |
-| lat  |  2.25222 |
-|------+----------|
-
-- Print (using the =%= operator) the values of this dictionary so that the result looks
-  like: "Jane (located at -3.5, 2.2) is 35 years old"
-
 *** Better ways of printing strings -- =f-strings=
 
 The final method of formatting strings is a newcomer within the language, it is the
@@ -476,20 +460,6 @@ print(f"Pi is {pi:.3f} to 3 decimal places")
 : # => Pi is 3.142 to 3 decimal places
 
 Many more examples can be found at: https://zetcode.com/python/fstring/
-
-*** Quick Exercise -- printing with =f-string=
-
-- Creating a dictionary containing the following information:
-
-| Key  |    Value |
-|------+----------|
-| name |     Jane |
-| age  |       35 |
-| lon  | -3.52352 |
-| lat  |  2.25222 |
-
-- Print (using an =f-string=) the values of this dictionary so that the result looks
-  like: "Jane (located at -3.5, 2.2) is 35 years old"
 
 *** Operations on strings -- splitting
 
@@ -575,22 +545,6 @@ print(x.replace("contains some", "definitely contains some"))
 #+RESULTS:
 : Results: 
 : # => This is a string that definitely contains some text
-
-*** Operations on strings -- does it contain a substring?
-
-We can check if a string exists within another string using the =in= keyword. This
-returns a Boolean value, so we can use it as a condition to an =if= statement.
-
-#+begin_src python
-x = "This is a string that contains some text"
-
-if "text" in x:
-    print("It exists")
-#+end_src
-
-#+RESULTS:
-: Results: 
-: # => It exists
 
 ** Compound data structures
 *** Container data types/Data structures
@@ -781,96 +735,6 @@ print(my_list)
 : Results: 
 : # => ['all', 'dogs', 'bark']
 
-*** List comprehensions
-
-We have seen previously how =for= loops work. Knowing the syntax of a =for= loop and
-wanting to populate a list with some data, we might be tempted to write:
-
-#+begin_src python
-x = []
-for i in range(3):
-    x.append(i)
-
-print(x)
-#+end_src
-
-#+RESULTS:
-: Results: 
-: # => [0, 1, 2]
-
-While this is perfectly valid Python code, Python itself provides 'List
-comprehensions' to make this process easier.
-
-#+begin_src python
-x = [i for i in range(3)]
-#+end_src
-
-*** List comprehensions -- syntax
-
-The syntax of a list comprehensions is:
-
-#+begin_src python
-[ <variable> for <variable> in <iterable> ]
-#+end_src
-
-We can also perform similar actions with a dictionary
-
-#+begin_src python
-[ <key>, <value> for <key>, <value> in <dictionary.items()> ]
-#+end_src
-
-*** List comprehensions -- using =if='s
-
-Perhaps we only want to optionally perform an action within the list comprehension?
-Python allows us to do this with the inline =if= statement we've seen in the previous lecture.
-
-#+begin_src python
-x = [i if i < 5 else -1 for i in range(7)]
-print(x)
-#+end_src
-
-#+RESULTS:
-: Results: 
-: # => [0, 1, 2, 3, 4, -1, -1]
-
-We add the inline =<var> if <condition> else <other-var>= before the =for= loop part of
-the comprehension.
-
-*** List comprehension -- using =if='s
-
-There is another type of =if= statement in a list comprehension, this occurs when we
-don't have an =else=.
-
-#+begin_src python
-x = [i for i in range(7) if i < 3]
-print(x)
-#+end_src
-
-#+RESULTS:
-: Results: 
-: # => [0, 1, 2]
-
-In this example, we're only 'adding' to the list if the condition ($i < 3$) is true,
-else the element is not included in the resulting list.
-
-*** List comprehensions -- multiple =for='s
-
-If we like, we can also use nested for loops by simply adding another for loop into
-the comprehension.
-
-#+begin_src python
-x = [(i, j) for i in range(2) for j in range(2)]
-
-print(x)
-#+end_src
-
-#+RESULTS:
-: Results: 
-: # => [(0, 0), (0, 1), (1, 0), (1, 1)]
-
-In this example, we're creating a tuple for each element, effectively each
-combination of 1 and 0.
-
 *** Dictionaries
 
 Dictionaries are a little different from lists as each 'element' consists of a
@@ -936,24 +800,6 @@ print(my_dict)
 #+RESULTS:
 : Results: 
 : # => {'name': 'James', 'age': 35}
-
-*** List comprehensions -- dictionary
-
-Python doesn't restrict us to list comprehensions, but we can do a similar
-operation to create a dictionary.
-
-#+begin_src python
-x = [2, 5, 6]
-y = {idx: val for idx, val in enumerate(x)}
-print(y)
-#+end_src
-
-#+RESULTS:
-: Results: 
-: # => {0: 2, 1: 5, 2: 6}
-
-Here, every item in =x= has been associated with its numerical index as a key thanks to
-the =enumerate= function that returns both the index and value at iteration in the for loop.
 
 *** Dictionaries -- Quick Exercise
 
@@ -1091,6 +937,23 @@ else:
 #+RESULTS:
 : Results: 
 : # => X is greater than or equal to five
+
+*** If statement -- does it contain a substring?
+
+We can check if a string exists within another string using the =in= keyword. This
+returns a Boolean value, so we can use it as a condition to an =if= statement.
+
+#+begin_src python
+x = "This is a string that contains some text"
+
+if "text" in x:
+    print("It exists")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => It exists
+
 
 *** If statement -- Quick Exercise 1
 
@@ -1435,6 +1298,116 @@ for the_value in my_dict.values():
 : # => jane
 : # => 35
 : # => France
+
+*** For loop -- List comprehensions
+
+We have seen previously how =for= loops work. Knowing the syntax of a =for= loop and
+wanting to populate a list with some data, we might be tempted to write:
+
+#+begin_src python
+x = []
+for i in range(3):
+    x.append(i)
+
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2]
+
+While this is perfectly valid Python code, Python itself provides 'List
+comprehensions' to make this process easier.
+
+#+begin_src python
+x = [i for i in range(3)]
+#+end_src
+
+*** For loop -- List comprehensions -- syntax
+
+The syntax of a list comprehensions is:
+
+#+begin_src python
+[ <variable> for <variable> in <iterable> ]
+#+end_src
+
+We can also perform similar actions with a dictionary
+
+#+begin_src python
+[ <key>, <value> for <key>, <value> in <dictionary.items()> ]
+#+end_src
+
+*** For loop -- List comprehensions -- using =if='s
+
+Perhaps we only want to optionally perform an action within the list comprehension?
+Python allows us to do this with the inline =if= statement we've seen in the previous lecture.
+
+#+begin_src python
+x = [i if i < 5 else -1 for i in range(7)]
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2, 3, 4, -1, -1]
+
+We add the inline =<var> if <condition> else <other-var>= before the =for= loop part of
+the comprehension.
+
+*** For loop -- List comprehension -- using =if='s
+
+There is another type of =if= statement in a list comprehension, this occurs when we
+don't have an =else=.
+
+#+begin_src python
+x = [i for i in range(7) if i < 3]
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2]
+
+In this example, we're only 'adding' to the list if the condition ($i < 3$) is true,
+else the element is not included in the resulting list.
+
+*** For loop -- List comprehensions -- multiple =for='s
+
+If we like, we can also use nested for loops by simply adding another for loop into
+the comprehension.
+
+#+begin_src python
+x = [(i, j) for i in range(2) for j in range(2)]
+
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [(0, 0), (0, 1), (1, 0), (1, 1)]
+
+In this example, we're creating a tuple for each element, effectively each
+combination of 1 and 0.
+
+
+*** For loop -- List comprehensions -- dictionary
+
+Python doesn't restrict us to list comprehensions, but we can do a similar
+operation to create a dictionary.
+
+#+begin_src python
+x = [2, 5, 6]
+y = {idx: val for idx, val in enumerate(x)}
+print(y)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => {0: 2, 1: 5, 2: 6}
+
+Here, every item in =x= has been associated with its numerical index as a key thanks to
+the =enumerate= function that returns both the index and value at iteration in the for loop.
+
 
 *** For loop -- Quick Exercise
 

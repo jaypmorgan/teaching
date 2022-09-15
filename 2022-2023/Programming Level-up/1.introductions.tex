@@ -1,4 +1,4 @@
-% Created 2022-08-19 ven. 10:35
+% Created 2022-09-15 Thu 12:30
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -24,7 +24,7 @@
 \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 \usetheme{Berkeley}
 \author{Jay Morgan}
-\date{11th October 2021}
+\date{16th September 2022}
 \title{Programming Level-up}
 \subtitle{Lecture 1 - Introduction and Basic Python Programming}
 \hypersetup{
@@ -43,12 +43,12 @@
 
 
 \section{Introduction}
-\label{sec:org512b10b}
+\label{sec:orgf298041}
 
 \subsection{Course introduction}
-\label{sec:orga03aa82}
+\label{sec:org39f9319}
 
-\begin{frame}[label={sec:org9f4e99e}]{What\ldots{}? Why\ldots{}?}
+\begin{frame}[label={sec:org6249571}]{What\ldots{}? Why\ldots{}?}
 \begin{itemize}
 \item Programming is much more than the act of programming a small script. Even if you've
 programmed before, doing so for a research project requires a lot of rigour to
@@ -62,7 +62,7 @@ able to do it comfortably for your research and work.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org5a460bf}]{What is this course going to teach me?}
+\begin{frame}[label={sec:org93d3411}]{What is this course going to teach me?}
 \begin{enumerate}
 \item Programming with the Python Programming Language.
 \begin{itemize}
@@ -89,7 +89,7 @@ include them in reports/papers.
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:org0958953}]{How the course will be delivered}
+\begin{frame}[label={sec:orgc235782}]{How the course will be delivered}
 \begin{itemize}
 \item 2/3 hour sessions over the next 2 months.
 \item Throughout the lecture, there will be small exercises to try out what we've
@@ -100,7 +100,7 @@ out what you've learnt. The best way to learn how to program is to program.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org656baf8}]{Rough timeline}
+\begin{frame}[label={sec:org571a182}]{Rough timeline}
 \begin{center}
 \scriptsize
 \begin{tabular}{rll}
@@ -130,9 +130,9 @@ Lecture & Topic & Description\\
 \end{frame}
 
 \subsection{Contact information}
-\label{sec:orga9fea99}
+\label{sec:org41ff117}
 
-\begin{frame}[label={sec:org478533c},fragile]{Where to find me}
+\begin{frame}[label={sec:orgb72abc9},fragile]{Where to find me}
  My name is Dr Jay Morgan. I am a researcher work on Deep Learning in Astrophysics.
 
 \begin{itemize}
@@ -146,18 +146,18 @@ Lecture & Topic & Description\\
 \end{frame}
 
 \section{Python}
-\label{sec:orgb885aa3}
+\label{sec:org81d6e21}
 
 \subsection{Introducing Python}
-\label{sec:orgb0000f3}
+\label{sec:orgab38537}
 
-\begin{frame}[label={sec:org0e66dec}]{Python}
+\begin{frame}[label={sec:orgd3b1c69}]{Python}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{./images/python-objects.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org327db9d}]{Python}
+\begin{frame}[label={sec:orgf12785c}]{Python}
 \begin{columns}
 \begin{column}{0.6\columnwidth}
 \begin{itemize}
@@ -179,7 +179,7 @@ themselves more productive in Python than in other languages such as say C++.
 \end{frame}
 
 
-\begin{frame}[label={sec:orgd66e33e},fragile]{A first program}
+\begin{frame}[label={sec:orgff6fb78},fragile]{A first program}
  We're going to start with the 'Hello, World' program that prints \texttt{Hello, World!} to the
 screen. In python this is as simple as writing:
 
@@ -198,7 +198,7 @@ computer. It is there for you to document your code for others, and most
 importantly, for yourself.
 \end{frame}
 
-\begin{frame}[label={sec:orgb502d15},fragile]{Running this program}
+\begin{frame}[label={sec:org3b35d04},fragile]{Running this program}
  Before we can run this program, we need to save it somewhere. For this, will
 create a new file, insert this text, and save it as \texttt{<filename>.py}, where
 \texttt{<filename>} is what we want to call the script. This name doesn't matter for its
@@ -213,7 +213,7 @@ python3 <filename>.py
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org0cac7b6},fragile]{An alternative method of running python}
+\begin{frame}[label={sec:org8e48dfa},fragile]{An alternative method of running python}
  You may notice that if you don't give \texttt{python} a filename to run, you will enter
 something called the \texttt{REPL}.
 
@@ -227,7 +227,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 \texttt{REPL} stands for \texttt{READ}, \texttt{EXECUTE}, \texttt{PRINT}, \texttt{LOOP}.
 \end{frame}
 
-\begin{frame}[label={sec:org4b4c063},fragile]{Variables}
+\begin{frame}[label={sec:org14f39ff},fragile]{Variables}
  A \emph{variable} is a \emph{symbol} associated with a \emph{value}. This value can differ widely, and we
 will take a look at different types of values/data later.
 
@@ -253,9 +253,9 @@ Results:
 \end{frame}
 
 \subsection{Types of data}
-\label{sec:orgc8d428a}
+\label{sec:org595ee05}
 
-\begin{frame}[label={sec:orgd3dc2f9},fragile]{Primitive data types}
+\begin{frame}[label={sec:org34e41d5},fragile]{Primitive data types}
  Primitive data types are the most fundamental parts of programming, they cannot
 be \emph{broken} down.
 
@@ -267,7 +267,7 @@ True    # Boolean (or bool for short)
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org6028ef3},fragile]{Primitive data type}
+\begin{frame}[label={sec:org3ab19aa},fragile]{Primitive data type}
  We can get the type of some data by using the \texttt{type(...)} function. For example,
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -287,7 +287,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org0df6e25},fragile]{Basic Math with primitives}
+\begin{frame}[label={sec:org6921939},fragile]{Basic Math with primitives}
  Using these primitive data types, we can do some basic math operations!
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -310,7 +310,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgd936937},fragile]{Basic Math}
+\begin{frame}[label={sec:org7e8de7a},fragile]{Basic Math}
  Sometimes types get converted to the same type:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -335,7 +335,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org3f52a19},fragile]{BODMAS in Python}
+\begin{frame}[label={sec:org9d95d7a},fragile]{BODMAS in Python}
  Like in mathematics, certain math operator take precedence over others.
 
 \begin{itemize}
@@ -361,7 +361,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgff61c84},fragile]{Basic Math -- Quick exercise}
+\begin{frame}[label={sec:orge949981},fragile]{Basic Math -- Quick exercise}
  Write the following equation in python:
 
 \((5 + 2) \times (\frac{10}{2} + 10)^2\)
@@ -373,9 +373,9 @@ Your answer should come out as: \texttt{1575.0}
 \end{frame}
 
 \subsection{Working with strings}
-\label{sec:org8eca5c9}
+\label{sec:org1525e19}
 
-\begin{frame}[label={sec:org2f8dddd},fragile]{Formatting strings}
+\begin{frame}[label={sec:org4b1d699},fragile]{Formatting strings}
  In many previous examples when we've printed strings, we've done something like:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -397,7 +397,7 @@ they are printed.
 We're going to take a look now at much better ways of printing.
 \end{frame}
 
-\begin{frame}[label={sec:org51dd901},fragile]{Better ways of printing strings - \%}
+\begin{frame}[label={sec:orga48d893},fragile]{Better ways of printing strings - \%}
  The first method is using \texttt{\%}. When we print, we first construct a string with special
 delimiters, such as \texttt{\%s} that denotes a string, and \texttt{\%d} that denotes a number. This is
 telling Python where we want the values to be placed in the string.
@@ -424,7 +424,7 @@ Here we are specifying the a string \texttt{\%s} and number \texttt{\%d}, and th
 that correspond with that data type.
 \end{frame}
 
-\begin{frame}[label={sec:orgfa3a80a},fragile]{Better ways of printing strings -- data specifiers}
+\begin{frame}[label={sec:org2fdcd2f},fragile]{Better ways of printing strings -- data specifiers}
  The special delimiters correspond with a data type. Here are some of the most common:
 
 \begin{itemize}
@@ -437,7 +437,7 @@ There are others such as \texttt{\%x} that prints the hexadecimal representation
 less common. You can find the full list at: \url{https://docs.python.org/3/library/stdtypes.html\#old-string-formatting}
 \end{frame}
 
-\begin{frame}[label={sec:org50cda86},fragile]{Better ways of printing strings -- floating points}
+\begin{frame}[label={sec:orge1b6018},fragile]{Better ways of printing strings -- floating points}
  When using these delimiters, we can add modifiers to how they format and display the
 value. Take a very common example, where we have a floating point value, and, when
 printing it, we only want to print to 3 decimal places. To accomplish this, we again
@@ -454,7 +454,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgc3c3d5d},fragile]{Better ways of printing strings -- floating points}
+\begin{frame}[label={sec:orgad0c67e},fragile]{Better ways of printing strings -- floating points}
  In the previous example, we used \texttt{.3} to specify 3 decimal places. If we put a number
 before the decimal, like \texttt{10.3} we are telling Python \emph{make this float occupy 10 spaces
 and this float should have 3 decimal places printed}.  When it gets printed, you will
@@ -473,31 +473,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org56ae486},fragile]{Quick Exercise -- printing with \texttt{\%}}
- \begin{itemize}
-\item Creating a dictionary containing the following information:
-\end{itemize}
-
-\begin{center}
-\begin{tabular}{lr}
-\toprule
-Key & Value\\
-\midrule
-name & Jane\\
-age & 35\\
-lon & -3.52352\\
-lat & 2.25222\\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\begin{itemize}
-\item Print (using the \texttt{\%} operator) the values of this dictionary so that the result looks
-like: "Jane (located at -3.5, 2.2) is 35 years old"
-\end{itemize}
-\end{frame}
-
-\begin{frame}[label={sec:org0ad1005},fragile]{Better ways of printing strings -- \texttt{f-strings}}
+\begin{frame}[label={sec:orga1f96c0},fragile]{Better ways of printing strings -- \texttt{f-strings}}
  The final method of formatting strings is a newcomer within the language, it is the
 so-called \texttt{f-string}. Where a \texttt{f} character is prefixed to the beginning of the string
 you're creating. \texttt{f-string}'s allow you to use Python syntax within the string (again
@@ -518,7 +494,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgda4f8dd},fragile]{Better ways of printing strings -- \texttt{f-strings}}
+\begin{frame}[label={sec:org363b178},fragile]{Better ways of printing strings -- \texttt{f-strings}}
  \texttt{f-string}'s allow you to execute Python code within the string. Here we are accessing
 the value from the dictionary by specifying the key within the string itself! It
 certainly makes it a lot easier, especially if we only need to access the values for
@@ -539,7 +515,7 @@ Results:
 \url{https://pyformat.info/}
 \end{frame}
 
-\begin{frame}[label={sec:org75f2809},fragile]{Better ways of printing strings -- \texttt{f-string}}
+\begin{frame}[label={sec:org524dc95},fragile]{Better ways of printing strings -- \texttt{f-string}}
  We can still format the values when using \texttt{f-string}. The method is similar to those
 using the \texttt{\%f} specifiers.
 
@@ -557,29 +533,7 @@ Results:
 Many more examples can be found at: \url{https://zetcode.com/python/fstring/}
 \end{frame}
 
-\begin{frame}[label={sec:org9770681},fragile]{Quick Exercise -- printing with \texttt{f-string}}
- \begin{itemize}
-\item Creating a dictionary containing the following information:
-\end{itemize}
-
-\begin{center}
-\begin{tabular}{lr}
-Key & Value\\
-\hline
-name & Jane\\
-age & 35\\
-lon & -3.52352\\
-lat & 2.25222\\
-\end{tabular}
-\end{center}
-
-\begin{itemize}
-\item Print (using an \texttt{f-string}) the values of this dictionary so that the result looks
-like: "Jane (located at -3.5, 2.2) is 35 years old"
-\end{itemize}
-\end{frame}
-
-\begin{frame}[label={sec:org0f9d367},fragile]{Operations on strings -- splitting}
+\begin{frame}[label={sec:org178f7bf},fragile]{Operations on strings -- splitting}
  Apart from formatting, there are plenty more operations we can perform on strings. We
 are going to highlight some of the most common here.
 
@@ -602,7 +556,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org5274ee9},fragile]{Operations on strings -- joining}
+\begin{frame}[label={sec:orgdf51cbd},fragile]{Operations on strings -- joining}
  As \texttt{.split()} splits a single string into a list, \texttt{.join()} joins a list of strings into
 a single string. To use \texttt{.join()}, we first create a string of the delimiter we want to
 use to join the list of strings by. In this example we're going to use \texttt{"-"}. Then we
@@ -622,7 +576,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgffda1b1},fragile]{Operations on strings -- changing case}
+\begin{frame}[label={sec:orgbf6af11},fragile]{Operations on strings -- changing case}
  Other common operations on strings involve change the case. For example:
 
 \begin{itemize}
@@ -654,7 +608,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org78ea3f1},fragile]{Operations on strings -- replacing strings}
+\begin{frame}[label={sec:org212bcea},fragile]{Operations on strings -- replacing strings}
  To replace a substring, we use the \texttt{.replace()} method. The first argument is the old
 string you want to replace. The second argument is what you want to replace it with.
 
@@ -670,26 +624,9 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org9e4a892},fragile]{Operations on strings -- does it contain a substring?}
- We can check if a string exists within another string using the \texttt{in} keyword. This
-returns a Boolean value, so we can use it as a condition to an \texttt{if} statement.
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-x = "This is a string that contains some text"
-
-if "text" in x:
-    print("It exists")
-\end{minted}
-
-\begin{verbatim}
-Results: 
-# => It exists
-\end{verbatim}
-\end{frame}
-
 \subsection{Compound data structures}
-\label{sec:org8cb7bb8}
-\begin{frame}[label={sec:org018339b},fragile]{Container data types/Data structures}
+\label{sec:org3e69100}
+\begin{frame}[label={sec:orgf746875},fragile]{Container data types/Data structures}
  Container data types or data structures, as the name suggests, are used to contain
 other things. Types of containers are:
 
@@ -711,7 +648,7 @@ We'll take a look at each of these different container types and explore why we
 might want to use each of them.
 \end{frame}
 
-\begin{frame}[label={sec:org4f0d4b9},fragile]{An aside on Terminology}
+\begin{frame}[label={sec:org7ad1782},fragile]{An aside on Terminology}
  To make our explanations clearer and reduce confusion, each of the different symbols
 have unique names.
 
@@ -725,7 +662,7 @@ see the same use outside the course.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org8dc9fbb},fragile]{Lists}
+\begin{frame}[label={sec:org96cffb3},fragile]{Lists}
  A hetreogenious container. This means that it can store any type of data.
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -752,7 +689,7 @@ Results:
 0-indexed.
 \end{frame}
 
-\begin{frame}[label={sec:orgd99e671},fragile]{Better indexing -- slices}
+\begin{frame}[label={sec:orgf8b4e1c},fragile]{Better indexing -- slices}
  If we wanted to access an element from a data structure, such as a list, we would use
 the \texttt{[ ]} accessor, specifying the index of the element we wish to retrieve (remember
 that indexes start at zero!). But what if we ranted to access many elements at once?
@@ -778,7 +715,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgd0c14bc},fragile]{Better indexing -- range}
+\begin{frame}[label={sec:org11c8435},fragile]{Better indexing -- range}
  When we use \texttt{start\_index:end\_index}, the slice increments by 1 from \texttt{start\_index} to
 \texttt{end\_index}. If we wanted to increment by a different amount we can use the slicing
 form:
@@ -800,7 +737,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgf7fd850},fragile]{Better indexing -- reverse}
+\begin{frame}[label={sec:org1d191ba},fragile]{Better indexing -- reverse}
  One strange fact about the step is that if we specify a negative number for the step,
 Python will work backwards, and effectively reverse the list.
 
@@ -816,7 +753,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org84b8a18},fragile]{Better indexing -- range}
+\begin{frame}[label={sec:org76fa54c},fragile]{Better indexing -- range}
  In a previous example, I created a slice like \texttt{0:3}. This was a little wasteful as we
 can write slightly less code. If we write \texttt{:end\_index}, Python assumes and creates a
 slice from the first index (0) to the \texttt{end\_index}. If we write \texttt{start\_index:}, Python
@@ -836,7 +773,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgb80bfab},fragile]{Better indexing -- backwards}
+\begin{frame}[label={sec:org048b51c},fragile]{Better indexing -- backwards}
  Finally, we also work backwards from the end of list. If we use a negative number,
 such as -1, we are telling Python, take the elements from the end of the list. -1 is
 the final index, and numbers lower than -1 work further backwards through the list.
@@ -855,7 +792,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org6047d24},fragile]{Better indexing --backwards}
+\begin{frame}[label={sec:org74f74d9},fragile]{Better indexing --backwards}
  Slicing with negative indexes, also works. Here we are creating a slice from the end
 of the list - 10, to the last (but not including) index.
 
@@ -871,7 +808,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org1267459},fragile]{Lists -- adding data}
+\begin{frame}[label={sec:org26de6ee},fragile]{Lists -- adding data}
  If we want to add items to the end of the list, we use the \texttt{append} function:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -890,105 +827,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgc5071df},fragile]{List comprehensions}
- We have seen previously how \texttt{for} loops work. Knowing the syntax of a \texttt{for} loop and
-wanting to populate a list with some data, we might be tempted to write:
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-x = []
-for i in range(3):
-    x.append(i)
-
-print(x)
-\end{minted}
-
-\begin{verbatim}
-Results: 
-# => [0, 1, 2]
-\end{verbatim}
-
-
-While this is perfectly valid Python code, Python itself provides 'List
-comprehensions' to make this process easier.
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-x = [i for i in range(3)]
-\end{minted}
-\end{frame}
-
-\begin{frame}[label={sec:orgc225e82},fragile]{List comprehensions -- syntax}
- The syntax of a list comprehensions is:
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-[ <variable> for <variable> in <iterable> ]
-\end{minted}
-
-We can also perform similar actions with a dictionary
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-[ <key>, <value> for <key>, <value> in <dictionary.items()> ]
-\end{minted}
-\end{frame}
-
-\begin{frame}[label={sec:orgac04e55},fragile]{List comprehensions -- using \texttt{if}'s}
- Perhaps we only want to optionally perform an action within the list comprehension?
-Python allows us to do this with the inline \texttt{if} statement we've seen in the previous lecture.
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-x = [i if i < 5 else -1 for i in range(7)]
-print(x)
-\end{minted}
-
-\begin{verbatim}
-Results: 
-# => [0, 1, 2, 3, 4, -1, -1]
-\end{verbatim}
-
-
-We add the inline \texttt{<var> if <condition> else <other-var>} before the \texttt{for} loop part of
-the comprehension.
-\end{frame}
-
-\begin{frame}[label={sec:org86cdb7b},fragile]{List comprehension -- using \texttt{if}'s}
- There is another type of \texttt{if} statement in a list comprehension, this occurs when we
-don't have an \texttt{else}.
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-x = [i for i in range(7) if i < 3]
-print(x)
-\end{minted}
-
-\begin{verbatim}
-Results: 
-# => [0, 1, 2]
-\end{verbatim}
-
-
-In this example, we're only 'adding' to the list if the condition (\(i < 3\)) is true,
-else the element is not included in the resulting list.
-\end{frame}
-
-\begin{frame}[label={sec:org6412dd7},fragile]{List comprehensions -- multiple \texttt{for}'s}
- If we like, we can also use nested for loops by simply adding another for loop into
-the comprehension.
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-x = [(i, j) for i in range(2) for j in range(2)]
-
-print(x)
-\end{minted}
-
-\begin{verbatim}
-Results: 
-# => [(0, 0), (0, 1), (1, 0), (1, 1)]
-\end{verbatim}
-
-
-In this example, we're creating a tuple for each element, effectively each
-combination of 1 and 0.
-\end{frame}
-
-\begin{frame}[label={sec:orgcc3c912},fragile]{Dictionaries}
+\begin{frame}[label={sec:orge6bbc81},fragile]{Dictionaries}
  Dictionaries are a little different from lists as each 'element' consists of a
 key-pair value. Let's have a look at some examples where the dictionaries contains
 \alert{one} element:
@@ -1023,7 +862,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org5152858},fragile]{Dictionaries}
+\begin{frame}[label={sec:orgbff2767},fragile]{Dictionaries}
  The key in the dictionary doesn't necessarily need to be a string. For example, in
 this case, we have created two key-pair elements, where the keys to both are tuples
 of numbers.
@@ -1040,7 +879,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org1cf46bf},fragile]{Dictionaries -- adding data}
+\begin{frame}[label={sec:org272130b},fragile]{Dictionaries -- adding data}
  If we want to add data to a dictionary, we simply perform the accessor method with a
 key that is not in the dictionary:
 
@@ -1059,27 +898,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org303b2ff},fragile]{List comprehensions -- dictionary}
- Python doesn't restrict us to list comprehensions, but we can do a similar
-operation to create a dictionary.
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
-x = [2, 5, 6]
-y = {idx: val for idx, val in enumerate(x)}
-print(y)
-\end{minted}
-
-\begin{verbatim}
-Results: 
-# => {0: 2, 1: 5, 2: 6}
-\end{verbatim}
-
-
-Here, every item in \texttt{x} has been associated with its numerical index as a key thanks to
-the \texttt{enumerate} function that returns both the index and value at iteration in the for loop.
-\end{frame}
-
-\begin{frame}[label={sec:org741208a},fragile]{Dictionaries -- Quick Exercise}
+\begin{frame}[label={sec:orge3644a8},fragile]{Dictionaries -- Quick Exercise}
  \begin{itemize}
 \item Create a dictionary for the following address, and assign it a variable name
 called \texttt{address}:
@@ -1102,7 +921,7 @@ city & London\\
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org428d70e},fragile]{Tuples}
+\begin{frame}[label={sec:orgce99ae0},fragile]{Tuples}
  \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
 my_tuple = (1, 56, -2)
 \end{minted}
@@ -1124,7 +943,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgc493deb},fragile]{Tuples}
+\begin{frame}[label={sec:org417eed5},fragile]{Tuples}
  Unlike lists, tuples cannot be changed after they've been created. We say they are
 \alert{immutable}. So this will \alert{not} work:
 
@@ -1142,7 +961,7 @@ TypeError: 'tuple' object does not support item assignment
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgc484e2e},fragile]{Sets}
+\begin{frame}[label={sec:org305e24c},fragile]{Sets}
  Sets in Python are like tuples, but contain only unique elements.
 
 You can use the \texttt{set( )} function (\alert{more on functions later!}), supplying a list, to create a set:
@@ -1161,7 +980,7 @@ Results:
 Notice how there is only one '2' in the resulting set, duplicate elements are removed.
 \end{frame}
 
-\begin{frame}[label={sec:orgabdb2bb},fragile]{Sets -- adding data}
+\begin{frame}[label={sec:org4ce8bb4},fragile]{Sets -- adding data}
  If we want to add data to a set, we use the \texttt{.add()} method. The element used as an
 argument to this function will only be added to the set if it is not already in the
 set.
@@ -1183,8 +1002,8 @@ Results:
 \end{frame}
 
 \subsection{Conditional expressions}
-\label{sec:org58ba7f4}
-\begin{frame}[label={sec:orgadf82f8},fragile]{If statement}
+\label{sec:org271618c}
+\begin{frame}[label={sec:org8812c40},fragile]{If statement}
  If statements allow for branching paths of execution. In other words, we can execute
 some statements if some conditions holds (or does not hold).
 
@@ -1211,7 +1030,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org356348d},fragile]{If statement}
+\begin{frame}[label={sec:orgbaaf115},fragile]{If statement}
  In the previous example, the first \texttt{print} statement was only executed if the \texttt{x < 5}
 evaluates to \texttt{True}, but in python, we can add another \emph{branch} if the condition
 evaluates to \texttt{False}. This branch is denoted by the \texttt{else} keyword.
@@ -1231,7 +1050,25 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org63660ae},fragile]{If statement -- Quick Exercise 1}
+\begin{frame}[label={sec:orga9e65d0},fragile]{If statement -- does it contain a substring?}
+ We can check if a string exists within another string using the \texttt{in} keyword. This
+returns a Boolean value, so we can use it as a condition to an \texttt{if} statement.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = "This is a string that contains some text"
+
+if "text" in x:
+    print("It exists")
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => It exists
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}[label={sec:org9c512b1},fragile]{If statement -- Quick Exercise 1}
  \begin{itemize}
 \item Create a variable called \texttt{age} and assign the value of this variable \texttt{35}.
 \item Create and \texttt{if} statement that prints the square of \texttt{age} if the value of \texttt{age} is more
@@ -1241,7 +1078,7 @@ than 24.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org85ce4c4},fragile]{If statement}
+\begin{frame}[label={sec:org3d96c7b},fragile]{If statement}
  If we wanted to add multiple potential paths, we can add more using the \texttt{elif
 <condition>} keywords.
 
@@ -1266,7 +1103,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgd614a96},fragile]{If statement}
+\begin{frame}[label={sec:orgf9f5f8b},fragile]{If statement}
  Sometimes, we might want to conditionally set a variable a value. For this, we can
 use an \emph{inline} if statement. The form of an inline if statement is:
 
@@ -1286,7 +1123,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org4139443},fragile]{Boolean Logic}
+\begin{frame}[label={sec:orgb629ca3},fragile]{Boolean Logic}
  As we've seen, \texttt{if} statements are checking for conditions to evaluate to \texttt{True} or
 \texttt{False}. In python we use various comparison operators to check for conditions that
 evaluate to \texttt{Booleans}.
@@ -1313,7 +1150,7 @@ Conjunctives/Disjunctives
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org3c46aed},fragile]{Boolean Logic}
+\begin{frame}[label={sec:org9fc7c49},fragile]{Boolean Logic}
  Using \texttt{not} you can invert the Boolean result of the expression.
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -1339,7 +1176,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org40c3d40},fragile]{Boolean Logic}
+\begin{frame}[label={sec:orgaed32ed},fragile]{Boolean Logic}
  Let's take an example using the \texttt{and} keyword. \texttt{and} here is checking that \texttt{x} is above or
 equal to 10 \alert{and} \texttt{y} is exactly 5. If either of the conditions is \texttt{False}, python will
 execute the \texttt{else} path (if there is one, of course!).
@@ -1362,7 +1199,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org336924b},fragile]{Boolean Logic}
+\begin{frame}[label={sec:org8e1a288},fragile]{Boolean Logic}
  Here we see the use of the \texttt{or} keyword. If any of the conditions evaluates to \texttt{True}
 then the whole condition evaluates to \texttt{True}.
 
@@ -1382,7 +1219,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgc79b1e1},fragile]{Boolean Logic}
+\begin{frame}[label={sec:org0782858},fragile]{Boolean Logic}
  Note: \texttt{or} is short-circuiting. This means that if tests the conditions left-to-right,
 and when it finds something that is \texttt{True} it stops evaluating the rest of the
 conditions.
@@ -1400,7 +1237,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org16de43f},fragile]{Boolean Logic}
+\begin{frame}[label={sec:org56feec1},fragile]{Boolean Logic}
  If your Boolean logic refers to a single variable, you can combine the logic without
 the \texttt{and} and \texttt{or}. But its not always common.
 
@@ -1429,8 +1266,8 @@ Results:
 \end{frame}
 
 \subsection{Iteration}
-\label{sec:orgf8edc12}
-\begin{frame}[label={sec:orge525b5e},fragile]{For loop}
+\label{sec:org46b12ef}
+\begin{frame}[label={sec:org8dc3b3d},fragile]{For loop}
  Looping or iteration allows us to perform a series of actions multiple times. We are
 going to start with the more useful \texttt{for} loop in python. The syntax of a \texttt{for} loop is:
 
@@ -1452,7 +1289,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org6249ae8},fragile]{For loop -- break}
+\begin{frame}[label={sec:orgaee3a86},fragile]{For loop -- break}
  The previous example loops over the body a fix number of times. But what if we wanted
 to stop looping early? Well, we can use the \texttt{break} keyword. This keyword will exit the
 body of the loop.
@@ -1475,7 +1312,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org252bfde},fragile]{For loop -- continue}
+\begin{frame}[label={sec:org2e4dcbe},fragile]{For loop -- continue}
  A different keyword you might want to use is \texttt{continue}. Continue allows you to move/skip
 onto the next iteration without executing the entire body of the \texttt{for} loop.
 
@@ -1496,7 +1333,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org89793b6},fragile]{For loop -- ranges}
+\begin{frame}[label={sec:org78a971d},fragile]{For loop -- ranges}
  Instead of using \texttt{continue} like in the previous slide, the \texttt{range} function provides us
 with some options:
 
@@ -1518,7 +1355,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgb7e0fb4},fragile]{For loop -- loop over collections}
+\begin{frame}[label={sec:org783067c},fragile]{For loop -- loop over collections}
  For loops allow us to iterate over a collection, taking one element at a time. Take
 for example, a list, and for every item in the list we print its square.
 
@@ -1539,7 +1376,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgf309efc},fragile]{For loop -- loop over collections}
+\begin{frame}[label={sec:orgc4151d9},fragile]{For loop -- loop over collections}
  This kind of looping can work for tuples and sets, but as we have seen, dictionaries
 are a little different. Every 'element' in a dictionary consists of a key and a
 value. Therefore when we iterate over items in a dictionary, we can assign the key
@@ -1562,7 +1399,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgee5e858},fragile]{For loop -- loop over collections}
+\begin{frame}[label={sec:org3c0841f},fragile]{For loop -- loop over collections}
  We could also loop over the keys in the dictionary using the \texttt{.keys()} method instead
 of \texttt{.items()}.
 
@@ -1581,7 +1418,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org61a8e22},fragile]{For loop -- loop over collections}
+\begin{frame}[label={sec:org4216673},fragile]{For loop -- loop over collections}
  Or, the values using \texttt{.values()}.
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -1599,7 +1436,127 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org4625161},fragile]{For loop -- Quick Exercise}
+\begin{frame}[label={sec:org63025a6},fragile]{For loop -- List comprehensions}
+ We have seen previously how \texttt{for} loops work. Knowing the syntax of a \texttt{for} loop and
+wanting to populate a list with some data, we might be tempted to write:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = []
+for i in range(3):
+    x.append(i)
+
+print(x)
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => [0, 1, 2]
+\end{verbatim}
+
+
+While this is perfectly valid Python code, Python itself provides 'List
+comprehensions' to make this process easier.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = [i for i in range(3)]
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:orgf259758},fragile]{For loop -- List comprehensions -- syntax}
+ The syntax of a list comprehensions is:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+[ <variable> for <variable> in <iterable> ]
+\end{minted}
+
+We can also perform similar actions with a dictionary
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+[ <key>, <value> for <key>, <value> in <dictionary.items()> ]
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:org5827c18},fragile]{For loop -- List comprehensions -- using \texttt{if}'s}
+ Perhaps we only want to optionally perform an action within the list comprehension?
+Python allows us to do this with the inline \texttt{if} statement we've seen in the previous lecture.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = [i if i < 5 else -1 for i in range(7)]
+print(x)
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => [0, 1, 2, 3, 4, -1, -1]
+\end{verbatim}
+
+
+We add the inline \texttt{<var> if <condition> else <other-var>} before the \texttt{for} loop part of
+the comprehension.
+\end{frame}
+
+\begin{frame}[label={sec:orge11cc64},fragile]{For loop -- List comprehension -- using \texttt{if}'s}
+ There is another type of \texttt{if} statement in a list comprehension, this occurs when we
+don't have an \texttt{else}.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = [i for i in range(7) if i < 3]
+print(x)
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => [0, 1, 2]
+\end{verbatim}
+
+
+In this example, we're only 'adding' to the list if the condition (\(i < 3\)) is true,
+else the element is not included in the resulting list.
+\end{frame}
+
+\begin{frame}[label={sec:org398a952},fragile]{For loop -- List comprehensions -- multiple \texttt{for}'s}
+ If we like, we can also use nested for loops by simply adding another for loop into
+the comprehension.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = [(i, j) for i in range(2) for j in range(2)]
+
+print(x)
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => [(0, 0), (0, 1), (1, 0), (1, 1)]
+\end{verbatim}
+
+
+In this example, we're creating a tuple for each element, effectively each
+combination of 1 and 0.
+\end{frame}
+
+
+\begin{frame}[label={sec:org1030df7},fragile]{For loop -- List comprehensions -- dictionary}
+ Python doesn't restrict us to list comprehensions, but we can do a similar
+operation to create a dictionary.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+x = [2, 5, 6]
+y = {idx: val for idx, val in enumerate(x)}
+print(y)
+\end{minted}
+
+\begin{verbatim}
+Results: 
+# => {0: 2, 1: 5, 2: 6}
+\end{verbatim}
+
+
+Here, every item in \texttt{x} has been associated with its numerical index as a key thanks to
+the \texttt{enumerate} function that returns both the index and value at iteration in the for loop.
+\end{frame}
+
+
+\begin{frame}[label={sec:orga7c0f00},fragile]{For loop -- Quick Exercise}
  \begin{itemize}
 \item Create a list of elements:
 
@@ -1620,7 +1577,7 @@ the list.
 to skip onto the next iteration if it encounters this. \alert{Hint} try: \texttt{type(...) =!=} \texttt{str}
 \end{frame}
 
-\begin{frame}[label={sec:org04c6848},fragile]{While loop}
+\begin{frame}[label={sec:orgcad998d},fragile]{While loop}
  A \texttt{while} loop is another looping concept like \texttt{for} but it can loop for an arbitrary
 amount of times. A \texttt{while} loop looks to see if the condition is \texttt{True}, and if it is, it
 will execute the body.
@@ -1648,7 +1605,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgc8a196f},fragile]{While loop}
+\begin{frame}[label={sec:orga8323fa},fragile]{While loop}
  \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
 x = 0
 y = 1
@@ -1671,8 +1628,8 @@ Results:
 \end{frame}
 
 \subsection{Functions}
-\label{sec:orgaf44f48}
-\begin{frame}[label={sec:org7dadadb},fragile]{Functions}
+\label{sec:org61b7f5b}
+\begin{frame}[label={sec:org892f4ac},fragile]{Functions}
  Functions are a re-usable set of instructions that can take some arguments and
 possible return something.
 
@@ -1700,7 +1657,7 @@ say_hello()  # calling the function
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org935c0dd},fragile]{Functions}
+\begin{frame}[label={sec:orgbfd7f3f},fragile]{Functions}
  We've already seen some functions provided by Python.
 
 \texttt{print} itself is a function with a single argument: what we want to print.
@@ -1722,7 +1679,7 @@ set([1, 2, 2, 3, 4])
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgacebc60},fragile]{Example usage of a function}
+\begin{frame}[label={sec:orge07d515},fragile]{Example usage of a function}
  Let's make a function that takes two numbers and adds them together:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -1742,7 +1699,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org36765c7},fragile]{Functions -- Quick Exercise}
+\begin{frame}[label={sec:org335efec},fragile]{Functions -- Quick Exercise}
  \begin{itemize}
 \item Create a function called \texttt{my\_square}. This function should take one argument (you can
 call this argument what you like).
@@ -1753,7 +1710,7 @@ call this argument what you like).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org8982b8d},fragile]{Re-usability with Functions}
+\begin{frame}[label={sec:org8039205},fragile]{Re-usability with Functions}
  Functions are better illustrated through some examples, so let's see some!
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -1770,7 +1727,7 @@ The above is pretty wasteful. Why? Because we are performing the exact same
 operation multiple times, with only the variable changed.
 \end{frame}
 
-\begin{frame}[label={sec:orgad787c9},fragile]{Re-usability with Functions}
+\begin{frame}[label={sec:org9475546},fragile]{Re-usability with Functions}
  By abstracting the actions we want to perform into a function, we can ultimately
 reduce the amount of code we write. \emph{Be a lazy programmer!}
 
@@ -1792,7 +1749,7 @@ the \texttt{print} statement once. Then, we've called the function with each var
 argument.
 \end{frame}
 
-\begin{frame}[label={sec:org94fc565},fragile]{Named parameters}
+\begin{frame}[label={sec:org6ea89d1},fragile]{Named parameters}
  We've seen in previous examples that, when we create a function, we give each of the
 arguments (if there are any) a name.
 
@@ -1813,7 +1770,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org891bd87},fragile]{Named parameters}
+\begin{frame}[label={sec:orgaabe22a},fragile]{Named parameters}
  By specifying the name of the parameter we're using with the called function, we can
 change the order
 
@@ -1830,7 +1787,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgcae9136},fragile]{Optional/Default/Positional arguments}
+\begin{frame}[label={sec:orgf408f17},fragile]{Optional/Default/Positional arguments}
  When we call a function with arguments without naming them, we are supplying them by
 \emph{position}.
 
@@ -1845,7 +1802,7 @@ The first position gets mapped to variable name of \texttt{greeting} inside the 
 \texttt{say\_greeting} function, while the second position gets mapped to \texttt{name}. 
 \end{frame}
 
-\begin{frame}[label={sec:org2498ae1},fragile]{Optional/Default/Positional arguments}
+\begin{frame}[label={sec:org2641017},fragile]{Optional/Default/Positional arguments}
  Sometimes when creating a function we may want to use default arguments, these are
 arguments that are used if the call to the function does not specify what their value
 should be. For example.
@@ -1865,7 +1822,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgca17e6d},fragile]{Optional/Default/Positional arguments}
+\begin{frame}[label={sec:org39da1ad},fragile]{Optional/Default/Positional arguments}
  \alert{Note} if you supply a default argument in the function definition, all arguments after
 this default argument must also supply a default argument.
 
@@ -1879,7 +1836,7 @@ say_greeting("John", "Hi")
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org75be2a0},fragile]{Recap on arguments}
+\begin{frame}[label={sec:orgf9e8032},fragile]{Recap on arguments}
  \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
 # defining the function
 
@@ -1895,7 +1852,7 @@ say_greeting(greeting="Hi", name="John")  # the position of named arguments do n
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org7679181},fragile]{Function doc-strings}
+\begin{frame}[label={sec:orgce50c86},fragile]{Function doc-strings}
  To make it clear for a human to quickly understand what a function is doing, you can
 add an optional doc-string. This is a string that is added directly after the initial
 definition of the function:
@@ -1910,7 +1867,7 @@ Some common use cases for docstrings are explaining what the parameters are that
 expects, and what it returns.
 \end{frame}
 
-\begin{frame}[label={sec:orgb8fc65e},fragile]{Multi-line docstrings}
+\begin{frame}[label={sec:orgdbe0466},fragile]{Multi-line docstrings}
  If your explanation is a little longer than a line, a multiline docstring can be
 created as long as you're using \texttt{"""} three quotation marks either side of the string
 
@@ -1925,7 +1882,7 @@ def my_function(x, y):
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgb793c6c},fragile]{Understanding scope}
+\begin{frame}[label={sec:org714c429},fragile]{Understanding scope}
  In this example we have two scopes which can be easily seen by the indentation. The
 first is the \emph{global} scope. The second scope is the scope of the function. The scope
 of the function can reference variables in the larger scope. But once the function
@@ -1949,7 +1906,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org1f75c46},fragile]{Understanding scope}
+\begin{frame}[label={sec:org823ea89},fragile]{Understanding scope}
  Even though we can reference the global scope variable from the scope of the
 function, we can't modify it like this:
 
@@ -1964,7 +1921,7 @@ print(compute_addition_2(10))
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org97ff279},fragile]{Understanding scope}
+\begin{frame}[label={sec:org6b57050},fragile]{Understanding scope}
  If we really wanted to reference a variable in a global scope and modify its value,
 we could use the \texttt{global} keyword. Doing this makes the
 function output something different every time it is called. This can make it
@@ -1991,7 +1948,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgccd4404},fragile]{Understanding scope}
+\begin{frame}[label={sec:orgd8170a5},fragile]{Understanding scope}
  In almost all cases, avoid using global variables. Instead pass the variables as
 parameters. This can reduce a source of potential errors and ensure that if a
 function is called multiple times, the output can be more consistent and expected.
@@ -2017,12 +1974,12 @@ Results:
 \end{frame}
 
 \section{Exercise}
-\label{sec:org49f72ba}
+\label{sec:org59ea9f4}
 
 \subsection{Library system}
-\label{sec:orgf149ff4}
+\label{sec:org2fbdcfd}
 
-\begin{frame}[label={sec:org3ee0516},fragile]{Use what you've learnt!}
+\begin{frame}[label={sec:orgce78d52},fragile]{Use what you've learnt!}
  We're going to create a library system to help locate and lookup information about
 books. For example, we want to know the author of book called 'Moby Dick'.
 
@@ -2049,7 +2006,7 @@ value "Moby Dick".
 Create this database and call it \texttt{db}.
 \end{frame}
 
-\begin{frame}[label={sec:org475a184},fragile]{Locating Books}
+\begin{frame}[label={sec:org1adc0af},fragile]{Locating Books}
  \begin{itemize}
 \item Create a function called \texttt{locate\_by\_title} that takes the database to look through,
 and the title to look up as arguments.
@@ -2063,7 +2020,7 @@ was searched for, it should return the whole dictionary.
 what it will return.
 \end{frame}
 
-\begin{frame}[label={sec:orge92b3e9},fragile]{Selecting a subset}
+\begin{frame}[label={sec:orgb10445f},fragile]{Selecting a subset}
  Now that we can find books by the title name, we also want to find all books that
 were released after a certain data.
 
@@ -2079,7 +2036,7 @@ call should return a list containing three dictionaries. The first entry should 
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org0680dcf},fragile]{Updating our database}
+\begin{frame}[label={sec:org22fa4e9},fragile]{Updating our database}
  Oh no! 'Hitchhikers Guide to the Galaxy' was released in 1979 not 1879, there must
 have been a typo. Let's create a function to update this.
 
@@ -2099,7 +2056,7 @@ update(db,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org859d147},fragile]{Extended exercise}
+\begin{frame}[label={sec:orge94f3ca},fragile]{Extended exercise}
  \begin{itemize}
 \item In the previous steps we created functions \texttt{locate\_by\_title} and
 \texttt{books\_released\_after}. These two functions are similar in a way that they are
