@@ -1,4 +1,4 @@
-% Created 2022-09-11 Sun 08:34
+% Created 2022-09-19 Mon 16:42
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -24,7 +24,7 @@
 \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 \usetheme{Berkeley}
 \author{Jay Morgan}
-\date{<TODO>}
+\date{20th September 2022}
 \title{Programming Level-up}
 \subtitle{Lecture 3 - Modules \& Development Environments}
 \hypersetup{
@@ -43,19 +43,19 @@
 
 
 \section{Modules}
-\label{sec:orgc69e217}
+\label{sec:org0bc6020}
 
 \subsection{Python Modules}
-\label{sec:org2011c66}
+\label{sec:org3f2f229}
 
-\begin{frame}[label={sec:org1229ce1}]{Importing in python}
+\begin{frame}[label={sec:org865a0e2}]{Importing in python}
 \begin{center}
 \includegraphics[width=0.6\textwidth]{images/python.png}
 \end{center}
 \url{https://xkcd.com/353/}
 \end{frame}
 
-\begin{frame}[label={sec:org48ef110},fragile]{The basic structure of importing}
+\begin{frame}[label={sec:org7bc66f0},fragile]{The basic structure of importing}
  Modules or packages are other \emph{scripts or programs} that can be imported into other
 scripts. This definition is very general, but we shall see how flexible importing in
 Python can be.
@@ -72,7 +72,7 @@ If we import \texttt{<package\_name>} using this syntax, we always have to use t
 to refer to something within this package.
 \end{frame}
 
-\begin{frame}[label={sec:org80f734a},fragile]{The basic structure of importing}
+\begin{frame}[label={sec:org9f849e8},fragile]{The basic structure of importing}
  Let's take a look at a very basic example.
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -88,7 +88,7 @@ here, as we're focusing on importing, but you can see we're referring to a varia
 called \texttt{pi} to calculate the circumference of a circle.
 \end{frame}
 
-\begin{frame}[label={sec:orgebb91e5},fragile]{Importing specific items}
+\begin{frame}[label={sec:orge70f091},fragile]{Importing specific items}
  If we didn't always want to specify the package name when we only want to use
 something specific from a package, we can directly import that something.
 
@@ -107,7 +107,7 @@ circumference = 2 * pi * radius
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgf0a470d},fragile]{Don't do this!}
+\begin{frame}[label={sec:orgbc5bda5},fragile]{Don't do this!}
  When using \texttt{from ... import ...}, there is a wildcard \texttt{*} that we \alert{could} use. You may
 sometimes see this style of importing when looking at documentation online:
 
@@ -120,7 +120,7 @@ from <package_name> import *
 However, this can create many problems with reading your program code
 \end{frame}
 
-\begin{frame}[label={sec:orgee1aae4},fragile]{Don't do this!}
+\begin{frame}[label={sec:org789db96},fragile]{Don't do this!}
  Which module does \texttt{my\_function()} originate? Are there are common names between the
 two? Which would be used?
 
@@ -132,7 +132,7 @@ my_function()
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org665ff3a},fragile]{Alias}
+\begin{frame}[label={sec:org4b9ac02},fragile]{Alias}
  When importing, we can optionally create an alias to a symbol. Here we're creating an
 alias to the existing \texttt{pi} in \texttt{math}.
 
@@ -152,7 +152,7 @@ import matplotlib.pyplot as plt
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org1e140c3},fragile]{Importing local libraries}
+\begin{frame}[label={sec:orgb006a0b},fragile]{Importing local libraries}
  let's consider a hypothetical local directory:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -173,7 +173,7 @@ my_class = MyAwesomeclass()
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgc05ef82},fragile]{Importing local libraries}
+\begin{frame}[label={sec:org29af9d1},fragile]{Importing local libraries}
  \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
 main.py
 src/
@@ -195,7 +195,7 @@ dog = Dog()
 \end{frame}
 
 
-\begin{frame}[label={sec:org53ab93e},fragile]{Quick exercise -- imports}
+\begin{frame}[label={sec:org7c2c23a},fragile]{Quick exercise -- imports}
  \begin{itemize}
 \item Create a directory to store your scripts
 \item In this directory, create a file called \texttt{main.py}.
@@ -205,7 +205,7 @@ dog = Dog()
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org4c47994},fragile]{Shortcuts with \texttt{\_\_init\_\_.py}}
+\begin{frame}[label={sec:org1729baf},fragile]{Shortcuts with \texttt{\_\_init\_\_.py}}
  Let's say you often import \texttt{Cat} and \texttt{Dog}. We can use a file called \texttt{\_\_init\_\_.py} to help
 us and make the imports shorter. This fill gets executed when its module is imported.
 
@@ -233,7 +233,7 @@ from src.module_1 import Cat, Dog
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org709258c},fragile]{What is \texttt{\_\_main\_\_}?}
+\begin{frame}[label={sec:orgf840336},fragile]{What is \texttt{\_\_main\_\_}?}
  Consider a file with the following:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -250,7 +250,7 @@ simple case this will have very little impact. But what if the computation of th
 takes a very long time?
 \end{frame}
 
-\begin{frame}[label={sec:org1af9e45},fragile]{What is \texttt{\_\_main\_\_}?}
+\begin{frame}[label={sec:orgad1b77c},fragile]{What is \texttt{\_\_main\_\_}?}
  Here we are wrapping any global computations into a appropriate functions. This
 prevents the global variables being computed as soon as the script is imported.
 
@@ -266,7 +266,7 @@ the script that is being run directly (i.e. \texttt{python <the-file>.py}). If t
 being imported, the statements within this if scope will not be run.
 \end{frame}
 
-\begin{frame}[label={sec:org278a414},fragile]{What is \texttt{\_\_main\_\_}?}
+\begin{frame}[label={sec:orgb6e773c},fragile]{What is \texttt{\_\_main\_\_}?}
  So if we wanted to run \texttt{compute()} if this file is being run directly, we would write:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -287,12 +287,12 @@ if __name__ == "__main__":
 \end{frame}
 
 \section{Working with Files and Directories}
-\label{sec:org2a19e46}
+\label{sec:org975eb02}
 
 \subsection{Paths}
-\label{sec:org320c887}
+\label{sec:org211467f}
 
-\begin{frame}[label={sec:org632c5c5},fragile]{Current working directory}
+\begin{frame}[label={sec:orgddf7ec8},fragile]{Current working directory}
  The folder in which you run Python will be the \emph{current working directory (CWD)}. We can
 print this value with the \texttt{os.getcwd()} function, or change the directory with
 \texttt{os.chdir(...)}. Its important to know what your CWD is as all relative paths (paths
@@ -318,7 +318,7 @@ I've replaced the full path printed by Python with \texttt{[...]} so you can see
 differences in the paths!
 \end{frame}
 
-\begin{frame}[label={sec:org2a267b0},fragile]{Listing directories}
+\begin{frame}[label={sec:orgb9cf081},fragile]{Listing directories}
  Continuing with our usage of the \texttt{os} package, we can use the \texttt{listdir} function to list
 all files within a directory.
 
@@ -339,7 +339,7 @@ directory. Notice how from this list you cannot tell if something is a file or
 directory (though the filename does provide some hint).
 \end{frame}
 
-\begin{frame}[label={sec:orge4860ef},fragile]{Testing for files or directories}
+\begin{frame}[label={sec:org9a5c774},fragile]{Testing for files or directories}
  In the previous example we saw that the items returned by \texttt{listdir} does not specify if
 the item is a file or directory. However, \texttt{os} provides an \texttt{isfile} function in the \texttt{path}
 submodule to test if the argument is a file, else it will be a directory.
@@ -363,7 +363,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org6490edf},fragile]{Using wildcards}
+\begin{frame}[label={sec:org95dff3d},fragile]{Using wildcards}
  If we wanted to get all files within a directory, we could use the \texttt{glob} function from
 the \texttt{glob} package. \texttt{glob} allows us to use the \texttt{*} wildcard. E.g. \texttt{*.png} will list all
 files that end with \texttt{.png}. \texttt{test-*} will list all files that start with \texttt{test-*}.
@@ -392,7 +392,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgae5fce2},fragile]{Pathlib -- a newer way}
+\begin{frame}[label={sec:orgce626b5},fragile]{Pathlib -- a newer way}
  \texttt{pathlib} is a somewhat recent addition to the Python standard library which makes
 working with files a little easier. Firstly, we can create a \texttt{Path} object, allowing us
 to concatenate paths with the \texttt{/}. Instead of using the \texttt{glob} module, a \texttt{Path} object has
@@ -417,7 +417,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgb47784a},fragile]{Pathlib -- convenient functions}
+\begin{frame}[label={sec:org930ad5d},fragile]{Pathlib -- convenient functions}
  \texttt{pathlib} allows us to easily decompose a path into different components. Take for
 example getting the filename of a path with \texttt{.name}.
 
@@ -441,7 +441,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgabe3ee8},fragile]{Converting Path into a string}
+\begin{frame}[label={sec:org65b73d7},fragile]{Converting Path into a string}
  As \texttt{pathlib} is a recent addition to Python, some functions/classes are expecting a \texttt{str}
 representation of the path, not a \texttt{Path} object. Therefore, you may want to use the \texttt{str}
 function to convert a \texttt{Path} object to a string.
@@ -457,7 +457,7 @@ Results:
 \end{frame}
 
 
-\begin{frame}[label={sec:org05c9c71},fragile]{Quick exercise -- locating files}
+\begin{frame}[label={sec:org866effd},fragile]{Quick exercise -- locating files}
  \begin{itemize}
 \item In the same directory of scripts you created in the last exercise, create another
 directory called \texttt{data}.
@@ -488,9 +488,9 @@ Hitchhikers Guide to the Galaxy & Douglas Adams & 1979\\
 \end{frame}
 
 \subsection{Files}
-\label{sec:org2de94b6}
+\label{sec:orgc8a8f7c}
 
-\begin{frame}[label={sec:orga398793},fragile]{Reading files}
+\begin{frame}[label={sec:org06ddb5e},fragile]{Reading files}
  To read a file, we must first open it with the \texttt{open} function. This returns a file
 stream to which we can call the \texttt{read()} class method.
 
@@ -513,7 +513,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org3ae0b58},fragile]{Reading files -- lines or entire file?}
+\begin{frame}[label={sec:orgd20168b},fragile]{Reading files -- lines or entire file?}
  While \texttt{read} works for the last example, you may want to read files in different
 ways. Luckily there are a number of methods you could use.
 
@@ -528,7 +528,7 @@ for line in open_file:  # read one line at a time
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org107af42},fragile]{Reading files}
+\begin{frame}[label={sec:org2e40472},fragile]{Reading files}
  It can be a pain to remember to use the \texttt{.close()} every time you open a file. In
 Python, we can use \texttt{open()} as a context with the \texttt{with} keyword. This context will
 handle the closing of the file as soon as the scope is exited.
@@ -551,7 +551,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org1ec8e0a},fragile]{Writing files}
+\begin{frame}[label={sec:org8277009},fragile]{Writing files}
  The syntax for writing a file is similar to reading a file. The main difference is
 the use \texttt{"w"} instead of \texttt{"r"} in the second argument of \texttt{open}. Also, instead of \texttt{read()},
 we use \texttt{write()}.
@@ -578,7 +578,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org3501ff0},fragile]{Appending to files}
+\begin{frame}[label={sec:orgd720f22},fragile]{Appending to files}
  Every time we write to a file, the entire contents is deleted and replaced. If we
 want to just append to the file instead, we use \texttt{"a"}.
 
@@ -605,7 +605,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgd8bce8a}]{Quick exercise -- reading/writing files}
+\begin{frame}[label={sec:org89c4700}]{Quick exercise -- reading/writing files}
 \begin{itemize}
 \item Using the same text files from the previous exercise, we will want to be able to
 read each text file, and parse the information contained in the file.
@@ -616,7 +616,7 @@ for yourself.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org8d5a9e5},fragile]{Reading CSV files -- builtin}
+\begin{frame}[label={sec:org5a7a0de},fragile]{Reading CSV files -- builtin}
  When working with common file types, Python has built-in modules to make the process
 a little easier. Take, for example, reading and writing a CSV file. Here we are
 importing the \texttt{csv} module and in the context of reading the file, we are creating a
@@ -643,7 +643,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:org2d22efa},fragile]{Writing a CSV file -- builtin}
+\begin{frame}[label={sec:org47099d7},fragile]{Writing a CSV file -- builtin}
  Writing a CSV file is similar except we are creating a CSV writer object, and are
 using \texttt{writerow} instead.
 
@@ -660,7 +660,7 @@ with open(new_data_file, "w") as csv_file:
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgea290b5},fragile]{Quick exercise -- reading/writing CSV files}
+\begin{frame}[label={sec:orgb916dca},fragile]{Quick exercise -- reading/writing CSV files}
  \begin{itemize}
 \item Given the parsed data from the previous exercise, write a new CSV file in the \texttt{data} directory.
 \item This CSV file should contain the headings: name, author, release\textsubscript{data}.
@@ -669,7 +669,7 @@ with open(new_data_file, "w") as csv_file:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1571010},fragile]{Read JSON files -- builtin}
+\begin{frame}[label={sec:orgc5b3b97},fragile]{Read JSON files -- builtin}
  Like CSV, json is a common format for storing data. Python includes a package called
 \texttt{json} that enables us to read/write to json files with ease.
 
@@ -696,7 +696,7 @@ Results:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgf2eac2a},fragile]{Write JSON files -- builtin}
+\begin{frame}[label={sec:org90193bd},fragile]{Write JSON files -- builtin}
  While we used \texttt{json.load} to read the file, we use \texttt{json.dump} to write the data to a
 json file.
 
@@ -718,19 +718,19 @@ Results:
 \end{frame}
 
 \section{Package Management}
-\label{sec:org421bd5c}
+\label{sec:orgfb16912}
 
 \subsection{Package Management}
-\label{sec:org46e42f9}
+\label{sec:org648dcf8}
 
-\begin{frame}[label={sec:orgb85a298}]{Introduction}
+\begin{frame}[label={sec:orgf140d5e}]{Introduction}
 When working on projects, we may want to use external packages that other people have
 written. There are tools in Python to install these packages. However, we may want to
 use specific versions, again these tools help us to manage these dependencies between
 different packages and these versions of packages.
 \end{frame}
 
-\begin{frame}[label={sec:org7672a9e}]{Virtual Environments}
+\begin{frame}[label={sec:org34ef3c7}]{Virtual Environments}
 When installing packages, by default, the packages are going to be installed into the
 system-level Python. This can be a problem, for example, if you're working on
 multiple projects that require different versions of packages.
@@ -742,9 +742,9 @@ We will take a look at package management and virtual environments in Python.
 \end{frame}
 
 \subsection{Anaconda}
-\label{sec:org9c85511}
+\label{sec:orgc9fd179}
 
-\begin{frame}[label={sec:org07aeae0},fragile]{What is Anaconda?}
+\begin{frame}[label={sec:orga3cb47f},fragile]{What is Anaconda?}
  \begin{center}
 \includegraphics[width=0.5\textwidth]{images/Anaconda_Logo.png}
 \end{center}
@@ -757,7 +757,7 @@ We will take a look at package management and virtual environments in Python.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org13184f7},fragile]{Installing Anaconda}
+\begin{frame}[label={sec:orgd66b8d5},fragile]{Installing Anaconda}
  We're going to install miniconda (a minimal installation of
 anaconda). \url{https://docs.conda.io/en/latest/miniconda.html}
 
@@ -777,7 +777,7 @@ chmod +x <miniconda-file>.sh
 Follow the installation instructions (most of the time the defaults are sensible).
 \end{frame}
 
-\begin{frame}[label={sec:orgac1acf8},fragile]{Working with Anaconda -- creating an environment}
+\begin{frame}[label={sec:orga1bb30b},fragile]{Working with Anaconda -- creating an environment}
  Conda is a command line tool to manage environments. We're going to highlight some of
 the most used commands. But for the full list of management, you can use the
 instructions at:
@@ -794,7 +794,7 @@ enter either a \texttt{y} or \texttt{n}. If \texttt{y} your new environment will
 environment, you will first have to activate it.
 \end{frame}
 
-\begin{frame}[label={sec:org9ba9e08},fragile]{Working with Anaconda -- activating an environment}
+\begin{frame}[label={sec:orgd062af4},fragile]{Working with Anaconda -- activating an environment}
  Once you've created a new environment, you can activate it. This is as simple as:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -805,7 +805,7 @@ You will notice that your command line prompt has changed from \texttt{(base)} t
 \texttt{(<name-of-env>}). And whenever you start a new terminal it will always be \texttt{(base)}.
 \end{frame}
 
-\begin{frame}[label={sec:orgebab571},fragile]{Working with Anaconda -- de-activating an environment}
+\begin{frame}[label={sec:org6485a5b},fragile]{Working with Anaconda -- de-activating an environment}
  To deactivate an environment, just use:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -820,7 +820,7 @@ conda activate base
 \end{frame}
 
 
-\begin{frame}[label={sec:orgdc57b4b},fragile]{Working with Anaconda -- installing using conda}
+\begin{frame}[label={sec:orgf21d98a},fragile]{Working with Anaconda -- installing using conda}
  Let's say we want to install a package, say \texttt{scikit-learn} (if we're doing some data
 processing or machine learning). To install this package in conda, use:
 
@@ -839,14 +839,14 @@ and ask to confirm. If everything seems okay type \texttt{y}, and enter.
 use: \url{https://anaconda.org/anaconda/repo}
 \end{frame}
 
-\begin{frame}[label={sec:org55fdaac},fragile]{Working with Anaconda -- package versions}
+\begin{frame}[label={sec:org3dc3899},fragile]{Working with Anaconda -- package versions}
  \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
 conda install <package-name>=<version-number>
 \end{minted}
 \end{frame}
 
 
-\begin{frame}[label={sec:org0eab57c},fragile]{Installing a specific version of Python}
+\begin{frame}[label={sec:orgd0626c4},fragile]{Installing a specific version of Python}
  If we wanted to, we could also change the python version being used in the virtual
 environment.
 
@@ -858,7 +858,7 @@ This will try to install Python version 3.9 providing that the packages you alre
 have installed support it.
 \end{frame}
 
-\begin{frame}[label={sec:org4cde86c},fragile]{Working with Anaconda -- conda-forge and other repositories}
+\begin{frame}[label={sec:org2a1fcdf},fragile]{Working with Anaconda -- conda-forge and other repositories}
  Let's say that the package is not within the basic anaconda repository. You can
 specify another repository or channel using the \texttt{-c} flag.
 
@@ -873,7 +873,7 @@ conda install -c pytorch pytorch
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgc5c3111},fragile]{Working with Anaconda -- exporting an environment}
+\begin{frame}[label={sec:org6ce6ae7},fragile]{Working with Anaconda -- exporting an environment}
  We will want to share our research and work with others. To allow others to use the
 exact same packages and especially the \alert{versions} of packages we're using, we want to
 export a snapshot of our environment. Conda includes an export command to do just
@@ -888,7 +888,7 @@ Here we exporting our currently activated environment to a file called
 compatibility with other operating systems such as Mac OS.
 \end{frame}
 
-\begin{frame}[label={sec:org86fdb39},fragile]{Working with Anaconda -- creating environment from existing}
+\begin{frame}[label={sec:org3982491},fragile]{Working with Anaconda -- creating environment from existing}
  To create an environment from an existing environment.yml file, you can use the
 following command:
 
@@ -901,9 +901,9 @@ the packages.
 \end{frame}
 
 \subsection{Pip}
-\label{sec:orgcccb7d5}
+\label{sec:orga2710d2}
 
-\begin{frame}[label={sec:org58ce6d1}]{What is Pip?}
+\begin{frame}[label={sec:org21ff29d}]{What is Pip?}
 Pip is another package installer for python. If you're reading documentation online
 about how to install a certain Python package, the documentation will normally refer
 to pip.
@@ -914,7 +914,7 @@ Pypi (\url{https://pypi.org})
 We're going to take a look at the most commonly used commands with pip.
 \end{frame}
 
-\begin{frame}[label={sec:org6612be0},fragile]{Installing packages with pip}
+\begin{frame}[label={sec:orgde5f4cb},fragile]{Installing packages with pip}
  If you want to install a package, its as simple as \texttt{pip install}.
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -922,7 +922,7 @@ pip install <package-name>
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org37afad6},fragile]{Installing specific versions}
+\begin{frame}[label={sec:orgfb15a09},fragile]{Installing specific versions}
  Sometimes, though, you will want to install a specific package version. For this use
 '==<version-number>' after the name of the package.
 
@@ -931,7 +931,7 @@ pip install <package-name>==<version-number>
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org8a393f1},fragile]{Upgrade packages with pip}
+\begin{frame}[label={sec:org61a9e13},fragile]{Upgrade packages with pip}
  If you want upgrade/install the package to the latest version, use the \texttt{-{}-upgrade} flag.
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -939,7 +939,7 @@ pip install <package-name> --upgrade
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orga654f08},fragile]{Export requirements file}
+\begin{frame}[label={sec:org5d7fa46},fragile]{Export requirements file}
  Like exporting with conda, pip also includes a method to capture the currently
 installed environment. In pip, this is called \texttt{freeze}.
 
@@ -950,7 +950,7 @@ pip freeze > requirements.txt
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgf8efa39},fragile]{Installing multiple packages from a requirements file}
+\begin{frame}[label={sec:orgea2b938},fragile]{Installing multiple packages from a requirements file}
  If we want to recreate the environment, we can install multiple packages with
 specific versions from a requirements file with:
 
@@ -959,7 +959,7 @@ pip install -f requirements.txt
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgdfd9ff5},fragile]{Anaconda handles both conda and pip}
+\begin{frame}[label={sec:org11a18c9},fragile]{Anaconda handles both conda and pip}
  Conda encompasses pip, which means that when you create a virtual environment with
 conda, it can also include pip. So I would recommend using conda to create the
 virtual environment and to install packages when you can. But if the package is only
@@ -976,12 +976,12 @@ correct places, whether that is conda or pip.
 \end{frame}
 
 \section{Better development environments}
-\label{sec:org4c8721e}
+\label{sec:org1566725}
 
 \subsection{PyCharm}
-\label{sec:orge1745bb}
+\label{sec:orgb6b9c7b}
 
-\begin{frame}[label={sec:org758aade}]{PyCharm}
+\begin{frame}[label={sec:orga8be704}]{PyCharm}
 So far we have been using a very basic \alert{text editor}. This editor is only providing us
 with \emph{syntax highlighting} (the colouring of keywords, etc) and helping with
 indentation.
@@ -1001,7 +1001,7 @@ Some of the features of an IDE are typically:
 We will use PyCharm for the rest of this course.
 \end{frame}
 
-\begin{frame}[label={sec:org08ab9f1},fragile]{PyCharm -- installing}
+\begin{frame}[label={sec:orgb60246b},fragile]{PyCharm -- installing}
  Using Ubuntu snaps:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -1017,7 +1017,7 @@ bash pycharm-community-<version>/bin/pycharm.sh
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgedcbf74}]{PyCharm -- using PyCharm}
+\begin{frame}[label={sec:org7852e31}]{PyCharm -- using PyCharm}
 We shall take a look at the following:
 
 \begin{itemize}
@@ -1030,9 +1030,9 @@ We shall take a look at the following:
 \end{frame}
 
 \subsection{Jupyter}
-\label{sec:org12c5faa}
+\label{sec:org1179339}
 
-\begin{frame}[label={sec:orgc9af4f1}]{What is a Jupyter notebook?}
+\begin{frame}[label={sec:org1864df2}]{What is a Jupyter notebook?}
 \begin{center}
 \includegraphics[width=0.3\textwidth]{images/langfr-1024px-Jupyter_logo.png}
 \end{center}
@@ -1044,7 +1044,7 @@ Notebooks can be very useful for data science projects and exploratory work wher
 process cannot be clearly defined (and therefore cannot be immediately programmed).
 \end{frame}
 
-\begin{frame}[label={sec:org72b1a5e},fragile]{Installing Jupyter}
+\begin{frame}[label={sec:orgca06b8a},fragile]{Installing Jupyter}
  We first need to install Jupyter. In you conda environment type:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -1053,7 +1053,7 @@ conda install jupyter
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgbf74562},fragile]{Starting the server}
+\begin{frame}[label={sec:orgc0fb533},fragile]{Starting the server}
  With Jupyter installed, we can now start the notebook server using:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -1065,7 +1065,7 @@ A new browser window will appear. This is the Jupyter interface.
 If you want to stop the server, press Ctrl+c in the terminal window.
 \end{frame}
 
-\begin{frame}[label={sec:orgcca5349}]{Using the interface}
+\begin{frame}[label={sec:org25dfaa8}]{Using the interface}
 We shall take a look at the following:
 
 \begin{itemize}
@@ -1078,7 +1078,7 @@ We shall take a look at the following:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1556510}]{Markdown 101}
+\begin{frame}[label={sec:org361274e}]{Markdown 101}
 We will revisit markdown in a later lecture, but since we're using notebooks, some of
 the cells can be of a type markdown. In these cells, we can style the text using
 markdown syntax.
@@ -1086,7 +1086,7 @@ markdown syntax.
 \url{https://www.markdownguide.org/basic-syntax/}
 \end{frame}
 
-\begin{frame}[label={sec:orgba1a63b},fragile]{A slightly better environment -- jupyterlab}
+\begin{frame}[label={sec:org5a8fbcc},fragile]{A slightly better environment -- jupyterlab}
  The notebook environment is fine, but there exists another package called jupyter-lab
 that enhances the environment to include a separate file browser, etc.
 
@@ -1098,12 +1098,12 @@ jupyter-lab
 \end{frame}
 
 \section{Style guide-line}
-\label{sec:org47f4aa8}
+\label{sec:org3b20442}
 
 \subsection{Styles}
-\label{sec:org1830754}
+\label{sec:org78e01da}
 
-\begin{frame}[label={sec:org5c1920d}]{A sense of style}
+\begin{frame}[label={sec:orge437c24}]{A sense of style}
 Now that we have looked at syntax you will need to create Python projects, I want to
 take a minute to talk about the style of writing Python code.
 
@@ -1115,7 +1115,7 @@ code with the PEP8 style guide: \url{https://www.python.org/dev/peps/pep-0008/}.
 will talk through some of the most important ones, in my opinion.
 \end{frame}
 
-\begin{frame}[label={sec:org840980b},fragile]{Meaningful names}
+\begin{frame}[label={sec:orga088c06},fragile]{Meaningful names}
  What does this code do?
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -1132,7 +1132,7 @@ r = f(a)
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org12ddfa7},fragile]{Meaningful names}
+\begin{frame}[label={sec:orgd11de9c},fragile]{Meaningful names}
  What about this one?
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
@@ -1152,7 +1152,7 @@ They are both the same code, but the second version is a lot more readable and
 understandable because we have used meaningful names for things!
 \end{frame}
 
-\begin{frame}[label={sec:org3c848b8},fragile]{Use builtins where possible}
+\begin{frame}[label={sec:orgce8cbda},fragile]{Use builtins where possible}
  Don't re-invent the wheel. Try to use Python's built-in functions/classes if they
 exist, they will normally be quicker and more accurate than what you could make in
 Python itself. For example:
@@ -1171,7 +1171,7 @@ average_value = np.mean(dataset)
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org18b32cd},fragile]{Use docstrings and comments}
+\begin{frame}[label={sec:org31c67a1},fragile]{Use docstrings and comments}
  \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
 def compute_average(list_of_data, exclude=None):
     """
@@ -1197,7 +1197,7 @@ def compute_average(list_of_data, exclude=None):
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org73aea7d},fragile]{Using agreed upon casing}
+\begin{frame}[label={sec:orge642c49},fragile]{Using agreed upon casing}
  \begin{itemize}
 \item \texttt{snake\_casing} for functions and variables
 \item Classes should use \texttt{CamelCasing}
@@ -1211,7 +1211,7 @@ class BookEntry:
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org57f2e3c},fragile]{Use type-annotations if possible}
+\begin{frame}[label={sec:org6139010},fragile]{Use type-annotations if possible}
  Type annotations can helper your editor (such as PyCharm) find potential issues in
 your code. If you use type annotations, the editor can spot types that are not
 compatible. For example, a string being used with a division.
@@ -1226,7 +1226,7 @@ def compute_average(list_of_data: list[int],
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org1d6663a},fragile]{Organise your imports}
+\begin{frame}[label={sec:org6656959},fragile]{Organise your imports}
  Make the distinction between standard library imports, externally installed imports,
 and your own custom imports.
 
@@ -1245,24 +1245,24 @@ from src.my_module import DAGs
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org03f45bd}]{Functions should do one thing only}
+\begin{frame}[label={sec:org4336014}]{Functions should do one thing only}
 Do one thing and do it well. Docstrings can help you understand what your function is
 doing, especially if you use the word 'and' in the docstring, you might want to think
 about breaking your single function into many parts.
 \end{frame}
 
-\begin{frame}[label={sec:org0069158}]{Functions as re-usability}
+\begin{frame}[label={sec:orgb4111dd}]{Functions as re-usability}
 If you find yourself doing something over and over, a function call help consolidate
 duplication and potentially reduce the chance of getting things wrong.
 \end{frame}
 
-\begin{frame}[label={sec:orgff5918d}]{Be wary of God classes}
+\begin{frame}[label={sec:orgd44a909}]{Be wary of God classes}
 God classes/God object is a class that is doing too many things or 'knows' about too
 much. When designing a class, remember that like a function, in general, it should
 manage one thing or concept.
 \end{frame}
 
-\begin{frame}[label={sec:org1f8c818},fragile]{Documentation}
+\begin{frame}[label={sec:org17ef946},fragile]{Documentation}
  \begin{quote}
 Comments that contradict the code are worse than no comments. Always make a priority
 of keeping the comments up-to-date when the code changes! -- PEP 8 Style Guide
@@ -1286,7 +1286,7 @@ explain, educate the reader.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1cf0ded},fragile]{Perform testing!}
+\begin{frame}[label={sec:orge361458},fragile]{Perform testing!}
  Make sure to write tests, for example, using \texttt{unittest}
 (\url{https://docs.python.org/3/library/unittest.html}). Writing tests can help find source
 of bugs/mistakes in your code, and if you change something in the future, you want to

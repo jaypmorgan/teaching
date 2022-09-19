@@ -1,6 +1,6 @@
 #+title: Programming Level-up
 #+subtitle: Lecture 3 - Modules & Development Environments
-#+date: <TODO>
+#+date: 20th September 2022
 #+author: Jay Morgan
 #+include: ./header.org
 

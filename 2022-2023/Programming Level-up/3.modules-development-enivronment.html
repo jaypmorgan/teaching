@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-11 Sun 08:37 -->
+<!-- 2022-09-19 Mon 16:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Programming Level-up</title>
@@ -205,133 +205,133 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org85f99fa">1. Modules</a>
+<li><a href="#orgc9135d9">1. Modules</a>
 <ul>
-<li><a href="#org56a896f">1.1. Python Modules</a>
+<li><a href="#org36c5c14">1.1. Python Modules</a>
 <ul>
-<li><a href="#org14ed87d">1.1.1. Importing in python</a></li>
-<li><a href="#org9c77bba">1.1.2. The basic structure of importing</a></li>
-<li><a href="#orgf892d91">1.1.3. The basic structure of importing</a></li>
-<li><a href="#orgbffbac5">1.1.4. Importing specific items</a></li>
-<li><a href="#orga825066">1.1.5. Don't do this!</a></li>
-<li><a href="#orgb12713f">1.1.6. Don't do this!</a></li>
-<li><a href="#org13362a0">1.1.7. Alias</a></li>
-<li><a href="#org352dcfd">1.1.8. Importing local libraries</a></li>
-<li><a href="#org31dd5c2">1.1.9. Importing local libraries</a></li>
-<li><a href="#org166b69e">1.1.10. Quick exercise &#x2013; imports</a></li>
-<li><a href="#org6f7d3b0">1.1.11. Shortcuts with <code>__init__.py</code></a></li>
-<li><a href="#orgde8c7e2">1.1.12. What is <code>__main__</code>?</a></li>
-<li><a href="#org0554bca">1.1.13. What is <code>__main__</code>?</a></li>
-<li><a href="#orgfa72306">1.1.14. What is <code>__main__</code>?</a></li>
+<li><a href="#orgcf90d31">1.1.1. Importing in python</a></li>
+<li><a href="#orge77307b">1.1.2. The basic structure of importing</a></li>
+<li><a href="#orgd803701">1.1.3. The basic structure of importing</a></li>
+<li><a href="#org8d0e8cc">1.1.4. Importing specific items</a></li>
+<li><a href="#org50ba65e">1.1.5. Don't do this!</a></li>
+<li><a href="#org4bfb5f6">1.1.6. Don't do this!</a></li>
+<li><a href="#orgf9b6214">1.1.7. Alias</a></li>
+<li><a href="#org14d032d">1.1.8. Importing local libraries</a></li>
+<li><a href="#org1f3b834">1.1.9. Importing local libraries</a></li>
+<li><a href="#org000621e">1.1.10. Quick exercise &#x2013; imports</a></li>
+<li><a href="#orga7bdfbe">1.1.11. Shortcuts with <code>__init__.py</code></a></li>
+<li><a href="#org6f371fe">1.1.12. What is <code>__main__</code>?</a></li>
+<li><a href="#orgb35658f">1.1.13. What is <code>__main__</code>?</a></li>
+<li><a href="#orgba82e86">1.1.14. What is <code>__main__</code>?</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5c29d4e">2. Working with Files and Directories</a>
+<li><a href="#org7fd0bf5">2. Working with Files and Directories</a>
 <ul>
-<li><a href="#orgf00ce80">2.1. Paths</a>
+<li><a href="#org6b2d7e0">2.1. Paths</a>
 <ul>
-<li><a href="#org6b7f095">2.1.1. Current working directory</a></li>
-<li><a href="#org89f1a89">2.1.2. Listing directories</a></li>
-<li><a href="#org743ed8c">2.1.3. Testing for files or directories</a></li>
-<li><a href="#org6901ce1">2.1.4. Using wildcards</a></li>
-<li><a href="#org2485c97">2.1.5. Pathlib &#x2013; a newer way</a></li>
-<li><a href="#org11627c6">2.1.6. Pathlib &#x2013; convenient functions</a></li>
-<li><a href="#orgc6682cf">2.1.7. Converting Path into a string</a></li>
-<li><a href="#orgdabf971">2.1.8. Quick exercise &#x2013; locating files</a></li>
+<li><a href="#orgcf18714">2.1.1. Current working directory</a></li>
+<li><a href="#orge5fff76">2.1.2. Listing directories</a></li>
+<li><a href="#org0a6e47d">2.1.3. Testing for files or directories</a></li>
+<li><a href="#org13bc8bc">2.1.4. Using wildcards</a></li>
+<li><a href="#orgcbdbf40">2.1.5. Pathlib &#x2013; a newer way</a></li>
+<li><a href="#orga0b5f41">2.1.6. Pathlib &#x2013; convenient functions</a></li>
+<li><a href="#org11efba3">2.1.7. Converting Path into a string</a></li>
+<li><a href="#org2cb5a96">2.1.8. Quick exercise &#x2013; locating files</a></li>
 </ul>
 </li>
-<li><a href="#orgb6020fb">2.2. Files</a>
+<li><a href="#org3536904">2.2. Files</a>
 <ul>
-<li><a href="#org834f538">2.2.1. Reading files</a></li>
-<li><a href="#org2a14f1a">2.2.2. Reading files &#x2013; lines or entire file?</a></li>
-<li><a href="#org6f77dfd">2.2.3. Reading files</a></li>
-<li><a href="#org0511f9d">2.2.4. Writing files</a></li>
-<li><a href="#orgae87aa3">2.2.5. Appending to files</a></li>
-<li><a href="#org5734177">2.2.6. Quick exercise &#x2013; reading/writing files</a></li>
-<li><a href="#org6ec876b">2.2.7. Reading CSV files &#x2013; builtin</a></li>
-<li><a href="#orgc9b37cc">2.2.8. Writing a CSV file &#x2013; builtin</a></li>
-<li><a href="#org82cdf85">2.2.9. Quick exercise &#x2013; reading/writing CSV files</a></li>
-<li><a href="#org78e749f">2.2.10. Read JSON files &#x2013; builtin</a></li>
-<li><a href="#org7233c9f">2.2.11. Write JSON files &#x2013; builtin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org6a7c037">3. Package Management</a>
-<ul>
-<li><a href="#org06a0865">3.1. Package Management</a>
-<ul>
-<li><a href="#org83983cb">3.1.1. Introduction</a></li>
-<li><a href="#orgb620619">3.1.2. Virtual Environments</a></li>
-</ul>
-</li>
-<li><a href="#org37b6c4a">3.2. Anaconda</a>
-<ul>
-<li><a href="#org969d019">3.2.1. What is Anaconda?</a></li>
-<li><a href="#org9acc329">3.2.2. Installing Anaconda</a></li>
-<li><a href="#orga66d961">3.2.3. Working with Anaconda &#x2013; creating an environment</a></li>
-<li><a href="#orgc32bca0">3.2.4. Working with Anaconda &#x2013; activating an environment</a></li>
-<li><a href="#orgbce77f4">3.2.5. Working with Anaconda &#x2013; de-activating an environment</a></li>
-<li><a href="#orgf34c9af">3.2.6. Working with Anaconda &#x2013; installing using conda</a></li>
-<li><a href="#orgbb08bd4">3.2.7. Working with Anaconda &#x2013; package versions</a></li>
-<li><a href="#org60c79ef">3.2.8. Installing a specific version of Python</a></li>
-<li><a href="#org522cc26">3.2.9. Working with Anaconda &#x2013; conda-forge and other repositories</a></li>
-<li><a href="#org6559c7d">3.2.10. Working with Anaconda &#x2013; exporting an environment</a></li>
-<li><a href="#org46b0de7">3.2.11. Working with Anaconda &#x2013; creating environment from existing</a></li>
-</ul>
-</li>
-<li><a href="#orgfe2afe9">3.3. Pip</a>
-<ul>
-<li><a href="#orge86ed93">3.3.1. What is Pip?</a></li>
-<li><a href="#org97fb133">3.3.2. Installing packages with pip</a></li>
-<li><a href="#org1d4715f">3.3.3. Installing specific versions</a></li>
-<li><a href="#org60a3fe7">3.3.4. Upgrade packages with pip</a></li>
-<li><a href="#orgfafee96">3.3.5. Export requirements file</a></li>
-<li><a href="#org18b2853">3.3.6. Installing multiple packages from a requirements file</a></li>
-<li><a href="#org3e2ebaa">3.3.7. Anaconda handles both conda and pip</a></li>
+<li><a href="#org30053ff">2.2.1. Reading files</a></li>
+<li><a href="#org2b9c0dc">2.2.2. Reading files &#x2013; lines or entire file?</a></li>
+<li><a href="#org297839d">2.2.3. Reading files</a></li>
+<li><a href="#org1b6b18e">2.2.4. Writing files</a></li>
+<li><a href="#org6e3719a">2.2.5. Appending to files</a></li>
+<li><a href="#org63fef57">2.2.6. Quick exercise &#x2013; reading/writing files</a></li>
+<li><a href="#org75e1f81">2.2.7. Reading CSV files &#x2013; builtin</a></li>
+<li><a href="#org6e63fdd">2.2.8. Writing a CSV file &#x2013; builtin</a></li>
+<li><a href="#org4e90268">2.2.9. Quick exercise &#x2013; reading/writing CSV files</a></li>
+<li><a href="#org2fb2476">2.2.10. Read JSON files &#x2013; builtin</a></li>
+<li><a href="#org8090dec">2.2.11. Write JSON files &#x2013; builtin</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0de834f">4. Better development environments</a>
+<li><a href="#org557545a">3. Package Management</a>
 <ul>
-<li><a href="#org171b3b0">4.1. PyCharm</a>
+<li><a href="#orge199513">3.1. Package Management</a>
 <ul>
-<li><a href="#org5fd5fb6">4.1.1. PyCharm</a></li>
-<li><a href="#orge840d55">4.1.2. PyCharm &#x2013; installing</a></li>
-<li><a href="#org6a05f95">4.1.3. PyCharm &#x2013; using PyCharm</a></li>
+<li><a href="#orgde3076f">3.1.1. Introduction</a></li>
+<li><a href="#orgf9863ca">3.1.2. Virtual Environments</a></li>
 </ul>
 </li>
-<li><a href="#org3d53d28">4.2. Jupyter</a>
+<li><a href="#orgfab2444">3.2. Anaconda</a>
 <ul>
-<li><a href="#org8dee67c">4.2.1. What is a Jupyter notebook?</a></li>
-<li><a href="#org1a0d3f4">4.2.2. Installing Jupyter</a></li>
-<li><a href="#org5c87501">4.2.3. Starting the server</a></li>
-<li><a href="#org0ff25e0">4.2.4. Using the interface</a></li>
-<li><a href="#org8bb6f16">4.2.5. Markdown 101</a></li>
-<li><a href="#orgb857ad8">4.2.6. A slightly better environment &#x2013; jupyterlab</a></li>
+<li><a href="#org8efefe0">3.2.1. What is Anaconda?</a></li>
+<li><a href="#org67e8e35">3.2.2. Installing Anaconda</a></li>
+<li><a href="#org66f80df">3.2.3. Working with Anaconda &#x2013; creating an environment</a></li>
+<li><a href="#orgaca128a">3.2.4. Working with Anaconda &#x2013; activating an environment</a></li>
+<li><a href="#org7e2fb11">3.2.5. Working with Anaconda &#x2013; de-activating an environment</a></li>
+<li><a href="#org995a492">3.2.6. Working with Anaconda &#x2013; installing using conda</a></li>
+<li><a href="#org6d4681d">3.2.7. Working with Anaconda &#x2013; package versions</a></li>
+<li><a href="#org137a72c">3.2.8. Installing a specific version of Python</a></li>
+<li><a href="#orga5422ab">3.2.9. Working with Anaconda &#x2013; conda-forge and other repositories</a></li>
+<li><a href="#orga33edd5">3.2.10. Working with Anaconda &#x2013; exporting an environment</a></li>
+<li><a href="#org12b4ea6">3.2.11. Working with Anaconda &#x2013; creating environment from existing</a></li>
+</ul>
+</li>
+<li><a href="#org6a4cec3">3.3. Pip</a>
+<ul>
+<li><a href="#orgcbc9299">3.3.1. What is Pip?</a></li>
+<li><a href="#org0649795">3.3.2. Installing packages with pip</a></li>
+<li><a href="#org9e8ffaa">3.3.3. Installing specific versions</a></li>
+<li><a href="#org2e17f38">3.3.4. Upgrade packages with pip</a></li>
+<li><a href="#org544a316">3.3.5. Export requirements file</a></li>
+<li><a href="#orgbc7cb83">3.3.6. Installing multiple packages from a requirements file</a></li>
+<li><a href="#orgbc7087b">3.3.7. Anaconda handles both conda and pip</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4061f17">5. Style guide-line</a>
+<li><a href="#org80e211e">4. Better development environments</a>
 <ul>
-<li><a href="#org3f77874">5.1. Styles</a>
+<li><a href="#org22fd817">4.1. PyCharm</a>
 <ul>
-<li><a href="#orgaed2d5c">5.1.1. A sense of style</a></li>
-<li><a href="#orgd00b456">5.1.2. Meaningful names</a></li>
-<li><a href="#orge771c41">5.1.3. Meaningful names</a></li>
-<li><a href="#orgc87e955">5.1.4. Use builtins where possible</a></li>
-<li><a href="#org55bc564">5.1.5. Use docstrings and comments</a></li>
-<li><a href="#orga984a6a">5.1.6. Using agreed upon casing</a></li>
-<li><a href="#orga894bed">5.1.7. Use type-annotations if possible</a></li>
-<li><a href="#org8d143bf">5.1.8. Organise your imports</a></li>
-<li><a href="#org82009e1">5.1.9. Functions should do one thing only</a></li>
-<li><a href="#org7c4b37f">5.1.10. Functions as re-usability</a></li>
-<li><a href="#org4a037f6">5.1.11. Be wary of God classes</a></li>
-<li><a href="#org85837da">5.1.12. Documentation</a></li>
-<li><a href="#org343695c">5.1.13. Perform testing!</a></li>
+<li><a href="#org33e1085">4.1.1. PyCharm</a></li>
+<li><a href="#org1206e9b">4.1.2. PyCharm &#x2013; installing</a></li>
+<li><a href="#org04e250f">4.1.3. PyCharm &#x2013; using PyCharm</a></li>
+</ul>
+</li>
+<li><a href="#org4c72fa0">4.2. Jupyter</a>
+<ul>
+<li><a href="#orge0949cf">4.2.1. What is a Jupyter notebook?</a></li>
+<li><a href="#org4c97ccf">4.2.2. Installing Jupyter</a></li>
+<li><a href="#org9fa7ac4">4.2.3. Starting the server</a></li>
+<li><a href="#org20697f3">4.2.4. Using the interface</a></li>
+<li><a href="#org167fdb5">4.2.5. Markdown 101</a></li>
+<li><a href="#orga010e79">4.2.6. A slightly better environment &#x2013; jupyterlab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org104e343">5. Style guide-line</a>
+<ul>
+<li><a href="#org2f2811e">5.1. Styles</a>
+<ul>
+<li><a href="#org0a487ad">5.1.1. A sense of style</a></li>
+<li><a href="#org1978abd">5.1.2. Meaningful names</a></li>
+<li><a href="#org891cd6c">5.1.3. Meaningful names</a></li>
+<li><a href="#org2e211f2">5.1.4. Use builtins where possible</a></li>
+<li><a href="#org01be934">5.1.5. Use docstrings and comments</a></li>
+<li><a href="#org80c1c1e">5.1.6. Using agreed upon casing</a></li>
+<li><a href="#org2798fb5">5.1.7. Use type-annotations if possible</a></li>
+<li><a href="#orge11898d">5.1.8. Organise your imports</a></li>
+<li><a href="#orgd56d8ed">5.1.9. Functions should do one thing only</a></li>
+<li><a href="#orgab1bf76">5.1.10. Functions as re-usability</a></li>
+<li><a href="#orgb5531f1">5.1.11. Be wary of God classes</a></li>
+<li><a href="#org70bfdf9">5.1.12. Documentation</a></li>
+<li><a href="#org10cece7">5.1.13. Perform testing!</a></li>
 </ul>
 </li>
 </ul>
@@ -340,16 +340,16 @@
 </div>
 </div>
 
-<div id="outline-container-org85f99fa" class="outline-2">
-<h2 id="org85f99fa"><span class="section-number-2">1.</span> Modules</h2>
+<div id="outline-container-orgc9135d9" class="outline-2">
+<h2 id="orgc9135d9"><span class="section-number-2">1.</span> Modules</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org56a896f" class="outline-3">
-<h3 id="org56a896f"><span class="section-number-3">1.1.</span> Python Modules</h3>
+<div id="outline-container-org36c5c14" class="outline-3">
+<h3 id="org36c5c14"><span class="section-number-3">1.1.</span> Python Modules</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org14ed87d" class="outline-4">
-<h4 id="org14ed87d"><span class="section-number-4">1.1.1.</span> Importing in python</h4>
+<div id="outline-container-orgcf90d31" class="outline-4">
+<h4 id="orgcf90d31"><span class="section-number-4">1.1.1.</span> Importing in python</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <img src="images/python.png" alt="python.png" />
@@ -358,8 +358,8 @@
 </div>
 </div>
 
-<div id="outline-container-org9c77bba" class="outline-4">
-<h4 id="org9c77bba"><span class="section-number-4">1.1.2.</span> The basic structure of importing</h4>
+<div id="outline-container-orge77307b" class="outline-4">
+<h4 id="orge77307b"><span class="section-number-4">1.1.2.</span> The basic structure of importing</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Modules or packages are other <i>scripts or programs</i> that can be imported into other
@@ -385,8 +385,8 @@ to refer to something within this package.
 </div>
 </div>
 
-<div id="outline-container-orgf892d91" class="outline-4">
-<h4 id="orgf892d91"><span class="section-number-4">1.1.3.</span> The basic structure of importing</h4>
+<div id="outline-container-orgd803701" class="outline-4">
+<h4 id="orgd803701"><span class="section-number-4">1.1.3.</span> The basic structure of importing</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 Let's take a look at a very basic example.
@@ -409,8 +409,8 @@ called <code>pi</code> to calculate the circumference of a circle.
 </div>
 </div>
 
-<div id="outline-container-orgbffbac5" class="outline-4">
-<h4 id="orgbffbac5"><span class="section-number-4">1.1.4.</span> Importing specific items</h4>
+<div id="outline-container-org8d0e8cc" class="outline-4">
+<h4 id="org8d0e8cc"><span class="section-number-4">1.1.4.</span> Importing specific items</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <p>
 If we didn't always want to specify the package name when we only want to use
@@ -437,8 +437,8 @@ As you can see, we're using the <code>from ... import ...</code> syntax.
 </div>
 </div>
 
-<div id="outline-container-orga825066" class="outline-4">
-<h4 id="orga825066"><span class="section-number-4">1.1.5.</span> Don't do this!</h4>
+<div id="outline-container-org50ba65e" class="outline-4">
+<h4 id="org50ba65e"><span class="section-number-4">1.1.5.</span> Don't do this!</h4>
 <div class="outline-text-4" id="text-1-1-5">
 <p>
 When using <code>from ... import ...</code>, there is a wildcard <code>*</code> that we <b>could</b> use. You may
@@ -458,8 +458,8 @@ However, this can create many problems with reading your program code
 </div>
 </div>
 
-<div id="outline-container-orgb12713f" class="outline-4">
-<h4 id="orgb12713f"><span class="section-number-4">1.1.6.</span> Don't do this!</h4>
+<div id="outline-container-org4bfb5f6" class="outline-4">
+<h4 id="org4bfb5f6"><span class="section-number-4">1.1.6.</span> Don't do this!</h4>
 <div class="outline-text-4" id="text-1-1-6">
 <p>
 Which module does <code>my_function()</code> originate? Are there are common names between the
@@ -476,8 +476,8 @@ my_function()
 </div>
 </div>
 
-<div id="outline-container-org13362a0" class="outline-4">
-<h4 id="org13362a0"><span class="section-number-4">1.1.7.</span> Alias</h4>
+<div id="outline-container-orgf9b6214" class="outline-4">
+<h4 id="orgf9b6214"><span class="section-number-4">1.1.7.</span> Alias</h4>
 <div class="outline-text-4" id="text-1-1-7">
 <p>
 When importing, we can optionally create an alias to a symbol. Here we're creating an
@@ -505,8 +505,8 @@ will definitely revisit in another lecture!
 </div>
 </div>
 
-<div id="outline-container-org352dcfd" class="outline-4">
-<h4 id="org352dcfd"><span class="section-number-4">1.1.8.</span> Importing local libraries</h4>
+<div id="outline-container-org14d032d" class="outline-4">
+<h4 id="org14d032d"><span class="section-number-4">1.1.8.</span> Importing local libraries</h4>
 <div class="outline-text-4" id="text-1-1-8">
 <p>
 let's consider a hypothetical local directory:
@@ -535,8 +535,8 @@ If we wanted to import something from <code>my_module.py</code> we would do:
 </div>
 </div>
 
-<div id="outline-container-org31dd5c2" class="outline-4">
-<h4 id="org31dd5c2"><span class="section-number-4">1.1.9.</span> Importing local libraries</h4>
+<div id="outline-container-org1f3b834" class="outline-4">
+<h4 id="org1f3b834"><span class="section-number-4">1.1.9.</span> Importing local libraries</h4>
 <div class="outline-text-4" id="text-1-1-9">
 <div class="org-src-container">
 <pre class="src src-bash">main.py
@@ -564,8 +564,8 @@ Here is another example for increased nesting of directories:
 </div>
 
 
-<div id="outline-container-org166b69e" class="outline-4">
-<h4 id="org166b69e"><span class="section-number-4">1.1.10.</span> Quick exercise &#x2013; imports</h4>
+<div id="outline-container-org000621e" class="outline-4">
+<h4 id="org000621e"><span class="section-number-4">1.1.10.</span> Quick exercise &#x2013; imports</h4>
 <div class="outline-text-4" id="text-1-1-10">
 <ul class="org-ul">
 <li>Create a directory to store your scripts</li>
@@ -577,8 +577,8 @@ Here is another example for increased nesting of directories:
 </div>
 </div>
 
-<div id="outline-container-org6f7d3b0" class="outline-4">
-<h4 id="org6f7d3b0"><span class="section-number-4">1.1.11.</span> Shortcuts with <code>__init__.py</code></h4>
+<div id="outline-container-orga7bdfbe" class="outline-4">
+<h4 id="orga7bdfbe"><span class="section-number-4">1.1.11.</span> Shortcuts with <code>__init__.py</code></h4>
 <div class="outline-text-4" id="text-1-1-11">
 <p>
 Let's say you often import <code>Cat</code> and <code>Dog</code>. We can use a file called <code>__init__.py</code> to help
@@ -617,8 +617,8 @@ In <code>main.py</code>:
 </div>
 </div>
 
-<div id="outline-container-orgde8c7e2" class="outline-4">
-<h4 id="orgde8c7e2"><span class="section-number-4">1.1.12.</span> What is <code>__main__</code>?</h4>
+<div id="outline-container-org6f371fe" class="outline-4">
+<h4 id="org6f371fe"><span class="section-number-4">1.1.12.</span> What is <code>__main__</code>?</h4>
 <div class="outline-text-4" id="text-1-1-12">
 <p>
 Consider a file with the following:
@@ -642,8 +642,8 @@ takes a very long time?
 </div>
 </div>
 
-<div id="outline-container-org0554bca" class="outline-4">
-<h4 id="org0554bca"><span class="section-number-4">1.1.13.</span> What is <code>__main__</code>?</h4>
+<div id="outline-container-orgb35658f" class="outline-4">
+<h4 id="orgb35658f"><span class="section-number-4">1.1.13.</span> What is <code>__main__</code>?</h4>
 <div class="outline-text-4" id="text-1-1-13">
 <p>
 Here we are wrapping any global computations into a appropriate functions. This
@@ -668,8 +668,8 @@ being imported, the statements within this if scope will not be run.
 </div>
 </div>
 
-<div id="outline-container-orgfa72306" class="outline-4">
-<h4 id="orgfa72306"><span class="section-number-4">1.1.14.</span> What is <code>__main__</code>?</h4>
+<div id="outline-container-orgba82e86" class="outline-4">
+<h4 id="orgba82e86"><span class="section-number-4">1.1.14.</span> What is <code>__main__</code>?</h4>
 <div class="outline-text-4" id="text-1-1-14">
 <p>
 So if we wanted to run <code>compute()</code> if this file is being run directly, we would write:
@@ -696,16 +696,16 @@ So if we wanted to run <code>compute()</code> if this file is being run directly
 </div>
 </div>
 
-<div id="outline-container-org5c29d4e" class="outline-2">
-<h2 id="org5c29d4e"><span class="section-number-2">2.</span> Working with Files and Directories</h2>
+<div id="outline-container-org7fd0bf5" class="outline-2">
+<h2 id="org7fd0bf5"><span class="section-number-2">2.</span> Working with Files and Directories</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgf00ce80" class="outline-3">
-<h3 id="orgf00ce80"><span class="section-number-3">2.1.</span> Paths</h3>
+<div id="outline-container-org6b2d7e0" class="outline-3">
+<h3 id="org6b2d7e0"><span class="section-number-3">2.1.</span> Paths</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org6b7f095" class="outline-4">
-<h4 id="org6b7f095"><span class="section-number-4">2.1.1.</span> Current working directory</h4>
+<div id="outline-container-orgcf18714" class="outline-4">
+<h4 id="orgcf18714"><span class="section-number-4">2.1.1.</span> Current working directory</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 The folder in which you run Python will be the <i>current working directory (CWD)</i>. We can
@@ -738,8 +738,8 @@ differences in the paths!
 </div>
 </div>
 
-<div id="outline-container-org89f1a89" class="outline-4">
-<h4 id="org89f1a89"><span class="section-number-4">2.1.2.</span> Listing directories</h4>
+<div id="outline-container-orge5fff76" class="outline-4">
+<h4 id="orge5fff76"><span class="section-number-4">2.1.2.</span> Listing directories</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Continuing with our usage of the <code>os</code> package, we can use the <code>listdir</code> function to list
@@ -767,8 +767,8 @@ directory (though the filename does provide some hint).
 </div>
 </div>
 
-<div id="outline-container-org743ed8c" class="outline-4">
-<h4 id="org743ed8c"><span class="section-number-4">2.1.3.</span> Testing for files or directories</h4>
+<div id="outline-container-org0a6e47d" class="outline-4">
+<h4 id="org0a6e47d"><span class="section-number-4">2.1.3.</span> Testing for files or directories</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <p>
 In the previous example we saw that the items returned by <code>listdir</code> does not specify if
@@ -782,7 +782,7 @@ submodule to test if the argument is a file, else it will be a directory.
 </pre>
 </div>
 
-<pre class="example" id="org5d554df">
+<pre class="example" id="org0d69e83">
 Results: 
 # =&gt; images =&gt; is file: False
 # =&gt; __pycache__ =&gt; is file: False
@@ -797,8 +797,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org6901ce1" class="outline-4">
-<h4 id="org6901ce1"><span class="section-number-4">2.1.4.</span> Using wildcards</h4>
+<div id="outline-container-org13bc8bc" class="outline-4">
+<h4 id="org13bc8bc"><span class="section-number-4">2.1.4.</span> Using wildcards</h4>
 <div class="outline-text-4" id="text-2-1-4">
 <p>
 If we wanted to get all files within a directory, we could use the <code>glob</code> function from
@@ -814,7 +814,7 @@ files that end with <code>.png</code>. <code>test-*</code> will list all files t
 </pre>
 </div>
 
-<pre class="example" id="org1a84c48">
+<pre class="example" id="orgb23402a">
 Results: 
 # =&gt; images/legend-2.png
 # =&gt; images/fig-size.png
@@ -832,8 +832,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org2485c97" class="outline-4">
-<h4 id="org2485c97"><span class="section-number-4">2.1.5.</span> Pathlib &#x2013; a newer way</h4>
+<div id="outline-container-orgcbdbf40" class="outline-4">
+<h4 id="orgcbdbf40"><span class="section-number-4">2.1.5.</span> Pathlib &#x2013; a newer way</h4>
 <div class="outline-text-4" id="text-2-1-5">
 <p>
 <code>pathlib</code> is a somewhat recent addition to the Python standard library which makes
@@ -863,8 +863,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org11627c6" class="outline-4">
-<h4 id="org11627c6"><span class="section-number-4">2.1.6.</span> Pathlib &#x2013; convenient functions</h4>
+<div id="outline-container-orga0b5f41" class="outline-4">
+<h4 id="orga0b5f41"><span class="section-number-4">2.1.6.</span> Pathlib &#x2013; convenient functions</h4>
 <div class="outline-text-4" id="text-2-1-6">
 <p>
 <code>pathlib</code> allows us to easily decompose a path into different components. Take for
@@ -893,8 +893,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgc6682cf" class="outline-4">
-<h4 id="orgc6682cf"><span class="section-number-4">2.1.7.</span> Converting Path into a string</h4>
+<div id="outline-container-org11efba3" class="outline-4">
+<h4 id="org11efba3"><span class="section-number-4">2.1.7.</span> Converting Path into a string</h4>
 <div class="outline-text-4" id="text-2-1-7">
 <p>
 As <code>pathlib</code> is a recent addition to Python, some functions/classes are expecting a <code>str</code>
@@ -915,8 +915,8 @@ Results:
 </div>
 
 
-<div id="outline-container-orgdabf971" class="outline-4">
-<h4 id="orgdabf971"><span class="section-number-4">2.1.8.</span> Quick exercise &#x2013; locating files</h4>
+<div id="outline-container-org2cb5a96" class="outline-4">
+<h4 id="org2cb5a96"><span class="section-number-4">2.1.8.</span> Quick exercise &#x2013; locating files</h4>
 <div class="outline-text-4" id="text-2-1-8">
 <ul class="org-ul">
 <li>In the same directory of scripts you created in the last exercise, create another
@@ -982,12 +982,12 @@ Release Year: &lt;release_year&gt;
 </div>
 </div>
 
-<div id="outline-container-orgb6020fb" class="outline-3">
-<h3 id="orgb6020fb"><span class="section-number-3">2.2.</span> Files</h3>
+<div id="outline-container-org3536904" class="outline-3">
+<h3 id="org3536904"><span class="section-number-3">2.2.</span> Files</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-org834f538" class="outline-4">
-<h4 id="org834f538"><span class="section-number-4">2.2.1.</span> Reading files</h4>
+<div id="outline-container-org30053ff" class="outline-4">
+<h4 id="org30053ff"><span class="section-number-4">2.2.1.</span> Reading files</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 To read a file, we must first open it with the <code>open</code> function. This returns a file
@@ -1019,8 +1019,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org2a14f1a" class="outline-4">
-<h4 id="org2a14f1a"><span class="section-number-4">2.2.2.</span> Reading files &#x2013; lines or entire file?</h4>
+<div id="outline-container-org2b9c0dc" class="outline-4">
+<h4 id="org2b9c0dc"><span class="section-number-4">2.2.2.</span> Reading files &#x2013; lines or entire file?</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 While <code>read</code> works for the last example, you may want to read files in different
@@ -1040,8 +1040,8 @@ open_file.readlines()  <span style="color: #5C6370; font-style: italic;"># </spa
 </div>
 </div>
 
-<div id="outline-container-org6f77dfd" class="outline-4">
-<h4 id="org6f77dfd"><span class="section-number-4">2.2.3.</span> Reading files</h4>
+<div id="outline-container-org297839d" class="outline-4">
+<h4 id="org297839d"><span class="section-number-4">2.2.3.</span> Reading files</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <p>
 It can be a pain to remember to use the <code>.close()</code> every time you open a file. In
@@ -1071,8 +1071,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org0511f9d" class="outline-4">
-<h4 id="org0511f9d"><span class="section-number-4">2.2.4.</span> Writing files</h4>
+<div id="outline-container-org1b6b18e" class="outline-4">
+<h4 id="org1b6b18e"><span class="section-number-4">2.2.4.</span> Writing files</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <p>
 The syntax for writing a file is similar to reading a file. The main difference is
@@ -1104,8 +1104,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgae87aa3" class="outline-4">
-<h4 id="orgae87aa3"><span class="section-number-4">2.2.5.</span> Appending to files</h4>
+<div id="outline-container-org6e3719a" class="outline-4">
+<h4 id="org6e3719a"><span class="section-number-4">2.2.5.</span> Appending to files</h4>
 <div class="outline-text-4" id="text-2-2-5">
 <p>
 Every time we write to a file, the entire contents is deleted and replaced. If we
@@ -1137,8 +1137,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org5734177" class="outline-4">
-<h4 id="org5734177"><span class="section-number-4">2.2.6.</span> Quick exercise &#x2013; reading/writing files</h4>
+<div id="outline-container-org63fef57" class="outline-4">
+<h4 id="org63fef57"><span class="section-number-4">2.2.6.</span> Quick exercise &#x2013; reading/writing files</h4>
 <div class="outline-text-4" id="text-2-2-6">
 <ul class="org-ul">
 <li>Using the same text files from the previous exercise, we will want to be able to
@@ -1151,8 +1151,8 @@ for yourself.</li>
 </div>
 </div>
 
-<div id="outline-container-org6ec876b" class="outline-4">
-<h4 id="org6ec876b"><span class="section-number-4">2.2.7.</span> Reading CSV files &#x2013; builtin</h4>
+<div id="outline-container-org75e1f81" class="outline-4">
+<h4 id="org75e1f81"><span class="section-number-4">2.2.7.</span> Reading CSV files &#x2013; builtin</h4>
 <div class="outline-text-4" id="text-2-2-7">
 <p>
 When working with common file types, Python has built-in modules to make the process
@@ -1184,8 +1184,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgc9b37cc" class="outline-4">
-<h4 id="orgc9b37cc"><span class="section-number-4">2.2.8.</span> Writing a CSV file &#x2013; builtin</h4>
+<div id="outline-container-org6e63fdd" class="outline-4">
+<h4 id="org6e63fdd"><span class="section-number-4">2.2.8.</span> Writing a CSV file &#x2013; builtin</h4>
 <div class="outline-text-4" id="text-2-2-8">
 <p>
 Writing a CSV file is similar except we are creating a CSV writer object, and are
@@ -1207,8 +1207,8 @@ using <code>writerow</code> instead.
 </div>
 </div>
 
-<div id="outline-container-org82cdf85" class="outline-4">
-<h4 id="org82cdf85"><span class="section-number-4">2.2.9.</span> Quick exercise &#x2013; reading/writing CSV files</h4>
+<div id="outline-container-org4e90268" class="outline-4">
+<h4 id="org4e90268"><span class="section-number-4">2.2.9.</span> Quick exercise &#x2013; reading/writing CSV files</h4>
 <div class="outline-text-4" id="text-2-2-9">
 <ul class="org-ul">
 <li>Given the parsed data from the previous exercise, write a new CSV file in the <code>data</code> directory.</li>
@@ -1219,8 +1219,8 @@ using <code>writerow</code> instead.
 </div>
 </div>
 
-<div id="outline-container-org78e749f" class="outline-4">
-<h4 id="org78e749f"><span class="section-number-4">2.2.10.</span> Read JSON files &#x2013; builtin</h4>
+<div id="outline-container-org2fb2476" class="outline-4">
+<h4 id="org2fb2476"><span class="section-number-4">2.2.10.</span> Read JSON files &#x2013; builtin</h4>
 <div class="outline-text-4" id="text-2-2-10">
 <p>
 Like CSV, json is a common format for storing data. Python includes a package called
@@ -1254,8 +1254,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org7233c9f" class="outline-4">
-<h4 id="org7233c9f"><span class="section-number-4">2.2.11.</span> Write JSON files &#x2013; builtin</h4>
+<div id="outline-container-org8090dec" class="outline-4">
+<h4 id="org8090dec"><span class="section-number-4">2.2.11.</span> Write JSON files &#x2013; builtin</h4>
 <div class="outline-text-4" id="text-2-2-11">
 <p>
 While we used <code>json.load</code> to read the file, we use <code>json.dump</code> to write the data to a
@@ -1283,16 +1283,16 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org6a7c037" class="outline-2">
-<h2 id="org6a7c037"><span class="section-number-2">3.</span> Package Management</h2>
+<div id="outline-container-org557545a" class="outline-2">
+<h2 id="org557545a"><span class="section-number-2">3.</span> Package Management</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org06a0865" class="outline-3">
-<h3 id="org06a0865"><span class="section-number-3">3.1.</span> Package Management</h3>
+<div id="outline-container-orge199513" class="outline-3">
+<h3 id="orge199513"><span class="section-number-3">3.1.</span> Package Management</h3>
 <div class="outline-text-3" id="text-3-1">
 </div>
-<div id="outline-container-org83983cb" class="outline-4">
-<h4 id="org83983cb"><span class="section-number-4">3.1.1.</span> Introduction</h4>
+<div id="outline-container-orgde3076f" class="outline-4">
+<h4 id="orgde3076f"><span class="section-number-4">3.1.1.</span> Introduction</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 When working on projects, we may want to use external packages that other people have
@@ -1303,8 +1303,8 @@ different packages and these versions of packages.
 </div>
 </div>
 
-<div id="outline-container-orgb620619" class="outline-4">
-<h4 id="orgb620619"><span class="section-number-4">3.1.2.</span> Virtual Environments</h4>
+<div id="outline-container-orgf9863ca" class="outline-4">
+<h4 id="orgf9863ca"><span class="section-number-4">3.1.2.</span> Virtual Environments</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 When installing packages, by default, the packages are going to be installed into the
@@ -1324,15 +1324,15 @@ We will take a look at package management and virtual environments in Python.
 </div>
 </div>
 
-<div id="outline-container-org37b6c4a" class="outline-3">
-<h3 id="org37b6c4a"><span class="section-number-3">3.2.</span> Anaconda</h3>
+<div id="outline-container-orgfab2444" class="outline-3">
+<h3 id="orgfab2444"><span class="section-number-3">3.2.</span> Anaconda</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
-<div id="outline-container-org969d019" class="outline-4">
-<h4 id="org969d019"><span class="section-number-4">3.2.1.</span> What is Anaconda?</h4>
+<div id="outline-container-org8efefe0" class="outline-4">
+<h4 id="org8efefe0"><span class="section-number-4">3.2.1.</span> What is Anaconda?</h4>
 <div class="outline-text-4" id="text-3-2-1">
 
-<div id="org32bb2d4" class="figure">
+<div id="org31da7e4" class="figure">
 <p><img src="images/Anaconda_Logo.png" alt="Anaconda_Logo.png" />
 </p>
 </div>
@@ -1346,8 +1346,8 @@ We will take a look at package management and virtual environments in Python.
 </div>
 </div>
 
-<div id="outline-container-org9acc329" class="outline-4">
-<h4 id="org9acc329"><span class="section-number-4">3.2.2.</span> Installing Anaconda</h4>
+<div id="outline-container-org67e8e35" class="outline-4">
+<h4 id="org67e8e35"><span class="section-number-4">3.2.2.</span> Installing Anaconda</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 We're going to install miniconda (a minimal installation of
@@ -1376,8 +1376,8 @@ Follow the installation instructions (most of the time the defaults are sensible
 </div>
 </div>
 
-<div id="outline-container-orga66d961" class="outline-4">
-<h4 id="orga66d961"><span class="section-number-4">3.2.3.</span> Working with Anaconda &#x2013; creating an environment</h4>
+<div id="outline-container-org66f80df" class="outline-4">
+<h4 id="org66f80df"><span class="section-number-4">3.2.3.</span> Working with Anaconda &#x2013; creating an environment</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 Conda is a command line tool to manage environments. We're going to highlight some of
@@ -1403,8 +1403,8 @@ environment, you will first have to activate it.
 </div>
 </div>
 
-<div id="outline-container-orgc32bca0" class="outline-4">
-<h4 id="orgc32bca0"><span class="section-number-4">3.2.4.</span> Working with Anaconda &#x2013; activating an environment</h4>
+<div id="outline-container-orgaca128a" class="outline-4">
+<h4 id="orgaca128a"><span class="section-number-4">3.2.4.</span> Working with Anaconda &#x2013; activating an environment</h4>
 <div class="outline-text-4" id="text-3-2-4">
 <p>
 Once you've created a new environment, you can activate it. This is as simple as:
@@ -1422,8 +1422,8 @@ You will notice that your command line prompt has changed from <code>(base)</cod
 </div>
 </div>
 
-<div id="outline-container-orgbce77f4" class="outline-4">
-<h4 id="orgbce77f4"><span class="section-number-4">3.2.5.</span> Working with Anaconda &#x2013; de-activating an environment</h4>
+<div id="outline-container-org7e2fb11" class="outline-4">
+<h4 id="org7e2fb11"><span class="section-number-4">3.2.5.</span> Working with Anaconda &#x2013; de-activating an environment</h4>
 <div class="outline-text-4" id="text-3-2-5">
 <p>
 To deactivate an environment, just use:
@@ -1446,8 +1446,8 @@ or:
 </div>
 
 
-<div id="outline-container-orgf34c9af" class="outline-4">
-<h4 id="orgf34c9af"><span class="section-number-4">3.2.6.</span> Working with Anaconda &#x2013; installing using conda</h4>
+<div id="outline-container-org995a492" class="outline-4">
+<h4 id="org995a492"><span class="section-number-4">3.2.6.</span> Working with Anaconda &#x2013; installing using conda</h4>
 <div class="outline-text-4" id="text-3-2-6">
 <p>
 Let's say we want to install a package, say <code>scikit-learn</code> (if we're doing some data
@@ -1477,8 +1477,8 @@ use: <a href="https://anaconda.org/anaconda/repo">https://anaconda.org/anaconda/
 </div>
 </div>
 
-<div id="outline-container-orgbb08bd4" class="outline-4">
-<h4 id="orgbb08bd4"><span class="section-number-4">3.2.7.</span> Working with Anaconda &#x2013; package versions</h4>
+<div id="outline-container-org6d4681d" class="outline-4">
+<h4 id="org6d4681d"><span class="section-number-4">3.2.7.</span> Working with Anaconda &#x2013; package versions</h4>
 <div class="outline-text-4" id="text-3-2-7">
 <div class="org-src-container">
 <pre class="src src-bash">conda install &lt;package-name&gt;=&lt;version-number&gt;
@@ -1488,8 +1488,8 @@ use: <a href="https://anaconda.org/anaconda/repo">https://anaconda.org/anaconda/
 </div>
 
 
-<div id="outline-container-org60c79ef" class="outline-4">
-<h4 id="org60c79ef"><span class="section-number-4">3.2.8.</span> Installing a specific version of Python</h4>
+<div id="outline-container-org137a72c" class="outline-4">
+<h4 id="org137a72c"><span class="section-number-4">3.2.8.</span> Installing a specific version of Python</h4>
 <div class="outline-text-4" id="text-3-2-8">
 <p>
 If we wanted to, we could also change the python version being used in the virtual
@@ -1508,8 +1508,8 @@ have installed support it.
 </div>
 </div>
 
-<div id="outline-container-org522cc26" class="outline-4">
-<h4 id="org522cc26"><span class="section-number-4">3.2.9.</span> Working with Anaconda &#x2013; conda-forge and other repositories</h4>
+<div id="outline-container-orga5422ab" class="outline-4">
+<h4 id="orga5422ab"><span class="section-number-4">3.2.9.</span> Working with Anaconda &#x2013; conda-forge and other repositories</h4>
 <div class="outline-text-4" id="text-3-2-9">
 <p>
 Let's say that the package is not within the basic anaconda repository. You can
@@ -1532,8 +1532,8 @@ For example, PyTorch (<a href="https://pytorch.org/">https://pytorch.org/</a>) u
 </div>
 </div>
 
-<div id="outline-container-org6559c7d" class="outline-4">
-<h4 id="org6559c7d"><span class="section-number-4">3.2.10.</span> Working with Anaconda &#x2013; exporting an environment</h4>
+<div id="outline-container-orga33edd5" class="outline-4">
+<h4 id="orga33edd5"><span class="section-number-4">3.2.10.</span> Working with Anaconda &#x2013; exporting an environment</h4>
 <div class="outline-text-4" id="text-3-2-10">
 <p>
 We will want to share our research and work with others. To allow others to use the
@@ -1555,8 +1555,8 @@ compatibility with other operating systems such as Mac OS.
 </div>
 </div>
 
-<div id="outline-container-org46b0de7" class="outline-4">
-<h4 id="org46b0de7"><span class="section-number-4">3.2.11.</span> Working with Anaconda &#x2013; creating environment from existing</h4>
+<div id="outline-container-org12b4ea6" class="outline-4">
+<h4 id="org12b4ea6"><span class="section-number-4">3.2.11.</span> Working with Anaconda &#x2013; creating environment from existing</h4>
 <div class="outline-text-4" id="text-3-2-11">
 <p>
 To create an environment from an existing environment.yml file, you can use the
@@ -1576,12 +1576,12 @@ the packages.
 </div>
 </div>
 
-<div id="outline-container-orgfe2afe9" class="outline-3">
-<h3 id="orgfe2afe9"><span class="section-number-3">3.3.</span> Pip</h3>
+<div id="outline-container-org6a4cec3" class="outline-3">
+<h3 id="org6a4cec3"><span class="section-number-3">3.3.</span> Pip</h3>
 <div class="outline-text-3" id="text-3-3">
 </div>
-<div id="outline-container-orge86ed93" class="outline-4">
-<h4 id="orge86ed93"><span class="section-number-4">3.3.1.</span> What is Pip?</h4>
+<div id="outline-container-orgcbc9299" class="outline-4">
+<h4 id="orgcbc9299"><span class="section-number-4">3.3.1.</span> What is Pip?</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 Pip is another package installer for python. If you're reading documentation online
@@ -1600,8 +1600,8 @@ We're going to take a look at the most commonly used commands with pip.
 </div>
 </div>
 
-<div id="outline-container-org97fb133" class="outline-4">
-<h4 id="org97fb133"><span class="section-number-4">3.3.2.</span> Installing packages with pip</h4>
+<div id="outline-container-org0649795" class="outline-4">
+<h4 id="org0649795"><span class="section-number-4">3.3.2.</span> Installing packages with pip</h4>
 <div class="outline-text-4" id="text-3-3-2">
 <p>
 If you want to install a package, its as simple as <code>pip install</code>.
@@ -1614,8 +1614,8 @@ If you want to install a package, its as simple as <code>pip install</code>.
 </div>
 </div>
 
-<div id="outline-container-org1d4715f" class="outline-4">
-<h4 id="org1d4715f"><span class="section-number-4">3.3.3.</span> Installing specific versions</h4>
+<div id="outline-container-org9e8ffaa" class="outline-4">
+<h4 id="org9e8ffaa"><span class="section-number-4">3.3.3.</span> Installing specific versions</h4>
 <div class="outline-text-4" id="text-3-3-3">
 <p>
 Sometimes, though, you will want to install a specific package version. For this use
@@ -1629,8 +1629,8 @@ Sometimes, though, you will want to install a specific package version. For this
 </div>
 </div>
 
-<div id="outline-container-org60a3fe7" class="outline-4">
-<h4 id="org60a3fe7"><span class="section-number-4">3.3.4.</span> Upgrade packages with pip</h4>
+<div id="outline-container-org2e17f38" class="outline-4">
+<h4 id="org2e17f38"><span class="section-number-4">3.3.4.</span> Upgrade packages with pip</h4>
 <div class="outline-text-4" id="text-3-3-4">
 <p>
 If you want upgrade/install the package to the latest version, use the <code>--upgrade</code> flag.
@@ -1643,8 +1643,8 @@ If you want upgrade/install the package to the latest version, use the <code>--u
 </div>
 </div>
 
-<div id="outline-container-orgfafee96" class="outline-4">
-<h4 id="orgfafee96"><span class="section-number-4">3.3.5.</span> Export requirements file</h4>
+<div id="outline-container-org544a316" class="outline-4">
+<h4 id="org544a316"><span class="section-number-4">3.3.5.</span> Export requirements file</h4>
 <div class="outline-text-4" id="text-3-3-5">
 <p>
 Like exporting with conda, pip also includes a method to capture the currently
@@ -1662,8 +1662,8 @@ The common convention is to call the file <code>requirements.txt</code>.
 </div>
 </div>
 
-<div id="outline-container-org18b2853" class="outline-4">
-<h4 id="org18b2853"><span class="section-number-4">3.3.6.</span> Installing multiple packages from a requirements file</h4>
+<div id="outline-container-orgbc7cb83" class="outline-4">
+<h4 id="orgbc7cb83"><span class="section-number-4">3.3.6.</span> Installing multiple packages from a requirements file</h4>
 <div class="outline-text-4" id="text-3-3-6">
 <p>
 If we want to recreate the environment, we can install multiple packages with
@@ -1677,8 +1677,8 @@ specific versions from a requirements file with:
 </div>
 </div>
 
-<div id="outline-container-org3e2ebaa" class="outline-4">
-<h4 id="org3e2ebaa"><span class="section-number-4">3.3.7.</span> Anaconda handles both conda and pip</h4>
+<div id="outline-container-orgbc7087b" class="outline-4">
+<h4 id="orgbc7087b"><span class="section-number-4">3.3.7.</span> Anaconda handles both conda and pip</h4>
 <div class="outline-text-4" id="text-3-3-7">
 <p>
 Conda encompasses pip, which means that when you create a virtual environment with
@@ -1703,16 +1703,16 @@ correct places, whether that is conda or pip.
 </div>
 </div>
 
-<div id="outline-container-org0de834f" class="outline-2">
-<h2 id="org0de834f"><span class="section-number-2">4.</span> Better development environments</h2>
+<div id="outline-container-org80e211e" class="outline-2">
+<h2 id="org80e211e"><span class="section-number-2">4.</span> Better development environments</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org171b3b0" class="outline-3">
-<h3 id="org171b3b0"><span class="section-number-3">4.1.</span> PyCharm</h3>
+<div id="outline-container-org22fd817" class="outline-3">
+<h3 id="org22fd817"><span class="section-number-3">4.1.</span> PyCharm</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-org5fd5fb6" class="outline-4">
-<h4 id="org5fd5fb6"><span class="section-number-4">4.1.1.</span> PyCharm</h4>
+<div id="outline-container-org33e1085" class="outline-4">
+<h4 id="org33e1085"><span class="section-number-4">4.1.1.</span> PyCharm</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 So far we have been using a very basic <b>text editor</b>. This editor is only providing us
@@ -1742,8 +1742,8 @@ We will use PyCharm for the rest of this course.
 </div>
 </div>
 
-<div id="outline-container-orge840d55" class="outline-4">
-<h4 id="orge840d55"><span class="section-number-4">4.1.2.</span> PyCharm &#x2013; installing</h4>
+<div id="outline-container-org1206e9b" class="outline-4">
+<h4 id="org1206e9b"><span class="section-number-4">4.1.2.</span> PyCharm &#x2013; installing</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 Using Ubuntu snaps:
@@ -1767,8 +1767,8 @@ bash pycharm-community-&lt;version&gt;/bin/pycharm.sh
 </div>
 </div>
 
-<div id="outline-container-org6a05f95" class="outline-4">
-<h4 id="org6a05f95"><span class="section-number-4">4.1.3.</span> PyCharm &#x2013; using PyCharm</h4>
+<div id="outline-container-org04e250f" class="outline-4">
+<h4 id="org04e250f"><span class="section-number-4">4.1.3.</span> PyCharm &#x2013; using PyCharm</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <p>
 We shall take a look at the following:
@@ -1785,15 +1785,15 @@ We shall take a look at the following:
 </div>
 </div>
 
-<div id="outline-container-org3d53d28" class="outline-3">
-<h3 id="org3d53d28"><span class="section-number-3">4.2.</span> Jupyter</h3>
+<div id="outline-container-org4c72fa0" class="outline-3">
+<h3 id="org4c72fa0"><span class="section-number-3">4.2.</span> Jupyter</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org8dee67c" class="outline-4">
-<h4 id="org8dee67c"><span class="section-number-4">4.2.1.</span> What is a Jupyter notebook?</h4>
+<div id="outline-container-orge0949cf" class="outline-4">
+<h4 id="orge0949cf"><span class="section-number-4">4.2.1.</span> What is a Jupyter notebook?</h4>
 <div class="outline-text-4" id="text-4-2-1">
 
-<div id="org61b09d1" class="figure">
+<div id="org35f3f70" class="figure">
 <p><img src="images/langfr-1024px-Jupyter_logo.png" alt="langfr-1024px-Jupyter_logo.png" width="200px" />
 </p>
 </div>
@@ -1810,8 +1810,8 @@ process cannot be clearly defined (and therefore cannot be immediately programme
 </div>
 </div>
 
-<div id="outline-container-org1a0d3f4" class="outline-4">
-<h4 id="org1a0d3f4"><span class="section-number-4">4.2.2.</span> Installing Jupyter</h4>
+<div id="outline-container-org4c97ccf" class="outline-4">
+<h4 id="org4c97ccf"><span class="section-number-4">4.2.2.</span> Installing Jupyter</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 We first need to install Jupyter. In you conda environment type:
@@ -1825,8 +1825,8 @@ We first need to install Jupyter. In you conda environment type:
 </div>
 </div>
 
-<div id="outline-container-org5c87501" class="outline-4">
-<h4 id="org5c87501"><span class="section-number-4">4.2.3.</span> Starting the server</h4>
+<div id="outline-container-org9fa7ac4" class="outline-4">
+<h4 id="org9fa7ac4"><span class="section-number-4">4.2.3.</span> Starting the server</h4>
 <div class="outline-text-4" id="text-4-2-3">
 <p>
 With Jupyter installed, we can now start the notebook server using:
@@ -1847,8 +1847,8 @@ If you want to stop the server, press Ctrl+c in the terminal window.
 </div>
 </div>
 
-<div id="outline-container-org0ff25e0" class="outline-4">
-<h4 id="org0ff25e0"><span class="section-number-4">4.2.4.</span> Using the interface</h4>
+<div id="outline-container-org20697f3" class="outline-4">
+<h4 id="org20697f3"><span class="section-number-4">4.2.4.</span> Using the interface</h4>
 <div class="outline-text-4" id="text-4-2-4">
 <p>
 We shall take a look at the following:
@@ -1865,8 +1865,8 @@ We shall take a look at the following:
 </div>
 </div>
 
-<div id="outline-container-org8bb6f16" class="outline-4">
-<h4 id="org8bb6f16"><span class="section-number-4">4.2.5.</span> Markdown 101</h4>
+<div id="outline-container-org167fdb5" class="outline-4">
+<h4 id="org167fdb5"><span class="section-number-4">4.2.5.</span> Markdown 101</h4>
 <div class="outline-text-4" id="text-4-2-5">
 <p>
 We will revisit markdown in a later lecture, but since we're using notebooks, some of
@@ -1880,8 +1880,8 @@ markdown syntax.
 </div>
 </div>
 
-<div id="outline-container-orgb857ad8" class="outline-4">
-<h4 id="orgb857ad8"><span class="section-number-4">4.2.6.</span> A slightly better environment &#x2013; jupyterlab</h4>
+<div id="outline-container-orga010e79" class="outline-4">
+<h4 id="orga010e79"><span class="section-number-4">4.2.6.</span> A slightly better environment &#x2013; jupyterlab</h4>
 <div class="outline-text-4" id="text-4-2-6">
 <p>
 The notebook environment is fine, but there exists another package called jupyter-lab
@@ -1899,16 +1899,16 @@ jupyter-lab
 </div>
 </div>
 
-<div id="outline-container-org4061f17" class="outline-2">
-<h2 id="org4061f17"><span class="section-number-2">5.</span> Style guide-line</h2>
+<div id="outline-container-org104e343" class="outline-2">
+<h2 id="org104e343"><span class="section-number-2">5.</span> Style guide-line</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org3f77874" class="outline-3">
-<h3 id="org3f77874"><span class="section-number-3">5.1.</span> Styles</h3>
+<div id="outline-container-org2f2811e" class="outline-3">
+<h3 id="org2f2811e"><span class="section-number-3">5.1.</span> Styles</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgaed2d5c" class="outline-4">
-<h4 id="orgaed2d5c"><span class="section-number-4">5.1.1.</span> A sense of style</h4>
+<div id="outline-container-org0a487ad" class="outline-4">
+<h4 id="org0a487ad"><span class="section-number-4">5.1.1.</span> A sense of style</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 Now that we have looked at syntax you will need to create Python projects, I want to
@@ -1928,8 +1928,8 @@ will talk through some of the most important ones, in my opinion.
 </div>
 </div>
 
-<div id="outline-container-orgd00b456" class="outline-4">
-<h4 id="orgd00b456"><span class="section-number-4">5.1.2.</span> Meaningful names</h4>
+<div id="outline-container-org1978abd" class="outline-4">
+<h4 id="org1978abd"><span class="section-number-4">5.1.2.</span> Meaningful names</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 What does this code do?
@@ -1951,8 +1951,8 @@ What does this code do?
 </div>
 </div>
 
-<div id="outline-container-orge771c41" class="outline-4">
-<h4 id="orge771c41"><span class="section-number-4">5.1.3.</span> Meaningful names</h4>
+<div id="outline-container-org891cd6c" class="outline-4">
+<h4 id="org891cd6c"><span class="section-number-4">5.1.3.</span> Meaningful names</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 What about this one?
@@ -1979,8 +1979,8 @@ understandable because we have used meaningful names for things!
 </div>
 </div>
 
-<div id="outline-container-orgc87e955" class="outline-4">
-<h4 id="orgc87e955"><span class="section-number-4">5.1.4.</span> Use builtins where possible</h4>
+<div id="outline-container-org2e211f2" class="outline-4">
+<h4 id="org2e211f2"><span class="section-number-4">5.1.4.</span> Use builtins where possible</h4>
 <div class="outline-text-4" id="text-5-1-4">
 <p>
 Don't re-invent the wheel. Try to use Python's built-in functions/classes if they
@@ -2007,8 +2007,8 @@ or maybe even:
 </div>
 </div>
 
-<div id="outline-container-org55bc564" class="outline-4">
-<h4 id="org55bc564"><span class="section-number-4">5.1.5.</span> Use docstrings and comments</h4>
+<div id="outline-container-org01be934" class="outline-4">
+<h4 id="org01be934"><span class="section-number-4">5.1.5.</span> Use docstrings and comments</h4>
 <div class="outline-text-4" id="text-5-1-5">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">compute_average</span>(list_of_data, exclude=<span style="color: #56B6C2;">None</span>):
@@ -2037,8 +2037,8 @@ or maybe even:
 </div>
 </div>
 
-<div id="outline-container-orga984a6a" class="outline-4">
-<h4 id="orga984a6a"><span class="section-number-4">5.1.6.</span> Using agreed upon casing</h4>
+<div id="outline-container-org80c1c1e" class="outline-4">
+<h4 id="org80c1c1e"><span class="section-number-4">5.1.6.</span> Using agreed upon casing</h4>
 <div class="outline-text-4" id="text-5-1-6">
 <ul class="org-ul">
 <li><code>snake_casing</code> for functions and variables</li>
@@ -2055,8 +2055,8 @@ or maybe even:
 </div>
 </div>
 
-<div id="outline-container-orga894bed" class="outline-4">
-<h4 id="orga894bed"><span class="section-number-4">5.1.7.</span> Use type-annotations if possible</h4>
+<div id="outline-container-org2798fb5" class="outline-4">
+<h4 id="org2798fb5"><span class="section-number-4">5.1.7.</span> Use type-annotations if possible</h4>
 <div class="outline-text-4" id="text-5-1-7">
 <p>
 Type annotations can helper your editor (such as PyCharm) find potential issues in
@@ -2078,8 +2078,8 @@ compatible. For example, a string being used with a division.
 </div>
 </div>
 
-<div id="outline-container-org8d143bf" class="outline-4">
-<h4 id="org8d143bf"><span class="section-number-4">5.1.8.</span> Organise your imports</h4>
+<div id="outline-container-orge11898d" class="outline-4">
+<h4 id="orge11898d"><span class="section-number-4">5.1.8.</span> Organise your imports</h4>
 <div class="outline-text-4" id="text-5-1-8">
 <p>
 Make the distinction between standard library imports, externally installed imports,
@@ -2103,8 +2103,8 @@ and your own custom imports.
 </div>
 </div>
 
-<div id="outline-container-org82009e1" class="outline-4">
-<h4 id="org82009e1"><span class="section-number-4">5.1.9.</span> Functions should do one thing only</h4>
+<div id="outline-container-orgd56d8ed" class="outline-4">
+<h4 id="orgd56d8ed"><span class="section-number-4">5.1.9.</span> Functions should do one thing only</h4>
 <div class="outline-text-4" id="text-5-1-9">
 <p>
 Do one thing and do it well. Docstrings can help you understand what your function is
@@ -2114,8 +2114,8 @@ about breaking your single function into many parts.
 </div>
 </div>
 
-<div id="outline-container-org7c4b37f" class="outline-4">
-<h4 id="org7c4b37f"><span class="section-number-4">5.1.10.</span> Functions as re-usability</h4>
+<div id="outline-container-orgab1bf76" class="outline-4">
+<h4 id="orgab1bf76"><span class="section-number-4">5.1.10.</span> Functions as re-usability</h4>
 <div class="outline-text-4" id="text-5-1-10">
 <p>
 If you find yourself doing something over and over, a function call help consolidate
@@ -2124,8 +2124,8 @@ duplication and potentially reduce the chance of getting things wrong.
 </div>
 </div>
 
-<div id="outline-container-org4a037f6" class="outline-4">
-<h4 id="org4a037f6"><span class="section-number-4">5.1.11.</span> Be wary of God classes</h4>
+<div id="outline-container-orgb5531f1" class="outline-4">
+<h4 id="orgb5531f1"><span class="section-number-4">5.1.11.</span> Be wary of God classes</h4>
 <div class="outline-text-4" id="text-5-1-11">
 <p>
 God classes/God object is a class that is doing too many things or 'knows' about too
@@ -2135,8 +2135,8 @@ manage one thing or concept.
 </div>
 </div>
 
-<div id="outline-container-org85837da" class="outline-4">
-<h4 id="org85837da"><span class="section-number-4">5.1.12.</span> Documentation</h4>
+<div id="outline-container-org70bfdf9" class="outline-4">
+<h4 id="org70bfdf9"><span class="section-number-4">5.1.12.</span> Documentation</h4>
 <div class="outline-text-4" id="text-5-1-12">
 <blockquote>
 <p>
@@ -2165,8 +2165,8 @@ explain, educate the reader.</li>
 </div>
 </div>
 
-<div id="outline-container-org343695c" class="outline-4">
-<h4 id="org343695c"><span class="section-number-4">5.1.13.</span> Perform testing!</h4>
+<div id="outline-container-org10cece7" class="outline-4">
+<h4 id="org10cece7"><span class="section-number-4">5.1.13.</span> Perform testing!</h4>
 <div class="outline-text-4" id="text-5-1-13">
 <p>
 Make sure to write tests, for example, using <code>unittest</code>
@@ -2181,9 +2181,9 @@ code.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: &lt;TODO&gt;</p>
+<p class="date">Date: 20th September 2022</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-09-11 Sun 08:37</p>
+<p class="date">Created: 2022-09-19 Mon 16:42</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

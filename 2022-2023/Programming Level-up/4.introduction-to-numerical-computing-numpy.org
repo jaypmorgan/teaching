@@ -1,8 +1,21 @@
 #+title: Programming Level-up
 #+subtitle: Lecture 4 -- An Introduction to Numerical Computing in Python
-#+date: 11th October 2021
+#+date: 21st September 2022
 #+author: Jay Morgan
 #+include: ./header.org
+#+PROPERTY: header-args:python :results pp output :session :exports both :eval never-export
+
+#+name: commentify
+#+begin_src emacs-lisp :var result="" :exports none
+(with-output-to-string
+  (princ "Results: \n")
+  (dolist (result-item (split-string result "\n"))
+    (princ (concat "# => " (format "%s\n" result-item)))))
+#+end_src
+
+#+RESULTS: commentify
+: Results: 
+: # => 
 
 * NumPy
 
@@ -307,6 +320,25 @@ Any modification you make to the =b= variable will also affect =A=. For that we 
 A = np.array([[1, 2], [3, 4]])
 b = A[:, 1].copy()
 ...
+#+end_src
+
+*** Slicing NumPy Arrays
+
+If we have a multi-dimensional array, to which we wish to index on the final
+dimension, one way to achieve this is by doing the following:
+
+#+begin_src python
+A = np.random.randn(10, 2, 5, 4)  # our array to slice
+A[:, :, :, 1:2]  # slice on the last dimension
+#+end_src
+
+This can get pretty tedious the more that the number of dimensions increases. But! we
+have one syntactical shortcut at our disposal: the ellipses '...'. Using the ellipses
+in place of the many ':' slices on each dimension, we're telling NumPy to just take
+all elements from the prior dimensions. For example:
+
+#+begin_src python
+A[..., 1:2]  # same slice on the last dimension
 #+end_src
 
 *** Slicing NumPy Arrays
@@ -746,25 +778,6 @@ points for learning about NumPy is NumPy's own user guide on the web: https://nu
 - Linear Algebra tutorial https://numpy.org/doc/stable/user/tutorial-svd.html
 - Boolean expressions https://numpy.org/doc/stable/reference/routines.logic.html
 - Set operations https://numpy.org/doc/stable/reference/routines.set.html
-
-* COMMENT Scipy
-
-*** What is Scipy?
-
-*** A tour
-
-*** Linear algebra
-
-*** interpolation
-
-*** Fourier Transformations
-
-*** Stats
-
-*** ndimage
-
-*** optimize
-
 
 # Local Variables:
 # org-latex-minted-options: (("frame" "lines") ("linenos=true") ("firstnumber=last") ("fontsize=\\footnotesize") ("bgcolor=LightGray") ("xleftmargin=5pt") ("tabsize=2") ("breaklines=true") ("numbersep=10pt"))
