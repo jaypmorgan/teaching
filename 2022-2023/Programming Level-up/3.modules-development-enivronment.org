@@ -3,6 +3,7 @@
 #+date: 20th September 2022
 #+author: Jay Morgan
 #+include: ./header.org
+#+startup: beamer
 
 #+name: commentify
 #+begin_src emacs-lisp :var result="" :exports none
@@ -830,6 +831,37 @@ conda env create -f environment.yml
 
 This will create an environment with the same name and install the same versions of
 the packages.
+
+*** Deleting an Environment
+
+At later points in our project life-cycle -- we have finished our project and we
+don't want to have the environment installed anymore (besides we already have the
+=environment.yml= to recreate it from if we need to!).
+
+We can remove an environment using:
+
+#+begin_src bash
+conda env remove --name <name-of-env>
+#+end_src
+
+This will remove the environment from Anaconda.
+
+*** Cleaning up
+
+If you use Anaconda for a long time, you may start to see that a lot of memory is
+being used, this is because for every version of the package you install, a download
+of that package is cached to disk. Having these caches can make reinstalling these
+packages quicker as you won't need to download the package again. But if you're
+running out of hard drive space, cleaning up these cached downloads is an instant
+space saver:
+
+#+begin_src bash
+conda clean --all
+#+end_src
+
+This command will clean up the cache files for all environments, but doesn't
+necessarily affect what's already installed in the environments -- so nothing should
+be /broken/ by running this command.
 
 ** Pip
 

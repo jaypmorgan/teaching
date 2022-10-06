@@ -2,6 +2,7 @@
 #+SUBTITLE: Lecture 2 - More advanced Python & Classes
 #+date: 20th September 2022
 #+author: Jay Morgan
+#+startup: beamer
 #+include: ./header.org
 
 #+name: commentify
@@ -567,7 +568,7 @@ with the following information.
 
 *** Locating a book
 
-Create a class method called locate by tile that takes the title of the book to look
+Create a class method called locate by title that takes the title of the book to look
 up, and returns the dictionary of all books that have this title. Unlike last time,
 we don't need to pass the =data= as an argument, as its contained within the class.
 
@@ -579,7 +580,7 @@ to find out if we have the correct book and 4) the value of the key to check if 
 have the correct book.
 
 #+begin_src python
-db.update(key="release year", value=1979, where_key="title",
+db.update(key="release_date", value=1979, where_key="title",
 	  where_value="Hitchhikers Guide to the Galaxy")
 #+end_src
 
