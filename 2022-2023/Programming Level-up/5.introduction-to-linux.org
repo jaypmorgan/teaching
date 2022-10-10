@@ -2,6 +2,7 @@
 #+SUBTITLE: An Introduction to using Linux
 #+date: 7th October 2022
 #+author: Jay Morgan
+#+startup: beamer
 #+include: ./header.org
 #+PROPERTY: header-args:python :results pp output :session :exports both :eval never-export
 
@@ -835,6 +836,18 @@ This will request a job on any available compute node for 10 minutes. When a
 node becomes available, =bash= will execute, dropping you into the shell. You will
 notice that the shell prompt has changed from =sms= to the name of the node.
 
+*** How to launch a job -- salloc
+
+There is another method we can use to create an interactive job. We could use the
+=salloc= command to allocate resources for a task. After the resources have been
+allocated and our job is ready, we can =ssh= into the node with the allocated
+resources.
+
+#+begin_src bash
+salloc --time=10:00:00 &
+ssh <name>
+#+end_src
+
 *** How to launch a job -- options
 
 In the previous command, we used the =--time= option to specify how long the job
@@ -909,20 +922,6 @@ Will list out all nodes and all capabilities of each node. Or just one node:
 #+begin_src bash
 scontrol show node lisnode2
 #+end_src
-
-*** TODO
-
-#+begin_src bash
-salloc --time=10:00:00 &
-ssh <name>
-#+end_src
-
-#+begin_src bash
-ssh -X for x11 forwarding
-#+end_src
-
-- using ipython with autoreload extension
-- reverse proxy with a jupyter notebook
   
 *** How to launch a job -- sbatch
 
@@ -1335,6 +1334,88 @@ https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lect
 
 If everything has been run correctly, you should see a plot of the lorenz attractor.
 
+
+*** Useful features -- X11 Forwarding
+:PROPERTIES:
+:BEAMER_OPT: fragile,allowframebreaks,label=
+:END:
+
+If we're performing analysis interactively using the cluster, we'll often want to
+visualise the results, using matplotlib for example. To /see/ our plots display like
+they would on our local machine when we call =plt.plot= or =plt.show()=, we will need to
+ensure that we're using something called =X11 Forwarding=. To enable =X11 Forwarding=, we
+use the =-X= option when =ssh='ing into the cluster and compute nodes (i.e. it will need
+to be enabled on every 'hop' so to speak).
+
+#+begin_src bash
+ssh -X <<remote-host>>
+#+end_src
+
+If want to enable it by default, we can enable it in our =ssh= config file:
+
+#+begin_src bash
+Host saphir2
+     HostName saphir2.lis-lab.fr
+     ForwardX11 yes
+     User <<username>>
+
+Host cluster
+     HostName sms-ext.lis-lab.fr
+     FowardX11 yes
+     User <<username>>
+     ProxyCommand ssh -X saphir2 -W %h:%p
+#+end_src
+
+After setting up =X11 Forwarding= correctly, and when logged into the remote host, we
+should be able to echo a variable called =$DISPLAY=.
+
+#+begin_src bash
+echo $DISPLAY
+#+end_src
+
+If =$DISPLAY= has a value, we know that X11 Forwarding has been setup correctly, and
+we're ready to do some plotting!
+
+*** Useful features -- Jupyter Notebooks
+:PROPERTIES:
+:BEAMER_OPT: fragile,allowframebreaks,label=
+:END:
+
+We've talked about how good jupyter notebooks are for performing analysis and
+exploration. But often times, we will need a lot of compute resources (more than our
+local computers can handle) to do this analysis. This is where using jupyter notebook
+on the supercomputers comes in handy. However, it is not as simple as starting the
+jupyter notebook server and opening up your web browser. First, we will need to setup
+a 'reverse ssh tunnel'.
+
+In a nut-shell, a reverse ssh tunnel allows you to redirect data on a remote port to
+a local port.
+
+Therefore, we can, using a reverse ssh tunnel, start a jupyter notebook on the
+supercomputer and access it using the web browser on our local computer!
+
+To begin, we can create an interactive job on the cluster:
+
+#+begin_src bash
+srun --time=01:00:00 --pty bash -l
+#+end_src
+
+And start our jupyter notebook, specifying a port that will not be in use:
+
+#+begin_src bash
+jupyter notebook --port 30333
+#+end_src
+
+With our notebook server now started on the 30333 port, we will want to create an ssh
+tunnel from our local computer, to the cluster's login node, and then a tunnel from
+the login node to the specific compute node where the job is running:
+
+#+begin_src bash
+ssh -L 30333:localhost:30333 <<cluster-login-node>> ssh -L 30333:localhost:30333 <<cluster-compute-node>>
+#+end_src
+
+If everything goes well, we should now be able to open up our web browser, navigate
+to =localhost:30333= and see our jupyter notebooks.
 
 # Local Variables:
 # org-latex-minted-options: (("frame" "lines") ("linenos=true") ("firstnumber=last") ("fontsize=\\footnotesize") ("bgcolor=LightGray") ("xleftmargin=5pt") ("tabsize=2") ("breaklines=true") ("numbersep=10pt"))

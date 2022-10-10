@@ -1,4 +1,4 @@
-% Created 2022-10-06 Thu 14:46
+% Created 2022-10-10 Mon 12:00
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -43,12 +43,12 @@
 
 
 \section{Linux}
-\label{sec:orgeba7454}
+\label{sec:org6c3a21e}
 
 \subsection{What is Linux}
-\label{sec:orgc7abd5c}
+\label{sec:org1a3e6df}
 
-\begin{frame}[label={sec:orgc74f04e}]{What is Linux?}
+\begin{frame}[label={sec:org1b9bb0f}]{What is Linux?}
 \begin{itemize}
 \item Linux is a popular operating system (OS) like Windows, or MacOS.
 \item Unlike these other two OSs, Linux is open source, which means the source code
@@ -58,7 +58,7 @@ Linux or build on top of Linux to create their own \emph{Distribution} of Linux.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgafb4ee1}]{What's a Distribution?}
+\begin{frame}[label={sec:orgff622b9}]{What's a Distribution?}
 A distribution can be considered like a \emph{flavour} or version of Linux. There are
 many popular flavours that attempt to meet different needs from different
 users. For example:
@@ -72,13 +72,13 @@ with bleeding edge packages.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgeb65093}]{What's a Distribution?}
+\begin{frame}[label={sec:org41d42b3}]{What's a Distribution?}
 \begin{center}
 \includegraphics[width=\textwidth]{images/family-tree.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org753b956}]{Defining Traits of Linux}
+\begin{frame}[label={sec:org79dc4f3}]{Defining Traits of Linux}
 While we have said that Linux is open source, there are many other traits that
 make it stand out from other operating systems:
 
@@ -93,9 +93,9 @@ focus on.
 \end{frame}
 
 \subsection{The command line}
-\label{sec:org180c983}
+\label{sec:orgddfb0f9}
 
-\begin{frame}[label={sec:org52d4ead},fragile]{What's a command?}
+\begin{frame}[label={sec:org263f97b},fragile]{What's a command?}
  While many recent versions of Linux makes things more accessible via GUIs, they
 will never be a substitute for using the command line. We're going to learn how
 to control the system via the command line, via a \alert{shell}. A shell, like the
@@ -111,7 +111,7 @@ ls
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org91efd59},fragile]{What is a command?}
+\begin{frame}[label={sec:org6903372},fragile]{What is a command?}
  The \texttt{ls} command comes with a number of optional flags and arguments that we can
 add onto the call. When calling a command a flag is something that begins with a
 \texttt{-} , for example \texttt{-l} tells \texttt{ls} to list the directory in a list format.
@@ -121,7 +121,7 @@ ls -l
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org3b43079},fragile]{What is a command?}
+\begin{frame}[label={sec:org53a5b20},fragile]{What is a command?}
  We have supplied the \texttt{-l} flag. There are many other flags for \texttt{ls}, like for
 example, the human readable file systems with \texttt{-h} or show hidden files (files
 that start with a period) with \texttt{-a}.
@@ -139,7 +139,7 @@ ls -lha
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org3be2a3e},fragile]{What is a command?}
+\begin{frame}[label={sec:org4be9822},fragile]{What is a command?}
  Sometimes commands take optional positional arguments. Going back to our list
 directory command, where, by default, it will list the current directory. But
 instead we can tell the command to list a particular directory by supplying the
@@ -151,7 +151,7 @@ ls images/ -lha
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org8e1b369},fragile]{What is a command?}
+\begin{frame}[label={sec:org556d7d6},fragile]{What is a command?}
  How do I know how to use a command? Well that's where another command comes
 in. It's called \texttt{man} (short for manual). If you pass another command to the \texttt{man}
 command, the documentation will be shown in the terminal, e.g.:
@@ -168,7 +168,7 @@ arrow keys, and page-up and page-down. When you're done reading, just hit the
 'q' character
 \end{frame}
 
-\begin{frame}[label={sec:org97a22b1},fragile]{Very useful commands}
+\begin{frame}[label={sec:orgf0126bc},fragile]{Very useful commands}
  I am going to go through some of the most common commands just to make sure that
 you're familiar with the typical usage.
 
@@ -182,7 +182,7 @@ cd   # no argument, by default goes to the home directory
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org575e404},fragile]{Very useful commands -- mkdir}
+\begin{frame}[label={sec:org827b1a7},fragile]{Very useful commands -- mkdir}
  Sticking with the them of directories, to make a new directory we use \texttt{mkdir},
 whose argument takes the name of the directory we want to create:
 
@@ -200,7 +200,7 @@ mkdir -p photos/2020/01/05  # this will work
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org3ede544},fragile]{Very useful commands -- cp}
+\begin{frame}[label={sec:org8053f50},fragile]{Very useful commands -- cp}
  To copy a file or directory, we can use the \texttt{cp} command. Here we are copying a
 file, where the first argument is the filepath of the file you want to copy and the second
 argument is the filepath where the copy should be placed.
@@ -217,7 +217,7 @@ cp -r data/ data-backup
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgb6897e0},fragile]{Very useful commands -- mv}
+\begin{frame}[label={sec:orga6ef8b2},fragile]{Very useful commands -- mv}
  The syntax of moving a file is similar to that of \texttt{cp}:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -229,7 +229,7 @@ also be used to \alert{rename} files, that's all renaming is: moving a file to t
 directory under a different name.
 \end{frame}
 
-\begin{frame}[label={sec:org100f2e2},fragile]{Very useful commands -- rm}
+\begin{frame}[label={sec:org0c1cbf9},fragile]{Very useful commands -- rm}
  To remove a file us \texttt{rm}:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -243,7 +243,7 @@ rm -r directory_to_delete/
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org6aa6c0f},fragile]{Very useful commands -- cat}
+\begin{frame}[label={sec:org35c0d9b},fragile]{Very useful commands -- cat}
  \texttt{cat} stands for concatenate, i.e. concatenating the contents of two or more
 files:
 
@@ -263,7 +263,7 @@ Since cat reads the file and prints it to screen it is a very handy way to view
 the contents of a file, even if it was not intended for that.
 \end{frame}
 
-\begin{frame}[label={sec:org83c0d89},fragile]{Very useful commands -- pwd}
+\begin{frame}[label={sec:org010064e},fragile]{Very useful commands -- pwd}
  Sometimes you may get lost when moving directories. \texttt{pwd} prints the current
 working directory from the root directory, i.e. the path that is printed is an
 absolute path.
@@ -273,7 +273,7 @@ pwd
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org77ccedb},fragile]{Very useful commands -- find}
+\begin{frame}[label={sec:org21e8dd3},fragile]{Very useful commands -- find}
  If we want to list all files of a certain type, we can use the wildcard \texttt{*} that
 we've seen before:
 
@@ -293,7 +293,7 @@ The first argument is the directory to start the search, then we define the type
 directories and sub-directories to find all files that match that name.
 \end{frame}
 
-\begin{frame}[label={sec:org509ee40},fragile]{Very useful commands -- grep}
+\begin{frame}[label={sec:orga4e4f74},fragile]{Very useful commands -- grep}
  How about if we want to find files that have a certain contents? For that we can
 use \texttt{grep}. Grep will read a file and print (by default) the lines that contains
 your pattern. i.e.:
@@ -312,7 +312,7 @@ grep -o '[0-9]' lecture.org
 This prints all occurrences of numbers in lecture.org
 \end{frame}
 
-\begin{frame}[label={sec:orged48e4e},fragile]{Very useful commands -- less/head/tail}
+\begin{frame}[label={sec:orgf949938},fragile]{Very useful commands -- less/head/tail}
  If a file is very long, we may not want to read the file using cat, as it will
 have to print the entire file. Instead we could use \texttt{less}, which will allow us to
 navigate through the file, using arrow keys to move and \texttt{q} to quit.
@@ -331,7 +331,7 @@ tail -F filename # constantly read the file
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgf081129},fragile]{Very useful commands -- wc}
+\begin{frame}[label={sec:org19ca5c9},fragile]{Very useful commands -- wc}
  Often times we just want to count the number of something. For example, if we
 want to count the number of files/folders in the directory we can do:
 
@@ -350,7 +350,7 @@ grep -o 'bash' lecture.org | wc -l
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org9820f2a},fragile]{Very useful commands -- piping}
+\begin{frame}[label={sec:org3a7cf03},fragile]{Very useful commands -- piping}
  The purpose of piping is to pass data around between commands. We have just seen
 how we can pass the output of, say, the \texttt{ls} command to  the input of \texttt{wc}. This
 allows use to construct very sophisticated pipelines to do some quite complex
@@ -361,7 +361,7 @@ find . -name '*.txt' -type f -print0 | xargs -0 grep "something"
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org1679dbb},fragile]{Very useful basic commands}
+\begin{frame}[label={sec:org52533fc},fragile]{Very useful basic commands}
  In summary we have seen the following commands:
 
 \begin{itemize}
@@ -381,12 +381,12 @@ find . -name '*.txt' -type f -print0 | xargs -0 grep "something"
 \end{frame}
 
 \section{Shell Scripting}
-\label{sec:orgcc9298d}
+\label{sec:org4bbb43a}
 
 \subsection{Writing bash scripts}
-\label{sec:org5fb6e31}
+\label{sec:org0d7dccf}
 
-\begin{frame}[label={sec:org0709373},fragile]{Very first bash script}
+\begin{frame}[label={sec:org087513f},fragile]{Very first bash script}
  Let's start with the classic 'Hello, World' example. We'll create a new file
 called 'hello.sh' and enter the following:
 
@@ -404,7 +404,7 @@ The next (non-empty) line in the file is \texttt{echo 'Hello, World'}. This is e
 the same as the other commands we've just seen.
 \end{frame}
 
-\begin{frame}[label={sec:org9974205},fragile]{Very first bash script}
+\begin{frame}[label={sec:org135c6af},fragile]{Very first bash script}
  Now that we've created and saved our bash script, we will want to run it. We
 have two alternative methods to run this script:
 
@@ -420,7 +420,7 @@ chmod +x hello.sh  # add executable 'x' privileges
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org4b1412e},fragile]{Variables}
+\begin{frame}[label={sec:orgff81025},fragile]{Variables}
  The variables we create in our bash scripts are very much the same as the
 environment variables we've seen before. Take for example:
 
@@ -436,7 +436,7 @@ spaces either side of the equals sign in bash. To refer to the variable, we use
 \texttt{\$AGE}, using the \texttt{\$} dollar sign.
 \end{frame}
 
-\begin{frame}[label={sec:org61bff05},fragile]{Interpolation in bash strings}
+\begin{frame}[label={sec:org746aafa},fragile]{Interpolation in bash strings}
  You would have noticed in the previous example that we included the variable
 directly into the string we're echoing out. This is something similar to what
 we've seen with f-strings in Python.
@@ -450,7 +450,7 @@ echo "I am logging in as: $(who)"
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgbbc573c},fragile]{Bash strings -- the sharp edges}
+\begin{frame}[label={sec:org76bcf48},fragile]{Bash strings -- the sharp edges}
  You might be tempted to use a variable when generating a path:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -471,7 +471,7 @@ touch "./data/${TRAIN_PROCESS}_error.txt"
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org335c8c8},fragile]{Stopping interpolation in bash strings}
+\begin{frame}[label={sec:org3ae960b},fragile]{Stopping interpolation in bash strings}
  We can also use single quotes for strings in bash. When we use these strings,
 the string itself is \uline{not} interpreted, and thus it will ignore any variables or
 bash commands:
@@ -481,7 +481,7 @@ echo 'I am logging in as: $(who)'
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgc784ae8},fragile]{Input/Output}
+\begin{frame}[label={sec:org389b7d0},fragile]{Input/Output}
  If we want to read the input from keyboard into a variable, we use the read
 command:
 
@@ -499,7 +499,7 @@ value. As we've already seen, we can then output this value to the console using
 the echo command.
 \end{frame}
 
-\begin{frame}[label={sec:org390bd85},fragile]{Booleans}
+\begin{frame}[label={sec:org0b0329b},fragile]{Booleans}
  Technically, bash does not have built in data types for true and false, but
 Linux has the commands true and false which we could use in place. The
 implementation of how these commands work is not important.
@@ -514,7 +514,7 @@ fi
 \end{frame}
 
 
-\begin{frame}[label={sec:org02d5052},fragile]{Conditionals}
+\begin{frame}[label={sec:org95f0af8},fragile]{Conditionals}
  When we're creating \texttt{if} expressions, we use the following syntax:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -538,7 +538,7 @@ fi
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org5e4ad39},fragile]{Conditionals}
+\begin{frame}[label={sec:orgb734b4d},fragile]{Conditionals}
  Writing condition expressions can be a little more cumbersome than in
 Python. These can be many pain points for new bash programmers, take for
 example:
@@ -564,7 +564,7 @@ command not print the statement.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgaa500fa},fragile]{Conditionals}
+\begin{frame}[label={sec:org8f74e62},fragile]{Conditionals}
  What if we write:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -593,7 +593,7 @@ fi
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org1066a4b},fragile]{Conditionals}
+\begin{frame}[label={sec:org9621715},fragile]{Conditionals}
  If we use \texttt{[[} in if statement, then we can do more sophisticated things like
 pattern matching:
 
@@ -605,7 +605,7 @@ fi
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org496c849},fragile]{Loops}
+\begin{frame}[label={sec:org08623c0},fragile]{Loops}
  Like in Python, we can iterate in bash
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -623,7 +623,7 @@ done
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgc0bd090},fragile]{Loops}
+\begin{frame}[label={sec:org706fad5},fragile]{Loops}
  We can also iterate over a list of files/folders in a directory:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -633,7 +633,7 @@ done
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org2601eb2},fragile]{Loops}
+\begin{frame}[label={sec:orge909afd},fragile]{Loops}
  Using the \texttt{while} form, we can continue looping until our conditional is
 false. For example, we could loop testing our internet connection, until its
 been established:
@@ -648,7 +648,7 @@ echo "Internet is available!"
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org0dd1cf5},fragile]{Functions}
+\begin{frame}[label={sec:orgda543b3},fragile]{Functions}
  To create a function, we use the following syntax:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -664,7 +664,7 @@ function_name # this called function name
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgfd0bad0},fragile]{Functions}
+\begin{frame}[label={sec:org4a65f05},fragile]{Functions}
  Here is another example:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -687,7 +687,7 @@ say_hello "Hi" "Jane"
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org3254214},fragile]{Functions}
+\begin{frame}[label={sec:orgdb66e02},fragile]{Functions}
  Returning values is 'interesting' as, coming from other languages, you think
 could do something like this:
 
@@ -713,15 +713,15 @@ echo $RESULT
 \end{frame}
 
 \section{High Performance Cluster}
-\label{sec:org985ab85}
+\label{sec:orgf11705f}
 
 \subsection{Getting started}
-\label{sec:org1b66084}
+\label{sec:orgf931ed4}
 
-\begin{frame}[label={sec:org4dd15f0}]{What is the Cluster?}
+\begin{frame}[label={sec:org4cd735f}]{What is the Cluster?}
 \end{frame}
 
-\begin{frame}[label={sec:orgdff0a86},fragile]{How to login}
+\begin{frame}[label={sec:org7f328f9},fragile]{How to login}
  \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
 ssh <<username>>@saphir2.lis-lab.fr
 \end{minted}
@@ -733,7 +733,7 @@ ssh <<username>>@sms-ext.lis-lab.fr
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org190fd8f},fragile]{How to login}
+\begin{frame}[label={sec:orgc72250e},fragile]{How to login}
  Typing both these commands can become tiresome very quickly. But we can make it
 a lot easier by updating our \texttt{\textasciitilde{}/.ssh/config} file to include something like:
 
@@ -757,7 +757,7 @@ ssh cluster
 And we should be prompted for our password.
 \end{frame}
 
-\begin{frame}[label={sec:org4958e3d},fragile]{How to login}
+\begin{frame}[label={sec:org02d9ddb},fragile]{How to login}
  If you trust the machine your on, you can remove password authentication and
 move to key-based authentication:
 
@@ -769,7 +769,7 @@ ssh-copy-id cluster
 When we next login to the server, we shouldn't be prompted for a password.
 \end{frame}
 
-\begin{frame}[label={sec:org7654b5a},fragile]{How to copy files to and from the cluster}
+\begin{frame}[label={sec:orgf108935},fragile]{How to copy files to and from the cluster}
  We have a number of options for transferring files to and from the
 cluster. Firstly, let's look at the command \texttt{scp}. It takes two arguments, the
 first argument is the file you want to send, the second argument is the
@@ -787,7 +787,7 @@ scp -r <<origin_folder>> <<destination_folder>>
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org2feebc2},fragile]{Copying files -- rsync}
+\begin{frame}[label={sec:orgd18676b},fragile]{Copying files -- rsync}
  One of the downsides about \texttt{scp} is that it will copy every file you give
 it. Even if the file at the destination is exactly the same. What if we only
 want to copy files that need to be copied, i.e. that are outdated, thus saving
@@ -801,9 +801,9 @@ rsync <<source>> <<destination>>
 \end{frame}
 
 \subsection{Submitting jobs}
-\label{sec:orgff19d5d}
+\label{sec:org524a622}
 
-\begin{frame}[label={sec:org7c7c8bc}]{The Login- and Compute Nodes}
+\begin{frame}[label={sec:org60b677d}]{The Login- and Compute Nodes}
 When you login to the cluster, you are logging into the \emph{login} node. \alert{Note} that no
 computation should be run on this node. If you want to run scripts, you will
 have to submit a job to the compute nodes.
@@ -816,7 +816,7 @@ We will take a look at how to request and manage jobs using the various commands
 that SLURM provides.
 \end{frame}
 
-\begin{frame}[label={sec:org4d33486},fragile]{How to launch a job -- srun}
+\begin{frame}[label={sec:orgbf69753},fragile]{How to launch a job -- srun}
  The first command we will look at it is \texttt{srun}. This command will run request a
 job for execution in 'real-time'. By real-time, we mean that the shell will wait
 until the job has been submitted.
@@ -837,7 +837,19 @@ node becomes available, \texttt{bash} will execute, dropping you into the shell.
 notice that the shell prompt has changed from \texttt{sms} to the name of the node.
 \end{frame}
 
-\begin{frame}[label={sec:orgeae5aa4},fragile]{How to launch a job -- options}
+\begin{frame}[label={sec:orgb7b695b},fragile]{How to launch a job -- salloc}
+ There is another method we can use to create an interactive job. We could use the
+\texttt{salloc} command to allocate resources for a task. After the resources have been
+allocated and our job is ready, we can \texttt{ssh} into the node with the allocated
+resources.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+salloc --time=10:00:00 &
+ssh <name>
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:org1915bc4},fragile]{How to launch a job -- options}
  In the previous command, we used the \texttt{-{}-time} option to specify how long the job
 will run for. But there are other options we can use to be more specific about
 the jobs we want to run.
@@ -850,7 +862,7 @@ want to run.
 \texttt{-{}-mem=16G} tells SLURM to allocate 16 GB of memory.
 \end{frame}
 
-\begin{frame}[label={sec:orge6ec6b6},fragile]{How to launch a job -- GPU allocation}
+\begin{frame}[label={sec:org6aaf4a0},fragile]{How to launch a job -- GPU allocation}
  If we need to use a GPU, we need to use a few options. Firstly, we can specify
 that our job is on a compute node with GPU. There will usually be a group of
 nodes in a 'GPU' group or partition, and thus we can specify to use one of these
@@ -872,7 +884,7 @@ Here we are requesting one GPU, but if we use \texttt{-{}-gres:gpu:2} we are req
 GPUs etc.
 \end{frame}
 
-\begin{frame}[label={sec:org31caed7},fragile]{How to launch a job -- GPU allocation}
+\begin{frame}[label={sec:orgd2027dc},fragile]{How to launch a job -- GPU allocation}
  There are many different types of GPUs available, some older than others. If you
 wanted to allocate a job with a specific type of GPU you can use the
 \texttt{-{}-constraint} flag:
@@ -898,7 +910,7 @@ srun --time=00:10:00 \
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgffa1909},fragile]{Learning more about nodes}
+\begin{frame}[label={sec:orgb687f0c},fragile]{Learning more about nodes}
  To understand what each compute node has we can use the \texttt{scontrol} command.
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -912,23 +924,7 @@ scontrol show node lisnode2
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org0afcdf1},fragile]{TODO}
- \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
-salloc --time=10:00:00 &
-ssh <name>
-\end{minted}
-
-\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
-ssh -X for x11 forwarding
-\end{minted}
-
-\begin{itemize}
-\item using ipython with autoreload extension
-\item reverse proxy with a jupyter notebook
-\end{itemize}
-\end{frame}
-
-\begin{frame}[label={sec:org520c74d},fragile]{How to launch a job -- sbatch}
+\begin{frame}[label={sec:org3c6a1bc},fragile]{How to launch a job -- sbatch}
  It can be quite inconvenient to launch an interactive job to run some compute,
 and wait for the job to be allocated. If, instead, you have a long running
 experiment that you want to run without any intervention from you, you can use
@@ -955,7 +951,7 @@ sbatch my_job.sh
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org5229dd2},fragile]{How to launch a job -- sbatch}
+\begin{frame}[label={sec:org51f26ac},fragile]{How to launch a job -- sbatch}
  Notice that instead of supplying options to sbatch, we can instead record them
 directly into the script using the \texttt{\#SBATCH}. SLURM will examine this file,
 looking for lines starting with this comment, and infer that the rest of the
@@ -978,7 +974,7 @@ squeue --user=jay.morgan
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org26fe2e1},fragile]{How to launch a job -- sbatch}
+\begin{frame}[label={sec:orgea3d845},fragile]{How to launch a job -- sbatch}
  The other two options, \texttt{-{}-output} and \texttt{-{}-error} specify where the printed output and
 printed errors will be stored. Since the job is being run on a different node,
 by a non-interactive process, if you didn't include these lines, you wouldn't be
@@ -986,7 +982,7 @@ able to see what was being printed by \texttt{echo} or by any other process such
 in Python.
 \end{frame}
 
-\begin{frame}[label={sec:org946d5b8},fragile]{Job Management -- squeue}
+\begin{frame}[label={sec:orgaeb963a},fragile]{Job Management -- squeue}
  When we list the jobs using \texttt{squeue} it will give us multiple columns of
 information, such as:
 
@@ -1001,7 +997,7 @@ information, such as:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgb0cfbb2},fragile]{Job Management -- scancel}
+\begin{frame}[label={sec:org021b0bc},fragile]{Job Management -- scancel}
  Let's say that we've submitted a job, but we've noticed that there was an error
 in the code, and want to stop the job. For that, we use \texttt{scancel} and specify the
 id of the job we wish to cancel:
@@ -1015,7 +1011,7 @@ finishing, or that its disappeared from our list (meaning that its completely
 stopped).
 \end{frame}
 
-\begin{frame}[label={sec:org81fd60d},fragile]{Job Management -- sacct}
+\begin{frame}[label={sec:org84b7c06},fragile]{Job Management -- sacct}
  If our job has finished, or exited and is no longer in \texttt{squeue}, we can use \texttt{sacct}
 to get a history of the jobs.
 
@@ -1034,7 +1030,7 @@ Valid time formats are:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgbdf96cb},fragile]{Job Task Arrays -- motivation}
+\begin{frame}[label={sec:org14fdc4f},fragile]{Job Task Arrays -- motivation}
  Task arrays allow you to submit many jobs of the same type. Why might this be
 useful? Suppose you have a list of files that take a long time to process:
 
@@ -1057,7 +1053,7 @@ sequentially enumerating the values, you can use a job task array to spawn
 multiple jobs with slightly different values.
 \end{frame}
 
-\begin{frame}[label={sec:orgdf255e3},fragile]{Job Task Arrays -- how to}
+\begin{frame}[label={sec:org75a9174},fragile]{Job Task Arrays -- how to}
  First, we will look at how to actually submit an array of tasks. To create an
 task array, you will need to add the \texttt{-{}-array} options to your sbatch script:
 
@@ -1074,7 +1070,7 @@ Here we are creating an array of tasks numbered from 1-5. When you submit this
 script, you will see five tasks submitted to the queue.
 \end{frame}
 
-\begin{frame}[label={sec:org0607ff7},fragile]{Job Task Arrays -- how to}
+\begin{frame}[label={sec:org186cb14},fragile]{Job Task Arrays -- how to}
  Now that we know how to create an array of tasks, we will want to do something
 useful with it. When you create an array, each individual task will have a
 unique variable called \texttt{SLURM\_ARRAY\_TASK\_ID}. So for example, if we launch an
@@ -1097,7 +1093,7 @@ current task's (i.e. 0, for the first task, 1 for the second task, etc) and
 \texttt{.txt}.
 \end{frame}
 
-\begin{frame}[label={sec:orga50c68d},fragile]{Job Task Arrays -- how to}
+\begin{frame}[label={sec:orgde3c182},fragile]{Job Task Arrays -- how to}
  If we run the previous example, we will see that we have five jobs named exactly
 the same thing \texttt{my\_task\_array}. This is okay, but we can be a little bit more
 clear as to which task is running, i.e. which task is processing which file?
@@ -1118,7 +1114,7 @@ Now, every task in our array will have a slightly different name because of the
 file.
 \end{frame}
 
-\begin{frame}[label={sec:orgb44757c},fragile]{Job Task Arrays -- how to}
+\begin{frame}[label={sec:org6f72cb3},fragile]{Job Task Arrays -- how to}
  Let's move on to the second example, where we have a Deep Learning training
 program and we want to try different parameters. In this case, we can again use
 a task array.
@@ -1142,7 +1138,7 @@ from the \texttt{SLURM\_ARRAY\_TASK\_ID} value (remember that in my sbatch scrip
 to calculate the correct learning rate in something else.
 \end{frame}
 
-\begin{frame}[label={sec:org47ba789},fragile]{Job Task Arrays -- how to}
+\begin{frame}[label={sec:org4900bf4},fragile]{Job Task Arrays -- how to}
  Instead of passing the learning rate via a command line argument. We can get the
 value directly from our python script and calculate the value.
 
@@ -1160,7 +1156,7 @@ if \texttt{SLURM\_ARRAY\_TASK\_ID} is set to 1. Our learning rate would be 0.01 
 task.
 \end{frame}
 
-\begin{frame}[label={sec:org86e54cd},fragile]{Job Task Arrays -- how to}
+\begin{frame}[label={sec:org272a0d9},fragile]{Job Task Arrays -- how to}
  If you're creating a job task array, you may want to create hundreds of
 jobs. And of course, you don't want to use up the entire cluster leaving no
 resources for anybody else! Therefore, you will only want a maximum number of
@@ -1185,7 +1181,7 @@ scontrol update ArrayTaskThrottle=<count> JobId=<jobID>
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgc400f79},fragile]{Job Task Arrays -- how to}
+\begin{frame}[label={sec:org6509d40},fragile]{Job Task Arrays -- how to}
  So if we've already launched a job task array with the job id of \texttt{50602} that has
 a throttle value of 5 (only 5 tasks will run at once), we can change it to 10
 using:
@@ -1196,9 +1192,9 @@ scontrol update ArrayTaskThrottle=10 JobId=50602
 \end{frame}
 
 \subsection{A guided walk through}
-\label{sec:org0c9111e}
+\label{sec:org259c5f4}
 
-\begin{frame}[label={sec:orgde26818},fragile]{A guided walk through -- environment}
+\begin{frame}[label={sec:orga008763},fragile]{A guided walk through -- environment}
  In this section we're going to give an example walk through of working with the
 HPC cluster. In this example, we're going to write our scripts locally,
 including the slurm submission script, and when they're ready, we'll send them
@@ -1221,7 +1217,7 @@ conda install python=3.9
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org21a03cc},fragile]{Writing our scripts}
+\begin{frame}[label={sec:org552c84d},fragile]{Writing our scripts}
  Let us also image we've just wrote the following script to create a lorenz
 attractor: \href{https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/lorenz.py}{lorenz.py}
 
@@ -1236,7 +1232,7 @@ conda install numpy matplotlib
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org230dbfa},fragile]{Writing our job submission script}
+\begin{frame}[label={sec:orgc305d7a},fragile]{Writing our job submission script}
  Since we want our calculations to be performed on the cluster, we will need to
 also write a job submission script (let's call this \texttt{submit-job.sh}) in bash to
 pass to SLURM.
@@ -1253,7 +1249,7 @@ python lorenz.py
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org7bc1c77},fragile]{Replicating our environment on the cluster}
+\begin{frame}[label={sec:org439e038},fragile]{Replicating our environment on the cluster}
  As we've installed external packages in our local development environment, we
 will want to ensure that when we run the calculations on the cluster, it will be
 using the same versions of packages. Conda makes this a lot easier. First, we
@@ -1264,7 +1260,7 @@ conda env export --no-builds > environment.yml
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orge50e6e6},fragile]{Sending our scripts to the cluster}
+\begin{frame}[label={sec:org134eeae},fragile]{Sending our scripts to the cluster}
  All of our scripts are ready! We can now transfer them from our personal
 computer, to the cluster. The files we need to transfer are:
 
@@ -1287,7 +1283,7 @@ login node on the cluster before. \texttt{<destination-path>} is the path to whe
 want to save the files.
 \end{frame}
 
-\begin{frame}[label={sec:org55a19d2},fragile]{Logging into the cluster}
+\begin{frame}[label={sec:orgdc1c815},fragile]{Logging into the cluster}
  Now that our files are on the cluster, we can login:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -1302,7 +1298,7 @@ cd <destination-path>
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org7dbba89},fragile]{Re-creating our development environment}
+\begin{frame}[label={sec:orgb2dc446},fragile]{Re-creating our development environment}
  Now that we're in the same folder as our scripts, we're almost ready to submit
 our job. First, we need to recreate our development environment from our
 \texttt{environment.yml} file.
@@ -1318,7 +1314,7 @@ conda activate <env-name>
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgff97a6a},fragile]{Submitting our job}
+\begin{frame}[label={sec:orgdf71181},fragile]{Submitting our job}
  Now we can submit our job:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -1329,7 +1325,7 @@ We can check the progress of our job with \texttt{squeue}, or its already comple
 at the job history with \texttt{sacct}.
 \end{frame}
 
-\begin{frame}[label={sec:org5f34f09},fragile]{Downloading the results}
+\begin{frame}[label={sec:org9cde405},fragile]{Downloading the results}
  If our job runs successfully, a \texttt{data.pkl} file will be created. Back on our local
 computers, we will need to run the following to download it:
 
@@ -1340,11 +1336,88 @@ scp <hostname>:<destination-path>/data.pkl ./
 This will download the file into the current directory.
 \end{frame}
 
-\begin{frame}[label={sec:org8ea2e01},fragile]{Analysing the results}
+\begin{frame}[label={sec:org5079e08},fragile]{Analysing the results}
  With the \texttt{data.pkl} file downloaded, we can visualise the results using
 \texttt{plot\_lorenz.py}:
 \url{https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/plot-lorenz.py}
 
 If everything has been run correctly, you should see a plot of the lorenz attractor.
+\end{frame}
+
+
+\begin{frame}[fragile,allowframebreaks,label=]{Useful features -- X11 Forwarding}
+ If we're performing analysis interactively using the cluster, we'll often want to
+visualise the results, using matplotlib for example. To \emph{see} our plots display like
+they would on our local machine when we call \texttt{plt.plot} or \texttt{plt.show()}, we will need to
+ensure that we're using something called \texttt{X11 Forwarding}. To enable \texttt{X11 Forwarding}, we
+use the \texttt{-X} option when \texttt{ssh}'ing into the cluster and compute nodes (i.e. it will need
+to be enabled on every 'hop' so to speak).
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+ssh -X <<remote-host>>
+\end{minted}
+
+If want to enable it by default, we can enable it in our \texttt{ssh} config file:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+Host saphir2
+     HostName saphir2.lis-lab.fr
+     ForwardX11 yes
+     User <<username>>
+
+Host cluster
+     HostName sms-ext.lis-lab.fr
+     FowardX11 yes
+     User <<username>>
+     ProxyCommand ssh -X saphir2 -W %h:%p
+\end{minted}
+
+After setting up \texttt{X11 Forwarding} correctly, and when logged into the remote host, we
+should be able to echo a variable called \texttt{\$DISPLAY}.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+echo $DISPLAY
+\end{minted}
+
+If \texttt{\$DISPLAY} has a value, we know that X11 Forwarding has been setup correctly, and
+we're ready to do some plotting!
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks,label=]{Useful features -- Jupyter Notebooks}
+ We've talked about how good jupyter notebooks are for performing analysis and
+exploration. But often times, we will need a lot of compute resources (more than our
+local computers can handle) to do this analysis. This is where using jupyter notebook
+on the supercomputers comes in handy. However, it is not as simple as starting the
+jupyter notebook server and opening up your web browser. First, we will need to setup
+a 'reverse ssh tunnel'.
+
+In a nut-shell, a reverse ssh tunnel allows you to redirect data on a remote port to
+a local port.
+
+Therefore, we can, using a reverse ssh tunnel, start a jupyter notebook on the
+supercomputer and access it using the web browser on our local computer!
+
+To begin, we can create an interactive job on the cluster:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+srun --time=01:00:00 --pty bash -l
+\end{minted}
+
+And start our jupyter notebook, specifying a port that will not be in use:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+jupyter notebook --port 30333
+\end{minted}
+
+With our notebook server now started on the 30333 port, we will want to create an ssh
+tunnel from our local computer, to the cluster's login node, and then a tunnel from
+the login node to the specific compute node where the job is running:
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
+ssh -L 30333:localhost:30333 <<cluster-login-node>> ssh -L 30333:localhost:30333 <<cluster-compute-node>>
+\end{minted}
+
+If everything goes well, we should now be able to open up our web browser, navigate
+to \texttt{localhost:30333} and see our jupyter notebooks.
 \end{frame}
 \end{document}
