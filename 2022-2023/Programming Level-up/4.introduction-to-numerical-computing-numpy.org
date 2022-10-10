@@ -2,6 +2,7 @@
 #+subtitle: Lecture 4 -- An Introduction to Numerical Computing in Python
 #+date: 21st September 2022
 #+author: Jay Morgan
+#+startup: beamer
 #+include: ./header.org
 #+PROPERTY: header-args:python :results pp output :session :exports both :eval never-export
 
@@ -167,6 +168,40 @@ print(A.dtype)
 : # => [[1. 2.]
 : # =>  [9. 5.]]
 : # => float64
+
+*** Changing dtypes
+
+In some cases, we wish to change the data type of arrays /after/ its creation. For this
+we use the =.astype()= method. This method takes a single argument: the data type you
+wish to change the array to.
+
+#+begin_src python
+A = np.array([1, 2, 3, 4])
+print(A.dtype)
+#+end_src
+
+#+RESULTS:
+: int64
+
+We could change it to a =float64= array:
+
+#+begin_src python
+A = A.astype(float)
+print(A.dtype)
+#+end_src
+
+#+RESULTS:
+: float64
+
+Or =float32=:
+
+#+begin_src python
+A = A.astype(np.float32)
+print(A.dtype)
+#+end_src
+
+#+RESULTS:
+: float32
 
 *** Different ways of creating arrays
 
@@ -544,8 +579,7 @@ print(np.hstack([A, B]))
 #+end_src
 
 #+RESULTS:
-: Results: 
-: # => [1 2 3 4 5 6]
+: [1 2 3 4 5 6]
 
 #+begin_src python
 print(np.vstack([A, B]))
@@ -555,6 +589,25 @@ print(np.vstack([A, B]))
 : Results: 
 : # => [[1 2 3]
 : # =>  [4 5 6]]
+
+*** Composing arrays using concatenate
+
+=hstack= and =vstack= can be useful when the required output shape is simply
+defined. However, there is a more general function - =np.concatenate= - that will be
+more often useful to us.
+
+#+begin_src python
+print(np.concatenate([A, B], axis=0))
+#+end_src
+
+#+RESULTS:
+: [1 2 3 4 5 6]
+
+Here we see that we can achieve the same result as =np.hstack= using
+=concatenate=. Notice also that there is a second argument to the =concatenate= function:
+the dimension upon which the concatenation will take place.
+
+https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html
 
 ** Arithmetic Operations
 

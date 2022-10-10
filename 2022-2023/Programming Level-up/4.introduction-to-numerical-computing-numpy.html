@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-19 Mon 16:41 -->
+<!-- 2022-10-10 Mon 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Programming Level-up</title>
@@ -205,63 +205,65 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5aff909">1. NumPy</a>
+<li><a href="#orgda1a5b2">1. NumPy</a>
 <ul>
-<li><a href="#org6d5507b">1.1. What is NumPy</a>
+<li><a href="#org7aba0e1">1.1. What is NumPy</a>
 <ul>
-<li><a href="#org120dcd1">1.1.1. What is NumPy?</a></li>
-<li><a href="#org611db68">1.1.2. What is NumPy?</a></li>
-<li><a href="#org4f7bab2">1.1.3. Install NumPy</a></li>
-<li><a href="#org28220da">1.1.4. Creating a numpy array</a></li>
+<li><a href="#orga61f4b1">1.1.1. What is NumPy?</a></li>
+<li><a href="#org888be62">1.1.2. What is NumPy?</a></li>
+<li><a href="#org33d1944">1.1.3. Install NumPy</a></li>
+<li><a href="#org66530d7">1.1.4. Creating a numpy array</a></li>
 </ul>
 </li>
-<li><a href="#org9a034b7">1.2. Working with NumPy</a>
+<li><a href="#org6775eef">1.2. Working with NumPy</a>
 <ul>
-<li><a href="#org6da86e8">1.2.1. Basic attributes</a></li>
-<li><a href="#orgb32ebbc">1.2.2. Different data types</a></li>
-<li><a href="#org9d2bf34">1.2.3. Creating arrays with different dtypes</a></li>
-<li><a href="#orgb325d35">1.2.4. Different ways of creating arrays</a></li>
-<li><a href="#org0cd8404">1.2.5. Different ways of creating arrays</a></li>
-<li><a href="#org81de482">1.2.6. Different ways of creating arrays</a></li>
-<li><a href="#org89e7d01">1.2.7. Different ways of creating arrays</a></li>
+<li><a href="#org8687e5c">1.2.1. Basic attributes</a></li>
+<li><a href="#orga9488db">1.2.2. Different data types</a></li>
+<li><a href="#org828f0e8">1.2.3. Creating arrays with different dtypes</a></li>
+<li><a href="#orga93ad47">1.2.4. Changing dtypes</a></li>
+<li><a href="#org6615147">1.2.5. Different ways of creating arrays</a></li>
+<li><a href="#org2c050dd">1.2.6. Different ways of creating arrays</a></li>
+<li><a href="#orge017e19">1.2.7. Different ways of creating arrays</a></li>
+<li><a href="#org8c7adc1">1.2.8. Different ways of creating arrays</a></li>
 </ul>
 </li>
-<li><a href="#org54fdcde">1.3. Indexing Arrays</a>
+<li><a href="#org8c5c930">1.3. Indexing Arrays</a>
 <ul>
-<li><a href="#org5c3ceb4">1.3.1. Slicing NumPy arrays</a></li>
-<li><a href="#org9884e33">1.3.2. Slicing NumPy Arrays</a></li>
-<li><a href="#orge27a6e2">1.3.3. Slicing NumPy Arrays</a></li>
-<li><a href="#org16e0e81">1.3.4. Slicing NumPy Arrays</a></li>
-<li><a href="#org03eff39">1.3.5. Slicing NumPy Arrays</a></li>
-<li><a href="#org0732341">1.3.6. Boolean Indexing</a></li>
-<li><a href="#org509283a">1.3.7. Boolean Indexing</a></li>
+<li><a href="#orgc503412">1.3.1. Slicing NumPy arrays</a></li>
+<li><a href="#org76d8cf9">1.3.2. Slicing NumPy Arrays</a></li>
+<li><a href="#orgfedb997">1.3.3. Slicing NumPy Arrays</a></li>
+<li><a href="#org60f6731">1.3.4. Slicing NumPy Arrays</a></li>
+<li><a href="#org3a7dda9">1.3.5. Slicing NumPy Arrays</a></li>
+<li><a href="#org0e7a4a0">1.3.6. Boolean Indexing</a></li>
+<li><a href="#org675b0ba">1.3.7. Boolean Indexing</a></li>
 </ul>
 </li>
-<li><a href="#orge3e14e0">1.4. Reshaping and Resizing</a>
+<li><a href="#orgf5d26fc">1.4. Reshaping and Resizing</a>
 <ul>
-<li><a href="#org33d12db">1.4.1. Reshape</a></li>
-<li><a href="#orgaa87fd2">1.4.2. Flatten</a></li>
-<li><a href="#orgde55406">1.4.3. Flatten</a></li>
-<li><a href="#org75f3224">1.4.4. Add a dimension</a></li>
-<li><a href="#orgc35c94f">1.4.5. Add a dimension</a></li>
-<li><a href="#org20dba99">1.4.6. Remove a dimension</a></li>
-<li><a href="#org3ce701c">1.4.7. Matrix transpose</a></li>
-<li><a href="#org63ea397">1.4.8. Composing arrays</a></li>
+<li><a href="#org25fba56">1.4.1. Reshape</a></li>
+<li><a href="#org14d2d01">1.4.2. Flatten</a></li>
+<li><a href="#org37fae44">1.4.3. Flatten</a></li>
+<li><a href="#org115abe3">1.4.4. Add a dimension</a></li>
+<li><a href="#orgf1d423d">1.4.5. Add a dimension</a></li>
+<li><a href="#orgd2929f3">1.4.6. Remove a dimension</a></li>
+<li><a href="#orgd8d06d0">1.4.7. Matrix transpose</a></li>
+<li><a href="#org5a09bed">1.4.8. Composing arrays</a></li>
+<li><a href="#org245c738">1.4.9. Composing arrays using concatenate</a></li>
 </ul>
 </li>
-<li><a href="#org0afe547">1.5. Arithmetic Operations</a>
+<li><a href="#org99d1fb4">1.5. Arithmetic Operations</a>
 <ul>
-<li><a href="#org4b6840a">1.5.1. Arithmetic Operations</a></li>
-<li><a href="#org02a28bb">1.5.2. Arithmetic Operations</a></li>
-<li><a href="#org6f151e8">1.5.3. Broadcasting</a></li>
-<li><a href="#orgcaa996e">1.5.4. Comparison with Functions</a></li>
-<li><a href="#org9a46c06">1.5.5. More complex operations</a></li>
-<li><a href="#orgef7204b">1.5.6. More complex operations</a></li>
-<li><a href="#orgef9ca81">1.5.7. More complex operations</a></li>
-<li><a href="#org39d0632">1.5.8. Vectorizing a function</a></li>
-<li><a href="#orgf61ed9a">1.5.9. Vectorize a function</a></li>
-<li><a href="#org9c258ff">1.5.10. Vectorize a function</a></li>
-<li><a href="#orga30cae7">1.5.11. Reading more</a></li>
+<li><a href="#org3a6fdbe">1.5.1. Arithmetic Operations</a></li>
+<li><a href="#orgad0f7e0">1.5.2. Arithmetic Operations</a></li>
+<li><a href="#org3e6894d">1.5.3. Broadcasting</a></li>
+<li><a href="#orgef1f6d3">1.5.4. Comparison with Functions</a></li>
+<li><a href="#orge48eda8">1.5.5. More complex operations</a></li>
+<li><a href="#orgdd40513">1.5.6. More complex operations</a></li>
+<li><a href="#orgd1bc3f8">1.5.7. More complex operations</a></li>
+<li><a href="#org669236b">1.5.8. Vectorizing a function</a></li>
+<li><a href="#org6344f1b">1.5.9. Vectorize a function</a></li>
+<li><a href="#orgebe3856">1.5.10. Vectorize a function</a></li>
+<li><a href="#orgd87c913">1.5.11. Reading more</a></li>
 </ul>
 </li>
 </ul>
@@ -270,16 +272,16 @@
 </div>
 </div>
 
-<div id="outline-container-org5aff909" class="outline-2">
-<h2 id="org5aff909"><span class="section-number-2">1.</span> NumPy</h2>
+<div id="outline-container-orgda1a5b2" class="outline-2">
+<h2 id="orgda1a5b2"><span class="section-number-2">1.</span> NumPy</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org6d5507b" class="outline-3">
-<h3 id="org6d5507b"><span class="section-number-3">1.1.</span> What is NumPy</h3>
+<div id="outline-container-org7aba0e1" class="outline-3">
+<h3 id="org7aba0e1"><span class="section-number-3">1.1.</span> What is NumPy</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org120dcd1" class="outline-4">
-<h4 id="org120dcd1"><span class="section-number-4">1.1.1.</span> What is NumPy?</h4>
+<div id="outline-container-orga61f4b1" class="outline-4">
+<h4 id="orga61f4b1"><span class="section-number-4">1.1.1.</span> What is NumPy?</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 NumPy (<a href="https://numpy.org/">https://numpy.org/</a>) is one of the fundamental Python libraries for scientific
@@ -299,21 +301,21 @@ For example, if we want to compute the matrix multiplication of two arrays:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = [[1, 4], [9, 5]]  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">2 dimensional 'matrices' A and B</span>
-<span style="color: #E06C75;">B</span> = [[1, 2], [3, 4]]
-<span style="color: #E06C75;">C</span> = [[0, 0], [0, 0]]  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">our result 'pre-allocated' with zeros</span>
+<pre class="src src-python"><span style="color: #78afff;">A</span> = [[1, 4], [9, 5]]  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">2 dimensional 'matrices' A and B</span>
+<span style="color: #78afff;">B</span> = [[1, 2], [3, 4]]
+<span style="color: #78afff;">C</span> = [[0, 0], [0, 0]]  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">our result 'pre-allocated' with zeros</span>
 
-<span style="color: #C678DD;">for</span> i <span style="color: #C678DD;">in</span> <span style="color: #56B6C2;">range</span>(<span style="color: #56B6C2;">len</span>(A)):
-    <span style="color: #C678DD;">for</span> j <span style="color: #C678DD;">in</span> <span style="color: #56B6C2;">range</span>(<span style="color: #56B6C2;">len</span>(B)):
-        <span style="color: #C678DD;">for</span> k <span style="color: #C678DD;">in</span> <span style="color: #56B6C2;">range</span>(<span style="color: #56B6C2;">len</span>(B)):
-            C[i][<span style="color: #E06C75;">j</span>] += A[i][k] * B[k][j]
+<span style="color: #00c089; font-weight: bold;">for</span> i <span style="color: #00c089; font-weight: bold;">in</span> <span style="color: #3fb83f; font-weight: bold;">range</span>(<span style="color: #3fb83f; font-weight: bold;">len</span>(A)):
+    <span style="color: #00c089; font-weight: bold;">for</span> j <span style="color: #00c089; font-weight: bold;">in</span> <span style="color: #3fb83f; font-weight: bold;">range</span>(<span style="color: #3fb83f; font-weight: bold;">len</span>(B)):
+        <span style="color: #00c089; font-weight: bold;">for</span> k <span style="color: #00c089; font-weight: bold;">in</span> <span style="color: #3fb83f; font-weight: bold;">range</span>(<span style="color: #3fb83f; font-weight: bold;">len</span>(B)):
+            C[i][<span style="color: #78afff;">j</span>] += A[i][k] * B[k][j]
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org611db68" class="outline-4">
-<h4 id="org611db68"><span class="section-number-4">1.1.2.</span> What is NumPy?</h4>
+<div id="outline-container-org888be62" class="outline-4">
+<h4 id="org888be62"><span class="section-number-4">1.1.2.</span> What is NumPy?</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 The previous example is quite un-weidly. We have to manually loop through the
@@ -322,11 +324,11 @@ Python. NumPy provides a much cleaner and quicker interface:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #C678DD;">import</span> numpy <span style="color: #C678DD;">as</span> np
-<span style="color: #E06C75;">A</span> = np.array([[1, 4], [9, 5]])
-<span style="color: #E06C75;">B</span> = np.array([[1, 2], [3, 4]])
-<span style="color: #E06C75;">C</span> = A @ B  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">or np.matmul(A, B)</span>
-<span style="color: #56B6C2;">print</span>(C)
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">import</span> numpy <span style="color: #00c089; font-weight: bold;">as</span> np
+<span style="color: #78afff;">A</span> = np.array([[1, 4], [9, 5]])
+<span style="color: #78afff;">B</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #78afff;">C</span> = A @ B  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">or np.matmul(A, B)</span>
+<span style="color: #3fb83f; font-weight: bold;">print</span>(C)
 </pre>
 </div>
 
@@ -338,8 +340,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org4f7bab2" class="outline-4">
-<h4 id="org4f7bab2"><span class="section-number-4">1.1.3.</span> Install NumPy</h4>
+<div id="outline-container-org33d1944" class="outline-4">
+<h4 id="org33d1944"><span class="section-number-4">1.1.3.</span> Install NumPy</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 Before we can use NumPy, we must first install it if its not already. NumPy can
@@ -363,16 +365,16 @@ or with pip:
 </div>
 </div>
 
-<div id="outline-container-org28220da" class="outline-4">
-<h4 id="org28220da"><span class="section-number-4">1.1.4.</span> Creating a numpy array</h4>
+<div id="outline-container-org66530d7" class="outline-4">
+<h4 id="org66530d7"><span class="section-number-4">1.1.4.</span> Creating a numpy array</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <p>
 As we've seen previously, we use <code>np.array</code> to create a numpy array from a Python data type
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-<span style="color: #56B6C2;">print</span>(A)
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
 </pre>
 </div>
 
@@ -391,19 +393,19 @@ you expect:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1], [1, 2]])
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1], [1, 2]])
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9a034b7" class="outline-3">
-<h3 id="org9a034b7"><span class="section-number-3">1.2.</span> Working with NumPy</h3>
+<div id="outline-container-org6775eef" class="outline-3">
+<h3 id="org6775eef"><span class="section-number-3">1.2.</span> Working with NumPy</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org6da86e8" class="outline-4">
-<h4 id="org6da86e8"><span class="section-number-4">1.2.1.</span> Basic attributes</h4>
+<div id="outline-container-org8687e5c" class="outline-4">
+<h4 id="org8687e5c"><span class="section-number-4">1.2.1.</span> Basic attributes</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 A numpy array has various attributes that are useful for our numerical
@@ -411,13 +413,13 @@ computing. Some of these include:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1, 4], [9, 5]])
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1, 4], [9, 5]])
 
-<span style="color: #56B6C2;">print</span>(A.shape)  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">the shape of the array</span>
-<span style="color: #56B6C2;">print</span>(A.size)   <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">number of elements</span>
-<span style="color: #56B6C2;">print</span>(A.ndim)   <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">number of dimensions</span>
-<span style="color: #56B6C2;">print</span>(A.nbytes) <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">storage used</span>
-<span style="color: #56B6C2;">print</span>(A.dtype)  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">data type of elements</span>
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.shape)  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">the shape of the array</span>
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.size)   <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">number of elements</span>
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.ndim)   <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">number of dimensions</span>
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.nbytes) <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">storage used</span>
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.dtype)  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">data type of elements</span>
 </pre>
 </div>
 
@@ -432,8 +434,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgb32ebbc" class="outline-4">
-<h4 id="orgb32ebbc"><span class="section-number-4">1.2.2.</span> Different data types</h4>
+<div id="outline-container-orga9488db" class="outline-4">
+<h4 id="orga9488db"><span class="section-number-4">1.2.2.</span> Different data types</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 In the previous example, the elements in the array we <code>int64</code>. But normally, we will
@@ -456,8 +458,8 @@ different data types affects how much memory is used to represent the data.
 </div>
 </div>
 
-<div id="outline-container-org9d2bf34" class="outline-4">
-<h4 id="org9d2bf34"><span class="section-number-4">1.2.3.</span> Creating arrays with different dtypes</h4>
+<div id="outline-container-org828f0e8" class="outline-4">
+<h4 id="org828f0e8"><span class="section-number-4">1.2.3.</span> Creating arrays with different dtypes</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 When creating a NumPy array, NumPy will select what it thinks to be the most
@@ -466,13 +468,13 @@ should be with the <code>dtype</code> argument.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1, 2], [9, 5]], dtype=np.int8)
-<span style="color: #56B6C2;">print</span>(A)
-<span style="color: #56B6C2;">print</span>(A.dtype)
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1, 2], [9, 5]], dtype=np.int8)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.dtype)
 
-A = np.array([[1, 2], [9, 5]], dtype=np.<span style="color: #56B6C2;">float</span>)
-<span style="color: #56B6C2;">print</span>(A)
-<span style="color: #56B6C2;">print</span>(A.dtype)
+A = np.array([[1, 2], [9, 5]], dtype=np.<span style="color: #3fb83f; font-weight: bold;">float</span>)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.dtype)
 </pre>
 </div>
 
@@ -488,16 +490,67 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgb325d35" class="outline-4">
-<h4 id="orgb325d35"><span class="section-number-4">1.2.4.</span> Different ways of creating arrays</h4>
+<div id="outline-container-orga93ad47" class="outline-4">
+<h4 id="orga93ad47"><span class="section-number-4">1.2.4.</span> Changing dtypes</h4>
 <div class="outline-text-4" id="text-1-2-4">
+<p>
+In some cases, we wish to change the data type of arrays <i>after</i> its creation. For this
+we use the <code>.astype()</code> method. This method takes a single argument: the data type you
+wish to change the array to.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([1, 2, 3, 4])
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.dtype)
+</pre>
+</div>
+
+<pre class="example">
+int64
+</pre>
+
+
+<p>
+We could change it to a <code>float64</code> array:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">A</span> = A.astype(<span style="color: #3fb83f; font-weight: bold;">float</span>)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.dtype)
+</pre>
+</div>
+
+<pre class="example">
+float64
+</pre>
+
+
+<p>
+Or <code>float32</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">A</span> = A.astype(np.float32)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.dtype)
+</pre>
+</div>
+
+<pre class="example">
+float32
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6615147" class="outline-4">
+<h4 id="org6615147"><span class="section-number-4">1.2.5.</span> Different ways of creating arrays</h4>
+<div class="outline-text-4" id="text-1-2-5">
 <p>
 NumPy also provides us with a number of different functions to create arrays. Instead
 of doing this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[0, 0], [0, 0]])
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[0, 0], [0, 0]])
 </pre>
 </div>
 
@@ -507,25 +560,25 @@ the tuple describes how many elements should be made in each dimension:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.zeros((2,)) <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">1 dimensional</span>
-<span style="color: #E06C75;">A</span> = np.zeros((2, 2))  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">2 dimensional</span>
-<span style="color: #E06C75;">A</span> = np.zeros((2, 5, 5))  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">3 dimensional</span>
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.zeros((2,)) <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">1 dimensional</span>
+<span style="color: #78afff;">A</span> = np.zeros((2, 2))  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">2 dimensional</span>
+<span style="color: #78afff;">A</span> = np.zeros((2, 5, 5))  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">3 dimensional</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0cd8404" class="outline-4">
-<h4 id="org0cd8404"><span class="section-number-4">1.2.5.</span> Different ways of creating arrays</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-org2c050dd" class="outline-4">
+<h4 id="org2c050dd"><span class="section-number-4">1.2.6.</span> Different ways of creating arrays</h4>
+<div class="outline-text-4" id="text-1-2-6">
 <p>
 Another commonly used array creation function is the <code>np.random.randn</code> function. This
 creates an array where elements are sampled from a normal distribution.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.random.randn(2, 2)
-<span style="color: #56B6C2;">print</span>(A)
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.random.randn(2, 2)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
 </pre>
 </div>
 
@@ -543,16 +596,16 @@ tuple, we pass multiple arguments to the function.
 </div>
 </div>
 
-<div id="outline-container-org81de482" class="outline-4">
-<h4 id="org81de482"><span class="section-number-4">1.2.6.</span> Different ways of creating arrays</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-orge017e19" class="outline-4">
+<h4 id="orge017e19"><span class="section-number-4">1.2.7.</span> Different ways of creating arrays</h4>
+<div class="outline-text-4" id="text-1-2-7">
 <p>
 It is also convenient to create arrays with ranges of elements.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.arange(5, 10) <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">optional step</span>
-<span style="color: #56B6C2;">print</span>(A)
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.arange(5, 10) <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">optional step</span>
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
 </pre>
 </div>
 
@@ -563,8 +616,8 @@ Results:
 
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.linspace(5, 10, 20)
-<span style="color: #56B6C2;">print</span>(A)
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.linspace(5, 10, 20)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
 </pre>
 </div>
 
@@ -579,9 +632,9 @@ Results:
 </div>
 
 
-<div id="outline-container-org89e7d01" class="outline-4">
-<h4 id="org89e7d01"><span class="section-number-4">1.2.7.</span> Different ways of creating arrays</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-org8c7adc1" class="outline-4">
+<h4 id="org8c7adc1"><span class="section-number-4">1.2.8.</span> Different ways of creating arrays</h4>
+<div class="outline-text-4" id="text-1-2-8">
 <p>
 There are many more ways to create arrays. Some include:
 </p>
@@ -602,12 +655,12 @@ subject: <a href="https://numpy.org/doc/stable/user/basics.creation.html">https:
 </div>
 </div>
 
-<div id="outline-container-org54fdcde" class="outline-3">
-<h3 id="org54fdcde"><span class="section-number-3">1.3.</span> Indexing Arrays</h3>
+<div id="outline-container-org8c5c930" class="outline-3">
+<h3 id="org8c5c930"><span class="section-number-3">1.3.</span> Indexing Arrays</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org5c3ceb4" class="outline-4">
-<h4 id="org5c3ceb4"><span class="section-number-4">1.3.1.</span> Slicing NumPy arrays</h4>
+<div id="outline-container-orgc503412" class="outline-4">
+<h4 id="orgc503412"><span class="section-number-4">1.3.1.</span> Slicing NumPy arrays</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 In native Python, when we have a 'matrix' like data structure (just a list of lists),
@@ -616,8 +669,8 @@ like:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = [[1, 2], [3, 4]]
-<span style="color: #56B6C2;">print</span>(A[1][0])
+<pre class="src src-python"><span style="color: #78afff;">A</span> = [[1, 2], [3, 4]]
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A[1][0])
 </pre>
 </div>
 
@@ -632,8 +685,8 @@ However, in NumPy, we seperate the indexes by comma:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1, 2], [3, 4]])
-<span style="color: #56B6C2;">print</span>(A[1, 0])
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A[1, 0])
 </pre>
 </div>
 
@@ -644,8 +697,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org9884e33" class="outline-4">
-<h4 id="org9884e33"><span class="section-number-4">1.3.2.</span> Slicing NumPy Arrays</h4>
+<div id="outline-container-org76d8cf9" class="outline-4">
+<h4 id="org76d8cf9"><span class="section-number-4">1.3.2.</span> Slicing NumPy Arrays</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 If we wanted to get all elements from the 2nd column we would use the <code>:</code> notation. For
@@ -653,8 +706,8 @@ example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1, 2], [3, 4]])
-<span style="color: #56B6C2;">print</span>(A[:, 1])
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A[:, 1])
 </pre>
 </div>
 
@@ -669,7 +722,7 @@ Likewise, all elements from the 2nd row:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(A[1, :])
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(A[1, :])
 </pre>
 </div>
 
@@ -680,20 +733,20 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orge27a6e2" class="outline-4">
-<h4 id="orge27a6e2"><span class="section-number-4">1.3.3.</span> Slicing NumPy Arrays</h4>
+<div id="outline-container-orgfedb997" class="outline-4">
+<h4 id="orgfedb997"><span class="section-number-4">1.3.3.</span> Slicing NumPy Arrays</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <p>
 Note that when we slice an array, we are <b>not copying</b> the elements:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1, 2], [3, 4]])
-<span style="color: #E06C75;">b</span> = A[:, 1]
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #78afff;">b</span> = A[:, 1]
 
-<span style="color: #E06C75;">b</span>[0] = 10
+<span style="color: #78afff;">b</span>[0] = 10
 
-<span style="color: #56B6C2;">print</span>(A)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
 </pre>
 </div>
 
@@ -710,16 +763,16 @@ Any modification you make to the <code>b</code> variable will also affect <code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1, 2], [3, 4]])
-<span style="color: #E06C75;">b</span> = A[:, 1].copy()
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #78afff;">b</span> = A[:, 1].copy()
 ...
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org16e0e81" class="outline-4">
-<h4 id="org16e0e81"><span class="section-number-4">1.3.4.</span> Slicing NumPy Arrays</h4>
+<div id="outline-container-org60f6731" class="outline-4">
+<h4 id="org60f6731"><span class="section-number-4">1.3.4.</span> Slicing NumPy Arrays</h4>
 <div class="outline-text-4" id="text-1-3-4">
 <p>
 If we have a multi-dimensional array, to which we wish to index on the final
@@ -727,8 +780,8 @@ dimension, one way to achieve this is by doing the following:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.random.randn(10, 2, 5, 4)  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">our array to slice</span>
-A[:, :, :, 1:2]  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">slice on the last dimension</span>
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.random.randn(10, 2, 5, 4)  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">our array to slice</span>
+A[:, :, :, 1:2]  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">slice on the last dimension</span>
 </pre>
 </div>
 
@@ -740,17 +793,17 @@ all elements from the prior dimensions. For example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">A[..., 1:2]  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">same slice on the last dimension</span>
+<pre class="src src-python">A[..., 1:2]  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">same slice on the last dimension</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org03eff39" class="outline-4">
-<h4 id="org03eff39"><span class="section-number-4">1.3.5.</span> Slicing NumPy Arrays</h4>
+<div id="outline-container-org3a7dda9" class="outline-4">
+<h4 id="org3a7dda9"><span class="section-number-4">1.3.5.</span> Slicing NumPy Arrays</h4>
 <div class="outline-text-4" id="text-1-3-5">
 
-<div id="orgeddd62d" class="figure">
+<div id="org51c6699" class="figure">
 <p><img src="./images/indexing.png" alt="indexing.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Johansson, R., Johansson, R., &amp; John, S. (2019). Numerical Python (Vol. 1). Apress.P</p>
@@ -758,16 +811,16 @@ all elements from the prior dimensions. For example:
 </div>
 </div>
 
-<div id="outline-container-org0732341" class="outline-4">
-<h4 id="org0732341"><span class="section-number-4">1.3.6.</span> Boolean Indexing</h4>
+<div id="outline-container-org0e7a4a0" class="outline-4">
+<h4 id="org0e7a4a0"><span class="section-number-4">1.3.6.</span> Boolean Indexing</h4>
 <div class="outline-text-4" id="text-1-3-6">
 <p>
 NumPy arrays can also be composed of boolean elements
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([[1, -1], [0, 5]])
-<span style="color: #56B6C2;">print</span>(A &gt; 0)
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([[1, -1], [0, 5]])
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A &gt; 0)
 </pre>
 </div>
 
@@ -783,8 +836,8 @@ And we can also use boolean elements to help with indexing:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">values_above_zero</span> = A[A &gt; 0]
-<span style="color: #56B6C2;">print</span>(values_above_zero)
+<pre class="src src-python"><span style="color: #78afff;">values_above_zero</span> = A[A &gt; 0]
+<span style="color: #3fb83f; font-weight: bold;">print</span>(values_above_zero)
 </pre>
 </div>
 
@@ -795,8 +848,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org509283a" class="outline-4">
-<h4 id="org509283a"><span class="section-number-4">1.3.7.</span> Boolean Indexing</h4>
+<div id="outline-container-org675b0ba" class="outline-4">
+<h4 id="org675b0ba"><span class="section-number-4">1.3.7.</span> Boolean Indexing</h4>
 <div class="outline-text-4" id="text-1-3-7">
 <p>
 Therefore we can apply computations to only part of the array using this indexing
@@ -804,9 +857,9 @@ feature:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">mask</span> = A &gt; 0
-<span style="color: #E06C75;">A</span>[<span style="color: #E06C75;">mask</span>] = A[mask] + 10
-<span style="color: #56B6C2;">print</span>(A)
+<pre class="src src-python"><span style="color: #78afff;">mask</span> = A &gt; 0
+<span style="color: #78afff;">A</span>[<span style="color: #78afff;">mask</span>] = A[mask] + 10
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
 </pre>
 </div>
 
@@ -819,12 +872,12 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orge3e14e0" class="outline-3">
-<h3 id="orge3e14e0"><span class="section-number-3">1.4.</span> Reshaping and Resizing</h3>
+<div id="outline-container-orgf5d26fc" class="outline-3">
+<h3 id="orgf5d26fc"><span class="section-number-3">1.4.</span> Reshaping and Resizing</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org33d12db" class="outline-4">
-<h4 id="org33d12db"><span class="section-number-4">1.4.1.</span> Reshape</h4>
+<div id="outline-container-org25fba56" class="outline-4">
+<h4 id="org25fba56"><span class="section-number-4">1.4.1.</span> Reshape</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 After an array has been created, we can modify its structure/shape using various
@@ -835,11 +888,11 @@ the new shape of the array must be proportional to the original number of elemen
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.arange(1, 5)
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.arange(1, 5)
 
-<span style="color: #E06C75;">mat_A</span> = A.reshape(2, 2)
-<span style="color: #56B6C2;">print</span>(mat_A)
-<span style="color: #56B6C2;">print</span>(A)  <span style="color: #5C6370; font-style: italic;"># </span><span style="color: #5C6370; font-style: italic;">A is not changed! No need for copy</span>
+<span style="color: #78afff;">mat_A</span> = A.reshape(2, 2)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(mat_A)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">A is not changed! No need for copy</span>
 </pre>
 </div>
 
@@ -852,8 +905,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgaa87fd2" class="outline-4">
-<h4 id="orgaa87fd2"><span class="section-number-4">1.4.2.</span> Flatten</h4>
+<div id="outline-container-org14d2d01" class="outline-4">
+<h4 id="org14d2d01"><span class="section-number-4">1.4.2.</span> Flatten</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 If we wanted to take a 2d array and reshape it into a vector, we could of course use
@@ -861,8 +914,8 @@ the <code>.reshape</code> function again. But we could also use <code>.flatten</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">flat_A</span> = mat_A.flatten()
-<span style="color: #56B6C2;">print</span>(flat_A)
+<pre class="src src-python"><span style="color: #78afff;">flat_A</span> = mat_A.flatten()
+<span style="color: #3fb83f; font-weight: bold;">print</span>(flat_A)
 </pre>
 </div>
 
@@ -873,8 +926,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgde55406" class="outline-4">
-<h4 id="orgde55406"><span class="section-number-4">1.4.3.</span> Flatten</h4>
+<div id="outline-container-org37fae44" class="outline-4">
+<h4 id="org37fae44"><span class="section-number-4">1.4.3.</span> Flatten</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <p>
 When specifying the new dimensionality of the reshaped array, <code>-1</code> is a shortcut to
@@ -882,10 +935,10 @@ specify the dimensionality to allow reshaping to occur correctly. For example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.arange(1, 5)
-<span style="color: #56B6C2;">print</span>(A)
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.arange(1, 5)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A)
 
-<span style="color: #56B6C2;">print</span>(A.reshape(2, -1))
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A.reshape(2, -1))
 </pre>
 </div>
 
@@ -904,16 +957,16 @@ however many elements on the second dimension.
 </div>
 </div>
 
-<div id="outline-container-org75f3224" class="outline-4">
-<h4 id="org75f3224"><span class="section-number-4">1.4.4.</span> Add a dimension</h4>
+<div id="outline-container-org115abe3" class="outline-4">
+<h4 id="org115abe3"><span class="section-number-4">1.4.4.</span> Add a dimension</h4>
 <div class="outline-text-4" id="text-1-4-4">
 <p>
 We can add and remove dimensions using <code>.expand_dims</code> and <code>.squeeze</code>, respectively.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(A)
-<span style="color: #56B6C2;">print</span>(np.expand_dims(A, 1))
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(A)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(np.expand_dims(A, 1))
 </pre>
 </div>
 
@@ -934,16 +987,16 @@ We are taking a vector and adding a dimension. Note that we have to use
 </div>
 </div>
 
-<div id="outline-container-orgc35c94f" class="outline-4">
-<h4 id="orgc35c94f"><span class="section-number-4">1.4.5.</span> Add a dimension</h4>
+<div id="outline-container-orgf1d423d" class="outline-4">
+<h4 id="orgf1d423d"><span class="section-number-4">1.4.5.</span> Add a dimension</h4>
 <div class="outline-text-4" id="text-1-4-5">
 <p>
 We can use an indexing trick with <code>None</code> to do the expansion in just the same way:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(A)
-<span style="color: #56B6C2;">print</span>(A[:, <span style="color: #56B6C2;">None</span>])
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(A)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A[:, <span style="color: #37aff6;">None</span>])
 </pre>
 </div>
 
@@ -963,15 +1016,15 @@ Where <code>None</code> indicates to NumPy where we want to add the new dimensio
 </div>
 </div>
 
-<div id="outline-container-org20dba99" class="outline-4">
-<h4 id="org20dba99"><span class="section-number-4">1.4.6.</span> Remove a dimension</h4>
+<div id="outline-container-orgd2929f3" class="outline-4">
+<h4 id="orgd2929f3"><span class="section-number-4">1.4.6.</span> Remove a dimension</h4>
 <div class="outline-text-4" id="text-1-4-6">
 <p>
 If we want to instead remove a dimension, we can use <code>.squeeze()</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(A[:, <span style="color: #56B6C2;">None</span>].squeeze(1))
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(A[:, <span style="color: #37aff6;">None</span>].squeeze(1))
 </pre>
 </div>
 
@@ -988,17 +1041,17 @@ you cannot squeeze a 2x2 array.
 </div>
 </div>
 
-<div id="outline-container-org3ce701c" class="outline-4">
-<h4 id="org3ce701c"><span class="section-number-4">1.4.7.</span> Matrix transpose</h4>
+<div id="outline-container-orgd8d06d0" class="outline-4">
+<h4 id="orgd8d06d0"><span class="section-number-4">1.4.7.</span> Matrix transpose</h4>
 <div class="outline-text-4" id="text-1-4-7">
 <p>
 Another useful feature is the matrix transpose:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(mat_A)
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(mat_A)
 
-<span style="color: #56B6C2;">print</span>(mat_A.transpose())
+<span style="color: #3fb83f; font-weight: bold;">print</span>(mat_A.transpose())
 </pre>
 </div>
 
@@ -1016,7 +1069,7 @@ or even:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(mat_A.T)
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(mat_A.T)
 </pre>
 </div>
 
@@ -1029,8 +1082,8 @@ Results:
 </div>
 
 
-<div id="outline-container-org63ea397" class="outline-4">
-<h4 id="org63ea397"><span class="section-number-4">1.4.8.</span> Composing arrays</h4>
+<div id="outline-container-org5a09bed" class="outline-4">
+<h4 id="org5a09bed"><span class="section-number-4">1.4.8.</span> Composing arrays</h4>
 <div class="outline-text-4" id="text-1-4-8">
 <p>
 If we have multiple arrays we want to 'join' together, we can use <code>np.hstack</code> for
@@ -1039,21 +1092,20 @@ must match in the direction your stacking.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([1, 2, 3])
-<span style="color: #E06C75;">B</span> = np.array([4, 5, 6])
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([1, 2, 3])
+<span style="color: #78afff;">B</span> = np.array([4, 5, 6])
 
-<span style="color: #56B6C2;">print</span>(np.hstack([A, B]))
+<span style="color: #3fb83f; font-weight: bold;">print</span>(np.hstack([A, B]))
 </pre>
 </div>
 
 <pre class="example">
-Results: 
-# =&gt; [1 2 3 4 5 6]
+[1 2 3 4 5 6]
 </pre>
 
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(np.vstack([A, B]))
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(np.vstack([A, B]))
 </pre>
 </div>
 
@@ -1064,14 +1116,45 @@ Results:
 </pre>
 </div>
 </div>
+
+<div id="outline-container-org245c738" class="outline-4">
+<h4 id="org245c738"><span class="section-number-4">1.4.9.</span> Composing arrays using concatenate</h4>
+<div class="outline-text-4" id="text-1-4-9">
+<p>
+<code>hstack</code> and <code>vstack</code> can be useful when the required output shape is simply
+defined. However, there is a more general function - <code>np.concatenate</code> - that will be
+more often useful to us.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(np.concatenate([A, B], axis=0))
+</pre>
 </div>
 
-<div id="outline-container-org0afe547" class="outline-3">
-<h3 id="org0afe547"><span class="section-number-3">1.5.</span> Arithmetic Operations</h3>
+<pre class="example">
+[1 2 3 4 5 6]
+</pre>
+
+
+<p>
+Here we see that we can achieve the same result as <code>np.hstack</code> using
+<code>concatenate</code>. Notice also that there is a second argument to the <code>concatenate</code> function:
+the dimension upon which the concatenation will take place.
+</p>
+
+<p>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html">https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99d1fb4" class="outline-3">
+<h3 id="org99d1fb4"><span class="section-number-3">1.5.</span> Arithmetic Operations</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-org4b6840a" class="outline-4">
-<h4 id="org4b6840a"><span class="section-number-4">1.5.1.</span> Arithmetic Operations</h4>
+<div id="outline-container-org3a6fdbe" class="outline-4">
+<h4 id="org3a6fdbe"><span class="section-number-4">1.5.1.</span> Arithmetic Operations</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 We have already seen some basic examples of arithmetic operations in NumPy. But its
@@ -1084,11 +1167,11 @@ be <b>broadcast</b>. We'll see examples of what these mean.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([1, 2, 3])
-<span style="color: #E06C75;">B</span> = np.array([[1, 2, 3],
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([1, 2, 3])
+<span style="color: #78afff;">B</span> = np.array([[1, 2, 3],
               [4, 5, 6]])
 
-<span style="color: #56B6C2;">print</span>(A * B)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A * B)
 </pre>
 </div>
 
@@ -1106,8 +1189,8 @@ etc.
 </div>
 </div>
 
-<div id="outline-container-org02a28bb" class="outline-4">
-<h4 id="org02a28bb"><span class="section-number-4">1.5.2.</span> Arithmetic Operations</h4>
+<div id="outline-container-orgad0f7e0" class="outline-4">
+<h4 id="orgad0f7e0"><span class="section-number-4">1.5.2.</span> Arithmetic Operations</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <p>
 When we perform arithmetic operations, NumPy will convert the data into arrays for
@@ -1116,9 +1199,9 @@ it will be fine.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = [1, 2, 3]
+<pre class="src src-python"><span style="color: #78afff;">A</span> = [1, 2, 3]
 
-<span style="color: #56B6C2;">print</span>(A * B)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(A * B)
 </pre>
 </div>
 
@@ -1130,8 +1213,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org6f151e8" class="outline-4">
-<h4 id="org6f151e8"><span class="section-number-4">1.5.3.</span> Broadcasting</h4>
+<div id="outline-container-org3e6894d" class="outline-4">
+<h4 id="org3e6894d"><span class="section-number-4">1.5.3.</span> Broadcasting</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <p>
 When we are working with singletons or scalar values, NumPy will automatically
@@ -1140,7 +1223,7 @@ an array:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(B * 2)
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(B * 2)
 </pre>
 </div>
 
@@ -1158,8 +1241,8 @@ size of <code>B</code>.
 </div>
 </div>
 
-<div id="outline-container-orgcaa996e" class="outline-4">
-<h4 id="orgcaa996e"><span class="section-number-4">1.5.4.</span> Comparison with Functions</h4>
+<div id="outline-container-orgef1f6d3" class="outline-4">
+<h4 id="orgef1f6d3"><span class="section-number-4">1.5.4.</span> Comparison with Functions</h4>
 <div class="outline-text-4" id="text-1-5-4">
 <p>
 NumPy provides, in many cases, both infix and function operations.
@@ -1245,8 +1328,8 @@ NumPy provides, in many cases, both infix and function operations.
 </div>
 </div>
 
-<div id="outline-container-org9a46c06" class="outline-4">
-<h4 id="org9a46c06"><span class="section-number-4">1.5.5.</span> More complex operations</h4>
+<div id="outline-container-orge48eda8" class="outline-4">
+<h4 id="orge48eda8"><span class="section-number-4">1.5.5.</span> More complex operations</h4>
 <div class="outline-text-4" id="text-1-5-5">
 <p>
 There are a number of different operations one can perform on a matrix. Such as the
@@ -1254,9 +1337,9 @@ dot product of two matrices:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.array([1, 2])
-<span style="color: #E06C75;">B</span> = np.array([[1, 2], [3, 4]])
-<span style="color: #56B6C2;">print</span>(np.dot(A, B))
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.array([1, 2])
+<span style="color: #78afff;">B</span> = np.array([[1, 2], [3, 4]])
+<span style="color: #3fb83f; font-weight: bold;">print</span>(np.dot(A, B))
 </pre>
 </div>
 
@@ -1271,7 +1354,7 @@ The inner product:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(np.inner(A, B))
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(np.inner(A, B))
 </pre>
 </div>
 
@@ -1282,8 +1365,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgef7204b" class="outline-4">
-<h4 id="orgef7204b"><span class="section-number-4">1.5.6.</span> More complex operations</h4>
+<div id="outline-container-orgdd40513" class="outline-4">
+<h4 id="orgdd40513"><span class="section-number-4">1.5.6.</span> More complex operations</h4>
 <div class="outline-text-4" id="text-1-5-6">
 <p>
 One mystical function is the <code>einsum</code> function. This function can effectively replace
@@ -1293,7 +1376,7 @@ describing the multiplication between matrices. Lets first look at an example of
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(np.einsum(<span style="color: #98C379;">'i,ij-&gt;j'</span>, A, B))
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(np.einsum(<span style="color: #af9fff;">'i,ij-&gt;j'</span>, A, B))
 </pre>
 </div>
 
@@ -1308,7 +1391,7 @@ Or the inner product:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #56B6C2;">print</span>(np.einsum(<span style="color: #98C379;">'j,ij-&gt;i'</span>, A, B))
+<pre class="src src-python"><span style="color: #3fb83f; font-weight: bold;">print</span>(np.einsum(<span style="color: #af9fff;">'j,ij-&gt;i'</span>, A, B))
 </pre>
 </div>
 
@@ -1319,8 +1402,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgef9ca81" class="outline-4">
-<h4 id="orgef9ca81"><span class="section-number-4">1.5.7.</span> More complex operations</h4>
+<div id="outline-container-orgd1bc3f8" class="outline-4">
+<h4 id="orgd1bc3f8"><span class="section-number-4">1.5.7.</span> More complex operations</h4>
 <div class="outline-text-4" id="text-1-5-7">
 <p>
 In <code>einsum</code> we are giving a letter for each dimension of each array we pass to the
@@ -1345,18 +1428,18 @@ very powerful function with a very succinct syntax.
 </div>
 </div>
 
-<div id="outline-container-org39d0632" class="outline-4">
-<h4 id="org39d0632"><span class="section-number-4">1.5.8.</span> Vectorizing a function</h4>
+<div id="outline-container-org669236b" class="outline-4">
+<h4 id="org669236b"><span class="section-number-4">1.5.8.</span> Vectorizing a function</h4>
 <div class="outline-text-4" id="text-1-5-8">
 <p>
 Lets say you have some function that computes the square of a number:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">my_square</span>(x):
-    <span style="color: #C678DD;">return</span> x**2
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">def</span> <span style="color: #7fc500;">my_square</span>(x):
+    <span style="color: #00c089; font-weight: bold;">return</span> x**2
 
-<span style="color: #56B6C2;">print</span>(my_square(4))
+<span style="color: #3fb83f; font-weight: bold;">print</span>(my_square(4))
 </pre>
 </div>
 
@@ -1372,8 +1455,8 @@ pass a NumPy array and will get the correct result.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">A</span> = np.arange(1, 10)
-<span style="color: #56B6C2;">print</span>(my_square(A))
+<pre class="src src-python"><span style="color: #78afff;">A</span> = np.arange(1, 10)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(my_square(A))
 </pre>
 </div>
 
@@ -1384,22 +1467,22 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-orgf61ed9a" class="outline-4">
-<h4 id="orgf61ed9a"><span class="section-number-4">1.5.9.</span> Vectorize a function</h4>
+<div id="outline-container-org6344f1b" class="outline-4">
+<h4 id="org6344f1b"><span class="section-number-4">1.5.9.</span> Vectorize a function</h4>
 <div class="outline-text-4" id="text-1-5-9">
 <p>
 However, if the function is more complicated, it will not work.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #C678DD;">def</span> <span style="color: #61AFEF;">myfunc</span>(a, b):
-    <span style="color: #98C379;">"Return a-b if a&gt;b, otherwise return a+b"</span>
-    <span style="color: #C678DD;">if</span> a &gt; b:
-        <span style="color: #C678DD;">return</span> a - b
-    <span style="color: #C678DD;">else</span>:
-        <span style="color: #C678DD;">return</span> a + b
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">def</span> <span style="color: #7fc500;">myfunc</span>(a, b):
+    <span style="color: #7fc07f; font-style: italic;">"Return a-b if a&gt;b, otherwise return a+b"</span>
+    <span style="color: #00c089; font-weight: bold;">if</span> a &gt; b:
+        <span style="color: #00c089; font-weight: bold;">return</span> a - b
+    <span style="color: #00c089; font-weight: bold;">else</span>:
+        <span style="color: #00c089; font-weight: bold;">return</span> a + b
 
-<span style="color: #56B6C2;">print</span>(myfunc(A, 2))
+<span style="color: #3fb83f; font-weight: bold;">print</span>(myfunc(A, 2))
 </pre>
 </div>
 
@@ -1417,8 +1500,8 @@ Results:
 </div>
 </div>
 
-<div id="outline-container-org9c258ff" class="outline-4">
-<h4 id="org9c258ff"><span class="section-number-4">1.5.10.</span> Vectorize a function</h4>
+<div id="outline-container-orgebe3856" class="outline-4">
+<h4 id="orgebe3856"><span class="section-number-4">1.5.10.</span> Vectorize a function</h4>
 <div class="outline-text-4" id="text-1-5-10">
 <p>
 To allow us to use this function over an array, we can use the <code>np.vectorize</code> function
@@ -1426,8 +1509,8 @@ to create a new function, which applies <code>myfunc</code> over each element.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #E06C75;">vfunc</span> = np.vectorize(myfunc)
-<span style="color: #56B6C2;">print</span>(vfunc(A, 2))
+<pre class="src src-python"><span style="color: #78afff;">vfunc</span> = np.vectorize(myfunc)
+<span style="color: #3fb83f; font-weight: bold;">print</span>(vfunc(A, 2))
 </pre>
 </div>
 
@@ -1444,8 +1527,8 @@ function. The return of this function is another function!
 </div>
 </div>
 
-<div id="outline-container-orga30cae7" class="outline-4">
-<h4 id="orga30cae7"><span class="section-number-4">1.5.11.</span> Reading more</h4>
+<div id="outline-container-orgd87c913" class="outline-4">
+<h4 id="orgd87c913"><span class="section-number-4">1.5.11.</span> Reading more</h4>
 <div class="outline-text-4" id="text-1-5-11">
 <p>
 We've only scratched the surface of what NumPy can offer us! One of the best starting
@@ -1465,7 +1548,7 @@ points for learning about NumPy is NumPy's own user guide on the web: <a href="h
 <div id="postamble" class="status">
 <p class="date">Date: 21st September 2022</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-09-19 Mon 16:41</p>
+<p class="date">Created: 2022-10-10 Mon 10:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
