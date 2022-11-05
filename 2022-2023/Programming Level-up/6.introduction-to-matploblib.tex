@@ -1,4 +1,4 @@
-% Created 2022-10-10 Mon 12:08
+% Created 2022-11-05 Sat 17:04
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -43,12 +43,12 @@
 
 
 \section{Matplotlib}
-\label{sec:org7f76dd7}
+\label{sec:orgdd3e7a5}
 
 \subsection{Introduction}
-\label{sec:org5fb965e}
+\label{sec:org6bd17a4}
 
-\begin{frame}[label={sec:org06071af}]{What is Matplotlib?}
+\begin{frame}[label={sec:org8312476}]{What is Matplotlib?}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{images/matlogo.png}
 \end{center}
@@ -63,7 +63,7 @@ plots that include interactivity.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgfd1f062},fragile]{Installing and importing Matplotlib}
+\begin{frame}[label={sec:org58e46c2},fragile]{Installing and importing Matplotlib}
  Matplotlib can be installed via conda:
 
 \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{bash}
@@ -80,7 +80,7 @@ Remember! You can install packages in ipython REPL/juypter notebook by
 inserting a '!' to the beginning of a shell command.
 \end{frame}
 
-\begin{frame}[label={sec:org063b188},fragile]{Basic plotting}
+\begin{frame}[label={sec:org0ac7d4f},fragile]{Basic plotting}
  First, we will import the matplotlib module. The plotting function is located
 within the \texttt{pyplot} package within matplotlib. The use of this package is so
 common that 99\% of Python users will alias this import as \texttt{plt}:
@@ -105,16 +105,16 @@ In this example, we have created two vectors. The first \texttt{x}, creates a ve
 third line, we plot the sin wave using these two vectors.
 \end{frame}
 
-\begin{frame}[label={sec:org20f6f82}]{Basic plotting}
+\begin{frame}[label={sec:org4286df3}]{Basic plotting}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/basic.png}
 \end{center}
 \end{frame}
 
 \subsection{Various plotting types}
-\label{sec:org818bce2}
+\label{sec:orgd24ad66}
 
-\begin{frame}[label={sec:org054a6fc}]{Different types of Plots}
+\begin{frame}[label={sec:orgf515c17}]{Different types of Plots}
 \begin{center}
 \includegraphics[width=0.6\textwidth]{images/plots.png}
 \end{center}
@@ -135,7 +135,7 @@ We're going to take a look at how we create each type of plot, examining what
 type of inputs they require.
 \end{frame}
 
-\begin{frame}[label={sec:org542737b},fragile]{Line plots}
+\begin{frame}[label={sec:org3b74388},fragile]{Line plots}
  We've already seen one example of a line plot. This plot draws a line between
 each x,y point. For instance in the previous example, we created a sin wave by
 'sampling' such wave using 100 samples from -10 to 10. Let's see what happens
@@ -148,7 +148,7 @@ plt.plot(x, y)
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org8d645b1},fragile]{Line plots}
+\begin{frame}[label={sec:org6896f81},fragile]{Line plots}
  We see the results are a less than ideal representation of a sin wave as \texttt{plot}
 will simply draw a straight line from each point.
 
@@ -157,7 +157,7 @@ will simply draw a straight line from each point.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org5f6c0ae},fragile]{Scatter plots}
+\begin{frame}[label={sec:orgc8cb70c},fragile]{Scatter plots}
  If we want to see where each sample of the sin wave is, we could use instead the
 scatter plot, which will (by default) place a small circle at every x,y
 value. To create a scatter plot, we use \texttt{scatter} instead of the \texttt{plot}
@@ -170,7 +170,7 @@ plt.scatter(x, y)
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgb466c0e}]{Scatter plots}
+\begin{frame}[label={sec:orgf69d301}]{Scatter plots}
 Now we can see the position of each individual sample from the sin wave. If we,
 once again, sample 100 points from this curve, we will see better results.
 
@@ -179,7 +179,7 @@ once again, sample 100 points from this curve, we will see better results.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org61ce27d},fragile]{Scatter plots}
+\begin{frame}[label={sec:orgc74659e},fragile]{Scatter plots}
  \begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
 x = np.linspace(-10, 10, 100)
 y = np.sin(x)
@@ -191,7 +191,7 @@ plt.scatter(x, y)
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgb4b72b7},fragile]{Bar plots}
+\begin{frame}[label={sec:org9b81525},fragile]{Bar plots}
  Bar plots are a simple plot that again takes an \texttt{x} and a \texttt{y}, where x is the
 numerical position of the bar's centre, and \texttt{y} is the height of the bar.
 
@@ -206,7 +206,7 @@ plt.bar(x, y)
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org605d2bf},fragile]{Histograms}
+\begin{frame}[label={sec:org9e0ed9c},fragile]{Histograms}
  Histograms allow us to visualise the distribution of values. In matplotlib, we
 can create a histogram of a vector by using the \texttt{hist} function that takes only
 the vector as its argument.
@@ -221,7 +221,7 @@ plt.hist(x)
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgf46e40c},fragile]{Box plots}
+\begin{frame}[label={sec:org78c73e5},fragile]{Box plots}
  Box plots also allow us to visualise the distribution, but the distribution of
 values within a group. In this example we're visualising the distribution of 3
 groups. Using the \texttt{boxplot} function, we pass a matrix.
@@ -236,7 +236,7 @@ plt.boxplot(x)
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org177adb6},fragile]{Image plots}
+\begin{frame}[label={sec:org4abcf14},fragile]{Image plots}
  In matplotlib, we can plot an 'image' -- that is a 2D matrix -- using the \texttt{imshow}
 function. For example:
 
@@ -251,7 +251,7 @@ plt.imshow(x)
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orga9a56b7},fragile]{Image plots}
+\begin{frame}[label={sec:orgfa4b11d},fragile]{Image plots}
  Of course, given the name, we can then use \texttt{imshow} to plot an image as well, as
 long as we have the image loaded as a 2D array of values.
 
@@ -266,7 +266,37 @@ plt.imshow(img)
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org94c7f0b}]{Different types of Plots}
+\begin{frame}[label={sec:org5851345},fragile]{3 dimensional plots}
+ 3 dimensional plots require us to import another module from
+matplotlib.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+from mpl_toolkits import mplot3d
+\end{minted}
+
+After importing this module, we can using the \emph{projection="3d"} and
+carry on plotting as normal.
+
+\begin{minted}[frame=lines,linenos=true,firstnumber=last,fontsize=\footnotesize,bgcolor=LightGray,xleftmargin=5pt,tabsize=2,breaklines=true,numbersep=10pt]{python}
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)
+z = np.linspace(-2, 2, 100)
+r = z**2 + 1
+x = r * np.sin(theta)
+y = r * np.cos(theta)
+ax.plot(x, y, z, label='parametric curve')
+ax.legend()
+\end{minted}
+\end{frame}
+
+\begin{frame}[label={sec:orgffad524}]{3 dimensional plots}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/3d-figure.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:org9d7c78f}]{Different types of Plots}
 There are many more different types of plots you can make using matplotlib. You
 can find a comprehensive list at:
 
@@ -274,9 +304,9 @@ can find a comprehensive list at:
 \end{frame}
 
 \subsection{Customising plots}
-\label{sec:org850df69}
+\label{sec:orgd358e71}
 
-\begin{frame}[label={sec:org2c28358},fragile]{Subplots}
+\begin{frame}[label={sec:org5966174},fragile]{Subplots}
  What if we wanted to create many plots side-by-side? For this we can use the
 \texttt{subplots} function. This function takes the number of rows, and number of columns
 to create. It returns two values, the first is the figure (entire figure), and
@@ -295,13 +325,13 @@ ax[1].plot(x, z)
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org01aeafa}]{Subplots}
+\begin{frame}[label={sec:orgd7910c0}]{Subplots}
 \begin{center}
 \includegraphics[width=0.6\textwidth]{images/subplots.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org4d95130},fragile]{Adding a legend}
+\begin{frame}[label={sec:org1e6a12f},fragile]{Adding a legend}
  Or we could put them onto the same plot. Matplotlib will automatically give them
 a different colour. If we use the \texttt{label} argument to \texttt{plot}, we can also give them
 a name that will appear when we call \texttt{legend()}.
@@ -317,13 +347,13 @@ ax.legend()
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org1512a3a}]{Adding a legend}
+\begin{frame}[label={sec:org353839f}]{Adding a legend}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{images/legend.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgfdef612},fragile]{Position the legend in different places}
+\begin{frame}[label={sec:orge68331d},fragile]{Position the legend in different places}
  We can change the position of the legend by specifying a different integer value
 for the \texttt{loc} argument (or string values such as 'upper left', 'upper right',
 \ldots{}). Additionally, we can change the number of columns the legend has with the
@@ -343,13 +373,13 @@ ax.legend(loc=1, ncol=2)
 You can find the API reference for the different arguments to legend at: \url{https://matplotlib.org/stable/api/legend\_api.html?highlight=legend\#module-matplotlib.legend}
 \end{frame}
 
-\begin{frame}[label={sec:org5f5eae2}]{Position the legend in different places}
+\begin{frame}[label={sec:org772edff}]{Position the legend in different places}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/legend-2.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgf073868},fragile]{Modifying the x/y axis}
+\begin{frame}[label={sec:orgb81f857},fragile]{Modifying the x/y axis}
  Good graphs always have their axis's labelled. To do this in matplotlib, if we
 have a subplot object, we use \texttt{set\_xlabel}, or we can use \texttt{plt.xlabel(...)}. Here is
 an example with an subplot object:
@@ -368,13 +398,13 @@ ax.set_ylabel("y")
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org093ab5c}]{Modifying the x/y axis}
+\begin{frame}[label={sec:org2961c67}]{Modifying the x/y axis}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/axis.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org642a301},fragile]{Changing figure size}
+\begin{frame}[label={sec:org89bd78b},fragile]{Changing figure size}
  A common change you may want to make to your figure is to change its size or
 aspect ratio. \texttt{figure()} or \texttt{subplots()} take an optional argument called
 \texttt{figsize}. This argument expects a tuple representing the width and height of the
@@ -398,13 +428,13 @@ ax.set_ylabel("y")
 Here we are creating a figure with 8 inches of width, and 2.5 inches of height.
 \end{frame}
 
-\begin{frame}[label={sec:org17f2396}]{Changing figure size}
+\begin{frame}[label={sec:org09712eb}]{Changing figure size}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/fig-size.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org9708adf},fragile]{Changing figure size}
+\begin{frame}[label={sec:orgc9d57e6},fragile]{Changing figure size}
  This is especially useful when you have many sub-figures, as by default, they
 will be 'squashed' into the default aspect ratio. We can 'give them more space'
 by modifying this \texttt{figsize} argument when creating the many sub-figures.
@@ -419,13 +449,13 @@ ax[1].plot(x, z, label="tan(x)")
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org5053699}]{Changing figure size}
+\begin{frame}[label={sec:org76d12fd}]{Changing figure size}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{images/figsize-2.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org74e1a3d}]{Line properties}
+\begin{frame}[label={sec:orgd5a73c2}]{Line properties}
 When creating a plot, there are many different properties you can change. Some
 of these include:
 
@@ -447,7 +477,7 @@ plot. These properties are:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1fb6e6f},fragile]{Line properties}
+\begin{frame}[label={sec:orga728e6d},fragile]{Line properties}
  If this example we are modifying some of the line properties that include the
 color (c), setting it to a string value of "green". The linewidth (lw) to be
 thicker, and making the line to be a dotted line by specifying the linestyle
@@ -468,7 +498,7 @@ plt.plot(x, y,
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orga03360c},fragile]{Colormaps}
+\begin{frame}[label={sec:org4e48afd},fragile]{Colormaps}
  When we create a heatmap using \texttt{imshow}, the gradients of colour are automatically
 set. Yet, we can control the colour gradient using a colour map. First we must
 import \texttt{cm} from matplotlib:
@@ -487,7 +517,7 @@ reds = cm.get_cmap("Reds", 2) # 2 levels
 You can find a full list of different colour maps at: \url{https://matplotlib.org/stable/tutorials/colors/colormaps.html}
 \end{frame}
 
-\begin{frame}[label={sec:org4b10a77},fragile]{Colourmaps}
+\begin{frame}[label={sec:orgf4397ee},fragile]{Colourmaps}
  Now that we have our new colour maps, we can pass it as an \texttt{cmap} argument when we
 create a plot.
 
@@ -506,7 +536,7 @@ fig.colorbar(p2, ax=ax[1])
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org9778339},fragile]{Ticks}
+\begin{frame}[label={sec:org4843eda},fragile]{Ticks}
  If we want to customise the numbers along each axis, we use the \texttt{set\_xticks} for
 the x-axis and \texttt{set\_yticks} for the y-axis. These functions take the list of
 locations for each 'tick', and optionally a list of labels to use instead of the numbers.
@@ -526,13 +556,13 @@ ax[1].set_xticks(bx, ["a", "b", "c", "d", "e"])
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org925e795}]{Ticks}
+\begin{frame}[label={sec:org9bdf587}]{Ticks}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{images/ticks.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgf6f79fd},fragile]{Grids}
+\begin{frame}[label={sec:orgef51df6},fragile]{Grids}
  In all of the previous plots, the background has no grids, they are simply
 white. If we wanted to add grid lines to the plot we use the \texttt{.grid()}
 method. This function, by default, adds the major grid lines.
@@ -549,13 +579,13 @@ ax[1].grid(which="both", color="r")
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:orgc5e0e94}]{Grids}
+\begin{frame}[label={sec:org68e39ca}]{Grids}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{images/grids.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org374feb5},fragile]{Scale}
+\begin{frame}[label={sec:orga3bf2d5},fragile]{Scale}
  The default behaviour of matplotlib is to plot using a linear scale. In certain
 situations, we want view the plot using a different scale. For this we can use \texttt{set\_yscale}.
 
@@ -575,7 +605,7 @@ ax[1].grid()
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgcbf50d3},fragile]{Setting the plot limits}
+\begin{frame}[label={sec:orgddd9490},fragile]{Setting the plot limits}
  By default, matplotlib will calculate the minimum and maximum values of the
 data, and use those values to set the limits of the plot. Using \texttt{set\_xlim} and
 \texttt{set\_ylim} we can change this default behaviour.
@@ -595,7 +625,7 @@ ax[1].set_xlim(-3, 3)
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org1bdb68c},fragile]{Annotations}
+\begin{frame}[label={sec:org91d9a11},fragile]{Annotations}
  We can annotate our plot in a number of way:
 \begin{itemize}
 \item .axhline -- plot a horizontal line (axvline for vertical lines)/
@@ -614,13 +644,13 @@ ax.annotate("0th line", (-2, 0), xytext=(-1.5, 0.25),
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org6909a35}]{Annotations}
+\begin{frame}[label={sec:org299f881}]{Annotations}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/annotations.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org9dee3be},fragile]{Creating a twin axes plot}
+\begin{frame}[label={sec:org791cf80},fragile]{Creating a twin axes plot}
  Sometimes you will want to display multiple sub-plots on the same plot, but
 where each have a very different range in values. Instead of having a single
 y-axis, with \texttt{twinx()} we can create a two y-axis plot.
@@ -642,13 +672,13 @@ ax2.tick_params(axis="y", labelcolor="orange")
 \end{minted}
 \end{frame}
 
-\begin{frame}[label={sec:org3518942}]{Creating a twin axes plot}
+\begin{frame}[label={sec:org41dadcd}]{Creating a twin axes plot}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/twinx.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org882dce9}]{Learn more}
+\begin{frame}[label={sec:orge55807f}]{Learn more}
 There are many many more types of plots you can create with matplotlib. I would
 recommend that you read the documentation to fully appreciate everything that it
 can visualise:

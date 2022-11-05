@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-10 Mon 12:09 -->
+<!-- 2022-11-05 Sat 17:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Programming Level-up</title>
@@ -205,61 +205,63 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4c9d9d1">1. Matplotlib</a>
+<li><a href="#orgd6d5aa3">1. Matplotlib</a>
 <ul>
-<li><a href="#orgd103456">1.1. Introduction</a>
+<li><a href="#org5d2c1de">1.1. Introduction</a>
 <ul>
-<li><a href="#org01ee45c">1.1.1. What is Matplotlib?</a></li>
-<li><a href="#org51193aa">1.1.2. Installing and importing Matplotlib</a></li>
-<li><a href="#org70b38f8">1.1.3. Basic plotting</a></li>
-<li><a href="#org92d130b">1.1.4. Basic plotting</a></li>
+<li><a href="#org21562f1">1.1.1. What is Matplotlib?</a></li>
+<li><a href="#org574efdd">1.1.2. Installing and importing Matplotlib</a></li>
+<li><a href="#org8d7e763">1.1.3. Basic plotting</a></li>
+<li><a href="#org36fee3d">1.1.4. Basic plotting</a></li>
 </ul>
 </li>
-<li><a href="#org6cbfa44">1.2. Various plotting types</a>
+<li><a href="#orgdd8c7b1">1.2. Various plotting types</a>
 <ul>
-<li><a href="#org4b48cf8">1.2.1. Different types of Plots</a></li>
-<li><a href="#orgedb90b6">1.2.2. Line plots</a></li>
-<li><a href="#org8c70509">1.2.3. Line plots</a></li>
-<li><a href="#org45b125a">1.2.4. Scatter plots</a></li>
-<li><a href="#org4b6fd93">1.2.5. Scatter plots</a></li>
-<li><a href="#org1fa78b8">1.2.6. Scatter plots</a></li>
-<li><a href="#org30d4559">1.2.7. Bar plots</a></li>
-<li><a href="#org78ca830">1.2.8. Histograms</a></li>
-<li><a href="#orgcc76645">1.2.9. Box plots</a></li>
-<li><a href="#org1105727">1.2.10. Image plots</a></li>
-<li><a href="#orgcc55e27">1.2.11. Image plots</a></li>
-<li><a href="#org4df5959">1.2.12. Different types of Plots</a></li>
+<li><a href="#org68e2ab0">1.2.1. Different types of Plots</a></li>
+<li><a href="#org4e91059">1.2.2. Line plots</a></li>
+<li><a href="#org02d7061">1.2.3. Line plots</a></li>
+<li><a href="#org59035be">1.2.4. Scatter plots</a></li>
+<li><a href="#org116a3c3">1.2.5. Scatter plots</a></li>
+<li><a href="#org3923c09">1.2.6. Scatter plots</a></li>
+<li><a href="#orga8c3e3d">1.2.7. Bar plots</a></li>
+<li><a href="#org3f46113">1.2.8. Histograms</a></li>
+<li><a href="#org48b644c">1.2.9. Box plots</a></li>
+<li><a href="#org8498295">1.2.10. Image plots</a></li>
+<li><a href="#org99cd4fe">1.2.11. Image plots</a></li>
+<li><a href="#org0ab00d2">1.2.12. 3 dimensional plots</a></li>
+<li><a href="#org38065bc">1.2.13. 3 dimensional plots</a></li>
+<li><a href="#orgdff3ce0">1.2.14. Different types of Plots</a></li>
 </ul>
 </li>
-<li><a href="#org23c8c18">1.3. Customising plots</a>
+<li><a href="#org7be7b46">1.3. Customising plots</a>
 <ul>
-<li><a href="#org8157662">1.3.1. Subplots</a></li>
-<li><a href="#orged97de2">1.3.2. Subplots</a></li>
-<li><a href="#org5cc1471">1.3.3. Adding a legend</a></li>
-<li><a href="#org1bb3a73">1.3.4. Adding a legend</a></li>
-<li><a href="#org662793f">1.3.5. Position the legend in different places</a></li>
-<li><a href="#orgf5e1f67">1.3.6. Position the legend in different places</a></li>
-<li><a href="#orgf6f3dae">1.3.7. Modifying the x/y axis</a></li>
-<li><a href="#orgf4b9453">1.3.8. Modifying the x/y axis</a></li>
-<li><a href="#org3c062e3">1.3.9. Changing figure size</a></li>
-<li><a href="#orge15f02e">1.3.10. Changing figure size</a></li>
-<li><a href="#orga45cf9a">1.3.11. Changing figure size</a></li>
-<li><a href="#org9b2c2bc">1.3.12. Changing figure size</a></li>
-<li><a href="#org6467c69">1.3.13. Line properties</a></li>
-<li><a href="#orga1be985">1.3.14. Line properties</a></li>
-<li><a href="#org66eec40">1.3.15. Colormaps</a></li>
-<li><a href="#orgfddfb80">1.3.16. Colourmaps</a></li>
-<li><a href="#orge7129cb">1.3.17. Ticks</a></li>
-<li><a href="#org9f759b5">1.3.18. Ticks</a></li>
-<li><a href="#org8886d79">1.3.19. Grids</a></li>
-<li><a href="#orgdb89ede">1.3.20. Grids</a></li>
-<li><a href="#orgcb3147c">1.3.21. Scale</a></li>
-<li><a href="#org67eb672">1.3.22. Setting the plot limits</a></li>
-<li><a href="#orgefb66c6">1.3.23. Annotations</a></li>
-<li><a href="#org154cb01">1.3.24. Annotations</a></li>
-<li><a href="#org0faaf28">1.3.25. Creating a twin axes plot</a></li>
-<li><a href="#orgafcbc01">1.3.26. Creating a twin axes plot</a></li>
-<li><a href="#orgfbf1069">1.3.27. Learn more</a></li>
+<li><a href="#org8db7841">1.3.1. Subplots</a></li>
+<li><a href="#org2f95c80">1.3.2. Subplots</a></li>
+<li><a href="#org9d09ac7">1.3.3. Adding a legend</a></li>
+<li><a href="#org5a9d7a1">1.3.4. Adding a legend</a></li>
+<li><a href="#orgdd08295">1.3.5. Position the legend in different places</a></li>
+<li><a href="#org4440fe1">1.3.6. Position the legend in different places</a></li>
+<li><a href="#orgbba3a60">1.3.7. Modifying the x/y axis</a></li>
+<li><a href="#org2cca8c4">1.3.8. Modifying the x/y axis</a></li>
+<li><a href="#orge214304">1.3.9. Changing figure size</a></li>
+<li><a href="#orgeaf3b1e">1.3.10. Changing figure size</a></li>
+<li><a href="#org9164bd0">1.3.11. Changing figure size</a></li>
+<li><a href="#org21c34b7">1.3.12. Changing figure size</a></li>
+<li><a href="#org696157c">1.3.13. Line properties</a></li>
+<li><a href="#orgb99d39f">1.3.14. Line properties</a></li>
+<li><a href="#orgf64c318">1.3.15. Colormaps</a></li>
+<li><a href="#org7eec3cc">1.3.16. Colourmaps</a></li>
+<li><a href="#org7c18438">1.3.17. Ticks</a></li>
+<li><a href="#orga71f2fe">1.3.18. Ticks</a></li>
+<li><a href="#org8c740de">1.3.19. Grids</a></li>
+<li><a href="#orgd294ee6">1.3.20. Grids</a></li>
+<li><a href="#org5ab9e75">1.3.21. Scale</a></li>
+<li><a href="#org0e1fb42">1.3.22. Setting the plot limits</a></li>
+<li><a href="#org2572e4d">1.3.23. Annotations</a></li>
+<li><a href="#org0cac819">1.3.24. Annotations</a></li>
+<li><a href="#org49c3d1d">1.3.25. Creating a twin axes plot</a></li>
+<li><a href="#org08369d8">1.3.26. Creating a twin axes plot</a></li>
+<li><a href="#org9513ec4">1.3.27. Learn more</a></li>
 </ul>
 </li>
 </ul>
@@ -268,19 +270,19 @@
 </div>
 </div>
 
-<div id="outline-container-org4c9d9d1" class="outline-2">
-<h2 id="org4c9d9d1"><span class="section-number-2">1.</span> Matplotlib</h2>
+<div id="outline-container-orgd6d5aa3" class="outline-2">
+<h2 id="orgd6d5aa3"><span class="section-number-2">1.</span> Matplotlib</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd103456" class="outline-3">
-<h3 id="orgd103456"><span class="section-number-3">1.1.</span> Introduction</h3>
+<div id="outline-container-org5d2c1de" class="outline-3">
+<h3 id="org5d2c1de"><span class="section-number-3">1.1.</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org01ee45c" class="outline-4">
-<h4 id="org01ee45c"><span class="section-number-4">1.1.1.</span> What is Matplotlib?</h4>
+<div id="outline-container-org21562f1" class="outline-4">
+<h4 id="org21562f1"><span class="section-number-4">1.1.1.</span> What is Matplotlib?</h4>
 <div class="outline-text-4" id="text-1-1-1">
 
-<div id="org9bdb1fb" class="figure">
+<div id="org76942e1" class="figure">
 <p><img src="images/matlogo.png" alt="matlogo.png" width="200px" />
 </p>
 </div>
@@ -298,8 +300,8 @@ plots that include interactivity.</li>
 </div>
 </div>
 
-<div id="outline-container-org51193aa" class="outline-4">
-<h4 id="org51193aa"><span class="section-number-4">1.1.2.</span> Installing and importing Matplotlib</h4>
+<div id="outline-container-org574efdd" class="outline-4">
+<h4 id="org574efdd"><span class="section-number-4">1.1.2.</span> Installing and importing Matplotlib</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Matplotlib can be installed via conda:
@@ -326,8 +328,8 @@ inserting a '!' to the beginning of a shell command.
 </div>
 </div>
 
-<div id="outline-container-org70b38f8" class="outline-4">
-<h4 id="org70b38f8"><span class="section-number-4">1.1.3.</span> Basic plotting</h4>
+<div id="outline-container-org8d7e763" class="outline-4">
+<h4 id="org8d7e763"><span class="section-number-4">1.1.3.</span> Basic plotting</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 First, we will import the matplotlib module. The plotting function is located
@@ -362,11 +364,11 @@ third line, we plot the sin wave using these two vectors.
 </div>
 </div>
 
-<div id="outline-container-org92d130b" class="outline-4">
-<h4 id="org92d130b"><span class="section-number-4">1.1.4.</span> Basic plotting</h4>
+<div id="outline-container-org36fee3d" class="outline-4">
+<h4 id="org36fee3d"><span class="section-number-4">1.1.4.</span> Basic plotting</h4>
 <div class="outline-text-4" id="text-1-1-4">
 
-<div id="org506bce6" class="figure">
+<div id="org0d60d89" class="figure">
 <p><img src="images/basic.png" alt="basic.png" />
 </p>
 </div>
@@ -374,15 +376,15 @@ third line, we plot the sin wave using these two vectors.
 </div>
 </div>
 
-<div id="outline-container-org6cbfa44" class="outline-3">
-<h3 id="org6cbfa44"><span class="section-number-3">1.2.</span> Various plotting types</h3>
+<div id="outline-container-orgdd8c7b1" class="outline-3">
+<h3 id="orgdd8c7b1"><span class="section-number-3">1.2.</span> Various plotting types</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org4b48cf8" class="outline-4">
-<h4 id="org4b48cf8"><span class="section-number-4">1.2.1.</span> Different types of Plots</h4>
+<div id="outline-container-org68e2ab0" class="outline-4">
+<h4 id="org68e2ab0"><span class="section-number-4">1.2.1.</span> Different types of Plots</h4>
 <div class="outline-text-4" id="text-1-2-1">
 
-<div id="orgac8d1fc" class="figure">
+<div id="org7067e75" class="figure">
 <p><img src="images/plots.png" alt="plots.png" width="100px" />
 </p>
 </div>
@@ -408,8 +410,8 @@ type of inputs they require.
 </div>
 </div>
 
-<div id="outline-container-orgedb90b6" class="outline-4">
-<h4 id="orgedb90b6"><span class="section-number-4">1.2.2.</span> Line plots</h4>
+<div id="outline-container-org4e91059" class="outline-4">
+<h4 id="org4e91059"><span class="section-number-4">1.2.2.</span> Line plots</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 We've already seen one example of a line plot. This plot draws a line between
@@ -427,8 +429,8 @@ plt.plot(x, y)
 </div>
 </div>
 
-<div id="outline-container-org8c70509" class="outline-4">
-<h4 id="org8c70509"><span class="section-number-4">1.2.3.</span> Line plots</h4>
+<div id="outline-container-org02d7061" class="outline-4">
+<h4 id="org02d7061"><span class="section-number-4">1.2.3.</span> Line plots</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 We see the results are a less than ideal representation of a sin wave as <code>plot</code>
@@ -436,15 +438,15 @@ will simply draw a straight line from each point.
 </p>
 
 
-<div id="orgad1c145" class="figure">
+<div id="orga25ad90" class="figure">
 <p><img src="images/lineplot.png" alt="lineplot.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org45b125a" class="outline-4">
-<h4 id="org45b125a"><span class="section-number-4">1.2.4.</span> Scatter plots</h4>
+<div id="outline-container-org59035be" class="outline-4">
+<h4 id="org59035be"><span class="section-number-4">1.2.4.</span> Scatter plots</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <p>
 If we want to see where each sample of the sin wave is, we could use instead the
@@ -462,8 +464,8 @@ plt.scatter(x, y)
 </div>
 </div>
 
-<div id="outline-container-org4b6fd93" class="outline-4">
-<h4 id="org4b6fd93"><span class="section-number-4">1.2.5.</span> Scatter plots</h4>
+<div id="outline-container-org116a3c3" class="outline-4">
+<h4 id="org116a3c3"><span class="section-number-4">1.2.5.</span> Scatter plots</h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 Now we can see the position of each individual sample from the sin wave. If we,
@@ -471,15 +473,15 @@ once again, sample 100 points from this curve, we will see better results.
 </p>
 
 
-<div id="org921860c" class="figure">
+<div id="org0834a72" class="figure">
 <p><img src="images/scatter.png" alt="scatter.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1fa78b8" class="outline-4">
-<h4 id="org1fa78b8"><span class="section-number-4">1.2.6.</span> Scatter plots</h4>
+<div id="outline-container-org3923c09" class="outline-4">
+<h4 id="org3923c09"><span class="section-number-4">1.2.6.</span> Scatter plots</h4>
 <div class="outline-text-4" id="text-1-2-6">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 100)
@@ -489,15 +491,15 @@ plt.scatter(x, y)
 </div>
 
 
-<div id="org99e50c9" class="figure">
+<div id="org28e561d" class="figure">
 <p><img src="images/scatter-2.png" alt="scatter-2.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org30d4559" class="outline-4">
-<h4 id="org30d4559"><span class="section-number-4">1.2.7.</span> Bar plots</h4>
+<div id="outline-container-orga8c3e3d" class="outline-4">
+<h4 id="orga8c3e3d"><span class="section-number-4">1.2.7.</span> Bar plots</h4>
 <div class="outline-text-4" id="text-1-2-7">
 <p>
 Bar plots are a simple plot that again takes an <code>x</code> and a <code>y</code>, where x is the
@@ -512,15 +514,15 @@ plt.bar(x, y)
 </div>
 
 
-<div id="orge5728ae" class="figure">
+<div id="orgbd42176" class="figure">
 <p><img src="images/bar.png" alt="bar.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org78ca830" class="outline-4">
-<h4 id="org78ca830"><span class="section-number-4">1.2.8.</span> Histograms</h4>
+<div id="outline-container-org3f46113" class="outline-4">
+<h4 id="org3f46113"><span class="section-number-4">1.2.8.</span> Histograms</h4>
 <div class="outline-text-4" id="text-1-2-8">
 <p>
 Histograms allow us to visualise the distribution of values. In matplotlib, we
@@ -535,15 +537,15 @@ plt.hist(x)
 </div>
 
 
-<div id="org0989740" class="figure">
+<div id="orgcda69f4" class="figure">
 <p><img src="images/hist.png" alt="hist.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcc76645" class="outline-4">
-<h4 id="orgcc76645"><span class="section-number-4">1.2.9.</span> Box plots</h4>
+<div id="outline-container-org48b644c" class="outline-4">
+<h4 id="org48b644c"><span class="section-number-4">1.2.9.</span> Box plots</h4>
 <div class="outline-text-4" id="text-1-2-9">
 <p>
 Box plots also allow us to visualise the distribution, but the distribution of
@@ -558,15 +560,15 @@ plt.boxplot(x)
 </div>
 
 
-<div id="orgcfd3725" class="figure">
+<div id="org1513b1d" class="figure">
 <p><img src="images/boxplot.png" alt="boxplot.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1105727" class="outline-4">
-<h4 id="org1105727"><span class="section-number-4">1.2.10.</span> Image plots</h4>
+<div id="outline-container-org8498295" class="outline-4">
+<h4 id="org8498295"><span class="section-number-4">1.2.10.</span> Image plots</h4>
 <div class="outline-text-4" id="text-1-2-10">
 <p>
 In matplotlib, we can plot an 'image' &#x2013; that is a 2D matrix &#x2013; using the <code>imshow</code>
@@ -581,15 +583,15 @@ plt.imshow(x)
 </div>
 
 
-<div id="org7d4fb9a" class="figure">
+<div id="orgbd5a0d4" class="figure">
 <p><img src="images/imshow.png" alt="imshow.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcc55e27" class="outline-4">
-<h4 id="orgcc55e27"><span class="section-number-4">1.2.11.</span> Image plots</h4>
+<div id="outline-container-org99cd4fe" class="outline-4">
+<h4 id="org99cd4fe"><span class="section-number-4">1.2.11.</span> Image plots</h4>
 <div class="outline-text-4" id="text-1-2-11">
 <p>
 Of course, given the name, we can then use <code>imshow</code> to plot an image as well, as
@@ -604,16 +606,60 @@ plt.imshow(img)
 </div>
 
 
-<div id="org63dbdf8" class="figure">
+<div id="org843b27d" class="figure">
 <p><img src="images/imshow-2.png" alt="imshow-2.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org4df5959" class="outline-4">
-<h4 id="org4df5959"><span class="section-number-4">1.2.12.</span> Different types of Plots</h4>
+<div id="outline-container-org0ab00d2" class="outline-4">
+<h4 id="org0ab00d2"><span class="section-number-4">1.2.12.</span> 3 dimensional plots</h4>
 <div class="outline-text-4" id="text-1-2-12">
+<p>
+3 dimensional plots require us to import another module from
+matplotlib.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">from</span> mpl_toolkits <span style="color: #00c089; font-weight: bold;">import</span> mplot3d
+</pre>
+</div>
+
+<p>
+After importing this module, we can using the <i>projection="3d"</i> and
+carry on plotting as normal.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">fig</span> = plt.figure()
+<span style="color: #78afff;">ax</span> = fig.gca(projection=<span style="color: #af9fff;">'3d'</span>)
+theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)
+z = np.linspace(-2, 2, 100)
+r = z**2 + 1
+x = r * np.sin(theta)
+y = r * np.cos(theta)
+ax.plot(x, y, z, label=<span style="color: #af9fff;">'parametric curve'</span>)
+ax.legend()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38065bc" class="outline-4">
+<h4 id="org38065bc"><span class="section-number-4">1.2.13.</span> 3 dimensional plots</h4>
+<div class="outline-text-4" id="text-1-2-13">
+
+<div id="org97a4081" class="figure">
+<p><img src="images/3d-figure.png" alt="3d-figure.png" width="600px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdff3ce0" class="outline-4">
+<h4 id="orgdff3ce0"><span class="section-number-4">1.2.14.</span> Different types of Plots</h4>
+<div class="outline-text-4" id="text-1-2-14">
 <p>
 There are many more different types of plots you can make using matplotlib. You
 can find a comprehensive list at:
@@ -626,12 +672,12 @@ can find a comprehensive list at:
 </div>
 </div>
 
-<div id="outline-container-org23c8c18" class="outline-3">
-<h3 id="org23c8c18"><span class="section-number-3">1.3.</span> Customising plots</h3>
+<div id="outline-container-org7be7b46" class="outline-3">
+<h3 id="org7be7b46"><span class="section-number-3">1.3.</span> Customising plots</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org8157662" class="outline-4">
-<h4 id="org8157662"><span class="section-number-4">1.3.1.</span> Subplots</h4>
+<div id="outline-container-org8db7841" class="outline-4">
+<h4 id="org8db7841"><span class="section-number-4">1.3.1.</span> Subplots</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 What if we wanted to create many plots side-by-side? For this we can use the
@@ -655,19 +701,19 @@ ax[1].plot(x, z)
 </div>
 </div>
 
-<div id="outline-container-orged97de2" class="outline-4">
-<h4 id="orged97de2"><span class="section-number-4">1.3.2.</span> Subplots</h4>
+<div id="outline-container-org2f95c80" class="outline-4">
+<h4 id="org2f95c80"><span class="section-number-4">1.3.2.</span> Subplots</h4>
 <div class="outline-text-4" id="text-1-3-2">
 
-<div id="org81abcb4" class="figure">
+<div id="orgd257622" class="figure">
 <p><img src="images/subplots.png" alt="subplots.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5cc1471" class="outline-4">
-<h4 id="org5cc1471"><span class="section-number-4">1.3.3.</span> Adding a legend</h4>
+<div id="outline-container-org9d09ac7" class="outline-4">
+<h4 id="org9d09ac7"><span class="section-number-4">1.3.3.</span> Adding a legend</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <p>
 Or we could put them onto the same plot. Matplotlib will automatically give them
@@ -688,19 +734,19 @@ ax.legend()
 </div>
 </div>
 
-<div id="outline-container-org1bb3a73" class="outline-4">
-<h4 id="org1bb3a73"><span class="section-number-4">1.3.4.</span> Adding a legend</h4>
+<div id="outline-container-org5a9d7a1" class="outline-4">
+<h4 id="org5a9d7a1"><span class="section-number-4">1.3.4.</span> Adding a legend</h4>
 <div class="outline-text-4" id="text-1-3-4">
 
-<div id="orgf922a03" class="figure">
+<div id="org3108537" class="figure">
 <p><img src="images/legend.png" alt="legend.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org662793f" class="outline-4">
-<h4 id="org662793f"><span class="section-number-4">1.3.5.</span> Position the legend in different places</h4>
+<div id="outline-container-orgdd08295" class="outline-4">
+<h4 id="orgdd08295"><span class="section-number-4">1.3.5.</span> Position the legend in different places</h4>
 <div class="outline-text-4" id="text-1-3-5">
 <p>
 We can change the position of the legend by specifying a different integer value
@@ -727,19 +773,19 @@ You can find the API reference for the different arguments to legend at: <a href
 </div>
 </div>
 
-<div id="outline-container-orgf5e1f67" class="outline-4">
-<h4 id="orgf5e1f67"><span class="section-number-4">1.3.6.</span> Position the legend in different places</h4>
+<div id="outline-container-org4440fe1" class="outline-4">
+<h4 id="org4440fe1"><span class="section-number-4">1.3.6.</span> Position the legend in different places</h4>
 <div class="outline-text-4" id="text-1-3-6">
 
-<div id="org3db3dbd" class="figure">
+<div id="orgd97b2f3" class="figure">
 <p><img src="images/legend-2.png" alt="legend-2.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf6f3dae" class="outline-4">
-<h4 id="orgf6f3dae"><span class="section-number-4">1.3.7.</span> Modifying the x/y axis</h4>
+<div id="outline-container-orgbba3a60" class="outline-4">
+<h4 id="orgbba3a60"><span class="section-number-4">1.3.7.</span> Modifying the x/y axis</h4>
 <div class="outline-text-4" id="text-1-3-7">
 <p>
 Good graphs always have their axis's labelled. To do this in matplotlib, if we
@@ -763,19 +809,19 @@ ax.set_ylabel(<span style="color: #af9fff;">"y"</span>)
 </div>
 </div>
 
-<div id="outline-container-orgf4b9453" class="outline-4">
-<h4 id="orgf4b9453"><span class="section-number-4">1.3.8.</span> Modifying the x/y axis</h4>
+<div id="outline-container-org2cca8c4" class="outline-4">
+<h4 id="org2cca8c4"><span class="section-number-4">1.3.8.</span> Modifying the x/y axis</h4>
 <div class="outline-text-4" id="text-1-3-8">
 
-<div id="org4be19a2" class="figure">
+<div id="org53dd824" class="figure">
 <p><img src="images/axis.png" alt="axis.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3c062e3" class="outline-4">
-<h4 id="org3c062e3"><span class="section-number-4">1.3.9.</span> Changing figure size</h4>
+<div id="outline-container-orge214304" class="outline-4">
+<h4 id="orge214304"><span class="section-number-4">1.3.9.</span> Changing figure size</h4>
 <div class="outline-text-4" id="text-1-3-9">
 <p>
 A common change you may want to make to your figure is to change its size or
@@ -806,19 +852,19 @@ Here we are creating a figure with 8 inches of width, and 2.5 inches of height.
 </div>
 </div>
 
-<div id="outline-container-orge15f02e" class="outline-4">
-<h4 id="orge15f02e"><span class="section-number-4">1.3.10.</span> Changing figure size</h4>
+<div id="outline-container-orgeaf3b1e" class="outline-4">
+<h4 id="orgeaf3b1e"><span class="section-number-4">1.3.10.</span> Changing figure size</h4>
 <div class="outline-text-4" id="text-1-3-10">
 
-<div id="org19518bb" class="figure">
+<div id="org9391902" class="figure">
 <p><img src="images/fig-size.png" alt="fig-size.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga45cf9a" class="outline-4">
-<h4 id="orga45cf9a"><span class="section-number-4">1.3.11.</span> Changing figure size</h4>
+<div id="outline-container-org9164bd0" class="outline-4">
+<h4 id="org9164bd0"><span class="section-number-4">1.3.11.</span> Changing figure size</h4>
 <div class="outline-text-4" id="text-1-3-11">
 <p>
 This is especially useful when you have many sub-figures, as by default, they
@@ -838,19 +884,19 @@ ax[1].plot(x, z, label=<span style="color: #af9fff;">"tan(x)"</span>)
 </div>
 </div>
 
-<div id="outline-container-org9b2c2bc" class="outline-4">
-<h4 id="org9b2c2bc"><span class="section-number-4">1.3.12.</span> Changing figure size</h4>
+<div id="outline-container-org21c34b7" class="outline-4">
+<h4 id="org21c34b7"><span class="section-number-4">1.3.12.</span> Changing figure size</h4>
 <div class="outline-text-4" id="text-1-3-12">
 
-<div id="orgc0efb2f" class="figure">
+<div id="org5bc3bac" class="figure">
 <p><img src="images/figsize-2.png" alt="figsize-2.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6467c69" class="outline-4">
-<h4 id="org6467c69"><span class="section-number-4">1.3.13.</span> Line properties</h4>
+<div id="outline-container-org696157c" class="outline-4">
+<h4 id="org696157c"><span class="section-number-4">1.3.13.</span> Line properties</h4>
 <div class="outline-text-4" id="text-1-3-13">
 <p>
 When creating a plot, there are many different properties you can change. Some
@@ -878,8 +924,8 @@ plot. These properties are:
 </div>
 </div>
 
-<div id="outline-container-orga1be985" class="outline-4">
-<h4 id="orga1be985"><span class="section-number-4">1.3.14.</span> Line properties</h4>
+<div id="outline-container-orgb99d39f" class="outline-4">
+<h4 id="orgb99d39f"><span class="section-number-4">1.3.14.</span> Line properties</h4>
 <div class="outline-text-4" id="text-1-3-14">
 <p>
 If this example we are modifying some of the line properties that include the
@@ -900,15 +946,15 @@ plt.plot(x, y,
 </div>
 
 
-<div id="org62d24cb" class="figure">
+<div id="orgbdc2c64" class="figure">
 <p><img src="images/linestyles.png" alt="linestyles.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org66eec40" class="outline-4">
-<h4 id="org66eec40"><span class="section-number-4">1.3.15.</span> Colormaps</h4>
+<div id="outline-container-orgf64c318" class="outline-4">
+<h4 id="orgf64c318"><span class="section-number-4">1.3.15.</span> Colormaps</h4>
 <div class="outline-text-4" id="text-1-3-15">
 <p>
 When we create a heatmap using <code>imshow</code>, the gradients of colour are automatically
@@ -937,8 +983,8 @@ You can find a full list of different colour maps at: <a href="https://matplotli
 </div>
 </div>
 
-<div id="outline-container-orgfddfb80" class="outline-4">
-<h4 id="orgfddfb80"><span class="section-number-4">1.3.16.</span> Colourmaps</h4>
+<div id="outline-container-org7eec3cc" class="outline-4">
+<h4 id="org7eec3cc"><span class="section-number-4">1.3.16.</span> Colourmaps</h4>
 <div class="outline-text-4" id="text-1-3-16">
 <p>
 Now that we have our new colour maps, we can pass it as an <code>cmap</code> argument when we
@@ -957,15 +1003,15 @@ fig.colorbar(p2, ax=ax[1])
 </div>
 
 
-<div id="orgaf134c1" class="figure">
+<div id="org43fb92b" class="figure">
 <p><img src="images/colourmaps.png" alt="colourmaps.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge7129cb" class="outline-4">
-<h4 id="orge7129cb"><span class="section-number-4">1.3.17.</span> Ticks</h4>
+<div id="outline-container-org7c18438" class="outline-4">
+<h4 id="org7c18438"><span class="section-number-4">1.3.17.</span> Ticks</h4>
 <div class="outline-text-4" id="text-1-3-17">
 <p>
 If we want to customise the numbers along each axis, we use the <code>set_xticks</code> for
@@ -990,19 +1036,19 @@ ax[1].set_xticks(bx, [<span style="color: #af9fff;">"a"</span>, <span style="col
 </div>
 </div>
 
-<div id="outline-container-org9f759b5" class="outline-4">
-<h4 id="org9f759b5"><span class="section-number-4">1.3.18.</span> Ticks</h4>
+<div id="outline-container-orga71f2fe" class="outline-4">
+<h4 id="orga71f2fe"><span class="section-number-4">1.3.18.</span> Ticks</h4>
 <div class="outline-text-4" id="text-1-3-18">
 
-<div id="orgfb56a0f" class="figure">
+<div id="orge0f3b80" class="figure">
 <p><img src="images/ticks.png" alt="ticks.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8886d79" class="outline-4">
-<h4 id="org8886d79"><span class="section-number-4">1.3.19.</span> Grids</h4>
+<div id="outline-container-org8c740de" class="outline-4">
+<h4 id="org8c740de"><span class="section-number-4">1.3.19.</span> Grids</h4>
 <div class="outline-text-4" id="text-1-3-19">
 <p>
 In all of the previous plots, the background has no grids, they are simply
@@ -1024,19 +1070,19 @@ ax[1].grid(which=<span style="color: #af9fff;">"both"</span>, color=<span style=
 </div>
 </div>
 
-<div id="outline-container-orgdb89ede" class="outline-4">
-<h4 id="orgdb89ede"><span class="section-number-4">1.3.20.</span> Grids</h4>
+<div id="outline-container-orgd294ee6" class="outline-4">
+<h4 id="orgd294ee6"><span class="section-number-4">1.3.20.</span> Grids</h4>
 <div class="outline-text-4" id="text-1-3-20">
 
-<div id="orgf166ec3" class="figure">
+<div id="org8d61a19" class="figure">
 <p><img src="images/grids.png" alt="grids.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcb3147c" class="outline-4">
-<h4 id="orgcb3147c"><span class="section-number-4">1.3.21.</span> Scale</h4>
+<div id="outline-container-org5ab9e75" class="outline-4">
+<h4 id="org5ab9e75"><span class="section-number-4">1.3.21.</span> Scale</h4>
 <div class="outline-text-4" id="text-1-3-21">
 <p>
 The default behaviour of matplotlib is to plot using a linear scale. In certain
@@ -1056,15 +1102,15 @@ ax[1].grid()
 </div>
 
 
-<div id="org2fc54a5" class="figure">
+<div id="org1118453" class="figure">
 <p><img src="images/scale.png" alt="scale.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org67eb672" class="outline-4">
-<h4 id="org67eb672"><span class="section-number-4">1.3.22.</span> Setting the plot limits</h4>
+<div id="outline-container-org0e1fb42" class="outline-4">
+<h4 id="org0e1fb42"><span class="section-number-4">1.3.22.</span> Setting the plot limits</h4>
 <div class="outline-text-4" id="text-1-3-22">
 <p>
 By default, matplotlib will calculate the minimum and maximum values of the
@@ -1084,15 +1130,15 @@ ax[1].set_xlim(-3, 3)
 </div>
 
 
-<div id="org0c34a9f" class="figure">
+<div id="orge5d5907" class="figure">
 <p><img src="images/limits.png" alt="limits.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgefb66c6" class="outline-4">
-<h4 id="orgefb66c6"><span class="section-number-4">1.3.23.</span> Annotations</h4>
+<div id="outline-container-org2572e4d" class="outline-4">
+<h4 id="org2572e4d"><span class="section-number-4">1.3.23.</span> Annotations</h4>
 <div class="outline-text-4" id="text-1-3-23">
 <p>
 We can annotate our plot in a number of way:
@@ -1116,19 +1162,19 @@ ax.annotate(<span style="color: #af9fff;">"0th line"</span>, (-2, 0), xytext=(-1
 </div>
 </div>
 
-<div id="outline-container-org154cb01" class="outline-4">
-<h4 id="org154cb01"><span class="section-number-4">1.3.24.</span> Annotations</h4>
+<div id="outline-container-org0cac819" class="outline-4">
+<h4 id="org0cac819"><span class="section-number-4">1.3.24.</span> Annotations</h4>
 <div class="outline-text-4" id="text-1-3-24">
 
-<div id="orge42796c" class="figure">
+<div id="orga81de4e" class="figure">
 <p><img src="images/annotations.png" alt="annotations.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0faaf28" class="outline-4">
-<h4 id="org0faaf28"><span class="section-number-4">1.3.25.</span> Creating a twin axes plot</h4>
+<div id="outline-container-org49c3d1d" class="outline-4">
+<h4 id="org49c3d1d"><span class="section-number-4">1.3.25.</span> Creating a twin axes plot</h4>
 <div class="outline-text-4" id="text-1-3-25">
 <p>
 Sometimes you will want to display multiple sub-plots on the same plot, but
@@ -1155,19 +1201,19 @@ ax2.tick_params(axis=<span style="color: #af9fff;">"y"</span>, labelcolor=<span 
 </div>
 </div>
 
-<div id="outline-container-orgafcbc01" class="outline-4">
-<h4 id="orgafcbc01"><span class="section-number-4">1.3.26.</span> Creating a twin axes plot</h4>
+<div id="outline-container-org08369d8" class="outline-4">
+<h4 id="org08369d8"><span class="section-number-4">1.3.26.</span> Creating a twin axes plot</h4>
 <div class="outline-text-4" id="text-1-3-26">
 
-<div id="org574da4a" class="figure">
+<div id="org17b8df3" class="figure">
 <p><img src="images/twinx.png" alt="twinx.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgfbf1069" class="outline-4">
-<h4 id="orgfbf1069"><span class="section-number-4">1.3.27.</span> Learn more</h4>
+<div id="outline-container-org9513ec4" class="outline-4">
+<h4 id="org9513ec4"><span class="section-number-4">1.3.27.</span> Learn more</h4>
 <div class="outline-text-4" id="text-1-3-27">
 <p>
 There are many many more types of plots you can create with matplotlib. I would
@@ -1187,7 +1233,7 @@ can visualise:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-10-10 Mon 12:09</p>
+<p class="date">Created: 2022-11-05 Sat 17:05</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

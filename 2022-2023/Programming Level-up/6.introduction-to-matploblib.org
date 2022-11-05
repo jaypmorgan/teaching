@@ -268,6 +268,39 @@ plt.savefig("images/imshow-2.png")
 #+ATTR_LATEX: :width 0.5\textwidth
 [[file:images/imshow-2.png]]
 
+*** 3 dimensional plots
+
+3 dimensional plots require us to import another module from
+matplotlib.
+
+#+begin_src python :session plotting-numpy :results none
+from mpl_toolkits import mplot3d
+#+end_src
+
+After importing this module, we can using the /projection="3d"/ and
+carry on plotting as normal.
+
+#+begin_src python :session plotting-numpy
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)
+z = np.linspace(-2, 2, 100)
+r = z**2 + 1
+x = r * np.sin(theta)
+y = r * np.cos(theta)
+ax.plot(x, y, z, label='parametric curve')
+ax.legend()
+#+end_src
+
+*** 3 dimensional plots
+
+#+ATTR_ORG: :width 200px
+#+ATTR_HTML: :width 600px
+#+ATTR_LATEX: :width 0.8\textwidth
+[[file:images/3d-figure.png]]
+
+#+RESULTS:
+
 *** Different types of Plots
 
 There are many more different types of plots you can make using matplotlib. You
