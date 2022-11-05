@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-06 lun. 14:15 -->
+<!-- 2022-11-05 Sat 16:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Programming Level-up</title>
@@ -191,8 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
+<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
 <div id="content" class="content">
@@ -204,48 +205,49 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org95e6198">1. Pandas</a>
+<li><a href="#orge94735b">1. Pandas</a>
 <ul>
-<li><a href="#org559435d">1.1. Introduction</a>
+<li><a href="#orgf62393e">1.1. Introduction</a>
 <ul>
-<li><a href="#org09bc79c">1.1.1. What is Pandas?</a></li>
-<li><a href="#org7dca42c">1.1.2. Installing and importing pandas</a></li>
-<li><a href="#org775de5e">1.1.3. Creating a dataframe</a></li>
-<li><a href="#org7bd46ed">1.1.4. Creating a dataframe</a></li>
-<li><a href="#org35db5c3">1.1.5. Access elements in our dataframe</a></li>
-<li><a href="#org76a92be">1.1.6. Access elements in our dataframe</a></li>
-<li><a href="#org2df95e6">1.1.7. Access elements in our dataframe</a></li>
+<li><a href="#org6754caf">1.1.1. What is Pandas?</a></li>
+<li><a href="#orgfc2b4a6">1.1.2. Installing and importing pandas</a></li>
+<li><a href="#org319b7bb">1.1.3. Creating a dataframe</a></li>
+<li><a href="#orgafa3d3e">1.1.4. Creating a dataframe</a></li>
+<li><a href="#orgfc215e1">1.1.5. Access elements in our dataframe</a></li>
+<li><a href="#orge317e1e">1.1.6. Access elements in our dataframe</a></li>
+<li><a href="#orgf247813">1.1.7. Access elements in our dataframe</a></li>
 </ul>
 </li>
-<li><a href="#org2bd5aee">1.2. Manipulating data</a>
+<li><a href="#org03381e3">1.2. Manipulating data</a>
 <ul>
-<li><a href="#org1b0c1a5">1.2.1. Reading a CSV file</a></li>
-<li><a href="#org97a6f08">1.2.2. Selecting a subset of data</a></li>
-<li><a href="#orga895dcf">1.2.3. Creating new columns</a></li>
+<li><a href="#orgea24e03">1.2.1. Reading a CSV file</a></li>
+<li><a href="#org99cbee4">1.2.2. Selecting a subset of data</a></li>
+<li><a href="#org6d9449d">1.2.3. Creating new columns</a></li>
 </ul>
 </li>
-<li><a href="#org7824152">1.3. Inspecting our data</a>
+<li><a href="#orgd3a2f21">1.3. Inspecting our data</a>
 <ul>
-<li><a href="#org40cc2df">1.3.1. Shape of the data</a></li>
-<li><a href="#org5637f10">1.3.2. Getting the names of columns</a></li>
-<li><a href="#orge43e6ce">1.3.3. Head/tail</a></li>
+<li><a href="#org3e0cdd6">1.3.1. Shape of the data</a></li>
+<li><a href="#orgf9e90a1">1.3.2. Getting the names of columns</a></li>
+<li><a href="#org30e7b7c">1.3.3. Head/tail</a></li>
 </ul>
 </li>
-<li><a href="#orge15e7cb">1.4. Operations</a>
+<li><a href="#org7c3125c">1.4. Operations</a>
 <ul>
-<li><a href="#org870aad7">1.4.1. Operations on data</a></li>
-<li><a href="#org160a045">1.4.2. Merge</a></li>
-<li><a href="#orgbdafeef">1.4.3. More on indexing</a></li>
-<li><a href="#orgfd7cc4d">1.4.4. More on indexing</a></li>
-<li><a href="#org1899117">1.4.5. Resetting indexes</a></li>
-<li><a href="#org740310a">1.4.6. Resetting indexes</a></li>
+<li><a href="#org78ba6d1">1.4.1. Operations on data</a></li>
+<li><a href="#orga3d4772">1.4.2. Apply operation to entire row</a></li>
+<li><a href="#org6ec47f1">1.4.3. Merge</a></li>
+<li><a href="#org285011d">1.4.4. More on indexing</a></li>
+<li><a href="#org3b72293">1.4.5. More on indexing</a></li>
+<li><a href="#org924582e">1.4.6. Resetting indexes</a></li>
+<li><a href="#org5259496">1.4.7. Resetting indexes</a></li>
 </ul>
 </li>
-<li><a href="#orga2887d6">1.5. Different types of data</a>
+<li><a href="#org251f7eb">1.5. Different types of data</a>
 <ul>
-<li><a href="#org92cd28d">1.5.1. Categorical data</a></li>
-<li><a href="#orge86b4ac">1.5.2. Categorical data</a></li>
-<li><a href="#orgcb1a0d1">1.5.3. Dates and times</a></li>
+<li><a href="#org918d765">1.5.1. Categorical data</a></li>
+<li><a href="#org621a075">1.5.2. Categorical data</a></li>
+<li><a href="#org8934b7d">1.5.3. Dates and times</a></li>
 </ul>
 </li>
 </ul>
@@ -254,19 +256,19 @@
 </div>
 </div>
 
-<div id="outline-container-org95e6198" class="outline-2">
-<h2 id="org95e6198"><span class="section-number-2">1.</span> Pandas</h2>
+<div id="outline-container-orge94735b" class="outline-2">
+<h2 id="orge94735b"><span class="section-number-2">1.</span> Pandas</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org559435d" class="outline-3">
-<h3 id="org559435d"><span class="section-number-3">1.1.</span> Introduction</h3>
+<div id="outline-container-orgf62393e" class="outline-3">
+<h3 id="orgf62393e"><span class="section-number-3">1.1.</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org09bc79c" class="outline-4">
-<h4 id="org09bc79c"><span class="section-number-4">1.1.1.</span> What is Pandas?</h4>
+<div id="outline-container-org6754caf" class="outline-4">
+<h4 id="org6754caf"><span class="section-number-4">1.1.1.</span> What is Pandas?</h4>
 <div class="outline-text-4" id="text-1-1-1">
 
-<div id="org1da633b" class="figure">
+<div id="org2050472" class="figure">
 <p><img src="./images/pandas.jpg" alt="pandas.jpg" />
 </p>
 </div>
@@ -281,8 +283,8 @@ easier in Python.</li>
 </div>
 </div>
 
-<div id="outline-container-org7dca42c" class="outline-4">
-<h4 id="org7dca42c"><span class="section-number-4">1.1.2.</span> Installing and importing pandas</h4>
+<div id="outline-container-orgfc2b4a6" class="outline-4">
+<h4 id="orgfc2b4a6"><span class="section-number-4">1.1.2.</span> Installing and importing pandas</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 To install pandas, we can either use conda:
@@ -308,14 +310,14 @@ common convention of aliasing the library as pd):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">import</span> pandas <span style="color: #00c089; font-weight: bold;">as</span> pd
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org775de5e" class="outline-4">
-<h4 id="org775de5e"><span class="section-number-4">1.1.3.</span> Creating a dataframe</h4>
+<div id="outline-container-org319b7bb" class="outline-4">
+<h4 id="org319b7bb"><span class="section-number-4">1.1.3.</span> Creating a dataframe</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 Now that pandas has been successfully imported, we're ready to create and
@@ -325,7 +327,7 @@ data is a dictionary, where each value is a list:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">data</span> = {<span style="color: #8b2252;">"col1"</span>: [1, 2], <span style="color: #8b2252;">"col2"</span>: [3, 4]}
+<pre class="src src-python"><span style="color: #78afff;">data</span> = {<span style="color: #af9fff;">"col1"</span>: [1, 2], <span style="color: #af9fff;">"col2"</span>: [3, 4]}
 </pre>
 </div>
 
@@ -336,21 +338,21 @@ dataframe, we need only to call the DataFrame class:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">df</span> = pd.DataFrame(data)
+<pre class="src src-python"><span style="color: #78afff;">df</span> = pd.DataFrame(data)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7bd46ed" class="outline-4">
-<h4 id="org7bd46ed"><span class="section-number-4">1.1.4.</span> Creating a dataframe</h4>
+<div id="outline-container-orgafa3d3e" class="outline-4">
+<h4 id="orgafa3d3e"><span class="section-number-4">1.1.4.</span> Creating a dataframe</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <p>
 <code>df</code> (dataframe for short) is now our representation of the dataframe:
 </p>
 
 
-<div id="org083f33e" class="figure">
+<div id="org5e7941b" class="figure">
 <p><img src="images/simple_dataframe.png" alt="simple_dataframe.png" />
 </p>
 </div>
@@ -363,8 +365,8 @@ dataframe we have a numerical index starting at 0.
 </div>
 </div>
 
-<div id="outline-container-org35db5c3" class="outline-4">
-<h4 id="org35db5c3"><span class="section-number-4">1.1.5.</span> Access elements in our dataframe</h4>
+<div id="outline-container-orgfc215e1" class="outline-4">
+<h4 id="orgfc215e1"><span class="section-number-4">1.1.5.</span> Access elements in our dataframe</h4>
 <div class="outline-text-4" id="text-1-1-5">
 <p>
 Extracting particular values from this dataframe can be accomplished using the
@@ -382,7 +384,7 @@ Let's say we want to get all the data for the first row of our dataframe:
 </div>
 
 
-<div id="org3f03419" class="figure">
+<div id="orgbaba890" class="figure">
 <p><img src="images/series.png" alt="series.png" />
 </p>
 </div>
@@ -393,15 +395,15 @@ This returns a 'Series', which is just a representation of a vector of data.
 </div>
 </div>
 
-<div id="outline-container-org76a92be" class="outline-4">
-<h4 id="org76a92be"><span class="section-number-4">1.1.6.</span> Access elements in our dataframe</h4>
+<div id="outline-container-orge317e1e" class="outline-4">
+<h4 id="orge317e1e"><span class="section-number-4">1.1.6.</span> Access elements in our dataframe</h4>
 <div class="outline-text-4" id="text-1-1-6">
 <p>
 To access a single value from this series, we can specify the column name:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df.loc[0][<span style="color: #8b2252;">"col1"</span>]  <span style="color: #b22222;"># </span><span style="color: #b22222;">returns one</span>
+<pre class="src src-python">df.loc[0][<span style="color: #af9fff;">"col1"</span>]  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">returns one</span>
 </pre>
 </div>
 
@@ -410,7 +412,7 @@ Or, we can more simply add the column name into the <code>loc</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df.loc[0, <span style="color: #8b2252;">"col1"</span>]
+<pre class="src src-python">df.loc[0, <span style="color: #af9fff;">"col1"</span>]
 </pre>
 </div>
 
@@ -419,21 +421,21 @@ If we wanted to retrieve a subset of columns, we supply a list of column names:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df.loc[0, [<span style="color: #8b2252;">"col1"</span>, <span style="color: #8b2252;">"col2"</span>]]
+<pre class="src src-python">df.loc[0, [<span style="color: #af9fff;">"col1"</span>, <span style="color: #af9fff;">"col2"</span>]]
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2df95e6" class="outline-4">
-<h4 id="org2df95e6"><span class="section-number-4">1.1.7.</span> Access elements in our dataframe</h4>
+<div id="outline-container-orgf247813" class="outline-4">
+<h4 id="orgf247813"><span class="section-number-4">1.1.7.</span> Access elements in our dataframe</h4>
 <div class="outline-text-4" id="text-1-1-7">
 <p>
 We can also use the slice notation to access multiple rows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df.loc[0:2, <span style="color: #8b2252;">"col1"</span>]
+<pre class="src src-python">df.loc[0:2, <span style="color: #af9fff;">"col1"</span>]
 </pre>
 </div>
 
@@ -446,19 +448,19 @@ Or if we just wanted to get the entire column of data, we could instead do:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df[<span style="color: #8b2252;">"col1"</span>]
+<pre class="src src-python">df[<span style="color: #af9fff;">"col1"</span>]
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2bd5aee" class="outline-3">
-<h3 id="org2bd5aee"><span class="section-number-3">1.2.</span> Manipulating data</h3>
+<div id="outline-container-org03381e3" class="outline-3">
+<h3 id="org03381e3"><span class="section-number-3">1.2.</span> Manipulating data</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org1b0c1a5" class="outline-4">
-<h4 id="org1b0c1a5"><span class="section-number-4">1.2.1.</span> Reading a CSV file</h4>
+<div id="outline-container-orgea24e03" class="outline-4">
+<h4 id="orgea24e03"><span class="section-number-4">1.2.1.</span> Reading a CSV file</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Instead of manually constructing our data and then passing it to a DataFrame, we
@@ -471,20 +473,20 @@ can read this CSV file using the <code>pd.read_csv</code> method.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">df</span> = pd.read_csv(<span style="color: #8b2252;">"iris.csv"</span>)
+<pre class="src src-python"><span style="color: #78afff;">df</span> = pd.read_csv(<span style="color: #af9fff;">"iris.csv"</span>)
 </pre>
 </div>
 
 
-<div id="org0b229ef" class="figure">
+<div id="orgdb0ce31" class="figure">
 <p><img src="images/pandas.jpg" alt="pandas.jpg" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org97a6f08" class="outline-4">
-<h4 id="org97a6f08"><span class="section-number-4">1.2.2.</span> Selecting a subset of data</h4>
+<div id="outline-container-org99cbee4" class="outline-4">
+<h4 id="org99cbee4"><span class="section-number-4">1.2.2.</span> Selecting a subset of data</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 With this more complex dataset, we can use more fancy methods of indexing. For
@@ -492,12 +494,12 @@ example, let's select all the rows where the sepal length is less than 5 cm.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df[df[<span style="color: #8b2252;">"sepal length (cm)"</span>] &lt; 5]
+<pre class="src src-python">df[df[<span style="color: #af9fff;">"sepal length (cm)"</span>] &lt; 5]
 </pre>
 </div>
 
 
-<div id="org702ca35" class="figure">
+<div id="orgf15c808" class="figure">
 <p><img src="images/subset.png" alt="subset.png" />
 </p>
 </div>
@@ -508,14 +510,14 @@ only the columns we want with this conditional expression:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df[df[<span style="color: #8b2252;">"sepal length (cm)"</span>] &lt; 5][<span style="color: #8b2252;">"sepal width (cm)"</span>]
+<pre class="src src-python">df[df[<span style="color: #af9fff;">"sepal length (cm)"</span>] &lt; 5][<span style="color: #af9fff;">"sepal width (cm)"</span>]
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga895dcf" class="outline-4">
-<h4 id="orga895dcf"><span class="section-number-4">1.2.3.</span> Creating new columns</h4>
+<div id="outline-container-org6d9449d" class="outline-4">
+<h4 id="org6d9449d"><span class="section-number-4">1.2.3.</span> Creating new columns</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 We can add new columns to this dataset by using the assignment operator. In this
@@ -524,12 +526,12 @@ the 'sepal width' and 'sepal length':
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">df</span>[<span style="color: #8b2252;">"sepal sum"</span>] = df[<span style="color: #8b2252;">"sepal width (cm)"</span>] + df[<span style="color: #8b2252;">"sepal length (cm)"</span>]
+<pre class="src src-python"><span style="color: #78afff;">df</span>[<span style="color: #af9fff;">"sepal sum"</span>] = df[<span style="color: #af9fff;">"sepal width (cm)"</span>] + df[<span style="color: #af9fff;">"sepal length (cm)"</span>]
 </pre>
 </div>
 
 
-<div id="orge8e07e4" class="figure">
+<div id="org3c1c041" class="figure">
 <p><img src="images/new-column.png" alt="new-column.png" />
 </p>
 </div>
@@ -537,12 +539,12 @@ the 'sepal width' and 'sepal length':
 </div>
 </div>
 
-<div id="outline-container-org7824152" class="outline-3">
-<h3 id="org7824152"><span class="section-number-3">1.3.</span> Inspecting our data</h3>
+<div id="outline-container-orgd3a2f21" class="outline-3">
+<h3 id="orgd3a2f21"><span class="section-number-3">1.3.</span> Inspecting our data</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org40cc2df" class="outline-4">
-<h4 id="org40cc2df"><span class="section-number-4">1.3.1.</span> Shape of the data</h4>
+<div id="outline-container-org3e0cdd6" class="outline-4">
+<h4 id="org3e0cdd6"><span class="section-number-4">1.3.1.</span> Shape of the data</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 We can also further see that our new column has been added by inspecting the
@@ -554,7 +556,7 @@ We can also further see that our new column has been added by inspecting the
 </pre>
 </div>
 
-<pre class="example" id="orgcd3b4d8">
+<pre class="example" id="org1697274">
 (150, 5)
 </pre>
 
@@ -565,8 +567,8 @@ columns (5).
 </div>
 </div>
 
-<div id="outline-container-org5637f10" class="outline-4">
-<h4 id="org5637f10"><span class="section-number-4">1.3.2.</span> Getting the names of columns</h4>
+<div id="outline-container-orgf9e90a1" class="outline-4">
+<h4 id="orgf9e90a1"><span class="section-number-4">1.3.2.</span> Getting the names of columns</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 To find out what the names of the columns are we can use the <code>columns</code> attribute:
@@ -577,7 +579,7 @@ To find out what the names of the columns are we can use the <code>columns</code
 </pre>
 </div>
 
-<pre class="example" id="org86e6bd1">
+<pre class="example" id="org492d586">
 Index(['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)',
        'petal width (cm)', 'sepal sum'],
       dtype='object')
@@ -592,14 +594,14 @@ This returns an Index that can itself be indexed in the usual way:
 </pre>
 </div>
 
-<pre class="example" id="orgbd6172a">
+<pre class="example" id="orgf97d804">
 'sepal length (cm)'
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orge43e6ce" class="outline-4">
-<h4 id="orge43e6ce"><span class="section-number-4">1.3.3.</span> Head/tail</h4>
+<div id="outline-container-org30e7b7c" class="outline-4">
+<h4 id="org30e7b7c"><span class="section-number-4">1.3.3.</span> Head/tail</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <p>
 We can get the first/last few rows of the data using the <code>.head()</code> or <code>.tail()</code>
@@ -608,11 +610,11 @@ view. By default, it will show 10 rows.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df.head()  <span style="color: #b22222;"># </span><span style="color: #b22222;">shows the first 10 rows</span>
-df.head(5) <span style="color: #b22222;"># </span><span style="color: #b22222;">shows the first 5 rows</span>
+<pre class="src src-python">df.head()  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">shows the first 10 rows</span>
+df.head(5) <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">shows the first 5 rows</span>
 
-df.tail()  <span style="color: #b22222;"># </span><span style="color: #b22222;">shows the last 10 rows</span>
-df.tail(5) <span style="color: #b22222;"># </span><span style="color: #b22222;">shows the last 5 rows</span>
+df.tail()  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">shows the last 10 rows</span>
+df.tail(5) <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">shows the last 5 rows</span>
 </pre>
 </div>
 </div>
@@ -620,12 +622,12 @@ df.tail(5) <span style="color: #b22222;"># </span><span style="color: #b22222;">
 </div>
 
 
-<div id="outline-container-orge15e7cb" class="outline-3">
-<h3 id="orge15e7cb"><span class="section-number-3">1.4.</span> Operations</h3>
+<div id="outline-container-org7c3125c" class="outline-3">
+<h3 id="org7c3125c"><span class="section-number-3">1.4.</span> Operations</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org870aad7" class="outline-4">
-<h4 id="org870aad7"><span class="section-number-4">1.4.1.</span> Operations on data</h4>
+<div id="outline-container-org78ba6d1" class="outline-4">
+<h4 id="org78ba6d1"><span class="section-number-4">1.4.1.</span> Operations on data</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 Pandas comes with a few standard methods to perform some basic operations. For
@@ -633,7 +635,7 @@ example, you can calculate the mean of a column:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df[<span style="color: #8b2252;">"sepal length (cm)"</span>].mean()
+<pre class="src src-python">df[<span style="color: #af9fff;">"sepal length (cm)"</span>].mean()
 </pre>
 </div>
 
@@ -643,7 +645,7 @@ And you can use the <code>apply()</code> method to apply a function to every ele
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df[<span style="color: #8b2252;">"sepal length (cm)"</span>].<span style="color: #483d8b;">apply</span>(<span style="color: #a020f0;">lambda</span> x: x * 2)
+<pre class="src src-python">df[<span style="color: #af9fff;">"sepal length (cm)"</span>].<span style="color: #3fb83f; font-weight: bold;">apply</span>(<span style="color: #00c089; font-weight: bold;">lambda</span> x: x * 2)
 </pre>
 </div>
 
@@ -660,35 +662,60 @@ function to every element will double all values in 'sepal length (cm)'.
 </div>
 </div>
 
-<div id="outline-container-org160a045" class="outline-4">
-<h4 id="org160a045"><span class="section-number-4">1.4.2.</span> Merge</h4>
+<div id="outline-container-orga3d4772" class="outline-4">
+<h4 id="orga3d4772"><span class="section-number-4">1.4.2.</span> Apply operation to entire row</h4>
 <div class="outline-text-4" id="text-1-4-2">
+<p>
+In the previous example, we saw the use of <code>.apply</code>, where a function is
+applied to each individual element in a column. With <code>apply</code>, it's also
+possible to apply a function to each row of a dataframe, by specifying
+<code>axis=1</code> in the call to <code>apply</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">some df with value column defined here</span>
+
+<span style="color: #00c089; font-weight: bold;">def</span> <span style="color: #7fc500;">window_sum</span>(row, window=5):
+    <span style="color: #7fc07f; font-style: italic;">"""Take a sum of rows within a window"""</span>
+    curr_index = row.name  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">access the row index number using .name</span>
+    row[<span style="color: #af9fff;">"moving_avg"</span>] = df.loc[curr_index-window:curr_index, <span style="color: #af9fff;">"value"</span>].<span style="color: #3fb83f; font-weight: bold;">sum</span>()
+    <span style="color: #00c089; font-weight: bold;">return</span> row  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">return the updated row</span>
+
+updated_df = df.<span style="color: #3fb83f; font-weight: bold;">apply</span>(moving_avg, axis=1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6ec47f1" class="outline-4">
+<h4 id="org6ec47f1"><span class="section-number-4">1.4.3.</span> Merge</h4>
+<div class="outline-text-4" id="text-1-4-3">
 <p>
 Many pandas dataframes can be combined together using the <code>concat</code> method that
 requires a list of dataframes as input.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">data1</span> = pd.DataFrame({<span style="color: #8b2252;">"col1"</span>: [0, 1], <span style="color: #8b2252;">"col2"</span>: [0, 1]})
-<span style="color: #a0522d;">data2</span> = pd.DataFrame({<span style="color: #8b2252;">"col1"</span>: [2, 3], <span style="color: #8b2252;">"col2"</span>: [2, 3]})
+<pre class="src src-python"><span style="color: #78afff;">data1</span> = pd.DataFrame({<span style="color: #af9fff;">"col1"</span>: [0, 1], <span style="color: #af9fff;">"col2"</span>: [0, 1]})
+<span style="color: #78afff;">data2</span> = pd.DataFrame({<span style="color: #af9fff;">"col1"</span>: [2, 3], <span style="color: #af9fff;">"col2"</span>: [2, 3]})
 
-<span style="color: #a0522d;">combined</span> = pd.concat([data1, data2])
+<span style="color: #78afff;">combined</span> = pd.concat([data1, data2])
 </pre>
 </div>
 
 
-<div id="org87634f3" class="figure">
+<div id="orgb15ad43" class="figure">
 <p><img src="images/combined.png" alt="combined.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgbdafeef" class="outline-4">
-<h4 id="orgbdafeef"><span class="section-number-4">1.4.3.</span> More on indexing</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-org285011d" class="outline-4">
+<h4 id="org285011d"><span class="section-number-4">1.4.4.</span> More on indexing</h4>
+<div class="outline-text-4" id="text-1-4-4">
 
-<div id="org1ae6e5d" class="figure">
+<div id="orgb6d4367" class="figure">
 <p><img src="images/combined.png" alt="combined.png" />
 </p>
 </div>
@@ -703,7 +730,7 @@ attribute:
 </pre>
 </div>
 
-<pre class="example" id="org74ff6f2">
+<pre class="example" id="org7f4b9eb">
 Int64Index([0, 1, 0, 1], dtype='int64')
 </pre>
 
@@ -714,16 +741,16 @@ have an effect on when we index our data with <code>loc</code>.
 </div>
 </div>
 
-<div id="outline-container-orgfd7cc4d" class="outline-4">
-<h4 id="orgfd7cc4d"><span class="section-number-4">1.4.4.</span> More on indexing</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-org3b72293" class="outline-4">
+<h4 id="org3b72293"><span class="section-number-4">1.4.5.</span> More on indexing</h4>
+<div class="outline-text-4" id="text-1-4-5">
 <div class="org-src-container">
 <pre class="src src-python">combined.loc[1]
 </pre>
 </div>
 
 
-<div id="org195f393" class="figure">
+<div id="org2a5cd2c" class="figure">
 <p><img src="images/indexing.png" alt="indexing.png" />
 </p>
 </div>
@@ -745,9 +772,9 @@ Which will give us the desired outcome.
 </div>
 </div>
 
-<div id="outline-container-org1899117" class="outline-4">
-<h4 id="org1899117"><span class="section-number-4">1.4.5.</span> Resetting indexes</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-org924582e" class="outline-4">
+<h4 id="org924582e"><span class="section-number-4">1.4.6.</span> Resetting indexes</h4>
+<div class="outline-text-4" id="text-1-4-6">
 <p>
 Alternatively we can reset the index labels:
 </p>
@@ -758,7 +785,7 @@ Alternatively we can reset the index labels:
 </div>
 
 
-<div id="org1a2a3af" class="figure">
+<div id="orgafd2edf" class="figure">
 <p><img src="images/reset-index.png" alt="reset-index.png" />
 </p>
 </div>
@@ -770,15 +797,15 @@ will only return the one row.
 </div>
 </div>
 
-<div id="outline-container-org740310a" class="outline-4">
-<h4 id="org740310a"><span class="section-number-4">1.4.6.</span> Resetting indexes</h4>
-<div class="outline-text-4" id="text-1-4-6">
+<div id="outline-container-org5259496" class="outline-4">
+<h4 id="org5259496"><span class="section-number-4">1.4.7.</span> Resetting indexes</h4>
+<div class="outline-text-4" id="text-1-4-7">
 <p>
 To save the result of <code>reset_index()</code> we need to overwrite our original data:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">combined</span> = combined.reset_index()
+<pre class="src src-python"><span style="color: #78afff;">combined</span> = combined.reset_index()
 </pre>
 </div>
 
@@ -787,19 +814,19 @@ Or specify <code>inplace</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">combined.reset_index(inplace=<span style="color: #008b8b;">True</span>)
+<pre class="src src-python">combined.reset_index(inplace=<span style="color: #37aff6;">True</span>)
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga2887d6" class="outline-3">
-<h3 id="orga2887d6"><span class="section-number-3">1.5.</span> Different types of data</h3>
+<div id="outline-container-org251f7eb" class="outline-3">
+<h3 id="org251f7eb"><span class="section-number-3">1.5.</span> Different types of data</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-org92cd28d" class="outline-4">
-<h4 id="org92cd28d"><span class="section-number-4">1.5.1.</span> Categorical data</h4>
+<div id="outline-container-org918d765" class="outline-4">
+<h4 id="org918d765"><span class="section-number-4">1.5.1.</span> Categorical data</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 So far, we've only seen numerical data. One of the advantages of using pandas
@@ -810,8 +837,8 @@ categories.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">df</span> = pd.DataFrame({<span style="color: #8b2252;">"col1"</span>: [<span style="color: #8b2252;">"a"</span>, <span style="color: #8b2252;">"b"</span>, <span style="color: #8b2252;">"c"</span>, <span style="color: #8b2252;">"a"</span>],
-                   <span style="color: #8b2252;">"col2"</span>: [1, 2, 5, 4]})
+<pre class="src src-python"><span style="color: #78afff;">df</span> = pd.DataFrame({<span style="color: #af9fff;">"col1"</span>: [<span style="color: #af9fff;">"a"</span>, <span style="color: #af9fff;">"b"</span>, <span style="color: #af9fff;">"c"</span>, <span style="color: #af9fff;">"a"</span>],
+                   <span style="color: #af9fff;">"col2"</span>: [1, 2, 5, 4]})
 </pre>
 </div>
 
@@ -821,15 +848,15 @@ representation to categorical elements with:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">df</span>[<span style="color: #8b2252;">"col1"</span>] = df[<span style="color: #8b2252;">"col1"</span>].astype(<span style="color: #8b2252;">"category"</span>)
+<pre class="src src-python"><span style="color: #78afff;">df</span>[<span style="color: #af9fff;">"col1"</span>] = df[<span style="color: #af9fff;">"col1"</span>].astype(<span style="color: #af9fff;">"category"</span>)
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orge86b4ac" class="outline-4">
-<h4 id="orge86b4ac"><span class="section-number-4">1.5.2.</span> Categorical data</h4>
+<div id="outline-container-org621a075" class="outline-4">
+<h4 id="org621a075"><span class="section-number-4">1.5.2.</span> Categorical data</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <p>
 With categorical data, we can perform operations on these groups a lot quicker
@@ -838,12 +865,12 @@ the sum of 'col2' for each group.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df.groupby(<span style="color: #8b2252;">"col1"</span>).<span style="color: #483d8b;">sum</span>()
+<pre class="src src-python">df.groupby(<span style="color: #af9fff;">"col1"</span>).<span style="color: #3fb83f; font-weight: bold;">sum</span>()
 </pre>
 </div>
 
 
-<div id="org46d8bcd" class="figure">
+<div id="org7477ddc" class="figure">
 <p><img src="images/categorical.png" alt="categorical.png" />
 </p>
 </div>
@@ -855,8 +882,8 @@ computationally efficient than leaving them as strings.
 </div>
 </div>
 
-<div id="outline-container-orgcb1a0d1" class="outline-4">
-<h4 id="orgcb1a0d1"><span class="section-number-4">1.5.3.</span> Dates and times</h4>
+<div id="outline-container-org8934b7d" class="outline-4">
+<h4 id="org8934b7d"><span class="section-number-4">1.5.3.</span> Dates and times</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <p>
 If you have a column that represents a date or time, you can convert that column
@@ -864,8 +891,8 @@ to a true datetime representation with <code>pd.to_datetime</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">df</span> = pd.DataFrame({<span style="color: #8b2252;">"col1"</span>: [<span style="color: #8b2252;">"2002/01/30"</span>, <span style="color: #8b2252;">"2010/05/16"</span>]})
-<span style="color: #a0522d;">df</span>[<span style="color: #8b2252;">"col1"</span>] = pd.to_datetime(df[<span style="color: #8b2252;">"col1"</span>])
+<pre class="src src-python"><span style="color: #78afff;">df</span> = pd.DataFrame({<span style="color: #af9fff;">"col1"</span>: [<span style="color: #af9fff;">"2002/01/30"</span>, <span style="color: #af9fff;">"2010/05/16"</span>]})
+<span style="color: #78afff;">df</span>[<span style="color: #af9fff;">"col1"</span>] = pd.to_datetime(df[<span style="color: #af9fff;">"col1"</span>])
 </pre>
 </div>
 
@@ -876,12 +903,12 @@ the year:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">df[<span style="color: #8b2252;">"col1"</span>].dt.year <span style="color: #b22222;"># </span><span style="color: #b22222;">or df["col1"].dt.month etc</span>
+<pre class="src src-python">df[<span style="color: #af9fff;">"col1"</span>].dt.year <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">or df["col1"].dt.month etc</span>
 </pre>
 </div>
 
 
-<div id="org1199a3d" class="figure">
+<div id="orgcc551e9" class="figure">
 <p><img src="images/year.png" alt="year.png" />
 </p>
 </div>
@@ -892,7 +919,7 @@ the year:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2021-12-06 lun. 14:15</p>
+<p class="date">Created: 2022-11-05 Sat 16:41</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

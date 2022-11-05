@@ -18,25 +18,6 @@
 : Results: 
 : # => 
 
-#+begin_src emacs-lisp :exports none
-(setq org-latex-minted-options
-      '(("frame" "lines")
-	("linenos=true")
-	("firstnumber=last")
-	("fontsize=\\footnotesize")
-	("xleftmargin=15pt")
-	("numbersep=8pt")))
-#+end_src
-
-#+RESULTS:
-| frame                  | lines |
-| linenos=true           |       |
-| firstnumber=last       |       |
-| fontsize=\footnotesize |       |
-| xleftmargin=15pt       |       |
-| numbersep=8pt          |       |
-
-
 * Linux
 
 ** What is Linux
@@ -993,6 +974,12 @@ information, such as:
 - ST -- the status, is the job currently running, waiting, or exiting?
 - TIME -- how long the job has been running for.
 - NODES -- how many nodes have been allocated to the job.
+
+*** Job Management -- scontrol
+
+#+begin_src bash
+scontrol update jobid=<job_id> TimeLimit=<new_timelimit>
+#+end_src
 
 *** Job Management -- scancel
 
