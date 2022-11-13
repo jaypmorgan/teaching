@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-02 Fri 13:23 -->
+<!-- 2022-11-13 Sun 14:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -223,17 +223,17 @@
 <span class="subtitle">Lecture 2 - Linear Models</span>
 </h1>
 
-<div id="outline-container-org4c36c53" class="outline-2">
-<h2 id="org4c36c53">Linear Regression</h2>
-<div class="outline-text-2" id="text-org4c36c53">
+<div id="outline-container-orgcff3387" class="outline-2">
+<h2 id="orgcff3387">Linear Regression</h2>
+<div class="outline-text-2" id="text-orgcff3387">
 </div>
-<div id="outline-container-orgd80ad2e" class="outline-3">
-<h3 id="orgd80ad2e">Introduction to linear models</h3>
-<div class="outline-text-3" id="text-orgd80ad2e">
+<div id="outline-container-orge6af30e" class="outline-3">
+<h3 id="orge6af30e">Introduction to linear models</h3>
+<div class="outline-text-3" id="text-orge6af30e">
 </div>
-<div id="outline-container-org340b91d" class="outline-4">
-<h4 id="org340b91d">Linear models</h4>
-<div class="outline-text-4" id="text-org340b91d">
+<div id="outline-container-orgc3f994b" class="outline-4">
+<h4 id="orgc3f994b">Linear models</h4>
+<div class="outline-text-4" id="text-orgc3f994b">
 <p>
 Having learnt a little about what it means to learn, we're going to look at our first
 <i>Machine Learning</i> algorithm, the staple for much of statistics, numeric prediction
@@ -242,9 +242,9 @@ using a linear model.
 </div>
 </div>
 
-<div id="outline-container-org310c907" class="outline-4">
-<h4 id="org310c907">What is a linear model?</h4>
-<div class="outline-text-4" id="text-org310c907">
+<div id="outline-container-org77156b5" class="outline-4">
+<h4 id="org77156b5">What is a linear model?</h4>
+<div class="outline-text-4" id="text-org77156b5">
 <p>
 A linear model is a prediction (a response) to an input variable. We have the
 following terms:
@@ -261,39 +261,44 @@ For a linear model based on one dependant we have the following:
 
 <p>
 \[
-y = w x + b
+y = \beta_0 + \beta_1 x
 \]
 </p>
 
 <p>
 where \(y\) is the response/output/prediction of the model, \(x\) is the dependant
-variable, and \(w, b\) are the model parameters.
+variable, and \(\beta_0, \beta_1\) are the model parameters.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org6778ef1" class="outline-4">
-<h4 id="org6778ef1">Slope &amp; intercept</h4>
-<div class="outline-text-4" id="text-org6778ef1">
+<div id="outline-container-orgeabeb2a" class="outline-3">
+<h3 id="orgeabeb2a">Model parameters</h3>
+<div class="outline-text-3" id="text-orgeabeb2a">
+</div>
+<div id="outline-container-org77edf28" class="outline-4">
+<h4 id="org77edf28">Slope &amp; intercept</h4>
+<div class="outline-text-4" id="text-org77edf28">
 <p>
 If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
 </p>
 
 
-<div id="org7f41323" class="figure">
+<div id="orgcaaf2ae" class="figure">
 <p><img src="images/linear_model.png" alt="linear_model.png" />
 </p>
 </div>
 
 <p>
-As we've seen, the linear model, or linear regression, has two parameters: \(w,
-b\). What do these parameters represent?
+As we've seen, the linear model, or linear regression, has two parameters: \(\beta_1,
+\beta_0\). What do these parameters represent?
 </p>
 
 <ul class="org-ul">
-<li>The \(w\) parameter is the <b>slope</b> or strength of relationship between the dependant
+<li>The \(\beta_1\) parameter is the <b>slope</b> or strength of relationship between the dependant
 variable and the response.</li>
-<li>Meanwhile, the \(b\) parameter is called the <b>intercept</b>, as it's the value of the
+<li>Meanwhile, the \(\beta_0\) parameter is called the <b>intercept</b>, as it's the value of the
 response when the dependant variable is zero.</li>
 </ul>
 
@@ -302,43 +307,81 @@ Let's look at these two parameters.
 </p>
 
 
-<div id="orgf47d279" class="figure">
+<div id="org027b6ff" class="figure">
 <p><img src="images/slope_1.png" alt="slope_1.png" />
 </p>
 </div>
 
 <p>
-Here we see that when \(w\) is 0 (left figure), any change in \(x\) results in 0 change
-in \(y\). While, with \(w = 2\), \(y\) increases two-fold by every change in \(x\). Finally,
+Here we see that when \(\beta_1\) is 0 (left figure), any change in \(x\) results in 0 change
+in \(y\). While, with \(\beta_1 = 2\), \(y\) increases two-fold by every change in \(x\). Finally,
 when the slope is negative, we see that \(y\) decreases.
 </p>
 
 <p>
-Notice how the line is at 5 when \(x\) is zero, this is because \(b = 5\).
+Notice how the line is at 5 when \(x\) is zero, this is because \(\beta_0 = 5\).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org28f5ba4" class="outline-4">
-<h4 id="org28f5ba4">Supporting example</h4>
-<div class="outline-text-4" id="text-org28f5ba4">
+
+<div id="outline-container-org6f4d27c" class="outline-4">
+<h4 id="org6f4d27c">Multiple variables</h4>
+<div class="outline-text-4" id="text-org6f4d27c">
+<p>
+So we've seen how we can take an input variable x, and through the
+combination multiplication and addition with the learnt \(\beta_0, \beta_1\) values,
+we can create a pretty accurate prediction.
+</p>
+
+<p>
+However, this was only for a singular variable.
+</p>
+
+<p>
+In our dataset, we have many variables/features/columns that we may
+want to use for our prediction. It may be possible to get an even more
+accurate prediction by adding features to our linear regression model.
+</p>
+
+<p>
+\[
+y = \beta_0 + \sum_{i=1}^m x_i \beta_i
+\]
+</p>
+
+<p>
+where \(m\) is the number of features/variables we're adding to the
+model.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf48cf30" class="outline-4">
+<h4 id="orgf48cf30">Supporting example</h4>
+<div class="outline-text-4" id="text-orgf48cf30">
 <p>
 Let's have a look at how we would use this linear model with one of the datasets: The
 Boston housing prices.
 </p>
 
 
-<div id="orgf7cfb36" class="figure">
+<div id="org9ba1c38" class="figure">
 <p><img src="images/boston_rooms_prices.png" alt="boston_rooms_prices.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.</p>
 </div>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org346fc0b" class="outline-4">
-<h4 id="org346fc0b">Let's fit a linear model</h4>
-<div class="outline-text-4" id="text-org346fc0b">
+<div id="outline-container-org22824f4" class="outline-3">
+<h3 id="org22824f4">Training a linear regressor</h3>
+<div class="outline-text-3" id="text-org22824f4">
+</div>
+<div id="outline-container-org0f83e8b" class="outline-4">
+<h4 id="org0f83e8b">Let's fit a linear model</h4>
+<div class="outline-text-4" id="text-org0f83e8b">
 <p>
 We have seen that there seems to be some correlation between the number of rooms and
 the house price. I.e. we can use the number of rooms of the house to get the
@@ -347,30 +390,31 @@ estimated price. To get an estimated price we'll use our linear model:
 
 <p>
 \[
-y = w x + b
+y = \beta_0+\beta_1 x
 \]
 </p>
 
 <p>
-In this case, \(x\) will be the number of rooms. But what values should we set for \(w\)
-and \(b\)? Or put another way, what is <i>optimal</i> value for our model parameters.
+In this case, \(x\) will be the number of rooms. But what values should
+we set for \(\beta_0\) and \(\beta_1\)? Or put another way, what is
+<i>optimal</i> value for our model parameters.
 </p>
 
 <p>
-We'll return to the question of optimal later, but for now, let's just select some
-random values!
+We'll return to the question of optimal later, but for now, let's just
+select some random values!
 </p>
 
 <p>
 \[\begin{aligned}
-w = 1 \\
-b = 1
+\beta_0 = 1 \\
+\beta_1 = 1
 \end{aligned}\]
 </p>
 
 
 
-<div id="org7752fff" class="figure">
+<div id="orga30426f" class="figure">
 <p><img src="images/boston_rm_first_pred.png" alt="boston_rm_first_pred.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.</p>
@@ -384,9 +428,9 @@ predicted house prices are?
 </div>
 </div>
 
-<div id="outline-container-org844632e" class="outline-4">
-<h4 id="org844632e">Evaluating our initial linear model</h4>
-<div class="outline-text-4" id="text-org844632e">
+<div id="outline-container-org5d50d46" class="outline-4">
+<h4 id="org5d50d46">Evaluating our initial linear model</h4>
+<div class="outline-text-4" id="text-org5d50d46">
 <p>
 To evaluate how well, or in this case, how badly our linear model is doing, let's
 compare the predicted value from the model against the actual house price. For
@@ -410,7 +454,7 @@ What we've done there is the following:
 </p>
 
 <p>
-where \(\hat{y}\) is \(w x + b\)
+where \(\hat{y}\) is \(\beta_0 + \beta_1 x\)
 </p>
 
 <p>
@@ -425,7 +469,7 @@ we could take the mean over all samples:
 
 <p>
 \[
-\Delta = \sum_{i=0}^n | y - \hat{y} |
+\text{MAE}(X; \beta_0,\beta_1) = \frac{1}{N}\sum_{i=0}^N | y_i - (\beta_0+\beta_1x_i) |
 \]
 </p>
 
@@ -433,12 +477,24 @@ we could take the mean over all samples:
 If we calculate that our linear model we see that the average difference between our
 estimated value and real value is $15,000!
 </p>
+
+<p>
+Another common method of calculating how well or how badly our model
+is performing is to use the <b>sum of squared residuals</b> or perhaps more
+commonly known in the field of machine learning: mean squared error (MSE).
+</p>
+
+<p>
+\[
+\text{MSE}(X; \beta_0, \beta_1) = \frac{1}{N}\sum_{i=0}^N (y - (\beta_0 + \beta_1 x_i))^2
+\]
+</p>
 </div>
 </div>
 
-<div id="outline-container-org1f27b2b" class="outline-4">
-<h4 id="org1f27b2b">Getting better model parameters</h4>
-<div class="outline-text-4" id="text-org1f27b2b">
+<div id="outline-container-org9134ce0" class="outline-4">
+<h4 id="org9134ce0">Getting better model parameters</h4>
+<div class="outline-text-4" id="text-org9134ce0">
 <p>
 Okay, so we made our initial guess at the model parameters (random values for \(w,
 b\)), and these weren't very good. We were incorrectly guessing the house value by
@@ -446,26 +502,26 @@ $15,000. So how do we get better values?
 </p>
 
 <p>
-Well if we visualise how badly we do vs the value for \(w\) we get the following:
+Well if we visualise how badly we do vs the value for \(\beta_1\) we get the following:
 </p>
 
 
-<div id="org2140f0f" class="figure">
+<div id="org1d6766a" class="figure">
 <p><img src="images/plot_linear_model_loss_w.png" alt="plot_linear_model_loss_w.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Mean absolute error (MAE) between the true and predicted house values when varying the value for \(w\) parameter in the linear model.</p>
 </div>
 
 <p>
-In figure <a href="#org2140f0f">3</a>, we see that as we change the \(w\) parameter, the mean absolute
+In figure <a href="#org1d6766a">3</a>, we see that as we change the \(\beta_1\) parameter, the mean absolute
 error (MAE), i.e. the average difference between the predicted house prices and the
 true house prices, changes. Ideally, we would like the error or <b>loss</b> to be as low as
-possible. In this case, when \(b = 1\) the lowest possible loss we can hope to achieve
+possible. In this case, when \(\beta_0 = 1\) the lowest possible loss we can hope to achieve
 with the linear model is ~ $5,500.
 </p>
 
 <p>
-But what value for \(w\) gets us this lowest value for the loss? Looking at the graph,
+But what value for \(\beta_1\) gets us this lowest value for the loss? Looking at the graph,
 we see that the lowest point on the loss curve is somewhere between 0 and 5. Maybe
 even 4? While we could look at the curve and pick these parameter values, we're going
 to use a better method &#x2013; one that give us an optimal value for this loss curve
@@ -477,12 +533,12 @@ We're going to look at the method called <b>Gradient Descent</b>.
 </p>
 
 <p>
-If we visualise our loss curve again, and visualise where \(w = 1\) is on this curve,
+If we visualise our loss curve again, and visualise where \(\beta_1 = 1\) is on this curve,
 we will see:
 </p>
 
 
-<div id="org3fa83d3" class="figure">
+<div id="org951d291" class="figure">
 <p><img src="images/loss_curve_w_1.png" alt="loss_curve_w_1.png" />
 </p>
 </div>
@@ -494,7 +550,7 @@ down the loss curve.
 </p>
 
 
-<div id="orgeee4b10" class="figure">
+<div id="org31455c0" class="figure">
 <p><img src="images/loss_curve_w_1_with_path.png" alt="loss_curve_w_1_with_path.png" />
 </p>
 </div>
@@ -511,12 +567,12 @@ the curve (hence Gradient Descent). We compute the gradient using finite differe
 </p>
 
 <p>
-where \(f(x)\) is the loss when \(w\) takes on the value of \(x\). \(h\) is a very small
+where \(f(x)\) is the loss when \(\beta_1\) takes on the value of \(x\). \(h\) is a very small
 value.
 </p>
 
 
-<div id="orgb5df5e7" class="figure">
+<div id="org56e1496" class="figure">
 <p><img src="images/small_step.png" alt="small_step.png" />
 </p>
 </div>
@@ -527,7 +583,7 @@ If we select \(h = 0.5\) then we will have the formula:
 
 <p>
 \[
-\Delta_w = \frac{\mathcal{L}(w + 0.5) - \mathcal{L}(w)}{w}
+\Delta_{\beta_1} = \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{\beta_1}
 \]
 </p>
 
@@ -536,7 +592,7 @@ where \(\mathcal{L}\) represents our loss function, MAE. If we calculate this we
 </p>
 <p>
 \[\begin{aligned}
-\Delta_w &= \frac{\mathcal{L}(w + 0.5) - \mathcal{L}(w)}{h} \\
+\Delta_{\beta_1} &= \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{h} \\
 &= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{1  - (0.5)} \\
 &= \frac{12 - 15}{0.5} \\
 &= -6.0
@@ -545,23 +601,23 @@ where \(\mathcal{L}\) represents our loss function, MAE. If we calculate this we
 
 <p>
 Given that the gradient is a negative number, we know that the curve is going
-down/decreasing. So we will want to move \(w\) in this direction &#x2013; we want to move
-\(w\) so that the loss decreases.
+down/decreasing. So we will want to move \(\beta_1\) in this direction &#x2013; we want to move
+\(\beta_1\) so that the loss decreases.
 </p>
 
 <p>
 \[
-\overline{w} = w - \eta \Delta_w
+\overline{\beta_1} = \beta_1 - \eta \Delta_{\beta_1}
 \]
 </p>
 
 <p>
-If we plug in the numbers we've calculated for when \(w = 1\) we get and \(eta = 0.5\):
+If we plug in the numbers we've calculated for when \(\beta_1 = 1\) we get and \(eta = 0.5\):
 </p>
 
 <p>
 \[\begin{aligned}
-\overline{w} &= w - \eta \Delta_w \\
+\overline{\beta_1} &= \beta_1 - \eta \Delta_{\beta_1} \\
 &= 1.0 - (0.5 * -6.0) \\
 &= 1.0 - (-3.0) \\
 &= 4.0
@@ -569,7 +625,7 @@ If we plug in the numbers we've calculated for when \(w = 1\) we get and \(eta =
 </p>
 
 <p>
-Our new value for the \(w\) parameter (\(\overline{w}\)) is computed by taking its
+Our new value for the \(\beta_1\) parameter (\(\overline{\beta_1}\)) is computed by taking its
 original value and subtracting the gradient modulated/multiplied by \(\eta\). \(\eta\) in
 this case is what will allow us to take our <b>small steps</b>. It is important to set
 \(\eta\) to a suitably small value, as high values for \(\eta\) will cause the Gradient
@@ -577,63 +633,300 @@ Descent to behave erratically, and even, make our loss worse!
 </p>
 
 
-<div id="org8f81d88" class="figure">
+<div id="org7bb0445" class="figure">
 <p><img src="images/small_step_eta.png" alt="small_step_eta.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Plotting the effect of \(\eta\) on the step change of \(w\).</p>
 </div>
 
 <p>
-In figure <a href="#org8f81d88">4</a>, we've varied the value of \(\eta\) and computed 10 steps of updating
-the \(w\) parameter in our linear model. When \(\eta=0.05\), we see that \(w\) is slowly
+In figure <a href="#org7bb0445">4</a>, we've varied the value of \(\eta\) and computed 10 steps of updating
+the \(\beta_1\) parameter in our linear model. When \(\eta=0.05\), we see that \(\beta_1\) is slowly
 being updated in a way that is causing our loss to decrease, but it is more so slowly
-that we don't reach the optimal value for \(w\). When \(\eta=3\), each change in \(w\) is
+that we don't reach the optimal value for \(\beta_1\). When \(\eta=3\), each change in \(\beta_1\) is
 too large, so we over-shoot the optimal value, and end up bouncing back and forth
-without ever improving. Finally, when we set \(\eta=0.3\), the changes in \(w\) are
+without ever improving. Finally, when we set \(\eta=0.3\), the changes in \(\beta_1\) are
 sufficiently large enough such that we reach the <b>global minima</b> in time, but they are
 also small enough so that we don't over-shoot this same minimum.
 </p>
 
 <p>
 If we then apply the Gradient Descent algorithm to both parameters of the linear
-model \(w, b\), then we can find the optimal trend line for this data. Furthermore,
-visualising this will look something like figure <a href="#org07c715c">1</a>.
+model \(\beta_0, \beta_1\), then we can find the optimal trend line for this data. Furthermore,
+visualising this will look something like figure <a href="#org206875c">5</a>.
 </p>
 
-<img src="images/lm_learn.gif">
+
+<div id="org206875c" class="figure">
+<p><img src="images/lm_learn.gif" alt="lm_learn.gif" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Visualising (GIF) the linear model as its parameters improve.</p>
+</div>
+</div>
 </div>
 </div>
 
-
-<div id="outline-container-org5f6a369" class="outline-4">
-<h4 id="org5f6a369">Multiple variables</h4>
+<div id="outline-container-orgf0196a2" class="outline-3">
+<h3 id="orgf0196a2">Fitting the line directly</h3>
+<div class="outline-text-3" id="text-orgf0196a2">
 </div>
-</div>
-</div>
-
-<div id="outline-container-org25b4a39" class="outline-2">
-<h2 id="org25b4a39">Logistic Regression</h2>
-<div class="outline-text-2" id="text-org25b4a39">
-</div>
-<div id="outline-container-orgea3bc4a" class="outline-3">
-<h3 id="orgea3bc4a">Classification</h3>
-<div class="outline-text-3" id="text-orgea3bc4a">
-</div>
-<div id="outline-container-orgcc088f5" class="outline-4">
-<h4 id="orgcc088f5">Moving from regression to classification</h4>
-<div class="outline-text-4" id="text-orgcc088f5">
+<div id="outline-container-org07d3827" class="outline-4">
+<h4 id="org07d3827">Solving the linear model directly</h4>
+<div class="outline-text-4" id="text-org07d3827">
 <p>
-We now turn to classification
+The way we've trained our linear regression is not necessarily the
+best, yes it does help us understand how we can optimise to a solution
+(especially if not all of our data can fit into memory at the same
+time). But, when it comes to linear models, we can compute the values
+for \(\beta_0, \beta_1\) directly.
 </p>
+
+<p>
+This is called a <b>closed-form solution</b>.
+</p>
+
+<p>
+\[
+\beta_1 = \frac{N \sum xy - \sum x \sum y}{N \sum (x^2) - \sum (x)^2}
+\]
+</p>
+
+<p>
+\[
+\beta_0 = \frac{\sum y - w \sum x}{N}
+\]
+</p>
+
+<p>
+where \(N\) is the number of samples in our data.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org42b8010" class="outline-2">
+<h2 id="org42b8010">Logistic Regression</h2>
+<div class="outline-text-2" id="text-org42b8010">
+</div>
+<div id="outline-container-org2dd1fb0" class="outline-3">
+<h3 id="org2dd1fb0">Classification</h3>
+<div class="outline-text-3" id="text-org2dd1fb0">
+</div>
+<div id="outline-container-org7f8cd91" class="outline-4">
+<h4 id="org7f8cd91">Moving from regression to classification</h4>
+<div class="outline-text-4" id="text-org7f8cd91">
+<p>
+We now turn to the problem of classification. We have seen in some of
+our toy datasets (namely the Iris dataset), that we don't want to
+predict a continuous value, but rather predict the class each data
+point belongs to.
+</p>
+
+<p>
+To predict the class, we use a model called a logistic regressor.
+</p>
+
+<p>
+A logistic regressor is a model from the class of `Generalised Linear
+Models' (GLM). In fact, the linear regressor we investigated in the
+previous section is also part of this class of models.
+</p>
+
+
+<div id="org28a04cd" class="figure">
+<p><img src="images/glm.jpg" alt="glm.jpg" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga26a175" class="outline-4">
+<h4 id="orga26a175">Multi-class vs binary classification</h4>
+<div class="outline-text-4" id="text-orga26a175">
+</div>
+<ul class="org-ul">
+<li><a id="orged43b90"></a>Iris Flower plot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-orged43b90">
+
+<div id="org1fbc5dd" class="figure">
+<p><img src="images/iris.png" alt="iris.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="org6e28e35"></a>binary classification&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-org6e28e35">
+<p>
+In terms of Iris dataset, this means we want to select one class
+from 3 possible classes.
+</p>
+
+<p>
+We'll return to the problem of multiple classes later. But let's
+suppose that we only want to decide if the flower is a Setosa, or not
+Setosa. We've changed our classification problem from multi-class to
+binary classification.
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org63dd2b1" class="outline-3">
+<h3 id="org63dd2b1">Probability / likelihood</h3>
+<div class="outline-text-3" id="text-org63dd2b1">
+</div>
+<div id="outline-container-org44065f0" class="outline-4">
+<h4 id="org44065f0">Probability likelihood</h4>
+<div class="outline-text-4" id="text-org44065f0">
+
+<div id="orgdcbffdc" class="figure">
+<p><img src="images/logisitic_curve.png" alt="logisitic_curve.png" />
+</p>
+</div>
+
+<p>
+Our model will eventually look like this, where we have two classes of
+points, and for each point we give a probability (p) that our point
+belongs to a class.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgec12a51" class="outline-4">
+<h4 id="orgec12a51">Making it linear</h4>
+<div class="outline-text-4" id="text-orgec12a51">
+<p>
+If we apply the logarithm to each probability, we get back to our
+linear line.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org7d21e57"></a>Image&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-org7d21e57">
+
+<div id="org9dd6988" class="figure">
+<p><img src="images/log_probs.png" alt="log_probs.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="org42eff8b"></a>Equation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-org42eff8b">
+<p>
+\[
+\log \left( \frac{p}{1-p} \right)
+\]
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5914f1a" class="outline-3">
+<h3 id="org5914f1a">Maximum likelihood</h3>
+<div class="outline-text-3" id="text-org5914f1a">
+</div>
+<div id="outline-container-orgfa572cd" class="outline-4">
+<h4 id="orgfa572cd">Enter the maximum likelihood</h4>
+<div class="outline-text-4" id="text-orgfa572cd">
+<p>
+But there is a problem&#x2026;we can no longer use the sum of residuals as
+the value would always be \(\infty\), but instead we can use the maximum
+likelihood. First we project each sample to its 'odds' (i.e. the value
+of \(y\) on the linear line).
+</p>
+
+
+<div id="org7779baf" class="figure">
+<p><img src="images/log_projected.png" alt="log_projected.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org14c48b3" class="outline-4">
+<h4 id="org14c48b3">Back to the probability curve</h4>
+<div class="outline-text-4" id="text-org14c48b3">
+</div>
+<ul class="org-ul">
+<li><a id="org1439087"></a>Image&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-org1439087">
+
+<div id="orgd83e579" class="figure">
+<p><img src="images/logisitic_curve.png" alt="logisitic_curve.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="orgb7b1875"></a>Equation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-orgb7b1875">
+<p>
+\[
+p = \frac{1}{1 + e^{-\log(\beta_0+\beta_1x)}} = \frac{e^{\log(\beta_0+\beta_1x)}}{1 + e^{\log(\beta_0+\beta_1x)}} 
+\]
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org916dc46" class="outline-4">
+<h4 id="org916dc46">Likelihood</h4>
+<div class="outline-text-4" id="text-org916dc46">
+<p>
+Probability of class 1
+</p>
+
+
+
+<p>
+\[
+p(1) = p
+\]
+</p>
+
+<p>
+Probability of class 0 (or not class 1).
+</p>
+
+<p>
+\[
+p(0) = 1 - p 
+\]
+</p>
+
+<p>
+Maximum likelihood loss (which we wish to maximise), using the points
+on the probability curve:
+</p>
+
+<p>
+\[ \mathcal{L} = (0.9) + (0.89) + (0.6) + (1 - 0.4) + (1 - 0.2) + (1 - 0.05)
+\]
+</p>
+
+
+<div id="org08f238a" class="figure">
+<p><img src="images/lr_learn.gif" alt="lr_learn.gif" />
+</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: &lt;TODO&gt;</p>
+<p class="date">Date: 16th November</p>
 <p class="author">Author: Jay Morgan</p>
-<p class="date">Created: 2022-09-02 Fri 13:23</p>
+<p class="date">Created: 2022-11-13 Sun 14:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

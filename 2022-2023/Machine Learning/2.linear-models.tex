@@ -1,4 +1,4 @@
-% Created 2022-09-02 Fri 13:30
+% Created 2022-11-13 Sun 14:49
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -29,42 +29,39 @@
 \usepackage{amsmath}
 \usepackage{fancyvrb}
 \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
-\DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
-\DeclareGraphicsExtensions{.gif}
-\usepackage{animate}
 \DeclareGraphicsRule{.gif}{png}{-0.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
 \DeclareGraphicsExtensions{.gif}
+\usepackage{animate}
 \usepackage{amsmath}
+\usetheme{default}
 \author{Jay Morgan}
-\date{<TODO>}
-\title{Machine Learning\\\medskip
-\large Lecture 2 - Linear Models}
+\date{16th November}
+\title{Machine Learning}
+\subtitle{Lecture 2 - Linear Models}
 \hypersetup{
  pdfauthor={Jay Morgan},
  pdftitle={Machine Learning},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 28.1 (Org mode 9.5.4)}, 
+ pdfcreator={Emacs 28.1 (Org mode 9.5.5)}, 
  pdflang={English}}
 \begin{document}
 
 \maketitle
 
 \section*{Linear Regression}
-\label{sec:org1aed3a6}
+\label{sec:org1b2d551}
 
 \subsection*{Introduction to linear models}
-\label{sec:orgc4a2c3c}
+\label{sec:org2c83376}
 
-\subsubsection*{Linear models}
-\label{sec:orgf1c3017}
-
+\begin{frame}[label={sec:org085b936}]{Linear models}
 Having learnt a little about what it means to learn, we're going to look at our first
 \emph{Machine Learning} algorithm, the staple for much of statistics, numeric prediction
 using a linear model.
+\end{frame}
 
-\subsubsection*{What is a linear model?}
-\label{sec:org787f595}
+\begin{frame}[fragile,allowframebreaks,label=]{What is a linear model?}
 A linear model is a prediction (a response) to an input variable. We have the
 following terms:
 
@@ -76,27 +73,30 @@ following terms:
 For a linear model based on one dependant we have the following:
 
 \[
-y = w x + b
+y = \beta_0 + \beta_1 x
 \]
 
 where \(y\) is the response/output/prediction of the model, \(x\) is the dependant
-variable, and \(w, b\) are the model parameters.
+variable, and \(\beta_0, \beta_1\) are the model parameters.
+\end{frame}
 
-\subsubsection*{Slope \& intercept}
-\label{sec:org0768375}
+\subsection*{Model parameters}
+\label{sec:org7fa36f2}
+
+\begin{frame}[fragile,allowframebreaks,label=]{Slope \& intercept}
 If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
 
 \begin{center}
 \includegraphics[width=0.5\textwidth]{images/linear_model.png}
 \end{center}
 
-As we've seen, the linear model, or linear regression, has two parameters: \(w,
-b\). What do these parameters represent?
+As we've seen, the linear model, or linear regression, has two parameters: \(\beta_1,
+\beta_0\). What do these parameters represent?
 
 \begin{itemize}
-\item The \(w\) parameter is the \textbf{slope} or strength of relationship between the dependant
+\item The \(\beta_1\) parameter is the \alert{slope} or strength of relationship between the dependant
 variable and the response.
-\item Meanwhile, the \(b\) parameter is called the \textbf{intercept}, as it's the value of the
+\item Meanwhile, the \(\beta_0\) parameter is called the \alert{intercept}, as it's the value of the
 response when the dependant variable is zero.
 \end{itemize}
 
@@ -106,15 +106,34 @@ Let's look at these two parameters.
 \includegraphics[width=.9\linewidth]{images/slope_1.png}
 \end{center}
 
-Here we see that when \(w\) is 0 (left figure), any change in \(x\) results in 0 change
-in \(y\). While, with \(w = 2\), \(y\) increases two-fold by every change in \(x\). Finally,
+Here we see that when \(\beta_1\) is 0 (left figure), any change in \(x\) results in 0 change
+in \(y\). While, with \(\beta_1 = 2\), \(y\) increases two-fold by every change in \(x\). Finally,
 when the slope is negative, we see that \(y\) decreases.
 
-Notice how the line is at 5 when \(x\) is zero, this is because \(b = 5\).
+Notice how the line is at 5 when \(x\) is zero, this is because \(\beta_0 = 5\).
+\end{frame}
 
-\subsubsection*{Supporting example}
-\label{sec:orgf27f81d}
 
+\begin{frame}[label={sec:orgebe6a8c}]{Multiple variables}
+So we've seen how we can take an input variable x, and through the
+combination multiplication and addition with the learnt \(\beta_0, \beta_1\) values,
+we can create a pretty accurate prediction.
+
+However, this was only for a singular variable.
+
+In our dataset, we have many variables/features/columns that we may
+want to use for our prediction. It may be possible to get an even more
+accurate prediction by adding features to our linear regression model.
+
+\[
+y = \beta_0 + \sum_{i=1}^m x_i \beta_i
+\]
+
+where \(m\) is the number of features/variables we're adding to the
+model.
+\end{frame}
+
+\begin{frame}[label={sec:org4bec896}]{Supporting example}
 Let's have a look at how we would use this linear model with one of the datasets: The
 Boston housing prices.
 
@@ -123,26 +142,29 @@ Boston housing prices.
 \includegraphics[width=0.6\textwidth]{images/boston_rooms_prices.png}
 \caption{Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.}
 \end{figure}
+\end{frame}
 
-\subsubsection*{Let's fit a linear model}
-\label{sec:org03224b2}
+\subsection*{Training a linear regressor}
+\label{sec:org46acb0f}
+\begin{frame}[fragile,allowframebreaks,label=]{Let's fit a linear model}
 We have seen that there seems to be some correlation between the number of rooms and
 the house price. I.e. we can use the number of rooms of the house to get the
 estimated price. To get an estimated price we'll use our linear model:
 
 \[
-y = w x + b
+y = \beta_0+\beta_1 x
 \]
 
-In this case, \(x\) will be the number of rooms. But what values should we set for \(w\)
-and \(b\)? Or put another way, what is \emph{optimal} value for our model parameters.
+In this case, \(x\) will be the number of rooms. But what values should
+we set for \(\beta_0\) and \(\beta_1\)? Or put another way, what is
+\emph{optimal} value for our model parameters.
 
-We'll return to the question of optimal later, but for now, let's just select some
-random values!
+We'll return to the question of optimal later, but for now, let's just
+select some random values!
 
 \[\begin{aligned}
-w = 1 \\
-b = 1
+\beta_0 = 1 \\
+\beta_1 = 1
 \end{aligned}\]
 
 
@@ -155,9 +177,9 @@ b = 1
 Well that doesn't look very good, it could be 'fit' better to what we're seeing in
 the scatter plot! I wonder how wrong the linear model is -- how incorrect our
 predicted house prices are?
+\end{frame}
 
-\subsubsection*{Evaluating our initial linear model}
-\label{sec:org8d7e59c}
+\begin{frame}[fragile,allowframebreaks,label=]{Evaluating our initial linear model}
 To evaluate how well, or in this case, how badly our linear model is doing, let's
 compare the predicted value from the model against the actual house price. For
 example, we'll take a single sample from our dataset.
@@ -172,7 +194,7 @@ What we've done there is the following:
 \delta = | y - \hat{y} |
 \]
 
-where \(\hat{y}\) is \(w x + b\)
+where \(\hat{y}\) is \(\beta_0 + \beta_1 x\)
 
 We've calculated the difference or delta between the real house price \(y\) and the
 predicted house price.
@@ -181,19 +203,27 @@ That gives us the error for one sample though, what about for the whole dataset?
 we could take the mean over all samples:
 
 \[
-\Delta = \sum_{i=0}^n | y - \hat{y} |
+\text{MAE}(X; \beta_0,\beta_1) = \frac{1}{N}\sum_{i=0}^N | y_i - (\beta_0+\beta_1x_i) |
 \]
 
 If we calculate that our linear model we see that the average difference between our
 estimated value and real value is \$15,000!
 
-\subsubsection*{Getting better model parameters}
-\label{sec:orgc134c1d}
+Another common method of calculating how well or how badly our model
+is performing is to use the \alert{sum of squared residuals} or perhaps more
+commonly known in the field of machine learning: mean squared error (MSE).
+
+\[
+\text{MSE}(X; \beta_0, \beta_1) = \frac{1}{N}\sum_{i=0}^N (y - (\beta_0 + \beta_1 x_i))^2
+\]
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks,label=]{Getting better model parameters}
 Okay, so we made our initial guess at the model parameters (random values for \(w,
 b\)), and these weren't very good. We were incorrectly guessing the house value by
 \$15,000. So how do we get better values?
 
-Well if we visualise how badly we do vs the value for \(w\) we get the following:
+Well if we visualise how badly we do vs the value for \(\beta_1\) we get the following:
 
 \begin{figure}[htbp]
 \centering
@@ -201,21 +231,21 @@ Well if we visualise how badly we do vs the value for \(w\) we get the following
 \caption{\label{fig:mae_lm}Mean absolute error (MAE) between the true and predicted house values when varying the value for \(w\) parameter in the linear model.}
 \end{figure}
 
-In figure \ref{fig:mae_lm}, we see that as we change the \(w\) parameter, the mean absolute
+In figure \ref{fig:mae_lm}, we see that as we change the \(\beta_1\) parameter, the mean absolute
 error (MAE), i.e. the average difference between the predicted house prices and the
-true house prices, changes. Ideally, we would like the error or \textbf{loss} to be as low as
-possible. In this case, when \(b = 1\) the lowest possible loss we can hope to achieve
+true house prices, changes. Ideally, we would like the error or \alert{loss} to be as low as
+possible. In this case, when \(\beta_0 = 1\) the lowest possible loss we can hope to achieve
 with the linear model is \textasciitilde{} \$5,500.
 
-But what value for \(w\) gets us this lowest value for the loss? Looking at the graph,
+But what value for \(\beta_1\) gets us this lowest value for the loss? Looking at the graph,
 we see that the lowest point on the loss curve is somewhere between 0 and 5. Maybe
 even 4? While we could look at the curve and pick these parameter values, we're going
 to use a better method -- one that give us an optimal value for this loss curve
 automatically.
 
-We're going to look at the method called \textbf{Gradient Descent}.
+We're going to look at the method called \alert{Gradient Descent}.
 
-If we visualise our loss curve again, and visualise where \(w = 1\) is on this curve,
+If we visualise our loss curve again, and visualise where \(\beta_1 = 1\) is on this curve,
 we will see:
 
 \begin{center}
@@ -223,21 +253,21 @@ we will see:
 \end{center}
 
 So we want this rot dot to move down the loss curve and reach the bottom of the
-curve. Using the \textbf{Gradient Descent} algorithm, we're going to take \textbf{very small steps}
+curve. Using the \alert{Gradient Descent} algorithm, we're going to take \alert{very small steps}
 down the loss curve.
 
 \begin{center}
 \includegraphics[width=0.6\textwidth]{images/loss_curve_w_1_with_path.png}
 \end{center}
 
-To determine which way is up, and which way is down the curve, we use the \textbf{Gradient} of
+To determine which way is up, and which way is down the curve, we use the \alert{Gradient} of
 the curve (hence Gradient Descent). We compute the gradient using finite differences method:
 
 \[
 \Delta = \frac{f(x+h) - f(x)}{h}
 \]
 
-where \(f(x)\) is the loss when \(w\) takes on the value of \(x\). \(h\) is a very small
+where \(f(x)\) is the loss when \(\beta_1\) takes on the value of \(x\). \(h\) is a very small
 value.
 
 \begin{center}
@@ -247,37 +277,37 @@ value.
 If we select \(h = 0.5\) then we will have the formula:
 
 \[
-\Delta_w = \frac{\mathcal{L}(w + 0.5) - \mathcal{L}(w)}{w}
+\Delta_{\beta_1} = \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{\beta_1}
 \]
 
 where \(\mathcal{L}\) represents our loss function, MAE. If we calculate this we have:
 \[\begin{aligned}
-\Delta_w &= \frac{\mathcal{L}(w + 0.5) - \mathcal{L}(w)}{h} \\
+\Delta_{\beta_1} &= \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{h} \\
 &= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{1  - (0.5)} \\
 &= \frac{12 - 15}{0.5} \\
 &= -6.0
 \end{aligned}\]
 
 Given that the gradient is a negative number, we know that the curve is going
-down/decreasing. So we will want to move \(w\) in this direction -- we want to move
-\(w\) so that the loss decreases.
+down/decreasing. So we will want to move \(\beta_1\) in this direction -- we want to move
+\(\beta_1\) so that the loss decreases.
 
 \[
-\overline{w} = w - \eta \Delta_w
+\overline{\beta_1} = \beta_1 - \eta \Delta_{\beta_1}
 \]
 
-If we plug in the numbers we've calculated for when \(w = 1\) we get and \(eta = 0.5\):
+If we plug in the numbers we've calculated for when \(\beta_1 = 1\) we get and \(eta = 0.5\):
 
 \[\begin{aligned}
-\overline{w} &= w - \eta \Delta_w \\
+\overline{\beta_1} &= \beta_1 - \eta \Delta_{\beta_1} \\
 &= 1.0 - (0.5 * -6.0) \\
 &= 1.0 - (-3.0) \\
 &= 4.0
 \end{aligned}\]
 
-Our new value for the \(w\) parameter (\(\overline{w}\)) is computed by taking its
+Our new value for the \(\beta_1\) parameter (\(\overline{\beta_1}\)) is computed by taking its
 original value and subtracting the gradient modulated/multiplied by \(\eta\). \(\eta\) in
-this case is what will allow us to take our \textbf{small steps}. It is important to set
+this case is what will allow us to take our \alert{small steps}. It is important to set
 \(\eta\) to a suitably small value, as high values for \(\eta\) will cause the Gradient
 Descent to behave erratically, and even, make our loss worse!
 
@@ -288,36 +318,187 @@ Descent to behave erratically, and even, make our loss worse!
 \end{figure}
 
 In figure \ref{fig:eta}, we've varied the value of \(\eta\) and computed 10 steps of updating
-the \(w\) parameter in our linear model. When \(\eta=0.05\), we see that \(w\) is slowly
+the \(\beta_1\) parameter in our linear model. When \(\eta=0.05\), we see that \(\beta_1\) is slowly
 being updated in a way that is causing our loss to decrease, but it is more so slowly
-that we don't reach the optimal value for \(w\). When \(\eta=3\), each change in \(w\) is
+that we don't reach the optimal value for \(\beta_1\). When \(\eta=3\), each change in \(\beta_1\) is
 too large, so we over-shoot the optimal value, and end up bouncing back and forth
-without ever improving. Finally, when we set \(\eta=0.3\), the changes in \(w\) are
-sufficiently large enough such that we reach the \textbf{global minima} in time, but they are
+without ever improving. Finally, when we set \(\eta=0.3\), the changes in \(\beta_1\) are
+sufficiently large enough such that we reach the \alert{global minima} in time, but they are
 also small enough so that we don't over-shoot this same minimum.
 
 If we then apply the Gradient Descent algorithm to both parameters of the linear
-model \(w, b\), then we can find the optimal trend line for this data. Furthermore,
+model \(\beta_0, \beta_1\), then we can find the optimal trend line for this data. Furthermore,
 visualising this will look something like figure \ref{fig:lm_learn}.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.5\textwidth]{images/lm_learn.gif}
-\caption{\label{fig:lm_learn}Visualising (GIF) the linear model as its parameters improve.}
-\end{figure}
+\url{images/lm\_learn.gif}
+\end{frame}
 
+\subsection*{Fitting the line directly}
+\label{sec:org9c28ebd}
+\begin{frame}[label={sec:orgd0b5246}]{Solving the linear model directly}
+The way we've trained our linear regression is not necessarily the
+best, yes it does help us understand how we can optimise to a solution
+(especially if not all of our data can fit into memory at the same
+time). But, when it comes to linear models, we can compute the values
+for \(\beta_0, \beta_1\) directly.
 
-\subsubsection*{Multiple variables}
-\label{sec:orgf24f01d}
+This is called a \alert{closed-form solution}.
+
+\[
+\beta_1 = \frac{N \sum xy - \sum x \sum y}{N \sum (x^2) - \sum (x)^2}
+\]
+
+\[
+\beta_0 = \frac{\sum y - w \sum x}{N}
+\]
+
+where \(N\) is the number of samples in our data.
+\end{frame}
 
 \section*{Logistic Regression}
-\label{sec:orgcc4ced2}
+\label{sec:orga5c123c}
 
 \subsection*{Classification}
-\label{sec:org584b67d}
+\label{sec:org9f08b31}
 
-\subsubsection*{Moving from regression to classification}
-\label{sec:org8f320bd}
+\begin{frame}[label={sec:orgc8fa811}]{Moving from regression to classification}
+We now turn to the problem of classification. We have seen in some of
+our toy datasets (namely the Iris dataset), that we don't want to
+predict a continuous value, but rather predict the class each data
+point belongs to.
 
-We now turn to classification
+To predict the class, we use a model called a logistic regressor.
+
+A logistic regressor is a model from the class of `Generalised Linear
+Models' (GLM). In fact, the linear regressor we investigated in the
+previous section is also part of this class of models.
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/glm.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:orged6ff55}]{Multi-class vs binary classification}
+\begin{columns}
+\begin{column}{0.4\columnwidth}
+\begin{center}
+\includegraphics[width=1.0\textwidth]{images/iris.png}
+\end{center}
+\end{column}
+
+\begin{column}{0.6\columnwidth}
+In terms of Iris dataset, this means we want to select one class
+from 3 possible classes.
+
+We'll return to the problem of multiple classes later. But let's
+suppose that we only want to decide if the flower is a Setosa, or not
+Setosa. We've changed our classification problem from multi-class to
+binary classification.
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection*{Probability / likelihood}
+\label{sec:org95b8b70}
+
+\begin{frame}[label={sec:org500142e}]{Probability likelihood}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/logisitic_curve.png}
+\end{center}
+
+Our model will eventually look like this, where we have two classes of
+points, and for each point we give a probability (p) that our point
+belongs to a class.
+\end{frame}
+
+\begin{frame}[label={sec:org5f67727}]{Making it linear}
+If we apply the logarithm to each probability, we get back to our
+linear line.
+
+\begin{columns}
+\begin{column}{0.7\columnwidth}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/log_probs.png}
+\end{center}
+\end{column}
+
+\begin{column}{0.3\columnwidth}
+\[
+\log \left( \frac{p}{1-p} \right)
+\]
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection*{Maximum likelihood}
+\label{sec:org0715f62}
+
+\begin{frame}[label={sec:org66f0014}]{Enter the maximum likelihood}
+But there is a problem\ldots{}we can no longer use the sum of residuals as
+the value would always be \(\infty\), but instead we can use the maximum
+likelihood. First we project each sample to its 'odds' (i.e. the value
+of \(y\) on the linear line).
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/log_projected.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:org18d3d42}]{Back to the probability curve}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/logisitic_curve.png}
+\end{center}
+
+Our logistic or 'sigmoid' function:
+
+\[
+p = \frac{1}{1 + e^{-(\beta_0+\beta_1x)}} = \frac{e^{(\beta_0+\beta_1x)}}{1 + e^{(\beta_0+\beta_1x)}} 
+\]
+\end{frame}
+
+\begin{frame}[label={sec:orgc6de91c}]{Likelihood}
+Probability of class 1
+
+
+
+\[
+p(1) = p
+\]
+
+Probability of class 0 (or not class 1).
+
+\[
+p(0) = 1 - p 
+\]
+
+Maximum likelihood loss (which we wish to maximise), using the points
+on the probability curve:
+
+\[ \mathcal{L} = (0.9) + (0.89) + (0.6) + (1 - 0.4) + (1 - 0.2) + (1 - 0.05)
+\]
+\end{frame}
+
+\begin{frame}[label={sec:org62d68c6}]{Optimising the curve}
+\url{images/lr\_learn.gif}
+\end{frame}
+
+\subsection*{Binary Cross-Entropy}
+\label{sec:org9df8531}
+\begin{frame}[label={sec:org351feb6}]{Binary Cross-Entropy}
+We could still use MSE in order to compute our models loss. This \emph{may}
+still work. But there is another objective function that we would use
+for binary classification problems: Binary Cross-entropy (BCE).
+
+
+\[
+\text{BCE}(X; \beta_0, \beta_1) = -(Y \log(\beta_0+\beta_1*X) + (1 - Y) \log(1- \beta_0+\beta_1*X))
+\]
+
+Issues when using MSE for binary classification:
+\begin{itemize}
+\item MSE is non-convex for binary classification problems.
+\item MSE assumes the data was generated from a normal distribution, while
+binary classification problems form a Bernoulli distribution.
+\end{itemize}
+\end{frame}
 \end{document}

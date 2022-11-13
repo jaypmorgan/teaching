@@ -1,7 +1,7 @@
 #+title: Machine Learning
 #+SUBTITLE: Lecture 1 - Introductions
 #+author: Jay Morgan
-#+date: <TODO>
+#+date: 9th October 2022
 #+startup: beamer
 #+include: ./header.org
 #+property: header-args:python :eval never-export :results none :exports none :session
@@ -42,13 +42,16 @@ provide reference links should you wish to do some extra reading.
 *** Outline of the course
 
 #+ATTR_LATEX: :booktabs t
-|---------+---------------+---------+----------------------|
-| Lecture | Expected date | Length  | Topic                |
-|---------+---------------+---------+----------------------|
-|       1 | NOW           | 2 hours | Introduction         |
-|       2 | LATER         | 2 hours | Linear models        |
-|       3 | Even later... | 2 hours | Evaluation of models |
-|---------+---------------+---------+----------------------|
+|---------+---------------+------------+-------------------------|
+| Lecture | Expected date | Type       | Topic                   |
+|---------+---------------+------------+-------------------------|
+|       1 | 9th November  | Theory     | Introduction            |
+|       2 | 16th November | Theory     | Linear models           |
+|       3 | 22nd November | Lab        | Lab on Linear models    |
+|       4 | 25th November | Theory/Lab | Evaluation of models    |
+|       5 | 29th November | Theory/Lab | Support Vector Machines |
+|       6 | 2nd December  | Theory/Lab | Kernel methods          |
+|---------+---------------+------------+-------------------------|
 
 ** Reading the lectures
 
@@ -136,13 +139,16 @@ lectures from all years.
 We'll begin our journey into the world of Machine Learning by tackling the question
 of what it means to 'learn' -- how may a machine actually /learn/ anything?
 
-*** Study of Mice
+*** Bait-shyness
+
+#+ATTR_ORG: :width 200px
+#+ATTR_HTML: :width 500px
+#+ATTR_LATEX: :height 0.7\textheight :position hbtp
+[[file:images/rat.jpg]]
 
 To begin to answer the question of learning, we may turn to nature for
 advice. Principally, if we look at the studies conducted with Mice we find some idea
-to notion of learning [cite:@shalev2014understanding].
-
-*** Bait-shyness
+to notion of learning [cite:@shalev2014understanding]. (Image by brgfx on Freepik)
 
 When a rat encounters a novel source of food, it will first eat a little bit of
 it. If the food is edible for the rat, it will continue to eat the food, even in
@@ -152,8 +158,6 @@ process we call 'bait-shyness'.
 
 Here then we see the rat, on finding something new, learn from its experience, and
 use that knowledge of the experience for future encounters.
-
-*** Bait-shyness
 
 Our initial understanding of rat's bait-shyness was limited, but we've come to
 understand more about it. For instance, we learn that their learning process is more
@@ -169,7 +173,7 @@ infer the same relationship with food and illness.
 *** Computer Programs
 
 From these two examples of how rats may learn we see: the rat will make a guess about
-something now (i.e. that the food is not poisonous), it will find out how good this
+something new (i.e. that the food is not poisonous), it will find out how good this
 guess is (i.e. it either gets ill or it does not), and learn from how well its guess
 was for the future. We also see that its learning can be impacted by the rat's prior
 knowledge about how the world may work.
@@ -206,14 +210,20 @@ x * 3 + y   =   8
 x * 5 + y   =  12
 #+end_example
 
-
 *** When might we need Machine Learning
+
+#+ATTR_ORG: :width 200px
+#+ATTR_HTML: :width 700px
+#+ATTR_LATEX: :height 0.7\textheight
+[[file:images/pdf-ocr.png]]
 
 Why do we need computer programs that 'learn' anyway? We already have programming
 languages, why can't we just use them?
 
 Let's suppose we're creating a very simple Optical Character Recognition (OCR)
-program. This program looks at a PDF document and converts the text into something we
+program.
+
+This program looks at a PDF document and converts the text into something we
 can copy and paste. Part of this program's task is to take an individual character,
 say the number '8', and recognise that it's an 8 and add that to the already scanned
 text.
@@ -290,10 +300,10 @@ play-through.
 
 ** Terminology
 
+*** What will our data look like?
+
 In this section we shall take a look at the different types of data we might expect
 and the different terminology used to name them.
-
-*** What will our data look like?
 
 Data in Machine Learning applications can come in a variety of different formats. The
 most typical data formats we might see are:
@@ -458,7 +468,7 @@ thinking about the data carefully enough.
 
 - 150 examples
 - 4 features: Petal length/width, sepal length/width
-- 1 classification: type of flower: {viriginica, setosa, veriscolor}
+- 1 classification: type of flower: {virginica, setosa, veriscolor}
 
   https://archive.ics.uci.edu/ml/datasets/iris
   [cite:@fisher1936use]

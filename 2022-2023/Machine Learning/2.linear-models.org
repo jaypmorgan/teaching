@@ -1,7 +1,7 @@
 #+title: Machine Learning
 #+subtitle: Lecture 2 - Linear Models
 #+author: Jay Morgan
-#+date: <TODO>
+#+date: 16th November
 #+startup: beamer
 #+include: ./header.org
 #+property: header-args:python :session :eval never-export :results none :exports none :session :dir ./
@@ -51,11 +51,13 @@ following terms:
 For a linear model based on one dependant we have the following:
 
 \[
-y = w x + b
+y = \beta_0 + \beta_1 x
 \]
 
 where $y$ is the response/output/prediction of the model, $x$ is the dependant
-variable, and $w, b$ are the model parameters.
+variable, and $\beta_0, \beta_1$ are the model parameters.
+
+** Model parameters
 
 *** Slope & intercept
   :PROPERTIES:
@@ -80,12 +82,12 @@ plt.legend()
 #+RESULTS:
 [[file:images/linear_model.png]]
 
-As we've seen, the linear model, or linear regression, has two parameters: $w,
-b$. What do these parameters represent?
+As we've seen, the linear model, or linear regression, has two parameters: $\beta_1,
+\beta_0$. What do these parameters represent?
 
-- The $w$ parameter is the *slope* or strength of relationship between the dependant
+- The $\beta_1$ parameter is the *slope* or strength of relationship between the dependant
   variable and the response.
-- Meanwhile, the $b$ parameter is called the *intercept*, as it's the value of the
+- Meanwhile, the $\beta_0$ parameter is called the *intercept*, as it's the value of the
   response when the dependant variable is zero.
 
 Let's look at these two parameters.
@@ -117,11 +119,31 @@ ax[2].set_ylim(0, 10)
 #+RESULTS:
 [[file:images/slope_1.png]]
 
-Here we see that when $w$ is 0 (left figure), any change in $x$ results in 0 change
-in $y$. While, with $w = 2$, $y$ increases two-fold by every change in $x$. Finally,
+Here we see that when $\beta_1$ is 0 (left figure), any change in $x$ results in 0 change
+in $y$. While, with $\beta_1 = 2$, $y$ increases two-fold by every change in $x$. Finally,
 when the slope is negative, we see that $y$ decreases.
 
-Notice how the line is at 5 when $x$ is zero, this is because $b = 5$.
+Notice how the line is at 5 when $x$ is zero, this is because $\beta_0 = 5$.
+
+
+*** Multiple variables
+
+So we've seen how we can take an input variable x, and through the
+combination multiplication and addition with the learnt $\beta_0, \beta_1$ values,
+we can create a pretty accurate prediction.
+
+However, this was only for a singular variable.
+
+In our dataset, we have many variables/features/columns that we may
+want to use for our prediction. It may be possible to get an even more
+accurate prediction by adding features to our linear regression model.
+
+\[
+y = \beta_0 + \sum_{i=1}^m x_i \beta_i
+\]
+
+where $m$ is the number of features/variables we're adding to the
+model.
 
 *** Supporting example
 
@@ -153,6 +175,7 @@ plt.ylabel(r"House Value in $1000")
 #+RESULTS:
 [[file:images/boston_rooms_prices.png]]
 
+** Training a linear regressor
 *** Let's fit a linear model
   :PROPERTIES:
   :BEAMER_OPT: fragile,allowframebreaks,label=
@@ -163,18 +186,19 @@ the house price. I.e. we can use the number of rooms of the house to get the
 estimated price. To get an estimated price we'll use our linear model:
 
 \[
-y = w x + b
+y = \beta_0+\beta_1 x
 \]
 
-In this case, $x$ will be the number of rooms. But what values should we set for $w$
-and $b$? Or put another way, what is /optimal/ value for our model parameters.
+In this case, $x$ will be the number of rooms. But what values should
+we set for $\beta_0$ and $\beta_1$? Or put another way, what is
+/optimal/ value for our model parameters.
 
-We'll return to the question of optimal later, but for now, let's just select some
-random values!
+We'll return to the question of optimal later, but for now, let's just
+select some random values!
 
 \[\begin{aligned}
-w = 1 \\
-b = 1
+\beta_0 = 1 \\
+\beta_1 = 1
 \end{aligned}\]
 
 
@@ -218,7 +242,7 @@ What we've done there is the following:
 \delta = | y - \hat{y} |
 \]
 
-where $\hat{y}$ is $w x + b$
+where $\hat{y}$ is $\beta_0 + \beta_1 x$
 
 We've calculated the difference or delta between the real house price $y$ and the
 predicted house price.
@@ -227,7 +251,7 @@ That gives us the error for one sample though, what about for the whole dataset?
 we could take the mean over all samples:
 
 \[
-\Delta = \sum_{i=0}^n | y - \hat{y} |
+\text{MAE}(X; \beta_0,\beta_1) = \frac{1}{N}\sum_{i=0}^N | y_i - (\beta_0+\beta_1x_i) |
 \]
 
 #+begin_src python
@@ -238,17 +262,24 @@ loss  = np.mean(np.abs(boston.target - y_hat))
 If we calculate that our linear model we see that the average difference between our
 estimated value and real value is $15,000!
 
+Another common method of calculating how well or how badly our model
+is performing is to use the *sum of squared residuals* or perhaps more
+commonly known in the field of machine learning: mean squared error (MSE).
+
+\[
+\text{MSE}(X; \beta_0, \beta_1) = \frac{1}{N}\sum_{i=0}^N (y - (\beta_0 + \beta_1 x_i))^2
+\]
+
 *** Getting better model parameters
   :PROPERTIES:
   :BEAMER_OPT: fragile,allowframebreaks,label=
   :END: 
 
-
 Okay, so we made our initial guess at the model parameters (random values for $w,
 b$), and these weren't very good. We were incorrectly guessing the house value by
 $15,000. So how do we get better values?
 
-Well if we visualise how badly we do vs the value for $w$ we get the following:
+Well if we visualise how badly we do vs the value for $\beta_1$ we get the following:
 
 #+begin_src python
 def lm(x, w=1, b=1):
@@ -264,7 +295,7 @@ ls = np.vectorize(lambda w: loss(boston.RM, boston.target, w, 1))(ws)
 #+begin_src python :results value file replace :exports results :noweb strip-export
 plt.figure()
 plt.plot(ws, ls)
-plt.xlabel("Value for $w$ in linear model")
+plt.xlabel(r"Value for $\beta_1$ in linear model")
 plt.ylabel("MAE")
 <<savefig(name="images/plot_linear_model_loss_w.png")>>
 #+end_src
@@ -276,13 +307,13 @@ plt.ylabel("MAE")
 #+RESULTS:
 [[file:images/plot_linear_model_loss_w.png]]
 
-In figure [[fig:mae_lm]], we see that as we change the $w$ parameter, the mean absolute
+In figure [[fig:mae_lm]], we see that as we change the $\beta_1$ parameter, the mean absolute
 error (MAE), i.e. the average difference between the predicted house prices and the
 true house prices, changes. Ideally, we would like the error or *loss* to be as low as
-possible. In this case, when $b = 1$ the lowest possible loss we can hope to achieve
+possible. In this case, when $\beta_0 = 1$ the lowest possible loss we can hope to achieve
 with the linear model is ~ $5,500.
 
-But what value for $w$ gets us this lowest value for the loss? Looking at the graph,
+But what value for $\beta_1$ gets us this lowest value for the loss? Looking at the graph,
 we see that the lowest point on the loss curve is somewhere between 0 and 5. Maybe
 even 4? While we could look at the curve and pick these parameter values, we're going
 to use a better method -- one that give us an optimal value for this loss curve
@@ -290,15 +321,15 @@ automatically.
 
 We're going to look at the method called *Gradient Descent*.
 
-If we visualise our loss curve again, and visualise where $w = 1$ is on this curve,
+If we visualise our loss curve again, and visualise where $\beta_1 = 1$ is on this curve,
 we will see:
 
 #+begin_src python :results value file replace :exports results :noweb strip-export
 plt.figure()
-plt.plot(ws, ls, label="loss over $w$")
-plt.xlabel("$w$")
+plt.plot(ws, ls, label=r"loss over $\beta_1$")
+plt.xlabel(r"$\beta_1$")
 plt.ylabel("$MAE$")
-plt.scatter([1], [loss(boston.RM, boston.target, 1, 1)], color="red", label="when $w = 1$")
+plt.scatter([1], [loss(boston.RM, boston.target, 1, 1)], color="red", label=r"when $\beta_1 = 1$")
 plt.legend()
 <<savefig(name="images/loss_curve_w_1.png")>>
 #+end_src
@@ -322,7 +353,7 @@ the curve (hence Gradient Descent). We compute the gradient using finite differe
 \Delta = \frac{f(x+h) - f(x)}{h}
 \]
 
-where $f(x)$ is the loss when $w$ takes on the value of $x$. $h$ is a very small
+where $f(x)$ is the loss when $\beta_1$ takes on the value of $x$. $h$ is a very small
 value.
 
 #+begin_src python :results value file replace :exports results :noweb strip-export
@@ -358,7 +389,7 @@ mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
 If we select $h = 0.5$ then we will have the formula:
 
 \[
-\Delta_w = \frac{\mathcal{L}(w + 0.5) - \mathcal{L}(w)}{w}
+\Delta_{\beta_1} = \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{\beta_1}
 \]
 
 where $\mathcal{L}$ represents our loss function, MAE. If we calculate this we have:
@@ -366,30 +397,30 @@ where $\mathcal{L}$ represents our loss function, MAE. If we calculate this we h
 
 
 \[\begin{aligned}
-\Delta_w &= \frac{\mathcal{L}(w + 0.5) - \mathcal{L}(w)}{h} \\
+\Delta_{\beta_1} &= \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{h} \\
 &= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{1  - (0.5)} \\
 &= \frac{12 - 15}{0.5} \\
 &= -6.0
 \end{aligned}\]
 
 Given that the gradient is a negative number, we know that the curve is going
-down/decreasing. So we will want to move $w$ in this direction -- we want to move
-$w$ so that the loss decreases.
+down/decreasing. So we will want to move $\beta_1$ in this direction -- we want to move
+$\beta_1$ so that the loss decreases.
 
 \[
-\overline{w} = w - \eta \Delta_w
+\overline{\beta_1} = \beta_1 - \eta \Delta_{\beta_1}
 \]
 
-If we plug in the numbers we've calculated for when $w = 1$ we get and $eta = 0.5$:
+If we plug in the numbers we've calculated for when $\beta_1 = 1$ we get and $eta = 0.5$:
 
 \[\begin{aligned}
-\overline{w} &= w - \eta \Delta_w \\
+\overline{\beta_1} &= \beta_1 - \eta \Delta_{\beta_1} \\
 &= 1.0 - (0.5 * -6.0) \\
 &= 1.0 - (-3.0) \\
 &= 4.0
 \end{aligned}\]
 
-Our new value for the $w$ parameter ($\overline{w}$) is computed by taking its
+Our new value for the $\beta_1$ parameter ($\overline{\beta_1}$) is computed by taking its
 original value and subtracting the gradient modulated/multiplied by $\eta$. $\eta$ in
 this case is what will allow us to take our *small steps*. It is important to set
 $\eta$ to a suitably small value, as high values for $\eta$ will cause the Gradient
@@ -452,11 +483,11 @@ ax[2].set_title(f"$\eta = {eta}$")
 [[file:images/small_step_eta.png]]
 
 In figure [[fig:eta]], we've varied the value of $\eta$ and computed 10 steps of updating
-the $w$ parameter in our linear model. When $\eta=0.05$, we see that $w$ is slowly
+the $\beta_1$ parameter in our linear model. When $\eta=0.05$, we see that $\beta_1$ is slowly
 being updated in a way that is causing our loss to decrease, but it is more so slowly
-that we don't reach the optimal value for $w$. When $\eta=3$, each change in $w$ is
+that we don't reach the optimal value for $\beta_1$. When $\eta=3$, each change in $\beta_1$ is
 too large, so we over-shoot the optimal value, and end up bouncing back and forth
-without ever improving. Finally, when we set $\eta=0.3$, the changes in $w$ are
+without ever improving. Finally, when we set $\eta=0.3$, the changes in $\beta_1$ are
 sufficiently large enough such that we reach the *global minima* in time, but they are
 also small enough so that we don't over-shoot this same minimum.
 
@@ -521,13 +552,13 @@ title = ax.text(7.5, 5, "")
 def anim(frame):
     w, b = lm.w_states[frame], lm.b_states[frame]
     line.set_data(boston.RM, lm(boston.RM, w, b))
-    title.set_text(f"$w={w:.2f}, b={b:.2f}$")
+    title.set_text(rf"$\beta_1={w:.2f}, b={b:.2f}$")
 anim_created = FuncAnimation(fig, anim, frames=len(lm.w_states), interval=1)
 #anim_created.save("./images/lm_learn.gif", writer="imagemagick", fps=10)
 #+end_src
 
 If we then apply the Gradient Descent algorithm to both parameters of the linear
-model $w, b$, then we can find the optimal trend line for this data. Furthermore,
+model $\beta_0, \beta_1$, then we can find the optimal trend line for this data. Furthermore,
 visualising this will look something like figure [[fig:lm_learn]].
 
 #+ATTR_ORG: :width 300px
@@ -536,10 +567,26 @@ visualising this will look something like figure [[fig:lm_learn]].
 #+CAPTION: Visualising (GIF) the linear model as its parameters improve.
 [[file:images/lm_learn.gif]]
 
+** Fitting the line directly
+*** Solving the linear model directly
 
-*** Multiple variables
+The way we've trained our linear regression is not necessarily the
+best, yes it does help us understand how we can optimise to a solution
+(especially if not all of our data can fit into memory at the same
+time). But, when it comes to linear models, we can compute the values
+for $\beta_0, \beta_1$ directly.
 
-*** Solving the linear model using Least Squares
+This is called a *closed-form solution*.
+
+\[
+\beta_1 = \frac{N \sum xy - \sum x \sum y}{N \sum (x^2) - \sum (x)^2}
+\]
+
+\[
+\beta_0 = \frac{\sum y - w \sum x}{N}
+\]
+
+where $N$ is the number of samples in our data.
 
 * Logistic Regression
 
@@ -547,7 +594,220 @@ visualising this will look something like figure [[fig:lm_learn]].
 
 *** Moving from regression to classification
 
-We now turn to classification
+We now turn to the problem of classification. We have seen in some of
+our toy datasets (namely the Iris dataset), that we don't want to
+predict a continuous value, but rather predict the class each data
+point belongs to.
+
+To predict the class, we use a model called a logistic regressor.
+
+A logistic regressor is a model from the class of `Generalised Linear
+Models' (GLM). In fact, the linear regressor we investigated in the
+previous section is also part of this class of models.
+
+#+ATTR_LATEX: :width 0.7\textwidth
+[[file:images/glm.jpg]]
+
+*** Multi-class vs binary classification
+
+
+**** Iris Flower plot                                        :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: 0.4
+:END:
+
+#+ATTR_LATEX: :width 1.0\textwidth
+[[file:images/iris.png]]
+
+**** binary classification                                   :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: 0.6
+:END:
+In terms of Iris dataset, this means we want to select one class
+from 3 possible classes.
+
+We'll return to the problem of multiple classes later. But let's
+suppose that we only want to decide if the flower is a Setosa, or not
+Setosa. We've changed our classification problem from multi-class to
+binary classification.
+
+** Probability / likelihood
+
+*** Probability likelihood
+
+#+ATTR_LATEX: :width 0.7\textwidth
+[[file:images/logisitic_curve.png]]
+
+Our model will eventually look like this, where we have two classes of
+points, and for each point we give a probability (p) that our point
+belongs to a class.
+
+*** Making it linear
+
+If we apply the logarithm to each probability, we get back to our
+linear line.
+
+**** Image                                                   :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: 0.7
+:END:
+
+#+ATTR_LATEX: :width 0.7\textwidth
+[[file:images/log_probs.png]]
+
+**** Equation                                                :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: 0.3
+:END:
+
+\[
+\log \left( \frac{p}{1-p} \right)
+\]
+
+** Maximum likelihood
+
+*** Enter the maximum likelihood
+
+But there is a problem...we can no longer use the sum of residuals as
+the value would always be $\infty$, but instead we can use the maximum
+likelihood. First we project each sample to its 'odds' (i.e. the value
+of $y$ on the linear line).
+
+#+ATTR_LATEX: :width 0.5\textwidth
+[[file:images/log_projected.png]]
+
+*** Back to the probability curve
+
+#+ATTR_LATEX: :width 0.5\textwidth
+[[file:images/logisitic_curve.png]]
+
+Our logistic or 'sigmoid' function:
+
+\[
+p = \frac{1}{1 + e^{-(\beta_0+\beta_1x)}} = \frac{e^{(\beta_0+\beta_1x)}}{1 + e^{(\beta_0+\beta_1x)}} 
+\]
+
+*** Likelihood
+
+Probability of class 1
+
+
+
+\[
+p(1) = p
+\]
+
+Probability of class 0 (or not class 1).
+
+\[
+p(0) = 1 - p 
+\]
+
+Maximum likelihood loss (which we wish to maximise), using the points
+on the probability curve:
+
+\[ \mathcal{L} = (0.9) + (0.89) + (0.6) + (1 - 0.4) + (1 - 0.2) + (1 - 0.05)
+\]
+
+*** Optimising the curve
+
+#+begin_src python
+import numpy as np
+
+def grad(f, param, diff=1e-7):
+    return (f(param+diff) - f(param)) / diff
+
+def loss_fn(y, yhat):
+    return np.mean((y-yhat)**2)
+    return np.mean(-(y*np.log(yhat)+(1-y)*np.log(1-yhat)))
+
+class LogisticRegressor:
+    def __init__(self, beta0=1, beta1=0):
+        self.beta0 = beta0
+        self.beta1 = beta1
+
+    def f(self, x, w=None, b=None, logits=False):
+        if w is None: w = self.beta1
+        if b is None: b = self.beta0
+        if logits:
+            return b+w*x
+        else:
+            return self.proba(b+w*x)
+        
+    def fit(self, x, y, epochs=100, lr=0.1):
+        losses = []
+        preds = []
+        logits = []
+        for i in range(epochs):
+            l = loss_fn(y, self.f(x, logits=False))
+            d_w = grad(lambda p: loss_fn(y, self.f(x, w=p, logits=False)), self.beta1)
+            d_b = grad(lambda p: loss_fn(y, self.f(x, b=p, logits=False)), self.beta0)
+            self.beta0 = self.beta0 - d_b * lr
+            self.beta1 = self.beta1 - d_w * lr
+            losses.append(l.copy())
+            preds.append(self.f(x, logits=False).copy())
+            logits.append(self.f(x, logits=True).copy())
+        return losses, preds, logits
+
+    def proba(self, x):
+        return np.exp(x) / (1 + np.exp(x))
+
+    def __call__(self, x, logits=False):
+        y = self.f(x, logits=logits)
+        return y
+
+
+x = np.array([-5, -3, -2, 2, 3, 5])
+y = np.array([0,   0,  0, 1, 1, 1])
+lr = LogisticRegressor()
+losses, preds, logits = lr.fit(x, y)
+#+end_src
+
+#+begin_src python
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+fig, ax = plt.subplots()
+
+lines = ax.plot(x, preds[0], 'r--')
+ax.set_xlim(-6, 6)
+ax.set_ylim(0, 1)
+line = lines[0]
+
+ax.set_xlabel("logit weight")
+ax.set_ylabel("Likelihood")
+
+def anim(frame):
+    pred = preds[frame]
+    line.set_data(x, pred)
+    
+anim_created = FuncAnimation(fig, anim, frames=len(preds), interval=1)
+plt.close()
+anim_created.save("./images/lr_learn.gif", writer="imagemagick", fps=10)
+
+#+end_src
+
+[[file:images/lr_learn.gif]]
+
+** Binary Cross-Entropy
+*** Binary Cross-Entropy
+
+We could still use MSE in order to compute our models loss. This /may/
+still work. But there is another objective function that we would use
+for binary classification problems: Binary Cross-entropy (BCE).
+
+
+\[
+\text{BCE}(X; \beta_0, \beta_1) = -(Y \log(\beta_0+\beta_1*X) + (1 - Y) \log(1- \beta_0+\beta_1*X))
+\]
+
+Issues when using MSE for binary classification:
+- MSE is non-convex for binary classification problems.
+- MSE assumes the data was generated from a normal distribution, while
+  binary classification problems form a Bernoulli distribution.
 
 # Local Variables:
 # org-latex-minted-options: (("frame" "lines") ("linenos=true") ("firstnumber=last") ("fontsize=\\footnotesize") ("bgcolor=LightGray") ("xleftmargin=5pt") ("tabsize=2") ("breaklines=true") ("numbersep=10pt"))
