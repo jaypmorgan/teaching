@@ -275,8 +275,8 @@ commonly known in the field of machine learning: mean squared error (MSE).
   :BEAMER_OPT: fragile,allowframebreaks,label=
   :END: 
 
-Okay, so we made our initial guess at the model parameters (random values for $w,
-b$), and these weren't very good. We were incorrectly guessing the house value by
+Okay, so we made our initial guess at the model parameters (random values for $\beta_0,
+\beta_1$), and these weren't very good. We were incorrectly guessing the house value by
 $15,000. So how do we get better values?
 
 Well if we visualise how badly we do vs the value for $\beta_1$ we get the following:
@@ -302,7 +302,7 @@ plt.ylabel("MAE")
 
 #+name: fig:mae_lm
 #+ATTR_LATEX: :width 0.6\textwidth
-#+CAPTION: Mean absolute error (MAE) between the true and predicted house values when varying the value for $w$ parameter in the linear model.
+#+CAPTION: Mean absolute error (MAE) between the true and predicted house values when varying the value for $\beta_1$ parameter in the linear model.
 #+ATTR_ORG: :width 300px
 #+RESULTS:
 [[file:images/plot_linear_model_loss_w.png]]
@@ -398,7 +398,7 @@ where $\mathcal{L}$ represents our loss function, MAE. If we calculate this we h
 
 \[\begin{aligned}
 \Delta_{\beta_1} &= \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{h} \\
-&= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{1  - (0.5)} \\
+&= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{0.5} \\
 &= \frac{12 - 15}{0.5} \\
 &= -6.0
 \end{aligned}\]

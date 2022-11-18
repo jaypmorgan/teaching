@@ -1,4 +1,4 @@
-% Created 2022-11-13 Sun 14:49
+% Created 2022-11-18 Fri 08:39
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -50,12 +50,12 @@
 \maketitle
 
 \section*{Linear Regression}
-\label{sec:org1b2d551}
+\label{sec:orgc76c27f}
 
 \subsection*{Introduction to linear models}
-\label{sec:org2c83376}
+\label{sec:org80ebeda}
 
-\begin{frame}[label={sec:org085b936}]{Linear models}
+\begin{frame}[label={sec:org49d2b59}]{Linear models}
 Having learnt a little about what it means to learn, we're going to look at our first
 \emph{Machine Learning} algorithm, the staple for much of statistics, numeric prediction
 using a linear model.
@@ -81,7 +81,7 @@ variable, and \(\beta_0, \beta_1\) are the model parameters.
 \end{frame}
 
 \subsection*{Model parameters}
-\label{sec:org7fa36f2}
+\label{sec:org13987c2}
 
 \begin{frame}[fragile,allowframebreaks,label=]{Slope \& intercept}
 If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
@@ -114,7 +114,7 @@ Notice how the line is at 5 when \(x\) is zero, this is because \(\beta_0 = 5\).
 \end{frame}
 
 
-\begin{frame}[label={sec:orgebe6a8c}]{Multiple variables}
+\begin{frame}[label={sec:orgb86fe61}]{Multiple variables}
 So we've seen how we can take an input variable x, and through the
 combination multiplication and addition with the learnt \(\beta_0, \beta_1\) values,
 we can create a pretty accurate prediction.
@@ -133,7 +133,7 @@ where \(m\) is the number of features/variables we're adding to the
 model.
 \end{frame}
 
-\begin{frame}[label={sec:org4bec896}]{Supporting example}
+\begin{frame}[label={sec:org2eab635}]{Supporting example}
 Let's have a look at how we would use this linear model with one of the datasets: The
 Boston housing prices.
 
@@ -145,7 +145,7 @@ Boston housing prices.
 \end{frame}
 
 \subsection*{Training a linear regressor}
-\label{sec:org46acb0f}
+\label{sec:org858de2d}
 \begin{frame}[fragile,allowframebreaks,label=]{Let's fit a linear model}
 We have seen that there seems to be some correlation between the number of rooms and
 the house price. I.e. we can use the number of rooms of the house to get the
@@ -219,8 +219,8 @@ commonly known in the field of machine learning: mean squared error (MSE).
 \end{frame}
 
 \begin{frame}[fragile,allowframebreaks,label=]{Getting better model parameters}
-Okay, so we made our initial guess at the model parameters (random values for \(w,
-b\)), and these weren't very good. We were incorrectly guessing the house value by
+Okay, so we made our initial guess at the model parameters (random values for \(\beta_0,
+\beta_1\)), and these weren't very good. We were incorrectly guessing the house value by
 \$15,000. So how do we get better values?
 
 Well if we visualise how badly we do vs the value for \(\beta_1\) we get the following:
@@ -228,7 +228,7 @@ Well if we visualise how badly we do vs the value for \(\beta_1\) we get the fol
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth]{images/plot_linear_model_loss_w.png}
-\caption{\label{fig:mae_lm}Mean absolute error (MAE) between the true and predicted house values when varying the value for \(w\) parameter in the linear model.}
+\caption{\label{fig:mae_lm}Mean absolute error (MAE) between the true and predicted house values when varying the value for \(\beta_1\) parameter in the linear model.}
 \end{figure}
 
 In figure \ref{fig:mae_lm}, we see that as we change the \(\beta_1\) parameter, the mean absolute
@@ -283,7 +283,7 @@ If we select \(h = 0.5\) then we will have the formula:
 where \(\mathcal{L}\) represents our loss function, MAE. If we calculate this we have:
 \[\begin{aligned}
 \Delta_{\beta_1} &= \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{h} \\
-&= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{1  - (0.5)} \\
+&= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{0.5} \\
 &= \frac{12 - 15}{0.5} \\
 &= -6.0
 \end{aligned}\]
@@ -334,8 +334,8 @@ visualising this will look something like figure \ref{fig:lm_learn}.
 \end{frame}
 
 \subsection*{Fitting the line directly}
-\label{sec:org9c28ebd}
-\begin{frame}[label={sec:orgd0b5246}]{Solving the linear model directly}
+\label{sec:orgf05a94d}
+\begin{frame}[label={sec:org8401faf}]{Solving the linear model directly}
 The way we've trained our linear regression is not necessarily the
 best, yes it does help us understand how we can optimise to a solution
 (especially if not all of our data can fit into memory at the same
@@ -356,12 +356,12 @@ where \(N\) is the number of samples in our data.
 \end{frame}
 
 \section*{Logistic Regression}
-\label{sec:orga5c123c}
+\label{sec:org8c27a8e}
 
 \subsection*{Classification}
-\label{sec:org9f08b31}
+\label{sec:org28cb5ba}
 
-\begin{frame}[label={sec:orgc8fa811}]{Moving from regression to classification}
+\begin{frame}[label={sec:orgd23ddb6}]{Moving from regression to classification}
 We now turn to the problem of classification. We have seen in some of
 our toy datasets (namely the Iris dataset), that we don't want to
 predict a continuous value, but rather predict the class each data
@@ -378,7 +378,7 @@ previous section is also part of this class of models.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orged6ff55}]{Multi-class vs binary classification}
+\begin{frame}[label={sec:org5f21e34}]{Multi-class vs binary classification}
 \begin{columns}
 \begin{column}{0.4\columnwidth}
 \begin{center}
@@ -399,9 +399,9 @@ binary classification.
 \end{frame}
 
 \subsection*{Probability / likelihood}
-\label{sec:org95b8b70}
+\label{sec:org3b71f83}
 
-\begin{frame}[label={sec:org500142e}]{Probability likelihood}
+\begin{frame}[label={sec:org8ce6144}]{Probability likelihood}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{images/logisitic_curve.png}
 \end{center}
@@ -411,7 +411,7 @@ points, and for each point we give a probability (p) that our point
 belongs to a class.
 \end{frame}
 
-\begin{frame}[label={sec:org5f67727}]{Making it linear}
+\begin{frame}[label={sec:orga3150c0}]{Making it linear}
 If we apply the logarithm to each probability, we get back to our
 linear line.
 
@@ -431,9 +431,9 @@ linear line.
 \end{frame}
 
 \subsection*{Maximum likelihood}
-\label{sec:org0715f62}
+\label{sec:orge7fada1}
 
-\begin{frame}[label={sec:org66f0014}]{Enter the maximum likelihood}
+\begin{frame}[label={sec:orgd401bd0}]{Enter the maximum likelihood}
 But there is a problem\ldots{}we can no longer use the sum of residuals as
 the value would always be \(\infty\), but instead we can use the maximum
 likelihood. First we project each sample to its 'odds' (i.e. the value
@@ -444,7 +444,7 @@ of \(y\) on the linear line).
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org18d3d42}]{Back to the probability curve}
+\begin{frame}[label={sec:org16f2824}]{Back to the probability curve}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{images/logisitic_curve.png}
 \end{center}
@@ -456,7 +456,7 @@ p = \frac{1}{1 + e^{-(\beta_0+\beta_1x)}} = \frac{e^{(\beta_0+\beta_1x)}}{1 + e^
 \]
 \end{frame}
 
-\begin{frame}[label={sec:orgc6de91c}]{Likelihood}
+\begin{frame}[label={sec:orge95942e}]{Likelihood}
 Probability of class 1
 
 
@@ -478,13 +478,13 @@ on the probability curve:
 \]
 \end{frame}
 
-\begin{frame}[label={sec:org62d68c6}]{Optimising the curve}
+\begin{frame}[label={sec:org6b8d306}]{Optimising the curve}
 \url{images/lr\_learn.gif}
 \end{frame}
 
 \subsection*{Binary Cross-Entropy}
-\label{sec:org9df8531}
-\begin{frame}[label={sec:org351feb6}]{Binary Cross-Entropy}
+\label{sec:org6f78c23}
+\begin{frame}[label={sec:orgc3a5f01}]{Binary Cross-Entropy}
 We could still use MSE in order to compute our models loss. This \emph{may}
 still work. But there is another objective function that we would use
 for binary classification problems: Binary Cross-entropy (BCE).
