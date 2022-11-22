@@ -583,7 +583,7 @@ This is called a *closed-form solution*.
 \]
 
 \[
-\beta_0 = \frac{\sum y - w \sum x}{N}
+\beta_0 = \frac{\sum y - \beta_1 \sum x}{N}
 \]
 
 where $N$ is the number of samples in our data.

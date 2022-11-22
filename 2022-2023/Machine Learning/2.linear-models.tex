@@ -1,4 +1,4 @@
-% Created 2022-11-18 Fri 08:39
+% Created 2022-11-22 Tue 11:25
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -50,12 +50,12 @@
 \maketitle
 
 \section*{Linear Regression}
-\label{sec:orgc76c27f}
+\label{sec:org563eefb}
 
 \subsection*{Introduction to linear models}
-\label{sec:org80ebeda}
+\label{sec:org8310562}
 
-\begin{frame}[label={sec:org49d2b59}]{Linear models}
+\begin{frame}[label={sec:org45ed40c}]{Linear models}
 Having learnt a little about what it means to learn, we're going to look at our first
 \emph{Machine Learning} algorithm, the staple for much of statistics, numeric prediction
 using a linear model.
@@ -81,7 +81,7 @@ variable, and \(\beta_0, \beta_1\) are the model parameters.
 \end{frame}
 
 \subsection*{Model parameters}
-\label{sec:org13987c2}
+\label{sec:orgc08e219}
 
 \begin{frame}[fragile,allowframebreaks,label=]{Slope \& intercept}
 If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
@@ -114,7 +114,7 @@ Notice how the line is at 5 when \(x\) is zero, this is because \(\beta_0 = 5\).
 \end{frame}
 
 
-\begin{frame}[label={sec:orgb86fe61}]{Multiple variables}
+\begin{frame}[label={sec:orge010a12}]{Multiple variables}
 So we've seen how we can take an input variable x, and through the
 combination multiplication and addition with the learnt \(\beta_0, \beta_1\) values,
 we can create a pretty accurate prediction.
@@ -133,7 +133,7 @@ where \(m\) is the number of features/variables we're adding to the
 model.
 \end{frame}
 
-\begin{frame}[label={sec:org2eab635}]{Supporting example}
+\begin{frame}[label={sec:orgb30a114}]{Supporting example}
 Let's have a look at how we would use this linear model with one of the datasets: The
 Boston housing prices.
 
@@ -145,7 +145,7 @@ Boston housing prices.
 \end{frame}
 
 \subsection*{Training a linear regressor}
-\label{sec:org858de2d}
+\label{sec:orgff84801}
 \begin{frame}[fragile,allowframebreaks,label=]{Let's fit a linear model}
 We have seen that there seems to be some correlation between the number of rooms and
 the house price. I.e. we can use the number of rooms of the house to get the
@@ -334,8 +334,8 @@ visualising this will look something like figure \ref{fig:lm_learn}.
 \end{frame}
 
 \subsection*{Fitting the line directly}
-\label{sec:orgf05a94d}
-\begin{frame}[label={sec:org8401faf}]{Solving the linear model directly}
+\label{sec:org155850c}
+\begin{frame}[label={sec:orgeb68080}]{Solving the linear model directly}
 The way we've trained our linear regression is not necessarily the
 best, yes it does help us understand how we can optimise to a solution
 (especially if not all of our data can fit into memory at the same
@@ -349,19 +349,19 @@ This is called a \alert{closed-form solution}.
 \]
 
 \[
-\beta_0 = \frac{\sum y - w \sum x}{N}
+\beta_0 = \frac{\sum y - \beta_1 \sum x}{N}
 \]
 
 where \(N\) is the number of samples in our data.
 \end{frame}
 
 \section*{Logistic Regression}
-\label{sec:org8c27a8e}
+\label{sec:org0752365}
 
 \subsection*{Classification}
-\label{sec:org28cb5ba}
+\label{sec:org223ad67}
 
-\begin{frame}[label={sec:orgd23ddb6}]{Moving from regression to classification}
+\begin{frame}[label={sec:orgc66cf17}]{Moving from regression to classification}
 We now turn to the problem of classification. We have seen in some of
 our toy datasets (namely the Iris dataset), that we don't want to
 predict a continuous value, but rather predict the class each data
@@ -378,7 +378,7 @@ previous section is also part of this class of models.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org5f21e34}]{Multi-class vs binary classification}
+\begin{frame}[label={sec:org284be96}]{Multi-class vs binary classification}
 \begin{columns}
 \begin{column}{0.4\columnwidth}
 \begin{center}
@@ -399,9 +399,9 @@ binary classification.
 \end{frame}
 
 \subsection*{Probability / likelihood}
-\label{sec:org3b71f83}
+\label{sec:org0eda026}
 
-\begin{frame}[label={sec:org8ce6144}]{Probability likelihood}
+\begin{frame}[label={sec:orga3ff3bf}]{Probability likelihood}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{images/logisitic_curve.png}
 \end{center}
@@ -411,7 +411,7 @@ points, and for each point we give a probability (p) that our point
 belongs to a class.
 \end{frame}
 
-\begin{frame}[label={sec:orga3150c0}]{Making it linear}
+\begin{frame}[label={sec:org6da628b}]{Making it linear}
 If we apply the logarithm to each probability, we get back to our
 linear line.
 
@@ -431,9 +431,9 @@ linear line.
 \end{frame}
 
 \subsection*{Maximum likelihood}
-\label{sec:orge7fada1}
+\label{sec:org85d459d}
 
-\begin{frame}[label={sec:orgd401bd0}]{Enter the maximum likelihood}
+\begin{frame}[label={sec:orgf15acc9}]{Enter the maximum likelihood}
 But there is a problem\ldots{}we can no longer use the sum of residuals as
 the value would always be \(\infty\), but instead we can use the maximum
 likelihood. First we project each sample to its 'odds' (i.e. the value
@@ -444,7 +444,7 @@ of \(y\) on the linear line).
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org16f2824}]{Back to the probability curve}
+\begin{frame}[label={sec:org9522698}]{Back to the probability curve}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{images/logisitic_curve.png}
 \end{center}
@@ -456,7 +456,7 @@ p = \frac{1}{1 + e^{-(\beta_0+\beta_1x)}} = \frac{e^{(\beta_0+\beta_1x)}}{1 + e^
 \]
 \end{frame}
 
-\begin{frame}[label={sec:orge95942e}]{Likelihood}
+\begin{frame}[label={sec:orgb46484d}]{Likelihood}
 Probability of class 1
 
 
@@ -478,13 +478,13 @@ on the probability curve:
 \]
 \end{frame}
 
-\begin{frame}[label={sec:org6b8d306}]{Optimising the curve}
+\begin{frame}[label={sec:org21a3565}]{Optimising the curve}
 \url{images/lr\_learn.gif}
 \end{frame}
 
 \subsection*{Binary Cross-Entropy}
-\label{sec:org6f78c23}
-\begin{frame}[label={sec:orgc3a5f01}]{Binary Cross-Entropy}
+\label{sec:org3150ce6}
+\begin{frame}[label={sec:orga46ebfd}]{Binary Cross-Entropy}
 We could still use MSE in order to compute our models loss. This \emph{may}
 still work. But there is another objective function that we would use
 for binary classification problems: Binary Cross-entropy (BCE).
