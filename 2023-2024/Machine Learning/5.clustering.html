@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-12-01 Thu 17:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Machine Learning</title>
+<meta name="author" content="Jay Morgan" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Machine Learning
+<br />
+<span class="subtitle">Lecture 5 - Nearest Neighbour &amp; K-Means</span>
+</h1>
+
+<div id="outline-container-org4dc7ed0" class="outline-2">
+<h2 id="org4dc7ed0">kNN Introduction</h2>
+<div class="outline-text-2" id="text-org4dc7ed0">
+</div>
+<div id="outline-container-org18161fa" class="outline-3">
+<h3 id="org18161fa">Problem Statement</h3>
+<div class="outline-text-3" id="text-org18161fa">
+</div>
+<div id="outline-container-org7b8e43e" class="outline-4">
+<h4 id="org7b8e43e">Problem statement</h4>
+<div class="outline-text-4" id="text-org7b8e43e">
+<p>
+The first algorithm we're going to see today is a very simple one. Let's image we
+have a feature space with labelled data points, such as this:
+</p>
+
+
+<div id="org9eb6baa" class="figure">
+<p><img src="images/knn-problem-statement.png" alt="knn-problem-statement.png" width="500px" />
+</p>
+</div>
+
+<p>
+We want to use these labelled data points as our training data to be able to predict
+the classification of new data points (such as those from our testing set).
+</p>
+
+<p>
+The algorithm we're going to use to do this classification is called K-nearest
+neighbour, or kNN for short. This algorithm isn't mathematically derived as some
+others we've seen, but rather based on intuition.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5404a2e" class="outline-3">
+<h3 id="org5404a2e">kNN Intuition</h3>
+<div class="outline-text-3" id="text-org5404a2e">
+</div>
+<div id="outline-container-orgba2296c" class="outline-4">
+<h4 id="orgba2296c">Example solution</h4>
+<div class="outline-text-4" id="text-orgba2296c">
+<p>
+kNN is a classification algorithm where, we as the user, get to set \(K\)
+ourselves. \(K\) is the number of neighbours that will be considered for the model's
+classification.
+</p>
+
+<p>
+Neighbour's of a new data point can be determined using the euclidean distance, and
+selecting \(K\) closest points.
+</p>
+
+
+<div id="org755ec04" class="figure">
+<p><img src="images/knn-3-classification.png" alt="knn-3-classification.png" width="500px" />
+</p>
+</div>
+
+<p>
+Let's say we set \(K=3\), this means that when we have a new data point we want to
+classify, we're going to find out where this new data point falls in the feature
+space, and find 3 of it's closest neighbours. Using these closet neighbours, we will
+assign this new data point the same class as the class majority of it's neighbours.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgef7eaa6" class="outline-4">
+<h4 id="orgef7eaa6">The effect of \(K\)</h4>
+<div class="outline-text-4" id="text-orgef7eaa6">
+<p>
+\(K\) in the kNN algorithm is user defined, and the larger the number, the more
+neighbours will be used. One fun example of the effect of \(K\) is that if we were to
+set \(K=N\) where \(N\) is the number of data points in our training set, then we will
+always assign new data points the majority class.
+</p>
+
+
+<div id="orgecd4379" class="figure">
+<p><img src="images/knn-all-classification.png" alt="knn-all-classification.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0969b72" class="outline-4">
+<h4 id="org0969b72">Accounting for 'ties'/'draws'</h4>
+<div class="outline-text-4" id="text-org0969b72">
+<p>
+What if, when using \(K=4\), two neighbours are of class 1, while the other two
+neighbours are of class 2. Which class is assigned to our new data point? Well, since
+the k-NN algorithm is not a mathematically derived algorithm, but based on the
+intuition that with similar coordinates in a feature space should be similar classes,
+then it's up to you to decide how to deal with 'ties'. One example, would be to avoid
+them all together and only use an odd \(K\). Another option would be to weight the
+neighbours by the distance to the new point to be classified. So that closer points
+have a higher weight. In summary here are some options:
+</p>
+
+<ol class="org-ol">
+<li>Only use odd valued \(K\).</li>
+<li>Decrease \(K\) until the tie is broken.</li>
+<li>Weight neighbours by the distance.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcbc9ef9" class="outline-2">
+<h2 id="orgcbc9ef9">K-Means Introduction</h2>
+<div class="outline-text-2" id="text-orgcbc9ef9">
+</div>
+<div id="outline-container-org9ce8ede" class="outline-3">
+<h3 id="org9ce8ede">Problem Statement</h3>
+<div class="outline-text-3" id="text-org9ce8ede">
+</div>
+<div id="outline-container-org12e0cd5" class="outline-4">
+<h4 id="org12e0cd5">Problem statement</h4>
+<div class="outline-text-4" id="text-org12e0cd5">
+<p>
+Say we had a set of data, un-labelled data, and we wanted to separate them into
+groups or classes. Below we have an example where, as humans, we can see 3 distinct
+groups of data points. In today's lecture, we're going to look at an algorithm that
+can identify these same clusters or groups systematically.
+</p>
+
+
+<div id="org561155d" class="figure">
+<p><img src="images/k-means-problem-statement.png" alt="k-means-problem-statement.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc3b2555" class="outline-4">
+<h4 id="orgc3b2555">K-Means clustering</h4>
+<div class="outline-text-4" id="text-orgc3b2555">
+<p>
+This algorithm is called K-means. In essence, it is an algorithm that finds \(K\)
+different clusters or groups of points, where \(K\) is defined by the user.
+</p>
+
+
+<div id="orgfad87f6" class="figure">
+<p><img src="images/k-means-classified.png" alt="k-means-classified.png" width="500px" />
+</p>
+</div>
+
+<p>
+Of course, we have to, ourselves, pick a value of for \(K\). For data that has more
+than 3-dimensions, we might not know how many groups there are inherently in the
+data.
+</p>
+
+
+<div id="org5583a70" class="figure">
+<p><img src="images/k-means-classified-2.png" alt="k-means-classified-2.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org44cf5b2" class="outline-4">
+<h4 id="org44cf5b2">Starting point</h4>
+<div class="outline-text-4" id="text-org44cf5b2">
+<p>
+K-means is an iterative algorithm, which means that the <b>centroids</b> of the clusters
+will be randomly assigned in the feature space. Let's say that we initialise a
+K-means algorithm with \(K = 3\). We might have something that looks like:
+</p>
+
+
+<div id="org535b58d" class="figure">
+<p><img src="images/k-means-classified-3.png" alt="k-means-classified-3.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org746aecd" class="outline-4">
+<h4 id="org746aecd">Iterative process</h4>
+<div class="outline-text-4" id="text-org746aecd">
+<p>
+As mentioned, K-means is an iterative process of assigning the position of the
+cluster's centroid. Therefore, after randomly assigning each centroid to a different
+point in the feature space, the algorithm will iteratively move the centroid to
+better <i>match</i> the true clustering of data points. We'll get back to how this is
+mathematically done later in the lecture, but for now we want to understand this
+intuition.
+</p>
+
+
+<div id="org522ff6f" class="figure">
+<p><img src="images/k-means-updated.png" alt="k-means-updated.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0ff190c" class="outline-4">
+<h4 id="org0ff190c">Assigning centroids</h4>
+<div class="outline-text-4" id="text-org0ff190c">
+<p>
+After the algorithm has converged or stopped, we will have 3 centroids, that will,
+hopefully, match the true clustering of data points.
+</p>
+
+<p>
+After we have these positioned centroids, they can be used to label new data points
+by determining to which cluster do the new data points fall under, or are closet to.
+</p>
+
+
+<div id="orgb4d49c3" class="figure">
+<p><img src="images/k-means-new-classification.png" alt="k-means-new-classification.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc62aeff" class="outline-2">
+<h2 id="orgc62aeff">Algorithm details</h2>
+<div class="outline-text-2" id="text-orgc62aeff">
+</div>
+<div id="outline-container-org73188af" class="outline-3">
+<h3 id="org73188af">Algorithm details</h3>
+<div class="outline-text-3" id="text-org73188af">
+</div>
+<div id="outline-container-orgae07427" class="outline-4">
+<h4 id="orgae07427">Initialisation</h4>
+<div class="outline-text-4" id="text-orgae07427">
+<p>
+Let \(C\) be the set of cluster centroids:
+</p>
+
+<p>
+\[C = \{c_1, c_2, ..., c_K\}\]
+</p>
+
+<p>
+And let \(S(c_i)\) be the set of all points \(x_i\) that are located within the cluster
+\(c_i\). The intersection of all \(S\) will be the null set (each point will be assigned to
+only one cluster):
+</p>
+
+<p>
+\[
+\bigcap_{i=1}^{K} S(c_i) = \emptyset
+\]
+</p>
+
+<p>
+To initialise the K-means algorithm, we randomly select \(K\) data points as the
+location of the centroids, i.e. \(x_i = c_i\).
+</p>
+
+<p>
+After, we compute \(S(c_i)\) by the minimum euclidean distance to each centroid. I.e.,
+to determine whether a new point falls within the cluster of \(c_i\), we can use the
+euclidean distance between \(x_i\) and \(c_i\):
+</p>
+
+<p>
+\[
+\arg \min_{c_i \in C} || x_i - c_i ||^2
+\]
+</p>
+
+<p>
+So we select the cluster to which our new \(x_i\) data point is closest to.
+</p>
+
+<p>
+The position of each centroid \(c_i\) is the geometric mean of the data points
+contained within the cluster:
+</p>
+
+<p>
+\[
+c_i = \frac{1}{|S(c_i)|} \sum_{x_j \in S(c_i)} x_j
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0045083" class="outline-4">
+<h4 id="org0045083">Iteration</h4>
+<div class="outline-text-4" id="text-org0045083">
+<p>
+Classic optimisation problem:
+</p>
+
+<p>
+\[
+\arg \min_c \sum_{c_i \in C} \sum_{x_j \in S(c_i)} || x_j - c_i ||^2
+\]
+</p>
+
+<p>
+There are 3 criterions for stopping the iterative process:
+</p>
+<ol class="org-ol">
+<li>There are no more changes in clusters by moving the centroids.</li>
+<li>Points remain within the same cluster as before.</li>
+<li>A maximum number of steps/iterations has been reached.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org6745e60" class="outline-4">
+<h4 id="org6745e60">Classification</h4>
+<div class="outline-text-4" id="text-org6745e60">
+<p>
+To determine whether a new point falls within the cluster of \(c_i\), we can use the
+euclidean distance between \(x_i\) and \(c_i\):
+</p>
+
+<p>
+\[
+\arg \min_{c_i \in C} || x_i - c_i ||^2
+\]
+</p>
+
+<p>
+So we select the cluster to which our new \(x_i\) data point is closest to.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc8dc272" class="outline-4">
+<h4 id="orgc8dc272">Evaluation of K-means</h4>
+<div class="outline-text-4" id="text-orgc8dc272">
+<p>
+Since we don't have true labels with which to evaluate the k-means algorithm against,
+we must take a different tactic for evaluating the classifications or group of points
+it has clustered together. This works by evaluating the <i>structure</i> of the clusters.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgd0d652f"></a>Intra-1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-orgd0d652f">
+<p>
+<b>intra-cluster distance</b> &#x2013; the average distance between all data points in the same
+cluster.
+</p>
+
+
+<div id="org0f84c90" class="figure">
+<p><img src="images/k-means-intra-2.png" alt="k-means-intra-2.png" width="300px" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="org9d7dc4c"></a>Intra-2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-org9d7dc4c">
+<p>
+<b>intra-cluster diameter</b> &#x2013; the distance between the two most remote objects in a
+cluster.
+</p>
+
+
+<div id="orgc914195" class="figure">
+<p><img src="images/k-means-intra.png" alt="k-means-intra.png" width="300px" />
+</p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orga8706e6" class="outline-4">
+<h4 id="orga8706e6">Inter-cluster distance</h4>
+<div class="outline-text-4" id="text-orga8706e6">
+
+<div id="orgc46563a" class="figure">
+<p><img src="images/k-means-inter.png" alt="k-means-inter.png" width="300px" />
+</p>
+</div>
+
+<p>
+<b>inter-cluster distance</b> &#x2013; average smallest distance to a different cluster.
+</p>
+
+<p>
+<b>silhouette score</b> &#x2013; \(\frac{\text{intra} - \text{inter}}{\max(\text{intra}, \text{inter})}\)  
+</p>
+</div>
+</div>
+
+<div id="outline-container-org765094f" class="outline-4">
+<h4 id="org765094f">The effect of \(K\)</h4>
+<div class="outline-text-4" id="text-org765094f">
+<p>
+The \(K\) in k-means clustering determines how many clusters the algorithm will try to
+find. But if our data is un-labelled, how do we know what to set \(K\) equal to? The
+answer is that we don't necessarily. So we might create several different clustering
+algorithms where we vary the value for \(K\) and evaluate the resulting model.
+</p>
+
+<p>
+This may give us some indication as to how many clusters to use.
+</p>
+
+<p>
+Other times the value for \(K\) will be inherent to the problem you're trying to
+solve. For example, if we're trying to cluster and label the calls of different
+birds, we may know the number of different bird species that were recorded, thus
+providing some grounds for setting \(K\).
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdb59dd2" class="outline-2">
+<h2 id="orgdb59dd2">Summary</h2>
+<div class="outline-text-2" id="text-orgdb59dd2">
+</div>
+<div id="outline-container-orgfa94e60" class="outline-4">
+<h4 id="orgfa94e60">Summary</h4>
+<div class="outline-text-4" id="text-orgfa94e60">
+<p>
+In today's lecture, we've had a look at two different classification algorithms:
+</p>
+<ol class="org-ol">
+<li><b>K-Nearest Neighbour</b> where we classify data points by looking at the existing
+classification of the existing \(K\) neighbours.</li>
+<li><b>K-Means</b> where, for un-labelled data, the algorithm finds the centroid of \(K\)
+clusters, which we can use in future to classify new data points depending on
+which cluster they fall within.</li>
+</ol>
+
+<p>
+For each of these algorithms, we've first try understand, intuitively, what the
+algorithm is attempting to achieve. After this point, we've taken a look at the
+mathematics behind the algorithm so that we can gain a deeper understanding and
+appreciation for it's mechanics.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: November 2022</p>
+<p class="author">Author: Jay Morgan</p>
+<p class="date">Created: 2022-12-01 Thu 17:50</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1904 @@
+#+title: Programming Level-up
+#+SUBTITLE: Lecture 1 - Introduction and Basic Python Programming
+#+date: 16th September 2022
+#+author: Jay Morgan
+#+startup: beamer
+#+include: ./header.org
+
+#+name: commentify
+#+begin_src emacs-lisp :var result="" :exports none
+(with-output-to-string
+  (princ "Results: \n")
+  (dolist (result-item (split-string result "\n"))
+    (princ (concat "# => " (format "%s\n" result-item)))))
+#+end_src
+
+* Introduction
+
+** Course introduction
+
+*** What...? Why...?
+
+- Programming is much more than the act of programming a small script. Even if you've
+  programmed before, doing so for a research project requires a lot of rigour to
+  ensure the results you're reporting are correct, and reproducible.
+- There is so much surrounding the act of programming that it can get a little
+  overwhelming. Things from setting up a programming environment to managing multiple
+  experiments on the supercomputers can involve many languages and understanding of
+  technologies.
+- This course is designed to take you from not being able to program at all to being
+  able to do it comfortably for your research and work.
+
+*** What is this course going to teach me?
+
+1. Programming with the Python Programming Language.
+   + Basic syntax.
+   + Introduction to the basics of object oriented programming (OOP).
+   + Numerical computing with numpy/pandas/scipy.
+2. Doing your programming in a Linux-based Environment (GNU/Linux) and being
+   comfortable with the organisation of this Linux environment.
+   + Setting up a research (reproducible) environment.
+   + Executing experiments.
+3. Interacting with the Super-computers/clusters.
+   + Interaction with SLURM (management of jobs).
+4. Taking the results from a program you've created, be able to visualise them and
+   include them in reports/papers.
+   + LaTeX/Markdown.
+   + Plotting.
+
+*** How the course will be delivered
+
+- 2/3 hour sessions over the next 2 months.
+- Throughout the lecture, there will be small exercises to try out what we've
+  learnt. We will go through the answers to these exercises.
+- At the end of the lecture we will have a larger exercise that will become more
+  challenging. These exercises are not marked, but again, just an opportunity to try
+  out what you've learnt. The best way to learn how to program is to program.
+
+*** Rough timeline
+
+#+ATTR_LATEX: :font \scriptsize :booktabs t
+|---------+----------------------------+------------------------------|
+| Lecture | Topic                      | Description                  |
+|---------+----------------------------+------------------------------|
+|       1 | Introduction               | - Course introduction        |
+|         |                            | - Basic Python programming   |
+|       2 | Python classes             | - Introduction to OOP        |
+|       3 | Project management         | - Creating/importing modules |
+|         |                            | - Anaconda/pip               |
+|       4 | Programming environments   | - PyCharm                    |
+|         |                            | - Jupyter notebooks          |
+|       5 | Numerical computing        | - Numpy                      |
+|         |                            | - Scipy                      |
+|       6 | Numerical computing        | - Pandas                     |
+|         |                            | - Visualisations             |
+|       7 | Basics of GNU/Linux        | - Using the terminal         |
+|       8 | Bash scripting             | - Bash scripting             |
+|       9 | High performance computing | - SLURM                      |
+|         |                            | - Singularity                |
+|      10 | Reporting                  | - LaTeX                      |
+|         |                            | - Markdown                   |
+|---------+----------------------------+------------------------------|
+
+** Contact information
+
+*** Where to find me                                                        
+
+My name is Dr Jay Morgan. I am a researcher work on Deep Learning in Astrophysics.
+
+- Email: =jay.morgan@univ-tln.fr=
+- Lecture slides and other contact on my website: [[https://pageperso.lis-lab.fr/jay.morgan/]]
+
+#+ATTR_HTML: :width 500px
+#+ATTR_LATEX: :width 0.5\textwidth
+[[./images/website.png]]
+
+* Python
+
+** Introducing Python
+
+*** Python
+
+#+ATTR_HTML: :width 500px
+#+ATTR_LATEX: :width 0.7\textwidth
+[[./images/python-objects.png]]
+
+*** Python
+
+**** Python                                                           :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+
+- Python is a /high-level/\footnoteframe{As we go through our lectures we'll understand what it means for the language to be /high-level/ and /interpreted/ and why that is helpful for us.} programming language created in 1991.
+- While it is an old language, its become vastly popular thanks to its use in data
+  science and other mathematics-based disciplines. While also being able to perform
+  tasks such as GUI, web-development and much more.
+- Because the language is high-level and /interpreted/, programmers can often find
+  themselves more productive in Python than in other languages such as say C++.
+
+**** Python logo                                                      :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.3
+:END:
+
+#+ATTR_HTML: :width 500px
+#+ATTR_LATEX: :width \textwidth
+[[./images/python.png]]
+
+
+*** A first program
+
+We're going to start with the 'Hello, World' program that prints =Hello, World!= to the
+screen. In python this is as simple as writing:
+
+#+begin_src python :results pp output :session :post commentify(*this*)
+print("Hello, World!")   # this prints: Hello, World!
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Hello, World!
+
+*NOTE* anything following a =#= is a comment and is completely ignored by the
+computer. It is there for you to document your code for others, and most
+importantly, for yourself.
+
+*** Running this program
+
+Before we can run this program, we need to save it somewhere. For this, will
+create a new file, insert this text, and save it as =<filename>.py=, where
+=<filename>= is what we want to call the script. This name doesn't matter for its
+execution.
+
+Once we have created the /script/, we can run it from the /command line/. We will
+get into the command line in a later lecture, but right now all you need to know
+is:
+
+#+begin_src bash
+python3 <filename>.py
+#+end_src
+
+*** An alternative method of running python
+
+You may notice that if you don't give =python= a filename to run, you will enter
+something called the =REPL=.
+
+#+begin_src bash
+Python 3.9.5 (default, Jun  4 2021, 12:28:51) 
+[GCC 7.5.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+#+end_src
+
+=REPL= stands for =READ=, =EXECUTE=, =PRINT=, =LOOP=.
+
+*** Variables
+
+A /variable/ is a /symbol/ associated with a /value/. This value can differ widely, and we
+will take a look at different types of values/data later.
+
+Neverthless, variables are useful for /referring/ to values and /storing/ to the results
+of a computation.
+
+#+begin_src python :post commentify(*this*)
+x = 1
+y = 2
+z = x + y
+print(z)   # prints: 3
+
+# variables can be /overwritten/
+z = "hello, world"
+print(z)   # prints: hello, world
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 3
+: # => hello, world
+
+#+begin_comment
+- Write descriptive variable names
+- Convention in writing variable names: myvariable, my_variable, myVariable
+- Variables in python are case-sensitive, my_Variable, is different to my_variable
+#+end_comment
+
+** Types of data
+
+*** Primitive data types
+
+Primitive data types are the most fundamental parts of programming, they cannot
+be /broken/ down.
+
+#+begin_src python
+"Hello" # string
+1       # integer
+1.0     # float
+True    # Boolean (or bool for short)
+#+end_src
+
+*** Primitive data type
+
+We can get the type of some data by using the =type(...)= function. For example,
+
+#+begin_src python :results pp output :session :post commentify(*this*)
+print(type(5))
+print(type(5.0))
+
+x = "all cats meow"
+
+print(type(x))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => <class 'int'>
+: # => <class 'float'>
+: # => <class 'str'>
+ 
+*** Basic Math with primitives
+
+Using these primitive data types, we can do some basic math operations!
+
+#+begin_src python :results pp output :session :post commentify(*this*)
+print(1 + 2)    # Addtion
+print(1 - 2)    # Subtraction
+print(1 * 2)    # Multiplication
+print(1 / 2)    # Division
+print(2 ** 2)   # Exponent
+print(3 % 2)    # Modulo operator
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 3
+: # => -1
+: # => 2
+: # => 0.5
+: # => 4
+: # => 1
+
+*** Basic Math
+
+Sometimes types get converted to the same type:
+
+#+begin_src python :results pp output :session :post commentify(*this*)
+print(1.0 + 2)  # float + integer = float
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 3.0
+
+Even more interesting is with Booleans!
+
+#+begin_src python :results pp value :session :post commentify(*this*)
+True + True
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 2
+
+*** BODMAS in Python
+
+Like in mathematics, certain math operator take precedence over others.
+
+- B - Brackets
+- O - Orders (roots, exponents)
+- D - division
+- M - multiplication
+- A - addition
+- S - subtraction.
+
+To make the context clear as to what operations to perform first, use brackets.
+
+#+begin_src python :results pp value :session :post commentify(*this*)
+(5 / 5) + 1
+5 / (5 + 1)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 2.0
+: # => 0.8333333333333334
+
+*** Basic Math -- Quick exercise
+
+Write the following equation in python:
+
+$(5 + 2) \times (\frac{10}{2} + 10)^2$
+
+*Remember* to use parentheses =( )= to ensure that operations take precedence over
+others.
+
+Your answer should come out as: =1575.0=
+
+** Working with strings
+
+*** Formatting strings
+
+In many previous examples when we've printed strings, we've done something like:
+
+#+begin_src python
+age = 35
+
+print("The value of age is", age)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => The value of age is 35
+
+While this works in this small context, it can get pretty cumbersome if we have many
+variables we want to print, and we also want to change how they are displayed when
+they are printed.
+
+We're going to take a look now at much better ways of printing.
+
+*** Better ways of printing strings - %
+
+The first method is using =%=. When we print, we first construct a string with special
+delimiters, such as =%s= that denotes a string, and =%d= that denotes a number. This is
+telling Python where we want the values to be placed in the string.
+
+Once we've created the string, we need to specify the data, which we do with =%
+(...)=. Like, for example:
+
+#+begin_src python
+age = 35
+name = "John"
+
+print("%d years old" % age)  # no tuple for one variable
+print("%s is %d years old" % (name, age)) 
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 35 years old
+: # => John is 35 years old
+
+Here we are specifying the a string =%s= and number =%d=, and then giving the variables
+that correspond with that data type.
+
+*** Better ways of printing strings -- data specifiers
+
+The special delimiters correspond with a data type. Here are some of the most common:
+
+- =%s= -- For strings
+- =%d= -- For numbers
+- =%f= -- For floating point numbers.
+
+There are others such as =%x= that prints the hexadecimal representation, but these are
+less common. You can find the full list at: https://docs.python.org/3/library/stdtypes.html#old-string-formatting
+
+*** Better ways of printing strings -- floating points
+
+When using these delimiters, we can add modifiers to how they format and display the
+value. Take a very common example, where we have a floating point value, and, when
+printing it, we only want to print to 3 decimal places. To accomplish this, we again
+use =%f= but add a =.3= to between the =%= and =f=. In this example, we are printing \pi to 3
+decimal places.
+
+#+begin_src python
+print("Pi to 3 digits is: %.3f" % 3.1415926535)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Pi to 3 digits is: 3.142
+
+*** Better ways of printing strings -- floating points
+
+In the previous example, we used =.3= to specify 3 decimal places. If we put a number
+before the decimal, like =10.3= we are telling Python /make this float occupy 10 spaces
+and this float should have 3 decimal places printed/.  When it gets printed, you will
+notice that it shifts to the right, it gets padded by space. If we use a negative
+number in front of the decimal place, we are telling python to shift it to the left.
+
+#+begin_src python
+print("Pi to 3 digits is: %10.3f" % 3.1415926535)
+print("Pi to 3 digits is: %-10.3f" % 3.1415926535)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Pi to 3 digits is:      3.142
+: # => Pi to 3 digits is: 3.142
+
+*** Better ways of printing strings -- =f-strings=
+
+The final method of formatting strings is a newcomer within the language, it is the
+so-called =f-string=. Where a =f= character is prefixed to the beginning of the string
+you're creating. =f-string='s allow you to use Python syntax within the string (again
+delimited by ={}=.
+
+Take this for example where we are referencing the variables =name= and =age= directly.
+
+#+begin_src python
+name = "Jane"
+age = 35
+
+print(f"{name} is {age} years old")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Jane is 35 years old
+
+*** Better ways of printing strings -- =f-strings=
+
+=f-string='s allow you to execute Python code within the string. Here we are accessing
+the value from the dictionary by specifying the key within the string itself! It
+certainly makes it a lot easier, especially if we only need to access the values for
+the string itself.
+
+#+begin_src python
+contact_info = {"name": "Jane", "age": 35}
+
+print(f"{contact_info['name']} is {contact_info['age']} years old")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Jane is 35 years old
+
+https://pyformat.info/
+
+*** Better ways of printing strings -- =f-string=
+
+We can still format the values when using =f-string=. The method is similar to those
+using the =%f= specifiers.
+
+#+begin_src python
+pi = 3.1415926535
+print(f"Pi is {pi:.3f} to 3 decimal places")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Pi is 3.142 to 3 decimal places
+
+Many more examples can be found at: https://zetcode.com/python/fstring/
+
+*** Operations on strings -- splitting
+
+Apart from formatting, there are plenty more operations we can perform on strings. We
+are going to highlight some of the most common here.
+
+The first we're going to look at is splitting a string by a delimiter character using
+the =.split()= method. If we don't pass any argument to the =.split()= method, then by
+default, it will split by spaces. However, we can change this by specifying the
+delimiter.
+
+#+begin_src python
+my_string = "This is a sentence, where each word is separated by a space"
+
+print(my_string.split())
+print(my_string.split(","))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => ['This', 'is', 'a', 'sentence,', 'where', 'each', 'word', 'is', 'separated', 'by', 'a', 'space']
+: # => ['This is a sentence', ' where each word is separated by a space']
+
+*** Operations on strings -- joining
+
+As =.split()= splits a single string into a list, =.join()= joins a list of strings into
+a single string. To use =.join()=, we first create a string of the delimiter we want to
+use to join the list of strings by. In this example we're going to use ="-"=. Then we
+call the =.join()= method, passing the list as an argument.
+
+The result is a single string using the delimiter to separate the items of the list.
+
+#+begin_src python
+x = ['This', 'is', 'a', 'sentence,', 'where', 'each', 'word', 'is', 'separated', 'by', 'a', 'space']
+
+print("-".join(x))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => This-is-a-sentence,-where-each-word-is-separated-by-a-space
+
+*** Operations on strings -- changing case
+
+Other common operations on strings involve change the case. For example:
+
+- Make the entire string uppercase or lowercase
+- Making the string title case (every where starts with a capital letter).
+- Stripping the string by removing any empty spaces either side of the string.
+
+*Note* we can chain many methods together by doing =.method_1().method_2()=, but only if they
+return string. If they return =None=, then chaining will not work.
+
+#+begin_src python
+x = "    this String Can change case"
+
+print(x.upper())
+print(x.lower())
+print(x.title())
+print(x.strip())
+print(x.strip().title())
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # =>     THIS STRING CAN CHANGE CASE
+: # =>     this string can change case
+: # =>     This String Can Change Case
+: # => this String Can change case
+: # => This String Can Change Case
+
+*** Operations on strings -- replacing strings
+
+To replace a substring, we use the =.replace()= method. The first argument is the old
+string you want to replace. The second argument is what you want to replace it with.
+
+#+begin_src python
+x = "This is a string that contains some text"
+
+print(x.replace("contains some", "definitely contains some"))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => This is a string that definitely contains some text
+
+** Compound data structures
+*** Container data types/Data structures
+
+Container data types or data structures, as the name suggests, are used to contain
+other things. Types of containers are:
+
+- Lists
+- Dictionaries
+- Tuples
+- Sets
+
+#+begin_src python
+[1, "hello", 2]                 # list
+{"my-key": 2, "your-key": 1}    # dictionary (or dict)
+(1, 2)                          # tuple
+set(1, 2)                       # set
+#+end_src
+
+We'll take a look at each of these different container types and explore why we
+might want to use each of them.
+
+*** An aside on Terminology
+
+To make our explanations clearer and reduce confusion, each of the different symbols
+have unique names.
+
+I will use this terminology consistently throughout the course, and it is common to
+see the same use outside the course.
+
+- =[ ]= brackets (square brackets).
+- ={ }= braces (curly braces).
+- =( )= parentheses.
+
+*** Lists
+
+A hetreogenious container. This means that it can store any type of data.
+
+#+begin_src python :results none :session *x*
+x = [1, "hello", 2]
+#+end_src
+
+Elements can be accessed using indexing =[ ]= notation. For example:
+
+#+begin_src python :session *x* :results output pp :post commentify(*this*)
+print(x[0])    # this will get the first element (i.e. 1)
+print(x[1])    # the second element (i.e. "hello")
+print(x[2])    # the third element (i.e. 2)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 1
+: # => hello
+: # => 2
+
+*notice how the first element is the 0-th item in the list/* we say that python is
+0-indexed.
+
+*** Better indexing -- slices
+
+If we wanted to access an element from a data structure, such as a list, we would use
+the =[ ]= accessor, specifying the index of the element we wish to retrieve (remember
+that indexes start at zero!). But what if we ranted to access many elements at once?
+Well to accomplish that, we have a slice or a range of indexes (not to be confused
+with the =range= function). A slice is defined as:
+
+#+begin_src
+start_index:end_index
+#+end_src
+
+where the =end_index= is non inclusive -- it doesn't get included in the result. Here
+is an example where we have a list of 6 numbers from 0 to 5, and we slice the list from index
+0 to 3. Notice how the 3rd index is not included.
+
+#+begin_src python
+x = [0, 1, 2, 3, 4, 5]
+print(x[0:3])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2]
+
+*** Better indexing -- range
+
+When we use =start_index:end_index=, the slice increments by 1 from =start_index= to
+=end_index=. If we wanted to increment by a different amount we can use the slicing
+form:
+
+#+begin_src
+start_index:end_index:step
+#+end_src
+
+Here is an example where we step the indexes by 2:
+
+#+begin_src python :results output pp
+x = list(range(100))
+print(x[10:15:2])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [10, 12, 14]
+
+*** Better indexing -- reverse
+
+One strange fact about the step is that if we specify a negative number for the step,
+Python will work backwards, and effectively reverse the list.
+
+#+begin_src python
+x = list(range(5))
+
+print(x[::-1])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [4, 3, 2, 1, 0]
+
+*** Better indexing -- range
+
+In a previous example, I created a slice like =0:3=. This was a little wasteful as we
+can write slightly less code. If we write =:end_index=, Python assumes and creates a
+slice from the first index (0) to the =end_index=. If we write =start_index:=, Python
+assumes and creates a slice from =start_index= to the end of the list.
+
+#+begin_src python
+x = list(range(100))
+
+print(x[:10])
+print(x[90:])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+: # => [90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+
+*** Better indexing -- backwards
+
+Finally, we also work backwards from the end of list. If we use a negative number,
+such as -1, we are telling Python, take the elements from the end of the list. -1 is
+the final index, and numbers lower than -1 work further backwards through the list.
+
+#+begin_src python :results output pp
+x = list(range(100))
+
+print(x[-1])
+print(x[-2])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 99
+: # => 98
+
+*** Better indexing --backwards
+
+Slicing with negative indexes, also works. Here we are creating a slice from the end
+of the list - 10, to the last (but not including) index.
+
+#+begin_src python
+x = list(range(100))
+
+print(x[-10:-1])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [90, 91, 92, 93, 94, 95, 96, 97, 98]
+
+*** Lists -- adding data
+
+If we want to add items to the end of the list, we use the =append= function:
+
+#+begin_src python :results pp output :post commentify(*this*)
+my_list = []
+
+my_list.append("all")
+my_list.append("dogs")
+my_list.append("bark")
+
+print(my_list)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => ['all', 'dogs', 'bark']
+
+*** Dictionaries
+
+Dictionaries are a little different from lists as each 'element' consists of a
+key-pair value. Let's have a look at some examples where the dictionaries contains
+*one* element:
+
+#+begin_src python :session *x2* :results none
+my_dictionary = {"key": "value"}
+my_other_dict = {"age": 25}
+#+end_src
+
+To access the /value/, we get it using =[key]= notation:
+
+#+begin_src python :results pp value :session *x2* :post commentify(*this*)
+my_other_dict["age"]
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 25
+
+*NOTE* keys are unique, i.e:
+
+#+begin_src python :results pp value :post commentify(*this*)
+my_dictionary = {"age": 25, "age": 15}
+my_dictionary["age"]
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 15
+
+*** Dictionaries
+
+The key in the dictionary doesn't necessarily need to be a string. For example, in
+this case, we have created two key-pair elements, where the keys to both are tuples
+of numbers.
+
+#+begin_src python :results pp output :post commentify(*this*)
+my_dictionary = {(1, 2): "square", (3, 4): "circle"}
+
+print(my_dictionary[(1, 2)])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => square
+
+*** Dictionaries -- adding data
+
+If we want to add data to a dictionary, we simply perform the accessor method with a
+key that is not in the dictionary:
+
+#+begin_src python :results pp output :post commentify(*this*)
+my_dict = {}
+
+my_dict["name"] = "James"
+my_dict["age"] = 35
+
+print(my_dict)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => {'name': 'James', 'age': 35}
+
+*** Dictionaries -- Quick Exercise
+
+- Create a dictionary for the following address, and assign it a variable name
+  called =address=:
+
+#+ATTR_LATEX: :booktabs t
+|--------+---------------|
+| Key    | Value         |
+|--------+---------------|
+| number | 22            |
+| street | Bakers Street |
+| city   | London        |
+|--------+---------------|
+
+- Print out the address's street name using the =[ ]= accessor with the correct key.
+
+*** Tuples
+
+#+begin_src python :session *x3* :results none
+my_tuple = (1, 56, -2)
+#+end_src
+
+Like lists, elements of the tuple can be accessed by their position in the list,
+starting with the 0-th element:
+
+#+begin_src python :session *x3* :results output :post commentify(*this*) 
+print(my_tuple[0])  # => 1
+print(my_tuple[1])  # => 56
+print(my_tuple[2])  # => -2
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 1
+: # => 56
+: # => -2
+
+*** Tuples
+
+Unlike lists, tuples cannot be changed after they've been created. We say they are
+*immutable*. So this will *not* work:
+
+#+begin_src python :session *x3* :results value :post commentify(*this*)
+my_tuple[2] = "dogs"  # creates an Error
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Traceback (most recent call last):
+:   File "<stdin>", line 1, in <module>
+:   File "/tmp/pyKdIIcx", line 18, in <module>
+:   File "<string>", line 1, in <module>
+: TypeError: 'tuple' object does not support item assignment
+
+*** Sets
+
+Sets in Python are like tuples, but contain only unique elements.
+
+You can use the =set( )= function (*more on functions later!*), supplying a list, to create a set:
+
+#+begin_src python :results value pp :post commentify(*this*)
+my_set = set([1, 2, 2, 2, 3, 4])
+my_set
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => {1, 2, 3, 4}
+
+Notice how there is only one '2' in the resulting set, duplicate elements are removed.
+
+*** Sets -- adding data
+
+If we want to add data to a set, we use the =.add()= method. The element used as an
+argument to this function will only be added to the set if it is not already in the
+set.
+
+#+begin_src python :results output pp :post commentify(*this*)
+my_set = set([])
+
+my_set.add(1)
+my_set.add(2)
+my_set.add(1)
+
+print(my_set)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => {1, 2}
+
+** Conditional expressions
+*** If statement
+
+If statements allow for branching paths of execution. In other words, we can execute
+some statements if some conditions holds (or does not hold).
+
+The structure of a simple if statement is:
+
+#+begin_src python
+if <condition>:
+    <body>
+#+end_src
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 2
+y = "stop"
+
+if x < 5:
+    print("X is less than five")
+if y == "go":
+    print("All systems go!!")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => X is less than five
+
+*** If statement
+
+In the previous example, the first =print= statement was only executed if the =x < 5=
+evaluates to =True=, but in python, we can add another /branch/ if the condition
+evaluates to =False=. This branch is denoted by the =else= keyword.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 10
+
+if x < 5:
+    print("X is less than five")
+else:
+    print("X is greater than or equal to five")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => X is greater than or equal to five
+
+*** If statement -- does it contain a substring?
+
+We can check if a string exists within another string using the =in= keyword. This
+returns a Boolean value, so we can use it as a condition to an =if= statement.
+
+#+begin_src python
+x = "This is a string that contains some text"
+
+if "text" in x:
+    print("It exists")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => It exists
+
+
+*** If statement -- Quick Exercise 1
+
+- Create a variable called =age= and assign the value of this variable =35=.
+- Create and =if= statement that prints the square of =age= if the value of =age= is more
+  than 24.
+- This if statement should have an else condition, that prints =age= divided by 2.
+- What is the printed value?
+
+*** If statement
+
+If we wanted to add multiple potential paths, we can add more using the =elif
+<condition>= keywords.
+
+Note: The conditions are checked from top to bottom, only executing the else if none
+evaluate to =True=. The first condition that evaluates to =True= is executed, the rest
+are skipped.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 15
+
+if x < 5:
+    print("X is less than five")
+elif x > 10:
+    print("X is greater than ten")
+else:
+    print("X is between five and ten")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => X is greater than ten
+
+*** If statement
+
+Sometimes, we might want to conditionally set a variable a value. For this, we can
+use an /inline/ if statement. The form of an inline if statement is:
+
+=<value-if-true> if <condition> else <value-if-false>=
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 10
+
+y = 5 if x > 5 else 2
+
+print(x + y)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 15
+
+*** Boolean Logic
+
+As we've seen, =if= statements are checking for conditions to evaluate to =True= or
+=False=. In python we use various comparison operators to check for conditions that
+evaluate to =Booleans=.
+
+Comparison operators
+
+- =<= less than
+- =<== less than or equal to
+- =>= greater than
+- =>== greater than or equal to
+- ==== is equal to
+- =not= negation
+
+If we want to check for multiple conditions, we can use conjunctives or disjunctive
+operators to combine the Boolean formulas.
+
+Conjunctives/Disjunctives
+
+- =and= all boolean expressions must evaluate to true
+- =or= only one expression needs to be true
+
+*** Boolean Logic
+
+Using =not= you can invert the Boolean result of the expression.
+
+#+begin_src python  :results pp output :session :exports both :post commentify(*this*)
+print(not True)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => False
+
+#+begin_src python  :results pp output :session :exports both :post commentify(*this*)
+x = 10
+
+if not x == 11:
+    print("X is not 11")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => X is not 11
+  
+*** Boolean Logic
+
+Let's take an example using the =and= keyword. =and= here is checking that =x= is above or
+equal to 10 *and* =y= is exactly 5. If either of the conditions is =False=, python will
+execute the =else= path (if there is one, of course!).
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 10
+y = 5
+
+if x >= 10 and y == 5:
+    z = x + y
+else:
+    z = x * y
+
+print(z)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 15
+
+*** Boolean Logic
+
+Here we see the use of the =or= keyword. If any of the conditions evaluates to =True=
+then the whole condition evaluates to =True=.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 10
+y = 5
+
+if x < 5 or y == 5:
+    print("We got here!")
+else:
+    print("We got here instead...")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => We got here!
+
+*** Boolean Logic
+
+Note: =or= is short-circuiting. This means that if tests the conditions left-to-right,
+and when it finds something that is =True= it stops evaluating the rest of the
+conditions.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 10
+
+if x < 20 or print("We got to this condition"):
+    print("The value of x is", x) 
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => The value of x is 10
+
+*** Boolean Logic
+
+If your Boolean logic refers to a single variable, you can combine the logic without
+the =and= and =or=. But its not always common.
+
+For example,
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 7
+
+if x < 10 and x > 4:
+    print("X is between 5 and 10")
+#+end_src
+
+Can be the same as:
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 7
+
+if 5 < x < 10:
+    print("X is between 5 and 10")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => X is between 5 and 10
+
+** Iteration
+*** For loop
+
+Looping or iteration allows us to perform a series of actions multiple times. We are
+going to start with the more useful =for= loop in python. The syntax of a =for= loop is:
+
+#+begin_src python
+for <variable_name> in <iterable>:
+    <body>
+#+end_src
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+for i in range(3):
+    print(i)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 0
+: # => 1
+: # => 2
+
+*** For loop -- break
+
+The previous example loops over the body a fix number of times. But what if we wanted
+to stop looping early? Well, we can use the =break= keyword. This keyword will exit the
+body of the loop.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+for i in range(10):
+    if i > 5:
+        break
+    print(i)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 0
+: # => 1
+: # => 2
+: # => 3
+: # => 4
+: # => 5
+
+*** For loop -- continue
+
+A different keyword you might want to use is =continue=. Continue allows you to move/skip
+onto the next iteration without executing the entire body of the =for= loop.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    print(i)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 1
+: # => 3
+: # => 5
+: # => 7
+: # => 9
+
+*** For loop -- ranges
+
+Instead of using =continue= like in the previous slide, the =range= function provides us
+with some options:
+
+=range(start, stop, step)=
+
+In this example, we are starting our iteration at 10, ending at 15, but stepping the
+counter 2 steps.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+for i in range(10, 15, 2):
+    print(i)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 10
+: # => 12
+: # => 14
+
+*** For loop -- loop over collections
+
+For loops allow us to iterate over a collection, taking one element at a time. Take
+for example, a list, and for every item in the list we print its square.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+my_list = [1, 5, 2, 3, 5.5]
+
+for el in my_list:
+    print(el**2)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 1
+: # => 25
+: # => 4
+: # => 9
+: # => 30.25
+
+*** For loop -- loop over collections
+
+This kind of looping can work for tuples and sets, but as we have seen, dictionaries
+are a little different. Every 'element' in a dictionary consists of a key and a
+value. Therefore when we iterate over items in a dictionary, we can assign the key
+and value to different variables in the loop.
+
+*Note* the use of the =.items()= after the dictionary. We will explore this later.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+my_dict = {"name": "jane", "age": 35, "loc": "France"}
+
+for el_key, el_val in my_dict.items():
+    print("Key is:", el_key, " value is: ", el_val)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Key is: name  and the value is:  jane
+: # => Key is: age  and the value is:  35
+: # => Key is: location  and the value is:  France
+
+*** For loop -- loop over collections
+
+We could also loop over the keys in the dictionary using the =.keys()= method instead
+of =.items()=.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+my_dict = {"name": "jane", "age": 35, "loc": "France"}
+
+for the_key in my_dict.keys():
+    print(the_key)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => name
+: # => age
+: # => loc
+
+*** For loop -- loop over collections
+
+Or, the values using =.values()=.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+my_dict = {"name": "jane", "age": 35, "loc": "France"}
+
+for the_value in my_dict.values():
+    print(the_value)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => jane
+: # => 35
+: # => France
+
+*** For loop -- List comprehensions
+
+We have seen previously how =for= loops work. Knowing the syntax of a =for= loop and
+wanting to populate a list with some data, we might be tempted to write:
+
+#+begin_src python
+x = []
+for i in range(3):
+    x.append(i)
+
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2]
+
+While this is perfectly valid Python code, Python itself provides 'List
+comprehensions' to make this process easier.
+
+#+begin_src python
+x = [i for i in range(3)]
+#+end_src
+
+*** For loop -- List comprehensions -- syntax
+
+The syntax of a list comprehensions is:
+
+#+begin_src python
+[ <variable> for <variable> in <iterable> ]
+#+end_src
+
+We can also perform similar actions with a dictionary
+
+#+begin_src python
+[ <key>, <value> for <key>, <value> in <dictionary.items()> ]
+#+end_src
+
+*** For loop -- List comprehensions -- using =if='s
+
+Perhaps we only want to optionally perform an action within the list comprehension?
+Python allows us to do this with the inline =if= statement we've seen in the previous lecture.
+
+#+begin_src python
+x = [i if i < 5 else -1 for i in range(7)]
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2, 3, 4, -1, -1]
+
+We add the inline =<var> if <condition> else <other-var>= before the =for= loop part of
+the comprehension.
+
+*** For loop -- List comprehension -- using =if='s
+
+There is another type of =if= statement in a list comprehension, this occurs when we
+don't have an =else=.
+
+#+begin_src python
+x = [i for i in range(7) if i < 3]
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [0, 1, 2]
+
+In this example, we're only 'adding' to the list if the condition ($i < 3$) is true,
+else the element is not included in the resulting list.
+
+*** For loop -- List comprehensions -- multiple =for='s
+
+If we like, we can also use nested for loops by simply adding another for loop into
+the comprehension.
+
+#+begin_src python
+x = [(i, j) for i in range(2) for j in range(2)]
+
+print(x)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => [(0, 0), (0, 1), (1, 0), (1, 1)]
+
+In this example, we're creating a tuple for each element, effectively each
+combination of 1 and 0.
+
+
+*** For loop -- List comprehensions -- dictionary
+
+Python doesn't restrict us to list comprehensions, but we can do a similar
+operation to create a dictionary.
+
+#+begin_src python
+x = [2, 5, 6]
+y = {idx: val for idx, val in enumerate(x)}
+print(y)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => {0: 2, 1: 5, 2: 6}
+
+Here, every item in =x= has been associated with its numerical index as a key thanks to
+the =enumerate= function that returns both the index and value at iteration in the for loop.
+
+
+*** For loop -- Quick Exercise
+
+- Create a list of elements:
+
+  + 2
+  + "NA"
+  + 24
+  + 5
+
+- Use a =for= loop to iterate over this list.
+- In the body of the =for= loop, compute $2x + 1$, where $x$ is the current element of
+  the list.
+- Store the result of this computation in a new variable $y$, and then print y.
+
+*Note* You cannot compute $2x + 1$ of "NA", therefore you will to use an =if= statement
+to skip onto the next iteration if it encounters this. *Hint* try: =type(...) =!== =str=
+
+*** While loop
+
+A =while= loop is another looping concept like =for= but it can loop for an arbitrary
+amount of times. A =while= loop looks to see if the condition is =True=, and if it is, it
+will execute the body.
+
+The syntax of the while loop is:
+
+#+begin_src python
+while <condition>:
+    <body>
+#+end_src
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+i = 0
+
+while i < 3:
+    print(i)
+    i = i + 1
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 0
+: # => 1
+: # => 2
+
+*** While loop
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 0
+y = 1
+
+while x + y < 10:
+    print("X is,", x, "and y is", y)
+    x = x + 1
+    y = y * 2
+
+print("X ended as", x, ", while y is", y)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => X is, 0 and y is 1
+: # => X is, 1 and y is 2
+: # => X is, 2 and y is 4
+: # => X ended as 3 , while y is 8
+
+** Functions
+*** Functions
+
+Functions are a re-usable set of instructions that can take some arguments and
+possible return something.
+
+The basic structure of a function is as follows:
+
+#+begin_src python
+def <function_name>(args*):
+    <body>
+    (optional) return
+#+end_src
+
+- =args*= are 0 to many comma separated symbols.
+- =body= is to be indented by 4 spaces.
+
+This is only the function /definition/ however. To make it do something, we must /'call'/
+the function, and supply the arguments as specified in the definition.
+
+#+begin_src python
+def say_hello():   # function definition
+    print("Hello, World!")
+
+say_hello()  # calling the function
+#+end_src
+
+*** Functions
+
+We've already seen some functions provided by Python.
+
+=print= itself is a function with a single argument: what we want to print.
+
+#+begin_src python
+print("Hello, World!")
+# ^         ^
+# |         |
+# | user supplied argument
+# |
+# function name 
+#+end_src
+
+=set= is another function that takes a single argument: a collection of data with which
+to make a set:
+
+#+begin_src python
+set([1, 2, 2, 3, 4])
+#+end_src
+
+*** Example usage of a function
+
+Let's make a function that takes two numbers and adds them together:
+
+#+begin_src python :results output pp :post commentify(*this*)
+def my_addition(a, b):
+    result = a + b
+    return result
+
+x = 2
+y = 3
+z = my_addition(2, 3)  # return 5 and stores in z
+print(z)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 5
+
+*** Functions -- Quick Exercise
+
+- Create a function called =my_square=. This function should take one argument (you can
+  call this argument what you like).
+- The body of the function should compute and return the square of the argument.
+- Call this function with =5.556=.
+- Store the result of calling this function, and print it.
+- What is the result?
+
+*** Re-usability with Functions
+
+Functions are better illustrated through some examples, so let's see some!
+
+#+begin_src python
+name_1 = "john"
+name_2 = "mary"
+name_3 = "michael"
+
+print("Hello " + name_1 + ", how are you?")
+print("Hello " + name_2 + ", how are you?")
+print("Hello " + name_3 + ", how are you?")
+#+end_src
+
+The above is pretty wasteful. Why? Because we are performing the exact same
+operation multiple times, with only the variable changed.
+
+*** Re-usability with Functions
+
+By abstracting the actions we want to perform into a function, we can ultimately
+reduce the amount of code we write. /Be a lazy programmer!/
+
+#+begin_src python
+name_1 = "john"
+name_2 = "mary"
+name_3 = "michael"
+
+def say_hello(name):
+    print("Hello " + name + ", how are you?")
+
+say_hello(name_1)
+say_hello(name_2)
+say_hello(name_3)
+#+end_src
+
+In this example, we've used the function as defined with the =def= pattern to write
+the =print= statement once. Then, we've called the function with each variable as its
+argument.
+
+*** Named parameters
+
+We've seen in previous examples that, when we create a function, we give each of the
+arguments (if there are any) a name.
+
+When calling this function, we can specify these same names such as:
+
+#+begin_src python :results output pp :post commentify(*this*)
+def say_hello(name):
+    print("Hello,", name)
+
+say_hello("Micheal")
+say_hello(name="Micheal")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Hello, Micheal
+: # => Hello, Micheal
+
+*** Named parameters
+
+By specifying the name of the parameter we're using with the called function, we can
+change the order
+
+#+begin_src python :results output pp :post commentify(*this*)
+def say_greeting(greeting, name):
+    print(greeting, name, "I hope you're having a good day")
+
+say_greeting(name="John", greeting="Hi")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Hi John I hope you're having a good day
+
+*** Optional/Default/Positional arguments
+
+When we call a function with arguments without naming them, we are supplying them by
+/position/.
+
+#+begin_src python
+def say_greeting(greeting, name):
+    print(greeting, name, "I hope you're having a good day")
+
+say_greeting(#first position, #section position)
+#+end_src
+
+The first position gets mapped to variable name of =greeting= inside the body of the
+=say_greeting= function, while the second position gets mapped to =name=. 
+
+*** Optional/Default/Positional arguments
+
+Sometimes when creating a function we may want to use default arguments, these are
+arguments that are used if the call to the function does not specify what their value
+should be. For example.
+
+#+begin_src python :results output pp :post commentify(*this*)
+def say_greeting(name, greeting="Hello"):
+    print(greeting, name, "I hope you're having a good day")
+
+say_greeting("John")
+say_greeting("John", "Hi")  # supply greeting as positional argument
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Hello John I hope you're having a good day
+: # => Hi John I hope you're having a good day
+
+*** Optional/Default/Positional arguments
+
+*Note* if you supply a default argument in the function definition, all arguments after
+this default argument must also supply a default argument.
+
+So, this *won't* work:
+
+#+begin_src python :results output pp :post commentify(*this*)
+def say_greeting(name="Jane", greeting):
+    print(greeting, name, "I hope you're having a good day")
+
+say_greeting("John", "Hi")
+#+end_src
+
+*** Recap on arguments
+
+#+begin_src python
+# defining the function
+
+def say_greeting(name, greeting)  # no default arguments
+def say_greeting(name, greeting="Hello")  # greeting is a default argument
+def say_greeting(name="Jane", greeting="Hello")  # both arguments have a default
+
+# calling the functions
+
+say_greeting("John", "Hi")  # both arguments are provided by position
+say_greeting(name="John", greeting="Hi")  # arguments are supplied by name
+say_greeting(greeting="Hi", name="John")  # the position of named arguments do not matter
+#+end_src
+
+*** Function doc-strings
+
+To make it clear for a human to quickly understand what a function is doing, you can
+add an optional doc-string. This is a string that is added directly after the initial
+definition of the function:
+
+#+begin_src python
+def my_function(x, y):
+    """I am a docstring!!!"""
+    return x + y
+#+end_src
+
+Some common use cases for docstrings are explaining what the parameters are that it
+expects, and what it returns.
+
+*** Multi-line docstrings
+
+If your explanation is a little longer than a line, a multiline docstring can be
+created as long as you're using ="""= three quotation marks either side of the string
+
+#+begin_src python
+def my_function(x, y):
+    """
+    This is my realllly long docstring
+    that explains how the function works. But sometimes
+    its best not to explain the obvious
+    """
+    return x + y
+#+end_src
+
+*** Understanding scope
+
+In this example we have two scopes which can be easily seen by the indentation. The
+first is the /global/ scope. The second scope is the scope of the function. The scope
+of the function can reference variables in the larger scope. But once the function
+scope exits, we can no longer reference the variables from the function.
+
+#+begin_src python  :results pp output :session :exports both :post commentify(*this*)
+x = 10
+
+def compute_addition(y):
+    return x + y
+
+print(compute_addition(10))
+print(x)
+print(y)  # does not work
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 20
+: # => 10
+
+*** Understanding scope
+
+Even though we can reference the global scope variable from the scope of the
+function, we can't modify it like this:
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 10
+
+def compute_addition_2(y):
+    x = x + 5  # error local variable referenced before assignment
+    return x + y
+
+print(compute_addition_2(10))
+#+end_src
+
+*** Understanding scope
+
+If we really wanted to reference a variable in a global scope and modify its value,
+we could use the =global= keyword. Doing this makes the
+function output something different every time it is called. This can make it
+difficult to debug incorrect programs.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 10
+
+def compute_addition_2(y):
+    global x
+    x = x + 5
+    return x + y
+
+print(compute_addition_2(10))
+print(x)
+print(compute_addition_2(10))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 25
+: # => 15
+: # => 30
+
+*** Understanding scope
+
+In almost all cases, avoid using global variables. Instead pass the variables as
+parameters. This can reduce a source of potential errors and ensure that if a
+function is called multiple times, the output can be more consistent and expected.
+
+#+begin_src python :results pp output :session :exports both :post commentify(*this*)
+x = 10
+
+def compute_addition_3(x, y):
+    x = x + 5
+    return x + y
+
+print(compute_addition_3(x, 10))
+print(x)
+print(compute_addition_3(x, 10))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 25
+: # => 10
+: # => 25
+
+* Exercise
+
+** Library system
+
+*** Use what you've learnt!
+
+We're going to create a library system to help locate and lookup information about
+books. For example, we want to know the author of book called 'Moby Dick'.
+
+To create this system, we are going to do it in stages. First, we will want to create
+our database of books:
+
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align XXX :booktabs t
+|---------------------------------+------------------------+--------------|
+| Title                           | Author                 | Release Date |
+|---------------------------------+------------------------+--------------|
+| Moby Dick                       | Herman Melville        |         1851 |
+| A Study in Scarlet              | Sir Arthur Conan Doyle |         1887 |
+| Frankenstein                    | Mary Shelley           |         1818 |
+| Hitchhikers Guide to the Galaxy | Douglas Adams          |         1879 |
+|---------------------------------+------------------------+--------------|
+
+Our database is going to be a list of dictionaries. Where each dictionary is a row
+from this table. For example, one of the dictionaries will have the key "title" and a
+value "Moby Dick".
+
+Create this database and call it =db=.
+
+*** Locating Books
+
+- Create a function called =locate_by_title= that takes the database to look through,
+  and the title to look up as arguments.
+- This function should check each dictionary, and if the title is the same as what
+  was searched for, it should return the whole dictionary.
+- Test this function by calling the =locate_by_title= function with =db= and
+  ="Frankenstein"=. You should get ={"title": "Frankenstein", "author": ...}=.
+
+*Note* you should include docstrings to describe the arguments to the function, and
+what it will return.
+
+*** Selecting a subset
+
+Now that we can find books by the title name, we also want to find all books that
+were released after a certain data.
+
+- Create a function called =books_released_after= that takes two arguments: the
+  database to look through, and the year.
+- This function should look through the database, if it finds a book that was
+  released after the year, it should add it to a list of books that is returned from
+  this function.
+- Test this function by calling =books_released_after= with =db= and =1850=. This function
+  call should return a list containing three dictionaries. The first entry should be
+  'Moby Dick' and the section should be 'A Study in Scarlet', etc.
+
+*** Updating our database
+
+Oh no! 'Hitchhikers Guide to the Galaxy' was released in 1979 not 1879, there must
+have been a typo. Let's create a function to update this.
+
+- Create a function called =update=, that takes 5 arguments: 1) the database to
+  update, 2) the key of the value we want to update 3) the value we want to update it
+  to 4) the key we want to check to find out if we have the correct book and 5) the
+  value of the key to check if we have the correct book.
+
+  #+begin_src python
+  update(db,
+	 key="release year",
+	 value=1979,
+	 where_key="title",
+	 where_value="Hitchhikers Guide to the Galaxy")
+  #+end_src
+
+*** Extended exercise
+
+- In the previous steps we created functions =locate_by_title= and
+  =books_released_after=. These two functions are similar in a way that they are
+  selecting a subset of our database (just by different criteria).
+- For this harder exercise, can we create a single function called =query= that allows
+  us to do both =locate_by_title= and =books_released_after=.
+- An example call to this =query= function may look like:
+
+  #+begin_src python
+  results = query(db,
+		  where_key="title",
+		  where_value="Moby Dick",
+		  where_qualifier="exactly")
+  #+end_src
+
+- =where_qualifier= should accept strings like ="exactly"=, ="greater than"=, and ="less
+  than"=.
+  
+# Local Variables:
+# org-latex-minted-options: (("frame" "lines") ("linenos=true") ("firstnumber=last") ("fontsize=\\footnotesize") ("bgcolor=LightGray") ("xleftmargin=5pt") ("tabsize=2") ("breaklines=true") ("numbersep=10pt"))
+# End:

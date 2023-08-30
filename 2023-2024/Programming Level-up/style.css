@@ -1,0 +1,10 @@
+html {border-left: 20px solid #2d55cb; background: #fdfcf8;}
+body {margin-left: 100px; max-width: 80ch; font-family: 'Times New Roman'; line-height: 1.9em; font-size: 1.2em;}
+h1,h2,h3,h4 {margin-top: 50px;}
+h2 {padding-bottom: 15px; margin-left: -50px; font-size: 1.7em;}
+p {-moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased !important; -moz-font-smoothing: antialiased !important; text-rendering: optimizelegibility !important; letter-spacing: .03em;}
+.org-src-container {line-height: initial;}
+div#postamble {margin-left:-80px;margin-top:100px;}
+pre {color: white; border-radius:10px;background-color:#191825;}
+a {color: #2456ec;}
+a:visted {color: #2456ec;}

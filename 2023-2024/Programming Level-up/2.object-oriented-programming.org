@@ -1,0 +1,641 @@
+#+title: Programming Level-up
+#+SUBTITLE: Lecture 2 - More advanced Python & Classes
+#+date: 20th September 2022
+#+author: Jay Morgan
+#+startup: beamer
+#+include: ./header.org
+
+#+name: commentify
+#+begin_src emacs-lisp :var result="" :exports none
+(with-output-to-string
+  (princ "Results: \n")
+  (dolist (result-item (split-string result "\n"))
+    (princ (concat "# => " (format "%s\n" result-item)))))
+#+end_src
+
+* Proxy
+
+** Univ-tln proxy
+
+*** Setting up a proxy in Linux -- environment variables
+
+Environment variables are variables that are set in the Linux environment and are
+used to configure some high-level details in Linux.
+
+The command to create/set an environment is:
+
+#+begin_src
+export VARIABLE_NAME=''
+#+end_src
+
+Exporting a variable in this way will mean =VARIABLE_NAME= will be accessible while
+you're logged in. Every time you log in you will have to set this variable again.
+
+*** Setting up a proxy in Linux -- univ-tln specific
+
+In the université de Toulon, you're required to use the university's proxy server to
+access the internet. Therefore, in Linux at least, you will have to tell the system
+where the proxy server is with an environment variable.
+
+#+begin_src bash
+export HTTP_PROXY='<username>:<password>@proxy.univ-tln.fr:3128'
+export HTTPS_PROXY='<username>:<password>@proxy.univ-tln.fr:3128'
+export FTP_PROXY='<username>:<password>@proxy.univ-tln.fr:3128'
+#+end_src
+
+*NOTE*: Watch out for special characters in your password! They will have to be URL encoded.
+
+*** Setting up a proxy in the .bashrc
+
+If you don't wish to set the variable every time log in, you should enter the same
+commands into a =.bashrc= in your home directory.
+
+#+begin_src bash
+export HTTP_PROXY='...'
+export HTTPS_PROXY='...'
+export FTP_PROXY='...'
+#+end_src
+
+#+RESULTS:
+
+When you log in, the =.bashrc= file will be run and these variables will be set for you.
+
+* Dealing with Errors
+
+** Exceptions
+
+*** Dealing with Errors
+
+When programming, its good to be defensive and handle errors gracefully. For example,
+if you're creating a program, that as part of its process, reads from a file, its
+possible that this file may not exist at the point the program tries to read it. If
+it doesn't exist, the program will crash giving an error such as: =FileNotfoundError=.
+
+Perhaps this file is non-essential to the operation of the program, and we can
+continue without the file. In these cases, we will want to appropriately catch the
+error to prevent it from stopping Python.
+
+*** Try-catch
+
+Try-catches are keywords that introduce a scope where the statements are executed,
+and if an error (of a certain type IndexError in this example) occurs, different
+statements could be executed.
+
+In this example, we are trying to access an element in a list using an index larger
+than the length of the list. This will produce an =IndexError=. Instead of exiting
+Python with an error, however, we can catch the error, and print a string.
+
+#+begin_src python
+x = [1, 2, 3]
+
+try:
+    print(x[3])
+except IndexError:
+    print("Couldn't access element")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Couldn't access element
+
+*** Try-catch -- capturing messages
+
+If we wanted to include the original error message in the print statement, we can use
+the form:
+
+#+begin_src
+except <error> as <variable>
+#+end_src
+
+This provides us with an variable containing the original error that we can use later
+on in the try-catch form.
+
+#+begin_src python
+x = [1, 2, 3]
+
+try:
+    print(x[3])
+except IndexError as e:
+    print(f"Couldn't access elements at index beacuse: {e}")
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => Couldn't access elements at index beacuse: list index out of range
+
+*** Types of exceptions
+
+There are numerous types of errors that could occur in a Python. Here are just some
+of the most common.
+
+- IndexError -- Raised when a sequence subscript is out of range.
+- ValueError -- Raised when an operation or function receives an argument that has the right type but an inappropriate value
+- AssertionError -- Raised when an assert statement fails.
+- FileNotFoundError -- Raised when a file or directory is requested but doesn’t exist.
+
+The full list of exceptions in Python 3 can be found at: [[https://docs.python.org/3/library/exceptions.html]]
+
+*** Assertions
+
+One of the previous errors (=AssertionError=) occurs when an assert statement
+fails. Assert is a keyword provided to test some condition and raise an error if the
+condition is false. It typically requires less code than an =if=-statement that raises
+an error, so they might be useful for checking the inputs to functions, for example:
+
+#+begin_src python
+def my_divide(a, b):
+    assert b != 0
+    return a / b
+
+my_divide(1, 2)
+my_divide(1, 0)
+#+end_src
+
+Here we are checking that the divisor is not a 0, in which case division is not defined.
+
+* OOP
+** Classes
+
+*** Introduction to classes
+
+A class is some representation (can be abstract) of an object. Classes can be used to
+create some kind of structure that can be manipulated and changed, just like the ways
+you've seen with lists, dictionaries, etc.
+
+Classes allow us to perform Object-oriented Programming (OOP), where we represent
+concepts by classes.
+
+But to properly understand how classes work, and why we would want to use them, we
+should take a look at some examples.
+
+*** Basic syntax
+
+We're going to start off with the very basic syntax, and build up some more complex
+classes.
+
+To create a class, we use the =class= keyword, and give our new class a name. This
+introduces a new scope in Python, the scope of the class.
+
+Typically, the first thing we shall see in the class is the =__init__= function.
+
+#+begin_src python
+class <name_of_class>:
+    def __init__(self, args*):
+        <body>
+#+end_src
+
+*** Init method
+
+The =__init__= function is a function that gets called automatically as soon as a class
+is made. This init function can take many arguments, but must always start with a
+=self=.
+
+In this example, we are creating a class that represents an x, y coordinate. We've
+called this class =Coordinate=, and we've defined our init function to take an x and y
+values when the class is being created.
+
+*Note* its more typical to use titlecase when specifying the class name. So when
+reading code its easy to see when you're creating a class versus calling a
+function. You should use this style.
+
+#+begin_src python
+class Coordinate:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+#+end_src
+
+*** Instantiating
+
+To create an /instance/ of this class, call the name of the class as you would a
+function, and pass any parameters you've defined in the init function.
+
+In this example, we are creating a new vector using =Vector(...)= and we're passing the
+x and y coordinate.
+
+#+begin_src python
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+point_1 = Vector(5, 2)
+#+end_src
+
+*** Class variables
+
+In the previous example, we've been creating a class variables by using
+=self.<variable_name>=. This is telling Python /this class should have a variable of
+this name/.
+
+It allows then to reference the variable when working with the class.
+
+#+begin_src python
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.length = self.x + self.y
+
+point_1 = Vector(5, 2)
+print(point_1.x)
+print(point_1.y)
+print(point_1.length)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 5
+: # => 2
+: # => 7
+
+*** Class Methods
+
+A class can have many methods associated with it. To create a new method, we create a
+function within the scope of the class, remember that the first parameter of the
+function should be =self=.
+
+Even in these functions, we can refer to our =self.x= and =self.y= within this new
+function.
+
+You'll notice that to call this function, we using the =.length()= method similar to
+how we've worked with strings/lists/etc. This is because in Python, everything is an
+object!
+
+#+begin_src python
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def length(self):
+        return self.x + self.y
+
+
+my_point = Vector(2, 5)
+print(my_point.length())
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 7
+
+*** dunder-methods
+
+While we could, for example, create a function called =.print()=, sometimes we would
+like to use the in built functions like =print()=. When creating a class, there is a
+set of /dunder-methods/ (double-under to reference the two '=__=' characters either side
+of the function name).
+
+One of these dunder-methods is =__repr__=, which allows us to specify how the object
+looks when its printed.
+
+*** dunder-methods
+
+#+begin_src python
+class OldVector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+print(OldVector(2, 5))
+
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+
+print(Vector(2, 5))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => <__main__.OldVector object at 0x7f658721e250>
+: # => Vector(2, 5)
+
+*** dunder-methods
+
+There are many more dunder-methods you should know when creating classes. We shall go through:
+
+- =__len__= -- specify how the length of the class should be computed.
+- =__getitem__= -- how to index over the class
+- =__call__= -- how to use the class like a function
+- =__iter__= -- what to do when iteration starts
+- =__next__= -- what to do at the next step of the iteration
+
+*** =__len__=
+
+The =__len__= function allows us to specify how the =len()= function acts on the
+class. Take this hypothetical dataset. We create a =__len__= function that returns the
+length of the unique elements in the dataset.
+
+#+begin_src python
+class Dataset:
+    def __init__(self, data):
+        self.data = data
+
+    def __len__(self):
+        """Return the length of unique elements"""
+        return len(set(self.data))
+
+data = Dataset([1, 2, 3, 3, 3, 5, 1])
+print(len(data))
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 4
+
+*** =__getitem__=
+
+Next =__getitem__= allows us to index over a class. This new function must include =self=
+and a variable to pass the index. Here I've used =idx=. In this function I am simply
+indexing on the on the classes =self.data=.
+
+#+begin_src python
+class Dataset:
+    def __init__(self, data):
+        self.data = data
+
+    def __getitem__(self, idx):
+        return self.data[idx]
+
+data = Dataset([1, 2, 3, 3, 3, 5, 1])
+print(data[2])
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 3
+
+*** =__call__=
+
+In a small number of cases, it is nice to use the class just like a function. This is
+what =__call__= allows us to do. In this function we specify what should happen when
+class is 'called' like a function. In this simple example, we are creating a function
+that prints the type of food being used as a parameter to the function.
+
+#+begin_src python
+class Jaguar:
+    def __call__(self, food):
+        print(f"The jaguar eats the {food}.")
+
+food = "apple"
+animal = Jaguar()
+
+animal(food)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => The jaguar eats the apple.
+
+*** =__iter__= and =__next__=
+
+=__iter__= and =__next__= allow us to make our class iterable, i.e. we can use it in a
+=for= loop for example.
+
+The =__iter__= function should define what happens when we start the iteration, and
+=__next__= defines what happens at every step of the iteration.
+
+Let's take a look at an example where we have an iterable set of prime numbers.
+
+*** =__iter__= and =__next__=
+
+#+begin_src python :session *primes*
+class Primes:
+    def __init__(self):
+        self.primes = [2, 3, 5, 7, 11]
+
+    def __iter__(self):
+        self.idx = 0
+        return self
+
+    def __len__(self):
+        return len(self.primes)
+
+    def __next__(self):
+        if self.idx < len(self):
+            item = self.primes[self.idx]
+            self.idx += 1
+            return item
+        else:
+            raise StopIteration
+#+END_SRC
+
+*** =__iter__= and =__next__=
+
+And now we can iterate over this class
+
+#+begin_src python :session *primes*
+prime_numbers = Primes()
+
+for prime_number in prime_numbers:
+    print(prime_number)
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => 2
+: # => 3
+: # => 5
+: # => 7
+: # => 11
+
+*** Inheritance
+
+One special thing about OOP is that its normally designed to provide inheritance --
+this is true in Python. Inheritance is where you have a base class, and other classes
+inherit from this base class. This means that the class that inherits from the base
+class has access to the same methods and class variables. In some cases, it can
+override some of these features.
+
+Let's take a look an example.
+
+#+begin_src python :session *oop*
+class Animal:
+    def growl(self):
+        print("The animal growls")
+
+    def walk(self):
+        raise NotImplementError
+#+end_src
+
+Here we have created a simple class called Animal, that has two functions, one of
+which will raise an error if its called.
+
+*** Inheritance
+
+We can inherit from this Animal class by placing our base class in =()= after the new
+class name.
+
+Here we are creating two classes, Tiger and Duck. Both of these new classes inherit
+from Animal. Also, both of these classes are overriding the walk functions. But they
+are not creating a growl method themselves.
+
+#+begin_src python :session *oop*
+class Tiger(Animal):
+    def walk(self):
+        print("The Tiger walks through the jungle")
+        
+class Duck(Animal):
+    def walk(self):
+        print("The Duck walks through the jungle")
+#+end_src
+
+*** Inheritance
+
+Look at what happens when we create instances of these classes, and call the
+functions. First we see that the correct method has been called. I.e. for the duck
+class, the correct =walk= method was called.
+
+#+begin_src python :session *oop*
+first_animal = Tiger()
+second_animal = Duck()
+
+first_animal.walk()
+second_animal.walk()
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => The Tiger walks through the jungle
+: # => The Duck walks through the jungle
+
+*** Inheritance
+
+But what happens if we call the =.growl()= method?
+
+#+begin_src python :session *oop*
+first_animal.growl()
+second_animal.growl()
+#+end_src
+
+#+RESULTS:
+: Results: 
+: # => The animal growls
+: # => The animal growls
+
+We see that it still works. Even though both Duck and Tiger didn't create a =.growl()=
+method, it inherited it from the base class Animal. This works for class methods and
+class variables.
+
+* Exercise
+
+** Exercise
+
+*** An object based library system
+
+We're going to improve on our library system from last lecture. Instead of a
+=functional= style of code, we're going to use a OOP paradigm to create our solution.
+
+Like last time, we're going to create our solution one step at a time.
+
+First, we need to create our class called =Database=. This database is going to take an
+optional parameter in its init function -- the data. If the user specifies data
+(represented as a list of dictionaries like last time), then the class will populate
+a class variable called data, else this class variable will be set to an empty list.
+
+Summary:
+- Create a class called =Database=.
+- When creating an instance of =Database=, the user can optionally specify a list of
+  dictionaries to initialise the class variable =data= with. If no data is provided,
+  this class variable will be initialised to an empty list.
+
+*** Adding data
+
+We will want to include a function to add data to our database.
+
+Create a class method called =add=, that takes three arguments (in addition to =self= of
+course), the title, the author, and the release date.
+
+This add function adds the new book entry to the end of =data=. Populate this database
+with the following information.
+
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align XXX :booktabs t
+|---------------------------------+------------------------+--------------|
+| Title                           | Author                 | Release Date |
+|---------------------------------+------------------------+--------------|
+| Moby Dick                       | Herman Melville        |         1851 |
+| A Study in Scarlet              | Sir Arthur Conan Doyle |         1887 |
+| Frankenstein                    | Mary Shelley           |         1818 |
+| Hitchhikers Guide to the Galaxy | Douglas Adams          |         1879 |
+|---------------------------------+------------------------+--------------|
+
+*** Locating a book
+
+Create a class method called locate by title that takes the title of the book to look
+up, and returns the dictionary of all books that have this title. Unlike last time,
+we don't need to pass the =data= as an argument, as its contained within the class.
+
+*** Updating our database
+
+Create a class method called =update= that takes 4 arguments:, 1) the key of the value
+we want to update 2) the value we want to update it to 3) the key we want to check
+to find out if we have the correct book and 4) the value of the key to check if we
+have the correct book.
+
+#+begin_src python
+db.update(key="release_date", value=1979, where_key="title",
+	  where_value="Hitchhikers Guide to the Galaxy")
+#+end_src
+
+Use this to fix the release data of the Hitchhiker's book.
+
+*** Printed representation
+
+Using the =__str__= dunder-method (this is similar to =__repr__= as we saw before),
+create a function that prints out a formatted representation of the entire database
+as a string. Some of the output should look like:
+
+#+begin_src python
+Library System
+--------------
+
+Entry 1:
+- Name: Moby Dick
+- Author: Herman Melville
+- Release Date: 1851
+...
+#+end_src
+
+*** Extending our OOP usage
+
+So far we've used a list of dictionaries. One issue with this is that there is no
+constraints on the keys we can use. This will certainly create problems if certain
+keys are missing.
+
+Instead of using dictionaries. We can create another class called =Book= that will take
+three arguments when it is initialised: =name=, =author=, and =release_date=. The init
+function should initialise three class variables to save this information.
+
+Modify the database to, instead of working with a list of dictionaries, work with a
+list of Book objects.
+
+*** Printed representation -- challenge.
+
+Improve upon the printed representation of the last exercise but instead of bulleted
+lists, use formatted tables using =f-string= formatting
+(https://zetcode.com/python/fstring/).
+
+The output should look like this:
+
+#+begin_src python
+Library System
+--------------
+
+| Name           | Author           | Release Data |
+|----------------|------------------|--------------|
+| Moby Dick      | Herman Melville  |         1851 |
+...
+#+end_src
+
+Notice how Release date is right justified, while Name and Author are left justified.
+
+# Local Variables:
+# org-latex-minted-options: (("frame" "lines") ("linenos=true") ("firstnumber=last") ("fontsize=\\footnotesize") ("bgcolor=LightGray") ("xleftmargin=5pt") ("tabsize=2") ("breaklines=true") ("numbersep=10pt"))
+# End:

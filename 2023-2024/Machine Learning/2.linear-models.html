@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-11-22 Tue 11:26 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Machine Learning</title>
+<meta name="author" content="Jay Morgan" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Machine Learning
+<br />
+<span class="subtitle">Lecture 2 - Linear Models</span>
+</h1>
+
+<div id="outline-container-org2efc8ce" class="outline-2">
+<h2 id="org2efc8ce">Linear Regression</h2>
+<div class="outline-text-2" id="text-org2efc8ce">
+</div>
+<div id="outline-container-org8930c9d" class="outline-3">
+<h3 id="org8930c9d">Introduction to linear models</h3>
+<div class="outline-text-3" id="text-org8930c9d">
+</div>
+<div id="outline-container-org1e66813" class="outline-4">
+<h4 id="org1e66813">Linear models</h4>
+<div class="outline-text-4" id="text-org1e66813">
+<p>
+Having learnt a little about what it means to learn, we're going to look at our first
+<i>Machine Learning</i> algorithm, the staple for much of statistics, numeric prediction
+using a linear model.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0065024" class="outline-4">
+<h4 id="org0065024">What is a linear model?</h4>
+<div class="outline-text-4" id="text-org0065024">
+<p>
+A linear model is a prediction (a response) to an input variable. We have the
+following terms:
+</p>
+
+<ul class="org-ul">
+<li>Response/prediction &#x2013; the output of the model.</li>
+<li>Dependant variable &#x2013; the variable upon which the prediction is being made.</li>
+</ul>
+
+<p>
+For a linear model based on one dependant we have the following:
+</p>
+
+<p>
+\[
+y = \beta_0 + \beta_1 x
+\]
+</p>
+
+<p>
+where \(y\) is the response/output/prediction of the model, \(x\) is the dependant
+variable, and \(\beta_0, \beta_1\) are the model parameters.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfb8c697" class="outline-3">
+<h3 id="orgfb8c697">Model parameters</h3>
+<div class="outline-text-3" id="text-orgfb8c697">
+</div>
+<div id="outline-container-org2dbeb9c" class="outline-4">
+<h4 id="org2dbeb9c">Slope &amp; intercept</h4>
+<div class="outline-text-4" id="text-org2dbeb9c">
+<p>
+If we look at our linear model equation, we'll notice that it's the same equation for a straight line.
+</p>
+
+
+<div id="org90610ff" class="figure">
+<p><img src="images/linear_model.png" alt="linear_model.png" />
+</p>
+</div>
+
+<p>
+As we've seen, the linear model, or linear regression, has two parameters: \(\beta_1,
+\beta_0\). What do these parameters represent?
+</p>
+
+<ul class="org-ul">
+<li>The \(\beta_1\) parameter is the <b>slope</b> or strength of relationship between the dependant
+variable and the response.</li>
+<li>Meanwhile, the \(\beta_0\) parameter is called the <b>intercept</b>, as it's the value of the
+response when the dependant variable is zero.</li>
+</ul>
+
+<p>
+Let's look at these two parameters.
+</p>
+
+
+<div id="org2c1d7c0" class="figure">
+<p><img src="images/slope_1.png" alt="slope_1.png" />
+</p>
+</div>
+
+<p>
+Here we see that when \(\beta_1\) is 0 (left figure), any change in \(x\) results in 0 change
+in \(y\). While, with \(\beta_1 = 2\), \(y\) increases two-fold by every change in \(x\). Finally,
+when the slope is negative, we see that \(y\) decreases.
+</p>
+
+<p>
+Notice how the line is at 5 when \(x\) is zero, this is because \(\beta_0 = 5\).
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgd1b6ab1" class="outline-4">
+<h4 id="orgd1b6ab1">Multiple variables</h4>
+<div class="outline-text-4" id="text-orgd1b6ab1">
+<p>
+So we've seen how we can take an input variable x, and through the
+combination multiplication and addition with the learnt \(\beta_0, \beta_1\) values,
+we can create a pretty accurate prediction.
+</p>
+
+<p>
+However, this was only for a singular variable.
+</p>
+
+<p>
+In our dataset, we have many variables/features/columns that we may
+want to use for our prediction. It may be possible to get an even more
+accurate prediction by adding features to our linear regression model.
+</p>
+
+<p>
+\[
+y = \beta_0 + \sum_{i=1}^m x_i \beta_i
+\]
+</p>
+
+<p>
+where \(m\) is the number of features/variables we're adding to the
+model.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org72c1e35" class="outline-4">
+<h4 id="org72c1e35">Supporting example</h4>
+<div class="outline-text-4" id="text-org72c1e35">
+<p>
+Let's have a look at how we would use this linear model with one of the datasets: The
+Boston housing prices.
+</p>
+
+
+<div id="orgcb0b3bb" class="figure">
+<p><img src="images/boston_rooms_prices.png" alt="boston_rooms_prices.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Scatter plot of the number of rooms in a house against the house valuation. In this plot we can see a positive effect with some outliers to this trend.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0df9d1" class="outline-3">
+<h3 id="orgd0df9d1">Training a linear regressor</h3>
+<div class="outline-text-3" id="text-orgd0df9d1">
+</div>
+<div id="outline-container-orgf6fa846" class="outline-4">
+<h4 id="orgf6fa846">Let's fit a linear model</h4>
+<div class="outline-text-4" id="text-orgf6fa846">
+<p>
+We have seen that there seems to be some correlation between the number of rooms and
+the house price. I.e. we can use the number of rooms of the house to get the
+estimated price. To get an estimated price we'll use our linear model:
+</p>
+
+<p>
+\[
+y = \beta_0+\beta_1 x
+\]
+</p>
+
+<p>
+In this case, \(x\) will be the number of rooms. But what values should
+we set for \(\beta_0\) and \(\beta_1\)? Or put another way, what is
+<i>optimal</i> value for our model parameters.
+</p>
+
+<p>
+We'll return to the question of optimal later, but for now, let's just
+select some random values!
+</p>
+
+<p>
+\[\begin{aligned}
+\beta_0 = 1 \\
+\beta_1 = 1
+\end{aligned}\]
+</p>
+
+
+
+<div id="orgab1cf06" class="figure">
+<p><img src="images/boston_rm_first_pred.png" alt="boston_rm_first_pred.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>A linear model line overlayed onto the boston house prices dataset. Blue circles represent samples from the dataset, while the trend line is shown in red.</p>
+</div>
+
+<p>
+Well that doesn't look very good, it could be 'fit' better to what we're seeing in
+the scatter plot! I wonder how wrong the linear model is &#x2013; how incorrect our
+predicted house prices are?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1445b46" class="outline-4">
+<h4 id="org1445b46">Evaluating our initial linear model</h4>
+<div class="outline-text-4" id="text-org1445b46">
+<p>
+To evaluate how well, or in this case, how badly our linear model is doing, let's
+compare the predicted value from the model against the actual house price. For
+example, we'll take a single sample from our dataset.
+</p>
+
+<p>
+If we have 4 rooms, our model estimates the house price to be \(2(4) + 5 = 13\),
+$13,000, but the actual cost was $24,000. This means we have underestimated the cost
+by $11,000.
+</p>
+
+<p>
+What we've done there is the following:
+</p>
+
+<p>
+\[
+\delta = | y - \hat{y} |
+\]
+</p>
+
+<p>
+where \(\hat{y}\) is \(\beta_0 + \beta_1 x\)
+</p>
+
+<p>
+We've calculated the difference or delta between the real house price \(y\) and the
+predicted house price.
+</p>
+
+<p>
+That gives us the error for one sample though, what about for the whole dataset? Well
+we could take the mean over all samples:
+</p>
+
+<p>
+\[
+\text{MAE}(X; \beta_0,\beta_1) = \frac{1}{N}\sum_{i=0}^N | y_i - (\beta_0+\beta_1x_i) |
+\]
+</p>
+
+<p>
+If we calculate that our linear model we see that the average difference between our
+estimated value and real value is $15,000!
+</p>
+
+<p>
+Another common method of calculating how well or how badly our model
+is performing is to use the <b>sum of squared residuals</b> or perhaps more
+commonly known in the field of machine learning: mean squared error (MSE).
+</p>
+
+<p>
+\[
+\text{MSE}(X; \beta_0, \beta_1) = \frac{1}{N}\sum_{i=0}^N (y - (\beta_0 + \beta_1 x_i))^2
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org06e4106" class="outline-4">
+<h4 id="org06e4106">Getting better model parameters</h4>
+<div class="outline-text-4" id="text-org06e4106">
+<p>
+Okay, so we made our initial guess at the model parameters (random values for \(\beta_0,
+\beta_1\)), and these weren't very good. We were incorrectly guessing the house value by
+$15,000. So how do we get better values?
+</p>
+
+<p>
+Well if we visualise how badly we do vs the value for \(\beta_1\) we get the following:
+</p>
+
+
+<div id="orgdc8d895" class="figure">
+<p><img src="images/plot_linear_model_loss_w.png" alt="plot_linear_model_loss_w.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Mean absolute error (MAE) between the true and predicted house values when varying the value for \(\beta_1\) parameter in the linear model.</p>
+</div>
+
+<p>
+In figure <a href="#orgdc8d895">3</a>, we see that as we change the \(\beta_1\) parameter, the mean absolute
+error (MAE), i.e. the average difference between the predicted house prices and the
+true house prices, changes. Ideally, we would like the error or <b>loss</b> to be as low as
+possible. In this case, when \(\beta_0 = 1\) the lowest possible loss we can hope to achieve
+with the linear model is ~ $5,500.
+</p>
+
+<p>
+But what value for \(\beta_1\) gets us this lowest value for the loss? Looking at the graph,
+we see that the lowest point on the loss curve is somewhere between 0 and 5. Maybe
+even 4? While we could look at the curve and pick these parameter values, we're going
+to use a better method &#x2013; one that give us an optimal value for this loss curve
+automatically.
+</p>
+
+<p>
+We're going to look at the method called <b>Gradient Descent</b>.
+</p>
+
+<p>
+If we visualise our loss curve again, and visualise where \(\beta_1 = 1\) is on this curve,
+we will see:
+</p>
+
+
+<div id="org65fb314" class="figure">
+<p><img src="images/loss_curve_w_1.png" alt="loss_curve_w_1.png" />
+</p>
+</div>
+
+<p>
+So we want this rot dot to move down the loss curve and reach the bottom of the
+curve. Using the <b>Gradient Descent</b> algorithm, we're going to take <b>very small steps</b>
+down the loss curve.
+</p>
+
+
+<div id="org6abd291" class="figure">
+<p><img src="images/loss_curve_w_1_with_path.png" alt="loss_curve_w_1_with_path.png" />
+</p>
+</div>
+
+<p>
+To determine which way is up, and which way is down the curve, we use the <b>Gradient</b> of
+the curve (hence Gradient Descent). We compute the gradient using finite differences method:
+</p>
+
+<p>
+\[
+\Delta = \frac{f(x+h) - f(x)}{h}
+\]
+</p>
+
+<p>
+where \(f(x)\) is the loss when \(\beta_1\) takes on the value of \(x\). \(h\) is a very small
+value.
+</p>
+
+
+<div id="orgea51624" class="figure">
+<p><img src="images/small_step.png" alt="small_step.png" />
+</p>
+</div>
+
+<p>
+If we select \(h = 0.5\) then we will have the formula:
+</p>
+
+<p>
+\[
+\Delta_{\beta_1} = \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{\beta_1}
+\]
+</p>
+
+<p>
+where \(\mathcal{L}\) represents our loss function, MAE. If we calculate this we have:
+</p>
+<p>
+\[\begin{aligned}
+\Delta_{\beta_1} &= \frac{\mathcal{L}(\beta_1 + 0.5) - \mathcal{L}(\beta_1)}{h} \\
+&= \frac{\mathcal{L}(1.5)- \mathcal{L}(1)}{0.5} \\
+&= \frac{12 - 15}{0.5} \\
+&= -6.0
+\end{aligned}\]
+</p>
+
+<p>
+Given that the gradient is a negative number, we know that the curve is going
+down/decreasing. So we will want to move \(\beta_1\) in this direction &#x2013; we want to move
+\(\beta_1\) so that the loss decreases.
+</p>
+
+<p>
+\[
+\overline{\beta_1} = \beta_1 - \eta \Delta_{\beta_1}
+\]
+</p>
+
+<p>
+If we plug in the numbers we've calculated for when \(\beta_1 = 1\) we get and \(eta = 0.5\):
+</p>
+
+<p>
+\[\begin{aligned}
+\overline{\beta_1} &= \beta_1 - \eta \Delta_{\beta_1} \\
+&= 1.0 - (0.5 * -6.0) \\
+&= 1.0 - (-3.0) \\
+&= 4.0
+\end{aligned}\]
+</p>
+
+<p>
+Our new value for the \(\beta_1\) parameter (\(\overline{\beta_1}\)) is computed by taking its
+original value and subtracting the gradient modulated/multiplied by \(\eta\). \(\eta\) in
+this case is what will allow us to take our <b>small steps</b>. It is important to set
+\(\eta\) to a suitably small value, as high values for \(\eta\) will cause the Gradient
+Descent to behave erratically, and even, make our loss worse!
+</p>
+
+
+<div id="org734731e" class="figure">
+<p><img src="images/small_step_eta.png" alt="small_step_eta.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Plotting the effect of \(\eta\) on the step change of \(w\).</p>
+</div>
+
+<p>
+In figure <a href="#org734731e">4</a>, we've varied the value of \(\eta\) and computed 10 steps of updating
+the \(\beta_1\) parameter in our linear model. When \(\eta=0.05\), we see that \(\beta_1\) is slowly
+being updated in a way that is causing our loss to decrease, but it is more so slowly
+that we don't reach the optimal value for \(\beta_1\). When \(\eta=3\), each change in \(\beta_1\) is
+too large, so we over-shoot the optimal value, and end up bouncing back and forth
+without ever improving. Finally, when we set \(\eta=0.3\), the changes in \(\beta_1\) are
+sufficiently large enough such that we reach the <b>global minima</b> in time, but they are
+also small enough so that we don't over-shoot this same minimum.
+</p>
+
+<p>
+If we then apply the Gradient Descent algorithm to both parameters of the linear
+model \(\beta_0, \beta_1\), then we can find the optimal trend line for this data. Furthermore,
+visualising this will look something like figure <a href="#orgff2d77c">5</a>.
+</p>
+
+
+<div id="orgff2d77c" class="figure">
+<p><img src="images/lm_learn.gif" alt="lm_learn.gif" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Visualising (GIF) the linear model as its parameters improve.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org72810fc" class="outline-3">
+<h3 id="org72810fc">Fitting the line directly</h3>
+<div class="outline-text-3" id="text-org72810fc">
+</div>
+<div id="outline-container-org9a114d6" class="outline-4">
+<h4 id="org9a114d6">Solving the linear model directly</h4>
+<div class="outline-text-4" id="text-org9a114d6">
+<p>
+The way we've trained our linear regression is not necessarily the
+best, yes it does help us understand how we can optimise to a solution
+(especially if not all of our data can fit into memory at the same
+time). But, when it comes to linear models, we can compute the values
+for \(\beta_0, \beta_1\) directly.
+</p>
+
+<p>
+This is called a <b>closed-form solution</b>.
+</p>
+
+<p>
+\[
+\beta_1 = \frac{N \sum xy - \sum x \sum y}{N \sum (x^2) - \sum (x)^2}
+\]
+</p>
+
+<p>
+\[
+\beta_0 = \frac{\sum y - \beta_1 \sum x}{N}
+\]
+</p>
+
+<p>
+where \(N\) is the number of samples in our data.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd26f7a" class="outline-2">
+<h2 id="orgbd26f7a">Logistic Regression</h2>
+<div class="outline-text-2" id="text-orgbd26f7a">
+</div>
+<div id="outline-container-org00c3a1e" class="outline-3">
+<h3 id="org00c3a1e">Classification</h3>
+<div class="outline-text-3" id="text-org00c3a1e">
+</div>
+<div id="outline-container-org2576a38" class="outline-4">
+<h4 id="org2576a38">Moving from regression to classification</h4>
+<div class="outline-text-4" id="text-org2576a38">
+<p>
+We now turn to the problem of classification. We have seen in some of
+our toy datasets (namely the Iris dataset), that we don't want to
+predict a continuous value, but rather predict the class each data
+point belongs to.
+</p>
+
+<p>
+To predict the class, we use a model called a logistic regressor.
+</p>
+
+<p>
+A logistic regressor is a model from the class of `Generalised Linear
+Models' (GLM). In fact, the linear regressor we investigated in the
+previous section is also part of this class of models.
+</p>
+
+
+<div id="orgd4bcaa9" class="figure">
+<p><img src="images/glm.jpg" alt="glm.jpg" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge8a7ab7" class="outline-4">
+<h4 id="orge8a7ab7">Multi-class vs binary classification</h4>
+<div class="outline-text-4" id="text-orge8a7ab7">
+</div>
+<ul class="org-ul">
+<li><a id="org8d8277f"></a>Iris Flower plot&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-org8d8277f">
+
+<div id="org8b228dc" class="figure">
+<p><img src="images/iris.png" alt="iris.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="org8668ac9"></a>binary classification&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-org8668ac9">
+<p>
+In terms of Iris dataset, this means we want to select one class
+from 3 possible classes.
+</p>
+
+<p>
+We'll return to the problem of multiple classes later. But let's
+suppose that we only want to decide if the flower is a Setosa, or not
+Setosa. We've changed our classification problem from multi-class to
+binary classification.
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4e51a74" class="outline-3">
+<h3 id="org4e51a74">Probability / likelihood</h3>
+<div class="outline-text-3" id="text-org4e51a74">
+</div>
+<div id="outline-container-orgc4acded" class="outline-4">
+<h4 id="orgc4acded">Probability likelihood</h4>
+<div class="outline-text-4" id="text-orgc4acded">
+
+<div id="org96c5d14" class="figure">
+<p><img src="images/logisitic_curve.png" alt="logisitic_curve.png" />
+</p>
+</div>
+
+<p>
+Our model will eventually look like this, where we have two classes of
+points, and for each point we give a probability (p) that our point
+belongs to a class.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd48413e" class="outline-4">
+<h4 id="orgd48413e">Making it linear</h4>
+<div class="outline-text-4" id="text-orgd48413e">
+<p>
+If we apply the logarithm to each probability, we get back to our
+linear line.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orga3a6d73"></a>Image&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-orga3a6d73">
+
+<div id="orgaa08dfb" class="figure">
+<p><img src="images/log_probs.png" alt="log_probs.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="org7d562b7"></a>Equation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_column">B_column</span>&#xa0;<span class="BMCOL">BMCOL</span></span><br />
+<div class="outline-text-5" id="text-org7d562b7">
+<p>
+\[
+\log \left( \frac{p}{1-p} \right)
+\]
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org71063f2" class="outline-3">
+<h3 id="org71063f2">Maximum likelihood</h3>
+<div class="outline-text-3" id="text-org71063f2">
+</div>
+<div id="outline-container-org5500dcf" class="outline-4">
+<h4 id="org5500dcf">Enter the maximum likelihood</h4>
+<div class="outline-text-4" id="text-org5500dcf">
+<p>
+But there is a problem&#x2026;we can no longer use the sum of residuals as
+the value would always be \(\infty\), but instead we can use the maximum
+likelihood. First we project each sample to its 'odds' (i.e. the value
+of \(y\) on the linear line).
+</p>
+
+
+<div id="org426fac8" class="figure">
+<p><img src="images/log_projected.png" alt="log_projected.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfa55f34" class="outline-4">
+<h4 id="orgfa55f34">Back to the probability curve</h4>
+<div class="outline-text-4" id="text-orgfa55f34">
+
+<div id="orgf5dd650" class="figure">
+<p><img src="images/logisitic_curve.png" alt="logisitic_curve.png" />
+</p>
+</div>
+
+<p>
+Our logistic or 'sigmoid' function:
+</p>
+
+<p>
+\[
+p = \frac{1}{1 + e^{-(\beta_0+\beta_1x)}} = \frac{e^{(\beta_0+\beta_1x)}}{1 + e^{(\beta_0+\beta_1x)}} 
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgca5b921" class="outline-4">
+<h4 id="orgca5b921">Likelihood</h4>
+<div class="outline-text-4" id="text-orgca5b921">
+<p>
+Probability of class 1
+</p>
+
+
+
+<p>
+\[
+p(1) = p
+\]
+</p>
+
+<p>
+Probability of class 0 (or not class 1).
+</p>
+
+<p>
+\[
+p(0) = 1 - p 
+\]
+</p>
+
+<p>
+Maximum likelihood loss (which we wish to maximise), using the points
+on the probability curve:
+</p>
+
+<p>
+\[ \mathcal{L} = (0.9) + (0.89) + (0.6) + (1 - 0.4) + (1 - 0.2) + (1 - 0.05)
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfa9df57" class="outline-4">
+<h4 id="orgfa9df57">Optimising the curve</h4>
+<div class="outline-text-4" id="text-orgfa9df57">
+
+<div id="orgd13826f" class="figure">
+<p><img src="images/lr_learn.gif" alt="lr_learn.gif" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgda4cda0" class="outline-3">
+<h3 id="orgda4cda0">Binary Cross-Entropy</h3>
+<div class="outline-text-3" id="text-orgda4cda0">
+</div>
+<div id="outline-container-org85acca1" class="outline-4">
+<h4 id="org85acca1">Binary Cross-Entropy</h4>
+<div class="outline-text-4" id="text-org85acca1">
+<p>
+We could still use MSE in order to compute our models loss. This <i>may</i>
+still work. But there is another objective function that we would use
+for binary classification problems: Binary Cross-entropy (BCE).
+</p>
+
+
+<p>
+\[
+\text{BCE}(X; \beta_0, \beta_1) = -(Y \log(\beta_0+\beta_1*X) + (1 - Y) \log(1- \beta_0+\beta_1*X))
+\]
+</p>
+
+<p>
+Issues when using MSE for binary classification:
+</p>
+<ul class="org-ul">
+<li>MSE is non-convex for binary classification problems.</li>
+<li>MSE assumes the data was generated from a normal distribution, while
+binary classification problems form a Bernoulli distribution.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 16th November</p>
+<p class="author">Author: Jay Morgan</p>
+<p class="date">Created: 2022-11-22 Tue 11:26</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

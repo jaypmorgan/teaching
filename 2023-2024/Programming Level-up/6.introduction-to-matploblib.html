@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-11-05 Sat 17:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Programming Level-up</title>
+<meta name="author" content="Jay Morgan" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Programming Level-up
+<br />
+<span class="subtitle">An Introduction to Matplotlib</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd6d5aa3">1. Matplotlib</a>
+<ul>
+<li><a href="#org5d2c1de">1.1. Introduction</a>
+<ul>
+<li><a href="#org21562f1">1.1.1. What is Matplotlib?</a></li>
+<li><a href="#org574efdd">1.1.2. Installing and importing Matplotlib</a></li>
+<li><a href="#org8d7e763">1.1.3. Basic plotting</a></li>
+<li><a href="#org36fee3d">1.1.4. Basic plotting</a></li>
+</ul>
+</li>
+<li><a href="#orgdd8c7b1">1.2. Various plotting types</a>
+<ul>
+<li><a href="#org68e2ab0">1.2.1. Different types of Plots</a></li>
+<li><a href="#org4e91059">1.2.2. Line plots</a></li>
+<li><a href="#org02d7061">1.2.3. Line plots</a></li>
+<li><a href="#org59035be">1.2.4. Scatter plots</a></li>
+<li><a href="#org116a3c3">1.2.5. Scatter plots</a></li>
+<li><a href="#org3923c09">1.2.6. Scatter plots</a></li>
+<li><a href="#orga8c3e3d">1.2.7. Bar plots</a></li>
+<li><a href="#org3f46113">1.2.8. Histograms</a></li>
+<li><a href="#org48b644c">1.2.9. Box plots</a></li>
+<li><a href="#org8498295">1.2.10. Image plots</a></li>
+<li><a href="#org99cd4fe">1.2.11. Image plots</a></li>
+<li><a href="#org0ab00d2">1.2.12. 3 dimensional plots</a></li>
+<li><a href="#org38065bc">1.2.13. 3 dimensional plots</a></li>
+<li><a href="#orgdff3ce0">1.2.14. Different types of Plots</a></li>
+</ul>
+</li>
+<li><a href="#org7be7b46">1.3. Customising plots</a>
+<ul>
+<li><a href="#org8db7841">1.3.1. Subplots</a></li>
+<li><a href="#org2f95c80">1.3.2. Subplots</a></li>
+<li><a href="#org9d09ac7">1.3.3. Adding a legend</a></li>
+<li><a href="#org5a9d7a1">1.3.4. Adding a legend</a></li>
+<li><a href="#orgdd08295">1.3.5. Position the legend in different places</a></li>
+<li><a href="#org4440fe1">1.3.6. Position the legend in different places</a></li>
+<li><a href="#orgbba3a60">1.3.7. Modifying the x/y axis</a></li>
+<li><a href="#org2cca8c4">1.3.8. Modifying the x/y axis</a></li>
+<li><a href="#orge214304">1.3.9. Changing figure size</a></li>
+<li><a href="#orgeaf3b1e">1.3.10. Changing figure size</a></li>
+<li><a href="#org9164bd0">1.3.11. Changing figure size</a></li>
+<li><a href="#org21c34b7">1.3.12. Changing figure size</a></li>
+<li><a href="#org696157c">1.3.13. Line properties</a></li>
+<li><a href="#orgb99d39f">1.3.14. Line properties</a></li>
+<li><a href="#orgf64c318">1.3.15. Colormaps</a></li>
+<li><a href="#org7eec3cc">1.3.16. Colourmaps</a></li>
+<li><a href="#org7c18438">1.3.17. Ticks</a></li>
+<li><a href="#orga71f2fe">1.3.18. Ticks</a></li>
+<li><a href="#org8c740de">1.3.19. Grids</a></li>
+<li><a href="#orgd294ee6">1.3.20. Grids</a></li>
+<li><a href="#org5ab9e75">1.3.21. Scale</a></li>
+<li><a href="#org0e1fb42">1.3.22. Setting the plot limits</a></li>
+<li><a href="#org2572e4d">1.3.23. Annotations</a></li>
+<li><a href="#org0cac819">1.3.24. Annotations</a></li>
+<li><a href="#org49c3d1d">1.3.25. Creating a twin axes plot</a></li>
+<li><a href="#org08369d8">1.3.26. Creating a twin axes plot</a></li>
+<li><a href="#org9513ec4">1.3.27. Learn more</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd6d5aa3" class="outline-2">
+<h2 id="orgd6d5aa3"><span class="section-number-2">1.</span> Matplotlib</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5d2c1de" class="outline-3">
+<h3 id="org5d2c1de"><span class="section-number-3">1.1.</span> Introduction</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org21562f1" class="outline-4">
+<h4 id="org21562f1"><span class="section-number-4">1.1.1.</span> What is Matplotlib?</h4>
+<div class="outline-text-4" id="text-1-1-1">
+
+<div id="org76942e1" class="figure">
+<p><img src="images/matlogo.png" alt="matlogo.png" width="200px" />
+</p>
+</div>
+
+<p>
+In summary:
+</p>
+<ul class="org-ul">
+<li>Matplotlib is one of the defacto plotting libraries for Python. While there
+are many others and certainly some that are built for specific plot types,
+Matplotlib continues to pervade scientific plotting.</li>
+<li>You can create basic plots (such as line or scatter plots) to more complicated
+plots that include interactivity.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org574efdd" class="outline-4">
+<h4 id="org574efdd"><span class="section-number-4">1.1.2.</span> Installing and importing Matplotlib</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+Matplotlib can be installed via conda:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install matplotlib
+</pre>
+</div>
+
+<p>
+or with pip:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pip install matplotlib
+</pre>
+</div>
+
+<p>
+Remember! You can install packages in ipython REPL/juypter notebook by
+inserting a '!' to the beginning of a shell command.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8d7e763" class="outline-4">
+<h4 id="org8d7e763"><span class="section-number-4">1.1.3.</span> Basic plotting</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+First, we will import the matplotlib module. The plotting function is located
+within the <code>pyplot</code> package within matplotlib. The use of this package is so
+common that 99% of Python users will alias this import as <code>plt</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">import</span> matplotlib.pyplot <span style="color: #00c089; font-weight: bold;">as</span> plt
+</pre>
+</div>
+
+<p>
+With this package now imported, we can now use the <code>plot</code> function. To begin with,
+let's just plot a simple line chart. In this case, the <code>plot</code> function takes an <code>x</code>
+and <code>y</code> argument, where <code>x</code> denotes the values along the x-axis and <code>y</code> are the values
+along the y-axis.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+plt.plot(x, y)
+</pre>
+</div>
+
+<p>
+In this example, we have created two vectors. The first <code>x</code>, creates a vector of
+100 values from -10 to 10. <code>y</code> is the sin function applied to <code>x</code>. Finally, in the
+third line, we plot the sin wave using these two vectors.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org36fee3d" class="outline-4">
+<h4 id="org36fee3d"><span class="section-number-4">1.1.4.</span> Basic plotting</h4>
+<div class="outline-text-4" id="text-1-1-4">
+
+<div id="org0d60d89" class="figure">
+<p><img src="images/basic.png" alt="basic.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd8c7b1" class="outline-3">
+<h3 id="orgdd8c7b1"><span class="section-number-3">1.2.</span> Various plotting types</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org68e2ab0" class="outline-4">
+<h4 id="org68e2ab0"><span class="section-number-4">1.2.1.</span> Different types of Plots</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<div id="org7067e75" class="figure">
+<p><img src="images/plots.png" alt="plots.png" width="100px" />
+</p>
+</div>
+
+<p>
+There are many different types of plots that one can make using
+matplotlib. These include the most popular:
+</p>
+
+<ul class="org-ul">
+<li>Line plots</li>
+<li>Scatter plots</li>
+<li>Bar plots</li>
+<li>Histograms</li>
+<li>Box plots</li>
+<li>Image plots</li>
+</ul>
+
+<p>
+We're going to take a look at how we create each type of plot, examining what
+type of inputs they require.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4e91059" class="outline-4">
+<h4 id="org4e91059"><span class="section-number-4">1.2.2.</span> Line plots</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+We've already seen one example of a line plot. This plot draws a line between
+each x,y point. For instance in the previous example, we created a sin wave by
+'sampling' such wave using 100 samples from -10 to 10. Let's see what happens
+when we sample only 10 points:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 10)
+<span style="color: #78afff;">y</span> = np.sin(x)
+plt.plot(x, y)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org02d7061" class="outline-4">
+<h4 id="org02d7061"><span class="section-number-4">1.2.3.</span> Line plots</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+We see the results are a less than ideal representation of a sin wave as <code>plot</code>
+will simply draw a straight line from each point.
+</p>
+
+
+<div id="orga25ad90" class="figure">
+<p><img src="images/lineplot.png" alt="lineplot.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org59035be" class="outline-4">
+<h4 id="org59035be"><span class="section-number-4">1.2.4.</span> Scatter plots</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+If we want to see where each sample of the sin wave is, we could use instead the
+scatter plot, which will (by default) place a small circle at every x,y
+value. To create a scatter plot, we use <code>scatter</code> instead of the <code>plot</code>
+function. The arguments to this function are the same, however.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 10)
+<span style="color: #78afff;">y</span> = np.sin(x)
+plt.scatter(x, y)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org116a3c3" class="outline-4">
+<h4 id="org116a3c3"><span class="section-number-4">1.2.5.</span> Scatter plots</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+Now we can see the position of each individual sample from the sin wave. If we,
+once again, sample 100 points from this curve, we will see better results.
+</p>
+
+
+<div id="org0834a72" class="figure">
+<p><img src="images/scatter.png" alt="scatter.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3923c09" class="outline-4">
+<h4 id="org3923c09"><span class="section-number-4">1.2.6.</span> Scatter plots</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+plt.scatter(x, y)
+</pre>
+</div>
+
+
+<div id="org28e561d" class="figure">
+<p><img src="images/scatter-2.png" alt="scatter-2.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga8c3e3d" class="outline-4">
+<h4 id="orga8c3e3d"><span class="section-number-4">1.2.7.</span> Bar plots</h4>
+<div class="outline-text-4" id="text-1-2-7">
+<p>
+Bar plots are a simple plot that again takes an <code>x</code> and a <code>y</code>, where x is the
+numerical position of the bar's centre, and <code>y</code> is the height of the bar.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.arange(0, 8)
+<span style="color: #78afff;">y</span> = np.random.uniform(2, 7, <span style="color: #3fb83f; font-weight: bold;">len</span>(x))
+plt.bar(x, y)
+</pre>
+</div>
+
+
+<div id="orgbd42176" class="figure">
+<p><img src="images/bar.png" alt="bar.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3f46113" class="outline-4">
+<h4 id="org3f46113"><span class="section-number-4">1.2.8.</span> Histograms</h4>
+<div class="outline-text-4" id="text-1-2-8">
+<p>
+Histograms allow us to visualise the distribution of values. In matplotlib, we
+can create a histogram of a vector by using the <code>hist</code> function that takes only
+the vector as its argument.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.random.randn(1000)
+plt.hist(x)
+</pre>
+</div>
+
+
+<div id="orgcda69f4" class="figure">
+<p><img src="images/hist.png" alt="hist.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org48b644c" class="outline-4">
+<h4 id="org48b644c"><span class="section-number-4">1.2.9.</span> Box plots</h4>
+<div class="outline-text-4" id="text-1-2-9">
+<p>
+Box plots also allow us to visualise the distribution, but the distribution of
+values within a group. In this example we're visualising the distribution of 3
+groups. Using the <code>boxplot</code> function, we pass a matrix.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.random.randn(10, 3)
+plt.boxplot(x)
+</pre>
+</div>
+
+
+<div id="org1513b1d" class="figure">
+<p><img src="images/boxplot.png" alt="boxplot.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8498295" class="outline-4">
+<h4 id="org8498295"><span class="section-number-4">1.2.10.</span> Image plots</h4>
+<div class="outline-text-4" id="text-1-2-10">
+<p>
+In matplotlib, we can plot an 'image' &#x2013; that is a 2D matrix &#x2013; using the <code>imshow</code>
+function. For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">fig</span> = plt.figure()
+<span style="color: #78afff;">x</span> = np.random.randn(10, 10)
+plt.imshow(x)
+</pre>
+</div>
+
+
+<div id="orgbd5a0d4" class="figure">
+<p><img src="images/imshow.png" alt="imshow.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99cd4fe" class="outline-4">
+<h4 id="org99cd4fe"><span class="section-number-4">1.2.11.</span> Image plots</h4>
+<div class="outline-text-4" id="text-1-2-11">
+<p>
+Of course, given the name, we can then use <code>imshow</code> to plot an image as well, as
+long as we have the image loaded as a 2D array of values.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">import</span> PIL  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">using the PIL module to read an image</span>
+<span style="color: #78afff;">img</span> = np.array(PIL.Image.<span style="color: #3fb83f; font-weight: bold;">open</span>(<span style="color: #af9fff;">"images/Lenna.png"</span>))
+plt.imshow(img)
+</pre>
+</div>
+
+
+<div id="org843b27d" class="figure">
+<p><img src="images/imshow-2.png" alt="imshow-2.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0ab00d2" class="outline-4">
+<h4 id="org0ab00d2"><span class="section-number-4">1.2.12.</span> 3 dimensional plots</h4>
+<div class="outline-text-4" id="text-1-2-12">
+<p>
+3 dimensional plots require us to import another module from
+matplotlib.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">from</span> mpl_toolkits <span style="color: #00c089; font-weight: bold;">import</span> mplot3d
+</pre>
+</div>
+
+<p>
+After importing this module, we can using the <i>projection="3d"</i> and
+carry on plotting as normal.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">fig</span> = plt.figure()
+<span style="color: #78afff;">ax</span> = fig.gca(projection=<span style="color: #af9fff;">'3d'</span>)
+theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)
+z = np.linspace(-2, 2, 100)
+r = z**2 + 1
+x = r * np.sin(theta)
+y = r * np.cos(theta)
+ax.plot(x, y, z, label=<span style="color: #af9fff;">'parametric curve'</span>)
+ax.legend()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38065bc" class="outline-4">
+<h4 id="org38065bc"><span class="section-number-4">1.2.13.</span> 3 dimensional plots</h4>
+<div class="outline-text-4" id="text-1-2-13">
+
+<div id="org97a4081" class="figure">
+<p><img src="images/3d-figure.png" alt="3d-figure.png" width="600px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdff3ce0" class="outline-4">
+<h4 id="orgdff3ce0"><span class="section-number-4">1.2.14.</span> Different types of Plots</h4>
+<div class="outline-text-4" id="text-1-2-14">
+<p>
+There are many more different types of plots you can make using matplotlib. You
+can find a comprehensive list at:
+</p>
+
+<p>
+<a href="https://matplotlib.org/stable/plot_types/index.html">https://matplotlib.org/stable/plot_types/index.html</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7be7b46" class="outline-3">
+<h3 id="org7be7b46"><span class="section-number-3">1.3.</span> Customising plots</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org8db7841" class="outline-4">
+<h4 id="org8db7841"><span class="section-number-4">1.3.1.</span> Subplots</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+What if we wanted to create many plots side-by-side? For this we can use the
+<code>subplots</code> function. This function takes the number of rows, and number of columns
+to create. It returns two values, the first is the figure (entire figure), and
+the second value is a list of sub figures. Using this list, we can place a plot
+of each of them.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+<span style="color: #78afff;">z</span> = np.cos(y)
+
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(1, 2)
+<span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">ax is a list of sub figures</span>
+ax[0].plot(x, y)
+ax[1].plot(x, z)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f95c80" class="outline-4">
+<h4 id="org2f95c80"><span class="section-number-4">1.3.2.</span> Subplots</h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+<div id="orgd257622" class="figure">
+<p><img src="images/subplots.png" alt="subplots.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9d09ac7" class="outline-4">
+<h4 id="org9d09ac7"><span class="section-number-4">1.3.3.</span> Adding a legend</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+Or we could put them onto the same plot. Matplotlib will automatically give them
+a different colour. If we use the <code>label</code> argument to <code>plot</code>, we can also give them
+a name that will appear when we call <code>legend()</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+<span style="color: #78afff;">z</span> = np.tan(y)
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots()
+ax.plot(x, y, label=<span style="color: #af9fff;">"sin(x)"</span>)
+ax.plot(x, z, label=<span style="color: #af9fff;">"tan(x)"</span>)
+ax.legend()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a9d7a1" class="outline-4">
+<h4 id="org5a9d7a1"><span class="section-number-4">1.3.4.</span> Adding a legend</h4>
+<div class="outline-text-4" id="text-1-3-4">
+
+<div id="org3108537" class="figure">
+<p><img src="images/legend.png" alt="legend.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd08295" class="outline-4">
+<h4 id="orgdd08295"><span class="section-number-4">1.3.5.</span> Position the legend in different places</h4>
+<div class="outline-text-4" id="text-1-3-5">
+<p>
+We can change the position of the legend by specifying a different integer value
+for the <code>loc</code> argument (or string values such as 'upper left', 'upper right',
+&#x2026;). Additionally, we can change the number of columns the legend has with the
+<code>ncol</code> argument.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+<span style="color: #78afff;">z</span> = np.tan(y)
+
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots()
+ax.plot(x, y, label=<span style="color: #af9fff;">"sin(x)"</span>)
+ax.plot(x, z, label=<span style="color: #af9fff;">"tan(x)"</span>)
+ax.legend(loc=1, ncol=2)
+</pre>
+</div>
+
+<p>
+You can find the API reference for the different arguments to legend at: <a href="https://matplotlib.org/stable/api/legend_api.html?highlight=legend#module-matplotlib.legend">https://matplotlib.org/stable/api/legend_api.html?highlight=legend#module-matplotlib.legend</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4440fe1" class="outline-4">
+<h4 id="org4440fe1"><span class="section-number-4">1.3.6.</span> Position the legend in different places</h4>
+<div class="outline-text-4" id="text-1-3-6">
+
+<div id="orgd97b2f3" class="figure">
+<p><img src="images/legend-2.png" alt="legend-2.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbba3a60" class="outline-4">
+<h4 id="orgbba3a60"><span class="section-number-4">1.3.7.</span> Modifying the x/y axis</h4>
+<div class="outline-text-4" id="text-1-3-7">
+<p>
+Good graphs always have their axis's labelled. To do this in matplotlib, if we
+have a subplot object, we use <code>set_xlabel</code>, or we can use <code>plt.xlabel(...)</code>. Here is
+an example with an subplot object:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-10, 10, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+<span style="color: #78afff;">z</span> = np.tan(y)
+
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots()
+ax.plot(x, y, label=<span style="color: #af9fff;">"sin(x)"</span>)
+ax.plot(x, z, label=<span style="color: #af9fff;">"tan(x)"</span>)
+ax.legend(loc=1, ncol=2)
+ax.set_xlabel(<span style="color: #af9fff;">"x"</span>)
+ax.set_ylabel(<span style="color: #af9fff;">"y"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2cca8c4" class="outline-4">
+<h4 id="org2cca8c4"><span class="section-number-4">1.3.8.</span> Modifying the x/y axis</h4>
+<div class="outline-text-4" id="text-1-3-8">
+
+<div id="org53dd824" class="figure">
+<p><img src="images/axis.png" alt="axis.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge214304" class="outline-4">
+<h4 id="orge214304"><span class="section-number-4">1.3.9.</span> Changing figure size</h4>
+<div class="outline-text-4" id="text-1-3-9">
+<p>
+A common change you may want to make to your figure is to change its size or
+aspect ratio. <code>figure()</code> or <code>subplots()</code> take an optional argument called
+<code>figsize</code>. This argument expects a tuple representing the width and height of the
+figure in inches.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">fig</span> = plt.figure(figsize=(8, 2.5))
+
+<span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">or most likely</span>
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(figsize=(8, 2.5))
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+z = np.tan(y)
+ax.plot(x, y, label=<span style="color: #af9fff;">"sin(x)"</span>)
+ax.plot(x, z, label=<span style="color: #af9fff;">"tan(x)"</span>)
+ax.legend(loc=1, ncol=2)
+ax.set_xlabel(<span style="color: #af9fff;">"x"</span>)
+ax.set_ylabel(<span style="color: #af9fff;">"y"</span>)
+</pre>
+</div>
+
+<p>
+Here we are creating a figure with 8 inches of width, and 2.5 inches of height.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeaf3b1e" class="outline-4">
+<h4 id="orgeaf3b1e"><span class="section-number-4">1.3.10.</span> Changing figure size</h4>
+<div class="outline-text-4" id="text-1-3-10">
+
+<div id="org9391902" class="figure">
+<p><img src="images/fig-size.png" alt="fig-size.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9164bd0" class="outline-4">
+<h4 id="org9164bd0"><span class="section-number-4">1.3.11.</span> Changing figure size</h4>
+<div class="outline-text-4" id="text-1-3-11">
+<p>
+This is especially useful when you have many sub-figures, as by default, they
+will be 'squashed' into the default aspect ratio. We can 'give them more space'
+by modifying this <code>figsize</code> argument when creating the many sub-figures.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(1, 2, figsize=(8, 2.5))
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+z = np.tan(y)
+ax[0].plot(x, y, label=<span style="color: #af9fff;">"sin(x)"</span>)
+ax[1].plot(x, z, label=<span style="color: #af9fff;">"tan(x)"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21c34b7" class="outline-4">
+<h4 id="org21c34b7"><span class="section-number-4">1.3.12.</span> Changing figure size</h4>
+<div class="outline-text-4" id="text-1-3-12">
+
+<div id="org5bc3bac" class="figure">
+<p><img src="images/figsize-2.png" alt="figsize-2.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org696157c" class="outline-4">
+<h4 id="org696157c"><span class="section-number-4">1.3.13.</span> Line properties</h4>
+<div class="outline-text-4" id="text-1-3-13">
+<p>
+When creating a plot, there are many different properties you can change. Some
+of these include:
+</p>
+
+<ul class="org-ul">
+<li>color &#x2013; the colour of the line</li>
+<li>alpha &#x2013; the amount of transparency (1.0 is opaque, 0.0 is transparent)</li>
+<li>linewidth, lw &#x2013; the width of the stroke width</li>
+<li>linestyle, ls &#x2013; the style of the line (i.e. a dotted line)</li>
+</ul>
+
+<p>
+There are also some properties for the markers, i.e. the circles in the scatter
+plot. These properties are:
+</p>
+
+<ul class="org-ul">
+<li>marker &#x2013; the type of marker (you can use different shapes instead of a circle</li>
+<li>markersize &#x2013; the size of the mark</li>
+<li>markerfacecolor &#x2013; colour of the marker</li>
+<li>markeredgewidth &#x2013; outline width of the marker.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb99d39f" class="outline-4">
+<h4 id="orgb99d39f"><span class="section-number-4">1.3.14.</span> Line properties</h4>
+<div class="outline-text-4" id="text-1-3-14">
+<p>
+If this example we are modifying some of the line properties that include the
+color (c), setting it to a string value of "green". The linewidth (lw) to be
+thicker, and making the line to be a dotted line by specifying the linestyle
+(ls) to "=&#x2013;={".
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">fig</span> = plt.figure()
+<span style="color: #78afff;">x</span> = np.linspace(-5, 5, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+plt.plot(x, y,
+         c=<span style="color: #af9fff;">"green"</span>, <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">or color</span>
+         lw=3, <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">or linewidth</span>
+         ls=<span style="color: #af9fff;">"--"</span>)
+</pre>
+</div>
+
+
+<div id="orgbdc2c64" class="figure">
+<p><img src="images/linestyles.png" alt="linestyles.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf64c318" class="outline-4">
+<h4 id="orgf64c318"><span class="section-number-4">1.3.15.</span> Colormaps</h4>
+<div class="outline-text-4" id="text-1-3-15">
+<p>
+When we create a heatmap using <code>imshow</code>, the gradients of colour are automatically
+set. Yet, we can control the colour gradient using a colour map. First we must
+import <code>cm</code> from matplotlib:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">from</span> matplotlib <span style="color: #00c089; font-weight: bold;">import</span> cm
+</pre>
+</div>
+
+<p>
+Then we can get a colour map with 10 levels using <code>get_cmap</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">blues</span> = cm.get_cmap(<span style="color: #af9fff;">"Blues"</span>, 10) <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">10 levels</span>
+<span style="color: #78afff;">reds</span> = cm.get_cmap(<span style="color: #af9fff;">"Reds"</span>, 2) <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">2 levels</span>
+</pre>
+</div>
+
+<p>
+You can find a full list of different colour maps at: <a href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">https://matplotlib.org/stable/tutorials/colors/colormaps.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7eec3cc" class="outline-4">
+<h4 id="org7eec3cc"><span class="section-number-4">1.3.16.</span> Colourmaps</h4>
+<div class="outline-text-4" id="text-1-3-16">
+<p>
+Now that we have our new colour maps, we can pass it as an <code>cmap</code> argument when we
+create a plot.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.random.randn(10, 10)
+<span style="color: #78afff;">y</span> = np.random.randn(10, 10)
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(1, 2, figsize=(8, 3))
+p1 = ax[0].imshow(x, cmap=blues)
+p2 = ax[1].imshow(y, cmap=reds)
+fig.colorbar(p1, ax=ax[0])
+fig.colorbar(p2, ax=ax[1])
+</pre>
+</div>
+
+
+<div id="org43fb92b" class="figure">
+<p><img src="images/colourmaps.png" alt="colourmaps.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7c18438" class="outline-4">
+<h4 id="org7c18438"><span class="section-number-4">1.3.17.</span> Ticks</h4>
+<div class="outline-text-4" id="text-1-3-17">
+<p>
+If we want to customise the numbers along each axis, we use the <code>set_xticks</code> for
+the x-axis and <code>set_yticks</code> for the y-axis. These functions take the list of
+locations for each 'tick', and optionally a list of labels to use instead of the numbers.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-2, 2, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+
+<span style="color: #78afff;">bx</span> = np.arange(2, 7)
+<span style="color: #78afff;">by</span> = np.random.uniform(2, 7, <span style="color: #3fb83f; font-weight: bold;">len</span>(bx))
+
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(1, 2, figsize=(8, 3))
+ax[0].plot(x, y)
+ax[0].set_xticks([-2, 0, 2])
+ax[1].bar(bx, by)
+ax[1].set_xticks(bx, [<span style="color: #af9fff;">"a"</span>, <span style="color: #af9fff;">"b"</span>, <span style="color: #af9fff;">"c"</span>, <span style="color: #af9fff;">"d"</span>, <span style="color: #af9fff;">"e"</span>])
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga71f2fe" class="outline-4">
+<h4 id="orga71f2fe"><span class="section-number-4">1.3.18.</span> Ticks</h4>
+<div class="outline-text-4" id="text-1-3-18">
+
+<div id="orge0f3b80" class="figure">
+<p><img src="images/ticks.png" alt="ticks.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c740de" class="outline-4">
+<h4 id="org8c740de"><span class="section-number-4">1.3.19.</span> Grids</h4>
+<div class="outline-text-4" id="text-1-3-19">
+<p>
+In all of the previous plots, the background has no grids, they are simply
+white. If we wanted to add grid lines to the plot we use the <code>.grid()</code>
+method. This function, by default, adds the major grid lines.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-2, 2, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+<span style="color: #78afff;">z</span> = np.tan(x)
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(1, 2, figsize=(8, 3))
+ax[0].plot(x, y)
+ax[0].grid()
+ax[1].plot(x, z)
+ax[1].grid(which=<span style="color: #af9fff;">"both"</span>, color=<span style="color: #af9fff;">"r"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd294ee6" class="outline-4">
+<h4 id="orgd294ee6"><span class="section-number-4">1.3.20.</span> Grids</h4>
+<div class="outline-text-4" id="text-1-3-20">
+
+<div id="org8d61a19" class="figure">
+<p><img src="images/grids.png" alt="grids.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5ab9e75" class="outline-4">
+<h4 id="org5ab9e75"><span class="section-number-4">1.3.21.</span> Scale</h4>
+<div class="outline-text-4" id="text-1-3-21">
+<p>
+The default behaviour of matplotlib is to plot using a linear scale. In certain
+situations, we want view the plot using a different scale. For this we can use <code>set_yscale</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-2, 10, 100)
+<span style="color: #78afff;">y</span> = np.exp(x)
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(1, 2, figsize=(8, 3))
+ax[0].plot(x, y)
+ax[0].grid()
+ax[1].plot(x, y)
+ax[1].set_yscale(<span style="color: #af9fff;">'log'</span>)
+ax[1].grid()
+</pre>
+</div>
+
+
+<div id="org1118453" class="figure">
+<p><img src="images/scale.png" alt="scale.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e1fb42" class="outline-4">
+<h4 id="org0e1fb42"><span class="section-number-4">1.3.22.</span> Setting the plot limits</h4>
+<div class="outline-text-4" id="text-1-3-22">
+<p>
+By default, matplotlib will calculate the minimum and maximum values of the
+data, and use those values to set the limits of the plot. Using <code>set_xlim</code> and
+<code>set_ylim</code> we can change this default behaviour.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-2, 2, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(1, 2, figsize=(8,3))
+ax[0].plot(x, y)
+ax[0].set_ylim(-1, 2)
+ax[1].plot(x, y)
+ax[1].set_xlim(-3, 3)
+</pre>
+</div>
+
+
+<div id="orge5d5907" class="figure">
+<p><img src="images/limits.png" alt="limits.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2572e4d" class="outline-4">
+<h4 id="org2572e4d"><span class="section-number-4">1.3.23.</span> Annotations</h4>
+<div class="outline-text-4" id="text-1-3-23">
+<p>
+We can annotate our plot in a number of way:
+</p>
+<ul class="org-ul">
+<li>.axhline &#x2013; plot a horizontal line (axvline for vertical lines)/</li>
+<li>.annotate &#x2013; add text to the plot at a certain position.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.linspace(-2, 2, 100)
+<span style="color: #78afff;">y</span> = np.sin(x)
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots()
+ax.plot(x, y)
+ax.axhline(0, c=<span style="color: #af9fff;">'gray'</span>, ls=<span style="color: #af9fff;">'--'</span>)
+ax.annotate(<span style="color: #af9fff;">"0th line"</span>, (-2, 0), xytext=(-1.5, 0.25),
+            arrowprops=<span style="color: #3fb83f; font-weight: bold;">dict</span>(facecolor=<span style="color: #af9fff;">'black'</span>, shrink=0.05,
+                            width=0.5, headwidth=5.0))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0cac819" class="outline-4">
+<h4 id="org0cac819"><span class="section-number-4">1.3.24.</span> Annotations</h4>
+<div class="outline-text-4" id="text-1-3-24">
+
+<div id="orga81de4e" class="figure">
+<p><img src="images/annotations.png" alt="annotations.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49c3d1d" class="outline-4">
+<h4 id="org49c3d1d"><span class="section-number-4">1.3.25.</span> Creating a twin axes plot</h4>
+<div class="outline-text-4" id="text-1-3-25">
+<p>
+Sometimes you will want to display multiple sub-plots on the same plot, but
+where each have a very different range in values. Instead of having a single
+y-axis, with <code>twinx()</code> we can create a two y-axis plot.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #78afff;">x</span> = np.arange(10, 100)
+<span style="color: #78afff;">y</span> = np.exp(x)
+<span style="color: #78afff;">z</span> = np.log(x)
+
+<span style="color: #78afff;">fig</span>, <span style="color: #78afff;">ax</span> = plt.subplots(1, 2)
+ax[0].plot(x, y, label=<span style="color: #af9fff;">"exp(x)"</span>)
+ax[0].plot(x, z, label=<span style="color: #af9fff;">"log(x)"</span>)
+ax[0].legend()
+
+ax2 = ax[1].twinx()
+ax[1].plot(x, y)
+ax2.plot(x, z, color=<span style="color: #af9fff;">"orange"</span>)
+ax2.tick_params(axis=<span style="color: #af9fff;">"y"</span>, labelcolor=<span style="color: #af9fff;">"orange"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org08369d8" class="outline-4">
+<h4 id="org08369d8"><span class="section-number-4">1.3.26.</span> Creating a twin axes plot</h4>
+<div class="outline-text-4" id="text-1-3-26">
+
+<div id="org17b8df3" class="figure">
+<p><img src="images/twinx.png" alt="twinx.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9513ec4" class="outline-4">
+<h4 id="org9513ec4"><span class="section-number-4">1.3.27.</span> Learn more</h4>
+<div class="outline-text-4" id="text-1-3-27">
+<p>
+There are many many more types of plots you can create with matplotlib. I would
+recommend that you read the documentation to fully appreciate everything that it
+can visualise:
+</p>
+
+<ul class="org-ul">
+<li>Gallery &#x2013; <a href="https://matplotlib.org/stable/gallery/index.html">https://matplotlib.org/stable/gallery/index.html</a></li>
+<li>Plotting tutorials &#x2013; <a href="https://matplotlib.org/stable/tutorials/index.html">https://matplotlib.org/stable/tutorials/index.html</a></li>
+<li>Basic plot types &#x2013; <a href="https://matplotlib.org/stable/plot_types/index.html">https://matplotlib.org/stable/plot_types/index.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jay Morgan</p>
+<p class="date">Created: 2022-11-05 Sat 17:05</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

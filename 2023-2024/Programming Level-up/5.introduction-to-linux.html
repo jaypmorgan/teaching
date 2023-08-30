@@ -1,0 +1,2393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-10-10 Mon 12:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Programming Level-up</title>
+<meta name="author" content="Jay Morgan" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Programming Level-up
+<br />
+<span class="subtitle">An Introduction to using Linux</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4e18a02">1. Linux</a>
+<ul>
+<li><a href="#org1548ed2">1.1. What is Linux</a>
+<ul>
+<li><a href="#org2f3aa22">1.1.1. What is Linux?</a></li>
+<li><a href="#org1fbc055">1.1.2. What's a Distribution?</a></li>
+<li><a href="#org1908c28">1.1.3. What's a Distribution?</a></li>
+<li><a href="#org8752a49">1.1.4. Defining Traits of Linux</a></li>
+</ul>
+</li>
+<li><a href="#org25bd0b9">1.2. The command line</a>
+<ul>
+<li><a href="#orge2f55f8">1.2.1. What's a command?</a></li>
+<li><a href="#orge174ab0">1.2.2. What is a command?</a></li>
+<li><a href="#org27ca47a">1.2.3. What is a command?</a></li>
+<li><a href="#org1c3575e">1.2.4. What is a command?</a></li>
+<li><a href="#orga5630f0">1.2.5. What is a command?</a></li>
+<li><a href="#orgcc06ece">1.2.6. Very useful commands</a></li>
+<li><a href="#orga01da96">1.2.7. Very useful commands &#x2013; mkdir</a></li>
+<li><a href="#org6e7d7fa">1.2.8. Very useful commands &#x2013; cp</a></li>
+<li><a href="#org726fe59">1.2.9. Very useful commands &#x2013; mv</a></li>
+<li><a href="#org3f1291d">1.2.10. Very useful commands &#x2013; rm</a></li>
+<li><a href="#orgd4ddf4a">1.2.11. Very useful commands &#x2013; cat</a></li>
+<li><a href="#org8b9fdfc">1.2.12. Very useful commands &#x2013; pwd</a></li>
+<li><a href="#org41a126e">1.2.13. Very useful commands &#x2013; find</a></li>
+<li><a href="#org4f06c3c">1.2.14. Very useful commands &#x2013; grep</a></li>
+<li><a href="#orgdca91aa">1.2.15. Very useful commands &#x2013; less/head/tail</a></li>
+<li><a href="#orgad82d9e">1.2.16. Very useful commands &#x2013; wc</a></li>
+<li><a href="#org4cdcb54">1.2.17. Very useful commands &#x2013; piping</a></li>
+<li><a href="#orgc74ab9c">1.2.18. Very useful basic commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgee574be">2. Shell Scripting</a>
+<ul>
+<li><a href="#org935650b">2.1. Writing bash scripts</a>
+<ul>
+<li><a href="#orgb700ba6">2.1.1. Very first bash script</a></li>
+<li><a href="#org4a87642">2.1.2. Very first bash script</a></li>
+<li><a href="#org83edca8">2.1.3. Variables</a></li>
+<li><a href="#orgfc00148">2.1.4. Interpolation in bash strings</a></li>
+<li><a href="#org05af3d0">2.1.5. Bash strings &#x2013; the sharp edges</a></li>
+<li><a href="#org41e81d6">2.1.6. Stopping interpolation in bash strings</a></li>
+<li><a href="#org3d84e78">2.1.7. Input/Output</a></li>
+<li><a href="#org3e2db44">2.1.8. Booleans</a></li>
+<li><a href="#org6e45cf6">2.1.9. Conditionals</a></li>
+<li><a href="#org81957ad">2.1.10. Conditionals</a></li>
+<li><a href="#org6d1af41">2.1.11. Conditionals</a></li>
+<li><a href="#org86c1bf8">2.1.12. Conditionals</a></li>
+<li><a href="#org3f16640">2.1.13. Loops</a></li>
+<li><a href="#org1117b17">2.1.14. Loops</a></li>
+<li><a href="#org5692897">2.1.15. Loops</a></li>
+<li><a href="#org27fa08c">2.1.16. Functions</a></li>
+<li><a href="#org8c6fddc">2.1.17. Functions</a></li>
+<li><a href="#org78b4588">2.1.18. Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4061cbc">3. High Performance Cluster</a>
+<ul>
+<li><a href="#org1fa88e6">3.1. Getting started</a>
+<ul>
+<li><a href="#org68d3c5c">3.1.1. What is the Cluster?</a></li>
+<li><a href="#orge9d0d2e">3.1.2. How to login</a></li>
+<li><a href="#org289cf4a">3.1.3. How to login</a></li>
+<li><a href="#orgd45edd9">3.1.4. How to login</a></li>
+<li><a href="#orgcb4adb2">3.1.5. How to copy files to and from the cluster</a></li>
+<li><a href="#orgb18829b">3.1.6. Copying files &#x2013; rsync</a></li>
+</ul>
+</li>
+<li><a href="#org2e67410">3.2. Submitting jobs</a>
+<ul>
+<li><a href="#org97d598f">3.2.1. The Login- and Compute Nodes</a></li>
+<li><a href="#org49b5a5f">3.2.2. How to launch a job &#x2013; srun</a></li>
+<li><a href="#org41054da">3.2.3. How to launch a job &#x2013; salloc</a></li>
+<li><a href="#orga190552">3.2.4. How to launch a job &#x2013; options</a></li>
+<li><a href="#org3b243ca">3.2.5. How to launch a job &#x2013; GPU allocation</a></li>
+<li><a href="#org013bf1a">3.2.6. How to launch a job &#x2013; GPU allocation</a></li>
+<li><a href="#org343cd08">3.2.7. Learning more about nodes</a></li>
+<li><a href="#org8528e17">3.2.8. How to launch a job &#x2013; sbatch</a></li>
+<li><a href="#org0635111">3.2.9. How to launch a job &#x2013; sbatch</a></li>
+<li><a href="#orgf915f90">3.2.10. How to launch a job &#x2013; sbatch</a></li>
+<li><a href="#org7cde680">3.2.11. Job Management &#x2013; squeue</a></li>
+<li><a href="#orgd6cf010">3.2.12. Job Management &#x2013; scancel</a></li>
+<li><a href="#org61e2da0">3.2.13. Job Management &#x2013; sacct</a></li>
+<li><a href="#org4e67f50">3.2.14. Job Task Arrays &#x2013; motivation</a></li>
+<li><a href="#org17129a5">3.2.15. Job Task Arrays &#x2013; how to</a></li>
+<li><a href="#org4517b1b">3.2.16. Job Task Arrays &#x2013; how to</a></li>
+<li><a href="#orgfa66b9f">3.2.17. Job Task Arrays &#x2013; how to</a></li>
+<li><a href="#orgc97926a">3.2.18. Job Task Arrays &#x2013; how to</a></li>
+<li><a href="#orga80fa14">3.2.19. Job Task Arrays &#x2013; how to</a></li>
+<li><a href="#org791749b">3.2.20. Job Task Arrays &#x2013; how to</a></li>
+<li><a href="#org38156af">3.2.21. Job Task Arrays &#x2013; how to</a></li>
+</ul>
+</li>
+<li><a href="#orgf96ee43">3.3. A guided walk through</a>
+<ul>
+<li><a href="#org6ab49c9">3.3.1. A guided walk through &#x2013; environment</a></li>
+<li><a href="#org30c4d17">3.3.2. Writing our scripts</a></li>
+<li><a href="#org0698b83">3.3.3. Writing our job submission script</a></li>
+<li><a href="#org81d6fa7">3.3.4. Replicating our environment on the cluster</a></li>
+<li><a href="#orgd2fbfe0">3.3.5. Sending our scripts to the cluster</a></li>
+<li><a href="#orgfa6466f">3.3.6. Logging into the cluster</a></li>
+<li><a href="#org99d718d">3.3.7. Re-creating our development environment</a></li>
+<li><a href="#org2cf9dd5">3.3.8. Submitting our job</a></li>
+<li><a href="#org211db20">3.3.9. Downloading the results</a></li>
+<li><a href="#org4263cdc">3.3.10. Analysing the results</a></li>
+<li><a href="#org0fde8b6">3.3.11. Useful features &#x2013; X11 Forwarding</a></li>
+<li><a href="#orgff7aa3c">3.3.12. Useful features &#x2013; Jupyter Notebooks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4e18a02" class="outline-2">
+<h2 id="org4e18a02"><span class="section-number-2">1.</span> Linux</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org1548ed2" class="outline-3">
+<h3 id="org1548ed2"><span class="section-number-3">1.1.</span> What is Linux</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org2f3aa22" class="outline-4">
+<h4 id="org2f3aa22"><span class="section-number-4">1.1.1.</span> What is Linux?</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>Linux is a popular operating system (OS) like Windows, or MacOS.</li>
+<li>Unlike these other two OSs, Linux is open source, which means the source code
+is freely available to look at and modify.</li>
+<li>As its open source, its very possible for anyone to build their <i>own</i> version of
+Linux or build on top of Linux to create their own <i>Distribution</i> of Linux.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1fbc055" class="outline-4">
+<h4 id="org1fbc055"><span class="section-number-4">1.1.2.</span> What's a Distribution?</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+A distribution can be considered like a <i>flavour</i> or version of Linux. There are
+many popular flavours that attempt to meet different needs from different
+users. For example:
+</p>
+
+<ul class="org-ul">
+<li>Ubuntu &#x2013; typically the first Linux experience people will have. Attempts to be
+very user friendly.</li>
+<li>Fedora &#x2013; stable and secure distribution while also providing up-to-date packages.</li>
+<li>Arch Linux &#x2013; strong focus on customisability rather than user friendliness
+with bleeding edge packages.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1908c28" class="outline-4">
+<h4 id="org1908c28"><span class="section-number-4">1.1.3.</span> What's a Distribution?</h4>
+<div class="outline-text-4" id="text-1-1-3">
+
+<div id="org6893472" class="figure">
+<p><img src="images/family-tree.png" alt="family-tree.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8752a49" class="outline-4">
+<h4 id="org8752a49"><span class="section-number-4">1.1.4.</span> Defining Traits of Linux</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+While we have said that Linux is open source, there are many other traits that
+make it stand out from other operating systems:
+</p>
+
+<ul class="org-ul">
+<li>Complete control of how the system operates.</li>
+<li>The level of flexibility and automation that you can get from using the Linux
+command line.</li>
+</ul>
+
+<p>
+While there are many other traits, these two are going to be what we're going to
+focus on.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org25bd0b9" class="outline-3">
+<h3 id="org25bd0b9"><span class="section-number-3">1.2.</span> The command line</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orge2f55f8" class="outline-4">
+<h4 id="orge2f55f8"><span class="section-number-4">1.2.1.</span> What's a command?</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+While many recent versions of Linux makes things more accessible via GUIs, they
+will never be a substitute for using the command line. We're going to learn how
+to control the system via the command line, via a <b>shell</b>. A shell, like the
+Python REPL we've already seen, is waits for you to input commands, executes the
+command, and prints the output if there is output to print.
+</p>
+
+<p>
+A Linux command is a call to a program optionally followed by some
+arguments. For example, if we want list out the files and folders in the
+directory, we would use the <code>ls</code> (list) command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ls
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge174ab0" class="outline-4">
+<h4 id="orge174ab0"><span class="section-number-4">1.2.2.</span> What is a command?</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+The <code>ls</code> command comes with a number of optional flags and arguments that we can
+add onto the call. When calling a command a flag is something that begins with a
+<code>-</code> , for example <code>-l</code> tells <code>ls</code> to list the directory in a list format.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ls -l
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27ca47a" class="outline-4">
+<h4 id="org27ca47a"><span class="section-number-4">1.2.3.</span> What is a command?</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+We have supplied the <code>-l</code> flag. There are many other flags for <code>ls</code>, like for
+example, the human readable file systems with <code>-h</code> or show hidden files (files
+that start with a period) with <code>-a</code>.
+</p>
+
+<p>
+When we're using multiple flags we could write
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ls -l -h -a
+</pre>
+</div>
+
+<p>
+Or:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ls -lha
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1c3575e" class="outline-4">
+<h4 id="org1c3575e"><span class="section-number-4">1.2.4.</span> What is a command?</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+Sometimes commands take optional positional arguments. Going back to our list
+directory command, where, by default, it will list the current directory. But
+instead we can tell the command to list a particular directory by supplying the
+path as an argument
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ls images/ -lha
+<span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">or ls -lha images/ works too</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga5630f0" class="outline-4">
+<h4 id="orga5630f0"><span class="section-number-4">1.2.5.</span> What is a command?</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+How do I know how to use a command? Well that's where another command comes
+in. It's called <code>man</code> (short for manual). If you pass another command to the <code>man</code>
+command, the documentation will be shown in the terminal, e.g.:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">man ls  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">display the documentation for ls</span>
+</pre>
+</div>
+
+<p>
+The documentation should list all the different flags and arguments, describe
+what they mean, and sometimes give example or most common usage of a command.
+</p>
+
+<p>
+When the 'man page' is display, you can scroll up and down the page using your
+arrow keys, and page-up and page-down. When you're done reading, just hit the
+'q' character
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcc06ece" class="outline-4">
+<h4 id="orgcc06ece"><span class="section-number-4">1.2.6.</span> Very useful commands</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<p>
+I am going to go through some of the most common commands just to make sure that
+you're familiar with the typical usage.
+</p>
+
+<p>
+We've already seen <code>ls</code> to list a directory. The command to move to a directory is
+<code>cd</code> (change directory), that takes an argument of filepath to move to:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #3fb83f; font-weight: bold;">cd</span> ~ <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">tilde is short-hand for the 'home directory'</span>
+<span style="color: #3fb83f; font-weight: bold;">cd</span> ~/Documents/My<span style="color: #af9fff;">\ </span>Files  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">go to Documents and then to "My Files"</span>
+<span style="color: #3fb83f; font-weight: bold;">cd</span>   <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">no argument, by default goes to the home directory</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga01da96" class="outline-4">
+<h4 id="orga01da96"><span class="section-number-4">1.2.7.</span> Very useful commands &#x2013; mkdir</h4>
+<div class="outline-text-4" id="text-1-2-7">
+<p>
+Sticking with the them of directories, to make a new directory we use <code>mkdir</code>,
+whose argument takes the name of the directory we want to create:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">mkdir my_new_directory
+</pre>
+</div>
+
+<p>
+You can create a many level nested directory structure all at once using the <code>-p</code>
+(parents) flag, that tells <code>mkdir</code> if the parent directory of the target directory
+doesn't exist, create it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">mkdir photos/2020/01/05  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">won't work unless photos/2020/01 exist</span>
+mkdir -p photos/2020/01/05  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">this will work</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6e7d7fa" class="outline-4">
+<h4 id="org6e7d7fa"><span class="section-number-4">1.2.8.</span> Very useful commands &#x2013; cp</h4>
+<div class="outline-text-4" id="text-1-2-8">
+<p>
+To copy a file or directory, we can use the <code>cp</code> command. Here we are copying a
+file, where the first argument is the filepath of the file you want to copy and the second
+argument is the filepath where the copy should be placed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">cp my_old_file my_new_file
+</pre>
+</div>
+
+<p>
+By default (without a flag), <code>cp</code> will not work with directories, for that you
+have to use the <code>-r</code> (recursive) flag
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">cp -r data/ data-backup
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org726fe59" class="outline-4">
+<h4 id="org726fe59"><span class="section-number-4">1.2.9.</span> Very useful commands &#x2013; mv</h4>
+<div class="outline-text-4" id="text-1-2-9">
+<p>
+The syntax of moving a file is similar to that of <code>cp</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">mv old_file new_file
+</pre>
+</div>
+
+<p>
+Except that it works for both files and directories without any flags. <code>mv</code> can
+also be used to <b>rename</b> files, that's all renaming is: moving a file to the same
+directory under a different name.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3f1291d" class="outline-4">
+<h4 id="org3f1291d"><span class="section-number-4">1.2.10.</span> Very useful commands &#x2013; rm</h4>
+<div class="outline-text-4" id="text-1-2-10">
+<p>
+To remove a file us <code>rm</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">rm file_to_delete
+</pre>
+</div>
+
+<p>
+If you want to delete a directory, use the <code>-r</code> (recursive) flag:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">rm -r directory_to_delete/
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd4ddf4a" class="outline-4">
+<h4 id="orgd4ddf4a"><span class="section-number-4">1.2.11.</span> Very useful commands &#x2013; cat</h4>
+<div class="outline-text-4" id="text-1-2-11">
+<p>
+<code>cat</code> stands for concatenate, i.e. concatenating the contents of two or more
+files:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">cat file1 file2
+</pre>
+</div>
+
+<p>
+The result is that the concatenation of these two files will be printed to the
+screen. If you wanted to put the result into its own file you would redirect the
+output using <code>&gt;</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">cat file1 file2 &gt; newfile
+</pre>
+</div>
+
+<p>
+Since cat reads the file and prints it to screen it is a very handy way to view
+the contents of a file, even if it was not intended for that.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8b9fdfc" class="outline-4">
+<h4 id="org8b9fdfc"><span class="section-number-4">1.2.12.</span> Very useful commands &#x2013; pwd</h4>
+<div class="outline-text-4" id="text-1-2-12">
+<p>
+Sometimes you may get lost when moving directories. <code>pwd</code> prints the current
+working directory from the root directory, i.e. the path that is printed is an
+absolute path.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #3fb83f; font-weight: bold;">pwd</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org41a126e" class="outline-4">
+<h4 id="org41a126e"><span class="section-number-4">1.2.13.</span> Very useful commands &#x2013; find</h4>
+<div class="outline-text-4" id="text-1-2-13">
+<p>
+If we want to list all files of a certain type, we can use the wildcard <code>*</code> that
+we've seen before:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ls *.jpg <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">list all files that end with .jpg</span>
+</pre>
+</div>
+
+<p>
+However, this will only list for the current directory. Perhaps the better way
+to find files will be using the <code>find</code> command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">find . -type f -name *.jpg
+</pre>
+</div>
+
+<p>
+The first argument is the directory to start the search, then we define the type
+<code>f</code> being files, and then specify the name. Find will recursively search through
+directories and sub-directories to find all files that match that name.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4f06c3c" class="outline-4">
+<h4 id="org4f06c3c"><span class="section-number-4">1.2.14.</span> Very useful commands &#x2013; grep</h4>
+<div class="outline-text-4" id="text-1-2-14">
+<p>
+How about if we want to find files that have a certain contents? For that we can
+use <code>grep</code>. Grep will read a file and print (by default) the lines that contains
+your pattern. i.e.:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">grep <span style="color: #af9fff;">'Linux'</span> lecture.org
+</pre>
+</div>
+
+<p>
+This will print the lines that contain the word Linux in lecture.org. If we just
+want the matched value, we use the <code>-o</code> flag.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">grep -o <span style="color: #af9fff;">'[0-9]'</span> lecture.org
+</pre>
+</div>
+
+<p>
+This prints all occurrences of numbers in lecture.org
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdca91aa" class="outline-4">
+<h4 id="orgdca91aa"><span class="section-number-4">1.2.15.</span> Very useful commands &#x2013; less/head/tail</h4>
+<div class="outline-text-4" id="text-1-2-15">
+<p>
+If a file is very long, we may not want to read the file using cat, as it will
+have to print the entire file. Instead we could use <code>less</code>, which will allow us to
+navigate through the file, using arrow keys to move and <code>q</code> to quit.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">less filename
+</pre>
+</div>
+
+<p>
+If we just want to view the first few lines, or the last few lines of a file we
+can use head/tail, respectively:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">head filename
+tail -n 20 filename  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">last 20 lines</span>
+tail -F filename <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">constantly read the file</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgad82d9e" class="outline-4">
+<h4 id="orgad82d9e"><span class="section-number-4">1.2.16.</span> Very useful commands &#x2013; wc</h4>
+<div class="outline-text-4" id="text-1-2-16">
+<p>
+Often times we just want to count the number of something. For example, if we
+want to count the number of files/folders in the directory we can do:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ls -l | wc -l
+</pre>
+</div>
+
+<p>
+We're first printing all files and folders in a list format (one per line), then
+passing (<sub>piping</sub>_) the result to <code>wc</code>, which with the <code>-l</code> line flag, is counting the
+number of lines. Therefore we get a count of the number of files and
+folders. Here is another example where we're counting how many times the word
+bash appears in these lecture notes:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">grep -o <span style="color: #af9fff;">'bash'</span> lecture.org | wc -l
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4cdcb54" class="outline-4">
+<h4 id="org4cdcb54"><span class="section-number-4">1.2.17.</span> Very useful commands &#x2013; piping</h4>
+<div class="outline-text-4" id="text-1-2-17">
+<p>
+The purpose of piping is to pass data around between commands. We have just seen
+how we can pass the output of, say, the <code>ls</code> command to  the input of <code>wc</code>. This
+allows use to construct very sophisticated pipelines to do some quite complex
+things from the combination of very simple commands.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">find . -name <span style="color: #af9fff;">'*.txt'</span> -type f -print0 | xargs -0 grep <span style="color: #af9fff;">"something"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc74ab9c" class="outline-4">
+<h4 id="orgc74ab9c"><span class="section-number-4">1.2.18.</span> Very useful basic commands</h4>
+<div class="outline-text-4" id="text-1-2-18">
+<p>
+In summary we have seen the following commands:
+</p>
+
+<ul class="org-ul">
+<li><code>ls</code> - List a directory</li>
+<li><code>cd</code> - Change/move to a directory</li>
+<li><code>mkdir</code> - Make a new directory</li>
+<li><code>cat</code> - Concatenate files</li>
+<li><code>cp</code> - Copy a file/directory</li>
+<li><code>mv</code> - Move files/folders</li>
+<li><code>rm</code> - Remove files and folders</li>
+<li><code>pwd</code> - Display the current absolute path</li>
+<li><code>find</code> - Find files</li>
+<li><code>grep</code> - Find occurrences of a pattern in a file</li>
+<li><code>less/head/tail</code> - Read a file</li>
+<li><code>wc</code> - Count</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgee574be" class="outline-2">
+<h2 id="orgee574be"><span class="section-number-2">2.</span> Shell Scripting</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org935650b" class="outline-3">
+<h3 id="org935650b"><span class="section-number-3">2.1.</span> Writing bash scripts</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgb700ba6" class="outline-4">
+<h4 id="orgb700ba6"><span class="section-number-4">2.1.1.</span> Very first bash script</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+Let's start with the classic 'Hello, World' example. We'll create a new file
+called 'hello.sh' and enter the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+
+<span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"Hello, World!"</span>
+</pre>
+</div>
+
+<p>
+First thing to notice is that the first line contains what we call a 'shebang'
+or 'hashbang'. It tells Linux which shell interpreter will be used to run the
+script, in this case: /bin/bash
+</p>
+
+<p>
+The next (non-empty) line in the file is <code>echo 'Hello, World'</code>. This is exactly
+the same as the other commands we've just seen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4a87642" class="outline-4">
+<h4 id="org4a87642"><span class="section-number-4">2.1.2.</span> Very first bash script</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+Now that we've created and saved our bash script, we will want to run it. We
+have two alternative methods to run this script:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash hello.sh  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">run the script via bash</span>
+</pre>
+</div>
+
+<p>
+The second, requires that we have executable privileges for the script:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">chmod +x hello.sh  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">add executable 'x' privileges</span>
+./hello.sh  <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">execute it</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org83edca8" class="outline-4">
+<h4 id="org83edca8"><span class="section-number-4">2.1.3.</span> Variables</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+The variables we create in our bash scripts are very much the same as the
+environment variables we've seen before. Take for example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+<span style="color: #78afff;">AGE</span>=<span style="color: #af9fff;">"35"</span>
+<span style="color: #78afff;">PERSON_NAME</span>=<span style="color: #af9fff;">"Jane"</span>
+<span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"$PERSON_NAME is $AGE years old"</span>
+</pre>
+</div>
+
+<p>
+We create a variable <code>AGE</code> with the <code>=</code> assignment operator. <b>Note</b> we don't put
+spaces either side of the equals sign in bash. To refer to the variable, we use
+<code>$AGE</code>, using the <code>$</code> dollar sign.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfc00148" class="outline-4">
+<h4 id="orgfc00148"><span class="section-number-4">2.1.4.</span> Interpolation in bash strings</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<p>
+You would have noticed in the previous example that we included the variable
+directly into the string we're echoing out. This is something similar to what
+we've seen with f-strings in Python.
+</p>
+
+<p>
+When we use double quotes: <code>"..."</code>  in bash, the variable will be integrated into
+the resulting string. We can even call bash functions from directly inside the
+string:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"I am logging in as: $(</span><span style="color: #3fb83f; font-weight: bold;">who</span><span style="color: #af9fff;">)"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org05af3d0" class="outline-4">
+<h4 id="org05af3d0"><span class="section-number-4">2.1.5.</span> Bash strings &#x2013; the sharp edges</h4>
+<div class="outline-text-4" id="text-2-1-5">
+<p>
+You might be tempted to use a variable when generating a path:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #78afff;">TRAIN_PROCESS</span>=<span style="color: #af9fff;">"training"</span>
+<span style="color: #78afff;">TEST_PROCESS</span>=<span style="color: #af9fff;">"testing"</span>
+
+touch <span style="color: #af9fff;">"./data/$TRAIN_PROCESS_error.txt"</span>
+touch <span style="color: #af9fff;">"./data/$TEST_PROCESS_error.txt</span>
+</pre>
+</div>
+
+<p>
+But this will create an error as underscores can be part of the variable name,
+so bash will be looking for a variable named: <code>$TRAIN_PROCESS_error</code> which has
+never been created. To get around this, we can wrap our variable in curly
+braces:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">touch <span style="color: #af9fff;">"./data/${TRAIN_PROCESS}_error.txt"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org41e81d6" class="outline-4">
+<h4 id="org41e81d6"><span class="section-number-4">2.1.6.</span> Stopping interpolation in bash strings</h4>
+<div class="outline-text-4" id="text-2-1-6">
+<p>
+We can also use single quotes for strings in bash. When we use these strings,
+the string itself is <span class="underline">not</span> interpreted, and thus it will ignore any variables or
+bash commands:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">'I am logging in as: $(</span><span style="color: #3fb83f; font-weight: bold;">who</span><span style="color: #af9fff;">)'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d84e78" class="outline-4">
+<h4 id="org3d84e78"><span class="section-number-4">2.1.7.</span> Input/Output</h4>
+<div class="outline-text-4" id="text-2-1-7">
+<p>
+If we want to read the input from keyboard into a variable, we use the read
+command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+
+<span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"Enter your name:"</span>
+<span style="color: #3fb83f; font-weight: bold;">read</span> NAME
+
+<span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"Hello, $NAME"</span>
+</pre>
+</div>
+
+<p>
+<code>read</code> in this context will read in the input and create the variable with that
+value. As we've already seen, we can then output this value to the console using
+the echo command.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3e2db44" class="outline-4">
+<h4 id="org3e2db44"><span class="section-number-4">2.1.8.</span> Booleans</h4>
+<div class="outline-text-4" id="text-2-1-8">
+<p>
+Technically, bash does not have built in data types for true and false, but
+Linux has the commands true and false which we could use in place. The
+implementation of how these commands work is not important.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #78afff;">FILE_EXISTS</span>=true
+
+<span style="color: #00c089; font-weight: bold;">if</span> [ <span style="color: #af9fff;">"$FILE_EXISTS"</span> = true ]; <span style="color: #00c089; font-weight: bold;">then</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"The file exists!"</span>
+<span style="color: #00c089; font-weight: bold;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6e45cf6" class="outline-4">
+<h4 id="org6e45cf6"><span class="section-number-4">2.1.9.</span> Conditionals</h4>
+<div class="outline-text-4" id="text-2-1-9">
+<p>
+When we're creating <code>if</code> expressions, we use the following syntax:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #00c089; font-weight: bold;">if</span> &lt;&lt;conditional&gt;&gt;; <span style="color: #00c089; font-weight: bold;">then</span>
+<span style="color: #7fc07f; font-style: italic;">   # do something</span>
+<span style="color: #7fc07f; font-style: italic;">else</span>
+<span style="color: #7fc07f; font-style: italic;">   # do something else</span>
+<span style="color: #7fc07f; font-style: italic;">fi</span>
+</pre>
+</div>
+
+<p>
+We can also use <code>elif</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #00c089; font-weight: bold;">if</span> &lt;&lt;conditional&gt;&gt;; <span style="color: #00c089; font-weight: bold;">then</span>
+<span style="color: #7fc07f; font-style: italic;">   # do something</span>
+<span style="color: #7fc07f; font-style: italic;">elif &lt;&lt;conditional&gt;&gt;; then</span>
+<span style="color: #7fc07f; font-style: italic;">   # do something else</span>
+<span style="color: #7fc07f; font-style: italic;">else</span>
+<span style="color: #7fc07f; font-style: italic;">   # something else entirely</span>
+<span style="color: #7fc07f; font-style: italic;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org81957ad" class="outline-4">
+<h4 id="org81957ad"><span class="section-number-4">2.1.10.</span> Conditionals</h4>
+<div class="outline-text-4" id="text-2-1-10">
+<p>
+Writing condition expressions can be a little more cumbersome than in
+Python. These can be many pain points for new bash programmers, take for
+example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #78afff;">FILE_EXISTS</span>=false
+
+<span style="color: #00c089; font-weight: bold;">if</span> [ $<span style="color: #78afff;">FILE_EXISTS</span> ]; <span style="color: #00c089; font-weight: bold;">then</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"The file exists!"</span>
+<span style="color: #00c089; font-weight: bold;">fi</span>
+</pre>
+</div>
+
+<p>
+This is because we have used the <code>[...]</code> single bracket syntax for the test. But
+there are others:
+</p>
+
+<ul class="org-ul">
+<li>No brackets: we could omit the brackets in which case it would run the false
+command not print the statement.</li>
+<li>Single paranthesis <code>(...)</code> creates a sub-shell.</li>
+<li>Double paranthesis <code>((...))</code> for arithmetic operation</li>
+<li>Single square bracket <code>[...]</code> calls <code>test</code></li>
+<li>Double square bracket <code>[[...]]</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6d1af41" class="outline-4">
+<h4 id="org6d1af41"><span class="section-number-4">2.1.11.</span> Conditionals</h4>
+<div class="outline-text-4" id="text-2-1-11">
+<p>
+What if we write:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #78afff;">VAR_1</span>=<span style="color: #af9fff;">"Mr Foo Bar"</span>
+<span style="color: #78afff;">VAR_2</span>=<span style="color: #af9fff;">"Mr Foo Bar"</span>
+<span style="color: #00c089; font-weight: bold;">if</span> [ $<span style="color: #78afff;">VAR_1</span> = $<span style="color: #78afff;">VAR_2</span> ]; <span style="color: #00c089; font-weight: bold;">then</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"They are the same"</span>
+<span style="color: #00c089; font-weight: bold;">fi</span>
+</pre>
+</div>
+
+<p>
+We would get an error because <code>test</code> expands the arguments into:
+</p>
+
+<pre class="example">
+Mr Foo Bar = Mr Foo Bar
+</pre>
+
+<p>
+With the spaces included. To prevent this from happening, we have to wrap the
+variables in quotation marks.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #78afff;">VAR_1</span>=<span style="color: #af9fff;">"Mr Foo Bar"</span>
+<span style="color: #78afff;">VAR_2</span>=<span style="color: #af9fff;">"Mr Foo Bar"</span>
+<span style="color: #00c089; font-weight: bold;">if</span> [ <span style="color: #af9fff;">"$VAR_1"</span> = <span style="color: #af9fff;">"$VAR_2"</span> ]; <span style="color: #00c089; font-weight: bold;">then</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"They are the same"</span>
+<span style="color: #00c089; font-weight: bold;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org86c1bf8" class="outline-4">
+<h4 id="org86c1bf8"><span class="section-number-4">2.1.12.</span> Conditionals</h4>
+<div class="outline-text-4" id="text-2-1-12">
+<p>
+If we use <code>[[</code> in if statement, then we can do more sophisticated things like
+pattern matching:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #78afff;">FILENAME</span>=<span style="color: #af9fff;">"testing.png"</span>
+<span style="color: #00c089; font-weight: bold;">if</span> [[ <span style="color: #af9fff;">"$FILENAME"</span> = *.png ]]; <span style="color: #00c089; font-weight: bold;">then</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"Its a png file"</span>
+<span style="color: #00c089; font-weight: bold;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3f16640" class="outline-4">
+<h4 id="org3f16640"><span class="section-number-4">2.1.13.</span> Loops</h4>
+<div class="outline-text-4" id="text-2-1-13">
+<p>
+Like in Python, we can iterate in bash
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #00c089; font-weight: bold;">for</span> i<span style="color: #00c089; font-weight: bold;"> in</span> {1..10}; <span style="color: #00c089; font-weight: bold;">do</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> $<span style="color: #78afff;">i</span>
+<span style="color: #00c089; font-weight: bold;">done</span>
+</pre>
+</div>
+
+<p>
+This iterates with i starting at 1 upto 10 (inclusive). Or we could do:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #00c089; font-weight: bold;">for</span> (( <span style="color: #78afff;">i</span>=1; i &lt;= 10; i++ )); <span style="color: #00c089; font-weight: bold;">do</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> $<span style="color: #78afff;">i</span>
+<span style="color: #00c089; font-weight: bold;">done</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1117b17" class="outline-4">
+<h4 id="org1117b17"><span class="section-number-4">2.1.14.</span> Loops</h4>
+<div class="outline-text-4" id="text-2-1-14">
+<p>
+We can also iterate over a list of files/folders in a directory:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #00c089; font-weight: bold;">for</span> FILE<span style="color: #00c089; font-weight: bold;"> in</span> ./images/*; <span style="color: #00c089; font-weight: bold;">do</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> $<span style="color: #78afff;">FILE</span>
+<span style="color: #00c089; font-weight: bold;">done</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5692897" class="outline-4">
+<h4 id="org5692897"><span class="section-number-4">2.1.15.</span> Loops</h4>
+<div class="outline-text-4" id="text-2-1-15">
+<p>
+Using the <code>while</code> form, we can continue looping until our conditional is
+false. For example, we could loop testing our internet connection, until its
+been established:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #00c089; font-weight: bold;">while</span> <span style="font-weight: bold;">!</span> ping -c 1 google.com; <span style="color: #00c089; font-weight: bold;">do</span>
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"No internet yet"</span>
+    sleep 1
+<span style="color: #00c089; font-weight: bold;">done</span>
+
+<span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"Internet is available!"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27fa08c" class="outline-4">
+<h4 id="org27fa08c"><span class="section-number-4">2.1.16.</span> Functions</h4>
+<div class="outline-text-4" id="text-2-1-16">
+<p>
+To create a function, we use the following syntax:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #7fc500;">function_name</span>() {
+    <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">do something</span>
+}
+</pre>
+</div>
+
+<p>
+And to call the function, you just need to use the function name:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">function_name <span style="color: #b7a07f; font-style: italic;"># </span><span style="color: #b7a07f; font-style: italic;">this called function name</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c6fddc" class="outline-4">
+<h4 id="org8c6fddc"><span class="section-number-4">2.1.17.</span> Functions</h4>
+<div class="outline-text-4" id="text-2-1-17">
+<p>
+Here is another example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #7fc500;">say_hello</span>() {
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"Hello, $1"</span>
+}
+
+say_hello <span style="color: #af9fff;">"Jane"</span>
+</pre>
+</div>
+
+<p>
+Notice that we didn't need to include any argument list. We just used <code>$1</code> for the
+first argument passed to the function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #7fc500;">say_hello</span>() {
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"$1, $2"</span>
+}
+
+say_hello <span style="color: #af9fff;">"Hi"</span> <span style="color: #af9fff;">"Jane"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org78b4588" class="outline-4">
+<h4 id="org78b4588"><span class="section-number-4">2.1.18.</span> Functions</h4>
+<div class="outline-text-4" id="text-2-1-18">
+<p>
+Returning values is 'interesting' as, coming from other languages, you think
+could do something like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #7fc500;">say_hello</span>() {
+    <span style="color: #00c089; font-weight: bold;">return</span> <span style="color: #af9fff;">"hello"</span>
+}
+<span style="color: #78afff;">RESULT</span>=<span style="color: #af9fff;">"$(</span><span style="color: #3fb83f; font-weight: bold;">say_hello</span><span style="color: #af9fff;">)"</span>
+<span style="color: #3fb83f; font-weight: bold;">echo</span> $<span style="color: #78afff;">RESULT</span>
+</pre>
+</div>
+
+<p>
+This didn't work like we expected, the value wasn't returned and assigned to
+<code>RESULT</code>. So how do we return a value?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #7fc500;">say_hello</span>() {
+    <span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"Hello"</span>
+}
+<span style="color: #78afff;">RESULT</span>=<span style="color: #af9fff;">"$(</span><span style="color: #3fb83f; font-weight: bold;">say_hello</span><span style="color: #af9fff;">)"</span>
+<span style="color: #3fb83f; font-weight: bold;">echo</span> <span style="color: #af9fff;">"This is before the printing of result"</span>
+<span style="color: #3fb83f; font-weight: bold;">echo</span> $<span style="color: #78afff;">RESULT</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4061cbc" class="outline-2">
+<h2 id="org4061cbc"><span class="section-number-2">3.</span> High Performance Cluster</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org1fa88e6" class="outline-3">
+<h3 id="org1fa88e6"><span class="section-number-3">3.1.</span> Getting started</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org68d3c5c" class="outline-4">
+<h4 id="org68d3c5c"><span class="section-number-4">3.1.1.</span> What is the Cluster?</h4>
+</div>
+
+<div id="outline-container-orge9d0d2e" class="outline-4">
+<h4 id="orge9d0d2e"><span class="section-number-4">3.1.2.</span> How to login</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<div class="org-src-container">
+<pre class="src src-bash">ssh &lt;&lt;username&gt;&gt;@saphir2.lis-lab.fr
+</pre>
+</div>
+
+<p>
+Then:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ssh &lt;&lt;username&gt;&gt;@sms-ext.lis-lab.fr
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org289cf4a" class="outline-4">
+<h4 id="org289cf4a"><span class="section-number-4">3.1.3.</span> How to login</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+Typing both these commands can become tiresome very quickly. But we can make it
+a lot easier by updating our <code>~/.ssh/config</code> file to include something like:
+</p>
+
+<pre class="example" id="orgcc5f882">
+Host saphir2
+     HostName saphir2.lis-lab.fr
+     User &lt;&lt;username&gt;&gt;
+
+Host cluster
+     HostName sms-ext.lis-lab.fr
+     User &lt;&lt;username&gt;&gt;
+     ProxyCommand ssh saphir2 -W %h:%p
+</pre>
+
+<p>
+Then to login to the cluster, we just need to type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ssh cluster
+</pre>
+</div>
+
+<p>
+And we should be prompted for our password.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd45edd9" class="outline-4">
+<h4 id="orgd45edd9"><span class="section-number-4">3.1.4.</span> How to login</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<p>
+If you trust the machine your on, you can remove password authentication and
+move to key-based authentication:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ssh-copy-id saphir2
+ssh-copy-id cluster
+</pre>
+</div>
+
+<p>
+When we next login to the server, we shouldn't be prompted for a password.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcb4adb2" class="outline-4">
+<h4 id="orgcb4adb2"><span class="section-number-4">3.1.5.</span> How to copy files to and from the cluster</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<p>
+We have a number of options for transferring files to and from the
+cluster. Firstly, let's look at the command <code>scp</code>. It takes two arguments, the
+first argument is the file you want to send, the second argument is the
+destination of the sent file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scp &lt;&lt;origin&gt;&gt; &lt;&lt;destination&gt;&gt;
+</pre>
+</div>
+
+<p>
+Similar to commands like <code>cp</code>, scp by default only works for files, not
+folders. To send folders/directories, we use the <code>-r</code> flag just like <code>cp</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scp -r &lt;&lt;origin_folder&gt;&gt; &lt;&lt;destination_folder&gt;&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb18829b" class="outline-4">
+<h4 id="orgb18829b"><span class="section-number-4">3.1.6.</span> Copying files &#x2013; rsync</h4>
+<div class="outline-text-4" id="text-3-1-6">
+<p>
+One of the downsides about <code>scp</code> is that it will copy every file you give
+it. Even if the file at the destination is exactly the same. What if we only
+want to copy files that need to be copied, i.e. that are outdated, thus saving
+time? For that, we can use <code>rsync</code>. Rsync will copy files from one source to a
+destination only if the destination needs to be updated. This can save a lot of
+time by skipping files that already exist at the destination:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">rsync &lt;&lt;source&gt;&gt; &lt;&lt;destination&gt;&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2e67410" class="outline-3">
+<h3 id="org2e67410"><span class="section-number-3">3.2.</span> Submitting jobs</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-org97d598f" class="outline-4">
+<h4 id="org97d598f"><span class="section-number-4">3.2.1.</span> The Login- and Compute Nodes</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+When you login to the cluster, you are logging into the <i>login</i> node. <b>Note</b> that no
+computation should be run on this node. If you want to run scripts, you will
+have to submit a job to the compute nodes.
+</p>
+
+<p>
+On the login node there is a system installed called 'SLURM'. SLURM is a job
+scheduler program that receives your requests for executing scripts, it will
+queue them and assign them to available compute nodes.
+</p>
+
+<p>
+We will take a look at how to request and manage jobs using the various commands
+that SLURM provides.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org49b5a5f" class="outline-4">
+<h4 id="org49b5a5f"><span class="section-number-4">3.2.2.</span> How to launch a job &#x2013; srun</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+The first command we will look at it is <code>srun</code>. This command will run request a
+job for execution in 'real-time'. By real-time, we mean that the shell will wait
+until the job has been submitted.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">srun &lt;&lt;compute node options&gt;&gt; &lt;&lt;command to run&gt;&gt;
+</pre>
+</div>
+
+<p>
+Let's take a look at an example where we want to run an interactive bash shell
+on the compute shell (similar to ssh'ing into the compute node).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">srun --time=00:10:00 --pty bash -l
+</pre>
+</div>
+
+<p>
+This will request a job on any available compute node for 10 minutes. When a
+node becomes available, <code>bash</code> will execute, dropping you into the shell. You will
+notice that the shell prompt has changed from <code>sms</code> to the name of the node.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org41054da" class="outline-4">
+<h4 id="org41054da"><span class="section-number-4">3.2.3.</span> How to launch a job &#x2013; salloc</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+There is another method we can use to create an interactive job. We could use the
+<code>salloc</code> command to allocate resources for a task. After the resources have been
+allocated and our job is ready, we can <code>ssh</code> into the node with the allocated
+resources.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">salloc --time=10:00:00 &amp;
+ssh &lt;name&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga190552" class="outline-4">
+<h4 id="orga190552"><span class="section-number-4">3.2.4.</span> How to launch a job &#x2013; options</h4>
+<div class="outline-text-4" id="text-3-2-4">
+<p>
+In the previous command, we used the <code>--time</code> option to specify how long the job
+will run for. But there are other options we can use to be more specific about
+the jobs we want to run.
+</p>
+
+<p>
+<code>--cpus-per-task</code> can be used to request more than one CPU to be
+allocated. This is especially helpful when we have a multithreaded process we
+want to run.
+</p>
+
+<p>
+<code>--mem</code> specifies how much memory should be allocated to the job. For example:
+<code>--mem=16G</code> tells SLURM to allocate 16 GB of memory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3b243ca" class="outline-4">
+<h4 id="org3b243ca"><span class="section-number-4">3.2.5.</span> How to launch a job &#x2013; GPU allocation</h4>
+<div class="outline-text-4" id="text-3-2-5">
+<p>
+If we need to use a GPU, we need to use a few options. Firstly, we can specify
+that our job is on a compute node with GPU. There will usually be a group of
+nodes in a 'GPU' group or partition, and thus we can specify to use one of these
+partitions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">srun --time=00:10:00 --partiton=gpu --pty bash -l
+</pre>
+</div>
+
+<p>
+But you will notice that you still do not have access to a GPU. You're running
+on the GPU node, but you haven't actually requested a GPU be allocated to your
+job. For that you will use <code>--gres</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">srun --time=00:10:00 --partition=gpu --gres=gpu:1 --pty bash -l
+</pre>
+</div>
+
+<p>
+Here we are requesting one GPU, but if we use <code>--gres:gpu:2</code> we are requesting 2
+GPUs etc.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org013bf1a" class="outline-4">
+<h4 id="org013bf1a"><span class="section-number-4">3.2.6.</span> How to launch a job &#x2013; GPU allocation</h4>
+<div class="outline-text-4" id="text-3-2-6">
+<p>
+There are many different types of GPUs available, some older than others. If you
+wanted to allocate a job with a specific type of GPU you can use the
+<code>--constraint</code> flag:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">srun --time=00:10:00 <span style="color: #af9fff;">\</span>
+     --partition=gpu <span style="color: #af9fff;">\</span>
+     --gres=gpu:1 <span style="color: #af9fff;">\</span>
+     --constraint=<span style="color: #af9fff;">'cuda61'</span> <span style="color: #af9fff;">\</span>
+     --pty bash -l
+</pre>
+</div>
+
+<p>
+This command requests that our job run on the GPU partition, with 1 GPU
+allocated that has the capability of running CUDA compute 61.
+</p>
+
+<p>
+Or we can specify the type of GPU in the gres option:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">srun --time=00:10:00 <span style="color: #af9fff;">\</span>
+     --partition=gpu <span style="color: #af9fff;">\</span>
+     --gres=gpu:2080:1 <span style="color: #af9fff;">\</span>
+     --pty bash -l
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org343cd08" class="outline-4">
+<h4 id="org343cd08"><span class="section-number-4">3.2.7.</span> Learning more about nodes</h4>
+<div class="outline-text-4" id="text-3-2-7">
+<p>
+To understand what each compute node has we can use the <code>scontrol</code> command.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scontrol show nodes
+</pre>
+</div>
+
+<p>
+Will list out all nodes and all capabilities of each node. Or just one node:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scontrol show node lisnode2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8528e17" class="outline-4">
+<h4 id="org8528e17"><span class="section-number-4">3.2.8.</span> How to launch a job &#x2013; sbatch</h4>
+<div class="outline-text-4" id="text-3-2-8">
+<p>
+It can be quite inconvenient to launch an interactive job to run some compute,
+and wait for the job to be allocated. If, instead, you have a long running
+experiment that you want to run without any intervention from you, you can use
+<code>sbatch</code>.
+</p>
+
+<p>
+Sbatch will require us to write a small bash script that specifies how to run a
+job and what to do once its allocated.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --time=00:01:00</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --job-name=my_new_job</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --output=my_new_job.out</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --error=my_new_job.err</span>
+
+<span style="color: #3fb83f; font-weight: bold;">echo</span> $<span style="color: #78afff;">HOSTNAME</span>
+</pre>
+</div>
+
+<p>
+And run it:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">sbatch my_job.sh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0635111" class="outline-4">
+<h4 id="org0635111"><span class="section-number-4">3.2.9.</span> How to launch a job &#x2013; sbatch</h4>
+<div class="outline-text-4" id="text-3-2-9">
+<p>
+Notice that instead of supplying options to sbatch, we can instead record them
+directly into the script using the <code>#SBATCH</code>. SLURM will examine this file,
+looking for lines starting with this comment, and infer that the rest of the
+line contains the options.
+</p>
+
+<p>
+There are a few other options we've included that are very useful when running
+non-interactive jobs. Firstly, we've given the job a name (<code>my_new_job</code>). This is
+so we can different between many jobs that we might run at the same time. To
+list out the jobs we currently have running we use <code>squeue</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">squeue
+</pre>
+</div>
+
+<p>
+By default, squeue will list all of the active jobs, even other peoples. To
+specify only your jobs user the <code>--user</code> option:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">squeue --user=jay.morgan
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf915f90" class="outline-4">
+<h4 id="orgf915f90"><span class="section-number-4">3.2.10.</span> How to launch a job &#x2013; sbatch</h4>
+<div class="outline-text-4" id="text-3-2-10">
+<p>
+The other two options, <code>--output</code> and <code>--error</code> specify where the printed output and
+printed errors will be stored. Since the job is being run on a different node,
+by a non-interactive process, if you didn't include these lines, you wouldn't be
+able to see what was being printed by <code>echo</code> or by any other process such as <code>print</code>
+in Python.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7cde680" class="outline-4">
+<h4 id="org7cde680"><span class="section-number-4">3.2.11.</span> Job Management &#x2013; squeue</h4>
+<div class="outline-text-4" id="text-3-2-11">
+<p>
+When we list the jobs using <code>squeue</code> it will give us multiple columns of
+information, such as:
+</p>
+
+<ul class="org-ul">
+<li>JOBID &#x2013; the referable id of the job.</li>
+<li>PARTITION &#x2013; the partition on which the job has been requested for.</li>
+<li>NAME &#x2013; the name of the job.</li>
+<li>USER &#x2013; the user who submitted the job.</li>
+<li>ST &#x2013; the status, is the job currently running, waiting, or exiting?</li>
+<li>TIME &#x2013; how long the job has been running for.</li>
+<li>NODES &#x2013; how many nodes have been allocated to the job.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd6cf010" class="outline-4">
+<h4 id="orgd6cf010"><span class="section-number-4">3.2.12.</span> Job Management &#x2013; scancel</h4>
+<div class="outline-text-4" id="text-3-2-12">
+<p>
+Let's say that we've submitted a job, but we've noticed that there was an error
+in the code, and want to stop the job. For that, we use <code>scancel</code> and specify the
+id of the job we wish to cancel:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scancel 158590
+</pre>
+</div>
+
+<p>
+After running this command, we should see, using <code>squeue</code>, that either the job is
+finishing, or that its disappeared from our list (meaning that its completely
+stopped).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org61e2da0" class="outline-4">
+<h4 id="org61e2da0"><span class="section-number-4">3.2.13.</span> Job Management &#x2013; sacct</h4>
+<div class="outline-text-4" id="text-3-2-13">
+<p>
+If our job has finished, or exited and is no longer in <code>squeue</code>, we can use <code>sacct</code>
+to get a history of the jobs.
+</p>
+
+<p>
+<code>sacct</code> will list all of your jobs within some default window of time. If we want
+to change this window we can use the <code>--starttime</code> and <code>--endtime</code> options.
+</p>
+
+<p>
+Valid time formats are:
+</p>
+<ul class="org-ul">
+<li>HH:MM[:SS][AM|PM]</li>
+<li>MMDD[YY][-HH:MM[:SS]]</li>
+<li>MM.DD[.YY][-HH:MM[:SS]]</li>
+<li>MM/DD[/YY][-HH:MM[:SS]]</li>
+<li>YYYY-MM-DD[THH:MM[:SS]]</li>
+<li>today, midnight, noon, fika (3 PM), teatime (4 PM)</li>
+<li>now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4e67f50" class="outline-4">
+<h4 id="org4e67f50"><span class="section-number-4">3.2.14.</span> Job Task Arrays &#x2013; motivation</h4>
+<div class="outline-text-4" id="text-3-2-14">
+<p>
+Task arrays allow you to submit many jobs of the same type. Why might this be
+useful? Suppose you have a list of files that take a long time to process:
+</p>
+
+<ul class="org-ul">
+<li><code>file_0.txt</code></li>
+<li><code>file_1.txt</code></li>
+<li><code>file_2.txt</code></li>
+</ul>
+
+<p>
+Or you have some computation script, such as deep learning training script, that
+takes uses a hyperparameter which can be tuned to achieve different performance
+results:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">python train.py --learning-rate 0.001
+</pre>
+</div>
+
+<p>
+Instead of a creating a sbatch script for each value of hyperparameter, or
+sequentially enumerating the values, you can use a job task array to spawn
+multiple jobs with slightly different values.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org17129a5" class="outline-4">
+<h4 id="org17129a5"><span class="section-number-4">3.2.15.</span> Job Task Arrays &#x2013; how to</h4>
+<div class="outline-text-4" id="text-3-2-15">
+<p>
+First, we will look at how to actually submit an array of tasks. To create an
+task array, you will need to add the <code>--array</code> options to your sbatch script:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --job-name=my_task_array</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --array=1-5</span>
+
+...
+</pre>
+</div>
+
+<p>
+Here we are creating an array of tasks numbered from 1-5. When you submit this
+script, you will see five tasks submitted to the queue.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4517b1b" class="outline-4">
+<h4 id="org4517b1b"><span class="section-number-4">3.2.16.</span> Job Task Arrays &#x2013; how to</h4>
+<div class="outline-text-4" id="text-3-2-16">
+<p>
+Now that we know how to create an array of tasks, we will want to do something
+useful with it. When you create an array, each individual task will have a
+unique variable called <code>SLURM_ARRAY_TASK_ID</code>. So for example, if we launch an
+array of 5 tasks, the first task will have the value <code>1</code>. Why is this useful?
+Well, we can use this variable to alter the program slightly. Take for example
+our list of files we need to process:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --job-name=my_task_array</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --array=0-4</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --time=00:10:00</span>
+
+<span style="color: #78afff;">FILENAME</span>=<span style="color: #af9fff;">"file_${SLURM_ARRAY_TASK_ID}.txt"</span>
+python process.py $<span style="color: #78afff;">FILENAME</span>
+</pre>
+</div>
+
+<p>
+This will create a new bash variable called <code>FILENAME</code> by concatenating <code>file_</code> the
+current task's (i.e. 0, for the first task, 1 for the second task, etc) and
+<code>.txt</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfa66b9f" class="outline-4">
+<h4 id="orgfa66b9f"><span class="section-number-4">3.2.17.</span> Job Task Arrays &#x2013; how to</h4>
+<div class="outline-text-4" id="text-3-2-17">
+<p>
+If we run the previous example, we will see that we have five jobs named exactly
+the same thing <code>my_task_array</code>. This is okay, but we can be a little bit more
+clear as to which task is running, i.e. which task is processing which file?
+</p>
+
+<p>
+We can use some special variables in our bash script to make this more
+clear. These are <code>%A</code> that is the main job id, and <code>%a</code> that is the task array id.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --job-name=my_task_array.%A_%a</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --output=my_task_array.%A_%a.out</span>
+...
+</pre>
+</div>
+
+<p>
+Now, every task in our array will have a slightly different name because of the
+<code>%a</code> and therefore we will be able to determine which job is processing which
+file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc97926a" class="outline-4">
+<h4 id="orgc97926a"><span class="section-number-4">3.2.18.</span> Job Task Arrays &#x2013; how to</h4>
+<div class="outline-text-4" id="text-3-2-18">
+<p>
+Let's move on to the second example, where we have a Deep Learning training
+program and we want to try different parameters. In this case, we can again use
+a task array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --array=1-10</span>
+</pre>
+</div>
+
+<p>
+We could either pass the <code>SLURM_ARRAY_TASK_ID</code> as a command line argument to the
+script:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">python training.py --learning-rate $<span style="color: #78afff;">SLURM_ARRAY_TASK_ID</span>
+</pre>
+</div>
+
+<p>
+But in this case, we could have to properly calculate the correct learning rate
+from the <code>SLURM_ARRAY_TASK_ID</code> value (remember that in my sbatch script I set
+<code>--array=1-5</code>). But bash only performs integer arithmetic, therefore we will need
+to calculate the correct learning rate in something else.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga80fa14" class="outline-4">
+<h4 id="orga80fa14"><span class="section-number-4">3.2.19.</span> Job Task Arrays &#x2013; how to</h4>
+<div class="outline-text-4" id="text-3-2-19">
+<p>
+Instead of passing the learning rate via a command line argument. We can get the
+value directly from our python script and calculate the value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #00c089; font-weight: bold;">import</span> os
+
+<span style="color: #78afff;">task_id</span> = <span style="color: #3fb83f; font-weight: bold;">int</span>(os.environ[<span style="color: #af9fff;">"SLURM_ARRAY_TASK_ID"</span>])
+<span style="color: #78afff;">learning_rate</span> = task_id / 100
+</pre>
+</div>
+
+<p>
+Here we are using the builtin <code>os</code> module in Python, getting the environment
+variable from the dictionary <code>environ</code> and parsing the value as an integer. Then
+we can calculate the appropriate learning rate using this value. So for example,
+if <code>SLURM_ARRAY_TASK_ID</code> is set to 1. Our learning rate would be 0.01 for this
+task.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org791749b" class="outline-4">
+<h4 id="org791749b"><span class="section-number-4">3.2.20.</span> Job Task Arrays &#x2013; how to</h4>
+<div class="outline-text-4" id="text-3-2-20">
+<p>
+If you're creating a job task array, you may want to create hundreds of
+jobs. And of course, you don't want to use up the entire cluster leaving no
+resources for anybody else! Therefore, you will only want a maximum number of
+tasks to run at any one time.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --array=1-100%5</span>
+</pre>
+</div>
+
+<p>
+This will create a job task array of 100 jobs numbered from 1 to 100. But we
+have added an additional argument <code>%5</code> which means that only 5 jobs can run at any
+one time for this task array. If you have five tasks running, the other 95 tasks
+will wait.
+</p>
+
+<p>
+If, at any point, you want to change how many jobs can run simultaineously, you
+can update this 'throttle' value using <code>scontrol</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scontrol update <span style="color: #78afff;">ArrayTaskThrottle</span>=&lt;count&gt; <span style="color: #78afff;">JobId</span>=&lt;jobID&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38156af" class="outline-4">
+<h4 id="org38156af"><span class="section-number-4">3.2.21.</span> Job Task Arrays &#x2013; how to</h4>
+<div class="outline-text-4" id="text-3-2-21">
+<p>
+So if we've already launched a job task array with the job id of <code>50602</code> that has
+a throttle value of 5 (only 5 tasks will run at once), we can change it to 10
+using:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scontrol update <span style="color: #78afff;">ArrayTaskThrottle</span>=10 <span style="color: #78afff;">JobId</span>=50602
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf96ee43" class="outline-3">
+<h3 id="orgf96ee43"><span class="section-number-3">3.3.</span> A guided walk through</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+<div id="outline-container-org6ab49c9" class="outline-4">
+<h4 id="org6ab49c9"><span class="section-number-4">3.3.1.</span> A guided walk through &#x2013; environment</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+In this section we're going to give an example walk through of working with the
+HPC cluster. In this example, we're going to write our scripts locally,
+including the slurm submission script, and when they're ready, we'll send them
+to the cluster to perform the actual computation.
+</p>
+
+<p>
+Let's imagine we're starting a new project, and are programming our scripts in
+Python. Now is a good time to create a new conda environment to install our
+packages we're going to use for our research. We'll create this environment with
+(replacing <code>&lt;env-name&gt;</code> with whatever we want to call this environment):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda create --name &lt;env-name&gt;
+</pre>
+</div>
+
+<p>
+and then activate it:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda activate &lt;env-name&gt;
+conda install <span style="color: #78afff;">python</span>=3.9
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org30c4d17" class="outline-4">
+<h4 id="org30c4d17"><span class="section-number-4">3.3.2.</span> Writing our scripts</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<p>
+Let us also image we've just wrote the following script to create a lorenz
+attractor: <a href="https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/lorenz.py">lorenz.py</a>
+</p>
+
+<p>
+The specific implementation of this script is not particularly important for
+this walk through. Just know that we're importing a few packages such as numpy
+and matplotlib. Then, we're performing some computation, and saving the results
+to analyse later. As this script uses external libraries, we need to install
+them:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda install numpy matplotlib
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0698b83" class="outline-4">
+<h4 id="org0698b83"><span class="section-number-4">3.3.3.</span> Writing our job submission script</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<p>
+Since we want our calculations to be performed on the cluster, we will need to
+also write a job submission script (let's call this <code>submit-job.sh</code>) in bash to
+pass to SLURM.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">!/bin/</span><span style="color: #00c089; font-weight: bold;">bash</span>
+
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --job-name=lorenz_attractor</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --output=lorenz_attractor.log</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --error=lorenz_attractor.log</span>
+<span style="color: #b7a07f; font-style: italic;">#</span><span style="color: #b7a07f; font-style: italic;">SBATCH --time=00:10:00</span>
+
+python lorenz.py
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org81d6fa7" class="outline-4">
+<h4 id="org81d6fa7"><span class="section-number-4">3.3.4.</span> Replicating our environment on the cluster</h4>
+<div class="outline-text-4" id="text-3-3-4">
+<p>
+As we've installed external packages in our local development environment, we
+will want to ensure that when we run the calculations on the cluster, it will be
+using the same versions of packages. Conda makes this a lot easier. First, we
+export our environment to a recipe file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda env export --no-builds &gt; environment.yml
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd2fbfe0" class="outline-4">
+<h4 id="orgd2fbfe0"><span class="section-number-4">3.3.5.</span> Sending our scripts to the cluster</h4>
+<div class="outline-text-4" id="text-3-3-5">
+<p>
+All of our scripts are ready! We can now transfer them from our personal
+computer, to the cluster. The files we need to transfer are:
+</p>
+
+<ul class="org-ul">
+<li><code>lorenz.py</code></li>
+<li><code>environment.yml</code></li>
+<li><code>submit-job.sh</code></li>
+</ul>
+
+<p>
+While we can send a folder (and the containing files), let's send them one at a time:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scp lorenz.py &lt;hostname&gt;:&lt;destination-path&gt;
+scp environment.yml &lt;hostname&gt;:&lt;destination-path&gt;
+scp submit-job.sh &lt;hostname&gt;:&lt;destination-path&gt;
+</pre>
+</div>
+
+<p>
+where <code>&lt;hostname&gt;</code> is the hostname/IP address that you've used to connect to the
+login node on the cluster before. <code>&lt;destination-path&gt;</code> is the path to where you
+want to save the files.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfa6466f" class="outline-4">
+<h4 id="orgfa6466f"><span class="section-number-4">3.3.6.</span> Logging into the cluster</h4>
+<div class="outline-text-4" id="text-3-3-6">
+<p>
+Now that our files are on the cluster, we can login:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ssh &lt;username&gt;@&lt;hostname&gt;
+</pre>
+</div>
+
+<p>
+At which point, we've logged into the login node, and then we need to change
+directory to where we saved the files:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #3fb83f; font-weight: bold;">cd</span> &lt;destination-path&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99d718d" class="outline-4">
+<h4 id="org99d718d"><span class="section-number-4">3.3.7.</span> Re-creating our development environment</h4>
+<div class="outline-text-4" id="text-3-3-7">
+<p>
+Now that we're in the same folder as our scripts, we're almost ready to submit
+our job. First, we need to recreate our development environment from our
+<code>environment.yml</code> file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda env create -f environment.yml
+</pre>
+</div>
+
+<p>
+And activate our newly created environment:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">conda activate &lt;env-name&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2cf9dd5" class="outline-4">
+<h4 id="org2cf9dd5"><span class="section-number-4">3.3.8.</span> Submitting our job</h4>
+<div class="outline-text-4" id="text-3-3-8">
+<p>
+Now we can submit our job:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">sbatch submit-job.sh
+</pre>
+</div>
+
+<p>
+We can check the progress of our job with <code>squeue</code>, or its already completed, look
+at the job history with <code>sacct</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org211db20" class="outline-4">
+<h4 id="org211db20"><span class="section-number-4">3.3.9.</span> Downloading the results</h4>
+<div class="outline-text-4" id="text-3-3-9">
+<p>
+If our job runs successfully, a <code>data.pkl</code> file will be created. Back on our local
+computers, we will need to run the following to download it:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">scp &lt;hostname&gt;:&lt;destination-path&gt;/data.pkl ./
+</pre>
+</div>
+
+<p>
+This will download the file into the current directory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4263cdc" class="outline-4">
+<h4 id="org4263cdc"><span class="section-number-4">3.3.10.</span> Analysing the results</h4>
+<div class="outline-text-4" id="text-3-3-10">
+<p>
+With the <code>data.pkl</code> file downloaded, we can visualise the results using
+<code>plot_lorenz.py</code>:
+<a href="https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/plot-lorenz.py">https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/plot-lorenz.py</a>
+</p>
+
+<p>
+If everything has been run correctly, you should see a plot of the lorenz attractor.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org0fde8b6" class="outline-4">
+<h4 id="org0fde8b6"><span class="section-number-4">3.3.11.</span> Useful features &#x2013; X11 Forwarding</h4>
+<div class="outline-text-4" id="text-3-3-11">
+<p>
+If we're performing analysis interactively using the cluster, we'll often want to
+visualise the results, using matplotlib for example. To <i>see</i> our plots display like
+they would on our local machine when we call <code>plt.plot</code> or <code>plt.show()</code>, we will need to
+ensure that we're using something called <code>X11 Forwarding</code>. To enable <code>X11 Forwarding</code>, we
+use the <code>-X</code> option when <code>ssh</code>'ing into the cluster and compute nodes (i.e. it will need
+to be enabled on every 'hop' so to speak).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ssh -X &lt;&lt;remote-host&gt;&gt;
+</pre>
+</div>
+
+<p>
+If want to enable it by default, we can enable it in our <code>ssh</code> config file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">Host saphir2
+     HostName saphir2.lis-lab.fr
+     ForwardX11 yes
+     User &lt;&lt;username&gt;&gt;
+
+<span style="color: #7fc07f; font-style: italic;">Host cluster</span>
+<span style="color: #7fc07f; font-style: italic;">     HostName sms-ext.lis-lab.fr</span>
+<span style="color: #7fc07f; font-style: italic;">     FowardX11 yes</span>
+<span style="color: #7fc07f; font-style: italic;">     User &lt;&lt;username&gt;&gt;</span>
+<span style="color: #7fc07f; font-style: italic;">     ProxyCommand ssh -X saphir2 -W %h:%p</span>
+</pre>
+</div>
+
+<p>
+After setting up <code>X11 Forwarding</code> correctly, and when logged into the remote host, we
+should be able to echo a variable called <code>$DISPLAY</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #3fb83f; font-weight: bold;">echo</span> $<span style="color: #78afff;">DISPLAY</span>
+</pre>
+</div>
+
+<p>
+If <code>$DISPLAY</code> has a value, we know that X11 Forwarding has been setup correctly, and
+we're ready to do some plotting!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgff7aa3c" class="outline-4">
+<h4 id="orgff7aa3c"><span class="section-number-4">3.3.12.</span> Useful features &#x2013; Jupyter Notebooks</h4>
+<div class="outline-text-4" id="text-3-3-12">
+<p>
+We've talked about how good jupyter notebooks are for performing analysis and
+exploration. But often times, we will need a lot of compute resources (more than our
+local computers can handle) to do this analysis. This is where using jupyter notebook
+on the supercomputers comes in handy. However, it is not as simple as starting the
+jupyter notebook server and opening up your web browser. First, we will need to setup
+a 'reverse ssh tunnel'.
+</p>
+
+<p>
+In a nut-shell, a reverse ssh tunnel allows you to redirect data on a remote port to
+a local port.
+</p>
+
+<p>
+Therefore, we can, using a reverse ssh tunnel, start a jupyter notebook on the
+supercomputer and access it using the web browser on our local computer!
+</p>
+
+<p>
+To begin, we can create an interactive job on the cluster:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">srun --time=01:00:00 --pty bash -l
+</pre>
+</div>
+
+<p>
+And start our jupyter notebook, specifying a port that will not be in use:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">jupyter notebook --port 30333
+</pre>
+</div>
+
+<p>
+With our notebook server now started on the 30333 port, we will want to create an ssh
+tunnel from our local computer, to the cluster's login node, and then a tunnel from
+the login node to the specific compute node where the job is running:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ssh -L 30333:localhost:30333 &lt;&lt;cluster-login-node&gt;&gt; ssh -L 30333:localhost:30333 &lt;&lt;cluster-compute-node&gt;&gt;
+</pre>
+</div>
+
+<p>
+If everything goes well, we should now be able to open up our web browser, navigate
+to <code>localhost:30333</code> and see our jupyter notebooks.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 7th October 2022</p>
+<p class="author">Author: Jay Morgan</p>
+<p class="date">Created: 2022-10-10 Mon 12:02</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
