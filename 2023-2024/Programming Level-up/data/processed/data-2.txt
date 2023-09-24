@@ -1,3 +1,0 @@
-name,id,age
-jane,01,35
-james,02,50

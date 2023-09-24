@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: compiled
+  render:
+    - "*.qmd"
+
+website:
+  title: "Programming Level-up"
+  sidebar:
+    style: "docked"
+    search: false
+    contents:
+      - 0.course-introduction.qmd
+      - section: "Lectures"
+        contents:
+          - lecture-1.qmd
+          - lecture-2.qmd
+
+format:
+  html:
+    theme: yeti
+    css: styles.css
+    toc: true
+    smooth-scroll: true
+  revealjs: 
+    theme: serif

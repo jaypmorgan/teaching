@@ -1,0 +1,64 @@
+---
+title: ""
+format:
+    html: default
+---
+
+# Programming Level-up
+
+Welcome to the **Programming Level-up Course**. In this series of lectures, we will cover
+everything we need to be able to program in a Linux-based environment, and use the
+high performance computers (also called cluster/supercomputers) to run experiments. 
+
+
+## Contact information
+
+You can find my personal page over at: <https://pageperso.lis-lab.fr/jay.morgan/>
+
+As we progress through the lectures, I will also make the course publicly available. These lectures will be hosted at:
+<https://pageperso.lis-lab.fr/jay.morgan/teaching.html> in a variety of formats
+(i.e. PDF, HTML).
+
+If you have any questions please email me directly. My email address is
+`jay.morgan@univ-tln.fr`. Other modes of contact can be found on my personal website
+listed above.
+
+
+## Resources
+
+This course aims to deliver everything you need. If you attend each lecture, you will
+know what you need for the following lectures. Despite this design, however, I have
+included a list of additional resources below. These resources are optional, but they
+will take you beyond what you're taught in these sessions and enable you to become a
+Programming Master!
+
+There is nothing like a good book to learn from. They are usually rich in content,
+but also provide reasonable enough depth to the subject matter to not only learn how
+things work, but also why they work the way they do.
+
+-   Think Python: An Introduction to Software Design - Livre d'Allen B. Downey
+-   Numerical Python: Scientific Computing and Data Science Applications with Numpy,
+    SciPy and Matplotlib - Livre de Robert Johansson.
+-   Classic Shell Scripting -  Livre de Arnold Robbins, Nelson H F Beebe
+
+
+## What will be taught
+
+The course will cover a broad spectrum of skills used when programming for scientific
+research. This includes the programming and scripting itself (in our case, Python
+programming), managing the environment in which we work (i.e. working in a
+Linux-based environment and managing our projects with version control), and
+interacting with the supercomputers to perform intensive computations.
+
+
+## Source code
+
+All of my lectures are available online, including the source code that was used in
+the lectures, and the source code used to generate the slides themselves. You can
+find this source code here:
+
+Mirrors:
+
+-   <https://git.sr.ht/~jaymorgan/teaching>
+-   <https://gitlab.com/jaymorgan/teaching.git>
+-   <https://github.com/jaypmorgan/teaching.git>
