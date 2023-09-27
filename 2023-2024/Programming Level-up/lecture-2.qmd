@@ -7,10 +7,10 @@ format:
     revealjs: 
         output-file: lecture-2-reveal.html
         scrollable: true
-        smaller: true
+        smaller: false
         slide-number: true
-        slide-level: 3
-        navigation-mode: grid
+        slide-level: 2
+        navigation-mode: vertical
         transition: slide
 ---
 
@@ -36,12 +36,14 @@ In this example, we are trying to access an element in a list using an index lar
 than the length of the list. This will produce an `IndexError`. Instead of exiting
 Python with an error, however, we can catch the error, and print a string.
 
+```python
     x = [1, 2, 3]
     
     try:
         print(x[3])
     except IndexError:
         print("Couldn't access element")
+```
 
     Results: 
     # => Couldn't access element
@@ -52,17 +54,21 @@ Python with an error, however, we can catch the error, and print a string.
 If we wanted to include the original error message in the print statement, we can use
 the form:
 
+```python
     except <error> as <variable>
+```
 
 This provides us with an variable containing the original error that we can use later
 on in the try-catch form.
 
+```python
     x = [1, 2, 3]
     
     try:
         print(x[3])
     except IndexError as e:
         print(f"Couldn't access elements at index beacuse: {e}")
+```
 
     Results: 
     # => Couldn't access elements at index beacuse: list index out of range
@@ -73,10 +79,10 @@ on in the try-catch form.
 There are numerous types of errors that could occur in a Python. Here are just some
 of the most common.
 
--   IndexError &#x2013; Raised when a sequence subscript is out of range.
--   ValueError &#x2013; Raised when an operation or function receives an argument that has the right type but an inappropriate value
--   AssertionError &#x2013; Raised when an assert statement fails.
--   FileNotFoundError &#x2013; Raised when a file or directory is requested but doesn’t exist.
+-   `IndexError` &#x2013; Raised when a sequence subscript is out of range.
+-   `ValueError` &#x2013; Raised when an operation or function receives an argument that has the right type but an inappropriate value
+-   `AssertionError` &#x2013; Raised when an assert statement fails.
+-   `FileNotFoundError` &#x2013; Raised when a file or directory is requested but doesn’t exist.
 
 The full list of exceptions in Python 3 can be found at: <https://docs.python.org/3/library/exceptions.html>
 
@@ -88,16 +94,16 @@ fails. Assert is a keyword provided to test some condition and raise an error if
 condition is false. It typically requires less code than an `if`-statement that raises
 an error, so they might be useful for checking the inputs to functions, for example:
 
+```python
     def my_divide(a, b):
         assert b != 0
         return a / b
     
     my_divide(1, 2)
     my_divide(1, 0)
+```
 
 Here we are checking that the divisor is not a 0, in which case division is not defined.
-
-
 
 
 # OOP
@@ -116,8 +122,6 @@ But to properly understand how classes work, and why we would want to use them, 
 should take a look at some examples.
 
 
-
-
 ## Basic syntax
 
 We're going to start off with the very basic syntax, and build up some more complex
@@ -128,10 +132,11 @@ introduces a new scope in Python, the scope of the class.
 
 Typically, the first thing we shall see in the class is the `__init__` function.
 
+```python
     class <name_of_class>:
         def __init__(self, args*):
             <body>
-
+```
 
 
 
@@ -149,11 +154,12 @@ values when the class is being created.
 reading code its easy to see when you're creating a class versus calling a
 function. You should use this style.
 
+```python
     class Coordinate:
         def __init__(self, x, y):
             self.x = x
             self.y = y
-
+```
 
 
 
@@ -165,6 +171,7 @@ function, and pass any parameters you've defined in the init function.
 In this example, we are creating a new vector using `Vector(...)` and we're passing the
 x and y coordinate.
 
+```python
     class Vector:
         def __init__(self, x, y):
             self.x = x
@@ -172,7 +179,7 @@ x and y coordinate.
     
     
     point_1 = Vector(5, 2)
-
+```
 
 
 
@@ -184,6 +191,7 @@ this name*.
 
 It allows then to reference the variable when working with the class.
 
+```python
     class Vector:
         def __init__(self, x, y):
             self.x = x
@@ -194,6 +202,7 @@ It allows then to reference the variable when working with the class.
     print(point_1.x)
     print(point_1.y)
     print(point_1.length)
+```
 
     Results: 
     # => 5
@@ -216,6 +225,7 @@ You'll notice that to call this function, we using the `.length()` method simila
 how we've worked with strings/lists/etc. This is because in Python, everything is an
 object!
 
+```python
     class Vector:
         def __init__(self, x, y):
             self.x = x
@@ -227,6 +237,7 @@ object!
     
     my_point = Vector(2, 5)
     print(my_point.length())
+```
 
     Results: 
     # => 7
@@ -241,6 +252,7 @@ of the function name).
 One of these dunder-methods is `__repr__`, which allows us to specify how the object
 looks when its printed.
 
+```python
     class OldVector:
         def __init__(self, x, y):
             self.x = x
@@ -257,6 +269,7 @@ looks when its printed.
             return f"Vector({self.x}, {self.y})"
     
     print(Vector(2, 5))
+```
 
     Results: 
     # => <__main__.OldVector object at 0x7f658721e250>
@@ -278,6 +291,7 @@ The `__len__` function allows us to specify how the `len()` function acts on the
 class. Take this hypothetical dataset. We create a `__len__` function that returns the
 length of the unique elements in the dataset.
 
+```python
     class Dataset:
         def __init__(self, data):
             self.data = data
@@ -288,6 +302,7 @@ length of the unique elements in the dataset.
     
     data = Dataset([1, 2, 3, 3, 3, 5, 1])
     print(len(data))
+```
 
     Results: 
     # => 4
@@ -301,6 +316,7 @@ Next `__getitem__` allows us to index over a class. This new function must inclu
 and a variable to pass the index. Here I've used `idx`. In this function I am simply
 indexing on the on the classes `self.data`.
 
+```python
     class Dataset:
         def __init__(self, data):
             self.data = data
@@ -310,6 +326,7 @@ indexing on the on the classes `self.data`.
     
     data = Dataset([1, 2, 3, 3, 3, 5, 1])
     print(data[2])
+```
 
     Results: 
     # => 3
@@ -324,6 +341,7 @@ what `__call__` allows us to do. In this function we specify what should happen 
 class is 'called' like a function. In this simple example, we are creating a function
 that prints the type of food being used as a parameter to the function.
 
+```python
     class Jaguar:
         def __call__(self, food):
             print(f"The jaguar eats the {food}.")
@@ -332,6 +350,7 @@ that prints the type of food being used as a parameter to the function.
     animal = Jaguar()
     
     animal(food)
+```
 
     Results: 
     # => The jaguar eats the apple.
@@ -346,7 +365,7 @@ The `__iter__` function should define what happens when we start the iteration, 
 
 Let's take a look at an example where we have an iterable set of prime numbers.
 
-
+```python
     class Primes:
         def __init__(self):
             self.primes = [2, 3, 5, 7, 11]
@@ -365,14 +384,16 @@ Let's take a look at an example where we have an iterable set of prime numbers.
                 return item
             else:
                 raise StopIteration
-
+```
 
 And now we can iterate over this class
 
+```python
     prime_numbers = Primes()
     
     for prime_number in prime_numbers:
         print(prime_number)
+```
 
     Results: 
     # => 2
@@ -392,12 +413,14 @@ override some of these features.
 
 Let's take a look an example.
 
+```python
     class Animal:
         def growl(self):
             print("The animal growls")
     
         def walk(self):
             raise NotImplementError
+```
 
 Here we have created a simple class called Animal, that has two functions, one of
 which will raise an error if its called.
@@ -409,6 +432,7 @@ Here we are creating two classes, Tiger and Duck. Both of these new classes inhe
 from Animal. Also, both of these classes are overriding the walk functions. But they
 are not creating a growl method themselves.
 
+```python
     class Tiger(Animal):
         def walk(self):
             print("The Tiger walks through the jungle")
@@ -416,17 +440,19 @@ are not creating a growl method themselves.
     class Duck(Animal):
         def walk(self):
             print("The Duck walks through the jungle")
-
+```
 
 Look at what happens when we create instances of these classes, and call the
 functions. First we see that the correct method has been called. I.e. for the duck
 class, the correct `walk` method was called.
 
+```python
     first_animal = Tiger()
     second_animal = Duck()
     
     first_animal.walk()
     second_animal.walk()
+```
 
     Results: 
     # => The Tiger walks through the jungle
@@ -434,8 +460,10 @@ class, the correct `walk` method was called.
 
 But what happens if we call the `.growl()` method?
 
+```python
     first_animal.growl()
     second_animal.growl()
+```
 
     Results: 
     # => The animal growls
@@ -545,8 +573,10 @@ we want to update 2) the value we want to update it to 3) the key we want to che
 to find out if we have the correct book and 4) the value of the key to check if we
 have the correct book.
 
+```python
     db.update(key="release_date", value=1979, where_key="title",
               where_value="Hitchhikers Guide to the Galaxy")
+```
 
 Use this to fix the release data of the Hitchhiker's book.
 

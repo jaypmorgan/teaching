@@ -15,11 +15,11 @@ website:
         contents:
           - lecture-1.qmd
           - lecture-2.qmd
+          - lecture-3.qmd
 
 format:
   html:
-    theme: yeti
-    css: styles.css
+    theme: [yeti, style.scss]
     toc: true
     smooth-scroll: true
   revealjs: 
