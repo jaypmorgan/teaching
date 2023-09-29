@@ -1127,6 +1127,9 @@ will talk through some of the most important ones, in my opinion.
 
 ## Meaningful names
 
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
 What does this code do?
 ```python
     def f(l):
@@ -1140,9 +1143,11 @@ What does this code do?
     a = range(100)
     r = f(a)
 ```
+:::
+::::
 
-. . .
-
+:::: {.column width="50%"}
+::: {.fragment}
 What about this one?
 ```python
     def compute_average(list_of_data):
@@ -1156,10 +1161,15 @@ What about this one?
     dataset = range(100)
     average_value = compute_average(dataset)
 ```
+:::
+::::
 
+:::::
+
+::: {.fragment}
 They are both the same code, but the second version is a lot more readable and
 understandable because we have used meaningful names for things!
-
+:::
 
 
 
@@ -1274,6 +1284,26 @@ about breaking your single function into many parts.
 If you find yourself doing something over and over, a function call help consolidate
 duplication and potentially reduce the chance of getting things wrong.
 
+::: {.fragment}
+```python
+print("The result is ", w * x1 + b)
+print("The result is ", w * x2 + b)
+print("The result is ", w * x3 + b)
+```
+:::
+
+::: {.fragment}
+```python
+def compute(var):
+    return w * var + b
+
+def print_result(res):
+    print("The result is ", res)
+
+for var in [x1, x2, x3]:
+    print_result(compute(var))
+```
+:::
 
 
 
@@ -1283,9 +1313,59 @@ God classes/God object is a class that is doing too many things or 'knows' about
 much. When designing a class, remember that like a function, in general, it should
 manage one thing or concept.
 
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment}
+```python
+class Game:
+    def __init__(self):
+        ...
+    def create_character(self):
+        ...
+    def move_character(self):
+        ...
+    def update_score(self):
+        ...
+    def reset_score(self):
+        ...
+    def start_game(self):
+        ...
+    def end_game(self):
+        ...
+    def start_boat(self):
+        ...
+    def stop_boat(self):
+        ...
+    ...
+```
+:::
+::::
 
+:::: {.column width="50%"}
+::: {.fragment}
+```python
+class Game:
+    def __init__(self):
+        ...
+    def start_game(self):
+        ...
+    def end_game(self):
+        ...
 
+class Character:
+    def __init__(self):
+        ...
+    def create_character(self):
+        ...
+    def move_character(self):
+        ...
 
+class ScoreBoard:
+    ...
+```
+:::
+::::
+:::::
 ## Documentation
 
 > Comments that contradict the code are worse than no comments. Always make a priority
