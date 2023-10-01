@@ -16,6 +16,7 @@ website:
           - lecture-1.qmd
           - lecture-2.qmd
           - lecture-3.qmd
+          - lecture-8.qmd
 
 format:
   html:
@@ -23,4 +24,10 @@ format:
     toc: true
     smooth-scroll: true
   revealjs: 
-    theme: serif
+    theme: [serif, revealjs-style.scss]
+    scrollable: true
+    smaller: false
+    slide-number: true
+    slide-level: 2
+    navigation-mode: vertical
+    transition: slide

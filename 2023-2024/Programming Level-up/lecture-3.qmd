@@ -21,6 +21,7 @@ format:
 ## Importing in python
 
 ![](images/python.png)
+
 <https://xkcd.com/353/>
 
 
@@ -34,19 +35,19 @@ Python can be.
 
 The basic syntax of importing is:
 ```python
-    import <package_name>
-    
-    <package_name>.<function/class/variable/etc>
+import <package_name>
+
+<package_name>.<function/class/variable/etc>
 ```
 If we import `<package_name>` using this syntax, we always have to use the dot `.` syntax
 to refer to something within this package.
 
 Let's take a look at a very basic example.
 ```python
-    import math
-    
-    radius = 6.4  # cm
-    circum = 2 * math.pi * radius
+import math
+
+radius = 6.4  # cm
+circum = 2 * math.pi * radius
 ```
 In this example, we are importing the built-in `math` package. This package contains a
 bunch of useful functions and variables. We're not going to take a look at them
@@ -61,15 +62,15 @@ called `pi` to calculate the circumference of a circle.
 If we didn't always want to specify the package name when we only want to use
 something specific from a package, we can directly import that something.
 ```python
-    from <package_name> import <function/class/variable/etc>
-    
-    <function/class/variable/etc>
+from <package_name> import <function/class/variable/etc>
+
+<function/class/variable/etc>
 ```
 As you can see, we're using the `from ... import ...` syntax.
 ```python
-    from math import pi
-    
-    circumference = 2 * pi * radius
+from math import pi
+
+circumference = 2 * pi * radius
 ```
 
 
@@ -79,19 +80,19 @@ As you can see, we're using the `from ... import ...` syntax.
 When using `from ... import ...`, there is a wildcard `*` that we **could** use. You may
 sometimes see this style of importing when looking at documentation online:
 ```python
-    from <package_name> import *
-    
-    <function/class/variable/etc>
+from <package_name> import *
+
+<function/class/variable/etc>
 ```
 However, this can create many problems with reading your program code
 
 Which module does `my_function()` originate? Are there are common names between the
 two? Which would be used?
 ```python
-    from my_module import *
-    from my_second_module import *
-    
-    my_function()
+from my_module import *
+from my_second_module import *
+
+my_function()
 ```
 
 
@@ -102,16 +103,16 @@ two? Which would be used?
 When importing, we can optionally create an alias to a symbol. Here we're creating an
 alias to the existing `pi` in `math`.
 ```python
-    from math import pi as decilious_pi
-    
-    circumference = 2 * delicious_pi * radius
+from math import pi as decilious_pi
+
+circumference = 2 * delicious_pi * radius
 ```
 There are some very common conventions of aliasing very highly used packages that we
 will definitely revisit in another lecture!
 ```python
-    import numpy as np
-    import pandas as pd
-    import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 ```
 
 
@@ -129,9 +130,9 @@ let's consider a hypothetical local directory:
 ```
 If we wanted to import something from `my_module.py` we would do:
 ```python
-    from src.my_module import MyAwesomeClass
-    
-    my_class = MyAwesomeclass()
+from src.my_module import MyAwesomeClass
+
+my_class = MyAwesomeclass()
 ```
 
 Here is another example for increased nesting of directories:
@@ -145,11 +146,11 @@ Here is another example for increased nesting of directories:
             |-- dogs.py
 ```
 ```python
-    from src.module_1 import cats
-    from src.module_1.dogs import Dog
-    
-    cat = cats.Cat()
-    dog = Dog()
+from src.module_1 import cats
+from src.module_1.dogs import Dog
+
+cat = cats.Cat()
+dog = Dog()
 ```
 
 ## Quick exercise &#x2013; imports
@@ -178,12 +179,12 @@ us and make the imports shorter. This fill gets executed when its module is impo
 ```
 In `__init__.py`:
 ```python
-    from cats import Cat
-    from dogs import Dog
+from cats import Cat
+from dogs import Dog
 ```
 In `main.py`:
 ```python
-    from src.module_1 import Cat, Dog
+from src.module_1 import Cat, Dog
 ```
 
 
@@ -192,12 +193,12 @@ In `main.py`:
 
 Consider a file with the following:
 ```python
-    x = 2
-    y = 1
-    z = x + y
-    
-    class MyAwesomeClass:
-        ...
+x = 2
+y = 1
+z = x + y
+
+class MyAwesomeClass:
+...
 ```
 If we import this file in another script, `x, y,` and `z` will be computed. In this very
 simple case this will have very little impact. But what if the computation of these
@@ -208,8 +209,8 @@ prevents the global variables being computed as soon as the script is imported.
 
 Now, if we wanted to compute x, y, and z if this script is run, we could use:
 ```python
-    if __name__ == "__main__":
-        # do something
+if __name__ == "__main__":
+# do something
 ```
 Anything within the scope of the `if` function will only be run if the current file is
 the script that is being run directly (i.e. `python <the-file>.py`). If the script is
@@ -218,19 +219,19 @@ being imported, the statements within this if scope will not be run.
 
 So if we wanted to run `compute()` if this file is being run directly, we would write:
 ```python
-    def compute():
-        x = 2
-        y = 1
-        z = x + y
+def compute():
+    x = 2
+    y = 1
+    z = x + y
+
+class MyAwesomeClass:
+    ...
     
-    class MyAwesomeClass:
-        ...
-    
-    if __name__ == "__main__":
-        compute()
-        # we can of course use MyAwesomeClass as well
-        my_class = MyAwesomeClass()
-        my_class.do_something()
+if __name__ == "__main__":
+    compute()
+    # we can of course use MyAwesomeClass as well
+    my_class = MyAwesomeClass()
+    my_class.do_something()
 ```
 
 
@@ -246,12 +247,12 @@ print this value with the `os.getcwd()` function, or change the directory with
 `os.chdir(...)`. Its important to know what your CWD is as all relative paths (paths
 that do not start with a '/') will be relative to your CWD.
 ```python
-    import os
-    
-    print(os.getcwd())
-    os.chdir("../")
-    print(os.getcwd())
-    os.chdir("week-3")
+import os
+
+print(os.getcwd())
+os.chdir("../")
+print(os.getcwd())
+os.chdir("week-3")`
 ```
     Results: 
     # => [...]/Programming Level-up/week-3
@@ -268,8 +269,8 @@ differences in the paths!
 Continuing with our usage of the `os` package, we can use the `listdir` function to list
 all files within a directory.
 ```python
-    print(os.listdir())
-    print(os.listdir("images/"))
+print(os.listdir())
+print(os.listdir("images/"))
 ```
     Results: 
     # => ['images', '__pycache__', 'lecture.pdf', 'lecture.tex', 'data', 'test_file_1.py', 'lecture.org', '_minted-lecture', 'test_file_2.py']
@@ -288,8 +289,8 @@ In the previous example we saw that the items returned by `listdir` does not spe
 the item is a file or directory. However, `os` provides an `isfile` function in the `path`
 submodule to test if the argument is a file, else it will be a directory.
 ```python
-    for path in os.listdir():
-        print(f"{path} => is file: {os.path.isfile(path)}")
+for path in os.listdir():
+    print(f"{path} => is file: {os.path.isfile(path)}")
 ```
     Results: 
     # => images => is file: False
@@ -311,10 +312,10 @@ If we wanted to get all files within a directory, we could use the `glob` functi
 the `glob` package. `glob` allows us to use the `*` wildcard. E.g. `*.png` will list all
 files that end with `.png`. `test-*` will list all files that start with `test-*`.
 ```python
-    from glob import glob
-    
-    for fn in glob("images/*"):
-        print(fn)
+from glob import glob
+
+for fn in glob("images/*"):
+    print(fn)
 ```
     Results: 
     # => images/legend-2.png
@@ -340,15 +341,15 @@ working with files a little easier. Firstly, we can create a `Path` object, allo
 to concatenate paths with the `/`. Instead of using the `glob` module, a `Path` object has
 a `glob` class method.
 ```python
-    from pathlib import Path
-    
-    data_dir = Path("data")
-    processed_data = data_dir / "processed"
-    
-    data_files = processed_data.glob("*.txt")
-    
-    for data_file in data_files:
-        print(data_file)
+from pathlib import Path
+
+data_dir = Path("data")
+processed_data = data_dir / "processed"
+
+data_files = processed_data.glob("*.txt")
+
+for data_file in data_files:
+    print(data_file)
 ```
     Results: 
     # => data/processed/data-2.txt
@@ -362,14 +363,14 @@ a `glob` class method.
 `pathlib` allows us to easily decompose a path into different components. Take for
 example getting the filename of a path with `.name`.
 ```python
-    from pathlib import Path
-    
-    some_file = Path("data/processed/data.txt")
-    
-    print(some_file.parts)  # get component parts
-    print(some_file.parents[0])  # list of parent dirs
-    print(some_file.name)   # only filename
-    print(some_file.suffix) # extension
+from pathlib import Path
+
+some_file = Path("data/processed/data.txt")
+
+print(some_file.parts)  # get component parts
+print(some_file.parents[0])  # list of parent dirs
+print(some_file.name)   # only filename
+print(some_file.suffix) # extension
 ```
     Results: 
     # => ('data', 'processed', 'data.txt')
@@ -386,7 +387,7 @@ As `pathlib` is a recent addition to Python, some functions/classes are expectin
 representation of the path, not a `Path` object. Therefore, you may want to use the `str`
 function to convert a `Path` object to a string.
 ```python
-    str(Path("data/"))
+str(Path("data/"))
 ```
     Results: 
     # => 'data'
@@ -473,10 +474,10 @@ the file.
 
 `read()` reads the entire contents of the file and places it into a string.
 ```python
-    open_file = open(str(Path("data") / "processed" / "data.txt"))
-    contents_of_file = open_file.read()
-    open_file.close()  # should always happen!
-    print(contents_of_file)
+open_file = open(str(Path("data") / "processed" / "data.txt"))
+contents_of_file = open_file.read()
+open_file.close()  # should always happen!
+print(contents_of_file)
 ```
     Results: 
     # => this is some data
@@ -490,13 +491,13 @@ the file.
 While `read` works for the last example, you may want to read files in different
 ways. Luckily there are a number of methods you could use.
 ```python
-    open_file.read()       # read entire file
-    open_file.readline()   # read a single line
-    open_file.readline(5)  # read 5 lines
-    open_file.readlines()  # returns all lines as a list
-    
-    for line in open_file:  # read one line at a time
-        do_something(line)
+open_file.read()       # read entire file
+open_file.readline()   # read a single line
+open_file.readline(5)  # read 5 lines
+open_file.readlines()  # returns all lines as a list
+
+for line in open_file:  # read one line at a time
+    do_something(line)
 ```
 
 
@@ -509,11 +510,11 @@ handle the closing of the file as soon as the scope is exited.
 
 The syntax for opening a file is as follows:
 ```python
-    with open("data/processed/data.txt", "r") as open_file:
-        contents = open_file.read()
-    
-    # the file is automatically closed at this point
-    
+with open("data/processed/data.txt", "r") as open_file:
+    contents = open_file.read()
+
+# the file is automatically closed at this point
+
     print(contents)
 ```
     Results: 
@@ -529,17 +530,17 @@ The syntax for writing a file is similar to reading a file. The main difference 
 the use `"w"` instead of `"r"` in the second argument of `open`. Also, instead of `read()`,
 we use `write()`.
 ```python
-    data = ["this is some data", "on another line", "with another line"]
-    new_filename = "data/processed/new-data.txt"
-    
-    with open(new_filename, "w") as open_file:
-        for line in data:
-            open_file.write(line + "\n")
-    
-    with open(new_filename, "r") as open_file:
-        new_contents = open_file.read()
-    
-    print(new_contents)
+data = ["this is some data", "on another line", "with another line"]
+new_filename = "data/processed/new-data.txt"
+
+with open(new_filename, "w") as open_file:
+    for line in data:
+        open_file.write(line + "\n")
+
+with open(new_filename, "r") as open_file:
+    new_contents = open_file.read()
+
+print(new_contents)
 ```
     Results: 
     # => this is some data
@@ -554,17 +555,17 @@ we use `write()`.
 Every time we write to a file, the entire contents is deleted and replaced. If we
 want to just append to the file instead, we use `"a"`.
 ```python
-    data = ["this is some appended data"]
-    new_filename = "data/processed/new-data.txt"
-    
-    with open(new_filename, "a") as open_file:
-        for line in data:
-            open_file.write(line + "\n")
-    
-    with open(new_filename, "r") as open_file:
-        new_contents = open_file.read()
-    
-    print(new_contents)
+data = ["this is some appended data"]
+new_filename = "data/processed/new-data.txt"
+
+with open(new_filename, "a") as open_file:
+    for line in data:
+        open_file.write(line + "\n")
+
+with open(new_filename, "r") as open_file:
+    new_contents = open_file.read()
+
+print(new_contents)
 ```
     Results: 
     # => this is some data
@@ -595,15 +596,15 @@ importing the `csv` module and in the context of reading the file, we are creati
 CSV reader object. When reading, every line of the CSV file is returned as a list,
 thus an entire CSV file is a list of lists.
 ```python
-    import csv  # built-in library
-    
-    data_path = "data/processed/data.csv"
-    
-    # read a csv
-    with open(data_path, "r") as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=",")
-        for line in csv_reader:
-            print(line)
+import csv  # built-in library
+
+data_path = "data/processed/data.csv"
+
+# read a csv
+with open(data_path, "r") as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=",")
+    for line in csv_reader:
+        print(line)
 ```
     Results: 
     # => ['name', 'id', 'age']
@@ -619,14 +620,14 @@ Writing a CSV file is similar except we are creating a CSV writer object, and ar
 using `writerow` instead.
 
   ```python  
-    # write a csv file
-    new_data_file = "data/processed/new-data.csv"
-    new_data = [["name", "age", "height"], ["jane", "35", "6"]]
-    
-    with open(new_data_file, "w") as csv_file:
-        csv_writer = csv.writer(csv_file, delimiter=",")
-        for row in new_data:
-            csv_writer.writerow(row)
+# write a csv file
+new_data_file = "data/processed/new-data.csv"
+new_data = [["name", "age", "height"], ["jane", "35", "6"]]
+
+with open(new_data_file, "w") as csv_file:
+    csv_writer = csv.writer(csv_file, delimiter=",")
+    for row in new_data:
+        csv_writer.writerow(row)
 ```
 
 
@@ -648,16 +649,16 @@ Like CSV, json is a common format for storing data. Python includes a package ca
 
 Let's first tackle the process of reading:
 ```python
-    import json
-    
-    json_file_path = "data/processed/data.json"
-    
-    # read a json file
-    with open(json_file_path, "r") as json_file:
-        data = json.load(json_file)
-        print(data)
-        print(data.keys())
-        print(data["names"])
+import json
+
+json_file_path = "data/processed/data.json"
+
+# read a json file
+with open(json_file_path, "r") as json_file:
+    data = json.load(json_file)
+    print(data)
+    print(data.keys())
+    print(data["names"])
 ```
     Results: 
     # => {'names': ['jane', 'james'], 'ages': [35, 50]}
@@ -672,14 +673,14 @@ Let's first tackle the process of reading:
 While we used `json.load` to read the file, we use `json.dump` to write the data to a
 json file.
 ```python
-    new_data = {"names": ["someone-new"], "ages": ["NA"]}
-    
-    # write a json file
-    with open("data/processed/new-data.json", "w") as json_file:
-        json.dump(new_data, json_file)
-    
-    with open("data/processed/new-data.json", "r") as json_file:
-        print(json.load(json_file))
+new_data = {"names": ["someone-new"], "ages": ["NA"]}
+
+# write a json file
+with open("data/processed/new-data.json", "w") as json_file:
+    json.dump(new_data, json_file)
+
+with open("data/processed/new-data.json", "r") as json_file:
+    print(json.load(json_file))`
 ```
     Results: 
     # => {'names': ['someone-new'], 'ages': ['NA']}
@@ -752,7 +753,7 @@ instructions at:
 
 If you're creating a **brand new** environment, use:
 ```bash
-    conda create --name <name-of-env>
+conda create --name <name-of-env>
 ```
 This will prompt you to confirm you want to create a new environment, whereupon you
 enter either a `y` or `n`. If `y` your new environment will be created, but start using the
@@ -765,7 +766,7 @@ environment, you will first have to activate it.
 
 Once you've created a new environment, you can activate it. This is as simple as:
 ```bash
-    conda activate <name-of-env>
+conda activate <name-of-env>
 ```
 You will notice that your command line prompt has changed from `(base)` to
 `(<name-of-env>`). And whenever you start a new terminal it will always be `(base)`.
@@ -777,11 +778,11 @@ You will notice that your command line prompt has changed from `(base)` to
 
 To deactivate an environment, just use:
 ```bash
-    conda deactivate
+conda deactivate
 ```
 or:
 ```bash
-    conda activate base
+conda activate base
 ```
 
 
@@ -791,7 +792,7 @@ or:
 Let's say we want to install a package, say `scikit-learn` (if we're doing some data
 processing or machine learning). To install this package in conda, use:
 ```bash
-    conda install scikit-learn
+conda install scikit-learn
 ```
 Conda will then check what packages are needed for `scikit-learn` to work, and figure
 out if anything needs to be upgraded/downgraded to match the required dependencies of
@@ -808,7 +809,7 @@ use: <https://anaconda.org/anaconda/repo>
 
 ## Package versions
 ```bash
-    conda install <package-name>=<version-number>
+conda install <package-name>=<version-number>
 ```
 
 
@@ -818,7 +819,7 @@ use: <https://anaconda.org/anaconda/repo>
 If we wanted to, we could also change the python version being used in the virtual
 environment.
 ```bash
-    conda install python=3.9
+conda install python=3.9
 ```
 This will try to install Python version 3.9 providing that the packages you already
 have installed support it.
@@ -831,11 +832,11 @@ have installed support it.
 Let's say that the package is not within the basic anaconda repository. You can
 specify another repository or channel using the `-c` flag.
 ```bash
-    conda install -c <channel> <package>
+conda install -c <channel> <package>
 ```
 For example, PyTorch (<https://pytorch.org/>) uses their own channel:
 ```bash
-    conda install -c pytorch pytorch 
+conda install -c pytorch pytorch 
 ```
 
 
@@ -847,7 +848,7 @@ exact same packages and especially the **versions** of packages we're using, we 
 export a snapshot of our environment. Conda includes an export command to do just
 this:
 ```bash
-    conda env export --no-builds > environment.yml
+conda env export --no-builds > environment.yml
 ```
 Here we exporting our currently activated environment to a file called
 `environment.yml` (common convention) file. I am using the `--no-builds` flag to improve
@@ -861,7 +862,7 @@ compatibility with other operating systems such as Mac OS.
 To create an environment from an existing environment.yml file, you can use the
 following command:
 ```bash
-    conda env create -f environment.yml
+conda env create -f environment.yml
 ```
 This will create an environment with the same name and install the same versions of
 the packages.
@@ -877,7 +878,7 @@ don't want to have the environment installed anymore (besides we already have th
 
 We can remove an environment using:
 ```bash
-    conda env remove --name <name-of-env>
+conda env remove --name <name-of-env>
 ```
 This will remove the environment from Anaconda.
 
@@ -893,7 +894,7 @@ packages quicker as you won't need to download the package again. But if you're
 running out of hard drive space, cleaning up these cached downloads is an instant
 space saver:
 ```bash
-    conda clean --all
+conda clean --all
 ```
 This command will clean up the cache files for all environments, but doesn't
 necessarily affect what's already installed in the environments &#x2013; so nothing should
@@ -920,7 +921,7 @@ We're going to take a look at the most commonly used commands with pip.
 
 If you want to install a package, its as simple as `pip install`.
 ```bash
-    pip install <package-name>
+pip install <package-name>
 ```
 
 
@@ -930,7 +931,7 @@ If you want to install a package, its as simple as `pip install`.
 Sometimes, though, you will want to install a specific package version. For this use
 '==<version-number>' after the name of the package.
 ```bash
-    pip install <package-name>==<version-number>
+pip install <package-name>==<version-number>
 ```
 
 
@@ -939,7 +940,7 @@ Sometimes, though, you will want to install a specific package version. For this
 
 If you want upgrade/install the package to the latest version, use the `--upgrade` flag.
 ```bash
-    pip install <package-name> --upgrade
+pip install <package-name> --upgrade
 ```
 
 
@@ -951,7 +952,7 @@ installed environment. In pip, this is called `freeze`.
 
 The common convention is to call the file `requirements.txt`.
 ```bash
-    pip freeze > requirements.txt
+pip freeze > requirements.txt
 ```
 
 
@@ -961,7 +962,7 @@ The common convention is to call the file `requirements.txt`.
 If we want to recreate the environment, we can install multiple packages with
 specific versions from a requirements file with:
 ```bash
-    pip install -f requirements.txt
+pip install -f requirements.txt
 ```
 
 
@@ -975,7 +976,7 @@ available via pip, then it will be okay to install it using pip as well. When yo
 export the environment with conda, it will specify what is installed with pip and
 what is installed via conda.
 ```bash
-    conda env create -f environment.yml
+conda env create -f environment.yml
 ```
 When the environment is re-created with conda, it will install the packages from the
 correct places, whether that is conda or pip.
@@ -1014,13 +1015,13 @@ We will use PyCharm for the rest of this course.
 
 Using Ubuntu snaps:
 ```bash
-    snap install pycharm-community --classic
+snap install pycharm-community --classic
 ```
 Or we can download an archive with the executable. The steps to run goes something
 like:
 ```bash
-    tar xvf pycharm-community-<version>.tar.gz
-    bash pycharm-community-<version>/bin/pycharm.sh
+tar xvf pycharm-community-<version>.tar.gz
+bash pycharm-community-<version>/bin/pycharm.sh
 ```
 
 
@@ -1052,8 +1053,8 @@ process cannot be clearly defined (and therefore cannot be immediately programme
 
 We first need to install Jupyter. In you conda environment type:
 ```bash
-    conda install jupyter
-    # or pip install jupyter
+conda install jupyter
+# or pip install jupyter
 ```
 
 
@@ -1062,7 +1063,7 @@ We first need to install Jupyter. In you conda environment type:
 
 With Jupyter installed, we can now start the notebook server using:
 ```bash
-    jupyter notebook
+jupyter notebook
 ```
 A new browser window will appear. This is the Jupyter interface.
 
@@ -1101,9 +1102,9 @@ markdown syntax.
 The notebook environment is fine, but there exists another package called jupyter-lab
 that enhances the environment to include a separate file browser, etc.
 ```bash
-    conda install jupyterlab -c conda-forge
-    
-    jupyter-lab
+conda install jupyterlab -c conda-forge
+
+jupyter-lab
 ```
 
 
@@ -1132,16 +1133,16 @@ will talk through some of the most important ones, in my opinion.
 ::: {.fragment}
 What does this code do?
 ```python
-    def f(l):
-        x = 0
-        y = 0
-        for i in l:
-            x += i
-            y += 1
-        return x / y
-    
-    a = range(100)
-    r = f(a)
+def f(l):
+    x = 0
+    y = 0
+    for i in l:
+        x += i
+        y += 1
+    return x / y
+
+a = range(100)
+r = f(a)
 ```
 :::
 ::::
@@ -1150,16 +1151,16 @@ What does this code do?
 ::: {.fragment}
 What about this one?
 ```python
-    def compute_average(list_of_data):
-        sum = 0
-        num_elements = 0
-        for element in list_of_data:
-            sum += element
-            num_elements += 1
-        return sum / num_elements
-    
-    dataset = range(100)
-    average_value = compute_average(dataset)
+def compute_average(list_of_data):
+    sum = 0
+    num_elements = 0
+    for element in list_of_data:
+        sum += element
+        num_elements += 1
+    return sum / num_elements
+
+dataset = range(100)
+average_value = compute_average(dataset)
 ```
 :::
 ::::
@@ -1179,44 +1180,44 @@ Don't re-invent the wheel. Try to use Python's built-in functions/classes if the
 exist, they will normally be quicker and more accurate than what you could make in
 Python itself. For example:
 ```python
-    dataset = range(100)
-    average_value = sum(dataset) / len(dataset)
+dataset = range(100)
+average_value = sum(dataset) / len(dataset)
 ```
 
 . . . 
 
 or maybe even:
 ```python
-    import numpy as np
-    dataset = range(100)
-    average_value = np.mean(dataset)
+import numpy as np
+dataset = range(100)
+average_value = np.mean(dataset)
 ```
 
 
 
 ## Use docstrings and comments
 ```python
-    def compute_average(list_of_data, exclude=None):
-        """
-        Compute and return the average value of an iterable list. 
-        This average excludes any value if specified by exclude
-    
-        params: 
-        - list_of_data: data for which the average is computed 
-        - exclude: numeric value of values that should not be taken 
-          into account
-    
-        returns: 
-        The computed average, possibly excluding a value.
-        """
-        sum = 0
-        num_elements = 0
-        for element in list_of_data:
-            if exclude is not None and element == exclude:
-                continue  # skip this element
-            sum += element
-            num_elements += 1
-        return sum / num_elements
+def compute_average(list_of_data, exclude=None):
+    """
+    Compute and return the average value of an iterable list. 
+    This average excludes any value if specified by exclude
+
+    params: 
+    - list_of_data: data for which the average is computed 
+    - exclude: numeric value of values that should not be taken 
+        into account
+
+    returns: 
+    The computed average, possibly excluding a value.
+    """
+    sum = 0
+    num_elements = 0
+    for element in list_of_data:
+        if exclude is not None and element == exclude:
+            continue  # skip this element
+        sum += element
+        num_elements += 1
+    return sum / num_elements
 ```
 
 
@@ -1226,10 +1227,10 @@ or maybe even:
 -   `snake_casing` for functions and variables
 -   Classes should use `CamelCasing`
 ```python
-    def this_if_a_function(data_x, data_y):
+def this_if_a_function(data_x, data_y):
 ```
 ```python
-    class BookEntry:
+class BookEntry:
 ```
 
 
@@ -1243,9 +1244,9 @@ compatible. For example, a string being used with a division.
 <https://docs.python.org/3/library/typing.html>
 <https://realpython.com/python-type-checking/>
 ```python
-    def compute_average(list_of_data: list[int],
-                        exclude: Optional[int] = None) -> float:
-        ...
+def compute_average(list_of_data: list[int],
+                    exclude: Optional[int] = None) -> float:
+    ...
 ```
 
 
@@ -1255,17 +1256,17 @@ compatible. For example, a string being used with a division.
 Make the distinction between standard library imports, externally installed imports,
 and your own custom imports.
 ```python
-    # internal imports
-    import os
-    from math import pi
-    
-    # external imports
-    import numpy as np
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    
-    # custom imports
-    from src.my_module import DAGs
+# internal imports
+import os
+from math import pi
+
+# external imports
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# custom imports
+from src.my_module import DAGs
 ```
 
 
@@ -1275,8 +1276,6 @@ and your own custom imports.
 Do one thing and do it well. Docstrings can help you understand what your function is
 doing, especially if you use the word 'and' in the docstring, you might want to think
 about breaking your single function into many parts.
-
-
 
 
 ## Functions as re-usability
@@ -1377,8 +1376,8 @@ PEP 8 Style Guide
 -   Don't over document (i.e. if something is self explanatory, then comments will
     distract rather than inform). An example from PEP 8:
 ```python
-    x = x + 1                 # Increment x
-    x = x + 1                 # Compensate for border
+x = x + 1                 # Increment x
+x = x + 1                 # Compensate for border
 ```
 -   Document what you think will be difficult to understand without some prior knowledge,
     such as why a particular decision was made to do something a certain way. Don't
