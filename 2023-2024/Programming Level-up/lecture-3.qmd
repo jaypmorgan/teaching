@@ -961,8 +961,9 @@ pip freeze > requirements.txt
 
 If we want to recreate the environment, we can install multiple packages with
 specific versions from a requirements file with:
+
 ```bash
-pip install -f requirements.txt
+pip install -r requirements.txt
 ```
 
 
