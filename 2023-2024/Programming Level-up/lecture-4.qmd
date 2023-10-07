@@ -31,25 +31,25 @@ because NumPy is partly written in C.
 For example, if we want to compute the matrix multiplication of two arrays:
 
 ```python
-    A = [[1, 4], [9, 5]]  # 2 dimensional 'matrices' A and B
-    B = [[1, 2], [3, 4]]
-    C = [[0, 0], [0, 0]]  # our result 'pre-allocated' with zeros
-    
-    for i in range(len(A)):
-        for j in range(len(B)):
-            for k in range(len(B)):
-                C[i][j] += A[i][k] * B[k][j]
+A = [[1, 4], [9, 5]]  # 2 dimensional 'matrices' A and B
+B = [[1, 2], [3, 4]]
+C = [[0, 0], [0, 0]]  # our result 'pre-allocated' with zeros
+
+for i in range(len(A)):
+    for j in range(len(B)):
+        for k in range(len(B)):
+            C[i][j] += A[i][k] * B[k][j]
 ```
 
 The previous example is quite un-weidly. We have to manually loop through the
 matrices and apply the computation for each element. This can be **very** slow in
 Python. NumPy provides a much cleaner and quicker interface:
 ```python
-    import numpy as np
-    A = np.array([[1, 4], [9, 5]])
-    B = np.array([[1, 2], [3, 4]])
-    C = A @ B  # or np.matmul(A, B)
-    print(C)
+import numpy as np
+A = np.array([[1, 4], [9, 5]])
+B = np.array([[1, 2], [3, 4]])
+C = A @ B  # or np.matmul(A, B)
+print(C)
 ```
     Results: 
     # => [[13 18]
@@ -63,11 +63,11 @@ Before we can use NumPy, we must first install it if its not already. NumPy can
 easily be installed with one of your package managers of choice. For example, if you
 want to install via conda:
 ```bash
-    conda install numpy
+conda install numpy
 ```
 or with pip:
 ```bash
-    pip install numpy
+pip install numpy
 ```
 
 
@@ -75,8 +75,8 @@ or with pip:
 
 As we've seen previously, we use `np.array` to create a numpy array from a Python data type
 ```python
-    A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-    print(A)
+A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(A)
 ```
     Results: 
     # => [[1 2 3]
@@ -87,7 +87,7 @@ We've created a 3x3 matrix of integers. Note that, out-of-the-box, NumPy doesn't
 support *ragged arrays* (matrices that are not rectangular), so this will not work as
 you expect:
 ```python
-    A = np.array([[1], [1, 2]])
+A = np.array([[1], [1, 2]])
 ```
 
 
@@ -96,13 +96,13 @@ you expect:
 A numpy array has various attributes that are useful for our numerical
 computing. Some of these include:
 ```python
-    A = np.array([[1, 4], [9, 5]])
-    
-    print(A.shape)  # the shape of the array
-    print(A.size)   # number of elements
-    print(A.ndim)   # number of dimensions
-    print(A.nbytes) # storage used
-    print(A.dtype)  # data type of elements
+A = np.array([[1, 4], [9, 5]])
+
+print(A.shape)  # the shape of the array
+print(A.size)   # number of elements
+print(A.ndim)   # number of dimensions
+print(A.nbytes) # storage used
+print(A.dtype)  # data type of elements
 ```
     Results: 
     # => (2, 2)
@@ -136,13 +136,13 @@ When creating a NumPy array, NumPy will select what it thinks to be the most
 appropriate data type. However, we can tell NumPy explicitly what the data type
 should be with the `dtype` argument.
 ```python
-    A = np.array([[1, 2], [9, 5]], dtype=np.int8)
-    print(A)
-    print(A.dtype)
+A = np.array([[1, 2], [9, 5]], dtype=np.int8)
+print(A)
+print(A.dtype)
 
-    A = np.array([[1, 2], [9, 5]], dtype=np.float)
-    print(A)
-    print(A.dtype)
+A = np.array([[1, 2], [9, 5]], dtype=np.float)
+print(A)
+print(A.dtype)
 ```
     Results: 
     # => [[1 2]
@@ -160,22 +160,22 @@ In some cases, we wish to change the data type of arrays *after* its creation. F
 we use the `.astype()` method. This method takes a single argument: the data type you
 wish to change the array to.
 ```python
-    A = np.array([1, 2, 3, 4])
-    print(A.dtype)
+A = np.array([1, 2, 3, 4])
+print(A.dtype)
 ```
     int64
 ## {auto-animate=true}
 We could change it to a `float64` array:
 ```python
-    A = A.astype(float)
-    print(A.dtype)
+A = A.astype(float)
+print(A.dtype)
 ```
     float64
 ## {auto-animate=true}
 Or `float32`:
 ```python
-    A = A.astype(np.float32)
-    print(A.dtype)
+A = A.astype(np.float32)
+print(A.dtype)
 ```
     float32
 
@@ -186,20 +186,20 @@ Or `float32`:
 NumPy also provides us with a number of different functions to create arrays. Instead
 of doing this:
 ```python
-    A = np.array([[0, 0], [0, 0]])
+A = np.array([[0, 0], [0, 0]])
 ```
 We could instead use the `np.zeros` function, passing a tuple where each element of
 the tuple describes how many elements should be made in each dimension:
 ```python
-    A = np.zeros((2,)) # 1 dimensional
-    A = np.zeros((2, 2))  # 2 dimensional
-    A = np.zeros((2, 5, 5))  # 3 dimensional
+A = np.zeros((2,)) # 1 dimensional
+A = np.zeros((2, 2))  # 2 dimensional
+A = np.zeros((2, 5, 5))  # 3 dimensional
 ```
 Another commonly used array creation function is the `np.random.randn` function. This
 creates an array where elements are sampled from a normal distribution.
 ```python
-    A = np.random.randn(2, 2)
-    print(A)
+A = np.random.randn(2, 2)
+print(A)
 ```
     Results: 
     # => [[-0.68213848 -0.44274759]
@@ -210,14 +210,14 @@ tuple, we pass multiple arguments to the function.
 
 It is also convenient to create arrays with ranges of elements.
 ```python
-    A = np.arange(5, 10) # optional step
-    print(A)
+A = np.arange(5, 10) # optional step
+print(A)
 ```
     Results: 
     # => [5 6 7 8 9]
 ```python
-    A = np.linspace(5, 10, 20)
-    print(A)
+A = np.linspace(5, 10, 20)
+print(A)
 ```
     Results: 
     # => [ 5.          5.26315789  5.52631579  5.78947368  6.05263158  6.31578947
@@ -248,16 +248,16 @@ In native Python, when we have a 'matrix' like data structure (just a list of li
 and we want to access a particular element from this matrix, we have to do something
 like:
 ```python
-    A = [[1, 2], [3, 4]]
-    print(A[1][0])
+A = [[1, 2], [3, 4]]
+print(A[1][0])
 ```
     Results: 
     # => 3
 
 However, in NumPy, we seperate the indexes by comma:
 ```python
-    A = np.array([[1, 2], [3, 4]])
-    print(A[1, 0])
+A = np.array([[1, 2], [3, 4]])
+print(A[1, 0])
 ```
     Results: 
     # => 3
@@ -266,27 +266,27 @@ However, in NumPy, we seperate the indexes by comma:
 If we wanted to get all elements from the 2nd column we would use the `:` notation. For
 example:
 ```python
-    A = np.array([[1, 2], [3, 4]])
-    print(A[:, 1])
+A = np.array([[1, 2], [3, 4]])
+print(A[:, 1])
 ```
     Results: 
     # => [2 4]
 
 Likewise, all elements from the 2nd row:
 ```python
-    print(A[1, :])
+print(A[1, :])
 ```
     Results: 
     # => [3 4]
 
 Note that when we slice an array, we are **not copying** the elements:
 ```python
-    A = np.array([[1, 2], [3, 4]])
-    b = A[:, 1]
-    
-    b[0] = 10
-    
-    print(A)
+A = np.array([[1, 2], [3, 4]])
+b = A[:, 1]
+
+b[0] = 10
+
+print(A)
 ```
     Results: 
     # => [[ 1 10]
@@ -295,30 +295,30 @@ Note that when we slice an array, we are **not copying** the elements:
 Any modification you make to the `b` variable will also affect `A`. For that we must use
 `.copy()`
 ```python
-    A = np.array([[1, 2], [3, 4]])
-    b = A[:, 1].copy()
-    ...
+A = np.array([[1, 2], [3, 4]])
+b = A[:, 1].copy()
+...
 ```
 If we have a multi-dimensional array, to which we wish to index on the final
 dimension, one way to achieve this is by doing the following:
 ```python
-    A = np.random.randn(10, 2, 5, 4)  # our array to slice
-    A[:, :, :, 1:2]  # slice on the last dimension
+A = np.random.randn(10, 2, 5, 4)  # our array to slice
+A[:, :, :, 1:2]  # slice on the last dimension
 ```
 This can get pretty tedious the more that the number of dimensions increases. But! we
 have one syntactical shortcut at our disposal: the ellipses '&#x2026;'. Using the ellipses
 in place of the many ':' slices on each dimension, we're telling NumPy to just take
 all elements from the prior dimensions. For example:
 ```python
-    A[..., 1:2]  # same slice on the last dimension
+A[..., 1:2]  # same slice on the last dimension
 ```
 
 ## Boolean Indexing
 
 NumPy arrays can also be composed of boolean elements
 ```python
-    A = np.array([[1, -1], [0, 5]])
-    print(A > 0)
+A = np.array([[1, -1], [0, 5]])
+print(A > 0)
 ```
     Results: 
     # => [[ True False]
@@ -326,8 +326,8 @@ NumPy arrays can also be composed of boolean elements
 
 And we can also use boolean elements to help with indexing:
 ```python
-    values_above_zero = A[A > 0]
-    print(values_above_zero)
+values_above_zero = A[A > 0]
+print(values_above_zero)
 ```
     Results: 
     # => [1 5]
@@ -336,9 +336,9 @@ And we can also use boolean elements to help with indexing:
 Therefore we can apply computations to only part of the array using this indexing
 feature:
 ```python
-    mask = A > 0
-    A[mask] = A[mask] + 10
-    print(A)
+mask = A > 0
+A[mask] = A[mask] + 10
+print(A)
 ```
     Results: 
     # => [[11 -1]
@@ -358,11 +358,11 @@ vector of 4 elements and then reshape it into an array of 2x2 elements. Of cours
 the new shape of the array must be proportional to the original number of elements:
 2x2 elements = 4 elements.
 ```python
-    A = np.arange(1, 5)
-    
-    mat_A = A.reshape(2, 2)
-    print(mat_A)
-    print(A)  # A is not changed! No need for copy
+A = np.arange(1, 5)
+
+mat_A = A.reshape(2, 2)
+print(mat_A)
+print(A)  # A is not changed! No need for copy
 ```
     Results: 
     # => [[1 2]
@@ -376,8 +376,8 @@ the new shape of the array must be proportional to the original number of elemen
 If we wanted to take a 2d array and reshape it into a vector, we could of course use
 the `.reshape` function again. But we could also use `.flatten`.
 ```python
-    flat_A = mat_A.flatten()
-    print(flat_A)
+flat_A = mat_A.flatten()
+print(flat_A)
 ```
     Results: 
     # => [1 2 3 4]
@@ -386,10 +386,10 @@ the `.reshape` function again. But we could also use `.flatten`.
 When specifying the new dimensionality of the reshaped array, `-1` is a shortcut to
 specify the dimensionality to allow reshaping to occur correctly. For example:
 ```python
-    A = np.arange(1, 5)
-    print(A)
-    
-    print(A.reshape(2, -1))
+A = np.arange(1, 5)
+print(A)
+
+print(A.reshape(2, -1))
 ```
     Results: 
     # => [1 2 3 4]
@@ -405,8 +405,8 @@ however many elements on the second dimension.
 
 We can add and remove dimensions using `.expand_dims` and `.squeeze`, respectively.
 ```python
-    print(A)
-    print(np.expand_dims(A, 1))
+print(A)
+print(np.expand_dims(A, 1))
 ```
     Results: 
     # => [1 2 3 4]
@@ -420,8 +420,8 @@ We are taking a vector and adding a dimension. Note that we have to use
 
 We can use an indexing trick with `None` to do the expansion in just the same way:
 ```python
-    print(A)
-    print(A[:, None])
+print(A)
+print(A[:, None])
 ```
     Results: 
     # => [1 2 3 4]
@@ -438,7 +438,7 @@ Where `None` indicates to NumPy where we want to add the new dimension.
 
 If we want to instead remove a dimension, we can use `.squeeze()`
 ```python
-    print(A[:, None].squeeze(1))
+print(A[:, None].squeeze(1))
 ```
     Results: 
     # => [1 2 3 4]
@@ -452,9 +452,9 @@ you cannot squeeze a 2x2 array.
 
 Another useful feature is the matrix transpose:
 ```python
-    print(mat_A)
-    
-    print(mat_A.transpose())
+print(mat_A)
+
+print(mat_A.transpose())
 ```
     Results: 
     # => [[1 2]
@@ -478,14 +478,14 @@ If we have multiple arrays we want to 'join' together, we can use `np.hstack` fo
 horizontally joining, or `np.vstack` for vertically joining arrays. **Note** the dimensions
 must match in the direction your stacking.
 ```python
-    A = np.array([1, 2, 3])
-    B = np.array([4, 5, 6])
-    
-    print(np.hstack([A, B]))
+A = np.array([1, 2, 3])
+B = np.array([4, 5, 6])
+
+print(np.hstack([A, B]))
 ```
     [1 2 3 4 5 6]
 ```python
-    print(np.vstack([A, B]))
+print(np.vstack([A, B]))
 ```
     Results: 
     # => [[1 2 3]
@@ -495,7 +495,7 @@ must match in the direction your stacking.
 defined. However, there is a more general function - `np.concatenate` - that will be
 more often useful to us.
 ```python
-    print(np.concatenate([A, B], axis=0))
+print(np.concatenate([A, B], axis=0))
 ```
     [1 2 3 4 5 6]
 
@@ -519,11 +519,11 @@ worth looking at these in detail.
 One of the best reasons to use NumPy is that the computations are **vectorized** and can
 be **broadcast**. We'll see examples of what these mean.
 ```python
-    A = np.array([1, 2, 3])
-    B = np.array([[1, 2, 3],
-                  [4, 5, 6]])
-    
-    print(A * B)
+A = np.array([1, 2, 3])
+B = np.array([[1, 2, 3],
+                [4, 5, 6]])
+
+print(A * B)
 ```
     Results: 
     # => [[ 1  4  9]
@@ -536,9 +536,9 @@ When we perform arithmetic operations, NumPy will convert the data into arrays f
 us. While this can help, its not best practice for vectors and matrices, for scalars
 it will be fine.
 ```python
-    A = [1, 2, 3]
-    
-    print(A * B)
+A = [1, 2, 3]
+
+print(A * B)
 ```
     Results: 
     # => [[ 1  4  9]
@@ -550,7 +550,7 @@ When we are working with singletons or scalar values, NumPy will automatically
 perform the broadcasting for us. So for example, if we want to double each element of
 an array:
 ```python
-    print(B * 2)
+print(B * 2)
 ```
     Results: 
     # => [[ 2  4  6]
@@ -657,16 +657,16 @@ NumPy provides, in many cases, both infix and function operations.
 There are a number of different operations one can perform on a matrix. Such as the
 dot product of two matrices:
 ```python
-    A = np.array([1, 2])
-    B = np.array([[1, 2], [3, 4]])
-    print(np.dot(A, B))
+A = np.array([1, 2])
+B = np.array([[1, 2], [3, 4]])
+print(np.dot(A, B))
 ```
     Results: 
     # => [ 7 10]
 
 The inner product:
 ```python
-    print(np.inner(A, B))
+print(np.inner(A, B))
 ```
     Results: 
     # => [ 5 11]
@@ -677,14 +677,14 @@ other functions like `dot` and `inner` but it takes some understanding on how it
 works. `einsum` is the application of Einstein Summation, a succinct method of
 describing the multiplication between matrices. Lets first look at an example of the outer product:
 ```python
-    print(np.einsum('i,ij->j', A, B))
+print(np.einsum('i,ij->j', A, B))
 ```
     Results: 
     # => [ 7 10]
 
 Or the inner product:
 ```python
-    print(np.einsum('j,ij->i', A, B))
+print(np.einsum('j,ij->i', A, B))
 ```
     Results: 
     # => [ 5 11]
@@ -709,10 +709,10 @@ very powerful function with a very succinct syntax.
 
 Lets say you have some function that computes the square of a number:
 ```python
-    def my_square(x):
-        return x**2
-    
-    print(my_square(4))
+def my_square(x):
+    return x**2
+
+print(my_square(4))
 ```
     Results: 
     # => 16
@@ -720,22 +720,22 @@ Lets say you have some function that computes the square of a number:
 As the function is simple, it takes one argument and returns one argument, we can
 pass a NumPy array and will get the correct result.
 ```python
-    A = np.arange(1, 10)
-    print(my_square(A))
+A = np.arange(1, 10)
+print(my_square(A))
 ```
     Results: 
     # => [ 1  4  9 16 25 36 49 64 81]
 
 However, if the function is more complicated, it will not work.
 ```python
-    def myfunc(a, b):
-        "Return a-b if a>b, otherwise return a+b"
-        if a > b:
-            return a - b
-        else:
-            return a + b
-    
-    print(myfunc(A, 2))
+def myfunc(a, b):
+    "Return a-b if a>b, otherwise return a+b"
+    if a > b:
+        return a - b
+    else:
+        return a + b
+
+print(myfunc(A, 2))
 ```
     Results: 
     # => Traceback (most recent call last):
@@ -750,8 +750,8 @@ However, if the function is more complicated, it will not work.
 To allow us to use this function over an array, we can use the `np.vectorize` function
 to create a new function, which applies `myfunc` over each element.
 ```python
-    vfunc = np.vectorize(myfunc)
-    print(vfunc(A, 2))
+vfunc = np.vectorize(myfunc)
+print(vfunc(A, 2))
 ```
     Results: 
     # => [3 4 1 2 3 4 5 6 7]

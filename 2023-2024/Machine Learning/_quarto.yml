@@ -1,19 +1,28 @@
 project:
   type: website
+  output-dir: compiled
+  render:
+    - "*.qmd"
 
 website:
   title: "Machine Learning"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  sidebar: 
+    style: docked
+    contents:
+      - lecture-1.qmd
+      - lecture-2.qmd
 
 format:
   html:
-    theme: cosmo
+    theme: [yeti, style.scss]
     css: styles.css
     toc: true
-
-
+  revealjs: 
+    theme: [serif, revealjs-style.scss]
+    scrollable: true
+    smaller: false
+    slide-number: true
+    slide-level: 2
+    navigation-mode: vertical
+    transition: slide
 

@@ -1,7 +1,21 @@
 ---
 title: "Machine Learning"
+format:
+    html: default
 ---
 
-This is a Quarto website.
+Welcome to the Machine Learning course developed for the MIR Masters Engineering and
+Complex Systems. In this series of lectures, we're going to learn about how to
+learn! Specifically, we're going to learn about how computers learn using Machine
+Learning algorithms. We'll learn about the basic understanding of learning
+algorithms, as well as specific algorithms that include: linear models, support
+vector machines, and clustering methods. In addition to these algorithms, we will
+also look at a key part of using any learning algorithm -- evaluating it!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Below you can find the lectures presented in this course, in a HTML or PDF format. If
+you have any questions or concerns, you can contact me using my email address `jay.morgan@univ-tln.fr`
+
+## Lectures
+
+- Lecture 1 - [Introduction](lecture-1.qmd)
+- Lecture 2 - [Linear Models](lecture-2.qmd)

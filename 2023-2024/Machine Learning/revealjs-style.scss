@@ -1,0 +1,16 @@
+/*-- scss:defaults --*/
+
+$presentation-line-height: 1.8em;
+$code-block-font-size: 0.9em;
+$presentation-title-slide-text-align: center;
+
+/*-- scss:rules --*/
+
+div.sourceCode {
+    margin-top: 30pt!important;
+    margin-bottom: 30pt!important;
+}
+
+section > p {
+    margin-top: 30pt!important;
+}
