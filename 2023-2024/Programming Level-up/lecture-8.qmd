@@ -647,28 +647,18 @@ echo $RESULT
 
 ## How to login
 
-```bash
-ssh <<username>>@saphir2.lis-lab.fr
-```
-
-Then:
 
 ```bash
 ssh <<username>>@sms-ext.lis-lab.fr
 ```
 
-Typing both these commands can become tiresome very quickly. But we can make it
+Typing this command can become tiresome very quickly, especially after sending data back and forth. But we can make it
 a lot easier by updating our `~/.ssh/config` file to include something like:
 
 ```bash
-Host saphir2
- HostName saphir2.lis-lab.fr
- User <<username>>
-
 Host cluster
  HostName sms-ext.lis-lab.fr
  User <<username>>
- ProxyCommand ssh saphir2 -W %h:%p
 ```
 
 Then to login to the cluster, we just need to type:
@@ -686,7 +676,6 @@ If you trust the machine your on, you can remove password authentication and
 move to key-based authentication:
 
 ```bash
-ssh-copy-id saphir2
 ssh-copy-id cluster
 ```
 
@@ -1280,16 +1269,10 @@ ssh -X <<remote-host>>
 If want to enable it by default, we can enable it in our `ssh` config file:
 
 ```bash
-Host saphir2
- HostName saphir2.lis-lab.fr
- ForwardX11 yes
- User <<username>>
-
 Host cluster
  HostName sms-ext.lis-lab.fr
  FowardX11 yes
  User <<username>>
- ProxyCommand ssh -X saphir2 -W %h:%p
 ```
 
 After setting up `X11 Forwarding` correctly, and when logged into the remote host, we

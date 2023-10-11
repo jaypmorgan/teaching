@@ -23,16 +23,16 @@ using a linear model.
 A linear model is a prediction (a response) to an input variable. We have the
 following terms:
 
--   Response/prediction &#x2013; the output of the model.
--   Dependant variable &#x2013; the variable upon which the prediction is being made.
+-   Response/prediction/dependant &#x2013; the output of the model.
+-   feature/variable/independant variable &#x2013; the variable upon which the prediction is being made.
 
-For a linear model based on one dependant we have the following:
+For a linear model based on one independant we have the following:
 
 $$
 y = \beta_0 + \beta_1 x
 $$
 
-where $y$ is the response/output/prediction of the model, $x$ is the dependant
+where $y$ is the response/output/prediction of the model, $x$ is the independant
 variable, and $\beta_0, \beta_1$ are the model parameters.
 
 
@@ -48,10 +48,10 @@ If we look at our linear model equation, we'll notice that it's the same equatio
 As we've seen, the linear model, or linear regression, has two parameters: $\beta_1,
 \beta_0$. What do these parameters represent?
 
--   The $\beta_1$ parameter is the **slope** or strength of relationship between the dependant
+-   The $\beta_1$ parameter is the **slope** or strength of relationship between the independant
     variable and the response.
 -   Meanwhile, the $\beta_0$ parameter is called the **intercept**, as it's the value of the
-    response when the dependant variable is zero.
+    response when the independant variable is zero.
 
 Let's look at these two parameters.
 
