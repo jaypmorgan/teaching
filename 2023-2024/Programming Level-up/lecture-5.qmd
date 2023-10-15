@@ -9,6 +9,7 @@ format:
         fig-align: center
     revealjs: 
         output-file: lecture-5-reveal.html
+        standalone: true
 jupyter: python3
 ---
 
@@ -16,7 +17,7 @@ jupyter: python3
 
 ## What is Matplotlib?
 
-![](images/matlogo.png)
+![](images/matlogo.png){width="50%"}
 
 In summary:
 
@@ -31,11 +32,11 @@ In summary:
 
 Matplotlib can be installed via conda:
 ```bash
-    conda install matplotlib
+conda install matplotlib
 ```
 or with pip:
 ```bash
-    pip install matplotlib
+pip install matplotlib
 ```
 Remember! You can install packages in ipython REPL/juypter notebook by
 inserting a '!' to the beginning of a shell command.
@@ -48,7 +49,7 @@ within the `pyplot` package within matplotlib. The use of this package is so
 common that 99% of Python users will alias this import as `plt`:
 
 ```{python}
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 ```
 
 With this package now imported, we can now use the `plot` function. To begin with,
@@ -57,11 +58,11 @@ and `y` argument, where `x` denotes the values along the x-axis and `y` are the 
 along the y-axis.
 
 ```{python}
-    import numpy as np
-    x = np.linspace(-10, 10, 100)
-    y = np.sin(x)
-    plt.plot(x, y)
-    plt.show()
+import numpy as np
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+plt.plot(x, y)
+plt.show()
 ```
 
 In this example, we have created two vectors. The first `x`, creates a vector of
@@ -100,10 +101,10 @@ each x,y point. For instance in the previous example, we created a sin wave by
 when we sample only 10 points:
 
 ```{python}
-    x = np.linspace(-10, 10, 10)
-    y = np.sin(x)
-    plt.plot(x, y)
-    plt.show()
+x = np.linspace(-10, 10, 10)
+y = np.sin(x)
+plt.plot(x, y)
+plt.show()
 ```
 
 We see the results are a less than ideal representation of a sin wave as `plot`
@@ -120,10 +121,10 @@ value. To create a scatter plot, we use `scatter` instead of the `plot`
 function. The arguments to this function are the same, however.
 
 ```{python}
-    x = np.linspace(-10, 10, 10)
-    y = np.sin(x)
-    plt.scatter(x, y)
-    plt.show()
+x = np.linspace(-10, 10, 10)
+y = np.sin(x)
+plt.scatter(x, y)
+plt.show()
 ```
 
 Now we can see the position of each individual sample from the sin wave. If we,
@@ -132,10 +133,10 @@ once again, sample 100 points from this curve, we will see better results.
 <!-- ![](images/scatter.png) -->
 
 ```{python}
-    x = np.linspace(-10, 10, 100)
-    y = np.sin(x)
-    plt.scatter(x, y)
-    plt.show()
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+plt.scatter(x, y)
+plt.show()
 ```
 
 <!-- ![](images/scatter-2.png) -->
@@ -147,10 +148,10 @@ Bar plots are a simple plot that again takes an `x` and a `y`, where x is the
 numerical position of the bar's centre, and `y` is the height of the bar.
 
 ```{python}
-    x = np.arange(0, 8)
-    y = np.random.uniform(2, 7, len(x))
-    plt.bar(x, y)
-    plt.show()
+x = np.arange(0, 8)
+y = np.random.uniform(2, 7, len(x))
+plt.bar(x, y)
+plt.show()
 ```
 
 <!-- ![](images/bar.png) -->
@@ -163,9 +164,9 @@ can create a histogram of a vector by using the `hist` function that takes only
 the vector as its argument.
 
 ```{python}
-    x = np.random.randn(1000)
-    plt.hist(x)
-    plt.show()
+x = np.random.randn(1000)
+plt.hist(x)
+plt.show()
 ```
 
 <!-- ![](images/hist.png) -->
@@ -178,9 +179,9 @@ values within a group. In this example we're visualising the distribution of 3
 groups. Using the `boxplot` function, we pass a matrix.
 
 ```{python}
-    x = np.random.randn(10, 3)
-    plt.boxplot(x)
-    plt.show()
+x = np.random.randn(10, 3)
+plt.boxplot(x)
+plt.show()
 ```
 
 <!-- ![](images/boxplot.png) -->
@@ -192,10 +193,10 @@ In matplotlib, we can plot an 'image' &#x2013; that is a 2D matrix &#x2013; usin
 function. For example:
 
 ```{python}
-    fig = plt.figure()
-    x = np.random.randn(10, 10)
-    plt.imshow(x)
-    plt.show()
+fig = plt.figure()
+x = np.random.randn(10, 10)
+plt.imshow(x)
+plt.show()
 ```
 
 <!-- ![](images/imshow.png) -->
@@ -204,10 +205,10 @@ Of course, given the name, we can then use `imshow` to plot an image as well, as
 long as we have the image loaded as a 2D array of values.
 
 ```{python}
-    from PIL import Image  # using the PIL module to read an image
-    img = np.array(Image.open("images/Lenna.png"))
-    plt.imshow(img)
-    plt.show()
+from PIL import Image  # using the PIL module to read an image
+img = np.array(Image.open("images/Lenna.png"))
+plt.imshow(img)
+plt.show()
 ```
 
 <!-- ![](images/imshow-2.png) -->
@@ -219,26 +220,26 @@ long as we have the image loaded as a 2D array of values.
 matplotlib.
 
 ```{python}
-    from mpl_toolkits import mplot3d
+from mpl_toolkits import mplot3d
 ```
 
 After importing this module, we can using the *projection="3d"* and
 carry on plotting as normal.
 
 ```{python}
-    fig = plt.figure()
-    # older matplotlib
-    # ax = fig.gca(projection='3d')
-    # newest version
-    ax = fig.add_subplot(projection='3d')
-    theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)
-    z = np.linspace(-2, 2, 100)
-    r = z**2 + 1
-    x = r * np.sin(theta)
-    y = r * np.cos(theta)
-    ax.plot(x, y, z, label='parametric curve')
-    ax.legend()
-    plt.show()
+fig = plt.figure()
+# older matplotlib
+# ax = fig.gca(projection='3d')
+# newest version
+ax = fig.add_subplot(projection='3d')
+theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)
+z = np.linspace(-2, 2, 100)
+r = z**2 + 1
+x = r * np.sin(theta)
+y = r * np.cos(theta)
+ax.plot(x, y, z, label='parametric curve')
+ax.legend()
+plt.show()
 ```
 
 <!-- ![](images/3d-figure.png) -->
@@ -264,15 +265,15 @@ the second value is a list of sub figures. Using this list, we can place a plot
 of each of them.
 
 ```{python}
-    x = np.linspace(-10, 10, 100)
-    y = np.sin(x)
-    z = np.cos(y)
-    
-    fig, ax = plt.subplots(1, 2)
-    # ax is a list of sub figures
-    ax[0].plot(x, y)
-    ax[1].plot(x, z)
-    plt.show()
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+z = np.cos(y)
+
+fig, ax = plt.subplots(1, 2)
+# ax is a list of sub figures
+ax[0].plot(x, y)
+ax[1].plot(x, z)
+plt.show()
 ```
 
 <!-- ![](images/subplots.png) -->
@@ -285,14 +286,14 @@ a different colour. If we use the `label` argument to `plot`, we can also give t
 a name that will appear when we call `legend()`.
 
 ```{python}
-    x = np.linspace(-10, 10, 100)
-    y = np.sin(x)
-    z = np.tan(y)
-    fig, ax = plt.subplots()
-    ax.plot(x, y, label="sin(x)")
-    ax.plot(x, z, label="tan(x)")
-    ax.legend()
-    plt.show()
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+z = np.tan(y)
+fig, ax = plt.subplots()
+ax.plot(x, y, label="sin(x)")
+ax.plot(x, z, label="tan(x)")
+ax.legend()
+plt.show()
 ```
 
 <!-- ![](images/legend.png) -->
@@ -306,15 +307,15 @@ for the `loc` argument (or string values such as 'upper left', 'upper right',
 `ncol` argument.
 
 ```{python}
-    x = np.linspace(-10, 10, 100)
-    y = np.sin(x)
-    z = np.tan(y)
-    
-    fig, ax = plt.subplots()
-    ax.plot(x, y, label="sin(x)")
-    ax.plot(x, z, label="tan(x)")
-    ax.legend(loc=1, ncol=2)
-    plt.show()
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+z = np.tan(y)
+
+fig, ax = plt.subplots()
+ax.plot(x, y, label="sin(x)")
+ax.plot(x, z, label="tan(x)")
+ax.legend(loc=1, ncol=2)
+plt.show()
 ```
 
 You can find the API reference for the different arguments to legend at: <https://matplotlib.org/stable/api/legend_api.html?highlight=legend#module-matplotlib.legend>
@@ -330,17 +331,17 @@ have a subplot object, we use `set_xlabel`, or we can use `plt.xlabel(...)`. Her
 an example with an subplot object:
 
 ```{python}
-    x = np.linspace(-10, 10, 100)
-    y = np.sin(x)
-    z = np.tan(y)
-    
-    fig, ax = plt.subplots()
-    ax.plot(x, y, label="sin(x)")
-    ax.plot(x, z, label="tan(x)")
-    ax.legend(loc=1, ncol=2)
-    ax.set_xlabel("x")
-    ax.set_ylabel("y")
-    plt.show()
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+z = np.tan(y)
+
+fig, ax = plt.subplots()
+ax.plot(x, y, label="sin(x)")
+ax.plot(x, z, label="tan(x)")
+ax.legend(loc=1, ncol=2)
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+plt.show()
 ```
 
 <!-- ![](images/axis.png) -->
@@ -354,19 +355,19 @@ aspect ratio. `figure()` or `subplots()` take an optional argument called
 figure in inches.
 
 ```{python}
-    fig = plt.figure(figsize=(8, 2.5))
-    
-    # or most likely
-    fig, ax = plt.subplots(figsize=(8, 2.5))
-    x = np.linspace(-10, 10, 100)
-    y = np.sin(x)
-    z = np.tan(y)
-    ax.plot(x, y, label="sin(x)")
-    ax.plot(x, z, label="tan(x)")
-    ax.legend(loc=1, ncol=2)
-    ax.set_xlabel("x")
-    ax.set_ylabel("y")
-    plt.show()
+fig = plt.figure(figsize=(8, 2.5))
+
+# or most likely
+fig, ax = plt.subplots(figsize=(8, 2.5))
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+z = np.tan(y)
+ax.plot(x, y, label="sin(x)")
+ax.plot(x, z, label="tan(x)")
+ax.legend(loc=1, ncol=2)
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+plt.show()
 ```
 
 Here we are creating a figure with 8 inches of width, and 2.5 inches of height.
@@ -378,13 +379,13 @@ will be 'squashed' into the default aspect ratio. We can 'give them more space'
 by modifying this `figsize` argument when creating the many sub-figures.
 
 ```{python}
-    fig, ax = plt.subplots(1, 2, figsize=(8, 2.5))
-    x = np.linspace(-10, 10, 100)
-    y = np.sin(x)
-    z = np.tan(y)
-    ax[0].plot(x, y, label="sin(x)")
-    ax[1].plot(x, z, label="tan(x)")
-    plt.show()
+fig, ax = plt.subplots(1, 2, figsize=(8, 2.5))
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+z = np.tan(y)
+ax[0].plot(x, y, label="sin(x)")
+ax[1].plot(x, z, label="tan(x)")
+plt.show()
 ```
 
 <!-- ![](images/figsize-2.png) -->
@@ -414,14 +415,14 @@ thicker, and making the line to be a dotted line by specifying the linestyle
 (ls) to "=&#x2013;={".
 
 ```{python}
-    fig = plt.figure()
-    x = np.linspace(-5, 5, 100)
-    y = np.sin(x)
-    plt.plot(x, y,
-             c="green", # or color
-             lw=3, # or linewidth
-             ls="--")
-    plt.show()
+fig = plt.figure()
+x = np.linspace(-5, 5, 100)
+y = np.sin(x)
+plt.plot(x, y,
+         c="green", # or color
+         lw=3, # or linewidth
+         ls="--")
+plt.show()
 ```
 
 <!-- ![](images/linestyles.png) -->
@@ -434,14 +435,14 @@ set. Yet, we can control the colour gradient using a colour map. First we must
 import `cm` from matplotlib:
 
 ```{python}
-    from matplotlib import cm
+from matplotlib import cm
 ```
 
 Then we can get a colour map with 10 levels using `get_cmap`:
 
 ```{python}
-    blues = cm.get_cmap("Blues", 10) # 10 levels
-    reds = cm.get_cmap("Reds", 2) # 2 levels
+blues = cm.get_cmap("Blues", 10) # 10 levels
+reds = cm.get_cmap("Reds", 2) # 2 levels
 ```
 
 You can find a full list of different colour maps at: <https://matplotlib.org/stable/tutorials/colors/colormaps.html>
@@ -451,14 +452,14 @@ Now that we have our new colour maps, we can pass it as an `cmap` argument when 
 create a plot.
 
 ```{python}
-    x = np.random.randn(10, 10)
-    y = np.random.randn(10, 10)
-    fig, ax = plt.subplots(1, 2, figsize=(8, 3))
-    p1 = ax[0].imshow(x, cmap=blues)
-    p2 = ax[1].imshow(y, cmap=reds)
-    fig.colorbar(p1, ax=ax[0])
-    fig.colorbar(p2, ax=ax[1])
-    plt.show()
+x = np.random.randn(10, 10)
+y = np.random.randn(10, 10)
+fig, ax = plt.subplots(1, 2, figsize=(8, 3))
+p1 = ax[0].imshow(x, cmap=blues)
+p2 = ax[1].imshow(y, cmap=reds)
+fig.colorbar(p1, ax=ax[0])
+fig.colorbar(p2, ax=ax[1])
+plt.show()
 ```
 
 <!-- ![](images/colourmaps.png) -->
@@ -471,18 +472,18 @@ the x-axis and `set_yticks` for the y-axis. These functions take the list of
 locations for each 'tick', and optionally a list of labels to use instead of the numbers.
 
 ```{python}
-    x = np.linspace(-2, 2, 100)
-    y = np.sin(x)
-    
-    bx = np.arange(2, 7)
-    by = np.random.uniform(2, 7, len(bx))
-    
-    fig, ax = plt.subplots(1, 2, figsize=(8, 3))
-    ax[0].plot(x, y)
-    ax[0].set_xticks([-2, 0, 2])
-    ax[1].bar(bx, by)
-    ax[1].set_xticks(bx, ["a", "b", "c", "d", "e"])
-    plt.show()
+x = np.linspace(-2, 2, 100)
+y = np.sin(x)
+
+bx = np.arange(2, 7)
+by = np.random.uniform(2, 7, len(bx))
+
+fig, ax = plt.subplots(1, 2, figsize=(8, 3))
+ax[0].plot(x, y)
+ax[0].set_xticks([-2, 0, 2])
+ax[1].bar(bx, by)
+ax[1].set_xticks(bx, ["a", "b", "c", "d", "e"])
+plt.show()
 ```
 
 <!-- ![](images/ticks.png) -->
@@ -495,15 +496,15 @@ white. If we wanted to add grid lines to the plot we use the `.grid()`
 method. This function, by default, adds the major grid lines.
 
 ```{python}
-    x = np.linspace(-2, 2, 100)
-    y = np.sin(x)
-    z = np.tan(x)
-    fig, ax = plt.subplots(1, 2, figsize=(8, 3))
-    ax[0].plot(x, y)
-    ax[0].grid()
-    ax[1].plot(x, z)
-    ax[1].grid(which="both", color="r")
-    plt.show()
+x = np.linspace(-2, 2, 100)
+y = np.sin(x)
+z = np.tan(x)
+fig, ax = plt.subplots(1, 2, figsize=(8, 3))
+ax[0].plot(x, y)
+ax[0].grid()
+ax[1].plot(x, z)
+ax[1].grid(which="both", color="r")
+plt.show()
 ```
 
 <!-- ![](images/grids.png) -->
@@ -515,15 +516,15 @@ The default behaviour of matplotlib is to plot using a linear scale. In certain
 situations, we want view the plot using a different scale. For this we can use `set_yscale`.
 
 ```{python}
-    x = np.linspace(-2, 10, 100)
-    y = np.exp(x)
-    fig, ax = plt.subplots(1, 2, figsize=(8, 3))
-    ax[0].plot(x, y)
-    ax[0].grid()
-    ax[1].plot(x, y)
-    ax[1].set_yscale('log')
-    ax[1].grid()
-    plt.show()
+x = np.linspace(-2, 10, 100)
+y = np.exp(x)
+fig, ax = plt.subplots(1, 2, figsize=(8, 3))
+ax[0].plot(x, y)
+ax[0].grid()
+ax[1].plot(x, y)
+ax[1].set_yscale('log')
+ax[1].grid()
+plt.show()
 ```
 
 <!-- ![](images/scale.png) -->
@@ -536,14 +537,14 @@ data, and use those values to set the limits of the plot. Using `set_xlim` and
 `set_ylim` we can change this default behaviour.
 
 ```{python}
-    x = np.linspace(-2, 2, 100)
-    y = np.sin(x)
-    fig, ax = plt.subplots(1, 2, figsize=(8,3))
-    ax[0].plot(x, y)
-    ax[0].set_ylim(-1, 2)
-    ax[1].plot(x, y)
-    ax[1].set_xlim(-3, 3)
-    plt.show()
+x = np.linspace(-2, 2, 100)
+y = np.sin(x)
+fig, ax = plt.subplots(1, 2, figsize=(8,3))
+ax[0].plot(x, y)
+ax[0].set_ylim(-1, 2)
+ax[1].plot(x, y)
+ax[1].set_xlim(-3, 3)
+plt.show()
 ```
 
 <!-- ![](images/limits.png) -->
@@ -557,20 +558,20 @@ We can annotate our plot in a number of way:
 -   .annotate &#x2013; add text to the plot at a certain position.
 
 ```{python}
-    x = np.linspace(-2, 2, 100)
-    y = np.sin(x)
-    fig, ax = plt.subplots()
-    ax.plot(x, y)
-    ax.axhline(0, c='gray', ls='--')
-    ax.annotate("0th line", 
-                (-2, 0), 
-                xytext=(-1.5, 0.25),
-                arrowprops=dict(
-                    facecolor='black', 
-                    shrink=0.05,
-                    width=0.5, 
-                    headwidth=5.0))
-    plt.show()                
+x = np.linspace(-2, 2, 100)
+y = np.sin(x)
+fig, ax = plt.subplots()
+ax.plot(x, y)
+ax.axhline(0, c='gray', ls='--')
+ax.annotate("0th line", 
+            (-2, 0), 
+            xytext=(-1.5, 0.25),
+            arrowprops=dict(
+                facecolor='black', 
+                shrink=0.05,
+                width=0.5, 
+                headwidth=5.0))
+plt.show()                
 ```
 
 <!-- ![](images/annotations.png) -->
@@ -583,20 +584,20 @@ where each have a very different range in values. Instead of having a single
 y-axis, with `twinx()` we can create a two y-axis plot.
 
 ```{python}
-    x = np.arange(10, 100)
-    y = np.exp(x)
-    z = np.log(x)
-    
-    fig, ax = plt.subplots(1, 2)
-    ax[0].plot(x, y, label="exp(x)")
-    ax[0].plot(x, z, label="log(x)")
-    ax[0].legend()
-    
-    ax2 = ax[1].twinx()
-    ax[1].plot(x, y)
-    ax2.plot(x, z, color="orange")
-    ax2.tick_params(axis="y", labelcolor="orange")
-    plt.show()
+x = np.arange(10, 100)
+y = np.exp(x)
+z = np.log(x)
+
+fig, ax = plt.subplots(1, 2)
+ax[0].plot(x, y, label="exp(x)")
+ax[0].plot(x, z, label="log(x)")
+ax[0].legend()
+
+ax2 = ax[1].twinx()
+ax[1].plot(x, y)
+ax2.plot(x, z, color="orange")
+ax2.tick_params(axis="y", labelcolor="orange")
+plt.show()
 ```
 
 <!-- ![](images/twinx.png) -->

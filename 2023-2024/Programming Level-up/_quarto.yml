@@ -17,7 +17,8 @@ website:
           - lecture-2.qmd
           - lecture-3.qmd
           - lecture-4.qmd
-          - lecture-8.qmd
+          - lecture-5.qmd
+          - lecture-7.qmd
 
 format:
   html:

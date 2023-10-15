@@ -1,446 +1,1326 @@
 ---
-title: "Pandas"
+title: "Linux & Supercomputer"
+subtitle: "Lecture 7"
+author: "Jay Paul Morgan"
 format:
     html: default
+    revealjs:
+        output-file: lecture-8-reveal.html
 ---
 
-# Table of Contents
 
-1.  [Pandas](#org93aca2a)
-    1.  [Introduction](#org88f51ec)
-        1.  [What is Pandas?](#org808a9ea)
-        2.  [Installing and importing pandas](#org0154b08)
-        3.  [Creating a dataframe](#org331607a)
-        4.  [Creating a dataframe](#org5a0d6f4)
-        5.  [Access elements in our dataframe](#org5ac5376)
-        6.  [Access elements in our dataframe](#org8a15b26)
-        7.  [Access elements in our dataframe](#orgffdf967)
-    2.  [Manipulating data](#org49c51a7)
-        1.  [Reading a CSV file](#org6cd5932)
-        2.  [Selecting a subset of data](#org66c28c1)
-        3.  [Creating new columns](#orgb857f44)
-    3.  [Inspecting our data](#orgfc90624)
-        1.  [Shape of the data](#org09e27b7)
-        2.  [Getting the names of columns](#org9aee141)
-        3.  [Head/tail](#org129021e)
-    4.  [Operations](#org4b38ac2)
-        1.  [Operations on data](#org0128c04)
-        2.  [Apply operation to entire row](#orged1ab30)
-        3.  [Merge](#org485d6f1)
-        4.  [More on indexing](#org50e6da6)
-        5.  [More on indexing](#org0739ace)
-        6.  [Resetting indexes](#org4b8fced)
-        7.  [Resetting indexes](#orgc0f4f4d)
-    5.  [Different types of data](#orgad5ebb6)
-        1.  [Categorical data](#org7ac929f)
-        2.  [Categorical data](#orgccb0316)
-        3.  [Dates and times](#org26745a9)
+# Linux
 
+## What is Linux?
 
+-   Linux is a popular operating system (OS) like Windows, or MacOS.
+-   Unlike these other two OSs, Linux is open source, which means the source code
+is freely available to look at and modify.
+-   As its open source, its very possible for anyone to build their *own* version of
+Linux or build on top of Linux to create their own *Distribution* of Linux.
 
-<a id="org93aca2a"></a>
 
-# Pandas
+## What's a Distribution?
 
+A distribution can be considered like a *flavour* or version of Linux. There are
+many popular flavours that attempt to meet different needs from different
+users. For example:
 
-<a id="org88f51ec"></a>
+-   Ubuntu &#x2013; typically the first Linux experience people will have. Attempts to be
+very user friendly.
+-   Fedora &#x2013; stable and secure distribution while also providing up-to-date packages.
+-   Arch Linux &#x2013; strong focus on customisability rather than user friendliness
+with bleeding edge packages.
 
-## Introduction
+![](images/family-tree.png)
 
 
-<a id="org808a9ea"></a>
+## Defining Traits of Linux
 
-### What is Pandas?
+While we have said that Linux is open source, there are many other traits that
+make it stand out from other operating systems:
 
-![img](./images/pandas.jpg)
+-   Complete control of how the system operates.
+-   The level of flexibility and automation that you can get from using the Linux
+command line.
 
--   Pandas a library to make the representation and manipulation of tabular data
-    easier in Python.
--   A table of data is called a 'Dataframe' that consists of named columns and
-    (optionally) named rows.
--   <https://pandas.pydata.org/>
+While there are many other traits, these two are going to be what we're going to
+focus on.
 
 
-<a id="org0154b08"></a>
+# The command line
 
-### Installing and importing pandas
 
-To install pandas, we can either use conda:
+## What's a command?
 
-    conda install pandas
+While many recent versions of Linux makes things more accessible via GUIs, they
+will never be a substitute for using the command line. We're going to learn how
+to control the system via the command line, via a **shell**. A shell, like the
+Python REPL we've already seen, is waits for you to input commands, executes the
+command, and prints the output if there is output to print.
 
-or with pip:
+A Linux command is a call to a program optionally followed by some
+arguments. For example, if we want list out the files and folders in the
+directory, we would use the `ls` (list) command:
 
-    pip install pandas
+```bash
+ls
+```
 
-After pandas has been installed. We shall import it into our scripts (using the
-common convention of aliasing the library as pd):
+The `ls` command comes with a number of optional flags and arguments that we can
+add onto the call. When calling a command a flag is something that begins with a
+`-` , for example `-l` tells `ls` to list the directory in a list format.
 
-    import pandas as pd
+```bash
+ls -l
+```
 
+We have supplied the `-l` flag. There are many other flags for `ls`, like for
+example, the human readable file systems with `-h` or show hidden files (files
+that start with a period) with `-a`.
 
-<a id="org331607a"></a>
+When we're using multiple flags we could write
 
-### Creating a dataframe
+```bash
+ls -l -h -a
+```
 
-Now that pandas has been successfully imported, we're ready to create and
-manipulate our own dataframes. To create a dataframe, we first need to organise
-our data in appropriate format. Perhaps one of the most simple formats for this
-data is a dictionary, where each value is a list:
+Or:
 
-    data = {"col1": [1, 2], "col2": [3, 4]}
+```bash
+ls -lha
+```
 
-We see that each 'key' is the representation of a column of data, and the value
-of this key is a list of data for this column. To convert this data to a
-dataframe, we need only to call the DataFrame class:
+Sometimes commands take optional positional arguments. Going back to our list
+directory command, where, by default, it will list the current directory. But
+instead we can tell the command to list a particular directory by supplying the
+path as an argument
 
-    df = pd.DataFrame(data)
+```bash
+ls images/ -lha
+# or ls -lha images/ works too
+```
 
+How do I know how to use a command? Well that's where another command comes
+in. It's called `man` (short for manual). If you pass another command to the `man`
+command, the documentation will be shown in the terminal, e.g.:
 
-<a id="org5a0d6f4"></a>
+```bash
+man ls  # display the documentation for ls
+```
 
-### Creating a dataframe
+The documentation should list all the different flags and arguments, describe
+what they mean, and sometimes give example or most common usage of a command.
 
-`df` (dataframe for short) is now our representation of the dataframe:
+When the 'man page' is display, you can scroll up and down the page using your
+arrow keys, and page-up and page-down. When you're done reading, just hit the
+'q' character
 
-![img](images/simple_dataframe.png)
+I am going to go through some of the most common commands just to make sure that
+you're familiar with the typical usage.
 
-We see that each column is named using the keys in our `data` dictionary, and the
-values of the column correspond to the elements in the list. To the left of the
-dataframe we have a numerical index starting at 0.
+## cd
 
+We've already seen `ls` to list a directory. The command to move to a directory is
+`cd` (change directory), that takes an argument of filepath to move to:
 
-<a id="org5ac5376"></a>
+```bash
+cd ~ # tilde is short-hand for the 'home directory'
+cd ~/Documents/My\ Files  # go to Documents and then to "My Files"
+cd   # no argument, by default goes to the home directory
+```
 
-### Access elements in our dataframe
+## mkdir
 
-Extracting particular values from this dataframe can be accomplished using the
-`loc` and `iloc` class methods. First let's look at using `loc`, and later on we'll
-investigate the differences between these two methods.
+Sticking with the them of directories, to make a new directory we use `mkdir`,
+whose argument takes the name of the directory we want to create:
 
-Let's say we want to get all the data for the first row of our dataframe:
+```bash
+mkdir my_new_directory
+```
 
-    df.loc[0]
+You can create a many level nested directory structure all at once using the `-p`
+(parents) flag, that tells `mkdir` if the parent directory of the target directory
+doesn't exist, create it.
 
-![img](images/series.png)
+```bash
+mkdir photos/2020/01/05  # won't work unless photos/2020/01 exist
+mkdir -p photos/2020/01/05  # this will work
+```
 
-This returns a 'Series', which is just a representation of a vector of data.
+## cp
 
+To copy a file or directory, we can use the `cp` command. Here we are copying a
+file, where the first argument is the filepath of the file you want to copy and the second
+argument is the filepath where the copy should be placed.
 
-<a id="org8a15b26"></a>
+```bash
+cp my_old_file my_new_file
+```
 
-### Access elements in our dataframe
+By default (without a flag), `cp` will not work with directories, for that you
+have to use the `-r` (recursive) flag
 
-To access a single value from this series, we can specify the column name:
+```bash
+cp -r data/ data-backup
+```
 
-    df.loc[0]["col1"]  # returns one
+## mv
 
-Or, we can more simply add the column name into the `loc`:
+The syntax of moving a file is similar to that of `cp`:
 
-    df.loc[0, "col1"]
+```bash
+mv old_file new_file
+```
 
-If we wanted to retrieve a subset of columns, we supply a list of column names:
+Except that it works for both files and directories without any flags. `mv` can
+also be used to **rename** files, that's all renaming is: moving a file to the same
+directory under a different name.
 
-    df.loc[0, ["col1", "col2"]]
 
+## rm
 
-<a id="orgffdf967"></a>
+To remove a file us `rm`:
 
-### Access elements in our dataframe
+```bash
+rm file_to_delete
+```
 
-We can also use the slice notation to access multiple rows:
+If you want to delete a directory, use the `-r` (recursive) flag:
 
-    df.loc[0:2, "col1"]
+```bash
+rm -r directory_to_delete/
+```
 
-This retrieves the values in `col1`.
+## cat
 
-Or if we just wanted to get the entire column of data, we could instead do:
+`cat` stands for concatenate, i.e. concatenating the contents of two or more
+files:
 
-    df["col1"]
+```bash
+cat file1 file2
+```
 
+The result is that the concatenation of these two files will be printed to the
+screen. If you wanted to put the result into its own file you would redirect the
+output using `>`
 
-<a id="org49c51a7"></a>
+```bash
+cat file1 file2 > newfile
+```
 
-## Manipulating data
+Since cat reads the file and prints it to screen it is a very handy way to view
+the contents of a file, even if it was not intended for that.
 
 
-<a id="org6cd5932"></a>
+## pwd
 
-### Reading a CSV file
+Sometimes you may get lost when moving directories. `pwd` prints the current
+working directory from the root directory, i.e. the path that is printed is an
+absolute path.
 
-Instead of manually constructing our data and then passing it to a DataFrame, we
-can use pandas to read directly from a CSV file and return a DataFrame:
+```bash
+pwd
+```
 
-Let's say we have a CSV file of measurements of Iris flowers called `iris.csv`. We
-can read this CSV file using the `pd.read_csv` method.
+## find
 
-    df = pd.read_csv("iris.csv")
+If we want to list all files of a certain type, we can use the wildcard `*` that
+we've seen before:
 
-![img](images/pandas.jpg)
+```bash
+ls *.jpg # list all files that end with .jpg
+```
 
+However, this will only list for the current directory. Perhaps the better way
+to find files will be using the `find` command:
 
-<a id="org66c28c1"></a>
+```bash
+find . -type f -name *.jpg
+```
 
-### Selecting a subset of data
+The first argument is the directory to start the search, then we define the type
+`f` being files, and then specify the name. Find will recursively search through
+directories and sub-directories to find all files that match that name.
 
-With this more complex dataset, we can use more fancy methods of indexing. For
-example, let's select all the rows where the sepal length is less than 5 cm.
 
-    df[df["sepal length (cm)"] < 5]
+## grep
 
-![img](images/subset.png)
+How about if we want to find files that have a certain contents? For that we can
+use `grep`. Grep will read a file and print (by default) the lines that contains
+your pattern. i.e.:
 
-Instead of the 150 rows we had before, this returns just 22. We can also specify
-only the columns we want with this conditional expression:
+```bash
+grep 'Linux' lecture.org
+```
 
-    df[df["sepal length (cm)"] < 5]["sepal width (cm)"]
+This will print the lines that contain the word Linux in lecture.org. If we just
+want the matched value, we use the `-o` flag.
 
+```bash
+grep -o '[0-9]' lecture.org
+```
 
-<a id="orgb857f44"></a>
+This prints all occurrences of numbers in lecture.org
 
-### Creating new columns
 
-We can add new columns to this dataset by using the assignment operator. In this
-example, we're creating a new column called 'sepal sum' to be the sum of both
-the 'sepal width' and 'sepal length':
+## less/head/tail
 
-    df["sepal sum"] = df["sepal width (cm)"] + df["sepal length (cm)"]
+If a file is very long, we may not want to read the file using cat, as it will
+have to print the entire file. Instead we could use `less`, which will allow us to
+navigate through the file, using arrow keys to move and `q` to quit.
 
-![img](images/new-column.png)
+```bash
+less filename
+```
 
+If we just want to view the first few lines, or the last few lines of a file we
+can use head/tail, respectively:
 
-<a id="orgfc90624"></a>
+```bash
+head filename
+tail -n 20 filename  # last 20 lines
+tail -F filename # constantly read the file
+```
 
-## Inspecting our data
+## wc
 
+Often times we just want to count the number of something. For example, if we
+want to count the number of files/folders in the directory we can do:
 
-<a id="org09e27b7"></a>
+```bash
+ls -l | wc -l
+```
 
-### Shape of the data
+We're first printing all files and folders in a list format (one per line), then
+passing (<sub>piping</sub>\_) the result to `wc`, which with the `-l` line flag, is counting the
+number of lines. Therefore we get a count of the number of files and
+folders. Here is another example where we're counting how many times the word
+bash appears in these lecture notes:
 
-We can also further see that our new column has been added by inspecting the
-`shape` of the data.
+```bash
+grep -o 'bash' lecture.org | wc -l
+```
 
-    df.shape
+## piping
 
-    (150, 5)
+The purpose of piping is to pass data around between commands. We have just seen
+how we can pass the output of, say, the `ls` command to  the input of `wc`. This
+allows use to construct very sophisticated pipelines to do some quite complex
+things from the combination of very simple commands.
 
-This returns a tuple corresponding to the number of rows (150) and the number of
-columns (5).
+```bash
+find . -name '*.txt' -type f -print0 | xargs -0 grep "something"
+```
 
+## Overview
 
-<a id="org9aee141"></a>
+In summary we have seen the following commands:
 
-### Getting the names of columns
+-   `ls` - List a directory
+-   `cd` - Change/move to a directory
+-   `mkdir` - Make a new directory
+-   `cat` - Concatenate files
+-   `cp` - Copy a file/directory
+-   `mv` - Move files/folders
+-   `rm` - Remove files and folders
+-   `pwd` - Display the current absolute path
+-   `find` - Find files
+-   `grep` - Find occurrences of a pattern in a file
+-   `less/head/tail` - Read a file
+-   `wc` - Count
 
-To find out what the names of the columns are we can use the `columns` attribute:
 
-    df.columns
+# Shell Scripting
 
-    Index(['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)',
-           'petal width (cm)', 'sepal sum'],
-          dtype='object')
+## Your Very first bash script
 
-This returns an Index that can itself be indexed in the usual way:
+Let's start with the classic 'Hello, World' example. We'll create a new file
+called 'hello.sh' and enter the following:
 
-    df.columns[0]
+```bash
+#!/bin/bash
 
-    'sepal length (cm)'
+echo "Hello, World!"
+```
 
+First thing to notice is that the first line contains what we call a 'shebang'
+or 'hashbang'. It tells Linux which shell interpreter will be used to run the
+script, in this case: /bin/bash
 
-<a id="org129021e"></a>
+The next (non-empty) line in the file is `echo 'Hello, World'`. This is exactly
+the same as the other commands we've just seen.
 
-### Head/tail
+Now that we've created and saved our bash script, we will want to run it. We
+have two alternative methods to run this script:
 
-We can get the first/last few rows of the data using the `.head()` or `.tail()`
-methods. These take an optional argument specifying the number of rows to
-view. By default, it will show 10 rows.
+```bash
+bash hello.sh  # run the script via bash
+```
 
-    df.head()  # shows the first 10 rows
-    df.head(5) # shows the first 5 rows
-    
-    df.tail()  # shows the last 10 rows
-    df.tail(5) # shows the last 5 rows
+The second, requires that we have executable privileges for the script:
 
+```bash
+chmod +x hello.sh  # add executable 'x' privileges
+./hello.sh  # execute it
+```
 
-<a id="org4b38ac2"></a>
+## Variables
 
-## Operations
+The variables we create in our bash scripts are very much the same as the
+environment variables we've seen before. Take for example:
 
+```bash
+#!/bin/bash
+AGE="35"
+PERSON_NAME="Jane"
+echo "$PERSON_NAME is $AGE years old"
+```
 
-<a id="org0128c04"></a>
+We create a variable `AGE` with the `=` assignment operator. **Note** we don't put
+spaces either side of the equals sign in bash. To refer to the variable, we use
+`$AGE`, using the `$` dollar sign.
 
-### Operations on data
 
-Pandas comes with a few standard methods to perform some basic operations. For
-example, you can calculate the mean of a column:
+## Interpolation in bash strings
 
-    df["sepal length (cm)"].mean()
+You would have noticed in the previous example that we included the variable
+directly into the string we're echoing out. This is something similar to what
+we've seen with f-strings in Python.
 
-And you can use the `apply()` method to apply a function to every element
-(i.e. map a function to every element):
+When we use double quotes: `"..."`  in bash, the variable will be integrated into
+the resulting string. We can even call bash functions from directly inside the
+string:
 
-    df["sepal length (cm)"].apply(lambda x: x * 2)
+```bash
+echo "I am logging in as: $(who)"
+```
 
-Apply takes a function as an argument, and here we're using an anonymous
-(unnamed function) using a lambda expression
-<https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions>
+## Bash strings &#x2013; the sharp edges
 
-This lambda expression will double its input, and therefore applying this
-function to every element will double all values in 'sepal length (cm)'.
+You might be tempted to use a variable when generating a path:
 
+```bash
+TRAIN_PROCESS="training"
+TEST_PROCESS="testing"
 
-<a id="orged1ab30"></a>
+touch "./data/$TRAIN_PROCESS_error.txt"
+touch "./data/$TEST_PROCESS_error.txt
+```
 
-### Apply operation to entire row
+But this will create an error as underscores can be part of the variable name,
+so bash will be looking for a variable named: `$TRAIN_PROCESS_error` which has
+never been created. To get around this, we can wrap our variable in curly
+braces:
 
-In the previous example, we saw the use of `.apply`, where a function is
-applied to each individual element in a column. With `apply`, it's also
-possible to apply a function to each row of a dataframe, by specifying
-`axis=1` in the call to `apply`:
+```bash
+touch "./data/${TRAIN_PROCESS}_error.txt"
+```
 
-    # some df with value column defined here
-    
-    def window_sum(row, window=5):
-        """Take a sum of rows within a window"""
-        curr_index = row.name  # access the row index number using .name
-        row["moving_avg"] = df.loc[curr_index-window:curr_index, "value"].sum()
-        return row  # return the updated row
-    
-    updated_df = df.apply(moving_avg, axis=1)
+## Stopping interpolation in bash strings
 
+We can also use single quotes for strings in bash. When we use these strings,
+the string itself is <span class="underline">not</span> interpreted, and thus it will ignore any variables or
+bash commands:
 
-<a id="org485d6f1"></a>
+```bash
+echo 'I am logging in as: $(who)'
+```
 
-### Merge
+## Input/Output
 
-Many pandas dataframes can be combined together using the `concat` method that
-requires a list of dataframes as input.
+If we want to read the input from keyboard into a variable, we use the read
+command:
 
-    data1 = pd.DataFrame({"col1": [0, 1], "col2": [0, 1]})
-    data2 = pd.DataFrame({"col1": [2, 3], "col2": [2, 3]})
-    
-    combined = pd.concat([data1, data2])
+```bash
+#!/bin/bash
 
-![img](images/combined.png)
+echo "Enter your name:"
+read NAME
 
+echo "Hello, $NAME"
+```
 
-<a id="org50e6da6"></a>
+`read` in this context will read in the input and create the variable with that
+value. As we've already seen, we can then output this value to the console using
+the echo command.
 
-### More on indexing
 
-![img](images/combined.png)
+## Booleans
 
-Notice how the indexes are repeated. We can also verify this using the `.index`
-attribute:
+Technically, bash does not have built in data types for true and false, but
+Linux has the commands true and false which we could use in place. The
+implementation of how these commands work is not important.
 
-    combined.index
+```bash
+FILE_EXISTS=true
 
-    Int64Index([0, 1, 0, 1], dtype='int64')
+if [ "$FILE_EXISTS" = true ]; then
+echo "The file exists!"
+fi
+```
 
-We can see two '0's and two '1's. Normally, this is not a problem, but it does
-have an effect on when we index our data with `loc`.
+## Conditionals
 
+When we're creating `if` expressions, we use the following syntax:
 
-<a id="org0739ace"></a>
+```bash
+if <<conditional>>; then
+   # do something
+else
+   # do something else
+fi
+```
 
-### More on indexing
+We can also use `elif`
 
-    combined.loc[1]
+```bash
+if <<conditional>>; then
+   # do something
+elif <<conditional>>; then
+   # do something else
+else
+   # something else entirely
+fi
+```
 
-![img](images/indexing.png)
+Writing condition expressions can be a little more cumbersome than in
+Python. These can be many pain points for new bash programmers, take for
+example:
 
-Notice how `loc` has returned two rows because it sees two rows with the index
-label of 1. If instead we simply meant: give me the second row we should use
-`iloc`:
+```bash
+FILE_EXISTS=false
 
-    combined.iloc[1]
+if [ $FILE_EXISTS ]; then
+echo "The file exists!"
+fi
+```
 
-Which will give us the desired outcome.
+This is because we have used the `[...]` single bracket syntax for the test. But
+there are others:
 
+-   No brackets: we could omit the brackets in which case it would run the false
+command not print the statement.
+-   Single paranthesis `(...)` creates a sub-shell.
+-   Double paranthesis `((...))` for arithmetic operation
+-   Single square bracket `[...]` calls `test`
+-   Double square bracket `[[...]]`
 
-<a id="org4b8fced"></a>
+What if we write:
 
-### Resetting indexes
+```bash
+VAR_1="Mr Foo Bar"
+VAR_2="Mr Foo Bar"
+if [ $VAR_1 = $VAR_2 ]; then
+echo "They are the same"
+fi
+```
 
-Alternatively we can reset the index labels:
+We would get an error because `test` expands the arguments into:
 
-    combined.reset_index()
+```bash
+Mr Foo Bar = Mr Foo Bar
+```
 
-![img](images/reset-index.png)
+With the spaces included. To prevent this from happening, we have to wrap the
+variables in quotation marks.
 
-This will compute a new series of indexes for our data, and then using `loc` again
-will only return the one row.
+```bash
+VAR_1="Mr Foo Bar"
+VAR_2="Mr Foo Bar"
+if [ "$VAR_1" = "$VAR_2" ]; then
+echo "They are the same"
+fi
+```
 
+If we use `[[` in if statement, then we can do more sophisticated things like
+pattern matching:
 
-<a id="orgc0f4f4d"></a>
+```bash
+FILENAME="testing.png"
+if [[ "$FILENAME" = *.png ]]; then
+echo "Its a png file"
+fi
+```
 
-### Resetting indexes
 
-To save the result of `reset_index()` we need to overwrite our original data:
+## Loops
 
-    combined = combined.reset_index()
+Like in Python, we can iterate in bash
 
-Or specify `inplace`:
+```bash
+for i in {1..10}; do
+echo $i
+done
+```
 
-    combined.reset_index(inplace=True)
+This iterates with i starting at 1 upto 10 (inclusive). Or we could do:
 
+```bash
+for (( i=1; i <= 10; i++ )); do
+echo $i
+done
+```
 
-<a id="orgad5ebb6"></a>
+We can also iterate over a list of files/folders in a directory:
 
-## Different types of data
+```bash
+for FILE in ./images/*; do
+echo $FILE
+done
+```
 
+Using the `while` form, we can continue looping until our conditional is
+false. For example, we could loop testing our internet connection, until its
+been established:
 
-<a id="org7ac929f"></a>
+```bash
+while ! ping -c 1 google.com; do
+echo "No internet yet"
+sleep 1
+done
 
-### Categorical data
+echo "Internet is available!"
+```
 
-So far, we've only seen numerical data. One of the advantages of using pandas
-for tabular data is that we can represent various other types of data that makes
-our manipulation and operations on different data types simpler. For example, we
-can represent 'categorical data' where there is a finite set of values or
-categories.
+## Functions
 
-    df = pd.DataFrame({"col1": ["a", "b", "c", "a"],
-                       "col2": [1, 2, 5, 4]})
+To create a function, we use the following syntax:
 
-Right now, `df` is simply representing 'col1' as strings, but we can change the
-representation to categorical elements with:
+```bash
+function_name() {
+# do something
+}
+```
 
-    df["col1"] = df["col1"].astype("category")
+And to call the function, you just need to use the function name:
 
+```bash
+function_name # this called function name
+```
 
-<a id="orgccb0316"></a>
+Here is another example:
 
-### Categorical data
+```bash
+say_hello() {
+echo "Hello, $1"
+}
 
-With categorical data, we can perform operations on these groups a lot quicker
-than if we were just to represent them on strings. For instance, lets compute
-the sum of 'col2' for each group.
+say_hello "Jane"
+```
 
-    df.groupby("col1").sum()
+Notice that we didn't need to include any argument list. We just used `$1` for the
+first argument passed to the function.
 
-![img](images/categorical.png)
+```bash
+say_hello() {
+echo "$1, $2"
+}
 
-If we have lots of data, having 'col1' `astype('category')` will be a lot more
-computationally efficient than leaving them as strings.
+say_hello "Hi" "Jane"
+```
 
+Returning values is 'interesting' as, coming from other languages, you think
+could do something like this:
 
-<a id="org26745a9"></a>
+```bash
+say_hello() {
+return "hello"
+}
+RESULT="$(say_hello)"
+echo $RESULT
+```
 
-### Dates and times
+This didn't work like we expected, the value wasn't returned and assigned to
+`RESULT`. So how do we return a value?
 
-If you have a column that represents a date or time, you can convert that column
-to a true datetime representation with `pd.to_datetime`
+```bash
+say_hello() {
+echo "Hello"
+}
+RESULT="$(say_hello)"
+echo "This is before the printing of result"
+echo $RESULT
+```
 
-    df = pd.DataFrame({"col1": ["2002/01/30", "2010/05/16"]})
-    df["col1"] = pd.to_datetime(df["col1"])
+# High Performance Cluster
 
-In addition to make indexing by dates a lot faster, it also provides us with
-some convienant methods to extract particular components from the data. Such as
-the year:
+## How to login
 
-    df["col1"].dt.year # or df["col1"].dt.month etc
 
-![img](images/year.png)
+```bash
+ssh <<username>>@sms-ext.lis-lab.fr
+```
+
+Typing this command can become tiresome very quickly, especially after sending data back and forth. But we can make it
+a lot easier by updating our `~/.ssh/config` file to include something like:
+
+```bash
+Host cluster
+ HostName sms-ext.lis-lab.fr
+ User <<username>>
+```
+
+Then to login to the cluster, we just need to type:
+
+```bash
+ssh cluster
+```
+
+And we should be prompted for our password.
+
+
+## How to login
+
+If you trust the machine your on, you can remove password authentication and
+move to key-based authentication:
+
+```bash
+ssh-copy-id cluster
+```
+
+When we next login to the server, we shouldn't be prompted for a password.
+
+
+## How to copy files to and from the cluster
+
+We have a number of options for transferring files to and from the
+cluster. Firstly, let's look at the command `scp`. It takes two arguments, the
+first argument is the file you want to send, the second argument is the
+destination of the sent file.
+
+```bash
+scp <<origin>> <<destination>>
+```
+
+Similar to commands like `cp`, scp by default only works for files, not
+folders. To send folders/directories, we use the `-r` flag just like `cp`.
+
+```bash
+scp -r <<origin_folder>> <<destination_folder>>
+```
+
+## Copying files &#x2013; rsync
+
+One of the downsides about `scp` is that it will copy every file you give
+it. Even if the file at the destination is exactly the same. What if we only
+want to copy files that need to be copied, i.e. that are outdated, thus saving
+time? For that, we can use `rsync`. Rsync will copy files from one source to a
+destination only if the destination needs to be updated. This can save a lot of
+time by skipping files that already exist at the destination:
+
+```bash
+rsync <<source>> <<destination>>
+```
+
+# Submitting jobs
+
+
+## The Login- and Compute Nodes
+
+When you login to the cluster, you are logging into the *login* node. **Note** that no
+computation should be run on this node. If you want to run scripts, you will
+have to submit a job to the compute nodes.
+
+On the login node there is a system installed called 'SLURM'. SLURM is a job
+scheduler program that receives your requests for executing scripts, it will
+queue them and assign them to available compute nodes.
+
+We will take a look at how to request and manage jobs using the various commands
+that SLURM provides.
+
+
+## How to launch a job &#x2013; srun
+
+The first command we will look at it is `srun`. This command will run request a
+job for execution in 'real-time'. By real-time, we mean that the shell will wait
+until the job has been submitted.
+
+```bash
+srun <<compute node options>> <<command to run>>
+```
+
+Let's take a look at an example where we want to run an interactive bash shell
+on the compute shell (similar to ssh'ing into the compute node).
+
+```bash
+srun --time=00:10:00 --pty bash -l
+```
+
+This will request a job on any available compute node for 10 minutes. When a
+node becomes available, `bash` will execute, dropping you into the shell. You will
+notice that the shell prompt has changed from `sms` to the name of the node.
+
+
+## salloc
+
+There is another method we can use to create an interactive job. We could use the
+`salloc` command to allocate resources for a task. After the resources have been
+allocated and our job is ready, we can `ssh` into the node with the allocated
+resources.
+
+```bash
+salloc --time=10:00:00 &
+ssh <name>
+```
+
+## options
+
+In the previous command, we used the `--time` option to specify how long the job
+will run for. But there are other options we can use to be more specific about
+the jobs we want to run.
+
+`--cpus-per-task` can be used to request more than one CPU to be
+allocated. This is especially helpful when we have a multithreaded process we
+want to run.
+
+`--mem` specifies how much memory should be allocated to the job. For example:
+`--mem=16G` tells SLURM to allocate 16 GB of memory.
+
+
+## GPU allocation
+
+If we need to use a GPU, we need to use a few options. Firstly, we can specify
+that our job is on a compute node with GPU. There will usually be a group of
+nodes in a 'GPU' group or partition, and thus we can specify to use one of these
+partitions:
+
+```bash
+srun --time=00:10:00 --partiton=gpu --pty bash -l
+```
+
+But you will notice that you still do not have access to a GPU. You're running
+on the GPU node, but you haven't actually requested a GPU be allocated to your
+job. For that you will use `--gres`:
+
+```bash
+srun --time=00:10:00 --partition=gpu --gres=gpu:1 --pty bash -l
+```
+
+Here we are requesting one GPU, but if we use `--gres:gpu:2` we are requesting 2
+GPUs etc.
+
+There are many different types of GPUs available, some older than others. If you
+wanted to allocate a job with a specific type of GPU you can use the
+`--constraint` flag:
+
+```bash
+srun --time=00:10:00 \
+ --partition=gpu \
+ --gres=gpu:1 \
+ --constraint='cuda61' \
+ --pty bash -l
+```
+
+This command requests that our job run on the GPU partition, with 1 GPU
+allocated that has the capability of running CUDA compute 61.
+
+Or we can specify the type of GPU in the gres option:
+
+```bash
+srun --time=00:10:00 \
+ --partition=gpu \
+ --gres=gpu:2080:1 \
+ --pty bash -l
+```
+
+## Learning more about nodes
+
+To understand what each compute node has we can use the `scontrol` command.
+
+```bash
+scontrol show nodes
+```
+
+Will list out all nodes and all capabilities of each node. Or just one node:
+
+```bash
+scontrol show node lisnode2
+```
+
+## sbatch
+
+It can be quite inconvenient to launch an interactive job to run some compute,
+and wait for the job to be allocated. If, instead, you have a long running
+experiment that you want to run without any intervention from you, you can use
+`sbatch`.
+
+Sbatch will require us to write a small bash script that specifies how to run a
+job and what to do once its allocated.
+
+```bash
+#!/bin/bash
+
+#SBATCH --time=00:01:00
+#SBATCH --job-name=my_new_job
+#SBATCH --output=my_new_job.out
+#SBATCH --error=my_new_job.err
+
+echo $HOSTNAME
+```
+
+And run it:
+
+```bash
+sbatch my_job.sh
+```
+
+Notice that instead of supplying options to sbatch, we can instead record them
+directly into the script using the `#SBATCH`. SLURM will examine this file,
+looking for lines starting with this comment, and infer that the rest of the
+line contains the options.
+
+There are a few other options we've included that are very useful when running
+non-interactive jobs. Firstly, we've given the job a name (`my_new_job`). This is
+so we can different between many jobs that we might run at the same time. To
+list out the jobs we currently have running we use `squeue`.
+
+```bash
+squeue
+```
+
+By default, squeue will list all of the active jobs, even other peoples. To
+specify only your jobs user the `--user` option:
+
+```bash
+squeue --user=jay.morgan
+```
+
+The other two options, `--output` and `--error` specify where the printed output and
+printed errors will be stored. Since the job is being run on a different node,
+by a non-interactive process, if you didn't include these lines, you wouldn't be
+able to see what was being printed by `echo` or by any other process such as `print`
+in Python.
+
+
+## squeue
+
+When we list the jobs using `squeue` it will give us multiple columns of
+information, such as:
+
+-   JOBID &#x2013; the referable id of the job.
+-   PARTITION &#x2013; the partition on which the job has been requested for.
+-   NAME &#x2013; the name of the job.
+-   USER &#x2013; the user who submitted the job.
+-   ST &#x2013; the status, is the job currently running, waiting, or exiting?
+-   TIME &#x2013; how long the job has been running for.
+-   NODES &#x2013; how many nodes have been allocated to the job.
+
+
+## scontrol
+
+`scontrol` allows us to modify an existing job. For example, let us say that we have a job which we need to extend the time limit. Given that we know the job id (we could use `squeue` to find this), we can ask SLURM to update the time limit using:
+
+```bash
+scontrol update jobid=<job_id> TimeLimit=<new_timelimit>
+```
+
+## scancel
+
+Let's say that we've submitted a job, but we've noticed that there was an error
+in the code, and want to stop the job. For that, we use `scancel` and specify the
+id of the job we wish to cancel:
+
+```bash
+scancel 158590
+```
+
+After running this command, we should see, using `squeue`, that either the job is
+finishing, or that its disappeared from our list (meaning that its completely
+stopped).
+
+
+## sacct
+
+If our job has finished, or exited and is no longer in `squeue`, we can use `sacct`
+to get a history of the jobs.
+
+`sacct` will list all of your jobs within some default window of time. If we want
+to change this window we can use the `--starttime` and `--endtime` options.
+
+Valid time formats are:
+
+-   HH:MM[:SS][AM|PM]
+-   MMDD[YY][-HH:MM[:SS]]
+-   MM.DD[.YY][-HH:MM[:SS]]
+-   MM/DD[/YY][-HH:MM[:SS]]
+-   YYYY-MM-DD[THH:MM[:SS]]
+-   today, midnight, noon, fika (3 PM), teatime (4 PM)
+-   now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
+
+
+## Job Task Arrays &#x2013; motivation
+
+Task arrays allow you to submit many jobs of the same type. Why might this be
+useful? Suppose you have a list of files that take a long time to process:
+
+-   `file_0.txt`
+-   `file_1.txt`
+-   `file_2.txt`
+
+Or you have some computation script, such as deep learning training script, that
+takes uses a hyperparameter which can be tuned to achieve different performance
+results:
+
+```bash
+python train.py --learning-rate 0.001
+```
+
+Instead of a creating a sbatch script for each value of hyperparameter, or
+sequentially enumerating the values, you can use a job task array to spawn
+multiple jobs with slightly different values.
+
+
+## Job Task Arrays &#x2013; how to
+
+First, we will look at how to actually submit an array of tasks. To create an
+task array, you will need to add the `--array` options to your sbatch script:
+
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=my_task_array
+#SBATCH --array=1-5
+
+...
+```
+
+Here we are creating an array of tasks numbered from 1-5. When you submit this
+script, you will see five tasks submitted to the queue.
+
+Now that we know how to create an array of tasks, we will want to do something
+useful with it. When you create an array, each individual task will have a
+unique variable called `SLURM_ARRAY_TASK_ID`. So for example, if we launch an
+array of 5 tasks, the first task will have the value `1`. Why is this useful?
+Well, we can use this variable to alter the program slightly. Take for example
+our list of files we need to process:
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=my_task_array
+#SBATCH --array=0-4
+#SBATCH --time=00:10:00
+
+FILENAME="file_${SLURM_ARRAY_TASK_ID}.txt"
+python process.py $FILENAME
+```
+
+This will create a new bash variable called `FILENAME` by concatenating `file_` the
+current task's (i.e. 0, for the first task, 1 for the second task, etc) and
+`.txt`.
+
+If we run the previous example, we will see that we have five jobs named exactly
+the same thing `my_task_array`. This is okay, but we can be a little bit more
+clear as to which task is running, i.e. which task is processing which file?
+
+We can use some special variables in our bash script to make this more
+clear. These are `%A` that is the main job id, and `%a` that is the task array id.
+
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=my_task_array.%A_%a
+#SBATCH --output=my_task_array.%A_%a.out
+...
+```
+
+Now, every task in our array will have a slightly different name because of the
+`%a` and therefore we will be able to determine which job is processing which
+file.
+
+Let's move on to the second example, where we have a Deep Learning training
+program and we want to try different parameters. In this case, we can again use
+a task array.
+
+```bash
+#!/bin/bash
+
+#SBATCH --array=1-10
+```
+
+We could either pass the `SLURM_ARRAY_TASK_ID` as a command line argument to the
+script:
+
+```bash
+python training.py --learning-rate $SLURM_ARRAY_TASK_ID
+```
+
+But in this case, we could have to properly calculate the correct learning rate
+from the `SLURM_ARRAY_TASK_ID` value (remember that in my sbatch script I set
+`--array=1-5`). But bash only performs integer arithmetic, therefore we will need
+to calculate the correct learning rate in something else.
+
+Instead of passing the learning rate via a command line argument. We can get the
+value directly from our python script and calculate the value.
+
+```python
+import os
+
+task_id = int(os.environ["SLURM_ARRAY_TASK_ID"])
+learning_rate = task_id / 100
+```
+
+Here we are using the builtin `os` module in Python, getting the environment
+variable from the dictionary `environ` and parsing the value as an integer. Then
+we can calculate the appropriate learning rate using this value. So for example,
+if `SLURM_ARRAY_TASK_ID` is set to 1. Our learning rate would be 0.01 for this
+task.
+
+If you're creating a job task array, you may want to create hundreds of
+jobs. And of course, you don't want to use up the entire cluster leaving no
+resources for anybody else! Therefore, you will only want a maximum number of
+tasks to run at any one time.
+
+```bash
+#!/bin/bash
+
+#SBATCH --array=1-100%5
+```
+
+This will create a job task array of 100 jobs numbered from 1 to 100. But we
+have added an additional argument `%5` which means that only 5 jobs can run at any
+one time for this task array. If you have five tasks running, the other 95 tasks
+will wait.
+
+If, at any point, you want to change how many jobs can run simultaineously, you
+can update this 'throttle' value using `scontrol`:
+
+```bash
+scontrol update ArrayTaskThrottle=<count> JobId=<jobID>
+```
+
+So if we've already launched a job task array with the job id of `50602` that has
+a throttle value of 5 (only 5 tasks will run at once), we can change it to 10
+using:
+
+```bash
+scontrol update ArrayTaskThrottle=10 JobId=50602
+```
+
+# A guided walk through
+
+
+## A guided walk through &#x2013; environment
+
+In this section we're going to give an example walk through of working with the
+HPC cluster. In this example, we're going to write our scripts locally,
+including the slurm submission script, and when they're ready, we'll send them
+to the cluster to perform the actual computation.
+
+Let's imagine we're starting a new project, and are programming our scripts in
+Python. Now is a good time to create a new conda environment to install our
+packages we're going to use for our research. We'll create this environment with
+(replacing `<env-name>` with whatever we want to call this environment):
+
+```bash
+conda create --name <env-name>
+```
+
+and then activate it:
+
+```bash
+conda activate <env-name>
+conda install python=3.9
+```
+
+## Writing our scripts
+
+Let us also image we've just wrote the following script to create a lorenz
+attractor: [lorenz.py](https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/lorenz.py)
+
+The specific implementation of this script is not particularly important for
+this walk through. Just know that we're importing a few packages such as numpy
+and matplotlib. Then, we're performing some computation, and saving the results
+to analyse later. As this script uses external libraries, we need to install
+them:
+
+```bash
+conda install numpy matplotlib
+```
+
+## Writing our job submission script
+
+Since we want our calculations to be performed on the cluster, we will need to
+also write a job submission script (let's call this `submit-job.sh`) in bash to
+pass to SLURM.
+
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=lorenz_attractor
+#SBATCH --output=lorenz_attractor.log
+#SBATCH --error=lorenz_attractor.log
+#SBATCH --time=00:10:00
+
+python lorenz.py
+```
+
+## Replicating our environment on the cluster
+
+As we've installed external packages in our local development environment, we
+will want to ensure that when we run the calculations on the cluster, it will be
+using the same versions of packages. Conda makes this a lot easier. First, we
+export our environment to a recipe file:
+
+```bash
+conda env export --no-builds > environment.yml
+```
+
+## Sending our scripts to the cluster
+
+All of our scripts are ready! We can now transfer them from our personal
+computer, to the cluster. The files we need to transfer are:
+
+-   `lorenz.py`
+-   `environment.yml`
+-   `submit-job.sh`
+
+While we can send a folder (and the containing files), let's send them one at a time:
+
+```bash
+scp lorenz.py <hostname>:<destination-path>
+scp environment.yml <hostname>:<destination-path>
+scp submit-job.sh <hostname>:<destination-path>
+```
+
+where `<hostname>` is the hostname/IP address that you've used to connect to the
+login node on the cluster before. `<destination-path>` is the path to where you
+want to save the files.
+
+
+## Logging into the cluster
+
+Now that our files are on the cluster, we can login:
+
+```bash
+ssh <username>@<hostname>
+```
+
+At which point, we've logged into the login node, and then we need to change
+directory to where we saved the files:
+
+```bash
+cd <destination-path>
+```
+
+## Re-creating our development environment
+
+Now that we're in the same folder as our scripts, we're almost ready to submit
+our job. First, we need to recreate our development environment from our
+`environment.yml` file.
+
+```bash
+conda env create -f environment.yml
+```
+
+And activate our newly created environment:
+
+```bash
+conda activate <env-name>
+```
+
+
+## Submitting our job
+
+Now we can submit our job:
+
+```bash
+sbatch submit-job.sh
+```
+
+We can check the progress of our job with `squeue`, or its already completed, look
+at the job history with `sacct`.
+
+
+## Downloading the results
+
+If our job runs successfully, a `data.pkl` file will be created. Back on our local
+computers, we will need to run the following to download it:
+
+```bash
+scp <hostname>:<destination-path>/data.pkl ./
+```
+
+This will download the file into the current directory.
+
+
+## Analysing the results
+
+With the `data.pkl` file downloaded, we can visualise the results using
+`plot_lorenz.py`:
+<https://pageperso.lis-lab.fr/jay.morgan/resources/2021-programming-level-up/lectures/week-5/plot-lorenz.py>
+
+If everything has been run correctly, you should see a plot of the lorenz attractor.
+
+
+## Useful features &#x2013; X11 Forwarding
+
+If we're performing analysis interactively using the cluster, we'll often want to
+visualise the results, using matplotlib for example. To *see* our plots display like
+they would on our local machine when we call `plt.plot` or `plt.show()`, we will need to
+ensure that we're using something called `X11 Forwarding`. To enable `X11 Forwarding`, we
+use the `-X` option when `ssh`'ing into the cluster and compute nodes (i.e. it will need
+to be enabled on every 'hop' so to speak).
+
+```bash
+ssh -X <<remote-host>>
+```
+
+If want to enable it by default, we can enable it in our `ssh` config file:
+
+```bash
+Host cluster
+ HostName sms-ext.lis-lab.fr
+ FowardX11 yes
+ User <<username>>
+```
+
+After setting up `X11 Forwarding` correctly, and when logged into the remote host, we
+should be able to echo a variable called `$DISPLAY`.
+
+```bash
+echo $DISPLAY
+```
+
+If `$DISPLAY` has a value, we know that X11 Forwarding has been setup correctly, and
+we're ready to do some plotting!
+
+
+## Useful features &#x2013; Jupyter Notebooks
+
+We've talked about how good jupyter notebooks are for performing analysis and
+exploration. But often times, we will need a lot of compute resources (more than our
+local computers can handle) to do this analysis. This is where using jupyter notebook
+on the supercomputers comes in handy. However, it is not as simple as starting the
+jupyter notebook server and opening up your web browser. First, we will need to setup
+a 'reverse ssh tunnel'.
+
+In a nut-shell, a reverse ssh tunnel allows you to redirect data on a remote port to
+a local port.
+
+Therefore, we can, using a reverse ssh tunnel, start a jupyter notebook on the
+supercomputer and access it using the web browser on our local computer!
+
+To begin, we can create an interactive job on the cluster:
+
+```bash
+srun --time=01:00:00 --pty bash -l
+```
+
+And start our jupyter notebook, specifying a port that will not be in use:
+
+```bash
+jupyter notebook --port 30333
+```
+
+With our notebook server now started on the 30333 port, we will want to create an ssh
+tunnel from our local computer, to the cluster's login node, and then a tunnel from
+the login node to the specific compute node where the job is running:
+
+```bash
+ssh -L 30333:localhost:30333 <<cluster-login-node>> ssh -L 30333:localhost:30333 <<cluster-compute-node>>
+```
+
+If everything goes well, we should now be able to open up our web browser, navigate
+to `localhost:30333` and see our jupyter notebooks.
 

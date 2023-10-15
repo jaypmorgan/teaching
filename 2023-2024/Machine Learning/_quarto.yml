@@ -9,8 +9,14 @@ website:
   sidebar: 
     style: docked
     contents:
-      - lecture-1.qmd
-      - lecture-2.qmd
+      - section: "Lectures"
+        contents:
+        - lecture-1.qmd
+        - lecture-2.qmd
+        - lecture-3.qmd
+      - section: "Labs"
+        contents:
+        - lab-1.qmd
 
 format:
   html:
