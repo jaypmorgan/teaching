@@ -1019,7 +1019,7 @@ clear. These are `%A` that is the main job id, and `%a` that is the task array i
 ```bash
 #!/bin/bash
 
-#SBATCH --job-name=my_task_array.%A_%a
+#SBATCH --error=my_task_array.%A_%a.out
 #SBATCH --output=my_task_array.%A_%a.out
 ...
 ```
