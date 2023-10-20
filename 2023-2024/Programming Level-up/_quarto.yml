@@ -18,6 +18,7 @@ website:
           - lecture-3.qmd
           - lecture-4.qmd
           - lecture-5.qmd
+          - lecture-6.qmd
           - lecture-7.qmd
 
 format:
