@@ -20,6 +20,7 @@ you have any questions or concerns, you can contact me using my email address `j
 - Lecture 1 - [Introduction](lecture-1.qmd)
 - Lecture 2 - [Linear Models](lecture-2.qmd)
 - Lecture 3 - [Evaluation of Models](lecture-3.qmd)
+- Lecture 4 - [Support Vector Machines](lecture-4.qmd)
 
 ## Labs
 
