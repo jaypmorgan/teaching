@@ -14,6 +14,7 @@ website:
         - lecture-1.qmd
         - lecture-2.qmd
         - lecture-3.qmd
+        - lecture-4.qmd
       - section: "Labs"
         contents:
         - lab-1.qmd
