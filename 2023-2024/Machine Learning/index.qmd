@@ -25,3 +25,4 @@ you have any questions or concerns, you can contact me using my email address `j
 ## Labs
 
 - Lab 1 - [Linear Models](lab-1.qmd)
+- Lab 2 - [Evaluation of Models](lab-2.qmd)

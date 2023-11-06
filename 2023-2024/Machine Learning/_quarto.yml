@@ -18,6 +18,7 @@ website:
       - section: "Labs"
         contents:
         - lab-1.qmd
+        - lab-2.qmd
 
 format:
   html:
