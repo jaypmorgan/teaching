@@ -178,7 +178,7 @@ variables. What is the error now?
 # Marking Criteria
 
 
-| **Criteria**                   | **Marks** | **No attempted** (0%) | **Attempted** (0-30%) | **Correct** (30-80%) | **Good solution** (80-100%) | **Score** |
+| **Criteria**                   | **Marks** | **Not attempted** (0%) | **Attempted** (0-30%) | **Correct** (30-80%) | **Good solution** (80-100%) | **Score** |
 |----|----|----|----|----|----|----|
 | Question 1                     |         |     -             |               |             |                   |           |
 | Question 2                     | 10        |                  |               |             |                   |           |
