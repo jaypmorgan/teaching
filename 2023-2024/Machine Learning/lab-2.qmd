@@ -86,7 +86,7 @@ the code for the linear regressor.
 ## Question 2
 
 Download the Iris dataset from
-<https://archive.ics.uci.edu/ml/machine-learning-databases/iris/>. The dataset can be
+<https://archive.ics.uci.edu/dataset/53/iris>. The dataset can be
 downloaded from `iris.data`. Load the data into a pandas dataframe.
 
 For this lab, we're going to be performing a binary classification problem, but this
