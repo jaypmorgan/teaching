@@ -1,0 +1,579 @@
+---
+title: "All about Git"
+subtitle: "Lecture 8"
+author: "Jay Paul Morgan"
+format:
+    html: default
+    revealjs:
+        output-file: lecture-8-reveal.html
+---
+
+# Version Control Systems
+
+If we're just programming by ourselves we often just make the changes
+to the program as we need as move on. But what if we're not the only
+person making changes? For example, there are thousands of developers
+contributing to large open-source projects like the Linux kernel, Deep
+Learning frameworks such as Pytorch or Tensorflow, and programming
+languages such as Python. How do we manage the changes from all of
+these thousands of independent developers while keeping track of
+what's changed?
+
+This is (one of) the role of version control systems, often abbreviated
+to VCS. A version control system is an additional layer of software
+over our programming code that allows us to 'checkpoint' the program
+code at a specific point in time. Moreover, it can help 'merge'
+changes from different developers, so that the changes made by one
+developer does not un-intentionally overwrite the changes made by a
+different developer.
+
+**Git**, developed by Linus Torvalds in 2005, is one such version
+control system that is the most ubiquitous at the time of writing. It
+has surpassed many existing version control systems, and while many new
+ones have been proposed, none have been successful (yet) at unmounting
+Git from it's throne as the leader of VCSs.
+
+In this lecture, we'll learn how to setup and use git in our projects.
+
+# Installing Git
+
+Depending on the system you're using, Git may or may not already be
+installed. If you're using a debian based operating system, and you
+don't have Git installed, you'll want to use `apt` to install it.
+
+```bash
+sudo apt install git
+```
+
+**Note** You'll need super-user privileges to install Git in this way.
+
+If you're using a different operating system, you can refer to Git's
+own documentation for each supported system: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+
+We can check that Git is installed by running the following command into the terminal:
+
+```bash
+type git
+```
+
+This, running on my computer, returns the path to the executable:
+
+```
+git is /usr/bin/git
+```
+
+You'll probably see something similar on your machine.
+
+Now we're ready to start using Git!
+
+# Setting up a Git Repository
+
+Let's imagine we're starting a new project. All of our program scripts
+for this project are going to go into a single folder I've named 'my-new-project'.
+
+So far, this directory is empty:
+
+```{bash}
+my-new-project % ls -lha
+total 0
+drwxr-xr-x   2 jaypaulmorgan  wheel    64B 12 Nov 12:59 .
+drwxrwxrwt  16 root           wheel   512B 12 Nov 12:59 ..
+```
+
+Even though we have no files yet, we can initialise a Git repository
+for this directory (and this will work for directories that already
+have existing files as well) by using the `init` sub-command:
+
+```bash
+git init
+```
+
+    Initialized empty Git repository in my-new-project/.git/
+
+If successful, this command will tell us that it's created a git *repository*.
+Formally, it has created a `.git` folder within our project folder that
+contains information about this git repository, i.e. history, name, etc.
+
+A *repository* in this context is the directory of things that are going
+to be tracked by Git. In this context of this lecture, we'll often use
+repository and directory interchangeably.
+
+Now if we list the files and folders in this directory again, we should
+see there is only one new folder, the `.git` folder that Git told us it
+had created.
+
+```bash
+my-new-project % ls -lha
+total 0
+drwxr-xr-x   3 jaypaulmorgan  wheel    96B 12 Nov 13:01 .
+drwxrwxrwt  16 root           wheel   512B 12 Nov 12:59 ..
+drwxr-xr-x   9 jaypaulmorgan  wheel   288B 12 Nov 13:01 .git
+```
+
+With Git now initialised in our project folder, we can start our programming!
+
+# Staging files
+
+After some time of programming, we've managed to create a couple
+of files and folders.
+
+Let's list these out (using the `tree` command so it looks nice):
+
+```bash
+my-new-project % tree
+.
+├── Makefile
+├── README.md
+└── src
+    └── main.cpp
+
+2 directories, 3 files
+```
+
+In this *hypothetical* scenario, we've been programming and we've created
+a main.cpp C++ file, and a Makefile to specify how to compile the program.
+We've also written a README.md markdown file that tells other developers
+how to use the program.
+
+**BUT** We haven't *checkpointed* these files. What does *checkpoint* mean
+here? Well if we make any further changes to the program, we'll no longer
+be able to get back to the project *as it currently is*. By *checkpointing*
+the program in it's current state, even if we make some changes, we'll
+still be able to come back to this checkpoint at a later point in time.
+
+To start *checkpointing* or as Git calls it **commiting** our files, we
+can first look at the current status of these files using the aptly-named
+ sub-command `status`:
+
+```bash
+my-new-project % git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Makefile
+	README.md
+	src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+Here we see that we're on the *branch* `main` (we'll come back to this
+at a later point in the lecture). We don't have any commit yet, i.e.
+no checkpoints we can revert to. And, finally, we have some untracked
+files, i.e. all of the files we've created at this point.
+
+Helpfully, Git has told us if we want to start tracking the changes
+to the files, we should use the `add` sub-command to **stage** the files
+ready for **committing**.
+
+This is a perfect time to talk about the different statuses that each
+of the files could be in.
+
+```{mermaid}
+sequenceDiagram
+    participant Unchanged
+    participant Untracked/Modified
+    participant Staged
+    participant Commited
+    Untracked/Modified->>Staged: git add <filename/directory>
+    Staged->>Commited: git commit
+    Commited->>Unchanged: A new checkpoint has been made
+    Staged->>Untracked/Modified: git rm --cached <filename/directory>
+```
+
+In this diagram we show there are various 'states' each of the files or folders could be in. To commit a file or a folder, we'll first want to stage the changes with
+
+```bash
+git add <file/folder>
+```
+
+and then when all the changes we want to commit are staged, we can finalise the commit using:
+
+```bash
+git commit
+```
+
+Let's use these on our project now.
+
+```bash
+my-new-project % git add .
+my-new-project % git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   Makefile
+	new file:   README.md
+	new file:   src/main.cpp
+```
+
+We've first used `git add .` to add all files in the current directory (as denoted by '.' which means the current directory in Linux), and then
+re-ran the `git status` command, which shows that all of our files are now ready to be committed, i.e. they are staged!
+
+If we wanted to remove a file from the staging area, we should use `git rm --cached <name-of-file-or-folder>` to un-stage it. **Note** this doesn't delete the file/folder, just un-stages it.
+
+Now, with the files in the staging area, we're ready to commit them. For this, we use the `git commit` command. This will bring up a text editor where we can write what in general has changed since the last commit. This is called the commit message. When you're done describing the changes that's been made, just save and exit the file.
+
+There is a shorthand way to do this using the `-m` flag:
+
+```bash
+git commit -m 'This is my commit message'
+```
+
+After committing we'll get some output about what's been checkpointed:
+
+```bash
+[main (root-commit) b587617] This is my commit message
+ 3 files changed, 254 insertions(+)
+ create mode 100644 Makefile
+ create mode 100644 README.md
+ create mode 100644 src/main.cpp
+ ```
+
+Finally if we run `git status` again, we'll see there are no changes since we've last committed (this makes sense since we just committed all of our changes).
+
+```bash
+my-new-project % git status
+On branch main
+nothing to commit, working tree clean
+```
+
+# Log
+
+As we make more changes to the project, we'll want to look at the history of changes to see what has changed and when.
+
+First, let's make some more changes
+
+There is a simple sub-command named `log` that will allow us to see a sequential list of changes to the project.
+
+```bash
+my-new-project % git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/main.cpp
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+We've made a change to main.cpp, fixing a bug in the process. Now that we're happy with the current state of the project (there are no more bugs that we're currently aware of, but don't worry there will always be more!), we want to create another commit.
+
+```bash
+my-new-project % git add src/main.cpp 
+my-new-project % git commit -m 'Fix reading file bug caused by typo'
+[main 1a5d58e] Fix reading file bug caused by typo
+ 1 file changed, 1 deletion(-)
+```
+
+Now if we use the command `git log`, we'll see a sequential view of how the project has changed (from the perspective of checkpoints).
+
+```bash
+my-new-project % git log
+commit 1a5d58e3e0c7796f7c5eb77083a6773f158d48b8 (HEAD -> main)
+Author: Jay Paul Morgan <email@email.com>
+Date:   Sun Nov 12 13:38:47 2023 +0100
+
+    Fix reading file bug caused by typo
+
+commit b587617fed362faec952718785112d3e7d32b038
+Author: Jay Paul Morgan <email@email.com>
+Date:   Sun Nov 12 13:28:23 2023 +0100
+
+    This is my commit message
+
+```
+
+Here we see that older commits are at the bottom, and the most recent at the top. If we have many commits, we can scroll through them using the `up` and `down` arrows on our keyboard, and `q` to quit.
+
+# Branches
+
+So far, we've been editing to the `main` (or `master` if you're editing an older Git repository). This, if you're a solo developer, is *perhaps* okay, but the `main` branch is meant to represent a working state of the program, if we make some changes to the program, then it's potentially in a non-working state. Philosophically speaking, this is not ideal. Our preference as good and organised developers, who we all aspire to be, is to make changes in a separate branch, and then when we're happy with the changes, and that we have a new version of the working program, we'll want to **merge** back into the `main` branch.
+
+```{mermaid}
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
+```
+
+This type of workflow is called git-flow. In essence, for every new feature of the program we're adding, we'll create a new branch, and then merge back into the `main` branch when its complete. The depths of this concept are not necessary for this lecture, but if you're interested, please do read [https://www.gitkraken.com/learn/git/git-flow](https://www.gitkraken.com/learn/git/git-flow) for an introduction into this workflow.
+
+Nevertheless, we'll still want to learn how to create new branches. At this point, our project looks like:
+
+```{mermaid}
+gitGraph
+    commit
+    commit
+```
+
+We'll want to make some more changes, but only in a new branch other than main.
+
+## Creating & Checking out Branches
+
+To create a new branch use the `branch` sub-command, specifying the name of the new branch:
+
+```bash
+my-new-project % git branch develop
+my-new-project % git branch
+  develop
+* main
+```
+
+Here, we've created a new branch develop, and listed all of the existing branches using `git branch`.
+
+The asterisk (*) next to the branch name tells us what branch we're currently on.
+
+To change branches we can `checkout` a new branch:
+
+```bash
+my-new-project % git checkout develop
+Switched to branch 'develop'
+my-new-project % git branch
+* develop
+  main
+```
+
+Our project now looks like:
+
+```{mermaid}
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+```
+
+Git will tell us when it's changing branches as you see in the above command.
+
+Now that we're on the new branch, we can start to make some changes, stage, and commit them:
+
+```bash
+my-new-project % git status
+On branch develop
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/main.cpp
+
+no changes added to commit (use "git add" and/or "git commit -a")
+my-new-project % git add src/main.cpp  
+my-new-project % git commit -m 'Add new feature'
+[develop a59f1a7] Add new feature
+ 1 file changed, 1 insertion(+)
+```
+
+Now our project looks like:
+
+```{mermaid}
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+```
+
+## Merging Branches
+
+Our 'feature' is complete, and we have a working state of the program, so we'll want to merge this new feature back into the `main` branch. 
+
+First, we'll checkout the `main` branch
+
+```bash
+my-new-project % git checkout main
+Switched to branch 'main'
+```
+
+And now, we'll merge the develop branch *into* the main branch using the `merge` sub-command:
+
+```bash
+my-new-project % git merge develop
+Updating 1a5d58e..a59f1a7
+Fast-forward
+ src/main.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+```
+
+Our project now looks like:
+
+```{mermaid}
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    checkout main
+    merge develop
+```
+
+
+## Merge Conflicts
+
+Sometimes, though, the branches cannot automatically be merged together. This can happen when the branches being merged have edited the same piece of text. Which edits does Git keep when merging? It's a piece of software, not a mind-reader! It can't know the answer to this question so we have to tell Git what to keep and what to throw away to complete the merging process.
+
+So, let's imagine we're trying to merge two branches that have edited the same text. I've created this scenario by editing the title of the README file in two branches and tried to merge them. At this point this happened:
+
+```bash
+my-new-project % git merge develop
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+Git is telling me: "I can't automatically merge these two branches because they've edited the same thing. Tell me what to keep and then we can carry on."
+
+So we'll do just that, if we open up the README.md file mentioned in the merge conflict message, we'll see:
+
+```markdown
+<<<<<<< HEAD 
+# Deep Learning 
+======= 
+# C++ Examples of Deep Learning 
+>>>>>>> develop 
+```
+
+Everything between `<<<<<<< HEAD` and `=======` is what's currently in the commit. While between `=======` and `>>>>>>> develop` is the content trying to be merged.
+
+Let's say that we prefer what is in the develop branch, then we'll remove (just by deleting in your text editor of choice) everything from `<<<<<<< HEAD` to `=======` and then remove `>>>>>>> develop` so that our file now looks like this:
+
+```markdown
+# C++ Examples of Deep Learning 
+```
+
+In essence we've extracted the parts of the file we wanted to keep in the process of merging, and removed the parts we didn't want, in addition to removing the `<<<<<`, `=====` delimiters.
+
+Now we can save this file and commit the changes, thus completing the merge conflicts.
+
+```bash
+my-new-project % git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+my-new-project % git commit -a -m 'Resolve conflicts'
+[main c8efca4] Resolve conflicts
+```
+
+Our git history will now look something like:
+
+```{mermaid}
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    checkout main
+    merge develop
+    commit
+    checkout develop
+    commit
+    checkout main
+    merge develop
+```
+
+# Navigating through History
+
+Finally, to conclude our whistle stop tour of using Git, we'll take a look at how to navigate through the history of our program, i.e. change to different checkpoints.
+
+If we look at our `git log`, once more, we'll see lots of commits now:
+
+```bash
+my-new-project % git log --graph
+*   commit c8efca46a2c4e794f2f66d2538891cbb5fce987a (HEAD -> main)
+|\  Merge: 1245ad6 3bba75a
+| | Author: Jay Paul Morgan <email@email.com>
+| | Date:   Sun Nov 12 14:24:44 2023 +0100
+| | 
+| |     Resolve conflicts
+| | 
+| * commit 3bba75a6b3a1435a5005a88a9aa5a18196b8ead7 (develop)
+| | Author: Jay Paul Morgan <email@email.com>
+| | Date:   Sun Nov 12 14:17:11 2023 +0100
+| | 
+| |     Changed title
+| | 
+* | commit 1245ad6e8f639d32030ea7cc879d5a82c4e2b190
+|/  Author: Jay Paul Morgan <email@email.com>
+|   Date:   Sun Nov 12 14:16:25 2023 +0100
+|   
+|       Adjusted title
+| 
+* commit a59f1a7701c2c5bdc0741ef0476fce55fb0d7a74
+| Author: Jay Paul Morgan <email@email.com>
+| Date:   Sun Nov 12 14:06:51 2023 +0100
+| 
+|     Add new feature
+| 
+* commit 1a5d58e3e0c7796f7c5eb77083a6773f158d48b8
+| Author: Jay Paul Morgan <email@email.com>
+| Date:   Sun Nov 12 13:38:47 2023 +0100
+```
+
+You'll notice that each commit has a funny looking string called a *hash*. This a unique representation of the current state of the program at the time of commiting. No two hashes should be the same.
+
+To go back to a previous point in time, we'll take one of these hashes, let's say `1a5d58e3e0c7796f7c5eb77083a6773f158d48b8`, and use this in our `git checkout` command:
+
+```bash
+my-new-project % git checkout 1a5d58e3e0c7796f7c5eb77083a6773f158d48b8
+Note: switching to '1a5d58e3e0c7796f7c5eb77083a6773f158d48b8'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 1a5d58e Fix reading file bug caused by typo
+```
+
+Wow that's a lot of information! But all it's telling us that any commits we make from here will not be permanent. That's okay, we're just looking. If we did want to make permanent commits starting at this commit, then we create a new branch from here by running `git switch -c <new-branch-name>`.
+
+Nevertheless, if you take a look at the files and folders at this point you'll see they are exactly as they were when we made this specific commit. We've gone back in time!
+
+To get back to the original position, i.e. the most recent commit, we'll checkout `HEAD`:
+
+```bash
+git checkout HEAD
+```
+
+# Remote Repositories
+
+When we want to share our project with the world (by sharing the source code), we can host the code on a Git Remote repository.
+
+There are a couple of popular websites to do this:
+- [GitHub](https://github.com)
+- [GitLab](https://gitlab.com)
+- [Codeberg](https://codeberg.org)
+- [SourceHut](https://sourcehut.org)
+
+Since it's outside of the scope of this specific lecture on how to use each of these websites (since they might require specific instructions for each website), I recommend you read the documentation for your website of choice. For example, if you wanted to use GitHub, there is a [Getting Started](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account) guide.

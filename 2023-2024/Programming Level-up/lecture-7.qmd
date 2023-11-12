@@ -5,7 +5,7 @@ author: "Jay Paul Morgan"
 format:
     html: default
     revealjs:
-        output-file: lecture-8-reveal.html
+        output-file: lecture-7-reveal.html
 ---
 
 

@@ -20,6 +20,7 @@ website:
           - lecture-5.qmd
           - lecture-6.qmd
           - lecture-7.qmd
+          - lecture-8.qmd
 
 format:
   html:
