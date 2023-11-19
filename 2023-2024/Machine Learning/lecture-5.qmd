@@ -1,5 +1,5 @@
 ---
-title: "K Nearest Neighbour & K-Means"
+title: "K-Nearest Neighbour & K-Means"
 subtitle: "Lecture 5"
 author: "Jay Paul Morgan"
 format:
