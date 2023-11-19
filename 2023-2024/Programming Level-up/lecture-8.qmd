@@ -11,7 +11,7 @@ format:
 # Version Control Systems
 
 If we're just programming by ourselves we often just make the changes
-to the program as we need as move on. But what if we're not the only
+to the program as we need and move on. But what if we're not the only
 person making changes? For example, there are thousands of developers
 contributing to large open-source projects like the Linux kernel, Deep
 Learning frameworks such as Pytorch or Tensorflow, and programming
