@@ -27,3 +27,4 @@ you have any questions or concerns, you can contact me using my email address `j
 
 - Lab 1 - [Linear Models](lab-1.qmd)
 - Lab 2 - [Evaluation of Models](lab-2.qmd)
+- Lab 3 - [K-Nearest Neighbours](lab-3.qmd)

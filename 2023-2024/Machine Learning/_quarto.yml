@@ -20,6 +20,7 @@ website:
         contents:
         - lab-1.qmd
         - lab-2.qmd
+        - lab-3.qmd
 
 format:
   html:
