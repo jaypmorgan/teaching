@@ -21,41 +21,34 @@ jupyter: python3
 
 In summary:
 
--   Matplotlib is one of the defacto plotting libraries for Python. While there
-    are many others and certainly some that are built for specific plot types,
-    Matplotlib continues to pervade scientific plotting.
--   You can create basic plots (such as line or scatter plots) to more complicated
-    plots that include interactivity.
-
+-   Matplotlib is one of the defacto plotting libraries for Python. While there are many others and certainly some that are built for specific plot types, Matplotlib continues to pervade scientific plotting.
+-   You can create basic plots (such as line or scatter plots) to more complicated plots that include interactivity.
 
 ## Installing and importing Matplotlib
 
 Matplotlib can be installed via conda:
-```bash
+
+``` bash
 conda install matplotlib
 ```
+
 or with pip:
-```bash
+
+``` bash
 pip install matplotlib
 ```
-Remember! You can install packages in ipython REPL/juypter notebook by
-inserting a '!' to the beginning of a shell command.
 
+Remember! You can install packages in ipython REPL/juypter notebook by inserting a '!' to the beginning of a shell command.
 
 ## Basic plotting
 
-First, we will import the matplotlib module. The plotting function is located
-within the `pyplot` package within matplotlib. The use of this package is so
-common that 99% of Python users will alias this import as `plt`:
+First, we will import the matplotlib module. The plotting function is located within the `pyplot` package within matplotlib. The use of this package is so common that 99% of Python users will alias this import as `plt`:
 
 ```{python}
 import matplotlib.pyplot as plt
 ```
 
-With this package now imported, we can now use the `plot` function. To begin with,
-let's just plot a simple line chart. In this case, the `plot` function takes an `x`
-and `y` argument, where `x` denotes the values along the x-axis and `y` are the values
-along the y-axis.
+With this package now imported, we can now use the `plot` function. To begin with, let's just plot a simple line chart. In this case, the `plot` function takes an `x` and `y` argument, where `x` denotes the values along the x-axis and `y` are the values along the y-axis.
 
 ```{python}
 import numpy as np
@@ -65,22 +58,17 @@ plt.plot(x, y)
 plt.show()
 ```
 
-In this example, we have created two vectors. The first `x`, creates a vector of
-100 values from -10 to 10. `y` is the sin function applied to `x`. Finally, in the
-third line, we plot the sin wave using these two vectors.
+In this example, we have created two vectors. The first `x`, creates a vector of 100 values from -10 to 10. `y` is the sin function applied to `x`. Finally, in the third line, we plot the sin wave using these two vectors.
 
 <!-- ![](images/basic.png) -->
 
-
 # Various plotting types
-
 
 ## Different types of Plots
 
 ![](images/plots.png)
 
-There are many different types of plots that one can make using
-matplotlib. These include the most popular:
+There are many different types of plots that one can make using matplotlib. These include the most popular:
 
 -   Line plots
 -   Scatter plots
@@ -89,16 +77,11 @@ matplotlib. These include the most popular:
 -   Box plots
 -   Image plots
 
-We're going to take a look at how we create each type of plot, examining what
-type of inputs they require.
-
+We're going to take a look at how we create each type of plot, examining what type of inputs they require.
 
 ## Line plots
 
-We've already seen one example of a line plot. This plot draws a line between
-each x,y point. For instance in the previous example, we created a sin wave by
-'sampling' such wave using 100 samples from -10 to 10. Let's see what happens
-when we sample only 10 points:
+We've already seen one example of a line plot. This plot draws a line between each x,y point. For instance in the previous example, we created a sin wave by 'sampling' such wave using 100 samples from -10 to 10. Let's see what happens when we sample only 10 points:
 
 ```{python}
 x = np.linspace(-10, 10, 10)
@@ -107,18 +90,13 @@ plt.plot(x, y)
 plt.show()
 ```
 
-We see the results are a less than ideal representation of a sin wave as `plot`
-will simply draw a straight line from each point.
+We see the results are a less than ideal representation of a sin wave as `plot` will simply draw a straight line from each point.
 
 <!-- ![](images/lineplot.png) -->
 
-
 ## Scatter plots
 
-If we want to see where each sample of the sin wave is, we could use instead the
-scatter plot, which will (by default) place a small circle at every x,y
-value. To create a scatter plot, we use `scatter` instead of the `plot`
-function. The arguments to this function are the same, however.
+If we want to see where each sample of the sin wave is, we could use instead the scatter plot, which will (by default) place a small circle at every x,y value. To create a scatter plot, we use `scatter` instead of the `plot` function. The arguments to this function are the same, however.
 
 ```{python}
 x = np.linspace(-10, 10, 10)
@@ -127,8 +105,7 @@ plt.scatter(x, y)
 plt.show()
 ```
 
-Now we can see the position of each individual sample from the sin wave. If we,
-once again, sample 100 points from this curve, we will see better results.
+Now we can see the position of each individual sample from the sin wave. If we, once again, sample 100 points from this curve, we will see better results.
 
 <!-- ![](images/scatter.png) -->
 
@@ -141,11 +118,9 @@ plt.show()
 
 <!-- ![](images/scatter-2.png) -->
 
-
 ## Bar plots
 
-Bar plots are a simple plot that again takes an `x` and a `y`, where x is the
-numerical position of the bar's centre, and `y` is the height of the bar.
+Bar plots are a simple plot that again takes an `x` and a `y`, where x is the numerical position of the bar's centre, and `y` is the height of the bar.
 
 ```{python}
 x = np.arange(0, 8)
@@ -156,12 +131,9 @@ plt.show()
 
 <!-- ![](images/bar.png) -->
 
-
 ## Histograms
 
-Histograms allow us to visualise the distribution of values. In matplotlib, we
-can create a histogram of a vector by using the `hist` function that takes only
-the vector as its argument.
+Histograms allow us to visualise the distribution of values. In matplotlib, we can create a histogram of a vector by using the `hist` function that takes only the vector as its argument.
 
 ```{python}
 x = np.random.randn(1000)
@@ -171,12 +143,9 @@ plt.show()
 
 <!-- ![](images/hist.png) -->
 
-
 ## Box plots
 
-Box plots also allow us to visualise the distribution, but the distribution of
-values within a group. In this example we're visualising the distribution of 3
-groups. Using the `boxplot` function, we pass a matrix.
+Box plots also allow us to visualise the distribution, but the distribution of values within a group. In this example we're visualising the distribution of 3 groups. Using the `boxplot` function, we pass a matrix.
 
 ```{python}
 x = np.random.randn(10, 3)
@@ -186,11 +155,9 @@ plt.show()
 
 <!-- ![](images/boxplot.png) -->
 
-
 ## Image plots
 
-In matplotlib, we can plot an 'image' &#x2013; that is a 2D matrix &#x2013; using the `imshow`
-function. For example:
+In matplotlib, we can plot an 'image' – that is a 2D matrix – using the `imshow` function. For example:
 
 ```{python}
 fig = plt.figure()
@@ -201,8 +168,7 @@ plt.show()
 
 <!-- ![](images/imshow.png) -->
 
-Of course, given the name, we can then use `imshow` to plot an image as well, as
-long as we have the image loaded as a 2D array of values.
+Of course, given the name, we can then use `imshow` to plot an image as well, as long as we have the image loaded as a 2D array of values.
 
 ```{python}
 from PIL import Image  # using the PIL module to read an image
@@ -213,18 +179,15 @@ plt.show()
 
 <!-- ![](images/imshow-2.png) -->
 
-
 ## 3 dimensional plots
 
-3 dimensional plots require us to import another module from
-matplotlib.
+3 dimensional plots require us to import another module from matplotlib.
 
 ```{python}
 from mpl_toolkits import mplot3d
 ```
 
-After importing this module, we can using the *projection="3d"* and
-carry on plotting as normal.
+After importing this module, we can using the *projection="3d"* and carry on plotting as normal.
 
 ```{python}
 fig = plt.figure()
@@ -244,25 +207,17 @@ plt.show()
 
 <!-- ![](images/3d-figure.png) -->
 
-
 ## Other types of Plots
 
-There are many more different types of plots you can make using matplotlib. You
-can find a comprehensive list at:
+There are many more different types of plots you can make using matplotlib. You can find a comprehensive list at:
 
 <https://matplotlib.org/stable/plot_types/index.html>
 
-
 # Customising plots
-
 
 ## Subplots
 
-What if we wanted to create many plots side-by-side? For this we can use the
-`subplots` function. This function takes the number of rows, and number of columns
-to create. It returns two values, the first is the figure (entire figure), and
-the second value is a list of sub figures. Using this list, we can place a plot
-of each of them.
+What if we wanted to create many plots side-by-side? For this we can use the `subplots` function. This function takes the number of rows, and number of columns to create. It returns two values, the first is the figure (entire figure), and the second value is a list of sub figures. Using this list, we can place a plot of each of them.
 
 ```{python}
 x = np.linspace(-10, 10, 100)
@@ -278,12 +233,9 @@ plt.show()
 
 <!-- ![](images/subplots.png) -->
 
-
 ## Adding a legend
 
-Or we could put them onto the same plot. Matplotlib will automatically give them
-a different colour. If we use the `label` argument to `plot`, we can also give them
-a name that will appear when we call `legend()`.
+Or we could put them onto the same plot. Matplotlib will automatically give them a different colour. If we use the `label` argument to `plot`, we can also give them a name that will appear when we call `legend()`.
 
 ```{python}
 x = np.linspace(-10, 10, 100)
@@ -298,13 +250,9 @@ plt.show()
 
 <!-- ![](images/legend.png) -->
 
-
 ## Position the legend in different places
 
-We can change the position of the legend by specifying a different integer value
-for the `loc` argument (or string values such as 'upper left', 'upper right',
-&#x2026;). Additionally, we can change the number of columns the legend has with the
-`ncol` argument.
+We can change the position of the legend by specifying a different integer value for the `loc` argument (or string values such as 'upper left', 'upper right', …). Additionally, we can change the number of columns the legend has with the `ncol` argument.
 
 ```{python}
 x = np.linspace(-10, 10, 100)
@@ -320,15 +268,11 @@ plt.show()
 
 You can find the API reference for the different arguments to legend at: <https://matplotlib.org/stable/api/legend_api.html?highlight=legend#module-matplotlib.legend>
 
-
 <!-- ![](images/legend-2.png) -->
-
 
 ## Modifying the x/y axis
 
-Good graphs always have their axis's labelled. To do this in matplotlib, if we
-have a subplot object, we use `set_xlabel`, or we can use `plt.xlabel(...)`. Here is
-an example with an subplot object:
+Good graphs always have their axis's labelled. To do this in matplotlib, if we have a subplot object, we use `set_xlabel`, or we can use `plt.xlabel(...)`. Here is an example with an subplot object:
 
 ```{python}
 x = np.linspace(-10, 10, 100)
@@ -346,13 +290,9 @@ plt.show()
 
 <!-- ![](images/axis.png) -->
 
-
 ## Changing figure size
 
-A common change you may want to make to your figure is to change its size or
-aspect ratio. `figure()` or `subplots()` take an optional argument called
-`figsize`. This argument expects a tuple representing the width and height of the
-figure in inches.
+A common change you may want to make to your figure is to change its size or aspect ratio. `figure()` or `subplots()` take an optional argument called `figsize`. This argument expects a tuple representing the width and height of the figure in inches.
 
 ```{python}
 fig = plt.figure(figsize=(8, 2.5))
@@ -374,9 +314,7 @@ Here we are creating a figure with 8 inches of width, and 2.5 inches of height.
 
 <!-- ![](images/fig-size.png) -->
 
-This is especially useful when you have many sub-figures, as by default, they
-will be 'squashed' into the default aspect ratio. We can 'give them more space'
-by modifying this `figsize` argument when creating the many sub-figures.
+This is especially useful when you have many sub-figures, as by default, they will be 'squashed' into the default aspect ratio. We can 'give them more space' by modifying this `figsize` argument when creating the many sub-figures.
 
 ```{python}
 fig, ax = plt.subplots(1, 2, figsize=(8, 2.5))
@@ -390,29 +328,23 @@ plt.show()
 
 <!-- ![](images/figsize-2.png) -->
 
-
 ## Line properties
 
-When creating a plot, there are many different properties you can change. Some
-of these include:
+When creating a plot, there are many different properties you can change. Some of these include:
 
--   color &#x2013; the colour of the line
--   alpha &#x2013; the amount of transparency (1.0 is opaque, 0.0 is transparent)
--   linewidth, lw &#x2013; the width of the stroke width
--   linestyle, ls &#x2013; the style of the line (i.e. a dotted line)
+-   color – the colour of the line
+-   alpha – the amount of transparency (1.0 is opaque, 0.0 is transparent)
+-   linewidth, lw – the width of the stroke width
+-   linestyle, ls – the style of the line (i.e. a dotted line)
 
-There are also some properties for the markers, i.e. the circles in the scatter
-plot. These properties are:
+There are also some properties for the markers, i.e. the circles in the scatter plot. These properties are:
 
--   marker &#x2013; the type of marker (you can use different shapes instead of a circle
--   markersize &#x2013; the size of the mark
--   markerfacecolor &#x2013; colour of the marker
--   markeredgewidth &#x2013; outline width of the marker.
+-   marker – the type of marker (you can use different shapes instead of a circle
+-   markersize – the size of the mark
+-   markerfacecolor – colour of the marker
+-   markeredgewidth – outline width of the marker.
 
-If this example we are modifying some of the line properties that include the
-color (c), setting it to a string value of "green". The linewidth (lw) to be
-thicker, and making the line to be a dotted line by specifying the linestyle
-(ls) to "=&#x2013;={".
+If this example we are modifying some of the line properties that include the color (c), setting it to a string value of "green". The linewidth (lw) to be thicker, and making the line to be a dotted line by specifying the linestyle (ls) to "=–={".
 
 ```{python}
 fig = plt.figure()
@@ -427,12 +359,9 @@ plt.show()
 
 <!-- ![](images/linestyles.png) -->
 
-
 ## Colourmaps
 
-When we create a heatmap using `imshow`, the gradients of colour are automatically
-set. Yet, we can control the colour gradient using a colour map. First we must
-import `cm` from matplotlib:
+When we create a heatmap using `imshow`, the gradients of colour are automatically set. Yet, we can control the colour gradient using a colour map. First we must import `cm` from matplotlib:
 
 ```{python}
 from matplotlib import cm
@@ -447,9 +376,7 @@ reds = cm.get_cmap("Reds", 2) # 2 levels
 
 You can find a full list of different colour maps at: <https://matplotlib.org/stable/tutorials/colors/colormaps.html>
 
-
-Now that we have our new colour maps, we can pass it as an `cmap` argument when we
-create a plot.
+Now that we have our new colour maps, we can pass it as an `cmap` argument when we create a plot.
 
 ```{python}
 x = np.random.randn(10, 10)
@@ -464,12 +391,9 @@ plt.show()
 
 <!-- ![](images/colourmaps.png) -->
 
-
 ## Ticks
 
-If we want to customise the numbers along each axis, we use the `set_xticks` for
-the x-axis and `set_yticks` for the y-axis. These functions take the list of
-locations for each 'tick', and optionally a list of labels to use instead of the numbers.
+If we want to customise the numbers along each axis, we use the `set_xticks` for the x-axis and `set_yticks` for the y-axis. These functions take the list of locations for each 'tick', and optionally a list of labels to use instead of the numbers.
 
 ```{python}
 x = np.linspace(-2, 2, 100)
@@ -488,12 +412,9 @@ plt.show()
 
 <!-- ![](images/ticks.png) -->
 
-
 ## Grids
 
-In all of the previous plots, the background has no grids, they are simply
-white. If we wanted to add grid lines to the plot we use the `.grid()`
-method. This function, by default, adds the major grid lines.
+In all of the previous plots, the background has no grids, they are simply white. If we wanted to add grid lines to the plot we use the `.grid()` method. This function, by default, adds the major grid lines.
 
 ```{python}
 x = np.linspace(-2, 2, 100)
@@ -509,11 +430,9 @@ plt.show()
 
 <!-- ![](images/grids.png) -->
 
-
 ## Scale
 
-The default behaviour of matplotlib is to plot using a linear scale. In certain
-situations, we want view the plot using a different scale. For this we can use `set_yscale`.
+The default behaviour of matplotlib is to plot using a linear scale. In certain situations, we want view the plot using a different scale. For this we can use `set_yscale`.
 
 ```{python}
 x = np.linspace(-2, 10, 100)
@@ -529,12 +448,9 @@ plt.show()
 
 <!-- ![](images/scale.png) -->
 
-
 ## Setting the plot limits
 
-By default, matplotlib will calculate the minimum and maximum values of the
-data, and use those values to set the limits of the plot. Using `set_xlim` and
-`set_ylim` we can change this default behaviour.
+By default, matplotlib will calculate the minimum and maximum values of the data, and use those values to set the limits of the plot. Using `set_xlim` and `set_ylim` we can change this default behaviour.
 
 ```{python}
 x = np.linspace(-2, 2, 100)
@@ -549,13 +465,12 @@ plt.show()
 
 <!-- ![](images/limits.png) -->
 
-
 ## Annotations
 
 We can annotate our plot in a number of way:
 
--   .axhline &#x2013; plot a horizontal line (axvline for vertical lines)/
--   .annotate &#x2013; add text to the plot at a certain position.
+-   .axhline – plot a horizontal line (axvline for vertical lines)/
+-   .annotate – add text to the plot at a certain position.
 
 ```{python}
 x = np.linspace(-2, 2, 100)
@@ -576,12 +491,9 @@ plt.show()
 
 <!-- ![](images/annotations.png) -->
 
-
 ## Creating a twin axes plot
 
-Sometimes you will want to display multiple sub-plots on the same plot, but
-where each have a very different range in values. Instead of having a single
-y-axis, with `twinx()` we can create a two y-axis plot.
+Sometimes you will want to display multiple sub-plots on the same plot, but where each have a very different range in values. Instead of having a single y-axis, with `twinx()` we can create a two y-axis plot.
 
 ```{python}
 x = np.arange(10, 100)
@@ -602,14 +514,10 @@ plt.show()
 
 <!-- ![](images/twinx.png) -->
 
-
 # Learn more
 
-There are many many more types of plots you can create with matplotlib. I would
-recommend that you read the documentation to fully appreciate everything that it
-can visualise:
+There are many many more types of plots you can create with matplotlib. I would recommend that you read the documentation to fully appreciate everything that it can visualise:
 
--   Gallery &#x2013; <https://matplotlib.org/stable/gallery/index.html>
--   Plotting tutorials &#x2013; <https://matplotlib.org/stable/tutorials/index.html>
--   Basic plot types &#x2013; <https://matplotlib.org/stable/plot_types/index.html>
-
+-   Gallery – <https://matplotlib.org/stable/gallery/index.html>
+-   Plotting tutorials – <https://matplotlib.org/stable/tutorials/index.html>
+-   Basic plot types – <https://matplotlib.org/stable/plot_types/index.html>
